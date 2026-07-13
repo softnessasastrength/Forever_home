@@ -4,63 +4,92 @@ Target conditioned area: **approximately 1,500 sq ft**
 
 This is a starting allocation, not a final floor plan. Gross area, wall thicknesses, circulation, mechanical space, and local code requirements will affect the final numbers.
 
-## Core rooms
+## Core vision: three-bedroom connected suite
+
+The private wing is a **three-bedroom connected suite** with **internal doors between all rooms**, more like a hotel suite than a conventional hallway-and-doors layout. Occupants can move freely room to room without stepping into a public corridor. Each room remains its own space when doors are closed.
+
+### Suite rooms
 
 | Space | Initial target | Purpose |
 |---|---:|---|
 | Primary bedroom | 150–170 sq ft | Shared sleeping and retreat space |
-| Primary bathroom | 65–80 sq ft | Comfortable daily use with long-term accessibility in mind |
-| Renn's boutique | 110–140 sq ft | Clothing, styling, display, creativity, and personal expression |
-| Walk-in closet | 55–75 sq ft | Directly connected to the boutique or integrated as part of it |
-| Branden's office | 100–125 sq ft | Writing, research, CAD, Revit, legal work, and focused projects |
-| Guest bedroom | 100–120 sq ft | Comfortable accommodation and future flexible use |
-| Third bedroom / flex room | 100–120 sq ft | Required third bedroom; adaptable for guests, hobbies, or future needs |
-| Guest bathroom | 45–60 sq ft | Full bath preferred |
+| Renn's boutique walk-in closet | 110–160 sq ft | Clothing, styling, display, creativity, and personal expression — boutique and walk-in combined as one room |
+| Branden's hybrid bedroom / office | 120–150 sq ft | Writing, research, CAD, Revit, legal work, focused projects, and secondary sleeping / retreat use |
+| Suite bathroom | TBD | Layout, fixtures, and whether one shared bath or another arrangement are still open |
+
+### How the suite connects
+
+- All suite rooms link with **internal doors** so any room can open to any adjacent suite room.
+- Circulation feels continuous and private — hotel-suite style rather than a single corridor spine.
+- Renn's boutique walk-in is part of the suite, not a separate hall closet.
+- Branden's room is deliberately hybrid: full bedroom capability plus dedicated work space, still inside the connected suite.
+
+## Shared and support spaces
+
+| Space | Initial target | Purpose |
+|---|---:|---|
 | Living room | 180–220 sq ft | Primary shared gathering space |
-| Kitchen | 150–185 sq ft | Daily cooking with room for conversation and shared activity |
-| Dining area | 90–120 sq ft | Everyday meals, projects, and hosting |
+| Kitchen | 150–185 sq ft | Open kitchen with **half wall** and **island range**; daily cooking with room for conversation |
+| Dining area | 90–120 sq ft | Everyday meals, projects, and hosting — oriented to the open kitchen; direct access to three-season porch |
+| Three-season porch | (unconditioned / semi) | Inviting exit/entry from dining; mild-weather meals and garden-side arrival |
+| Guest bedroom | 100–120 sq ft | Comfortable accommodation and future flexible use (outside the connected suite unless the plan later folds it in) |
+| Guest bathroom | 45–60 sq ft | Full bath preferred |
 | Laundry / mudroom | 55–75 sq ft | Arrival, shoes, coats, cleaning, and laundry |
 | Pantry / utility storage | 25–45 sq ft | Food, appliances, linens, and household supplies |
 
+## Kitchen concept
+
+The kitchen is **open** to the living / dining side of the house, not a closed galley.
+
+- **Half wall** — visual and spatial connection while still defining the kitchen volume (and providing a place for stools, pass-through, or partial screening as needed).
+- **Island range** — cooking centered on the island so the cook faces the room and conversation, not a blank wall.
+
+Exact half-wall height, materials, and range/hood detailing remain design decisions.
+
+## Bathroom status
+
+**Still deciding.** The suite bathroom (count, configuration, tub vs. shower, shared vs. split, accessibility details) is intentionally unresolved. The program keeps a placeholder until those choices are locked.
+
 ## Area reality check
 
-A 1,500 sq ft target is achievable, but the boutique and office make efficient circulation essential. The design should avoid oversized hallways, redundant formal rooms, and decorative square footage that does not support daily life.
+A 1,500 sq ft target remains achievable, but the connected suite, boutique walk-in, and hybrid office/bedroom make efficient circulation essential. The design should avoid oversized hallways, redundant formal rooms, and decorative square footage that does not support daily life.
 
 Likely strategies:
 
-- combine kitchen and dining without making the entire house one undifferentiated room
+- treat the three suite rooms as one private zone with internal doors, minimizing public corridor length
+- combine kitchen and dining with a half wall rather than full separation or one undifferentiated room
+- use the island range as the social focus of the kitchen
 - use built-ins to increase storage without enlarging rooms
-- connect the boutique and walk-in closet as one coordinated suite
-- give the guest bath a location that serves both bedrooms and visitors
-- use the third bedroom as a true code-compliant bedroom while allowing flexible furnishing
+- keep Renn's boutique and walk-in as one coordinated suite room
+- give the guest bath a location that serves guests and day-to-day without forcing entry through private suite rooms
 - consider a compact one-story plan unless site conditions strongly favor another arrangement
 
 ## Priority adjacencies
 
 ### Strong connections
 
-- Kitchen ↔ dining
+- Kitchen ↔ dining (open plan, half wall)
+- Dining ↔ three-season porch (direct door; exit / entry)
 - Kitchen ↔ living room
 - Kitchen ↔ pantry
 - Mudroom ↔ kitchen
-- Primary bedroom ↔ primary bathroom
-- Renn's boutique ↔ walk-in closet
-- Boutique / closet ↔ primary suite
+- Primary bedroom ↔ Renn's boutique walk-in ↔ Branden's hybrid bedroom/office (internal suite doors between all)
+- Suite rooms ↔ suite bathroom (once bathroom layout is decided)
 - Living room ↔ covered porch or garden
 
 ### Useful separation
 
-- Branden's office away from television and kitchen noise
-- Guest bedrooms separated from the primary suite where practical
+- Work focus in Branden's hybrid room controllable by closing suite doors when needed
+- Guest bedroom and guest bath outside the private suite circulation where practical
 - Laundry buffered from sleeping spaces
-- Guest bathroom accessible without entering private rooms
+- Guest bathroom accessible without entering the connected suite
 
 ## Questions to resolve
 
 - One story or story-and-a-half?
-- Is the boutique entered from the primary bedroom, hallway, or both?
-- Should the walk-in closet serve only Renn, or function as the shared primary wardrobe with a dedicated boutique zone?
-- Tub, shower, or both in the primary bathroom?
+- Exact door matrix for the suite (which walls get doors; pocket vs. hinged)?
+- **Suite bathroom: still open** — one bath or more; tub, shower, or both; shared vs. dual access?
+- Half-wall height and finish; island range size, fuel type, and ventilation?
 - Separate dining room feeling or open dining alcove?
 - Covered front porch, rear porch, or both?
 - Garage, carport, or detached outbuilding?

@@ -67,3 +67,21 @@ This file records major owner decisions and the reasoning behind them. Decisions
 **Decision:** Brand names describe present preferences, not permanent dependencies.
 
 **Reasoning:** Tesla, DIRECTV SWiM, and current network standards may change before construction. The house should preserve compatible space, power, wiring, grounding, and conduit for equivalent future systems.
+
+## DD-012 — Open kitchen–dining with three-season porch
+
+**Decision:** Model the main floor with an open-concept kitchen and dining volume, island range, half wall to living, and a three-season porch entered from dining via French doors. Schematic sizes: kitchen 14'×12', dining 11'×10', porch 12'×10' (porch semi-conditioned, outside the 1,500 sf living target unless upgraded).
+
+**Reasoning:** Supports conversation while cooking, natural light, and garden-side hospitality without enlarging year-round conditioned area as much as a full sunroom. Details in Architecture/Kitchen_Dining_Porch_Specs.md.
+
+## DD-013 — Half-story stairs (5–7 steps)
+
+**Decision:** Use short half-story stair runs of five to seven steps (preferred six risers at ~7-1/4") between raised-ranch levels, with closed risers, stair-rated carpet on treads as baseline, and traditional turned-baluster railings with modest newels.
+
+**Reasoning:** Matches the split-level organization, keeps circulation intimate, and softens sound between floors. Hard-surface and runner alternates are documented if carpet is declined. Details in Architecture/Stairs_Half_Story.md and Interior/Flooring_Options.md.
+
+## DD-014 — Flooring strategy (carpet optional)
+
+**Decision:** Prefer warm engineered hardwood or LVP on open main-floor social spaces (kitchen, dining, living) with area rugs for softness; no wall-to-wall carpet in kitchen or three-season porch. Stairs may use full carpet or wood-plus-runner. Final field material remains an open owner pick among documented lock sets.
+
+**Reasoning:** Owner is unsure about carpet; limiting carpet to stairs/bedrooms/rugs preserves grandma warmth without impractical wall-to-wall in wet or outdoor-adjacent zones.

@@ -54,6 +54,7 @@ Core spaces:
 - Living room
 - Kitchen
 - Dining area
+- Three-season porch accessed from the dining area
 - Pantry or high-capacity kitchen storage
 - Powder room or conveniently located bathroom
 - Covered front porch
@@ -61,6 +62,12 @@ Core spaces:
 - Pellet stove located in the main living area
 
 The living, dining, and kitchen spaces should feel connected without becoming one undifferentiated room. The design should preserve cozy proportions, visual warmth, and places for furniture, collections, books, lamps, and daily rituals.
+
+Dimensional schematic specs for kitchen, dining, and three-season porch: [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md).
+
+### Vertical circulation
+
+Half-story stair runs (**five to seven steps**, preferred **six risers**) connect lower ↔ main and main ↔ upper private levels. Baseline: carpeted treads, traditional turned-baluster railings. See [Stairs_Half_Story.md](Stairs_Half_Story.md).
 
 ## Upper Private Floor
 
