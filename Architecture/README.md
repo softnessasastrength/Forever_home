@@ -22,5 +22,6 @@ Files in this directory are conceptual owner-development materials unless explic
 | [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md) | Exact dimensions, clearances, appliances, modeling checklist | [Detailed](../Renderings/Kitchen_Dining_Porch_Detailed.jpg) · [Concept](../Renderings/Kitchen_Dining_Concept.jpg) |
 | [Stairs_Half_Story.md](Stairs_Half_Story.md) | 5–7 step half-story stairs, carpet treads, railing | [Stairs](../Renderings/Stairs_Half_Story_Concept.jpg) |
 | [Material_Schedule.md](Material_Schedule.md) | Finish codes, material list, Revit naming | — |
+| [Bathrooms_Specs.md](Bathrooms_Specs.md) | Primary full bath + open Jack & Jill; toilets, vanities, dimensions | [Master](../Renderings/Bathroom_Master_Concept.jpg) · [J&J](../Renderings/Bathroom_Jack_and_Jill_Concept.jpg) |
 
-Related: [Interior/Flooring_Options.md](../Interior/Flooring_Options.md) · [Revit/README.md](../Revit/README.md) · project index [README.md](../README.md).
+Related: [Interior/Flooring_Options.md](../Interior/Flooring_Options.md) · [Interior/Bathrooms.md](../Interior/Bathrooms.md) · [Revit/README.md](../Revit/README.md) · project index [README.md](../README.md).

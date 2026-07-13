@@ -8,5 +8,7 @@ Concept visualizations for the Forever Home. These are **design intent images**,
 | [Kitchen_Dining_Concept.jpg](Kitchen_Dining_Concept.jpg) | Early kitchen–dining–porch concept | [Interior/Kitchen_Dining.md](../Interior/Kitchen_Dining.md) |
 | [Kitchen_Dining_Porch_Detailed.jpg](Kitchen_Dining_Porch_Detailed.jpg) | Detailed open kitchen, dining, three-season porch | [Architecture/Kitchen_Dining_Porch_Specs.md](../Architecture/Kitchen_Dining_Porch_Specs.md) |
 | [Stairs_Half_Story_Concept.jpg](Stairs_Half_Story_Concept.jpg) | Half-story carpeted stair + traditional railing | [Architecture/Stairs_Half_Story.md](../Architecture/Stairs_Half_Story.md) |
+| [Bathroom_Master_Concept.jpg](Bathroom_Master_Concept.jpg) | Primary full bath — vanity, toilet, tub/shower | [Architecture/Bathrooms_Specs.md](../Architecture/Bathrooms_Specs.md) |
+| [Bathroom_Jack_and_Jill_Concept.jpg](Bathroom_Jack_and_Jill_Concept.jpg) | Open spacious Jack & Jill — dual vanity, shower | [Architecture/Bathrooms_Specs.md](../Architecture/Bathrooms_Specs.md) |
 
 Sheet-quality plan/section exports (when produced from Revit) should go to `/Exports`, with a note linking back here for mood images.

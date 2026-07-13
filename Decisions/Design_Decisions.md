@@ -85,3 +85,9 @@ This file records major owner decisions and the reasoning behind them. Decisions
 **Decision:** Prefer warm engineered hardwood or LVP on open main-floor social spaces (kitchen, dining, living) with area rugs for softness; no wall-to-wall carpet in kitchen or three-season porch. Stairs may use full carpet or wood-plus-runner. Final field material remains an open owner pick among documented lock sets.
 
 **Reasoning:** Owner is unsure about carpet; limiting carpet to stairs/bedrooms/rugs preserves grandma warmth without impractical wall-to-wall in wet or outdoor-adjacent zones.
+
+## DD-015 — Primary full bath + Jack & Jill bath
+
+**Decision:** Provide a private primary (master) full bath at **9'-0" × 10'-0"** accessed only from the primary bedroom, and a separate open spacious Jack & Jill full bath at **10'-0" × 12'-0"** shared by two secondary bedrooms (baseline: Branden's hybrid bedroom/office and the guest/third bedroom). Dual vanity in Jack & Jill; traditional comfort-height toilets; cream vanities; warm quartz; aged brass; subway wet walls.
+
+**Reasoning:** Separates master privacy from shared secondary bathing, keeps guest and hybrid rooms well served without a tiny pass-through bath, and matches the warm grandma aesthetic. Details in Architecture/Bathrooms_Specs.md and Interior/Bathrooms.md.

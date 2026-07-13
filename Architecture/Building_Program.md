@@ -74,14 +74,17 @@ Half-story stair runs (**five to seven steps**, preferred **six risers**) connec
 Core spaces:
 
 - Primary bedroom
+- **Primary (master) full bathroom** — private to the primary bedroom
 - Renn's dedicated boutique / dressing room
 - Walk-in closet directly connected to or integrated with the boutique
-- Branden's dedicated home office
+- Branden's dedicated home office / hybrid bedroom
 - Minimum of two additional legal bedrooms across the whole house program so the home contains at least three bedrooms total
 - Guest bedroom
-- Full bathroom or bathrooms as developed during planning
+- **Jack & Jill full bathroom** — open, spacious, shared by two secondary bedrooms (hybrid + guest/third baseline)
 
 The office and boutique are equal-priority personal spaces and must not be treated as leftover storage rooms.
+
+Bathroom dimensions, fixtures, and finishes: [Bathrooms_Specs.md](Bathrooms_Specs.md).
 
 ## Garage
 

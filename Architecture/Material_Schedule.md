@@ -1,7 +1,7 @@
 # Material & Finish Schedule (Schematic)
 
 **Status:** Owner modeling / estimating list — not a bid package  
-**Sources:** [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md), [Stairs_Half_Story.md](Stairs_Half_Story.md), [Interior/Flooring_Options.md](../Interior/Flooring_Options.md), [Interior/Living_Room.md](../Interior/Living_Room.md)  
+**Sources:** [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md), [Stairs_Half_Story.md](Stairs_Half_Story.md), [Bathrooms_Specs.md](Bathrooms_Specs.md), [Interior/Flooring_Options.md](../Interior/Flooring_Options.md), [Interior/Living_Room.md](../Interior/Living_Room.md)  
 **Aesthetic:** Whimsical grandma home — warm, traditional, non-gray
 
 Use these **finish codes** as Revit material names or keynote marks.
@@ -19,8 +19,10 @@ Use these **finish codes** as Revit material names or keynote marks.
 | **F-04** | Living / dining soft layer | Area rugs | Under seating group / table | Traditional pattern welcome |
 | **F-05** | Bedrooms (TBD) | Carpet **or** F-01 + rugs | Per Flooring_Options | Warm neutrals |
 | **F-06** | Mudroom / laundry / lower wet zones | LVP or tile | Waterproof | Warm, practical |
+| **F-10** | Primary + Jack & Jill bath floors | Porcelain tile 12×24 or 2" hex | Wet-area rated | Warm white / soft cream / pale clay |
+| **F-11** | Shower floors | Small mosaic, non-slip | Slope 1/4"/ft to drain | Coordinate with F-10 |
 
-**Default to model:** F-01 engineered oak continuous on main social floor; F-02 porch tile; F-03 stair carpet.
+**Default to model:** F-01 engineered oak continuous on main social floor; F-02 porch tile; F-03 stair carpet; F-10 bath floors.
 
 ---
 
@@ -34,6 +36,9 @@ Use these **finish codes** as Revit material names or keynote marks.
 | **W-04** | Porch ceiling | Beadboard or V-groove | Soft white |
 | **W-05** | Kitchen backsplash | Ceramic subway 3×6 or 4×12 | Glossy cream/white; G-01 grout warm beige |
 | **W-06** | Half-wall faces | Paint; optional beadboard dining face | Match W-01 / T-01 |
+| **W-10** | Bath walls (dry zones) | Moisture-resistant paint, eggshell | Soft cream / pale blush |
+| **W-11** | Tub/shower wet walls | Ceramic subway 3×6 or 4×12 | Glossy cream/white to 84"+ / full height in shower |
+| **W-12** | Bath accent (optional) | Pattern tile band or hex accent | Soft traditional; use sparingly |
 
 ---
 
@@ -75,6 +80,12 @@ Use these **finish codes** as Revit material names or keynote marks.
 | **A-07** | Faucet | Classic pull-down / bridge | Aged brass or polished nickel |
 | **A-08** | Living faux fireplace | Under TV | Electric/decorative insert + mantel |
 | **A-09** | Pellet stove | Main living (program) | Coordinate location with hearth wall |
+| **A-10** | Toilet (both baths) | Two-piece elongated comfort-height | White; soft-close; 12" rough-in; 1.28 gpf |
+| **A-11** | Primary vanity | 60" W × 22" D (or 48") | Cream furniture/shaker; quartz; aged brass; 1–2 sinks |
+| **A-12** | Jack & Jill vanity | 72" W × 22" D dual | Cream shaker; quartz; aged brass; two sinks |
+| **A-13** | Primary bathing | 60" alcove tub/shower | Traditional trim; cream tile surround |
+| **A-14** | J&J shower | 60"×36" preferred walk-in | Glass enclosure; handheld + fixed head |
+| **A-15** | Bath faucets / trim | Traditional widespread or centerset | Aged brass or polished nickel house-wide |
 
 ---
 
@@ -86,6 +97,8 @@ Use these **finish codes** as Revit material names or keynote marks.
 | **D-02** | Porch ↔ exterior | 3'-0" × 6'-8" | Door + screen as needed |
 | **D-03** | Pantry | 2'-6" × 6'-8" | Hinged |
 | **D-04** | Critical interior doors | 2'-10"–3'-0" preferred | 32"+ clear long-term |
+| **D-05** | Primary bath | 2'-8" × 6'-8" | From primary bedroom; privacy lock |
+| **D-06** / **D-07** | Jack & Jill entries | 2'-8" × 6'-8" each | From Bedroom A and B; privacy locks |
 | **V-01** | Sink window | 36" W × 42" H min | Double-hung or casement |
 | **V-02** | Dining / porch glazing | Per elevations | Maximize daylight |
 | **V-03** | Living skylights | Per living concept | Diffuse; avoid TV glare |
@@ -141,6 +154,12 @@ FH-C-01-Cab-ShakerCream
 FH-Q-01-Quartz-WarmWhite
 FH-T-04-Rail-TurnedBalusterWhite
 FH-B-01-Tile-SubwayCream
+FH-F-10-BathFloor-PorcelainWarm
+FH-W-11-BathWet-SubwayCream
+FH-A-10-Toilet-ComfortElongatedWhite
+FH-C-BathVanity-ShakerCream
 ```
 
 Prefix `FH-` = Forever Home project materials.
+
+Bath fixture and layout detail: [Bathrooms_Specs.md](Bathrooms_Specs.md).

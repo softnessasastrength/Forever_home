@@ -13,9 +13,10 @@ The private wing is a **three-bedroom connected suite** with **internal doors be
 | Space | Initial target | Purpose |
 |---|---:|---|
 | Primary bedroom | 150–170 sq ft | Shared sleeping and retreat space |
+| Primary (master) full bath | 90 sf (9'×10') | Private full bath off primary bedroom only |
 | Renn's boutique walk-in closet | 110–160 sq ft | Clothing, styling, display, creativity, and personal expression — boutique and walk-in combined as one room |
 | Branden's hybrid bedroom / office | 120–150 sq ft | Writing, research, CAD, Revit, legal work, focused projects, and secondary sleeping / retreat use |
-| Suite bathroom | TBD | Layout, fixtures, and whether one shared bath or another arrangement are still open |
+| Jack & Jill full bath | 120 sf (10'×12') | Open spacious full bath shared by hybrid bedroom and guest/third bedroom |
 
 ### How the suite connects
 
@@ -33,7 +34,7 @@ The private wing is a **three-bedroom connected suite** with **internal doors be
 | Dining area | 90–120 sq ft | Everyday meals, projects, and hosting — oriented to the open kitchen; direct access to three-season porch |
 | Three-season porch | (unconditioned / semi) | Inviting exit/entry from dining; mild-weather meals and garden-side arrival |
 | Guest bedroom | 100–120 sq ft | Comfortable accommodation and future flexible use (outside the connected suite unless the plan later folds it in) |
-| Guest bathroom | 45–60 sq ft | Full bath preferred |
+| Guest bathroom | — | **Superseded on private floor by Jack & Jill**; optional main-floor powder still open |
 | Laundry / mudroom | 55–75 sq ft | Arrival, shoes, coats, cleaning, and laundry |
 | Pantry / utility storage | 25–45 sq ft | Food, appliances, linens, and household supplies |
 
@@ -46,9 +47,14 @@ The kitchen is **open** to the living / dining side of the house, not a closed g
 
 Exact half-wall height, materials, and range/hood detailing remain design decisions.
 
-## Bathroom status
+## Bathroom program (locked schematic)
 
-**Still deciding.** The suite bathroom (count, configuration, tub vs. shower, shared vs. split, accessibility details) is intentionally unresolved. The program keeps a placeholder until those choices are locked.
+| Bath | Access | Size | Notes |
+|---|---|---|---|
+| **Primary full bath** | Primary bedroom only | **9'-0" × 10'-0"** | Tub/shower, vanity, comfort-height toilet |
+| **Jack & Jill full bath** | Hybrid bedroom + guest/third bedroom | **10'-0" × 12'-0"** | Open spacious dual-vanity layout; walk-in shower |
+
+Specs, fixtures, finishes: [Architecture/Bathrooms_Specs.md](../Architecture/Bathrooms_Specs.md) · concept: [Interior/Bathrooms.md](../Interior/Bathrooms.md).
 
 ## Area reality check
 
@@ -74,7 +80,8 @@ Likely strategies:
 - Kitchen ↔ pantry
 - Mudroom ↔ kitchen
 - Primary bedroom ↔ Renn's boutique walk-in ↔ Branden's hybrid bedroom/office (internal suite doors between all)
-- Suite rooms ↔ suite bathroom (once bathroom layout is decided)
+- Primary bedroom ↔ **primary full bath** (private)
+- Branden's hybrid bedroom ↔ **Jack & Jill** ↔ guest/third bedroom
 - Living room ↔ covered porch or garden
 
 ### Useful separation
@@ -82,13 +89,16 @@ Likely strategies:
 - Work focus in Branden's hybrid room controllable by closing suite doors when needed
 - Guest bedroom and guest bath outside the private suite circulation where practical
 - Laundry buffered from sleeping spaces
-- Guest bathroom accessible without entering the connected suite
+- Primary bath not used as guest circulation
+- Jack & Jill securable from either bedroom with privacy locks
 
 ## Questions to resolve
 
 - One story or story-and-a-half?
 - Exact door matrix for the suite (which walls get doors; pocket vs. hinged)?
-- **Suite bathroom: still open** — one bath or more; tub, shower, or both; shared vs. dual access?
+- Primary bath: keep 60" tub/shower combo vs. shower-only?
+- Jack & Jill: curb-less shower vs. low curb; optional toilet half-wall?
+- Main-floor powder room yes/no?
 - Half-wall height and finish; island range size, fuel type, and ventilation?
 - Separate dining room feeling or open dining alcove?
 - Covered front porch, rear porch, or both?

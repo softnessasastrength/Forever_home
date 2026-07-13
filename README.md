@@ -23,6 +23,7 @@ The home should feel:
 - Minimum **three bedrooms** in a **connected suite** (hotel-style internal doors)
 - **Renn's boutique walk-in** and **Branden's hybrid bedroom/office**
 - Open **kitchen + dining** with **three-season porch** from dining
+- **Primary full bath** + open spacious **Jack & Jill** bath between secondary bedrooms
 - Shared spaces designed around conversation, comfort, creativity, and everyday rituals
 
 ## Single source of truth (start here)
@@ -36,9 +37,11 @@ The home should feel:
 | **Main floor schematic dimensions** | [Architecture/Main_Floor_Schematic.md](Architecture/Main_Floor_Schematic.md) |
 | **Half-story stairs** | [Architecture/Stairs_Half_Story.md](Architecture/Stairs_Half_Story.md) |
 | **Material & finish list** | [Architecture/Material_Schedule.md](Architecture/Material_Schedule.md) |
+| **Bathrooms (primary + Jack & Jill)** | [Architecture/Bathrooms_Specs.md](Architecture/Bathrooms_Specs.md) |
 | Flooring options (carpet uncertainty) | [Interior/Flooring_Options.md](Interior/Flooring_Options.md) |
 | Living room concept | [Interior/Living_Room.md](Interior/Living_Room.md) |
 | Kitchen/dining concept | [Interior/Kitchen_Dining.md](Interior/Kitchen_Dining.md) |
+| Bathrooms concept | [Interior/Bathrooms.md](Interior/Bathrooms.md) |
 | Owner decisions log | [Decisions/Design_Decisions.md](Decisions/Design_Decisions.md) |
 | Revit modeling guide | [Revit/README.md](Revit/README.md) |
 | Concept renders | [Renderings/README.md](Renderings/README.md) |
@@ -50,6 +53,8 @@ The home should feel:
 | ![Living](Renderings/Living_Room_Concept.jpg) | Living room |
 | ![Kitchen](Renderings/Kitchen_Dining_Porch_Detailed.jpg) | Kitchen, dining, three-season porch |
 | ![Stairs](Renderings/Stairs_Half_Story_Concept.jpg) | Half-story carpeted stairs |
+| ![Master bath](Renderings/Bathroom_Master_Concept.jpg) | Primary full bath |
+| ![Jack and Jill](Renderings/Bathroom_Jack_and_Jill_Concept.jpg) | Jack & Jill bath |
 
 *(If images do not preview on GitHub, open files under [`Renderings/`](Renderings/).)*
 
@@ -70,9 +75,18 @@ The home should feel:
 - **Carpeted treads** baseline; wood + runner alternate
 - Railing: **traditional turned balusters**, oval handrail @ 36", modest box newels
 
+### Bathrooms
+
+| Bath | Size | Key fixtures |
+|---|---|---|
+| Primary (master) | 9'-0" × 10'-0" (90 sf) | Private; 60" vanity; comfort-height toilet; 60" tub/shower |
+| Jack & Jill | 10'-0" × 12'-0" (120 sf) | Dual doors; 72" dual vanity; walk-in shower; open layout |
+
+Toilets: two-piece elongated comfort-height white. Vanities: cream shaker/furniture + warm quartz + aged brass.
+
 ### Materials (default model)
 
-Warm cream shaker cabinets, aged brass, warm quartz, subway splash, engineered oak (or LVP) main floors, stair carpet, 2700K layered lighting. Full codes: [Architecture/Material_Schedule.md](Architecture/Material_Schedule.md).
+Warm cream shaker cabinets, aged brass, warm quartz, subway splash, engineered oak (or LVP) main floors, stair carpet, bath porcelain tile, 2700K layered lighting. Full codes: [Architecture/Material_Schedule.md](Architecture/Material_Schedule.md).
 
 ## Repository structure
 
@@ -109,6 +123,7 @@ A space belongs in the plan because it supports daily life, individual identity,
 - [x] Open kitchen, dining, three-season porch specs + renders
 - [x] Half-story stair specs + render
 - [x] Material schedule + main-floor schematic for Revit
+- [x] Primary full bath + open Jack & Jill bath specs and renders
 - [ ] Gather Renn's saved preferences
 - [ ] Draft schematic floor plans in Revit
 - [ ] Build massing model

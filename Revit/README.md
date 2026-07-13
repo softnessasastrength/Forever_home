@@ -23,6 +23,7 @@ Use this directory for Revit models (`.rvt`), families, templates, and export no
 | Main floor schematic | [Architecture/Main_Floor_Schematic.md](../Architecture/Main_Floor_Schematic.md) |
 | Stairs | [Architecture/Stairs_Half_Story.md](../Architecture/Stairs_Half_Story.md) |
 | Material list | [Architecture/Material_Schedule.md](../Architecture/Material_Schedule.md) |
+| Bathrooms | [Architecture/Bathrooms_Specs.md](../Architecture/Bathrooms_Specs.md) |
 | Flooring decisions | [Interior/Flooring_Options.md](../Interior/Flooring_Options.md) |
 | Room program | [Requirements/Room_Program.md](../Requirements/Room_Program.md) |
 | Concept renders | [Renderings/](../Renderings/README.md) |
