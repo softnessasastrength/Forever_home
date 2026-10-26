@@ -76,23 +76,23 @@ public class CompactCoreCommand : IExternalCommand
                 }
                 RoomBox("M-01-LIVING", 1, 1, 16, 15);
                 RoomBox("M-02-KITCHEN", 22, 1, 17, 16);
-                RoomBox("M-03-DINING", 1, 16.5, 11, 13.5);
+                RoomBox("M-03-DINING", 1, 17, 11, 13.5);
                 RoomBox("M-06-MAIN-BATH", 30.5, 27, 8, 10);
-                RoomBox("L-02-MAIN-FLEX", 1, 30.5, 11, 8);
+                RoomBox("L-02-MAIN-FLEX", 1, 31.5, 11, 7.5);
                 var upperShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
                 var lowerShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
                 for (int i=0;i<4;i++) { WallAtLevel(upper,upperShell[i],upperShell[(i+1)%4],$"FH-C-UPPER-SHELL-{i+1:00}"); WallAtLevel(lower,lowerShell[i],lowerShell[(i+1)%4],$"FH-C-LOWER-SHELL-{i+1:00}"); }
                 RoomBoxAt(upper,"U-01-PRIMARY", 1,41,16,10);
-                RoomBoxAt(upper,"U-05-PRIMARY-BATH", 1,51.5,9,10);
-                RoomBoxAt(upper,"U-02-BOUTIQUE", 1,62,16,9);
-                RoomBoxAt(upper,"U-04-GUEST", 17,41,13,8.5);
+                RoomBoxAt(upper,"U-05-PRIMARY-BATH", 1,52,9,10);
+                RoomBoxAt(upper,"U-02-BOUTIQUE", 1,63,16,8);
+                RoomBoxAt(upper,"U-04-GUEST", 18,41,12,8.5);
                 RoomBoxAt(upper,"U-06-JACK-JILL", 25,50.5,10,12);
-                RoomBoxAt(upper,"U-03-HYBRID", 17,62,13,8.5);
+                RoomBoxAt(upper,"U-03-HYBRID", 18,63,13,8);
                 RoomBoxAt(lower,"L-03-LOWER-BATH", 1,41,9,10);
-                RoomBoxAt(lower,"L-04-LAUNDRY", 1,51.5,9,8);
-                RoomBoxAt(lower,"L-05-MEP", 1,60,9,10);
+                RoomBoxAt(lower,"L-04-LAUNDRY", 1,52,9,8);
+                RoomBoxAt(lower,"L-05-MEP", 1,61,9,9);
                 RoomBoxAt(lower,"L-07-ARRIVAL", 26,41,9,11.5);
-                RoomBoxAt(lower,"L-01-FLEX-LIVING", 10,53,14,18);
+                RoomBoxAt(lower,"L-01-FLEX-LIVING", 11,53,13,18);
                 RoomBoxAt(lower,"L-06-TECH-RELOCATED", 26,63,8,8);
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";

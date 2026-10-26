@@ -13,6 +13,8 @@ The latest run, `.local/revit-pilot/compact-core/20261026T031326866Z/FH_Compact_
 
 The upper/lower expansion run, `.local/revit-pilot/compact-core/20261026T031547281Z/FH_Compact_Core_Study.rvt`, adds upper private-room envelopes (`U-01`, `U-02`, `U-03`, `U-04`, `U-05`, `U-06`) and lower bath/laundry/MEP/arrival/flex/relocated-technology envelopes (`L-01`, `L-03`, `L-04`, `L-05`, `L-06`, `L-07`). Revit reported **0 errors and 13 wall-overlap warnings**. The technology room is shown at the lower rear, outside the Jack & Jill plan zone; plumbing, acoustic and service coordination remain unverified.
 
+The next batch revision widens room-loop separations to at least 12 in centerline where practical and moves the lift reservation farther from the shell. It builds successfully but is **not yet executed in Revit**; do not treat its warning count or geometry as verified until the next planned reload.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
