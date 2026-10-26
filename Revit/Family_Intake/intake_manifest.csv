@@ -4,3 +4,6 @@ M-02,kitchen perimeter appliance,Specialty Equipment,,,,,unselected,,,Island rem
 M-01,living hearth/TV envelope,Furniture,,,,,unselected,,,Exact product and clearances unresolved
 U-06,Jack and Jill fixtures,Plumbing Fixtures,,,,,unselected,,,Wet-stack and privacy coordination open
 C-LIFT,lift product reservation,Specialty Equipment,,,,,unselected,,,Do not model product until manufacturer layout is selected
+M-06,vanity placeholder,Plumbing Fixtures,https://www.revitcity.com/downloads.php?action=search&keywords=vanity,,,,candidate,,,Solid Surface Vanity Counter w/ Faucet; parameterization described; Revit Architecture 2020/2010 variants; login required
+M-02,island/casework placeholder,Casework,https://www.revitcity.com/downloads.php?action=view&object_id=19967,,,,candidate,,,Island Cabinet or Countertop; light geometry and instance dimensions; Revit Architecture 2018; login required
+M-01,TV placeholder,Furniture,https://www.revitcity.com/downloads.php?action=view&object_id=17584,,,,candidate,,,Sony Flat LED TV face-based; not the legacy CRT; use only as visual placeholder; login required
