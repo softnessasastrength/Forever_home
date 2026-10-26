@@ -61,8 +61,18 @@ public class CompactCoreCommand : IExternalCommand
                 void WallAt(XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, main.Id, 10, 0, false, false); Tag(w,id); }
                 var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
                 for (int i=0;i<4;i++) WallAt(shell[i],shell[(i+1)%4],$"FH-C-SHELL-{i+1:00}");
-                var core = new[] { new XYZ(21.5,31.5,0), new XYZ(29.5,31.5,0), new XYZ(29.5,39.5,0), new XYZ(21.5,39.5,0) };
+                var core = new[] { new XYZ(21.5,30.5,0), new XYZ(29.5,30.5,0), new XYZ(29.5,38.5,0), new XYZ(21.5,38.5,0) };
                 for (int i=0;i<4;i++) WallAt(core[i],core[(i+1)%4],$"FH-C-LIFT-RES-{i+1:00}");
+                void RoomBox(string id, double x, double y, double width, double depth)
+                {
+                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
+                    for (int i=0;i<4;i++) WallAt(pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                }
+                RoomBox("M-01-LIVING", 1, 1, 16, 15);
+                RoomBox("M-02-KITCHEN", 22, 1, 17, 16);
+                RoomBox("M-03-DINING", 1, 16.5, 11, 13.5);
+                RoomBox("M-06-MAIN-BATH", 30.5, 27, 8, 10);
+                RoomBox("L-02-MAIN-FLEX", 1, 30.5, 11, 8);
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
                 Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");

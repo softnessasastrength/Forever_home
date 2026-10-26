@@ -9,6 +9,8 @@ The standalone `Forever Home Compact Study` add-in entry point ran in Revit 2027
 
 After moving the lift reservation 6 in inward from the rear shell edge, a second run was saved at `.local/revit-pilot/compact-core/20261026T031040832Z/FH_Compact_Core_Study.rvt`. The same wall-overlap warning persisted, so the warning is not closed; the next cleanup should replace the overlapping wall-loop construction with non-overlapping boundary geometry.
 
+The latest run, `.local/revit-pilot/compact-core/20261026T031326866Z/FH_Compact_Core_Study.rvt`, adds five native main-level room-block envelopes: `M-01` living, `M-02` kitchen, `M-03` dining, `M-06` proposed main bath and `L-02` main flex sleeping room. Revit reported **0 errors and 2 wall-overlap warnings**; the command completed and saved the RVT. These are un-door-ed room envelopes, not finished rooms, accessible routes or a preferred plan.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
