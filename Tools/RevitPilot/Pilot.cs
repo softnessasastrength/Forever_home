@@ -131,7 +131,16 @@ public class CompactCoreCommand : IExternalCommand
                 upper = Level.Create(doc, 5); upper.Name = "C Upper +5 ft";
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
                     .First(w => w.Kind == WallKind.Basic);
-                void WallAtLevel(Level level, XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, level.Id, 10, 0, false, false); Tag(w,id); }
+                void WallAtLevel(Level level, XYZ a, XYZ b, string id)
+                {
+                    var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, level.Id, 10, 0, false, false);
+                    // Keep this disposable study's nominal wall loops independent. Automatic
+                    // end-joins can turn touching/intersecting test lines into avoidable
+                    // overlap warnings without changing the target room dimensions.
+                    WallUtils.DisallowWallJoinAtEnd(w, 0);
+                    WallUtils.DisallowWallJoinAtEnd(w, 1);
+                    Tag(w,id);
+                }
                 void WallAt(XYZ a, XYZ b, string id) => WallAtLevel(main,a,b,id);
                 void RoomBoxAt(Level level, string id, double x, double y, double width, double depth)
                 {
