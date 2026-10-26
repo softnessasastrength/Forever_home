@@ -27,6 +27,8 @@ The first host attempt of that batch was stopped by a lookup typo (`FH-C-SHELL-1
 
 The queued batch now fails explicitly if a required door host wall is missing and includes five door IDs in `study-manifest.json`; the offline validator checks those IDs as well. Build and Python syntax checks pass. No additional Revit reload has been performed.
 
+The consolidated door/schedule verification run completed at `.local/revit-pilot/compact-core/20261026T033952779Z/`. Revit saved the RVT with **0 errors and 3 wall-overlap warnings**. The manifest contains all 17 room IDs and all five door IDs, and the offline validator passed. The five doors are nominal test instances; swings, clear openings, hardware, egress and accessibility remain unresolved.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
