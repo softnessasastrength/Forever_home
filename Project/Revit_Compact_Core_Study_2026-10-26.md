@@ -11,6 +11,8 @@ After moving the lift reservation 6 in inward from the rear shell edge, a second
 
 The latest run, `.local/revit-pilot/compact-core/20261026T031326866Z/FH_Compact_Core_Study.rvt`, adds five native main-level room-block envelopes: `M-01` living, `M-02` kitchen, `M-03` dining, `M-06` proposed main bath and `L-02` main flex sleeping room. Revit reported **0 errors and 2 wall-overlap warnings**; the command completed and saved the RVT. These are un-door-ed room envelopes, not finished rooms, accessible routes or a preferred plan.
 
+The upper/lower expansion run, `.local/revit-pilot/compact-core/20261026T031547281Z/FH_Compact_Core_Study.rvt`, adds upper private-room envelopes (`U-01`, `U-02`, `U-03`, `U-04`, `U-05`, `U-06`) and lower bath/laundry/MEP/arrival/flex/relocated-technology envelopes (`L-01`, `L-03`, `L-04`, `L-05`, `L-06`, `L-07`). Revit reported **0 errors and 13 wall-overlap warnings**. The technology room is shown at the lower rear, outside the Jack & Jill plan zone; plumbing, acoustic and service coordination remain unverified.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels

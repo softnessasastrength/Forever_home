@@ -58,7 +58,13 @@ public class CompactCoreCommand : IExternalCommand
                 upper = Level.Create(doc, 5); upper.Name = "C Upper +5 ft";
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
                     .First(w => w.Kind == WallKind.Basic);
-                void WallAt(XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, main.Id, 10, 0, false, false); Tag(w,id); }
+                void WallAtLevel(Level level, XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, level.Id, 10, 0, false, false); Tag(w,id); }
+                void WallAt(XYZ a, XYZ b, string id) => WallAtLevel(main,a,b,id);
+                void RoomBoxAt(Level level, string id, double x, double y, double width, double depth)
+                {
+                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
+                    for (int i=0;i<4;i++) WallAtLevel(level,pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                }
                 var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
                 for (int i=0;i<4;i++) WallAt(shell[i],shell[(i+1)%4],$"FH-C-SHELL-{i+1:00}");
                 var core = new[] { new XYZ(21.5,30.5,0), new XYZ(29.5,30.5,0), new XYZ(29.5,38.5,0), new XYZ(21.5,38.5,0) };
@@ -73,6 +79,21 @@ public class CompactCoreCommand : IExternalCommand
                 RoomBox("M-03-DINING", 1, 16.5, 11, 13.5);
                 RoomBox("M-06-MAIN-BATH", 30.5, 27, 8, 10);
                 RoomBox("L-02-MAIN-FLEX", 1, 30.5, 11, 8);
+                var upperShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
+                var lowerShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
+                for (int i=0;i<4;i++) { WallAtLevel(upper,upperShell[i],upperShell[(i+1)%4],$"FH-C-UPPER-SHELL-{i+1:00}"); WallAtLevel(lower,lowerShell[i],lowerShell[(i+1)%4],$"FH-C-LOWER-SHELL-{i+1:00}"); }
+                RoomBoxAt(upper,"U-01-PRIMARY", 1,41,16,10);
+                RoomBoxAt(upper,"U-05-PRIMARY-BATH", 1,51.5,9,10);
+                RoomBoxAt(upper,"U-02-BOUTIQUE", 1,62,16,9);
+                RoomBoxAt(upper,"U-04-GUEST", 17,41,13,8.5);
+                RoomBoxAt(upper,"U-06-JACK-JILL", 25,50.5,10,12);
+                RoomBoxAt(upper,"U-03-HYBRID", 17,62,13,8.5);
+                RoomBoxAt(lower,"L-03-LOWER-BATH", 1,41,9,10);
+                RoomBoxAt(lower,"L-04-LAUNDRY", 1,51.5,9,8);
+                RoomBoxAt(lower,"L-05-MEP", 1,60,9,10);
+                RoomBoxAt(lower,"L-07-ARRIVAL", 26,41,9,11.5);
+                RoomBoxAt(lower,"L-01-FLEX-LIVING", 10,53,14,18);
+                RoomBoxAt(lower,"L-06-TECH-RELOCATED", 26,63,8,8);
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
                 Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
