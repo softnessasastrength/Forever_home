@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "fixture_only": true,
+  "revit_version": "2027",
+  "revit_build": "27.3.0.28",
+  "checks": {
+    "fixture_count_is_nine": true,
+    "stable_ids_unique": true,
+    "csv_matches_json": true,
+    "source_reopened": true,
+    "backup_reopened": true,
+    "all_export_calls_succeeded": true,
+    "ifc2x3_schema": true,
+    "ifc_schema_validation": true,
+    "all_stable_ids_in_ifc_properties": true,
+    "ifc_has_two_hosted_openings": true,
+    "ifc_has_door_and_window_fills": true,
+    "ifc_revit_room_area_property_matches_sf": true,
+    "ifc_has_walls": true,
+    "ifc_has_door": true,
+    "ifc_has_window": true,
+    "ifc_has_stair": true,
+    "ifc_has_room": true,
+    "ifc_geometry_present": true,
+    "ifc_geometry_decoded": true,
+    "dwg_2010_header": true,
+    "pdf_header": true
+  },
+  "observations": {
+    "ifc_product_counts": {
+      "IfcBuilding": 1,
+      "IfcBuildingElementProxy": 1,
+      "IfcBuildingStorey": 3,
+      "IfcDoor": 1,
+      "IfcMember": 2,
+      "IfcOpeningElement": 2,
+      "IfcRailing": 2,
+      "IfcSite": 1,
+      "IfcSpace": 1,
+      "IfcStair": 1,
+      "IfcStairFlight": 1,
+      "IfcWallStandardCase": 4,
+      "IfcWindow": 1
+    },
+    "ifc_schema_issue_count": 0,
+    "stable_ids_found_in_ifc_properties": [
+      "FH-PILOT-DOOR-01",
+      "FH-PILOT-EQUIPMENT-01",
+      "FH-PILOT-ROOM-01",
+      "FH-PILOT-STAIR-01",
+      "FH-PILOT-WALL-01",
+      "FH-PILOT-WALL-02",
+      "FH-PILOT-WALL-03",
+      "FH-PILOT-WALL-04",
+      "FH-PILOT-WINDOW-01"
+    ],
+    "stable_ids_missing_from_ifc_properties": [],
+    "room_area_sf": 404.44444444444446,
+    "ifc_room_area_revit_property_sf": 404.44444444444446,
+    "ifc_geometry_errors": [],
+    "ifc_world_bounds_metres": [
+      [
+        -0.10160000000000036,
+        -0.12699999999999997,
+        -8.881784197001252e-16
+      ],
+      [
+        9.652000000000001,
+        5.588000000000001,
+        3.9624000000000006
+      ]
+    ]
+  },
+  "files": [
+    {
+      "path": "backup/FH_Compatibility_Pilot.rvt",
+      "bytes": 966656,
+      "sha256": "98125bf6e2c15e34fbe184a576bbfe3775bb8eead959eb1c9a423dc6b3c9bad4"
+    },
+    {
+      "path": "elements.csv",
+      "bytes": 1076,
+      "sha256": "2e0122f2022ba241c3cf3959d609e5300bf71d8c4213364fb46594c079f2954d"
+    },
+    {
+      "path": "elements.json",
+      "bytes": 2113,
+      "sha256": "8179f8575b22bcc54eb718c4e0e4ba094699340f91adcfb7f0e6f4b068c30a72"
+    },
+    {
+      "path": "FH_Compatibility_Pilot.dwg",
+      "bytes": 88913,
+      "sha256": "aed70ec67cca5bc523f257759bc6df008a3ae83417247c5b350f856406eef682"
+    },
+    {
+      "path": "FH_Compatibility_Pilot.ifc",
+      "bytes": 80374,
+      "sha256": "26a069d005699625d00ac9394d61800e02aa48e031a27c24ba4227fe6a2f5886"
+    },
+    {
+      "path": "FH_Compatibility_Pilot.pcp",
+      "bytes": 22436,
+      "sha256": "01d38ce4d73dc357040d437589b863d4bf6a1d86b499ee58ab9ca4c6f5dccdc6"
+    },
+    {
+      "path": "FH_Compatibility_Pilot.pdf",
+      "bytes": 44604,
+      "sha256": "d3a6828a1c622beba391d35f18d60170c9cb33939bc0764d75dc83d3dbf04993"
+    },
+    {
+      "path": "FH_Compatibility_Pilot.rvt",
+      "bytes": 966656,
+      "sha256": "71c6d099f2ad91899d4db8891053dd6bfda7a1bbdea49502f730142b408a27a7"
+    },
+    {
+      "path": "FH_Pilot_Door.rfa",
+      "bytes": 495616,
+      "sha256": "bc3e8c032d7ba9f0cf79a625b96bd6e59e48dda3e714479885473a123183b779"
+    },
+    {
+      "path": "FH_Pilot_Equipment.rfa",
+      "bytes": 462848,
+      "sha256": "02941cde37799707f2ee28e351b6ba79e2c7d475558e5fcbb22179b4e2b6b0c4"
+    },
+    {
+      "path": "FH_Pilot_Window.rfa",
+      "bytes": 491520,
+      "sha256": "705b0fc34da9a59fa7cfdc1d0569566e3a214851900f6bd534a46e58ba684d45"
+    },
+    {
+      "path": "pdf-page-1.png",
+      "bytes": 21810,
+      "sha256": "9d60391b9075bbfb4783a154329cf4a4b815d4a331c372f996d82928bf27d812"
+    },
+    {
+      "path": "pdf-page-2.png",
+      "bytes": 44999,
+      "sha256": "ebfdfe8182e7a3930b93250ea810f97551026a982f5c6fc06fbc1390540cf78d"
+    },
+    {
+      "path": "run.json",
+      "bytes": 584,
+      "sha256": "940ae43f57686f7729bad0d14ca6b180d7fa2b9e893f9957411d126008f00fad"
+    }
+  ],
+  "limitations": [
+    "Revit 2018 import/editability remains untested until explicitly recorded.",
+    "DWG header is not an independent drawing-fidelity check.",
+    "PDF header is not visual layout verification.",
+    "Fixture geometry and equipment are not approved house design or engineering."
+  ]
+}

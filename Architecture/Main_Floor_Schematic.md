@@ -1,5 +1,7 @@
 # Main Floor Schematic — Dimensions for Revit
 
+> **Historical study, not current modeling authority.** Newer decisions require a perimeter induction range and an appliance-free island; living-room direction is a cabinet rear-projection TV and separate pellet hearth, not the faux-fire/flat-screen stack below. The former 1,500 sf figure and six-riser level datums are not a resolved size/section. Preserve this sketch as history; use the [room program](../Requirements/Room_Program.md) and [new measured proposals](Schematic_Study_2026-10-25/README.md) for review. Neither new alternative is selected.
+
 **Status:** Schematic layout intent (not a construction drawing)  
 **Level:** Main living floor (`Main Living FF` = 0'-0")  
 **Related:** [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md), [Stairs_Half_Story.md](Stairs_Half_Story.md), [Building_Program.md](Building_Program.md)

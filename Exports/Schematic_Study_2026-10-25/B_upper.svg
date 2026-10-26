@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="980" viewBox="0 0 1200 980">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Option B | Upper floor room blocks</text>
+<text x="35" y="64" class="small" text-anchor="start">PROPOSAL - dimensions in feet; openings are reservations, not tested clear door widths.</text>
+<rect x="65" y="340" width="648" height="576" fill="#e9e4d9" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="77.0" y="352.0" width="288" height="180" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="82.4" y="368.2" class="room" text-anchor="start">U-01</text>
+<text x="82.4" y="385.2" class="room" text-anchor="start">Primary bedroom</text>
+<text x="82.4" y="402.2" class="room" text-anchor="start">16.0 x 10.0 ft</text>
+<text x="82.4" y="419.2" class="room" text-anchor="start">160.0 sf</text>
+<rect x="77.0" y="541.0" width="162" height="180" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="82.4" y="557.2" class="room" text-anchor="start">U-05</text>
+<text x="82.4" y="574.2" class="room" text-anchor="start">Primary bath</text>
+<text x="82.4" y="591.2" class="room" text-anchor="start">9.0 x 10.0 ft</text>
+<text x="82.4" y="608.2" class="room" text-anchor="start">90.0 sf</text>
+<rect x="248.0" y="541.0" width="117.0" height="180" fill="#e2eddf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="253.4" y="557.2" class="room" text-anchor="start">C-PRIVATE</text>
+<text x="253.4" y="574.2" class="room" text-anchor="start">Private link</text>
+<text x="253.4" y="591.2" class="room" text-anchor="start">6.5 ft W</text>
+<text x="253.4" y="608.2" class="room" text-anchor="start">65.0 sf</text>
+<rect x="77.0" y="730.0" width="288" height="174.0" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="82.4" y="746.2" class="room" text-anchor="start">U-02</text>
+<text x="82.4" y="763.2" class="room" text-anchor="start">Boutique</text>
+<text x="82.4" y="780.2" class="room" text-anchor="start">16.0 x 9.7 ft</text>
+<text x="82.4" y="797.2" class="room" text-anchor="start">154.7 sf</text>
+<rect x="374.0" y="352.0" width="72" height="552.0" fill="#e2eddf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="379.40000000000003" y="368.2" class="room" text-anchor="start">C-UPPER</text>
+<text x="379.40000000000003" y="385.2" class="room" text-anchor="start">Hall</text>
+<text x="379.40000000000003" y="402.2" class="room" text-anchor="start">4.0 ft W</text>
+<text x="379.40000000000003" y="419.2" class="room" text-anchor="start">122.7 sf</text>
+<rect x="455.0" y="352.0" width="246.0" height="153.0" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="460.40000000000003" y="368.2" class="room" text-anchor="start">U-04</text>
+<text x="460.40000000000003" y="385.2" class="room" text-anchor="start">Guest bedroom</text>
+<text x="460.40000000000003" y="402.2" class="room" text-anchor="start">13.7 x 8.5 ft</text>
+<text x="460.40000000000003" y="419.2" class="room" text-anchor="start">116.2 sf</text>
+<rect x="521.0" y="514.0" width="180" height="216" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="526.4" y="530.2" class="room" text-anchor="start">U-06</text>
+<text x="526.4" y="547.2" class="room" text-anchor="start">Jack and Jill bath</text>
+<text x="526.4" y="564.2" class="room" text-anchor="start">10.0 x 12.0 ft</text>
+<text x="526.4" y="581.2" class="room" text-anchor="start">120.0 sf</text>
+<rect x="455.0" y="739.0" width="246.0" height="165.0" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="460.40000000000003" y="755.2" class="room" text-anchor="start">U-03</text>
+<text x="460.40000000000003" y="772.2" class="room" text-anchor="start">Hybrid bedroom / office</text>
+<text x="460.40000000000003" y="789.2" class="room" text-anchor="start">13.7 x 9.2 ft</text>
+<text x="460.40000000000003" y="806.2" class="room" text-anchor="start">125.3 sf</text>
+<line x1="368.0" y1="398.5" x2="368.0" y2="461.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="123.5" y1="536.5" x2="186.5" y2="536.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="267.5" y1="536.5" x2="330.5" y2="536.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="267.5" y1="725.5" x2="330.5" y2="725.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="368.0" y1="794.5" x2="368.0" y2="857.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="450.5" y1="794.5" x2="450.5" y2="857.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="450.5" y1="398.5" x2="450.5" y2="461.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="573.5" y1="509.5" x2="636.5" y2="509.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="573.5" y1="734.5" x2="636.5" y2="734.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<text x="795" y="230" class="room" text-anchor="start">Private suite:</text>
+<text x="795" y="247" class="room" text-anchor="start">primary &gt; private connector &gt; boutique</text>
+<text x="795" y="264" class="room" text-anchor="start">boutique &gt; rear hall &gt; hybrid</text>
+<text x="795" y="281" class="room" text-anchor="start">Guest has its own public hall door.</text>
+<text x="795" y="298" class="room" text-anchor="start"></text>
+<text x="795" y="315" class="room" text-anchor="start">Two J+J entries only.</text>
+<text x="795" y="332" class="room" text-anchor="start">Main bath serves daytime visitors.</text>
+<text x="795" y="349" class="room" text-anchor="start">Door swings / furniture still to test.</text>
+<rect x="290.0" y="80.5" width="306" height="259.5" fill="none" stroke="#8a7a95" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="295.4" y="96.69999999999999" class="small" text-anchor="start">Core in front wing</text>
+<text x="295.4" y="113.69999999999999" class="small" text-anchor="start">Stairs / lift / landings</text>
+<text x="295.4" y="130.7" class="small" text-anchor="start">Do not place habitable rooms</text>
+<text x="295.4" y="147.7" class="small" text-anchor="start">below the main landing.</text>
+<text x="35" y="935" class="small" text-anchor="start">Shell: 36 x 32 ft. Clear room blocks assume 8 in exterior walls / nominal 6 in partitions; unfilled space is NOT proven usable area.</text>
+<text x="35" y="957" class="small" text-anchor="start">Study only. No north/site orientation, structural spans, construction assemblies, code or accessibility approval. Native Revit house geometry not yet authored.</text>
+</svg>

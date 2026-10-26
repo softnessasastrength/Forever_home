@@ -1,0 +1,52 @@
+{
+  "status": "proposal drawings; visually reviewed after rendering",
+  "implemented_geometry_checks": 37,
+  "all_implemented_checks_passed": true,
+  "native_revit_house_model": "not authored",
+  "drawings": [
+    {
+      "path": "A_lower.svg",
+      "sha256": "371b85b7d94069445aea6b580ae30983c7f584343fe4d4c3ff0cc9b3ce8feb90"
+    },
+    {
+      "path": "A_main.svg",
+      "sha256": "f2b1953b0edce9d1d583e65d425879a588265cedd093486f441a97a1529d6a5a"
+    },
+    {
+      "path": "A_section.svg",
+      "sha256": "535138f5c1dcd8172f564afad9753b94303312676d5a3d16dc30a2df8f984e39"
+    },
+    {
+      "path": "A_upper.svg",
+      "sha256": "2b8e25873ab239a57c4f415b5bb913e3b370f0bbe5c47198d52ebe56cce7c73f"
+    },
+    {
+      "path": "B_lower.svg",
+      "sha256": "3d8687ecef61748dbf9553b7ad684ca817b3a4f4d9f4753d289b074b7f40004e"
+    },
+    {
+      "path": "B_main.svg",
+      "sha256": "9efd8ea993d0c4394c47ee12de6e1ca4bbdcd6f583868607392d24dee68aaa73"
+    },
+    {
+      "path": "B_section.svg",
+      "sha256": "3637ec808c3340876e5ffda8e9151f8385f8f33b79ecbf5fb27266390707bfb7"
+    },
+    {
+      "path": "B_upper.svg",
+      "sha256": "601616baa866b1bd351dcb92912d42bc4edbdd567663b8deb93561392e07c47c"
+    },
+    {
+      "path": "Bath_and_sleeping_fit.svg",
+      "sha256": "b274627dd3461394dd4f911c2f92ba5a3bf1b3514a023cde726c402af4eb0e97"
+    },
+    {
+      "path": "Kitchen_fit.svg",
+      "sha256": "f7556527f8d7739fec2870b0327896fc45668503b9cb771323b86a4ddcfb07b1"
+    },
+    {
+      "path": "Living_fit.svg",
+      "sha256": "3fee3b0485a9ad5307326e5ef3ab13418acd0aaeffacedffa0da2750265659f3"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Kitchen & Dining Concept
 
+> **Current override:** any island-range/hood description below is historical. The newer [island decision](../Decisions/Kitchen_Island_Finish.md) requires perimeter cooking/plumbing and an appliance-free island. The [measured kitchen/dining study](../Architecture/Schematic_Study_2026-10-25/README.md) tests a larger envelope; those new dimensions remain proposals.
+
 **Aesthetic:** Warm, welcoming, nostalgic — whimsical grandma home (matches [Living Room](Living_Room.md))  
 **Role:** Daily cooking, everyday meals, conversation, and the social bridge between house and outdoors  
 **Status:** Concept + schematic dimensional specs for Revit  

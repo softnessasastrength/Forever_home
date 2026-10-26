@@ -1,6 +1,8 @@
 # Revit Workspace
 
-Use this directory for Revit models (`.rvt`), families, templates, and export notes. Binary models are optional in git; **source-of-truth dimensions and materials live in `/Architecture`**.
+Use this directory for Revit models (`.rvt`), families, templates, and export notes. Revit 2027 is authoritative for authored BIM; approved decisions govern design intent. `/Architecture` contains versioned specifications and clearly labeled proposals, including historical conflicts. Binary models need a deliberate storage/backup strategy; do not treat every older dimension as approved.
+
+Before using the historical modeling order below, read the [room program](../Requirements/Room_Program.md), [coordination register](../Project/Coordination_Register.md) and [measured alternatives](../Architecture/Schematic_Study_2026-10-25/README.md). No house geometry is frozen. The [working automation pilot](../Tools/RevitPilot/README.md) is a separate fixture, not the house model.
 
 ## Modeling order (recommended)
 

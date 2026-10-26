@@ -59,10 +59,10 @@ Use these **finish codes** as Revit material names or keynote marks.
 
 | Code | Element | Material | Spec |
 |---|---|---|---|
-| **C-01** | Kitchen cabinets | Paint-grade shaker | Cream / warm white; toe kick 4" |
+| **C-01** | Kitchen cabinets | Paint-grade shaker | Warm ivory perimeter, muted sage/olive island per approved palette; historical 4 in toe-kick allowance, samples/details pending |
 | **C-02** | Cabinet hardware | Metal | Aged brass knobs; 3–4" drawer pulls |
 | **Q-01** | Perimeter counters | Quartz 1-1/4" | Warm white / soft cream, subtle movement |
-| **Q-02** | Island counter | Quartz **or** butcher block accent | Full quartz default; maple/walnut block optional |
+| **Q-02** | Island counter | Cream quartz + real butcher block | Approximately 6 ft quartz / 2 ft wood per newer island decision; seam/support/fabrication pending |
 | **C-03** | Pantry shelving | Paint-grade or wire + wood | 5'×6' room; adjustable shelves |
 
 ---
@@ -71,15 +71,15 @@ Use these **finish codes** as Revit material names or keynote marks.
 
 | Code | Item | Size | Notes |
 |---|---|---|---|
-| **A-01** | Range | 30" W | Island; induction preferred |
-| **A-02** | Range hood | 30–36" W | Island ducted; ~400 CFM class electric |
+| **A-01** | Range | 30" W study | Perimeter induction; appliance-free island |
+| **A-02** | Range hood | Actual unit TBD | Perimeter ducted hood; airflow, duct and makeup-air requirements unverified |
 | **A-03** | Refrigerator | 36" W counter-depth | Water line optional |
 | **A-04** | Dishwasher | 24" W | Adjacent to sink |
-| **A-05** | Microwave | Drawer preferred | Under counter/island landing |
+| **A-05** | Microwave | Form factor TBD | Perimeter/storage study only; do not put appliances in island |
 | **A-06** | Sink | 33×22 undermount SS **or** apron-front | Owner pick |
 | **A-07** | Faucet | Classic pull-down / bridge | Aged brass or polished nickel |
-| **A-08** | Living faux fireplace | Under TV | Electric/decorative insert + mantel |
-| **A-09** | Pellet stove | Main living (program) | Coordinate location with hearth wall |
+| **A-08** | Historical faux fireplace | Superseded concept | Do not model TV-over-faux-fire stack as current direction |
+| **A-09** | Pellet stove | Model/dimensions TBD | Separate rustic brick hearth; selected manual must govern protection/clearances |
 | **A-10** | Toilet (both baths) | Two-piece elongated comfort-height | White; soft-close; 12" rough-in; 1.28 gpf |
 | **A-11** | Primary vanity | 60" W × 22" D (or 48") | Cream furniture/shaker; quartz; aged brass; 1–2 sinks |
 | **A-12** | Jack & Jill vanity | 72" W × 22" D dual | Cream shaker; quartz; aged brass; two sinks |

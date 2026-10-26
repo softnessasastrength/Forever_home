@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Option B | Coordinated volume section</text>
+<text x="35" y="64" class="small" text-anchor="start">Longitudinal shell section and separate stair arithmetic diagram; roof / foundation / grade are unresolved.</text>
+<rect x="55" y="227" width="546" height="153" fill="#edf0e5" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="601" y="142" width="416" height="153" fill="#f3e9d8" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="601" y="316.25" width="416" height="148.75" fill="#e3ecea" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="601" y="295" width="416" height="21.25" fill="#bfb4a4" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="55" y1="380" x2="601" y2="380" stroke="#29372d" stroke-width="3" stroke-dasharray=""/>
+<line x1="601" y1="465" x2="1017" y2="465" stroke="#29372d" stroke-width="3" stroke-dasharray=""/>
+<line x1="601" y1="295" x2="1017" y2="295" stroke="#29372d" stroke-width="3" stroke-dasharray=""/>
+<rect x="413.5833333333333" y="142" width="187.41666666666669" height="323" fill="none" stroke="#956c9b" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="81" y="295" class="room" text-anchor="start">MAIN 0 ft</text>
+<text x="81" y="312" class="room" text-anchor="start">9 ft ceiling study</text>
+<text x="627" y="193" class="room" text-anchor="start">UPPER +5 ft</text>
+<text x="627" y="210" class="room" text-anchor="start">9 ft ceiling study</text>
+<text x="627" y="380" class="room" text-anchor="start">LOWER -5 ft</text>
+<text x="627" y="397" class="room" text-anchor="start">8.75 ft clear height</text>
+<text x="55" y="490" class="room" text-anchor="start">Lower-to-upper: 10.00 ft = 8.75 ft clear + 1.25 ft assumed assembly.</text>
+<text x="55" y="519" class="room" text-anchor="start">Each half flight: 8 risers x 7.5000 in = 60.0 in; 7 treads x 11 in = 6.417 ft run.</text>
+<text x="55" y="548" class="room" text-anchor="start">Flight reservation: 4 ft wide; 4 ft landings at both ends. Total straight plan length: 14.417 ft.</text>
+<text x="55" y="590" class="room" text-anchor="start">Section logic: main and lower/upper rooms occupy different plan zones. The stair/lift core joins the zones.</text>
+<text x="55" y="607" class="room" text-anchor="start">Core slab openings, floor edges, beams, pit/overrun and headroom are not resolved by this volume diagram.</text>
+<text x="55" y="624" class="room" text-anchor="start">A reserves a future lift-dependent sleeping route; B provides a proposed main-level sleeping/bathing route.</text>
+<text x="55" y="641" class="room" text-anchor="start">No grade line or roof pitch is drawn because site and roof/solar coordination are not selected.</text>
+</svg>

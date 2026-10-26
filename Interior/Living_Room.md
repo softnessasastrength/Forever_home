@@ -1,5 +1,7 @@
 # Living Room Concept
 
+> **Historical equipment concept:** the flat-screen/faux-fire stack below is superseded by [cabinet rear-projection TV direction](../Decisions/Living_Room_Rear_Projection_TV.md), the [Mitsubishi visual reference](../References/Mitsubishi_WS-65815_Media_Wall.md) and [separate pellet hearth](../Decisions/New_England_Hearth_Direction.md). Retain the warmth/furnishing intent, not the obsolete equipment stack. See the [new envelope study](../Exports/Schematic_Study_2026-10-25/Living_fit.svg); equipment dimensions and listed clearances remain unverified.
+
 **Aesthetic:** Warm, welcoming, nostalgic — whimsical grandma home  
 **Role:** Emotional and social center of the main living floor  
 **Status:** Concept direction (not construction-ready)  

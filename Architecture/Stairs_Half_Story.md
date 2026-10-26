@@ -1,5 +1,7 @@
 # Half-Story Stairs — Revit Modeling Specs
 
+> **Coordination warning:** the six-riser datums below are historical study inputs, not tested levels. Two such offsets total only 87 in before floor structure, so they cannot be assumed to provide a comfortable stacked lower/upper section. [Current volume proposals](Schematic_Study_2026-10-25/README.md) compare seven and eight risers as explicit tradeoffs. Neither is selected; code values, headroom, guards and actual assemblies still require jurisdiction-specific verification.
+
 **Status:** Schematic owner specs for modeling (not permit-ready)  
 **Building form:** Raised-ranch / split-level inspired ([DD-002](../Decisions/Design_Decisions.md))  
 **Related:** [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md), [Interior/Flooring_Options.md](../Interior/Flooring_Options.md)  
