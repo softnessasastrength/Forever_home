@@ -19,6 +19,8 @@ The following batch also creates native `Room` elements with stable program IDs 
 
 The command now writes `study-manifest.json` beside each generated RVT with intended level IDs, shell/lift targets, program IDs and unresolved-review flags. The manifest code builds successfully; its host-generated contents remain unverified until the next Revit execution.
 
+The batched verification run completed at `.local/revit-pilot/compact-core/20261026T032659086Z/`. Revit created the study with **0 errors and 3 wall-overlap warnings**. The generated `study-manifest.json` passed the offline validator: all three C levels, all 17 stable room IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags are present.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
