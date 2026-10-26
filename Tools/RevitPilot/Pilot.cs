@@ -147,6 +147,24 @@ public class CompactCoreCommand : IExternalCommand
                 var schedule = ViewSchedule.CreateSchedule(doc, new ElementId(BuiltInCategory.OST_Rooms)); schedule.Name = "C Room Area Schedule";
                 var textType = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType)).FirstElementId();
                 TextNote.Create(doc, mainPlan.Id, new XYZ(14,20,0), "C route test: entry > living > kitchen > dining > main bath > main flex\nNominal doors only; clearances, swings and accessibility remain unverified.", textType);
+                var sketchPlane = SketchPlane.Create(doc, Plane.CreateByNormalAndOrigin(XYZ.BasisZ, XYZ.Zero));
+                void StudyLine(double x1, double y1, double x2, double y2)
+                { doc.Create.NewModelCurve(Line.CreateBound(new XYZ(x1,y1,0), new XYZ(x2,y2,0)), sketchPlane); }
+                void StudyBox(double x, double y, double width, double depth)
+                { StudyLine(x,y,x+width,y); StudyLine(x+width,y,x+width,y+depth); StudyLine(x+width,y+depth,x,y+depth); StudyLine(x,y+depth,x,y); }
+                StudyBox(26.5,7,8,4);     // appliance-free island
+                StudyLine(22,2,39,2);      // perimeter counter run
+                StudyBox(4,20,5,3);        // dining table
+                StudyBox(2,3,4,7);         // TV/service envelope
+                StudyBox(12,2,5,5);        // hearth envelope
+                StudyBox(7,10,6,3);        // loveseat envelope
+                StudyBox(31,28,5,1.8);     // main-bath vanity
+                StudyBox(30.5,35,5,3);     // main-bath shower
+                StudyBox(36,35,1.5,2.5);   // main-bath toilet
+                TextNote.Create(doc, mainPlan.Id, new XYZ(23,6,0), "8 x 4 island | appliance-free", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(2,19,0), "5 x 3 dining table | 4 ft porch lane target", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(2,2,0), "TV/service 4 x 7 | hearth 5 x 5 | furniture placeholders", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(30,27,0), "M-06 nominal fixtures | turn/approach/door checks pending", textType);
                 Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
                 t.Commit();
             }

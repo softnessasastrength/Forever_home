@@ -29,6 +29,8 @@ The queued batch now fails explicitly if a required door host wall is missing an
 
 The consolidated door/schedule verification run completed at `.local/revit-pilot/compact-core/20261026T033952779Z/`. Revit saved the RVT with **0 errors and 3 wall-overlap warnings**. The manifest contains all 17 room IDs and all five door IDs, and the offline validator passed. The five doors are nominal test instances; swings, clear openings, hardware, egress and accessibility remain unresolved.
 
+The first main-floor design blitz completed at `.local/revit-pilot/compact-core/20261026T034508256Z/`. It adds native study markers for the 8 x 4 appliance-free island, perimeter counter, dining table/porch-lane target, living TV/hearth/furniture envelopes and main-bath nominal fixtures, plus explanatory notes on the main plan. Revit saved the RVT with **0 errors and 3 warnings**; the manifest validator passed. These markers are spatial study geometry, not selected products, final clearances or code approval.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
