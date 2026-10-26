@@ -127,7 +127,13 @@ public class CompactCoreCommand : IExternalCommand
                 RoomAt(lower,"L-01","Lower flexible living",17,62);
                 RoomAt(lower,"L-06","Relocated technology room",30,67);
                 door.Activate(); doc.Regenerate();
-                Wall FindWall(string marker) => new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>().First(w => w.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() == marker);
+                Wall FindWall(string marker)
+                {
+                    var wall = new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>()
+                        .FirstOrDefault(w => w.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() == marker);
+                    if (wall is null) throw new InvalidOperationException("Door host wall not found: " + marker);
+                    return wall;
+                }
                 void PlaceDoor(string marker, XYZ point, Level level, string id)
                 {
                     var instance = doc.Create.NewFamilyInstance(point, door, FindWall(marker), level, StructuralType.NonStructural);
@@ -169,6 +175,7 @@ public class CompactCoreCommand : IExternalCommand
                 shell = new { main_width_ft=40, main_depth_ft=40, rear_width_ft=36, rear_depth_ft=32 },
                 lift_reservation = new { width_ft=8, depth_ft=8, product_selected=false },
                 rooms = new[] { "M-01","M-02","M-03","M-06","L-02","U-01","U-02","U-03","U-04","U-05","U-06","L-01","L-03","L-04","L-05","L-06","L-07" },
+                doors = new[] { "D-MAIN-ENTRY","D-MAIN-BATH","D-MAIN-FLEX","D-PRIMARY-BATH","D-TECH-SERVICE" },
                 unresolved = new[] { "wall overlap warnings", "door openings and swings", "stair headroom", "lift product fit", "full accessibility route", "structure and MEP coordination", "code review" },
                 source_rvt = path
             };

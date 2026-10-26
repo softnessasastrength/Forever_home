@@ -9,6 +9,7 @@ EXPECTED_ROOMS = {
     "U-01", "U-02", "U-03", "U-04", "U-05", "U-06",
     "L-01", "L-03", "L-04", "L-05", "L-06", "L-07",
 }
+EXPECTED_DOORS = {"D-MAIN-ENTRY", "D-MAIN-BATH", "D-MAIN-FLEX", "D-PRIMARY-BATH", "D-TECH-SERVICE"}
 
 
 def validate(path: Path) -> list[str]:
@@ -20,6 +21,9 @@ def validate(path: Path) -> list[str]:
         errors.append(f"levels mismatch: {sorted(levels)}")
     if rooms != EXPECTED_ROOMS or len(data.get("rooms", [])) != len(EXPECTED_ROOMS):
         errors.append(f"room IDs mismatch or duplicated: {sorted(rooms)}")
+    doors = set(data.get("doors", []))
+    if doors != EXPECTED_DOORS or len(data.get("doors", [])) != len(EXPECTED_DOORS):
+        errors.append(f"door IDs mismatch or duplicated: {sorted(doors)}")
     shell = data.get("shell", {})
     if shell.get("main_width_ft") != 40 or shell.get("main_depth_ft") != 40:
         errors.append("main shell target is not 40 x 40 ft")

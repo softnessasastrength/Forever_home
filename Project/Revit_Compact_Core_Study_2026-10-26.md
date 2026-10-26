@@ -25,6 +25,8 @@ The next queued batch adds a generated nominal door family, five tagged door ins
 
 The first host attempt of that batch was stopped by a lookup typo (`FH-C-SHELL-1` versus the generated `FH-C-SHELL-01` tag) before saving a study. The tag was corrected and the add-in rebuild passed; the next planned reload should retry the complete batch once.
 
+The queued batch now fails explicitly if a required door host wall is missing and includes five door IDs in `study-manifest.json`; the offline validator checks those IDs as well. Build and Python syntax checks pass. No additional Revit reload has been performed.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels

@@ -14,7 +14,7 @@ The compact-core command is a separate study entry point. It writes `study-manif
 ./.venv/Scripts/python.exe Tools/RevitPilot/validate_compact_manifest.py .local/revit-pilot/compact-core/<run>/study-manifest.json
 ```
 
-The validator checks the three C levels, 17 stable program IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags. It does not certify geometry, code, accessibility or product fit.
+The validator checks the three C levels, 17 stable program IDs, five nominal door IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags. It does not certify geometry, code, accessibility or product fit.
 
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
