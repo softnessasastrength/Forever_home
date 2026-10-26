@@ -1,0 +1,6 @@
+room_id,role,category,source_url,author,source_version,host_type,status,license_note,test_run,notes
+M-06,main full bath fixture,Plumbing Fixtures,,,,,unselected,,,Nominal fit only; select after route test
+M-02,kitchen perimeter appliance,Specialty Equipment,,,,,unselected,,,Island remains appliance-free
+M-01,living hearth/TV envelope,Furniture,,,,,unselected,,,Exact product and clearances unresolved
+U-06,Jack and Jill fixtures,Plumbing Fixtures,,,,,unselected,,,Wet-stack and privacy coordination open
+C-LIFT,lift product reservation,Specialty Equipment,,,,,unselected,,,Do not model product until manufacturer layout is selected
