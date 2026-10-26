@@ -18,7 +18,7 @@ The home should feel:
 
 ## Current project brief
 
-- Target size: approximately **1,500 sq ft** above-grade living
+- Size follows the room program; the former **1,500 sq ft** placeholder is superseded by [approved concept direction](Decisions/2026-10-25_Concept_Direction.md). No final area is approved.
 - Raised-ranch / split organization: lower + main + upper (half-story stairs)
 - Minimum **three bedrooms** in a **connected suite** (hotel-style internal doors)
 - **Renn's boutique walk-in** and **Branden's hybrid bedroom/office**
@@ -27,6 +27,8 @@ The home should feel:
 - Shared spaces designed around conversation, comfort, creativity, and everyday rituals
 
 ## Single source of truth (start here)
+
+Approved decisions supersede older specifications and concept images. The [first measured schematic alternatives](Architecture/Schematic_Study_2026-10-25/README.md) are proposals, not a selected plan. Older dimensions below remain study inputs until coordinated and accepted.
 
 | Need | Document |
 |---|---|
@@ -58,19 +60,19 @@ The home should feel:
 
 *(If images do not preview on GitHub, open files under [`Renderings/`](Renderings/).)*
 
-## Locked schematic highlights
+## Schematic intent and historical study dimensions
 
 ### Open kitchen → dining → porch
 
 | Zone | Size | Notes |
 |---|---|---|
-| Kitchen | 14'-0" × 12'-0" (168 sf) | Island 8'×4', 30" range, 42–48" aisles, half wall 42" high |
+| Kitchen | Historical 14'-0" × 12'-0" study; fit unresolved | Appliance-free 8'×4' island; 30" induction range, sink and dishwasher on perimeter; see [measured fit proposal](Exports/Schematic_Study_2026-10-25/Kitchen_fit.svg) |
 | Dining | 11'-0" × 10'-0" (110 sf) | Continuous open volume; French doors to porch |
-| Three-season porch | 12'-0" × 10'-0" (120 sf) | Semi-conditioned; exclude from 1,500 sf living unless upgraded |
+| Three-season porch | 12'-0" × 10'-0" (120 sf) | Three-season; account separately from conditioned area |
 
 ### Half-story stairs
 
-- **5–7 steps** per run (preferred **6 risers @ 7-1/4"** = 43-1/2" rise)
+- Historical **5–7-riser** preference; six-riser datums are not coordinated floor elevations. [New proposals](Architecture/Schematic_Study_2026-10-25/README.md) compare seven and eight risers; neither is selected.
 - Treads **10-1/2"**, clear width **36"+**, closed risers
 - **Carpeted treads** baseline; wood + runner alternate
 - Railing: **traditional turned balusters**, oval handrail @ 36", modest box newels

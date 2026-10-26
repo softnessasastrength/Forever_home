@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Main full bath + flex sleeping room | Nominal fit studies</text>
+<text x="35" y="64" class="small" text-anchor="start">PROPOSALS - a five-foot circle and nominal openings do not establish a complete accessible design.</text>
+<rect x="70" y="260" width="306" height="340" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="206" y="260" width="170" height="62.33333333333333" fill="#d4dfcf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="211.10000000000002" y="282.1" class="small" text-anchor="start">Vanity</text>
+<rect x="70" y="498" width="170" height="102" fill="#d4dfcf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="75.1" y="520.1" class="small" text-anchor="start">Shower</text>
+<rect x="299.5" y="506.5" width="51.0" height="85.0" fill="#d4dfcf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="304.6" y="528.6" class="small" text-anchor="start">Toilet</text>
+<circle cx="206" cy="413.0" r="85.0" fill="none" stroke="#2f776d" stroke-dasharray="6 4"/>
+<text x="138" y="413.0" class="small" text-anchor="start">5 ft turn reserve</text>
+<line x1="87.0" y1="260" x2="206" y2="260" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<rect x="87.0" y="141.0" width="119.0" height="119.0" fill="none" stroke="#aa602c" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="70" y="124" class="small" text-anchor="start">Door outward-swing reservation; actual leaf/clear opening TBD</text>
+<rect x="650" y="260" width="374" height="340" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="667.0" y="356.322" width="170" height="226.678" fill="#d6c3a3" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="673.8" y="464" class="small" text-anchor="start">5 x 6.667 ft</text>
+<text x="673.8" y="481" class="small" text-anchor="start">bed footprint</text>
+<circle cx="930.5" cy="447.0" r="85.0" fill="none" stroke="#2f776d" stroke-dasharray="6 4"/>
+<line x1="854" y1="260" x2="973.0" y2="260" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<text x="650" y="240" class="room" text-anchor="start">11 x 10 ft flex bedroom-capable room</text>
+<text x="70" y="680" class="room" text-anchor="start">Main bath is 9 x 10 ft in BOTH studies; B brings L-02 to the same main level.</text>
+<text x="70" y="697" class="room" text-anchor="start">Shower 5 x 3 ft, vanity 5 x 1.833 ft, toilet footprint 1.5 x 2.5 ft are schematic inputs.</text>
+<text x="70" y="714" class="room" text-anchor="start">Toilet transfer zones, shower approach, door hardware/clear opening, waterproofing, reinforcement and controls remain unresolved.</text>
+<text x="70" y="731" class="room" text-anchor="start">B sleeping room opens from the dining-side passage: privacy/acoustics require refinement. No legal-bedroom or accessibility certification.</text>
+</svg>

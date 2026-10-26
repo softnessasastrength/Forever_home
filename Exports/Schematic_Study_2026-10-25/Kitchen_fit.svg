@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Kitchen fit | Preserve the island, test the room</text>
+<text x="35" y="64" class="small" text-anchor="start">One-wall perimeter appliance run; 8 x 4 ft island stays free of sink, dishwasher and range.</text>
+<rect x="80" y="140" width="554.6666666666666" height="512" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="80" y="140" width="554.6666666666666" height="64" fill="#b7c5a7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="229.33333333333331" y="332" width="256" height="128" fill="#9cab87" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="421.3333333333333" y1="332" x2="421.3333333333333" y2="460" stroke="#6e5639" stroke-width="2" stroke-dasharray=""/>
+<text x="238.9333333333333" y="373.6" class="room" text-anchor="start">6 ft cream quartz | 2 ft wood</text>
+<rect x="229.33333333333331" y="460" width="256" height="64" fill="#eddbc7" stroke="#53634f" stroke-width="1.5" stroke-dasharray="5 3"/>
+<rect x="80" y="524" width="554.6666666666666" height="128" fill="#dfebe5" stroke="#53634f" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="90" y="172" class="room" text-anchor="start">Perimeter sink + DW + 30 in induction + refrigerator (positions provisional)</text>
+<text x="90" y="274.4" class="room" text-anchor="start">4 ft work aisle (closed appliances)</text>
+<text x="90" y="578.4" class="room" text-anchor="start">4 ft through-route behind 2 ft occupied-seat allowance</text>
+<text x="710" y="155" class="room" text-anchor="start">Why 14 x 12 ft is not accepted:</text>
+<text x="710" y="172" class="room" text-anchor="start"></text>
+<text x="710" y="189" class="room" text-anchor="start">2 ft counter</text>
+<text x="710" y="206" class="room" text-anchor="start">+ 3.5 ft work aisle</text>
+<text x="710" y="223" class="room" text-anchor="start">+ 4 ft island</text>
+<text x="710" y="240" class="room" text-anchor="start">+ 3.5 ft far-side aisle</text>
+<text x="710" y="257" class="room" text-anchor="start">= 13 ft, before seated use.</text>
+<text x="710" y="274" class="room" text-anchor="start"></text>
+<text x="710" y="291" class="room" text-anchor="start">Proposed short axis: 16 ft</text>
+<text x="710" y="308" class="room" text-anchor="start">= 2 + 4 + 4 + 2 + 4.</text>
+<text x="710" y="325" class="room" text-anchor="start">Proposed long axis: 17.333 ft</text>
+<text x="710" y="342" class="room" text-anchor="start">= 4.667 + 8 + 4.667.</text>
+<text x="710" y="359" class="room" text-anchor="start"></text>
+<text x="710" y="376" class="room" text-anchor="start">Door-open appliances still need testing.</text>
+<text x="710" y="393" class="room" text-anchor="start">No end-wall cabinet run is included.</text>
+<text x="710" y="410" class="room" text-anchor="start">This is an area-increasing proposal.</text>
+<text x="80" y="730" class="room" text-anchor="start">Study room 17 ft 4 in x 16 ft = 277.33 sf (older allowance: 168 sf). Increase: 109.33 sf.</text>
+<text x="80" y="760" class="small" text-anchor="start">Clearance targets are project study inputs, not a code or universal-accessibility determination.</text>
+</svg>

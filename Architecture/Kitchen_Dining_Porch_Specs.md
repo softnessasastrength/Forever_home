@@ -1,5 +1,7 @@
 # Kitchen, Dining & Three-Season Porch — Revit Modeling Specs
 
+> **Supersession notice:** island-range/hood, island microwave and 1,500 sf descriptions below are historical. Follow the newer [island decision](../Decisions/Kitchen_Island_Finish.md): perimeter induction range, sink and dishwasher; appliance-free island with approximately 6 ft cream quartz + 2 ft butcher block. Old 14 x 12 ft room dimensions have not demonstrated that fit. See [measured proposals](Schematic_Study_2026-10-25/README.md); larger study sizes are not approved replacements.
+
 **Status:** Schematic owner specs for modeling (not permit-ready)  
 **Parent concepts:** [Interior/Kitchen_Dining.md](../Interior/Kitchen_Dining.md), [Requirements/Room_Program.md](../Requirements/Room_Program.md)  
 **Aesthetic:** Whimsical grandma home — warm, traditional, welcoming  

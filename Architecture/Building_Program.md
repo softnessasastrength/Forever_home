@@ -16,8 +16,8 @@ The exact split-level geometry may evolve during schematic design. The intent is
 
 ## Size
 
-- Approximate center target: 1,500 sq ft above grade
-- The target is intentionally flexible
+- The historical 1,500 sq ft placeholder is superseded by [approved concept direction](../Decisions/2026-10-25_Concept_Direction.md); no final area or size cap is approved
+- Derive and separately schedule room net, gross, conditioned, above/below-grade, garage and porch areas
 - The final area may be smaller or larger when justified by circulation, room usability, accessibility, structure, or systems
 - The governing principle is intentional square footage rather than hitting an arbitrary number
 

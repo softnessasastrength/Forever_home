@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Living room | Separate hearth and cabinet TV</text>
+<text x="35" y="64" class="small" text-anchor="start">Equipment/service envelopes are conservative placeholders, not manufacturer-verified clearances.</text>
+<rect x="75" y="145" width="544" height="544" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="75" y="213" width="136" height="238" fill="#d7dfcc" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="80.1" y="235.1" class="small" text-anchor="start">TV + service reserve</text>
+<rect x="449" y="145" width="170" height="170" fill="#d7dfcc" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="454.1" y="167.1" class="small" text-anchor="start">Hearth reserve</text>
+<rect x="296.0" y="298.0" width="102" height="221.0" fill="#d7dfcc" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="301.1" y="320.1" class="small" text-anchor="start">Loveseat</text>
+<rect x="415" y="383" width="187.0" height="136" fill="#d7dfcc" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="420.1" y="405.1" class="small" text-anchor="start">Recliner extended</text>
+<rect x="75" y="519" width="544" height="136" fill="none" stroke="#2f776d" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="109" y="587" class="small" text-anchor="start">4 ft circulation reservation</text>
+<line x1="75" y1="655" x2="619" y2="655" stroke="#aa602c" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="715" y="180" class="room" text-anchor="start">A: 16 x 16 ft = 256 sf</text>
+<text x="715" y="197" class="room" text-anchor="start">B: 16 x 15 ft = 240 sf</text>
+<text x="715" y="214" class="room" text-anchor="start">B rear wall: orange dashed line</text>
+<text x="715" y="231" class="room" text-anchor="start"></text>
+<text x="715" y="248" class="room" text-anchor="start">TV/service envelope: 4 x 7 ft</text>
+<text x="715" y="265" class="room" text-anchor="start">Hearth reservation: 5 x 5 ft</text>
+<text x="715" y="282" class="room" text-anchor="start">Loveseat: 3 x 6.5 ft</text>
+<text x="715" y="299" class="room" text-anchor="start">Extended recliner: 5.5 x 4 ft</text>
+<text x="715" y="316" class="room" text-anchor="start"></text>
+<text x="715" y="333" class="room" text-anchor="start">No shared TV/hearth stack.</text>
+<text x="715" y="350" class="room" text-anchor="start">No listed stove clearances assumed.</text>
+<text x="715" y="367" class="room" text-anchor="start">Delivery turns, actual TV dimensions,</text>
+<text x="715" y="384" class="room" text-anchor="start">floor loading and heat separation</text>
+<text x="715" y="401" class="room" text-anchor="start">remain unverified.</text>
+<text x="75" y="750" class="small" text-anchor="start">Test fit preserves the furniture and separate focal areas by enlarging the earlier 180-220 sf living allowance.</text>
+</svg>

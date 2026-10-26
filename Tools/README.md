@@ -26,7 +26,11 @@ IfcOpenShell installation reference: https://docs.ifcopenshell.org/ifcopenshell-
 
 `requirements.lock.txt` pins the complete installed environment. `.venv`, caches and generated local files are excluded from Git. Native BIM and large assets need a deliberate storage strategy before addition to the repository.
 
-## Still pending
+## Measured schematic studies
+
+Run `./.venv/Scripts/python.exe Tools/schematic_study.py` from the repository root to regenerate the [A/B proposal data and limited checks](../Architecture/Schematic_Study_2026-10-25/README.md) and [eleven SVG drawings](../Exports/Schematic_Study_2026-10-25/README.md). This uses pinned Shapely for room-block containment/nonoverlap; it does not execute Revit or establish stair headroom, complete accessibility, structure or code compliance. Neither alternative is selected.
+
+## Remaining toolchain work
 - [Revit API pilot](RevitPilot/README.md) executed successfully; [verification and limits](../Project/Revit_Pilot_Verification_2026-10-25.md). Exact trial/account expiry and representative 2018 import tests remain pending.
 - A coordinated building model, export manifest and actual model-derived schedules.
 - Unreal/OpenXR installation and headset selection; defer large engine setup until pipeline/hardware targets are selected.

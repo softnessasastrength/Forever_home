@@ -13,6 +13,8 @@ Concepts and research are documented, but no verified coordinated architectural 
 
 Revit automation milestone: a separate compatibility fixture has now executed in Revit 2027, with IFC2x3/DWG/PDF/CSV exports, independent IFC inspection, PDF visual review and native source/backup reopening. This is **not a house model**. Revit 2018 import remains pending on the owner's other computer. See [pilot verification](Revit_Pilot_Verification_2026-10-25.md); CO-013 remains open.
 
+Schematic milestone: [two measured room-block/volume proposals](../Architecture/Schematic_Study_2026-10-25/README.md), eleven SVG drawings and 37 limited geometric checks now exist. Neither alternative is selected; no native Revit house model, full accessibility route or stair/headroom solution is verified. The first envelopes expose a large area allowance (3,744 / 3,984 sf base shell plates before measurement reconciliation), so compact the layout before freezing geometry. Both add a proposed main full bath; B relocates the lower flex sleeping room to main. These changes require owner review. Historical island-range/area/equipment conflicts are flagged in the older documents.
+
 ## Current high-level decisions
 - Modest traditional exterior, comfortable multi-level interior, future accessibility; site and final area TBD.
 - Kitchen concept: approximately 8×4 ft island with cream quartz and butcher-block section, sage/olive and warm ivory cabinets, honey oak and aged brass.

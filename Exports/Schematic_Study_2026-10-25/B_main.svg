@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="980" viewBox="0 0 1200 980">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Option B | Main floor room blocks</text>
+<text x="35" y="64" class="small" text-anchor="start">PROPOSAL - dimensions in feet; openings are reservations, not tested clear door widths.</text>
+<rect x="230" y="150" width="720" height="756" fill="#e9e4d9" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="242.0" y="162.0" width="288" height="270" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="247.4" y="178.2" class="room" text-anchor="start">M-01</text>
+<text x="247.4" y="195.2" class="room" text-anchor="start">Living room</text>
+<text x="247.4" y="212.2" class="room" text-anchor="start">16.0 x 15.0 ft</text>
+<text x="247.4" y="229.2" class="room" text-anchor="start">240.0 sf</text>
+<rect x="626" y="162.0" width="312.0" height="288" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="242.0" y="441.0" width="204.0" height="252" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="247.4" y="457.2" class="room" text-anchor="start">M-03</text>
+<text x="247.4" y="474.2" class="room" text-anchor="start">Dining</text>
+<text x="247.4" y="491.2" class="room" text-anchor="start">11.3 x 14.0 ft</text>
+<text x="247.4" y="508.2" class="room" text-anchor="start">158.7 sf</text>
+<rect x="848.0" y="459.0" width="90" height="126" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="853.4" y="475.2" class="room" text-anchor="start">M-04</text>
+<text x="853.4" y="492.2" class="room" text-anchor="start">Pantry</text>
+<text x="853.4" y="509.2" class="room" text-anchor="start">5.0 ft W</text>
+<text x="853.4" y="526.2" class="room" text-anchor="start">35.0 sf</text>
+<rect x="539.0" y="162.0" width="78.0" height="216" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="544.4000000000001" y="178.2" class="room" text-anchor="start">M-05</text>
+<text x="544.4000000000001" y="195.2" class="room" text-anchor="start">Entry</text>
+<text x="544.4000000000001" y="212.2" class="room" text-anchor="start">4.3 ft W</text>
+<text x="544.4000000000001" y="229.2" class="room" text-anchor="start">52.0 sf</text>
+<rect x="776.0" y="714.0" width="162" height="180" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="781.4" y="730.2" class="room" text-anchor="start">M-06</text>
+<text x="781.4" y="747.2" class="room" text-anchor="start">Main full bath*</text>
+<text x="781.4" y="764.2" class="room" text-anchor="start">9.0 x 10.0 ft</text>
+<text x="781.4" y="781.2" class="room" text-anchor="start">90.0 sf</text>
+<rect x="242.0" y="702.0" width="198" height="180" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="247.4" y="718.2" class="room" text-anchor="start">L-02</text>
+<text x="247.4" y="735.2" class="room" text-anchor="start">Flex sleep</text>
+<text x="247.4" y="752.2" class="room" text-anchor="start">11.0 x 10.0 ft</text>
+<text x="247.4" y="769.2" class="room" text-anchor="start">110.0 sf</text>
+<rect x="455.0" y="646.5" width="72" height="259.5" fill="#e2eddf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="455.0" y1="718.5" x2="527.0" y2="718.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="735.0" x2="527.0" y2="735.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="751.5" x2="527.0" y2="751.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="767.9999999999999" x2="527.0" y2="767.9999999999999" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="784.5" x2="527.0" y2="784.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="801.0" x2="527.0" y2="801.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="817.4999999999999" x2="527.0" y2="817.4999999999999" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="455.0" y1="834.0" x2="527.0" y2="834.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<text x="458.6" y="660.9" class="small" text-anchor="start">DOWN</text>
+<rect x="536" y="646.5" width="72" height="259.5" fill="#e2eddf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<line x1="536" y1="718.5" x2="608" y2="718.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="735.0" x2="608" y2="735.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="751.5" x2="608" y2="751.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="767.9999999999999" x2="608" y2="767.9999999999999" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="784.5" x2="608" y2="784.5" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="801.0" x2="608" y2="801.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="817.4999999999999" x2="608" y2="817.4999999999999" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<line x1="536" y1="834.0" x2="608" y2="834.0" stroke="#70806b" stroke-width="1" stroke-dasharray=""/>
+<text x="539.5999999999999" y="660.9" class="small" text-anchor="start">UP</text>
+<rect x="617.0" y="762" width="144" height="144" fill="#e7dfef" stroke="#53634f" stroke-width="1.5" stroke-dasharray="6 3"/>
+<text x="626" y="783.6" class="room" text-anchor="start">Lift reserve</text>
+<text x="626" y="800.6" class="room" text-anchor="start">8 x 8 ft</text>
+<text x="626" y="817.6" class="room" text-anchor="start">NOT a selected car</text>
+<rect x="50" y="459.0" width="180" height="216" fill="#f0e6ce" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="59.0" y="486.0" class="room" text-anchor="start">X-01 Porch</text>
+<text x="59.0" y="503.0" class="room" text-anchor="start">10 x 12 ft</text>
+<text x="59.0" y="520.0" class="room" text-anchor="start">120 sf</text>
+<rect x="302" y="513.0" width="90" height="54" fill="#c8b88b" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="248" y="459.0" width="198" height="162" fill="none" stroke="#53634f" stroke-width="1.5" stroke-dasharray="4 3"/>
+<rect x="242.0" y="621.0" width="204.0" height="72" fill="none" stroke="#2f776d" stroke-width="1.5" stroke-dasharray="5 3"/>
+<line x1="230" y1="585.0" x2="230" y2="693.0" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<rect x="626" y="162.0" width="312.0" height="36" fill="#b7c5a7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="631.4000000000001" y="216.60000000000002" class="room" text-anchor="start">M-02 Kitchen</text>
+<text x="631.4000000000001" y="233.60000000000002" class="room" text-anchor="start">17.33 x 16 ft | 277.3 sf</text>
+<rect x="710.0" y="270.0" width="144" height="72" fill="#9cab87" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="716" y="294" class="small" text-anchor="start">8 x 4 island</text>
+<line x1="577.4000000000001" y1="294" x2="577.4000000000001" y2="546" stroke="#2f776d" stroke-width="3" stroke-dasharray="5 3"/>
+<line x1="785.0" y1="709.5" x2="847.9999999999999" y2="709.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="350.0" y1="697.5" x2="413.0" y2="697.5" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<text x="985" y="230" class="small" text-anchor="start">Main entry at 0 ft.</text>
+<text x="985" y="247" class="small" text-anchor="start">Dashed dining lane: 4 ft.</text>
+<text x="985" y="264" class="small" text-anchor="start">Chair envelope: dashed box.</text>
+<text x="985" y="281" class="small" text-anchor="start">French doors swing into porch.</text>
+<text x="985" y="298" class="small" text-anchor="start">Threshold remains unresolved.</text>
+<text x="985" y="315" class="small" text-anchor="start"></text>
+<text x="985" y="332" class="small" text-anchor="start">M-06 full bath is a proposal.</text>
+<text x="985" y="349" class="small" text-anchor="start">B relocates L-02 to main;</text>
+<text x="985" y="366" class="small" text-anchor="start">A leaves L-02 downstairs.</text>
+<text x="985" y="383" class="small" text-anchor="start"></text>
+<text x="985" y="400" class="small" text-anchor="start">Core is a volume reservation.</text>
+<text x="985" y="417" class="small" text-anchor="start">Stair / lift interfaces and</text>
+<text x="985" y="434" class="small" text-anchor="start">headroom require native testing.</text>
+<text x="35" y="935" class="small" text-anchor="start">Shell: 40 x 42 ft. Clear room blocks assume 8 in exterior walls / nominal 6 in partitions; unfilled space is NOT proven usable area.</text>
+<text x="35" y="957" class="small" text-anchor="start">Study only. No north/site orientation, structural spans, construction assemblies, code or accessibility approval. Native Revit house geometry not yet authored.</text>
+</svg>

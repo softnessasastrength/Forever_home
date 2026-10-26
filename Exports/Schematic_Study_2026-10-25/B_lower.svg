@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="980" viewBox="0 0 1200 980">
+<rect width="100%" height="100%" fill="#faf8f1"/>
+<style>text{font-family:Arial,sans-serif;fill:#29372d}.small{font-size:12px}.title{font-size:25px;font-weight:bold}.room{font-size:13px}</style>
+<text x="35" y="38" class="title" text-anchor="start">Option B | Lower floor room blocks</text>
+<text x="35" y="64" class="small" text-anchor="start">PROPOSAL - dimensions in feet; openings are reservations, not tested clear door widths.</text>
+<rect x="65" y="340" width="504" height="448" fill="#e9e4d9" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<rect x="74.33333333333333" y="349.3333333333333" width="126" height="140" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="78.53333333333333" y="361.93333333333334" class="room" text-anchor="start">L-03</text>
+<text x="78.53333333333333" y="378.93333333333334" class="room" text-anchor="start">Lower full bath</text>
+<text x="78.53333333333333" y="395.93333333333334" class="room" text-anchor="start">9.0 x 10.0 ft</text>
+<text x="78.53333333333333" y="412.93333333333334" class="room" text-anchor="start">90.0 sf</text>
+<rect x="74.33333333333333" y="496.3333333333333" width="126" height="112" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="78.53333333333333" y="508.93333333333334" class="room" text-anchor="start">L-04</text>
+<text x="78.53333333333333" y="525.9333333333334" class="room" text-anchor="start">Enclosed laundry</text>
+<text x="78.53333333333333" y="542.9333333333334" class="room" text-anchor="start">9.0 x 8.0 ft</text>
+<text x="78.53333333333333" y="559.9333333333334" class="room" text-anchor="start">72.0 sf</text>
+<rect x="74.33333333333333" y="615.3333333333334" width="126" height="163.33333333333331" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="78.53333333333333" y="627.9333333333334" class="room" text-anchor="start">L-05</text>
+<text x="78.53333333333333" y="644.9333333333334" class="room" text-anchor="start">MEP zone</text>
+<text x="78.53333333333333" y="661.9333333333334" class="room" text-anchor="start">9.0 x 11.7 ft</text>
+<text x="78.53333333333333" y="678.9333333333334" class="room" text-anchor="start">105.0 sf</text>
+<rect x="433.66666666666663" y="349.3333333333333" width="126" height="161.0" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="437.8666666666667" y="361.93333333333334" class="room" text-anchor="start">L-07</text>
+<text x="437.8666666666667" y="378.93333333333334" class="room" text-anchor="start">Arrival + dry</text>
+<text x="437.8666666666667" y="395.93333333333334" class="room" text-anchor="start">storage</text>
+<text x="437.8666666666667" y="412.93333333333334" class="room" text-anchor="start">9.0 x 11.5 ft</text>
+<text x="437.8666666666667" y="429.93333333333334" class="room" text-anchor="start">103.5 sf</text>
+<rect x="447.66666666666663" y="517.3333333333333" width="112" height="112" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="451.8666666666667" y="529.9333333333334" class="room" text-anchor="start">L-06</text>
+<text x="451.8666666666667" y="546.9333333333334" class="room" text-anchor="start">Technology</text>
+<text x="451.8666666666667" y="563.9333333333334" class="room" text-anchor="start">8.0 x 8.0 ft</text>
+<text x="451.8666666666667" y="580.9333333333334" class="room" text-anchor="start">64.0 sf</text>
+<rect x="207.33333333333331" y="522" width="191.33333333333331" height="256.66666666666663" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="211.53333333333333" y="534.6" class="room" text-anchor="start">L-01</text>
+<text x="211.53333333333333" y="551.6" class="room" text-anchor="start">Lower flexible living</text>
+<text x="211.53333333333333" y="568.6" class="room" text-anchor="start">13.7 x 18.3 ft</text>
+<text x="211.53333333333333" y="585.6" class="room" text-anchor="start">250.6 sf</text>
+<rect x="307.66666666666663" y="349.3333333333333" width="70" height="84" fill="#fffdf7" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="311.8666666666667" y="361.93333333333334" class="room" text-anchor="start">S-01</text>
+<text x="311.8666666666667" y="378.93333333333334" class="room" text-anchor="start">Reserve*</text>
+<text x="311.8666666666667" y="395.93333333333334" class="room" text-anchor="start">5.0 ft W</text>
+<text x="311.8666666666667" y="412.93333333333334" class="room" text-anchor="start">30.0 sf</text>
+<rect x="207.33333333333331" y="349.3333333333333" width="93.33333333333334" height="165.66666666666669" fill="#e2eddf" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="211.53333333333333" y="361.93333333333334" class="room" text-anchor="start">C-LOWER</text>
+<text x="211.53333333333333" y="378.93333333333334" class="room" text-anchor="start">Arrival</text>
+<text x="211.53333333333333" y="395.93333333333334" class="room" text-anchor="start">hall</text>
+<text x="211.53333333333333" y="412.93333333333334" class="room" text-anchor="start">6.7 ft W</text>
+<text x="211.53333333333333" y="429.93333333333334" class="room" text-anchor="start">78.9 sf</text>
+<rect x="405.66666666666663" y="636.3333333333334" width="154" height="140" fill="#f7e1c8" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="409.8666666666667" y="648.9333333333334" class="room" text-anchor="start">ALLOW-01</text>
+<text x="409.8666666666667" y="665.9333333333334" class="room" text-anchor="start">Unassigned lower</text>
+<text x="409.8666666666667" y="682.9333333333334" class="room" text-anchor="start">allowance</text>
+<text x="409.8666666666667" y="699.9333333333334" class="room" text-anchor="start">11.0 x 10.0 ft</text>
+<text x="409.8666666666667" y="716.9333333333334" class="room" text-anchor="start">110.0 sf</text>
+<rect x="569" y="349.3333333333333" width="336" height="336" fill="#e4e1d9" stroke="#53634f" stroke-width="1.5" stroke-dasharray=""/>
+<text x="583" y="382" class="room" text-anchor="start">X-02 Garage</text>
+<text x="583" y="399" class="room" text-anchor="start">24 x 24 ft | 576 sf</text>
+<text x="583" y="416" class="room" text-anchor="start">Same test datum as lower floor</text>
+<text x="583" y="433" class="room" text-anchor="start">Door to arrival/storage zone</text>
+<text x="583" y="450" class="room" text-anchor="start">Utility / EVSE zones untested</text>
+<line x1="569" y1="396" x2="569" y2="445.0" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<line x1="569" y1="420.5" x2="513" y2="420.5" stroke="#2f776d" stroke-width="3" stroke-dasharray="5 3"/>
+<line x1="513" y1="420.5" x2="513" y2="466" stroke="#2f776d" stroke-width="3" stroke-dasharray="5 3"/>
+<line x1="207.338" y1="466" x2="513" y2="466" stroke="#2f776d" stroke-width="3" stroke-dasharray="5 3"/>
+<line x1="317" y1="788" x2="366.0" y2="788" stroke="#aa602c" stroke-width="5" stroke-dasharray=""/>
+<text x="65" y="840" class="room" text-anchor="start">Lower route: garage &gt; arrival/storage &gt; hall &gt; stairs or future lift.</text>
+<text x="65" y="857" class="room" text-anchor="start">Rear walkout is a site-dependent proposal. No site, grade or driveway is selected.</text>
+<text x="65" y="874" class="room" text-anchor="start">* S-01 is a movable program reservation, not a selected security location.</text>
+<text x="65" y="891" class="room" text-anchor="start">Mechanical and technology rooms are separate; actual equipment clearances remain untested.</text>
+<rect x="240.0" y="138.16666666666666" width="238" height="201.83333333333334" fill="none" stroke="#8a7a95" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="244.20000000000002" y="150.76666666666665" class="small" text-anchor="start">Core in front wing</text>
+<text x="244.20000000000002" y="167.76666666666665" class="small" text-anchor="start">Stairs / lift / landings</text>
+<text x="244.20000000000002" y="184.76666666666665" class="small" text-anchor="start">Do not place habitable rooms</text>
+<text x="244.20000000000002" y="201.76666666666665" class="small" text-anchor="start">below the main landing.</text>
+<text x="35" y="935" class="small" text-anchor="start">Shell: 36 x 32 ft. Clear room blocks assume 8 in exterior walls / nominal 6 in partitions; unfilled space is NOT proven usable area.</text>
+<text x="35" y="957" class="small" text-anchor="start">Study only. No north/site orientation, structural spans, construction assemblies, code or accessibility approval. Native Revit house geometry not yet authored.</text>
+</svg>

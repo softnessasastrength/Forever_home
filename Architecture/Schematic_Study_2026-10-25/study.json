@@ -1,0 +1,783 @@
+{
+  "status": "PROPOSED room blocks; no alternative selected",
+  "units": "feet",
+  "assumptions": {
+    "exterior_wall_ft": 0.6666666666666666,
+    "partition_ft": 0.5,
+    "site": "unknown",
+    "main_full_bath": "proposal replacing optional powder in both alternatives"
+  },
+  "upper_door_matrix": [
+    {
+      "id": "D-U01",
+      "a": "C-UPPER",
+      "b": "U-01",
+      "x": 16.833333333333332,
+      "y": 5,
+      "axis": "v",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U02",
+      "a": "U-01",
+      "b": "U-05",
+      "x": 5,
+      "y": 10.916666666666666,
+      "axis": "h",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U03",
+      "a": "U-01",
+      "b": "C-PRIVATE",
+      "x": 13,
+      "y": 10.916666666666666,
+      "axis": "h",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U04",
+      "a": "C-PRIVATE",
+      "b": "U-02",
+      "x": 13,
+      "y": 21.416666666666668,
+      "axis": "h",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U05",
+      "a": "U-02",
+      "b": "C-UPPER",
+      "x": 16.833333333333332,
+      "y": 27,
+      "axis": "v",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U06",
+      "a": "U-03",
+      "b": "C-UPPER",
+      "x": 21.416666666666668,
+      "y": 27,
+      "axis": "v",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U07",
+      "a": "U-04",
+      "b": "C-UPPER",
+      "x": 21.416666666666668,
+      "y": 5,
+      "axis": "v",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U08",
+      "a": "U-04",
+      "b": "U-06",
+      "x": 30,
+      "y": 9.416666666666666,
+      "axis": "h",
+      "nominal_reservation_ft": 3.5
+    },
+    {
+      "id": "D-U09",
+      "a": "U-03",
+      "b": "U-06",
+      "x": 30,
+      "y": 21.916666666666668,
+      "axis": "h",
+      "nominal_reservation_ft": 3.5
+    }
+  ],
+  "kitchen_test": {
+    "width": 17.333333333333332,
+    "depth": 16,
+    "counter": {
+      "id": "counter",
+      "name": "Perimeter",
+      "x": 0,
+      "y": 0,
+      "w": 17.333333333333332,
+      "d": 2,
+      "kind": "room"
+    },
+    "island": {
+      "id": "island",
+      "name": "Island",
+      "x": 4.666666666666667,
+      "y": 6,
+      "w": 8,
+      "d": 4,
+      "kind": "room"
+    }
+  },
+  "bath_test": {
+    "width": 9,
+    "depth": 10,
+    "fixtures": [
+      {
+        "id": "vanity",
+        "name": "Vanity",
+        "x": 4,
+        "y": 0,
+        "w": 5,
+        "d": 1.8333333333333333,
+        "kind": "room"
+      },
+      {
+        "id": "shower",
+        "name": "Shower",
+        "x": 0,
+        "y": 7,
+        "w": 5,
+        "d": 3,
+        "kind": "room"
+      },
+      {
+        "id": "toilet",
+        "name": "Toilet",
+        "x": 6.75,
+        "y": 7.25,
+        "w": 1.5,
+        "d": 2.5,
+        "kind": "room"
+      }
+    ]
+  },
+  "living_test": {
+    "fixtures": [
+      {
+        "id": "tv",
+        "name": "TV + service reserve",
+        "x": 0,
+        "y": 2,
+        "w": 4,
+        "d": 7,
+        "kind": "room"
+      },
+      {
+        "id": "hearth",
+        "name": "Hearth reserve",
+        "x": 11,
+        "y": 0,
+        "w": 5,
+        "d": 5,
+        "kind": "room"
+      },
+      {
+        "id": "sofa",
+        "name": "Loveseat",
+        "x": 6.5,
+        "y": 4.5,
+        "w": 3,
+        "d": 6.5,
+        "kind": "room"
+      },
+      {
+        "id": "chair",
+        "name": "Recliner extended",
+        "x": 10,
+        "y": 7,
+        "w": 5.5,
+        "d": 4,
+        "kind": "room"
+      }
+    ]
+  },
+  "alternatives": {
+    "A": {
+      "core": {
+        "main_depth": 36,
+        "risers": 7,
+        "half_rise_ft": 4.5,
+        "riser_inches": 7.714285714285714,
+        "tread_inches": 11,
+        "run_ft": 5.5,
+        "landing_depth_ft": 4,
+        "flight_width_reservation_ft": 4,
+        "floor_assembly_ft": 1,
+        "lower_clear_height_ft": 8.0,
+        "main_ceiling_ft": 9,
+        "upper_ceiling_ft": 9,
+        "stair_front_y": 22.5,
+        "stair_run_y": 26.5,
+        "lift": {
+          "id": "C-LIFT",
+          "name": "8 x 8 lift RESERVATION",
+          "x": 21.5,
+          "y": 28,
+          "w": 8,
+          "d": 8,
+          "kind": "core"
+        }
+      },
+      "plans": {
+        "main": [
+          {
+            "id": "M-01",
+            "name": "Living room",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 16,
+            "d": 16,
+            "kind": "room"
+          },
+          {
+            "id": "M-02",
+            "name": "Kitchen",
+            "x": 22,
+            "y": 0.6666666666666666,
+            "w": 17.333333333333332,
+            "d": 16,
+            "kind": "room"
+          },
+          {
+            "id": "M-03",
+            "name": "Dining",
+            "x": 0.6666666666666666,
+            "y": 17.166666666666668,
+            "w": 11.333333333333334,
+            "d": 14,
+            "kind": "room"
+          },
+          {
+            "id": "M-04",
+            "name": "Pantry",
+            "x": 34.333333333333336,
+            "y": 17.166666666666668,
+            "w": 5,
+            "d": 7,
+            "kind": "room"
+          },
+          {
+            "id": "M-05",
+            "name": "Front arrival / hall",
+            "x": 17.166666666666668,
+            "y": 0.6666666666666666,
+            "w": 4.333333333333333,
+            "d": 12,
+            "kind": "room"
+          },
+          {
+            "id": "M-06",
+            "name": "PROPOSED main full bath",
+            "x": 30.333333333333332,
+            "y": 25.333333333333336,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          }
+        ],
+        "upper": [
+          {
+            "id": "U-01",
+            "name": "Primary bedroom",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 16,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "U-05",
+            "name": "Primary bath",
+            "x": 0.6666666666666666,
+            "y": 11.166666666666666,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "C-PRIVATE",
+            "name": "Private connector",
+            "x": 10.166666666666666,
+            "y": 11.166666666666666,
+            "w": 6.5,
+            "d": 10,
+            "kind": "circulation"
+          },
+          {
+            "id": "U-02",
+            "name": "Boutique",
+            "x": 0.6666666666666666,
+            "y": 21.666666666666668,
+            "w": 16,
+            "d": 9.666666666666666,
+            "kind": "room"
+          },
+          {
+            "id": "C-UPPER",
+            "name": "4 ft suite / public hall",
+            "x": 17.166666666666668,
+            "y": 0.6666666666666666,
+            "w": 4,
+            "d": 30.666666666666668,
+            "kind": "circulation"
+          },
+          {
+            "id": "U-04",
+            "name": "Guest bedroom",
+            "x": 21.666666666666668,
+            "y": 0.6666666666666666,
+            "w": 13.666666666666666,
+            "d": 8.5,
+            "kind": "room"
+          },
+          {
+            "id": "U-06",
+            "name": "Jack and Jill bath",
+            "x": 25.333333333333332,
+            "y": 9.666666666666666,
+            "w": 10,
+            "d": 12,
+            "kind": "room"
+          },
+          {
+            "id": "U-03",
+            "name": "Hybrid bedroom / office",
+            "x": 21.666666666666668,
+            "y": 22.166666666666668,
+            "w": 13.666666666666666,
+            "d": 9.166666666666666,
+            "kind": "room"
+          }
+        ],
+        "lower": [
+          {
+            "id": "L-03",
+            "name": "Lower full bath",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "L-04",
+            "name": "Enclosed laundry",
+            "x": 0.6666666666666666,
+            "y": 11.166666666666666,
+            "w": 9,
+            "d": 8,
+            "kind": "room"
+          },
+          {
+            "id": "L-05",
+            "name": "MEP equipment reservation",
+            "x": 0.6666666666666666,
+            "y": 19.666666666666668,
+            "w": 9,
+            "d": 11.666666666666666,
+            "kind": "room"
+          },
+          {
+            "id": "L-07",
+            "name": "Arrival + dry storage",
+            "x": 26.333333333333332,
+            "y": 0.6666666666666666,
+            "w": 9,
+            "d": 11.5,
+            "kind": "room"
+          },
+          {
+            "id": "L-06",
+            "name": "Ventilated technology room",
+            "x": 27.333333333333332,
+            "y": 12.666666666666666,
+            "w": 8,
+            "d": 8,
+            "kind": "room"
+          },
+          {
+            "id": "L-01",
+            "name": "Lower flexible living",
+            "x": 10.166666666666666,
+            "y": 13,
+            "w": 13.666666666666666,
+            "d": 18.333333333333332,
+            "kind": "room"
+          },
+          {
+            "id": "S-01",
+            "name": "Conditioned storage reserve*",
+            "x": 17.333333333333332,
+            "y": 0.6666666666666666,
+            "w": 5,
+            "d": 6,
+            "kind": "room"
+          },
+          {
+            "id": "C-LOWER",
+            "name": "Lower arrival / circulation",
+            "x": 10.166666666666666,
+            "y": 0.6666666666666666,
+            "w": 6.666666666666667,
+            "d": 11.833333333333334,
+            "kind": "circulation"
+          },
+          {
+            "id": "L-02",
+            "name": "Bedroom-capable flex",
+            "x": 24.333333333333332,
+            "y": 21.166666666666668,
+            "w": 11,
+            "d": 10,
+            "kind": "room"
+          }
+        ]
+      },
+      "frames": {
+        "convention": "Local x/y in each plan. Shared study x to right; y toward rear. No georeference/north/site.",
+        "main": {
+          "origin_ft": [
+            0,
+            0,
+            0
+          ]
+        },
+        "upper": {
+          "origin_ft": [
+            0,
+            36,
+            4.5
+          ]
+        },
+        "lower": {
+          "origin_ft": [
+            0,
+            36,
+            -4.5
+          ]
+        },
+        "garage": {
+          "origin_ft": [
+            36,
+            36.666666666666664,
+            -4.5
+          ]
+        },
+        "porch": {
+          "origin_ft": [
+            -10,
+            18.166666666666668,
+            0
+          ]
+        }
+      },
+      "area_accounting": {
+        "main_shell_plate_sf": 1440,
+        "upper_shell_plate_sf": 1152,
+        "lower_shell_plate_sf": 1152,
+        "base_shell_plate_sum_sf": 3744,
+        "net_room_sf": 2460.1666666666665,
+        "garage_sf": 576,
+        "porch_sf": 120,
+        "conditioned_measured_sf": null,
+        "above_below_grade_sf": null,
+        "caveat": "Shell plate sum is a comparison allowance, not certified gross/conditioned area. Core floor projections, voids and wall accounting still need BIM reconciliation."
+      }
+    },
+    "B": {
+      "core": {
+        "main_depth": 42,
+        "risers": 8,
+        "half_rise_ft": 5,
+        "riser_inches": 7.5,
+        "tread_inches": 11,
+        "run_ft": 6.416666666666667,
+        "landing_depth_ft": 4,
+        "flight_width_reservation_ft": 4,
+        "floor_assembly_ft": 1.25,
+        "lower_clear_height_ft": 8.75,
+        "main_ceiling_ft": 9,
+        "upper_ceiling_ft": 9,
+        "stair_front_y": 27.583333333333332,
+        "stair_run_y": 31.583333333333332,
+        "lift": {
+          "id": "C-LIFT",
+          "name": "8 x 8 lift RESERVATION",
+          "x": 21.5,
+          "y": 34,
+          "w": 8,
+          "d": 8,
+          "kind": "core"
+        }
+      },
+      "plans": {
+        "main": [
+          {
+            "id": "M-01",
+            "name": "Living room",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 16,
+            "d": 15,
+            "kind": "room"
+          },
+          {
+            "id": "M-02",
+            "name": "Kitchen",
+            "x": 22,
+            "y": 0.6666666666666666,
+            "w": 17.333333333333332,
+            "d": 16,
+            "kind": "room"
+          },
+          {
+            "id": "M-03",
+            "name": "Dining",
+            "x": 0.6666666666666666,
+            "y": 16.166666666666668,
+            "w": 11.333333333333334,
+            "d": 14,
+            "kind": "room"
+          },
+          {
+            "id": "M-04",
+            "name": "Pantry",
+            "x": 34.333333333333336,
+            "y": 17.166666666666668,
+            "w": 5,
+            "d": 7,
+            "kind": "room"
+          },
+          {
+            "id": "M-05",
+            "name": "Front arrival / hall",
+            "x": 17.166666666666668,
+            "y": 0.6666666666666666,
+            "w": 4.333333333333333,
+            "d": 12,
+            "kind": "room"
+          },
+          {
+            "id": "M-06",
+            "name": "PROPOSED main full bath",
+            "x": 30.333333333333332,
+            "y": 31.333333333333336,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "L-02",
+            "name": "Flex sleeping room (relocated)",
+            "x": 0.6666666666666666,
+            "y": 30.666666666666668,
+            "w": 11,
+            "d": 10,
+            "kind": "room"
+          }
+        ],
+        "upper": [
+          {
+            "id": "U-01",
+            "name": "Primary bedroom",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 16,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "U-05",
+            "name": "Primary bath",
+            "x": 0.6666666666666666,
+            "y": 11.166666666666666,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "C-PRIVATE",
+            "name": "Private connector",
+            "x": 10.166666666666666,
+            "y": 11.166666666666666,
+            "w": 6.5,
+            "d": 10,
+            "kind": "circulation"
+          },
+          {
+            "id": "U-02",
+            "name": "Boutique",
+            "x": 0.6666666666666666,
+            "y": 21.666666666666668,
+            "w": 16,
+            "d": 9.666666666666666,
+            "kind": "room"
+          },
+          {
+            "id": "C-UPPER",
+            "name": "4 ft suite / public hall",
+            "x": 17.166666666666668,
+            "y": 0.6666666666666666,
+            "w": 4,
+            "d": 30.666666666666668,
+            "kind": "circulation"
+          },
+          {
+            "id": "U-04",
+            "name": "Guest bedroom",
+            "x": 21.666666666666668,
+            "y": 0.6666666666666666,
+            "w": 13.666666666666666,
+            "d": 8.5,
+            "kind": "room"
+          },
+          {
+            "id": "U-06",
+            "name": "Jack and Jill bath",
+            "x": 25.333333333333332,
+            "y": 9.666666666666666,
+            "w": 10,
+            "d": 12,
+            "kind": "room"
+          },
+          {
+            "id": "U-03",
+            "name": "Hybrid bedroom / office",
+            "x": 21.666666666666668,
+            "y": 22.166666666666668,
+            "w": 13.666666666666666,
+            "d": 9.166666666666666,
+            "kind": "room"
+          }
+        ],
+        "lower": [
+          {
+            "id": "L-03",
+            "name": "Lower full bath",
+            "x": 0.6666666666666666,
+            "y": 0.6666666666666666,
+            "w": 9,
+            "d": 10,
+            "kind": "room"
+          },
+          {
+            "id": "L-04",
+            "name": "Enclosed laundry",
+            "x": 0.6666666666666666,
+            "y": 11.166666666666666,
+            "w": 9,
+            "d": 8,
+            "kind": "room"
+          },
+          {
+            "id": "L-05",
+            "name": "MEP equipment reservation",
+            "x": 0.6666666666666666,
+            "y": 19.666666666666668,
+            "w": 9,
+            "d": 11.666666666666666,
+            "kind": "room"
+          },
+          {
+            "id": "L-07",
+            "name": "Arrival + dry storage",
+            "x": 26.333333333333332,
+            "y": 0.6666666666666666,
+            "w": 9,
+            "d": 11.5,
+            "kind": "room"
+          },
+          {
+            "id": "L-06",
+            "name": "Ventilated technology room",
+            "x": 27.333333333333332,
+            "y": 12.666666666666666,
+            "w": 8,
+            "d": 8,
+            "kind": "room"
+          },
+          {
+            "id": "L-01",
+            "name": "Lower flexible living",
+            "x": 10.166666666666666,
+            "y": 13,
+            "w": 13.666666666666666,
+            "d": 18.333333333333332,
+            "kind": "room"
+          },
+          {
+            "id": "S-01",
+            "name": "Conditioned storage reserve*",
+            "x": 17.333333333333332,
+            "y": 0.6666666666666666,
+            "w": 5,
+            "d": 6,
+            "kind": "room"
+          },
+          {
+            "id": "C-LOWER",
+            "name": "Lower arrival / circulation",
+            "x": 10.166666666666666,
+            "y": 0.6666666666666666,
+            "w": 6.666666666666667,
+            "d": 11.833333333333334,
+            "kind": "circulation"
+          },
+          {
+            "id": "ALLOW-01",
+            "name": "Unassigned lower allowance",
+            "x": 24.333333333333332,
+            "y": 21.166666666666668,
+            "w": 11,
+            "d": 10,
+            "kind": "unassigned"
+          }
+        ]
+      },
+      "frames": {
+        "convention": "Local x/y in each plan. Shared study x to right; y toward rear. No georeference/north/site.",
+        "main": {
+          "origin_ft": [
+            0,
+            0,
+            0
+          ]
+        },
+        "upper": {
+          "origin_ft": [
+            0,
+            42,
+            5
+          ]
+        },
+        "lower": {
+          "origin_ft": [
+            0,
+            42,
+            -5
+          ]
+        },
+        "garage": {
+          "origin_ft": [
+            36,
+            42.666666666666664,
+            -5
+          ]
+        },
+        "porch": {
+          "origin_ft": [
+            -10,
+            17.166666666666668,
+            0
+          ]
+        }
+      },
+      "area_accounting": {
+        "main_shell_plate_sf": 1680,
+        "upper_shell_plate_sf": 1152,
+        "lower_shell_plate_sf": 1152,
+        "base_shell_plate_sum_sf": 3984,
+        "net_room_sf": 2444.1666666666665,
+        "garage_sf": 576,
+        "porch_sf": 120,
+        "conditioned_measured_sf": null,
+        "above_below_grade_sf": null,
+        "caveat": "Shell plate sum is a comparison allowance, not certified gross/conditioned area. Core floor projections, voids and wall accounting still need BIM reconciliation."
+      }
+    }
+  }
+}

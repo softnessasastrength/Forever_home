@@ -1,0 +1,48 @@
+option,level,id,name,kind,net_sf
+A,main,M-01,Living room,room,256
+A,main,M-02,Kitchen,room,277.3333
+A,main,M-03,Dining,room,158.6667
+A,main,M-04,Pantry,room,35
+A,main,M-05,Front arrival / hall,room,52.0
+A,main,M-06,PROPOSED main full bath,room,90
+A,upper,U-01,Primary bedroom,room,160
+A,upper,U-05,Primary bath,room,90
+A,upper,C-PRIVATE,Private connector,circulation,65.0
+A,upper,U-02,Boutique,room,154.6667
+A,upper,C-UPPER,4 ft suite / public hall,circulation,122.6667
+A,upper,U-04,Guest bedroom,room,116.1667
+A,upper,U-06,Jack and Jill bath,room,120
+A,upper,U-03,Hybrid bedroom / office,room,125.2778
+A,lower,L-03,Lower full bath,room,90
+A,lower,L-04,Enclosed laundry,room,72
+A,lower,L-05,MEP equipment reservation,room,105.0
+A,lower,L-07,Arrival + dry storage,room,103.5
+A,lower,L-06,Ventilated technology room,room,64
+A,lower,L-01,Lower flexible living,room,250.5556
+A,lower,S-01,Conditioned storage reserve*,room,30
+A,lower,C-LOWER,Lower arrival / circulation,circulation,78.8889
+A,lower,L-02,Bedroom-capable flex,room,110
+B,main,M-01,Living room,room,240
+B,main,M-02,Kitchen,room,277.3333
+B,main,M-03,Dining,room,158.6667
+B,main,M-04,Pantry,room,35
+B,main,M-05,Front arrival / hall,room,52.0
+B,main,M-06,PROPOSED main full bath,room,90
+B,main,L-02,Flex sleeping room (relocated),room,110
+B,upper,U-01,Primary bedroom,room,160
+B,upper,U-05,Primary bath,room,90
+B,upper,C-PRIVATE,Private connector,circulation,65.0
+B,upper,U-02,Boutique,room,154.6667
+B,upper,C-UPPER,4 ft suite / public hall,circulation,122.6667
+B,upper,U-04,Guest bedroom,room,116.1667
+B,upper,U-06,Jack and Jill bath,room,120
+B,upper,U-03,Hybrid bedroom / office,room,125.2778
+B,lower,L-03,Lower full bath,room,90
+B,lower,L-04,Enclosed laundry,room,72
+B,lower,L-05,MEP equipment reservation,room,105.0
+B,lower,L-07,Arrival + dry storage,room,103.5
+B,lower,L-06,Ventilated technology room,room,64
+B,lower,L-01,Lower flexible living,room,250.5556
+B,lower,S-01,Conditioned storage reserve*,room,30
+B,lower,C-LOWER,Lower arrival / circulation,circulation,78.8889
+B,lower,ALLOW-01,Unassigned lower allowance,unassigned,110
