@@ -49,6 +49,10 @@ public class CompactCoreCommand : IExternalCommand
         try
         {
             var doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            var door = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_C_Nominal_Door", 3, .15, 7);
             Level lower, main, upper;
             using (var t = new Transaction(doc, "C compact core study; proposal only"))
             {
@@ -122,6 +126,21 @@ public class CompactCoreCommand : IExternalCommand
                 RoomAt(lower,"L-07","Arrival and dry storage",30,46);
                 RoomAt(lower,"L-01","Lower flexible living",17,62);
                 RoomAt(lower,"L-06","Relocated technology room",30,67);
+                door.Activate(); doc.Regenerate();
+                Wall FindWall(string marker) => new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>().First(w => w.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() == marker);
+                void PlaceDoor(string marker, XYZ point, Level level, string id)
+                {
+                    var instance = doc.Create.NewFamilyInstance(point, door, FindWall(marker), level, StructuralType.NonStructural);
+                    Tag(instance,id);
+                }
+                PlaceDoor("FH-C-SHELL-1", new XYZ(6,0,0), main, "D-MAIN-ENTRY");
+                PlaceDoor("FH-C-M-06-MAIN-BATH-01", new XYZ(34,27,0), main, "D-MAIN-BATH");
+                PlaceDoor("FH-C-L-02-MAIN-FLEX-01", new XYZ(6,31.5,0), main, "D-MAIN-FLEX");
+                PlaceDoor("FH-C-U-05-PRIMARY-BATH-01", new XYZ(5,52,0), upper, "D-PRIMARY-BATH");
+                PlaceDoor("FH-C-L-06-TECH-RELOCATED-01", new XYZ(30,63,0), lower, "D-TECH-SERVICE");
+                var schedule = ViewSchedule.CreateSchedule(doc, new ElementId(BuiltInCategory.OST_Rooms)); schedule.Name = "C Room Area Schedule";
+                var textType = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType)).FirstElementId();
+                TextNote.Create(doc, mainPlan.Id, new XYZ(14,20,0), "C route test: entry > living > kitchen > dining > main bath > main flex\nNominal doors only; clearances, swings and accessibility remain unverified.", textType);
                 Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
                 t.Commit();
             }
@@ -141,9 +160,6 @@ public class CompactCoreCommand : IExternalCommand
                 scope.Commit(new FailureRecorder());
                 using (var t = new Transaction(doc, "Tag C upper stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-MAIN-UPPER"); t.Commit(); }
             }
-            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
-            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
-            Directory.CreateDirectory(output);
             string path = Path.Combine(output, "FH_Compact_Core_Study.rvt");
             doc.SaveAs(path, new SaveAsOptions());
             var manifest = new {
@@ -198,7 +214,7 @@ public class Command : IExternalCommand
         p.Set(id);
     }
 
-    static FamilySymbol MakeFamily(Autodesk.Revit.ApplicationServices.Application app,
+    internal static FamilySymbol MakeFamily(Autodesk.Revit.ApplicationServices.Application app,
         Document project, string output, string template, string name, double w, double d, double h)
     {
         string templates = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),

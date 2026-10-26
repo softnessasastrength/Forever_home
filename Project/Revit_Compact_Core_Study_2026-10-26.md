@@ -21,6 +21,8 @@ The command now writes `study-manifest.json` beside each generated RVT with inte
 
 The batched verification run completed at `.local/revit-pilot/compact-core/20261026T032659086Z/`. Revit created the study with **0 errors and 3 wall-overlap warnings**. The generated `study-manifest.json` passed the offline validator: all three C levels, all 17 stable room IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags are present.
 
+The next queued batch adds a generated nominal door family, five tagged door instances, a native room-area schedule and a main-plan route note. It builds successfully but is **not yet host-verified**; door clear openings, swings and accessibility remain explicitly unresolved.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
