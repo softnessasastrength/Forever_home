@@ -16,9 +16,74 @@ public class App : IExternalApplication
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
         panel.AddItem(new PushButtonData("FHCompatibilityPilot", "Run compatibility\npilot",
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
         return Result.Succeeded;
     }
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
+[Transaction(TransactionMode.Manual)]
+public class CompactCoreCommand : IExternalCommand
+{
+    static void Tag(Element e, string id)
+    {
+        var p = e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (p is not null && !p.IsReadOnly) p.Set(id);
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        try
+        {
+            var doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            Level lower, main, upper;
+            using (var t = new Transaction(doc, "C compact core study; proposal only"))
+            {
+                t.Start();
+                lower = Level.Create(doc, -5); lower.Name = "C Lower -5 ft";
+                main = Level.Create(doc, 0); main.Name = "C Main 0 ft";
+                upper = Level.Create(doc, 5); upper.Name = "C Upper +5 ft";
+                var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
+                    .First(w => w.Kind == WallKind.Basic);
+                void WallAt(XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, main.Id, 10, 0, false, false); Tag(w,id); }
+                var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
+                for (int i=0;i<4;i++) WallAt(shell[i],shell[(i+1)%4],$"FH-C-SHELL-{i+1:00}");
+                var core = new[] { new XYZ(21.5,32,0), new XYZ(29.5,32,0), new XYZ(29.5,40,0), new XYZ(21.5,40,0) };
+                for (int i=0;i<4;i++) WallAt(core[i],core[(i+1)%4],$"FH-C-LIFT-RES-{i+1:00}");
+                var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
+                var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
+                Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
+                t.Commit();
+            }
+            using (var scope = new StairsEditScope(doc, "C compact core native stairs"))
+            {
+                var stairsId = scope.Start(lower.Id, main.Id);
+                using (var t = new Transaction(doc, "C lower-to-main stair run"))
+                { t.Start(); StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(12.5,27,0), new XYZ(12.5,34,0)), StairsRunJustification.Center); t.Commit(); }
+                scope.Commit(new FailureRecorder());
+                using (var t = new Transaction(doc, "Tag C lower stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-LOWER-MAIN"); t.Commit(); }
+            }
+            using (var scope = new StairsEditScope(doc, "C compact core upper stairs"))
+            {
+                var stairsId = scope.Start(main.Id, upper.Id);
+                using (var t = new Transaction(doc, "C main-to-upper stair run"))
+                { t.Start(); StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(17,27,0), new XYZ(17,34,0)), StairsRunJustification.Center); t.Commit(); }
+                scope.Commit(new FailureRecorder());
+                using (var t = new Transaction(doc, "Tag C upper stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-MAIN-UPPER"); t.Commit(); }
+            }
+            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            string path = Path.Combine(output, "FH_Compact_Core_Study.rvt");
+            doc.SaveAs(path, new SaveAsOptions());
+            doc.Close(false);
+            data.Application.OpenAndActivateDocument(path);
+            TaskDialog.Show("Forever Home compact core", "C study saved separately. Levels, shell/core reservations and native stair runs only.\n" + path);
+            return Result.Succeeded;
+        }
+        catch (Exception ex) { message = ex.Message; return Result.Failed; }
+    }
 }
 
 [Transaction(TransactionMode.Manual)]
