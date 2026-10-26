@@ -16,6 +16,14 @@ The compact-core command is a separate study entry point. It writes `study-manif
 
 The validator checks the three C levels, 17 stable program IDs, five nominal door IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags. It does not certify geometry, code, accessibility or product fit.
 
+Run the no-Revit preflight before a batch reload:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/preflight_compact_study.py
+```
+
+The JSON config is the batch target record; it does not replace the native RVT or approve the design.
+
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
 ## Dependencies and build
