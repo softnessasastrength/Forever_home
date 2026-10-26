@@ -96,6 +96,32 @@ public class CompactCoreCommand : IExternalCommand
                 RoomBoxAt(lower,"L-06-TECH-RELOCATED", 26,63,8,8);
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
+                var planType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.FloorPlan);
+                var mainPlan = ViewPlan.Create(doc, planType.Id, main.Id); mainPlan.Name = "C Main Room Blocks";
+                var upperPlan = ViewPlan.Create(doc, planType.Id, upper.Id); upperPlan.Name = "C Upper Room Blocks";
+                var lowerPlan = ViewPlan.Create(doc, planType.Id, lower.Id); lowerPlan.Name = "C Lower Room Blocks";
+                void RoomAt(Level level, string id, string name, double x, double y)
+                {
+                    var room = doc.Create.NewRoom(level, new UV(x,y));
+                    room.Number = id; room.Name = name; Tag(room,id);
+                }
+                RoomAt(main,"M-01","Living room",9,8);
+                RoomAt(main,"M-02","Kitchen",30,9);
+                RoomAt(main,"M-03","Dining",6,23);
+                RoomAt(main,"M-06","Proposed main full bath",34,32);
+                RoomAt(main,"L-02","Main flex sleeping room",6,35);
+                RoomAt(upper,"U-01","Primary bedroom",9,46);
+                RoomAt(upper,"U-05","Primary bath",5,57);
+                RoomAt(upper,"U-02","Boutique",9,67);
+                RoomAt(upper,"U-04","Guest bedroom",24,45);
+                RoomAt(upper,"U-06","Jack and Jill bath",30,56);
+                RoomAt(upper,"U-03","Hybrid bedroom office",24,67);
+                RoomAt(lower,"L-03","Lower full bath",5,46);
+                RoomAt(lower,"L-04","Laundry",5,56);
+                RoomAt(lower,"L-05","MEP reservation",5,65);
+                RoomAt(lower,"L-07","Arrival and dry storage",30,46);
+                RoomAt(lower,"L-01","Lower flexible living",17,62);
+                RoomAt(lower,"L-06","Relocated technology room",30,67);
                 Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
                 t.Commit();
             }

@@ -15,6 +15,8 @@ The upper/lower expansion run, `.local/revit-pilot/compact-core/20261026T0315472
 
 The next batch revision widens room-loop separations to at least 12 in centerline where practical and moves the lift reservation farther from the shell. It builds successfully but is **not yet executed in Revit**; do not treat its warning count or geometry as verified until the next planned reload.
 
+The following batch also creates native `Room` elements with stable program IDs and dedicated main/upper/lower plan views. It builds successfully but remains **unexecuted** until a planned single Revit reload; expected checks are room area/identity creation plus the existing wall-warning count.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
