@@ -23,6 +23,8 @@ The batched verification run completed at `.local/revit-pilot/compact-core/20261
 
 The next queued batch adds a generated nominal door family, five tagged door instances, a native room-area schedule and a main-plan route note. It builds successfully but is **not yet host-verified**; door clear openings, swings and accessibility remain explicitly unresolved.
 
+The first host attempt of that batch was stopped by a lookup typo (`FH-C-SHELL-1` versus the generated `FH-C-SHELL-01` tag) before saving a study. The tag was corrected and the add-in rebuild passed; the next planned reload should retry the complete batch once.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels

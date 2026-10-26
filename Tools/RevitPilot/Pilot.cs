@@ -133,7 +133,7 @@ public class CompactCoreCommand : IExternalCommand
                     var instance = doc.Create.NewFamilyInstance(point, door, FindWall(marker), level, StructuralType.NonStructural);
                     Tag(instance,id);
                 }
-                PlaceDoor("FH-C-SHELL-1", new XYZ(6,0,0), main, "D-MAIN-ENTRY");
+                PlaceDoor("FH-C-SHELL-01", new XYZ(6,0,0), main, "D-MAIN-ENTRY");
                 PlaceDoor("FH-C-M-06-MAIN-BATH-01", new XYZ(34,27,0), main, "D-MAIN-BATH");
                 PlaceDoor("FH-C-L-02-MAIN-FLEX-01", new XYZ(6,31.5,0), main, "D-MAIN-FLEX");
                 PlaceDoor("FH-C-U-05-PRIMARY-BATH-01", new XYZ(5,52,0), upper, "D-PRIMARY-BATH");
