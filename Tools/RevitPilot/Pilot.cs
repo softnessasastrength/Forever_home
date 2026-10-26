@@ -18,6 +18,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
         panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
             Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
+            Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         return Result.Succeeded;
     }
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
@@ -30,9 +32,76 @@ public class CompactApp : IExternalApplication
         var panel = app.CreateRibbonPanel("Forever Home Compact Study");
         panel.AddItem(new PushButtonData("FHCompactCoreStudyStandalone", "Build compact core\nstudy",
             Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHFamilyIntakeStandalone", "Run family intake\ntest",
+            Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         return Result.Succeeded;
     }
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
+[Transaction(TransactionMode.Manual)]
+public class FamilyIntakeCommand : IExternalCommand
+{
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? target = null;
+        try
+        {
+            var app = data.Application.Application;
+            var assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            var root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+            var incoming = Path.Combine(root, "Revit", "Family_Intake", "Incoming");
+            var output = Path.Combine(root, ".local", "revit-pilot", "family-intake", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            target = app.NewProjectDocument(UnitSystem.Imperial);
+            var results = new List<object>();
+            foreach (var path in Directory.EnumerateFiles(incoming, "*.rfa").OrderBy(p => p, StringComparer.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    var familyName = Path.GetFileNameWithoutExtension(path);
+                    Family? family = null;
+                    bool loaded;
+                    using (var t = new Transaction(target, $"Load intake family {familyName}"))
+                    {
+                        t.Start();
+                        loaded = target.LoadFamily(path, out family);
+                        t.Commit();
+                    }
+                    var symbols = family is null ? new List<string>() : family.GetFamilySymbolIds()
+                        .Select(id => target.GetElement(id)?.Name ?? id.Value.ToString()).ToList();
+                    results.Add(new { file = Path.GetFileName(path), status = loaded ? "loaded" : "already_present", family = family?.Name, symbols });
+                }
+                catch (Exception ex)
+                {
+                    results.Add(new { file = Path.GetFileName(path), status = "failed", error = ex.Message });
+                }
+                finally { }
+            }
+            var study = Path.Combine(output, "FH_Family_Intake_Study.rvt");
+            target.SaveAs(study, new SaveAsOptions());
+            File.WriteAllText(Path.Combine(output, "intake-manifest.json"), JsonSerializer.Serialize(new
+            {
+                status = "executed; review family load results and placement behavior separately",
+                utc = DateTime.UtcNow,
+                revit_version = app.VersionNumber,
+                revit_build = app.VersionBuild,
+                source_folder = incoming,
+                results
+            }, JsonOptions));
+            data.Application.OpenAndActivateDocument(study);
+            TaskDialog.Show("Forever Home family intake", $"Family intake study saved separately. Results: {output}");
+            return Result.Succeeded;
+        }
+        catch (Exception ex)
+        {
+            message = ex.ToString();
+            try { if (target?.IsValidObject == true) target.Close(false); } catch { }
+            return Result.Failed;
+        }
+    }
+
+    static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 }
 
 [Transaction(TransactionMode.Manual)]
