@@ -23,6 +23,18 @@ public class App : IExternalApplication
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
 }
 
+public class CompactApp : IExternalApplication
+{
+    public Result OnStartup(UIControlledApplication app)
+    {
+        var panel = app.CreateRibbonPanel("Forever Home Compact Study");
+        panel.AddItem(new PushButtonData("FHCompactCoreStudyStandalone", "Build compact core\nstudy",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
+        return Result.Succeeded;
+    }
+    public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
 [Transaction(TransactionMode.Manual)]
 public class CompactCoreCommand : IExternalCommand
 {
