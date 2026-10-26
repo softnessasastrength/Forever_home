@@ -24,6 +24,8 @@ Run the no-Revit preflight before a batch reload:
 
 The JSON config is the batch target record; it does not replace the native RVT or approve the design.
 
+The **Run family intake test** command loads every `.rfa` in `Revit/Family_Intake/Incoming/` into a new disposable Revit 2027 project. It never edits the compact-core study. Each run saves `FH_Family_Intake_Study.rvt` and `intake-manifest.json` under ignored `.local/revit-pilot/family-intake/<timestamp>/`. A `loaded`, `already_present`, or `failed` result is evidence about family loading only; placement, hosting, visual quality, licensing and production approval remain separate review gates.
+
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
 ## Dependencies and build
