@@ -16,9 +16,195 @@ public class App : IExternalApplication
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
         panel.AddItem(new PushButtonData("FHCompatibilityPilot", "Run compatibility\npilot",
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
         return Result.Succeeded;
     }
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
+public class CompactApp : IExternalApplication
+{
+    public Result OnStartup(UIControlledApplication app)
+    {
+        var panel = app.CreateRibbonPanel("Forever Home Compact Study");
+        panel.AddItem(new PushButtonData("FHCompactCoreStudyStandalone", "Build compact core\nstudy",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
+        return Result.Succeeded;
+    }
+    public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
+[Transaction(TransactionMode.Manual)]
+public class CompactCoreCommand : IExternalCommand
+{
+    static void Tag(Element e, string id)
+    {
+        var p = e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (p is not null && !p.IsReadOnly) p.Set(id);
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        try
+        {
+            var doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            var door = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_C_Nominal_Door", 3, .15, 7);
+            Level lower, main, upper;
+            using (var t = new Transaction(doc, "C compact core study; proposal only"))
+            {
+                t.Start();
+                lower = Level.Create(doc, -5); lower.Name = "C Lower -5 ft";
+                main = Level.Create(doc, 0); main.Name = "C Main 0 ft";
+                upper = Level.Create(doc, 5); upper.Name = "C Upper +5 ft";
+                var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
+                    .First(w => w.Kind == WallKind.Basic);
+                void WallAtLevel(Level level, XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, level.Id, 10, 0, false, false); Tag(w,id); }
+                void WallAt(XYZ a, XYZ b, string id) => WallAtLevel(main,a,b,id);
+                void RoomBoxAt(Level level, string id, double x, double y, double width, double depth)
+                {
+                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
+                    for (int i=0;i<4;i++) WallAtLevel(level,pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                }
+                var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
+                for (int i=0;i<4;i++) WallAt(shell[i],shell[(i+1)%4],$"FH-C-SHELL-{i+1:00}");
+                var core = new[] { new XYZ(21.5,30.5,0), new XYZ(29.5,30.5,0), new XYZ(29.5,38.5,0), new XYZ(21.5,38.5,0) };
+                for (int i=0;i<4;i++) WallAt(core[i],core[(i+1)%4],$"FH-C-LIFT-RES-{i+1:00}");
+                void RoomBox(string id, double x, double y, double width, double depth)
+                {
+                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
+                    for (int i=0;i<4;i++) WallAt(pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                }
+                RoomBox("M-01-LIVING", 1, 1, 16, 15);
+                RoomBox("M-02-KITCHEN", 22, 1, 17, 16);
+                RoomBox("M-03-DINING", 1, 17, 11, 13.5);
+                RoomBox("M-06-MAIN-BATH", 30.5, 27, 8, 10);
+                RoomBox("L-02-MAIN-FLEX", 1, 31.5, 11, 7.5);
+                var upperShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
+                var lowerShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
+                for (int i=0;i<4;i++) { WallAtLevel(upper,upperShell[i],upperShell[(i+1)%4],$"FH-C-UPPER-SHELL-{i+1:00}"); WallAtLevel(lower,lowerShell[i],lowerShell[(i+1)%4],$"FH-C-LOWER-SHELL-{i+1:00}"); }
+                RoomBoxAt(upper,"U-01-PRIMARY", 1,41,16,10);
+                RoomBoxAt(upper,"U-05-PRIMARY-BATH", 1,52,9,10);
+                RoomBoxAt(upper,"U-02-BOUTIQUE", 1,63,16,8);
+                RoomBoxAt(upper,"U-04-GUEST", 18,41,12,8.5);
+                RoomBoxAt(upper,"U-06-JACK-JILL", 25,50.5,10,12);
+                RoomBoxAt(upper,"U-03-HYBRID", 18,63,13,8);
+                RoomBoxAt(lower,"L-03-LOWER-BATH", 1,41,9,10);
+                RoomBoxAt(lower,"L-04-LAUNDRY", 1,52,9,8);
+                RoomBoxAt(lower,"L-05-MEP", 1,61,9,9);
+                RoomBoxAt(lower,"L-07-ARRIVAL", 26,41,9,11.5);
+                RoomBoxAt(lower,"L-01-FLEX-LIVING", 11,53,13,18);
+                RoomBoxAt(lower,"L-06-TECH-RELOCATED", 26,63,8,8);
+                var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
+                var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
+                var planType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.FloorPlan);
+                var mainPlan = ViewPlan.Create(doc, planType.Id, main.Id); mainPlan.Name = "C Main Room Blocks";
+                var upperPlan = ViewPlan.Create(doc, planType.Id, upper.Id); upperPlan.Name = "C Upper Room Blocks";
+                var lowerPlan = ViewPlan.Create(doc, planType.Id, lower.Id); lowerPlan.Name = "C Lower Room Blocks";
+                void RoomAt(Level level, string id, string name, double x, double y)
+                {
+                    var room = doc.Create.NewRoom(level, new UV(x,y));
+                    room.Number = id; room.Name = name; Tag(room,id);
+                }
+                RoomAt(main,"M-01","Living room",9,8);
+                RoomAt(main,"M-02","Kitchen",30,9);
+                RoomAt(main,"M-03","Dining",6,23);
+                RoomAt(main,"M-06","Proposed main full bath",34,32);
+                RoomAt(main,"L-02","Main flex sleeping room",6,35);
+                RoomAt(upper,"U-01","Primary bedroom",9,46);
+                RoomAt(upper,"U-05","Primary bath",5,57);
+                RoomAt(upper,"U-02","Boutique",9,67);
+                RoomAt(upper,"U-04","Guest bedroom",24,45);
+                RoomAt(upper,"U-06","Jack and Jill bath",30,56);
+                RoomAt(upper,"U-03","Hybrid bedroom office",24,67);
+                RoomAt(lower,"L-03","Lower full bath",5,46);
+                RoomAt(lower,"L-04","Laundry",5,56);
+                RoomAt(lower,"L-05","MEP reservation",5,65);
+                RoomAt(lower,"L-07","Arrival and dry storage",30,46);
+                RoomAt(lower,"L-01","Lower flexible living",17,62);
+                RoomAt(lower,"L-06","Relocated technology room",30,67);
+                door.Activate(); doc.Regenerate();
+                Wall FindWall(string marker)
+                {
+                    var wall = new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>()
+                        .FirstOrDefault(w => w.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() == marker);
+                    if (wall is null) throw new InvalidOperationException("Door host wall not found: " + marker);
+                    return wall;
+                }
+                void PlaceDoor(string marker, XYZ point, Level level, string id)
+                {
+                    var instance = doc.Create.NewFamilyInstance(point, door, FindWall(marker), level, StructuralType.NonStructural);
+                    Tag(instance,id);
+                }
+                PlaceDoor("FH-C-SHELL-01", new XYZ(6,0,0), main, "D-MAIN-ENTRY");
+                PlaceDoor("FH-C-M-06-MAIN-BATH-01", new XYZ(34,27,0), main, "D-MAIN-BATH");
+                PlaceDoor("FH-C-L-02-MAIN-FLEX-01", new XYZ(6,31.5,0), main, "D-MAIN-FLEX");
+                PlaceDoor("FH-C-U-05-PRIMARY-BATH-01", new XYZ(5,52,0), upper, "D-PRIMARY-BATH");
+                PlaceDoor("FH-C-L-06-TECH-RELOCATED-01", new XYZ(30,63,0), lower, "D-TECH-SERVICE");
+                var schedule = ViewSchedule.CreateSchedule(doc, new ElementId(BuiltInCategory.OST_Rooms)); schedule.Name = "C Room Area Schedule";
+                var textType = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType)).FirstElementId();
+                TextNote.Create(doc, mainPlan.Id, new XYZ(14,20,0), "C route test: entry > living > kitchen > dining > main bath > main flex\nNominal doors only; clearances, swings and accessibility remain unverified.", textType);
+                var sketchPlane = SketchPlane.Create(doc, Plane.CreateByNormalAndOrigin(XYZ.BasisZ, XYZ.Zero));
+                void StudyLine(double x1, double y1, double x2, double y2)
+                { doc.Create.NewModelCurve(Line.CreateBound(new XYZ(x1,y1,0), new XYZ(x2,y2,0)), sketchPlane); }
+                void StudyBox(double x, double y, double width, double depth)
+                { StudyLine(x,y,x+width,y); StudyLine(x+width,y,x+width,y+depth); StudyLine(x+width,y+depth,x,y+depth); StudyLine(x,y+depth,x,y); }
+                StudyBox(26.5,7,8,4);     // appliance-free island
+                StudyLine(22,2,39,2);      // perimeter counter run
+                StudyBox(4,20,5,3);        // dining table
+                StudyBox(2,3,4,7);         // TV/service envelope
+                StudyBox(12,2,5,5);        // hearth envelope
+                StudyBox(7,10,6,3);        // loveseat envelope
+                StudyBox(31,28,5,1.8);     // main-bath vanity
+                StudyBox(30.5,35,5,3);     // main-bath shower
+                StudyBox(36,35,1.5,2.5);   // main-bath toilet
+                TextNote.Create(doc, mainPlan.Id, new XYZ(23,6,0), "8 x 4 island | appliance-free", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(2,19,0), "5 x 3 dining table | 4 ft porch lane target", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(2,2,0), "TV/service 4 x 7 | hearth 5 x 5 | furniture placeholders", textType);
+                TextNote.Create(doc, mainPlan.Id, new XYZ(30,27,0), "M-06 nominal fixtures | turn/approach/door checks pending", textType);
+                Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
+                t.Commit();
+            }
+            using (var scope = new StairsEditScope(doc, "C compact core native stairs"))
+            {
+                var stairsId = scope.Start(lower.Id, main.Id);
+                using (var t = new Transaction(doc, "C lower-to-main stair run"))
+                { t.Start(); StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(12.5,27,0), new XYZ(12.5,34,0)), StairsRunJustification.Center); t.Commit(); }
+                scope.Commit(new FailureRecorder());
+                using (var t = new Transaction(doc, "Tag C lower stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-LOWER-MAIN"); t.Commit(); }
+            }
+            using (var scope = new StairsEditScope(doc, "C compact core upper stairs"))
+            {
+                var stairsId = scope.Start(main.Id, upper.Id);
+                using (var t = new Transaction(doc, "C main-to-upper stair run"))
+                { t.Start(); StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(17,27,0), new XYZ(17,34,0)), StairsRunJustification.Center); t.Commit(); }
+                scope.Commit(new FailureRecorder());
+                using (var t = new Transaction(doc, "Tag C upper stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-MAIN-UPPER"); t.Commit(); }
+            }
+            string path = Path.Combine(output, "FH_Compact_Core_Study.rvt");
+            doc.SaveAs(path, new SaveAsOptions());
+            var manifest = new {
+                status = "generated by Revit 2027 command; native verification required",
+                study = "C compact core",
+                levels = new[] { new { id="FH-C-LEVEL-LOWER", elevation_ft=-5 }, new { id="FH-C-LEVEL-MAIN", elevation_ft=0 }, new { id="FH-C-LEVEL-UPPER", elevation_ft=5 } },
+                shell = new { main_width_ft=40, main_depth_ft=40, rear_width_ft=36, rear_depth_ft=32 },
+                lift_reservation = new { width_ft=8, depth_ft=8, product_selected=false },
+                rooms = new[] { "M-01","M-02","M-03","M-06","L-02","U-01","U-02","U-03","U-04","U-05","U-06","L-01","L-03","L-04","L-05","L-06","L-07" },
+                doors = new[] { "D-MAIN-ENTRY","D-MAIN-BATH","D-MAIN-FLEX","D-PRIMARY-BATH","D-TECH-SERVICE" },
+                unresolved = new[] { "wall overlap warnings", "door openings and swings", "stair headroom", "lift product fit", "full accessibility route", "structure and MEP coordination", "code review" },
+                source_rvt = path
+            };
+            File.WriteAllText(Path.Combine(output, "study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented=true }));
+            doc.Close(false);
+            data.Application.OpenAndActivateDocument(path);
+            TaskDialog.Show("Forever Home compact core", "C study saved separately. Levels, shell/core reservations and native stair runs only.\n" + path);
+            return Result.Succeeded;
+        }
+        catch (Exception ex) { message = ex.Message; return Result.Failed; }
+    }
 }
 
 [Transaction(TransactionMode.Manual)]
@@ -53,7 +239,7 @@ public class Command : IExternalCommand
         p.Set(id);
     }
 
-    static FamilySymbol MakeFamily(Autodesk.Revit.ApplicationServices.Application app,
+    internal static FamilySymbol MakeFamily(Autodesk.Revit.ApplicationServices.Application app,
         Document project, string output, string template, string name, double w, double d, double h)
     {
         string templates = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
