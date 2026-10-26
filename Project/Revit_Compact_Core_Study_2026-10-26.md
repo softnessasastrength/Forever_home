@@ -17,6 +17,8 @@ The next batch revision widens room-loop separations to at least 12 in centerlin
 
 The following batch also creates native `Room` elements with stable program IDs and dedicated main/upper/lower plan views. It builds successfully but remains **unexecuted** until a planned single Revit reload; expected checks are room area/identity creation plus the existing wall-warning count.
 
+The command now writes `study-manifest.json` beside each generated RVT with intended level IDs, shell/lift targets, program IDs and unresolved-review flags. The manifest code builds successfully; its host-generated contents remain unverified until the next Revit execution.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels
