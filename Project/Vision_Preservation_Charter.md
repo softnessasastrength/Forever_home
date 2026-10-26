@@ -29,3 +29,7 @@ Compare each material change using: original intent; proposed adaptation; trigge
 
 ## Authority
 Approved decisions supersede exploratory research; newer explicit decisions supersede conflicting older specifications. See [concept direction](../Decisions/2026-10-25_Concept_Direction.md), [room program](../Requirements/Room_Program.md), and [coordination register](Coordination_Register.md). Proposals remain proposals until accepted.
+
+## Owner-review use
+
+For the current review, read this charter first, then the [current owner review brief](Current_Owner_Review_Brief_2026-10-26.md), the [coordinated room program](../Requirements/Room_Program.md), and the [Compact-Core C checklist](Compact_Core_C_Execution_Checklist_2026-10-26.md). A review comment that changes character, room priority, accessibility intent or equipment preference must be recorded as an explicit tradeoff before it is reflected in the BIM or VR model.

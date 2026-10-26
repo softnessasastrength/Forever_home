@@ -48,6 +48,18 @@ The test should verify, in native Revit:
 
 This packet supports design coordination only. It is not a permit set, stamped design, engineering calculation, code certification or construction approval. Safety-critical open issues remain blockers to declaring design review complete.
 
+## Review sequence
+
+Use this packet in the following order:
+
+1. Confirm the vision-preservation charter and room-program intent.
+2. Review the current owner decisions and unresolved tradeoffs below.
+3. Inspect the Compact-Core C evidence and checklist.
+4. Record owner choices in the coordination register before changing geometry.
+5. Only then authorize another native-Revit test or an alternative comparison.
+
+The sequence is deliberately reversible: reviewing C does not select C, replace A/B, or authorize a geometry freeze.
+
 ## Source documents
 
 - [Vision-preservation charter](Vision_Preservation_Charter.md)

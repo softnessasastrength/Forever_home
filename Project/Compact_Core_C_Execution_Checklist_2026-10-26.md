@@ -9,18 +9,18 @@ The C study is ready for review only when each item has an evidence reference or
 
 | ID | Check | Evidence required | Status |
 |---|---|---|---|
-| C-01 | Native Revit source opens and is saved as a distinct study | RVT path, version, backup note | Open |
-| C-02 | Levels and shell/core reservations are present | Level names/elevations and plan screenshot | Open |
-| C-03 | Stairs are native objects and geometry is recorded | Riser/tread/run/headroom observations | Open |
-| C-04 | Future lift route is spatially reserved | Route plan/section with turns and clearances | Open |
-| C-05 | Kitchen, dining and living envelopes fit together | Dimensioned plan with island, aisles and seating | Open |
+| C-01 | Native Revit source opens and is saved as a distinct study | RVT path, version, backup note | Verified for 2027 study; backup/export handoff remains separate |
+| C-02 | Levels and shell/core reservations are present | Level names/elevations and plan screenshot | Partially verified; native levels, 40 x 40 ft shell and 8 x 8 ft reservation evidenced |
+| C-03 | Stairs are native objects and geometry is recorded | Riser/tread/run/headroom observations | Partially verified; native objects observed, headroom and finish buildup open |
+| C-04 | Future lift route is spatially reserved | Route plan/section with turns and clearances | Partially verified; reservation exists, product/route/clearances open |
+| C-05 | Kitchen, dining and living envelopes fit together | Dimensioned plan with island, aisles and seating | Partially verified; study markers exist, furnished clearance test open |
 | C-06 | Primary and Jack & Jill bath privacy is workable | Door matrix and furnished clearance check | Open |
-| C-07 | Main-bath proposal is identified separately from approved intent | Updated plan plus owner-review note | Open |
+| C-07 | Main-bath proposal is identified separately from approved intent | Updated plan plus owner-review note | Partially verified; proposal is labelled and remains owner decision |
 | C-08 | Technology area and wet routes are separated | Service-chase/stack diagram | Open |
 | C-09 | Furniture, delivery and maintenance routes are tested | Annotated route plan | Open |
-| C-10 | Warnings are recorded without being silently dismissed | Warning list and disposition | Open |
+| C-10 | Warnings are recorded without being silently dismissed | Warning list and disposition | Partially verified; 3 wall-overlap warnings recorded, cleanup open |
 | C-11 | Room/door/window schedules export and can be inspected | CSV/PDF or equivalent evidence | Open |
-| C-12 | Study limitations and unresolved safety issues are handed back | Verification note and coordination-register updates | Open |
+| C-12 | Study limitations and unresolved safety issues are handed back | Verification note and coordination-register updates | Partially verified; verification note exists, register updates remain |
 
 ## Execution order
 
