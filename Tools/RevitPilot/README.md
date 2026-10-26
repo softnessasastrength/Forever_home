@@ -8,6 +8,14 @@ Use a native Revit-hosted C# add-in to create a separate disposable project with
 
 The command writes a new timestamped run under ignored `.local/revit-pilot/runs/` on every invocation. It attempts IFC2x3 Coordination View 2.0, AutoCAD 2010 DWG, PDF and CSV exports separately, records failures, saves native RVT/RFA, and reopens both source and backup to verify fixture element identities. Comments carry stable fixture IDs; room Number carries its ID too. Native UniqueIds are retained in JSON/CSV. IFC identity retention is measured rather than assumed.
 
+The compact-core command is a separate study entry point. It writes `study-manifest.json` beside each generated RVT. Validate a host-generated manifest without opening Revit:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_compact_manifest.py .local/revit-pilot/compact-core/<run>/study-manifest.json
+```
+
+The validator checks the three C levels, 17 stable program IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags. It does not certify geometry, code, accessibility or product fit.
+
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
 ## Dependencies and build
