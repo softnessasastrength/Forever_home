@@ -7,6 +7,8 @@ The standalone `Forever Home Compact Study` add-in entry point ran in Revit 2027
 
 `.local/revit-pilot/compact-core/20261026T030517168Z/FH_Compact_Core_Study.rvt`
 
+After moving the lift reservation 6 in inward from the rear shell edge, a second run was saved at `.local/revit-pilot/compact-core/20261026T031040832Z/FH_Compact_Core_Study.rvt`. The same wall-overlap warning persisted, so the warning is not closed; the next cleanup should replace the overlapping wall-loop construction with non-overlapping boundary geometry.
+
 Created elements are intentionally limited to:
 
 - `C Lower -5 ft`, `C Main 0 ft`, `C Upper +5 ft` levels

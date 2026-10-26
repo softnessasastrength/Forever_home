@@ -61,7 +61,7 @@ public class CompactCoreCommand : IExternalCommand
                 void WallAt(XYZ a, XYZ b, string id) { var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, main.Id, 10, 0, false, false); Tag(w,id); }
                 var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
                 for (int i=0;i<4;i++) WallAt(shell[i],shell[(i+1)%4],$"FH-C-SHELL-{i+1:00}");
-                var core = new[] { new XYZ(21.5,32,0), new XYZ(29.5,32,0), new XYZ(29.5,40,0), new XYZ(21.5,40,0) };
+                var core = new[] { new XYZ(21.5,31.5,0), new XYZ(29.5,31.5,0), new XYZ(29.5,39.5,0), new XYZ(21.5,39.5,0) };
                 for (int i=0;i<4;i++) WallAt(core[i],core[(i+1)%4],$"FH-C-LIFT-RES-{i+1:00}");
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
