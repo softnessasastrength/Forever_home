@@ -1,0 +1,29 @@
+{
+  "status": "executed; review per-export results",
+  "utc": "2026-10-26T02:00:43.0644469Z",
+  "revit_version": "2027",
+  "revit_build": "27.3.0.28",
+  "fixture_only": true,
+  "element_count": 9,
+  "exports": {
+    "ifc2x3": {
+      "success": true
+    },
+    "dwg": {
+      "success": true
+    },
+    "pdf": {
+      "success": true
+    },
+    "csv": {
+      "success": true
+    }
+  },
+  "reopen_checks": {
+    "source": true,
+    "backup": true
+  },
+  "warnings": [],
+  "compatibility_2018": "not tested",
+  "design_or_code_validation": "not performed"
+}

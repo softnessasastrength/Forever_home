@@ -11,6 +11,8 @@ Design a cozy, traditional New England home faithful within reason to the origin
 ## Current status
 Concepts and research are documented, but no verified coordinated architectural floor plan, built Revit model, permit set, or finished VR walkthrough should be assumed to exist. Treat all untested exports, simulations, engineering and code compliance as pending.
 
+Revit automation milestone: a separate compatibility fixture has now executed in Revit 2027, with IFC2x3/DWG/PDF/CSV exports, independent IFC inspection, PDF visual review and native source/backup reopening. This is **not a house model**. Revit 2018 import remains pending on the owner's other computer. See [pilot verification](Revit_Pilot_Verification_2026-10-25.md); CO-013 remains open.
+
 ## Current high-level decisions
 - Modest traditional exterior, comfortable multi-level interior, future accessibility; site and final area TBD.
 - Kitchen concept: approximately 8×4 ft island with cream quartz and butcher-block section, sage/olive and warm ivory cabinets, honey oak and aged brass.

@@ -27,7 +27,7 @@ IfcOpenShell installation reference: https://docs.ifcopenshell.org/ifcopenshell-
 `requirements.lock.txt` pins the complete installed environment. `.venv`, caches and generated local files are excluded from Git. Native BIM and large assets need a deliberate storage strategy before addition to the repository.
 
 ## Still pending
-- Revit API/add-in execution, trial/account verification and representative 2027-to-2018 import tests.
+- [Revit API pilot](RevitPilot/README.md) executed successfully; [verification and limits](../Project/Revit_Pilot_Verification_2026-10-25.md). Exact trial/account expiry and representative 2018 import tests remain pending.
 - A coordinated building model, export manifest and actual model-derived schedules.
 - Unreal/OpenXR installation and headset selection; defer large engine setup until pipeline/hardware targets are selected.
 - No professional design/code validation is implied by software checks.
