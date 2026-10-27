@@ -21,11 +21,21 @@ def main() -> int:
             errors.append(f"missing or empty family: {filename}")
     rows = list(csv.DictReader(manifest.open(newline="", encoding="utf-8")))
     for room_id, filename in EXPECTED.items():
+        # Multiple alternatives may be logged for one room (e.g. the kitchen
+        # island). Link each quarantined source by its own filename rather
+        # than assuming one row per room ID.
         matches = [row for row in rows if row.get("room_id") == room_id and filename in (row.get("notes") or "")]
         if len(matches) != 1:
             errors.append(f"manifest linkage mismatch for {room_id}: {filename}")
-        elif matches[0].get("status") != "received" or matches[0].get("test_run") != "queued":
-            errors.append(f"manifest state is not received/queued for {room_id}")
+        else:
+            row = matches[0]
+            status = row.get("status")
+            if status == "received" and row.get("test_run") != "queued":
+                errors.append(f"received family is not queued for {room_id}: {filename}")
+            elif status == "tested-unapproved" and not (row.get("test_run") or "").strip():
+                errors.append(f"tested family has no evidence path for {room_id}: {filename}")
+            elif status not in {"received", "tested-unapproved"}:
+                errors.append(f"manifest state is not received or tested-unapproved for {room_id}: {filename}")
     if errors:
         for error in errors:
             print(f"FAIL: {error}")

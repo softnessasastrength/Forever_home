@@ -90,3 +90,25 @@ Acceptance criteria:
 - Diagnose Revit room-boundary warnings and leave physical walls, floors, stairs, lift, and safety-critical review items explicitly unresolved.
 
 Status: complete. Live endpoint diagnostics found and repaired vertical-edge omission and Revit boundary-tolerance issues; an earlier IFC attempt established that `Document.Export` must run inside an open transaction. Fresh Revit 2027.3 run `20261027T154924018Z` exercised the corrected generator and rolled-back IFC2X3 export. `.local/revit-pilot/selected-d/20261027T154924018Z/ifc-validation.json` passes all 23 checks; IFC2X3 schema issue count is 0, all 21 expected spaces have source-matched areas/levels, and exactly three expected storeys are present. The extra `Level 1` was removed by reusing the template datum at 0 ft; protected-level deletion is not attempted. Offline tests: 28 passed. All earlier failed runs remain preserved.
+
+## M13 — M-01 furnishings and hearth family placement
+
+Acceptance criteria:
+
+- Stage only sourced families with recorded provenance, host/category, version, type parameters, reuse status and test evidence; preserve originals and keep trials in ignored derivative models.
+- Place a family in the working D model only where its geometry, hosting, room boundary, selected orientation and documented use are compatible. Mark visual placeholders and unresolved product data clearly.
+- Verify the saved derivative by Revit API audit and, once a placement candidate is accepted, export/validate IFC without changing the validated room-space baseline.
+
+Status: M-01 placement remains gated. RevitCity Masonry Fireplace 18782 is in the ignored D derivative, but is an open fireplace rather than the owner-selected pellet stove; there is no coordinated hearth wall or orientation. Do not place it as an operating appliance. See `Revit/Family_Intake/RevitCity_Family_Intake.md`.
+
+## M14 — M-02 kitchen island family fit and IFC gate
+
+Acceptance criteria:
+
+- Use the selected-D `study.json` and documented kitchen specifications for island plan position, 8 x 4 ft footprint and 36 in counter height; do not infer perimeter-cabinet clearances from the room block alone.
+- Preserve the source family and validated D baseline; trial placements remain in the ignored furnishing-study derivative.
+- Revit audit and IFC export must share the exact saved-RVT SHA256. IFC2X3 schema validation, all 21 space IDs, three levels and non-annotation product geometry must pass.
+- The candidate IFC bounds must match the source-derived island plan bounds and documented 36 in counter height before the family is approved or retained in the working design.
+- Select a checked-in export manifest for the active study without temporarily overwriting the Compact-Core C configuration.
+
+Status: **not complete; all three tested families remain unapproved.** RevitCity 19967's preserved trial fails its IFC fit gate: its 8 x 4 ft surface sits about 1 in east/north of the source origin and exports at z=1.1401–1.1811 ft. RevitCity 21015 is incompatible with the appliance-free 8 x 4 ft concept (fixed 1000 mm width, integrated cooktop/oven and stools). A third family, RevitCity 7216, was tested in a separate saved copy `FH_Selected_D_Furnishing_Study_7216_Fit_Test_3`. Four unmodified 4 x 2 ft modules exactly match the documented plan footprint and origin. The matching Revit audit and Revit 2027.3 IFC2X3 export share RVT SHA256 `e226dfd3e69c1d79be41fcc60b712ae266a10b618ada2988d4d067f395f3eb1d`; IFC SHA256 is `fc25654b298b767dec08c7a2490d9b784b54b904c429f2d840b84d5ce893e901`. Independent IFC validation passes export/hash identity, IFC2X3 schema (0 issues), all 21 spaces, all three storeys, and non-annotation geometry decode. Its fit gate **fails**: overall IFC bounds match x=26.6667–34.6667 ft and y=6.6667–10.6667 ft, but z=0–2.875 ft (34.5 in), short of the documented 36 in counter height. The family type's stated 3 ft parameter does not describe the decoded geometry extent. The kitchen reference separately lists 34.5 in cabinet + 1.25 in counter as 36 in, an arithmetic mismatch of 0.25 in; the material-thickness/flush transition is left to shop drawings. No countertop geometry or tolerance has been invented to hide this discrepancy. Keep the derivative and failure report; do not transfer or approve the family. A multiple-manifest selector was added to Pilot.cs and compiled in an isolated build, but the live Revit session has the earlier DLL loaded; runtime selection after a controlled restart remains unverified. The successful isolated export used an ignored workspace copy of the existing manifest. Perimeter counters and 42 in clearances remain unmodeled, so no circulation fit is claimed. See the intake record, PROGRESS.md and `Tools/RevitPilot/validate_kitchen_island_ifc.py`.

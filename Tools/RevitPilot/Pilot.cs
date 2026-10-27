@@ -255,11 +255,34 @@ public class ManifestExportCommand : IExternalCommand
         {
             string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
             string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
-            string manifestPath = Path.Combine(root, "Tools", "RevitPilot", "export-manifest.json");
+            string manifestDirectory = Path.Combine(root, "Tools", "RevitPilot");
+            var matchingManifests = Directory.GetFiles(manifestDirectory, "export-manifest*.json")
+                .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
+                .Where(path =>
+                {
+                    using var candidate = JsonDocument.Parse(File.ReadAllText(path));
+                    var candidateConfig = candidate.RootElement;
+                    if (candidateConfig.GetProperty("schema").GetString() != "forever-home.revit-export-manifest.v1")
+                        throw new InvalidDataException("Unsupported export manifest schema: " + Path.GetFileName(path));
+                    string candidateTitle = candidateConfig.GetProperty("expected_document_title").GetString() ?? "";
+                    return string.Equals(doc.Title, candidateTitle, StringComparison.Ordinal);
+                }).ToList();
+            if (matchingManifests.Count != 1)
+            {
+                var availableTitles = Directory.GetFiles(manifestDirectory, "export-manifest*.json")
+                    .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
+                    .Select(path =>
+                    {
+                        using var candidate = JsonDocument.Parse(File.ReadAllText(path));
+                        return Path.GetFileName(path) + " => " +
+                            candidate.RootElement.GetProperty("expected_document_title").GetString();
+                    });
+                throw new InvalidOperationException(
+                    $"Expected exactly one export manifest for active document '{doc.Title}', found {matchingManifests.Count}. Available manifests: {string.Join("; ", availableTitles)}");
+            }
+            string manifestPath = matchingManifests[0];
             using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
             var config = manifest.RootElement;
-            if (config.GetProperty("schema").GetString() != "forever-home.revit-export-manifest.v1")
-                throw new InvalidDataException("Unsupported export manifest schema.");
             string expectedTitle = config.GetProperty("expected_document_title").GetString() ?? "";
             if (!string.Equals(doc.Title, expectedTitle, StringComparison.Ordinal))
                 throw new InvalidOperationException($"Manifest expects active document '{expectedTitle}', but the active document is '{doc.Title}'. No exports were run.");
@@ -419,7 +442,7 @@ public class ManifestExportCommand : IExternalCommand
                 document_title = doc.Title,
                 document_path_recorded = false,
                 model_fingerprint = modelFingerprint,
-                manifest = "Tools/RevitPilot/export-manifest.json",
+                manifest = Path.GetRelativePath(root, manifestPath).Replace('\\', '/'),
                 exports = results,
                 limitations = new[]
                 {
