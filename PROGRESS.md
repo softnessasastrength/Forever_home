@@ -139,3 +139,11 @@ Run generation, audit, Geometry QA and manifest exports in Revit 2027. The offli
 - The validator carries room-program variances as observations and states the study's limitations; area allowances are not treated as automatic geometry limits.
 - Validation: D schematic generator passes **30/30** checks and all SVGs parse; isolated RevitPilot .NET 10 build has **0 errors** and 2 existing MSBuild reference warnings; PowerShell coordinate/data-contract check passes; the complete offline RevitPilot Python suite passes **26 tests**, including D-validator missing-run/report and area guards; validator `py_compile` and CLI help pass. Python was used only for Revit tests and IFC tooling, not architectural fit.
 - No `.local/revit-pilot/selected-d/` run exists, so the validator has not been exercised against a D IFC and no D host/export success is claimed. Compact-Core C artifacts remain untouched.
+
+## Selected-D Revit host retry (2026-10-27)
+
+- Opened only the ignored `.local/revit-pilot/workspace-template.rvt`; Compact-Core C was not opened and the template was not modified.
+- The first live attempt surfaced an error from the stale add-in loaded before the shared-frame change: `KeyNotFoundException` while looking up legacy rectangle fields in `SelectedDCommand.AddRectangleEdges`. It produced no D output.
+- Closed Revit and rebuilt the registered `.local/revit-pilot/build/Release/net10.0-windows/RevitPilot.dll` through `Tools/RevitPilot/build.ps1`: 0 errors, 2 MSBuild reference-resolution warnings. The existing per-user add-in manifest points to that rebuilt path.
+- On restart, a Revit trial splash/WebView window is covering the add-in load prompt. The computer-use bridge reports the overlay is owned by `msedgewebview2.exe` rather than the Revit window and rejects clicks; no further UI action was possible. The approved Load Once selection remains authorized, but no new permission decision was inferred.
+- No `.local/revit-pilot/selected-d/` run exists. Host geometry generation, D IFC export and the independent D validator remain unverified. Next action: dismiss the Revit WebView/trial splash, accept the already-authorized Load Once prompt, open the disposable template and rerun **Build selected D space study**; then run the documented D IFC validator.
