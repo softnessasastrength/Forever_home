@@ -57,7 +57,7 @@ The plates use the template default `Floor 1` type (reported compound width: 1 f
 
 The first run's area field was invalid: a Revit built-in parameter returned 0 for all three plates. `Pilot.cs` now calculates profile area from the authored floor boundaries. The corrected host run reports lower/main/upper areas of 2,752 / 1,410 / 1,152 sq ft, and `validate_compact_manifest.py` passes for its manifest. The read-only API audit at `.local/revit-pilot/audits/20261026T223511518Z/` confirms 3 Floors, 17 enclosed rooms, 78 walls, 5 openings, 4 levels and 0 warnings. Geometry QA at `.local/revit-pilot/geometry-qa/20261026T223454799Z/` reports 0 heuristic issues. The review packet at `.local/revit-pilot/review-packets/20261026T223529514912Z/` passes all four existing checks. The QA heuristics do not inspect floor solids, stair/shaft fit or structure.
 
-The study exposes a major vertical coordination issue: the main-to-upper stair run ends at y=34 ft, but the upper floor plate starts at y=40 ft in the rear wing. The landing and upper circulation footprint remain unresolved. The roof is omitted because no roof form, pitch or site response has been approved. Floor edges, stair/lift openings, support, foundations, clearances, and assemblies still need native-model review; this is not a coordinated house model or code review.
+The study exposes a major vertical coordination issue: the main-to-upper stair run ends at y=34 ft, but the upper floor plate starts at y=40 ft in the rear wing. Independent IFC geometry inspection refines those bounds: stair flight `Assembled Stair:Stair:3987 Run 1` spans y=27.00–34.38 ft and the upper slab begins at y=40.00 ft, leaving a 5.62 ft plan gap between their extents. This confirms the stair does not reach the upper floor footprint in this export; the landing and upper circulation footprint remain unresolved. The roof is omitted because no roof form, pitch or site response has been approved. Floor edges, stair/lift openings, support, foundations, clearances, and assemblies still need native-model review; this is not a coordinated house model or code review.
 
 ## Corrected three-level floor-plate verification
 
@@ -69,4 +69,9 @@ On 2026-10-27, the updated read-only Geometry QA command was run in Revit 2027.3
 
 The offline review packet at `.local/revit-pilot/review-packets/20261027T004753549365Z/` reports all four recorded checks passing, including floor-aware Geometry QA. This closes the host-execution gap for the API inventory increment only. It does not validate floor solids/openings, stair landing/headroom, structure, accessibility, code compliance, exports or professional review.
 
+## Independent IFC geometry follow-up
+
+On 2026-10-27, IfcOpenShell decoded the exported main-to-upper `IfcStairFlight` geometry and upper `IfcSlab` from `.local/revit-pilot/exports/20261027T011547441Z/FH_Compact_Core_Study.ifc`. With world coordinates enabled, the stair flight spans x=15.50–18.50 ft, y=27.00–34.38 ft, z=0.00–4.75 ft; the upper slab spans x=0.00–36.00 ft, y=40.00–72.00 ft, z=4.00–5.00 ft. The 5.62 ft separation in plan confirms a missing connection in the exported study geometry. This is a bounding-box observation, not a landing/headroom or solid-intersection check; no model changes were made. A native Revit plan and section review should locate a viable landing and upper circulation connection while preserving the approved room program.
+
 The floor plates remain provisional: the default template `Floor 1` type is 1 ft thick and is not a selected assembly; floor-edge/opening fit, structural support, foundations, the upper stair landing, and roof remain unresolved. The earlier 4-level audit is superseded by this corrected audit.
+
