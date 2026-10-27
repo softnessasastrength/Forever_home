@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1100' height='440' viewBox='0 0 1100 440'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.title{font-size:21px;font-weight:bold}.body{font-size:16px}.note{font-size:14px;fill:#7a4d34}rect{fill:#f5efe2;stroke:#785f45;stroke-width:2}</style>
+<rect x='8' y='8' width='1084' height='424' rx='8'/>
+<text x='24' y='62' class='title'>Current selected-D test-block sizes</text>
+<text x='24' y='86' class='body'>Kitchen: 17.333 Ã— 16 ft (277.33 sf) | Dining: 11.333 Ã— 14 ft (158.67 sf)</text>
+<text x='24' y='111' class='body'>Kitchen chain: 13 ft 6 in minimum / 14 ft 6 in preferred; min-axis remainders 46 / 30 in.</text>
+<text x='24' y='136' class='body'>Dining table envelope: minimum 9 Ã— 11 ft; preferred 10 Ã— 12 ft.</text>
+<text x='24' y='161' class='body'>Table envelope fits: minimum True, preferred True. 8-ft half wall + 6-ft opening needs a 14-ft edge.</text>
+<text x='24' y='181' class='body'>Independent 36-in route to porch remains unverified.</text>
+<text x='24' y='204' class='note'>Comparison only. Room dimensions do not establish clear interior dimensions or a selected layout.</text>
+<text x='24' y='246' class='title'>Older DD-012 / kitchen-dining target sizes</text>
+<text x='24' y='270' class='body'>Kitchen: 14 Ã— 12 ft (168 sf) | Dining: 11 Ã— 10 ft (110 sf)</text>
+<text x='24' y='295' class='body'>Kitchen chain: 13 ft 6 in minimum / 14 ft 6 in preferred; min-axis remainders 6 / -18 in.</text>
+<text x='24' y='320' class='body'>Dining table envelope: minimum 9 Ã— 11 ft; preferred 10 Ã— 12 ft.</text>
+<text x='24' y='345' class='body'>Table envelope fits: minimum True, preferred False. 8-ft half wall + 6-ft opening needs a 14-ft edge.</text>
+<text x='24' y='365' class='body'>Independent 36-in route to porch remains unverified.</text>
+<text x='24' y='388' class='note'>Comparison only. Room dimensions do not establish clear interior dimensions or a selected layout.</text>
+<text x='24' y='418' class='note'>No candidate selected. No walls, doors, floors, service routes or construction geometry are implied.</text>
+</svg>

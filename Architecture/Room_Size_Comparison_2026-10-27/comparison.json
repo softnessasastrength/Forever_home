@@ -1,0 +1,173 @@
+﻿{
+    "schema":  "forever-home-room-size-comparison-v1",
+    "title":  "Direction D kitchen and dining room-size comparison",
+    "status":  "comparison only; neither room-size scheme is newly selected or adopted",
+    "generated_utc":  "2026-10-27T20:57:34Z",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "669312ea7f0df0c22909364ff79bf4a5bcef2bb576c0777609158fcfa38c4145",
+                                       "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Direction_D_Main_Floor_Design_Gates_2026-10-27.md":  "8fc27e9b618ac570672bfc93c8cf5366d7c2f915bb8b0e829b8ec83db3e95cef",
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                   },
+    "inputs":  {
+                   "island_ft":  [
+                                     8,
+                                     4
+                                 ],
+                   "perimeter_base_depth_in":  24,
+                   "minimum_aisle_in":  42,
+                   "preferred_aisle_in":  48,
+                   "half_wall_length_ft":  8,
+                   "half_wall_thickness_in":  6,
+                   "dining_table_in":  [
+                                           36,
+                                           60
+                                       ],
+                   "chair_pullout_min_in":  36,
+                   "chair_clearance_preferred_in":  42,
+                   "porch_path_min_in":  36
+               },
+    "schemes":  [
+                    {
+                        "id":  "selected_d_test_blocks",
+                        "name":  "Current selected-D test-block sizes",
+                        "kitchen":  {
+                                        "width_ft":  17.333,
+                                        "depth_ft":  16,
+                                        "area_sf":  277.33,
+                                        "clearance_screen":  {
+                                                                 "documented_opposing_counter_island_half_wall_chain_in":  162,
+                                                                 "chain_ft":  13.5,
+                                                                 "documented_preferred_aisle_chain_in":  174,
+                                                                 "preferred_chain_ft":  14.5,
+                                                                 "long_axis_in":  208,
+                                                                 "long_axis_remainder_in":  46,
+                                                                 "long_axis_preferred_remainder_in":  34,
+                                                                 "short_axis_in":  192,
+                                                                 "short_axis_remainder_in":  30,
+                                                                 "short_axis_preferred_remainder_in":  18,
+                                                                 "chain_fits_long_axis":  true,
+                                                                 "chain_fits_short_axis":  true,
+                                                                 "preferred_chain_fits_long_axis":  true,
+                                                                 "preferred_chain_fits_short_axis":  true,
+                                                                 "scope":  "Arithmetic envelope only; does not place/coordinate the half wall, appliance doors, stools, finishes, tolerance, or independent route."
+                                                             },
+                                        "half_wall_edge_screen":  {
+                                                                      "documented_half_wall_length_ft":  8,
+                                                                      "documented_minimum_opening_ft":  6,
+                                                                      "required_contiguous_edge_ft":  14,
+                                                                      "room_long_axis_ft":  17.333,
+                                                                      "edge_length_arithmetic_fits":  true,
+                                                                      "caveat":  "Only arithmetic along a potential shared edge; no living-room adjacency, wall position, bearing, finish or opening is established."
+                                                                  }
+                                    },
+                        "dining":  {
+                                       "width_ft":  11.333,
+                                       "depth_ft":  14,
+                                       "area_sf":  158.67,
+                                       "clearance_screen":  {
+                                                                "table_ft":  [
+                                                                                 3,
+                                                                                 5
+                                                                             ],
+                                                                "minimum_table_plus_chair_clearance_ft":  [
+                                                                                                              9,
+                                                                                                              11
+                                                                                                          ],
+                                                                "preferred_table_plus_chair_clearance_ft":  [
+                                                                                                                10,
+                                                                                                                12
+                                                                                                            ],
+                                                                "room_long_axis_ft":  14,
+                                                                "room_short_axis_ft":  11.333,
+                                                                "minimum_envelope_fits":  true,
+                                                                "preferred_envelope_fits":  true,
+                                                                "minimum_residual_ft":  [
+                                                                                            3,
+                                                                                            2.33
+                                                                                        ],
+                                                                "preferred_residual_ft":  [
+                                                                                              2,
+                                                                                              1.33
+                                                                                          ],
+                                                                "route_to_porch":  "Not verified: door location, leaf swing, table/chair occupancy and a connected 36-in path are not represented."
+                                                            }
+                                   }
+                    },
+                    {
+                        "id":  "older_documented_targets",
+                        "name":  "Older DD-012 / kitchen-dining target sizes",
+                        "kitchen":  {
+                                        "width_ft":  14,
+                                        "depth_ft":  12,
+                                        "area_sf":  168,
+                                        "clearance_screen":  {
+                                                                 "documented_opposing_counter_island_half_wall_chain_in":  162,
+                                                                 "chain_ft":  13.5,
+                                                                 "documented_preferred_aisle_chain_in":  174,
+                                                                 "preferred_chain_ft":  14.5,
+                                                                 "long_axis_in":  168,
+                                                                 "long_axis_remainder_in":  6,
+                                                                 "long_axis_preferred_remainder_in":  -6,
+                                                                 "short_axis_in":  144,
+                                                                 "short_axis_remainder_in":  -18,
+                                                                 "short_axis_preferred_remainder_in":  -30,
+                                                                 "chain_fits_long_axis":  true,
+                                                                 "chain_fits_short_axis":  false,
+                                                                 "preferred_chain_fits_long_axis":  false,
+                                                                 "preferred_chain_fits_short_axis":  false,
+                                                                 "scope":  "Arithmetic envelope only; does not place/coordinate the half wall, appliance doors, stools, finishes, tolerance, or independent route."
+                                                             },
+                                        "half_wall_edge_screen":  {
+                                                                      "documented_half_wall_length_ft":  8,
+                                                                      "documented_minimum_opening_ft":  6,
+                                                                      "required_contiguous_edge_ft":  14,
+                                                                      "room_long_axis_ft":  14,
+                                                                      "edge_length_arithmetic_fits":  true,
+                                                                      "caveat":  "Only arithmetic along a potential shared edge; no living-room adjacency, wall position, bearing, finish or opening is established."
+                                                                  }
+                                    },
+                        "dining":  {
+                                       "width_ft":  11,
+                                       "depth_ft":  10,
+                                       "area_sf":  110,
+                                       "clearance_screen":  {
+                                                                "table_ft":  [
+                                                                                 3,
+                                                                                 5
+                                                                             ],
+                                                                "minimum_table_plus_chair_clearance_ft":  [
+                                                                                                              9,
+                                                                                                              11
+                                                                                                          ],
+                                                                "preferred_table_plus_chair_clearance_ft":  [
+                                                                                                                10,
+                                                                                                                12
+                                                                                                            ],
+                                                                "room_long_axis_ft":  11,
+                                                                "room_short_axis_ft":  10,
+                                                                "minimum_envelope_fits":  true,
+                                                                "preferred_envelope_fits":  false,
+                                                                "minimum_residual_ft":  [
+                                                                                            0,
+                                                                                            1
+                                                                                        ],
+                                                                "preferred_residual_ft":  [
+                                                                                              -1,
+                                                                                              0
+                                                                                          ],
+                                                                "route_to_porch":  "Not verified: door location, leaf swing, table/chair occupancy and a connected 36-in path are not represented."
+                                                            }
+                                   }
+                    }
+                ],
+    "findings":  [
+                     "D dimensions are existing schematic room blocks, not approved clear interior sizes.",
+                     "Older dimensions are documented targets; the selected-D decision did not reconcile or supersede them explicitly.",
+                     "The 13 ft 6 in kitchen chain is a one-axis arithmetic screen from the older spec and D design-gate brief.",
+                     "Table-and-chair envelopes screen a centered table with clearance on each side; furniture position, hutch, doors and actual path are not modeled.",
+                     "The documented 8 ft half-wall length, 6 in thickness and 6 ft opening relationship have no assigned location/orientation; only their aggregate edge requirement can be compared.",
+                     "No house geometry, walls, doors, floors, appliances, plumbing, site orientation or structural specification is authored by this comparison."
+                 ]
+}

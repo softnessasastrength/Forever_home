@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1180' height='650' viewBox='0 0 1180 650'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:15px}.small{font-size:13px}.room{fill:#fffdf7;stroke:#423a31;stroke-width:3}.island{fill:#dbe4cf;stroke:#58654e;stroke-width:2}.min{fill:#edbda2;fill-opacity:.45;stroke:#a75c37;stroke-width:2;stroke-dasharray:7 5}.pref{fill:none;stroke:#45758a;stroke-width:2;stroke-dasharray:5 5}.warn{fill:#8e4f31;font-weight:bold}</style>
+<text x='40' y='42' class='h'>Older DD-012 / kitchen-dining target sizes â€” schematic envelope study</text>
+<text x='40' y='70' class='label'>Rooms drawn as independent test rectangles; their relationship to each other and the porch is deliberately not positioned.</text>
+<text x='80' y='105' class='h'>Kitchen 14 Ã— 12 ft</text>
+<rect x='80' y='135' width='392' height='336' class='room'/>
+<rect x='220' y='191' width='112' height='224' class='island'/>
+<text x='228' y='303' class='small'>8 Ã— 4 ft island</text>
+<text x='80' y='496' class='label'>Island shown as an illustrative placement. Main check: 13 ft 6 in chain = 14 ft long-axis remainder 6 in.</text>
+<text x='80' y='519' class='small'>Preferred 14 ft 6 in chain remainder: -6 in. 8-ft half wall + 6-ft clear opening needs a 14-ft shared edge.</text>
+<text x='622' y='105' class='h'>Dining 11 Ã— 10 ft</text>
+<rect x='622' y='135' width='308' height='280' class='room'/>
+<rect x='622' y='149' width='308' height='252' class='min'/>
+<rect x='608' y='135' width='336' height='280' class='pref'/>
+<rect x='706' y='233' width='140' height='84' class='island'/>
+<text x='630' y='440' class='label'>36 Ã— 60 in table; orange = min 9 Ã— 11 ft envelope (minimum fits); blue dash = preferred 10 Ã— 12 ft (preferred envelope exceeds room).</text>
+<text x='630' y='463' class='small'>Centered furniture is a test position, not a selection. Independent 36-in porch route is unverified.</text>
+<text x='40' y='610' class='warn'>COMPARISON ONLY â€” no room-size decision, adjacency, porch-door location, walls, openings, floors or buildable layout is implied.</text>
+</svg>
