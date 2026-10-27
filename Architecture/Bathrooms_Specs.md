@@ -15,8 +15,17 @@
 |---|---|---|---|---|---:|---:|
 | **Primary (master) full bath** | `Bath-Primary` | Primary bedroom only | Private full bath | **9'-0" × 10'-0"** | **90 sf** | **9'-0"** |
 | **Jack & Jill full bath** | `Bath-JackJill` | Two secondary bedrooms (see §2) | Shared full bath, dual entry | **10'-0" × 12'-0"** | **120 sf** | **9'-0"** |
+| **Main half bath (M-06)** | `Bath-Main-Half` | Main-floor public/arrival zone | Half bath (toilet + lavatory; no bathing fixture) | **TBD** | **TBD** | **TBD** |
 
-Both baths are **full baths** (toilet + lavatory + bathing). Guest powder on main floor (if provided later) is **out of scope** of this document.
+The primary and Jack & Jill baths remain **full baths** (toilet + lavatory + bathing). M-06 is a separate owner-selected main-floor half bath. Its scope is included here, but it has no assigned footprint or fixture/clearance layout. The dimensions and layouts in §§3–4 apply only to the full baths and must not be treated as M-06 criteria.
+
+### 1.1 Main-floor half bath M-06 — scope only
+
+- **Function:** toilet and lavatory; no bathing fixture.
+- **Selected test zone:** arrival / hall edge; pantry-side search window B is the first fit candidate. The selections narrow the search area but do not place the room. See [Direction D](../Decisions/2026-10-27_Selected_Architectural_Direction_D.md).
+- **Not assigned:** room position/footprint/area, toilet model, lavatory/casework model, fixture clearances, wall thickness, door/location/swing, approach route, ventilation, drain/vent/service route, or construction assemblies.
+- **Design gate:** establish product-specific plan envelopes and a cited M-06 clearance basis, then test door/hall circulation and a plausible services route. Review the applicable location-specific code once the building site is known. Do not borrow full-bath clearances as powder-room criteria.
+- This scope records the owner-selected program only; it is not an accessibility, code-compliance, plumbing-engineering, permit, or construction claim.
 
 ---
 

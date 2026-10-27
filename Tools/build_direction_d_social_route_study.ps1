@@ -300,7 +300,7 @@ $report['generated_utc']=[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
 New-Item -ItemType Directory -Force -Path $out|Out-Null
 Set-Content -LiteralPath (Join-Path $out 'study.json') -Value ($report|ConvertTo-Json -Depth 12) -Encoding UTF8
 $style="<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.counter{fill:#f1e9dc;stroke:#675a4b;stroke-width:1.5}.appliance{fill:#e7d8c6;fill-opacity:.72;stroke:#625242;stroke-width:1;stroke-dasharray:3 2}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style>"
-$svgBody=$svg -join "`n"
+$svgBody=$svg -join "`r`n"
 $svgDoc="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$svgBody</svg>"
 Set-Content -LiteralPath (Join-Path $out 'social-route-plan.svg') -Value $svgDoc -Encoding UTF8
 $svgB=@($svg|Where-Object{$_ -notmatch "class='chair'" -and $_ -notmatch "class='route'" -and $_ -notmatch "class='door'" -and $_ -notmatch '2 chairs west' -and $_ -notmatch '5-ft French-door pair reservation'})
@@ -312,7 +312,7 @@ $svgB+="<polyline points='$routePolyB' class='route'/>"
 $doorSvgXB=$originX+$doorXB*$scale
 $svgB+="<line x1='$doorSvgXB' y1='$doorSvgY' x2='$($doorSvgXB+$doorWidth*$scale)' y2='$doorSvgY' class='door'/>"
 $svgB+=TextSvg ($doorXB+0.1) ($routeY1-0.2) 'tiny' 'Option B: 5-ft pair shifted 1.5 ft east of dining centerline.'
-$svgDocB="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$($svgB -join "`n")</svg>"
+$svgDocB="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$($svgB -join "`r`n")</svg>"
 Set-Content -LiteralPath (Join-Path $out 'social-route-plan-offset-door.svg') -Value $svgDocB -Encoding UTF8
 $ps=16.0; $bx1=76.0; $bx2=620.0; $by=108.0
 $dinW=[double]$dining.w*$ps; $dinD=[double]$dining.d*$ps; $porchLocalY=14.5*$ps

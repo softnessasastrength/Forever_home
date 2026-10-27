@@ -338,14 +338,14 @@ if ($isBathFirstAdjacencyCandidate) {
     $m06FixtureFitTest = [ordered]@{
         status='Clearance-zone arrangement inside the unassigned B search window only; not a room or fixture-fit approval.'
         owner_selected_window='east_of_core'
-        source='Architecture/Bathrooms_Specs.md §§3.2–3.4; full-bath fixture references only, not powder-room requirements.'
+        source='Architecture/Bathrooms_Specs.md §§3.2–3.4; full-bath fixture references only, not M-06 requirements.'
         vanity_fixture_ft=$vanityFixture
         vanity_front_clearance_ft=$vanityFaceClearance
         vanity_front_clearance_reference='36 in preferred; 30 in minimum is also documented.'
         toilet_clearance_ft=$toiletClearance
         toilet_clearance_reference='30 in clear zone, 15 in each side of centerline, and 21 in clear in front.'
         clearances_overlap=$clearanceOverlap.overlap
-        omitted=@('M-06 room footprint and wall thickness','toilet body dimensions/product','door, swing and approach','vent/plumbing route','powder-room-specific owner requirements')
+        omitted=@('M-06 room footprint and wall thickness','toilet body dimensions/product','lavatory/casework product','door, swing and approach','vent/plumbing route','M-06-specific clearance basis')
         owner_approval='Not selected; reference geometry only.'
     }
 }
@@ -513,7 +513,10 @@ function New-PlanSvg([string]$level,[object[]]$rooms,[double]$width,[double]$dep
         $noteY+=8
     }
     $items.Add('</svg>')
-    return ($items -join "`n")
+    # Match the checked-in Windows UTF-8/BOM, CRLF SVG convention explicitly;
+    # otherwise Windows PowerShell leaves embedded LF bytes untouched and
+    # regenerating a plan dirties it solely through line endings.
+    return ($items -join "`r`n")
 }
 
 New-Item -ItemType Directory -Path $target -Force | Out-Null

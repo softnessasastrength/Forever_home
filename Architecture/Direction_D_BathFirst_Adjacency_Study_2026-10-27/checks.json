@@ -102,7 +102,7 @@
     "m06_fixture_clearance_study":  {
                                         "status":  "Clearance-zone arrangement inside the unassigned B search window only; not a room or fixture-fit approval.",
                                         "owner_selected_window":  "east_of_core",
-                                        "source":  "Architecture/Bathrooms_Specs.md §§3.2–3.4; full-bath fixture references only, not powder-room requirements.",
+                                        "source":  "Architecture/Bathrooms_Specs.md §§3.2–3.4; full-bath fixture references only, not M-06 requirements.",
                                         "vanity_fixture_ft":  {
                                                                   "x":  21.166666666666668,
                                                                   "y":  22.333333333333336,
@@ -127,9 +127,10 @@
                                         "omitted":  [
                                                         "M-06 room footprint and wall thickness",
                                                         "toilet body dimensions/product",
+                                                        "lavatory/casework product",
                                                         "door, swing and approach",
                                                         "vent/plumbing route",
-                                                        "powder-room-specific owner requirements"
+                                                        "M-06-specific clearance basis"
                                                     ],
                                         "owner_approval":  "Not selected; reference geometry only."
                                     },

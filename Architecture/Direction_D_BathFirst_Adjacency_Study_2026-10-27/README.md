@@ -27,7 +27,7 @@ The main-floor block dimensions and areas are retained. Coordinates are local sc
 
 The generator places reference clearance rectangles inside B using the bathroom specification's **full-bath** references: a 48 in × 22 in vanity, its preferred 36 in front clearance, and a 30 in wide × 21 in deep toilet-front clearance zone (15 in from the toilet centerline to each side obstruction). They fit within B without the two front-clearance rectangles overlapping.
 
-This is a fixture-clearance arrangement inside an unassigned search window, not an M-06 room or fixture fit. The bathroom specification explicitly excludes a powder-room design. The toilet body, powder-specific fixture choice, wall thickness, actual door and swing, approach route, ventilation, drain and service path remain unresolved. No bathroom area is assigned.
+This is a full-bath-reference clearance arrangement inside an unassigned search window, not an M-06 room or fixture fit. The owner has since selected M-06 as a main-floor half bath; its scope is now recorded separately in `Architecture/Bathrooms_Specs.md` §1.1. Those full-bath reference rectangles do not establish half-bath fixture or clearance requirements. Toilet and lavatory products, wall thickness, actual door and swing, approach route, ventilation, drain and service path remain unresolved. No bathroom area is assigned.
 
 ## Remaining tradeoffs
 
