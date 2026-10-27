@@ -33,6 +33,7 @@ class SelectedDStudyContractTests(unittest.TestCase):
             self.assertIn(f'TryGetProperty("{property_name}"', command)
         self.assertIn("AddRectangleEdges(room,horizontal,vertical,offsetX,offsetY)", command)
         self.assertIn("Rectangle(roomSpec,offsetX,offsetY)", command)
+        self.assertIn("if(ka==kb) return;", command)
         self.assertIn('Numbers(study.GetProperty("plan_frame_offsets_ft"),floor.key)', command)
         self.assertIn('"D-S1-LOWER-LANDING",r[0]+frame[0],r[1]+frame[1]', command)
 

@@ -785,6 +785,10 @@ public class SelectedDCommand : IExternalCommand
                     void AddSegment(double ax,double ay,double bx,double by)
                     {
                         string ka=PointKey(ax,ay),kb=PointKey(bx,by); string key=string.CompareOrdinal(ka,kb)<0?ka+"|"+kb:kb+"|"+ka;
+                        // Floating-point sums can create adjacent cut values such as 39.3333333333333
+                        // and 39.33333333333331. They are the same plan point at the adapter's
+                        // six-decimal coordinate precision; never pass their zero-length line to Revit.
+                        if(ka==kb) return;
                         if(!segments.ContainsKey(key)) segments.Add(key,(ax,ay,bx,by));
                     }
                     foreach(var edge in RectangleEdges(offsetX,offsetY,offsetX+floor.size[0],offsetY+floor.size[1]).Concat(roomSpecs.SelectMany(room=>{
@@ -837,7 +841,6 @@ public class SelectedDCommand : IExternalCommand
                 }
                 tx.Commit();
             }
-            doc.Regenerate();
             var actualRooms=new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>()
                 .Where(r=>r.Area>0).OrderBy(r=>r.Number,StringComparer.Ordinal).Select(r=>new{id=r.Number,name=r.Name,level=r.Level?.Name,area_sf=Math.Round(r.Area,2),status="room-bounded schematic only; no walls, doors, floors or stair solids authored"}).ToArray();
             var areaMismatches=rows.Where(expected=>{
@@ -845,7 +848,14 @@ public class SelectedDCommand : IExternalCommand
                 return actual is null||Math.Abs(actual.area_sf-Math.Round(expected.area,2))>0.1;
             }).ToArray();
             if(actualRooms.Length!=rows.Count||areaMismatches.Length>0)
+            {
+                var roomLines=new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_RoomSeparationLines).WhereElementIsNotElementType().ToElementIds();
+                using(var debug=File.Create(Path.Combine(output,"room-audit-debug.json")))
+                    JsonSerializer.Serialize(debug,new{expected_room_count=rows.Count,positive_area_room_count=actualRooms.Length,room_separation_line_count=roomLines.Count,room_areas=new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>().OrderBy(r=>r.Number,StringComparer.Ordinal).Select(r=>new{id=r.Number,name=r.Name,level=r.Level?.Name,area_sf=r.Area}).ToArray()},new JsonSerializerOptions{WriteIndented=true});
+                // Preserve a clearly labelled diagnostic copy so boundary failures can be inspected in Revit.
+                doc.SaveAs(Path.Combine(output,"diagnostic-unvalidated.rvt"),new SaveAsOptions());
                 throw new InvalidOperationException($"Revit room enclosure/area comparison failed: expected {rows.Count} positive-area rooms, got {actualRooms.Length}; mismatches: {string.Join(",",areaMismatches.Select(r=>r.id))}");
+            }
             string rvt=Path.Combine(output,"FH_Selected_D_Space_Study.rvt"); doc.SaveAs(rvt,new SaveAsOptions());
             var modelFingerprint=SavedModelIdentity.Capture(doc);
             using(var stream=File.Create(Path.Combine(output,"study-manifest.json")))
