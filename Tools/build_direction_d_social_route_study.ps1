@@ -28,12 +28,12 @@ $island = [ordered]@{
     w=[double]$islandSpec.island_ft[0]
     d=[double]$islandSpec.island_ft[1]
 }
-$table = [ordered]@{ x=([double]$dining.x+3.0); y=([double]$dining.y+4.8333333333); w=3.0; d=5.0 }
+$table = [ordered]@{ x=([double]$dining.x+3.5); y=([double]$dining.y+([double]$dining.d-5.0)/2); w=3.0; d=5.0 }
 $chairs = @(
-    [ordered]@{ id='D-chair-1'; x=($table.x-20.0/12); y=($table.y+0.25); w=20.0/12; d=1.5 },
-    [ordered]@{ id='D-chair-2'; x=($table.x-20.0/12); y=($table.y+1.75); w=20.0/12; d=1.5 },
-    [ordered]@{ id='D-chair-3'; x=($table.x-20.0/12); y=($table.y+3.25); w=20.0/12; d=1.5 },
-    [ordered]@{ id='D-chair-4'; x=($table.x+0.75); y=($table.y-20.0/12); w=1.5; d=20.0/12 }
+    [ordered]@{ id='D-chair-1'; x=($table.x-20.0/12); y=($table.y+0.75); w=20.0/12; d=1.5 },
+    [ordered]@{ id='D-chair-2'; x=($table.x-20.0/12); y=($table.y+2.75); w=20.0/12; d=1.5 },
+    [ordered]@{ id='D-chair-3'; x=($table.x+0.75); y=($table.y-20.0/12); w=1.5; d=20.0/12 },
+    [ordered]@{ id='D-chair-4'; x=($table.x+0.75); y=($table.y+$table.d); w=1.5; d=20.0/12 }
 )
 $chairsB = @(
     [ordered]@{ id='B-chair-1'; x=($table.x-20.0/12); y=($table.y+0.75); w=20.0/12; d=1.5 },
@@ -48,6 +48,7 @@ $doorXB = $doorCenterB-$doorWidth/2
 $diningEast = [double]$dining.x + [double]$dining.w
 $tableEast = [double]$table.x + [double]$table.w
 $tableSouth = [double]$table.y + [double]$table.d
+$tableClearancesFt=[ordered]@{west=[Math]::Round([double]$table.x-[double]$dining.x,3);east=[Math]::Round($diningEast-$tableEast,3);north=[Math]::Round([double]$table.y-[double]$dining.y,3);south=[Math]::Round(([double]$dining.y+[double]$dining.d)-$tableSouth,3)}
 $routeWidth = 3.0
 $routeX0 = $tableEast
 $routeX1 = $diningEast
@@ -76,7 +77,22 @@ function TextSvg([double]$x,[double]$y,[string]$class,[string]$label) {
     $sx=[Math]::Round($originX+$x*$scale,2); $sy=[Math]::Round($originY+$y*$scale,2)
     "<text x='$sx' y='$sy' class='$class'>$([System.Security.SecurityElement]::Escape($label))</text>"
 }
-
+function Get-MinRouteChairClearanceIn([object[]]$points,[object[]]$chairRects,[double]$routeWidthIn) {
+    $best=[double]::PositiveInfinity
+    for($i=0;$i -lt ($points.Count-1);$i++) {
+        $p0=$points[$i];$p1=$points[$i+1]
+        $segmentMinX=[Math]::Min([double]$p0[0],[double]$p1[0]);$segmentMaxX=[Math]::Max([double]$p0[0],[double]$p1[0])
+        $segmentMinY=[Math]::Min([double]$p0[1],[double]$p1[1]);$segmentMaxY=[Math]::Max([double]$p0[1],[double]$p1[1])
+        foreach($b in $chairRects){
+        $dx=0.0;$dy=0.0
+        if($segmentMaxX -lt $b.x){$dx=$b.x-$segmentMaxX}elseif(($b.x+$b.w) -lt $segmentMinX){$dx=$segmentMinX-($b.x+$b.w)}
+        if($segmentMaxY -lt $b.y){$dy=$b.y-$segmentMaxY}elseif(($b.y+$b.d) -lt $segmentMinY){$dy=$segmentMinY-($b.y+$b.d)}
+        $clearance=[Math]::Max(0,([Math]::Sqrt(($dx*$dx)+($dy*$dy))*12)-($routeWidthIn/2))
+        if($clearance -lt $best){$best=$clearance}
+        }
+    }
+    [Math]::Round($best,1)
+}
 $svg = @()
 $svg += "<text x='36' y='34' class='h'>Direction D social route and furnishing fit - unapproved schematic</text>"
 $svg += "<text x='36' y='56' class='note'>B-first adjacency candidate; existing room blocks retained. Dashed test shell is 40 x 42 ft, not an approved exterior wall line.</text>"
@@ -98,26 +114,31 @@ $svg += TextSvg ($kitchen.x+0.2) ($kitchen.y+15.3) 'small' '48 in post-seating r
 $svg += RectSvg $table.x $table.y $table.w $table.d 'table'
 $svg += TextSvg ($table.x+0.15) ($table.y+2.7) 'small' '36 x 60 table'
 foreach($c in $chairs){$svg += RectSvg $c.x $c.y $c.w $c.d 'chair'}
-$svg += TextSvg ($table.x-0.35) ($table.y-0.2) 'tiny' '3 chairs west + 1 north; proposal only'
+$svg += TextSvg ($table.x-0.35) ($table.y-0.2) 'tiny' '2 chairs west; one at each end'
 # Unoccupied east-side/south-end 36-in route, joining the island approach to a
 # centered 5-ft French-door reservation and the attached porch block.
 $routeStartX=$island.x+$island.w/2
 $routeStartY=$island.y+$island.d+$stoolAllowanceFt
 $routeJoinY=$dining.y
 $routePathX=$routeStartX
-$routeTurnY=$tableSouth+($routeWidth/2)
+$routeTurnY=$routeY1-0.5
 $routeDoorCenter=$dining.x+$dining.w/2
 $routeRects=@(
     [ordered]@{x=($routeStartX-$routeWidth/2);y=$routeStartY;w=$routeWidth;h=($routeTurnY-$routeStartY)},
-    [ordered]@{x=($routeDoorCenter-$routeWidth/2);y=$tableSouth;w=($routeStartX-$routeDoorCenter+$routeWidth);h=$routeWidth},
+    [ordered]@{x=($routeStartX-$routeWidth/2);y=($routeTurnY-$routeWidth/2);w=$routeWidth;h=$routeWidth},
+    [ordered]@{x=([Math]::Min($routeStartX,$routeDoorCenter)-$routeWidth/2);y=($routeTurnY-$routeWidth/2);w=([Math]::Abs($routeStartX-$routeDoorCenter)+$routeWidth);h=$routeWidth},
     [ordered]@{x=($routeDoorCenter-$routeWidth/2);y=$routeTurnY;w=$routeWidth;h=($routeY1-$routeTurnY)}
 )
 $routeRectsB=@(
     [ordered]@{x=($routeStartX-$routeWidth/2);y=$routeStartY;w=$routeWidth;h=($routeTurnY-$routeStartY)},
-    [ordered]@{x=($doorCenterB-$routeWidth/2);y=$tableSouth;w=($routeStartX-$doorCenterB+$routeWidth);h=$routeWidth},
+    [ordered]@{x=($routeStartX-$routeWidth/2);y=($routeTurnY-$routeWidth/2);w=$routeWidth;h=$routeWidth},
+    [ordered]@{x=([Math]::Min($routeStartX,$doorCenterB)-$routeWidth/2);y=($routeTurnY-$routeWidth/2);w=([Math]::Abs($routeStartX-$doorCenterB)+$routeWidth);h=$routeWidth},
     [ordered]@{x=($doorCenterB-$routeWidth/2);y=$routeTurnY;w=$routeWidth;h=($routeY1-$routeTurnY)}
 )
-$routeTurnY=$tableSouth+($routeWidth/2)
+$routePointsA=@(@($routeStartX,$routeStartY),@($routeStartX,$routeTurnY),@($routeDoorCenter,$routeTurnY),@($routeDoorCenter,$routeY1))
+$routePointsB=@(@($routeStartX,$routeStartY),@($routeStartX,$routeTurnY),@($doorCenterB,$routeTurnY),@($doorCenterB,$routeY1))
+$routeChairGapAIn=Get-MinRouteChairClearanceIn -points $routePointsA -chairRects $chairs -routeWidthIn ($routeWidth*12)
+$routeChairGapBIn=Get-MinRouteChairClearanceIn -points $routePointsB -chairRects $chairsB -routeWidthIn ($routeWidth*12)
 $routePoly="$(($routeStartX*$scale+$originX)),$(($routeStartY*$scale+$originY)) $(($routeStartX*$scale+$originX)),$(($routeJoinY*$scale+$originY)) $(($routePathX*$scale+$originX)),$(($routeTurnY*$scale+$originY)) $(($routeDoorCenter*$scale+$originX)),$(($routeTurnY*$scale+$originY)) $(($routeDoorCenter*$scale+$originX)),$(($routeY1*$scale+$originY))"
 $svg += "<polyline points='$routePoly' class='route'/>"
 $doorSvgX=$originX+$doorX*$scale; $doorSvgY=$originY+$routeY1*$scale
@@ -156,6 +177,7 @@ $report=[ordered]@{
         kitchen_id='M-02'; dining_id='M-03'; living_id='M-01'; entry_id='M-05'
         island_world_rect_ft=@([Math]::Round($island.x,3),[Math]::Round($island.y,3),$island.w,$island.d)
         dining_table_world_rect_ft=@([Math]::Round($table.x,3),[Math]::Round($table.y,3),$table.w,$table.d)
+        table_edge_clearances_ft=$tableClearancesFt
         dining_chairs_world_rects_ft=$chairs
         alternative_dining_chairs_world_rects_ft=$chairsB
         porch_world_rect_ft=@([Math]::Round($porch.x,3),[Math]::Round($porch.y,3),$porch.w,$porch.d)
@@ -172,6 +194,7 @@ $report=[ordered]@{
         post_seating_route_clear_ft=[Math]::Round($islandBackRouteClearFt,3)
         dining_east_clear_band_ft=[Math]::Round($eastRouteClearFt,3)
         dining_south_table_clear_ft=[Math]::Round($southTableClearFt,3)
+        dining_east_route_surplus_over_36in_ft=[Math]::Round($eastRouteClearFt-3.0,3)
         proposed_route_centerline_world_ft=@(@([Math]::Round($routeStartX,3),[Math]::Round($routeStartY,3)),@([Math]::Round($routePathX,3),[Math]::Round($routeJoinY,3)),@([Math]::Round($routePathX,3),[Math]::Round($routeTurnY,3)),@([Math]::Round($routeDoorCenter,3),[Math]::Round($routeTurnY,3)),@([Math]::Round($routeDoorCenter,3),[Math]::Round($routeY1,3)))
         route_corridor_rectangles_ft=$routeRects
         kitchen_living_shared_edge_ft=[Math]::Round($sharedEdge,3)
@@ -182,16 +205,22 @@ $report=[ordered]@{
     route=[ordered]@{
         target_width_in=36
         connected_by_plan_polyline=$true
-        dining_furniture_arrangement='Three chairs on the west long side and one at the north end; no chairs at the south end or east side. Deliberately asymmetric proposal to preserve the porch route.'
+        dining_furniture_arrangement='Two chairs on the west long side and one at each table end; no chairs on the route side.'
+        nearest_route_to_seated_chair_in=$routeChairGapAIn
+        route_to_chair_proxy_clearance_in=$routeChairGapAIn
+        clearance_method='Minimum axis-aligned route-centerline-segment to chair-rectangle distance minus half the 36-in route width; rounded to 0.1 in.'
         nominal_door_width_in=60
         clear_leaf_width_verified=$false
-        status='36-in geometric corridor passes the drawn table/chair proxies; actual door clear width, leaf swing, floor transition and furnished-use clearance require product/site review.'
+        status='36-in corridor clearance is measured from the route centerline to chair proxy rectangles, then reduced by half the corridor width. Actual door clear width, leaf swing, floor transition and furnished-use clearance require product/site review.'
     }
     second_route_scenario=[ordered]@{
         furniture_arrangement='Two chairs on the west long side, one north and one south; more conventional end seating, with all chairs clear of the east-side/south-turn route.'
         nominal_door_center_offset_from_dining_center_ft=1.5
         nominal_door_width_ft=$doorWidth
         clear_leaf_width_verified=$false
+        nearest_route_to_seated_chair_in=$routeChairGapBIn
+        route_to_chair_proxy_clearance_in=$routeChairGapBIn
+        clearance_method='Minimum axis-aligned route-centerline-segment to chair-rectangle distance minus half the 36-in route width; rounded to 0.1 in.'
         route_corridor_rectangles_ft=$routeRectsB
         route_centerline_world_ft=@(@([Math]::Round($routeStartX,3),[Math]::Round($routeStartY,3)),@([Math]::Round($routeStartX,3),[Math]::Round($routeTurnY,3)),@([Math]::Round($doorCenterB,3),[Math]::Round($routeTurnY,3)),@([Math]::Round($doorCenterB,3),[Math]::Round($routeY1,3)))
         tradeoff='The 5-ft nominal porch-door reservation shifts 1.5 ft east of the dining centerline; actual wall returns and visual alignment need review.'
@@ -199,8 +228,8 @@ $report=[ordered]@{
     tradeoffs=@(
         'Keeping pantry-side M-06 window B clear uses the bath-first candidate, which moves M-05 entry/hall to the east exterior wall; front orientation and approach are unresolved.',
         'Adding the documented porch directly to dining leaves only 4 in to the 42-ft test-outline edge. The test outline cannot be treated as a coordinated exterior wall line; porch footprint or main-shell envelope needs owner/site coordination.',
-        'The route-preserving four-seat table arrangement is asymmetric (three chairs on one long side, one at the north end). A conventional chair arrangement may obstruct the proposed route when occupied.',
-        'A second, more evenly seated option moves the nominal 5-ft French-door reservation 1.5 ft east of the dining centerline; verify wall returns and sightline before selection.',
+        'Both door options use the same four-chair proposal: two chairs along the west long side and one at each end. The door-centered option leaves less separation between the route corner and the occupied south-end chair.',
+        'The offset option moves the nominal 5-ft French-door reservation 1.5 ft east of the dining centerline; verify wall returns and sightline before selection.',
         'The 5-ft nominal French-door pair reservation is not evidence of a 36-in clear leaf; vendor clear opening and swing remain unresolved.',
         'The 8-ft half wall and remaining open span are only edge-length arithmetic; no wall segment location, height-bearing status or framing is defined.'
     )
@@ -208,12 +237,14 @@ $report=[ordered]@{
 
 $checks=@(
     @{id='source_candidate_room_blocks';pass=([Math]::Abs(($kitchen.w*$kitchen.d)-277.333333333) -lt 0.01 -and [Math]::Abs(($dining.w*$dining.d)-158.666666667) -lt 0.01)},
+    @{id='table_documented_preferred_clearances';pass=(@($tableClearancesFt.Values|Where-Object{$_ -lt 3.5}).Count -eq 0)},
     @{id='island_within_kitchen';pass=($island.x -ge $kitchen.x -and $island.y -ge $kitchen.y -and ($island.x+$island.w) -le ($kitchen.x+$kitchen.w) -and ($island.y+$island.d) -le ($kitchen.y+$kitchen.d))},
     @{id='island_work_aisle';pass=($islandFrontAisleIn -ge 42 -and $islandFrontAisleIn -ge 48 -and $islandEastClearIn -ge 42)},
     @{id='route_width_at_island_exit';pass=($islandBackRouteClearFt*12 -ge 36)},
     @{id='dining_route_around_furniture';pass=($eastRouteClearFt -ge 3 -and $southTableClearFt -ge 3 -and ($routePathX-$routeWidth/2) -ge $tableEast -and ($routePathX+$routeWidth/2) -le $diningEast -and $doorX -le ($dining.x+$dining.w/2) -and ($doorX+$doorWidth) -ge ($dining.x+$dining.w/2))},
-    @{id='route_corridor_avoids_table_and_seated_chairs';pass=(@($routeRects|Where-Object{($_.x -lt $tableEast) -and (($_.x+$_.w) -gt $table.x) -and ($_.y -lt $tableSouth) -and (($_.y+$_.h) -gt $table.y)}).Count -eq 0 -and @($routeRects|Where-Object{$seg=$_; @($chairs|Where-Object{($_.x -lt ($seg.x+$seg.w)) -and (($_.x+$_.w) -gt $seg.x) -and ($_.y -lt ($seg.y+$seg.h)) -and (($_.y+$_.h) -gt $seg.y)}).Count -gt 0}).Count -eq 0)},
-    @{id='offset_door_option_route_clear';pass=($doorXB -ge $dining.x -and ($doorXB+$doorWidth) -le $diningEast -and ($doorCenterB-$routeWidth/2) -ge $dining.x -and ($doorCenterB+$routeWidth/2) -le $diningEast -and ($routePathX-$routeWidth/2) -ge $tableEast -and @($routeRectsB|Where-Object{($_.x -lt $tableEast) -and (($_.x+$_.w) -gt $table.x) -and ($_.y -lt $tableSouth) -and (($_.y+$_.h) -gt $table.y)}).Count -eq 0 -and @($routeRectsB|Where-Object{$seg=$_; @($chairsB|Where-Object{($_.x -lt ($seg.x+$seg.w)) -and (($_.x+$_.w) -gt $seg.x) -and ($_.y -lt ($seg.y+$seg.h)) -and (($_.y+$_.h) -gt $seg.y)}).Count -gt 0}).Count -eq 0)},
+    @{id='centered_door_route_chair_clearance_measured';pass=($routeChairGapAIn -ge 0)},
+    @{id='offset_door_option_route_clear';pass=($doorXB -ge $dining.x -and ($doorXB+$doorWidth) -le $diningEast -and ($doorCenterB-$routeWidth/2) -ge $dining.x -and ($doorCenterB+$routeWidth/2) -le $diningEast -and ($routePathX-$routeWidth/2) -ge $tableEast -and $routeChairGapBIn -gt 0)},
+    @{id='offset_option_increases_seated_chair_route_gap';pass=($routeChairGapBIn -gt $routeChairGapAIn)},
     @{id='porch_adjacent_and_inside_test_extent';pass=([Math]::Abs($porch.y-($dining.y+$dining.d+0.5)) -lt 0.001 -and ($porchEast -le $shellW) -and ($porchSouth -le $shellD))},
     @{id='rotated_porch_same_documented_area';pass=($porchRotated.w*$porchRotated.d -eq $porch.w*$porch.d -and [Math]::Abs(($porchRotated.x+$porchRotated.w/2)-($dining.x+$dining.w/2)) -lt 0.001 -and [Math]::Abs($rotatedPorchOverflowIn-20) -lt 0.01)},
     @{id='bath_search_window_b_unassigned';pass=($bath.id -eq 'east_of_core' -and $candidate.selection.main_public_bath.footprint -eq 'TBD')},
@@ -226,11 +257,11 @@ $checksOut=[ordered]@{status=if(@($checks|Where-Object{-not $_.pass}).Count -eq 
 $report['generated_utc']=[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
 New-Item -ItemType Directory -Force -Path $out|Out-Null
 Set-Content -LiteralPath (Join-Path $out 'study.json') -Value ($report|ConvertTo-Json -Depth 12) -Encoding UTF8
-$style="<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:36;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style>"
+$style="<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style>"
 $svgBody=$svg -join "`n"
 $svgDoc="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$svgBody</svg>"
 Set-Content -LiteralPath (Join-Path $out 'social-route-plan.svg') -Value $svgDoc -Encoding UTF8
-$svgB=@($svg|Where-Object{$_ -notmatch "class='chair'" -and $_ -notmatch "class='route'" -and $_ -notmatch "class='door'" -and $_ -notmatch '3 chairs west' -and $_ -notmatch '5-ft French-door pair reservation'})
+$svgB=@($svg|Where-Object{$_ -notmatch "class='chair'" -and $_ -notmatch "class='route'" -and $_ -notmatch "class='door'" -and $_ -notmatch '2 chairs west' -and $_ -notmatch '5-ft French-door pair reservation'})
 $svgB[0]="<text x='36' y='34' class='h'>Direction D social route - Option B, even table seating / offset doors</text>"
 $svgB+=TextSvg ($table.x-0.35) ($table.y-0.2) 'tiny' '2 west + 1 north + 1 south; proposal only'
 foreach($c in $chairsB){$svgB+=RectSvg $c.x $c.y $c.w $c.d 'chair'}

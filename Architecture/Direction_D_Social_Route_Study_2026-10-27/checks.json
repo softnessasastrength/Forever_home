@@ -1,10 +1,14 @@
 ﻿{
     "status":  "pass",
-    "passed":  14,
-    "total":  14,
+    "passed":  16,
+    "total":  16,
     "checks":  [
                    {
                        "id":  "source_candidate_room_blocks",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "table_documented_preferred_clearances",
                        "pass":  true
                    },
                    {
@@ -24,11 +28,15 @@
                        "pass":  true
                    },
                    {
-                       "id":  "route_corridor_avoids_table_and_seated_chairs",
+                       "id":  "centered_door_route_chair_clearance_measured",
                        "pass":  true
                    },
                    {
                        "id":  "offset_door_option_route_clear",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "offset_option_increases_seated_chair_route_gap",
                        "pass":  true
                    },
                    {
