@@ -40,6 +40,17 @@ Acceptance criteria:
 
 Status: complete. Fresh Revit 2027 run `20261027T134407752Z`, audit `20261027T134515539Z`, Geometry QA `20261027T134534012Z`, export `20261027T134558841Z` and packet `20261027T134651811293Z` all carry or verify the exact saved model SHA256 `9292968088c9fe29c628a94991628e778fd6910c72350721283cc093f1b4ea1c`. IFC2X3 validation passes with 0 schema issues and 0 represented physical geometry decode failures; ten coordination findings remain open. The build succeeds with 0 errors; all 22 offline regression tests pass. Older reports remain intact as historical evidence.
 
+## M10 — Reconcile legacy Compact-Core IFC findings with selected direction D
+
+Acceptance criteria:
+
+- Keep every C RVT, IFC and export report intact and label its findings as C-study evidence.
+- Regenerate direction D from its documented source and verify the plan-level upper connector, room-block schedule and current room-program variances.
+- Do not transfer C room-area discrepancies to D, move D rooms to force preliminary ranges, or call a plan-block connector a native stair solution.
+- Keep CO-001 open until a D-specific Revit study and IFC are generated and checked; retain landing, floor-edge, headroom, guard, egress and structural review.
+
+Status: schematic triage complete. The D generator passed 28/28 checks and all three SVGs parsed. Its 4 x 4 ft upper connector reaches the rear-wing edge in plan. Current numeric room-program variances are M-01 living (240 sf vs 180–220), M-02 kitchen (277.33 sf vs 150–185), and M-03 dining (158.67 sf vs 90–120); the source explicitly retains these inherited test blocks pending a design tradeoff. The nine C room-area findings do not describe D and remain historical. Native Revit/IFC validation is pending under M7; no geometry was changed in this triage.
+
 ## Execution sequence
 
 1. Regenerate and inspect selected schematic D with `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1`.
