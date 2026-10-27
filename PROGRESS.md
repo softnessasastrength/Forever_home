@@ -18,10 +18,12 @@ Implement `PLAN.md` against `REQUIREMENTS.md`, complete each milestone, run its 
 
 ## Blocker
 
-`PLAN.md`, `REQUIREMENTS.md`, and `PROGRESS.md` were not present in the local repository when work began. GitHub's contents API returned 404 for the required `PLAN.md` and `REQUIREMENTS.md` on the working branch, `main`, and the three other repository branches (`chore/repository-project-scaffold`, `design/infrastructure-and-systems`, and `design/initialize-forever-home`). Without the plan milestones and acceptance criteria, milestone completion and required tests cannot be determined. This file records the blocker rather than inventing replacement criteria.
+`PLAN.md`, `REQUIREMENTS.md`, and `PROGRESS.md` were not present in the local repository when work began. GitHub's contents API returned 404 for the required `PLAN.md` and `REQUIREMENTS.md` on the working branch, `main`, and the three other repository branches (`chore/repository-project-scaffold`, `design/infrastructure-and-systems`, and `design/initialize-forever-home`). Exact-name Google Drive searches and a filename search across the neighboring GitHub workspaces also found no copies. Without the plan milestones and acceptance criteria, milestone completion and required tests cannot be determined. This file records the blocker rather than inventing replacement criteria.
 
 ## Next actions
 
 1. Obtain `PLAN.md` and `REQUIREMENTS.md` from the owner or their intended location.
 2. Map each plan milestone to requirement IDs and documented checks.
 3. Implement and verify milestones in sequence, recording outcomes and remaining issues here.
+
+>>>>>>> 7f058bd0ea5fd29db845fa89f9d4e9a50ef2b20a
