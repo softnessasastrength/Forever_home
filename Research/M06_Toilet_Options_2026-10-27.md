@@ -1,6 +1,6 @@
 # M-06 toilet research: residential and commercial-duty options
 
-**Status:** preliminary manufacturer-source comparison for the owner-selected main-floor half bath. No toilet is selected, purchased, or approved for code compliance. This research does not assign M-06 a footprint or service route.
+**Status:** preliminary manufacturer-source comparison for the owner-selected main-floor half bath. The owner selected the Champion PRO 610AA001.020 for first investigation only; no fixture is purchased or approved for code compliance. This research does not assign M-06 a footprint or service route.
 
 ## What “industrial” can mean here
 
@@ -15,9 +15,13 @@ There are three materially different choices. A strong residential gravity toile
 
 ## Preliminary recommendation
 
-Use a conventional residential toilet envelope as the first M-06 fit test, with the **Champion PRO** as the initial robust-residential comparator. Include the **Flushmate 503H** only as a pressure-assist comparison if its distinctly different operation is appealing. Do not start with a true flushometer bowl: its specified 25 gpm flowing demand is a substantial unresolved house-service input. If the owner wants the full commercial flushometer experience despite that, test it explicitly as an alternate and require a plumbing design check before carrying it forward.
+The owner selected the **Champion PRO** as the first toilet candidate to investigate, specifically the currently listed 610AA001.020. Include the **Flushmate 503H** only as a pressure-assist comparison if its distinctly different operation is appealing. Do not start with a true flushometer bowl: its specified 25 gpm flowing demand is a substantial unresolved house-service input. If the owner wants the full commercial flushometer experience despite that, test it explicitly as an alternate and require a plumbing design check before carrying it forward.
 
-This recommendation is for a schematic comparison only. The bathroom brief now records M-06 as a distinct half bath in §1.1 while retaining the two full-bath designs; it assigns no fixture or room dimensions. The sink selection, room/door arrangement, actual clearances, building location and applicable code, rough-in, water pressure/flow and drain/vent route are all open. A product listing's ADA or standards language is not proof that this room or house is accessible or compliant.
+### Exact-model geometry hold
+
+The current [American Standard page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring) identifies model **610AA001.020** and publishes 1.28 gpf, 12-in rough-in and 17-in seat height. Its linked [US specification PDF](https://lixil.cdn.celum.cloud/167631_as_us_bath_spec__211A%20(7076)_0_original.pdf) identifies the older **211AA.104** series and gives nominal dimensions of 30-1/4 × 19 × 30-7/8 in; the linked installation guide likewise identifies 211AA/211BA/211CA. These are not the same model identifiers. The earlier Champion PRO Right Height elongated configuration names bowl 3195A.101 and tank 4225A.104, but reviewed manufacturer material does not explicitly cross-reference those components to sales SKU 610AA001.020. The family drawing is therefore useful for a labelled comparison envelope only, **not** as verified exact-SKU geometry. The [LIXIL Pro predecessor listing](https://lixilpro.com/products/toilets/Floor-Standing-Toilets/Champion-PRO-Two-Piece-128-gpf-48-Lpf-Chair-Height-Elongated-Toilet-Less-Seat/White-%28020%29-211AA104020/) says no design files are currently available for that product; no exact-SKU Revit/CAD family or matching US dimension sheet was found. Do not represent a family proxy as the 610AA in B until the manufacturer confirms the mapping or supplies its exact drawing. The 12-in rough-in is a published installation input, but without a located wall and selected footprint it does not position the fixture.
+
+This recommendation is for a schematic comparison only. The bathroom brief now records M-06 as a distinct half bath in §1.1 while retaining the two full-bath designs; it assigns no fixture or room dimensions. The sink selection, room/door arrangement, actual clearances, building location and applicable code, rough-in location, water pressure/flow and drain/vent route are all open. A product listing's ADA or standards language is not proof that this room or house is accessible or compliant.
 
 ## Safety and evidence cautions
 
