@@ -48,6 +48,59 @@ $tech = $lower | Where-Object id -eq 'L-06'
 $tech.x = 52.0 / 3.0
 $tech.y = 2.0 / 3.0
 
+# D-core comparison, using B's existing 8-riser arithmetic, 11 in treads,
+# and 4 ft landing/flight reservations. The stair count and lift remain
+# unselected; these blocks test whether the plan can be made continuous.
+$coreXUpper = 103.0 / 6.0
+$coreXLower = 12.5
+$runLength = 7.0 * 11.0 / 12.0
+$mainDepth = 42.0
+$upperWingStartY = 42.0
+$upperRunStartY = [double]$source.alternatives.B.core.stair_run_y
+$upperRunEndY = $upperRunStartY + $runLength
+# Align the rear edges of the 32 ft lower wing and 42 ft main shell for this
+# comparison only. Lower local y=28..32 therefore maps to main y=38..42.
+# Both flights then share a 6 ft 5 in plan run from y=31 ft 7 in to y=38 ft,
+# with four-foot landings at each end. This is not a native section check.
+$lowerWingOffsetY = $mainDepth - 32.0
+$lowerLandingLocalY = 28.0
+$lowerLandingMainY = $lowerLandingLocalY + $lowerWingOffsetY
+$lowerRunStartY = [double]$source.alternatives.B.core.stair_run_y
+$lowerRunEndY = $lowerRunStartY + $runLength
+$lowerTopLandingY = [double]$source.alternatives.B.core.stair_front_y
+$liftX = $coreXUpper + 4.0
+$stairCore = [ordered]@{
+    status='proposed plan coordination using inherited B comparison dimensions; stair count and lift product remain unselected'
+    comparison_risers_per_flight=8
+    comparison_treads_per_flight=7
+    comparison_riser_in=7.5
+    comparison_tread_in=11
+    flight_and_landing_width_ft=4
+    landing_depth_ft=4
+    run_length_ft=$runLength
+    lower_to_main=[ordered]@{
+        x_ft=$coreXLower; lower_landing_ft=@($coreXLower,$lowerLandingMainY,4,4)
+        lower_landing_local_ft=@($coreXLower,$lowerLandingLocalY,4,4)
+        run_ft=@($coreXLower,$lowerRunStartY,4,$runLength)
+        main_landing_ft=@($coreXLower,$lowerTopLandingY,4,4)
+        main_floor_opening_ft=@($coreXLower,$lowerRunStartY,4,$runLength)
+    }
+    main_to_upper=[ordered]@{
+        x_ft=$coreXUpper; main_landing_ft=@($coreXUpper,([double]$source.alternatives.B.core.stair_front_y),4,4)
+        run_ft=@($coreXUpper,$upperRunStartY,4,$runLength)
+        upper_landing_ft=@($coreXUpper,$upperRunEndY,4,4)
+        main_floor_opening_ft=@($coreXUpper,$upperRunStartY,4,$runLength)
+        upper_floor_extension_ft=@($coreXUpper,$upperRunEndY,4,($upperWingStartY-$upperRunEndY))
+    }
+    lift=[ordered]@{origin_ft=@($liftX,34);width_ft=8;depth_ft=8;status='reservation only; product, pit, overrun and door side unselected'}
+    main_shell_rear_edge_openings=@(
+        @{use='lower-to-main stair passage';x_interval_ft=@($coreXLower,($coreXLower+4));elevation_scope='lower/main; wall opening size and fire separation TBD'},
+        @{use='upper stair bridge';x_interval_ft=@($coreXUpper,($coreXUpper+4));elevation_scope='main/upper; wall opening size and fire separation TBD'}
+    )
+    main_floor_profile_sf=[Math]::Round(40*42 - 8*$runLength - 64,3)
+    upper_floor_profile_sf=1152+4*($upperWingStartY-$upperRunEndY)
+}
+
 $study = [ordered]@{
     schema = 'forever-home.selected-house-schematic.v1'
     title = 'Selected direction D â€” lower flex room / B-sized main shell'
@@ -59,7 +112,7 @@ $study = [ordered]@{
         bedroom_flex_level = 'lower (A strategy)'
         main_shell = '40 x 42 ft (B test envelope)'
         levels = @(@{id='Lower FF'; elevation_ft=-5},@{id='Main FF'; elevation_ft=0},@{id='Upper FF'; elevation_ft=5})
-        vertical_core = [ordered]@{ comparison_risers_per_half_flight=8; comparison_riser_in=7.5; comparison_tread_in=11; floor_assembly_placeholder_in=15; lift_reservation_ft=@(8,8); status='B stair arithmetic is a comparison baseline, not a selected stair specification; landing, opening, final riser count, headroom, structure and product fit remain unresolved' }
+        vertical_core = [ordered]@{ comparison_risers_per_half_flight=8; comparison_riser_in=7.5; comparison_tread_in=11; floor_assembly_placeholder_in=15; lift_reservation_ft=@(8,8); status='B stair arithmetic is a comparison baseline, not a selected stair specification; see proposed connected D core plan; final riser count, wall openings, headroom, structure and product fit remain unresolved' }
         main_public_bath = [ordered]@{ type='half bath'; id='M-06'; footprint='TBD'; position='TBD'; status='owner-selected room type; size and exact location not yet specified' }
         suite_strategy = 'Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.'
         kitchen = [ordered]@{ perimeter_induction=$true; perimeter_sink_and_dishwasher=$true; island_appliance_free=$true; island_ft=@(8,4); island_origin_local_ft=@([double]$source.kitchen_test.island.x,[double]$source.kitchen_test.island.y); counter_finish='approximately 6 ft cream quartz + 2 ft butcher block'; plan_test='17 ft 4 in x 16 ft room block inherited from the documented fit test; area is not approved' }
@@ -70,12 +123,13 @@ $study = [ordered]@{
         upper = $upper
         lower = $lower
     }
+    stair_core_test = $stairCore
     upper_door_matrix = $upperDoors
     unplaced_program = @(
         @{id='M-06'; name='Main half bath'; reason='Owner selected room type; footprint and location TBD.'},
         @{id='M-05'; name='Coat storage / mudroom fit'; reason='Current source block is an entry/hall reservation; storage and garage arrival are not resolved.'},
         @{id='S-01'; name='Secure storage'; reason='Discreet conditioned location remains TBD; omitted from geometric blocks.'},
-        @{id='C-01'; name='Stair, landings and lift route'; reason='Core geometry and connected upper landing require a native section and plan iteration.'}
+        @{id='C-01'; name='Stair, landings and lift route'; reason='D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.'}
     )
 }
 
@@ -120,34 +174,60 @@ $planChecks['main_full_bath_and_main_flex_removed_from_selected_levels'] = -not 
 $planChecks['selected_lower_flex_room_present'] = [bool]$lowerFlex
 $planChecks['main_half_bath_not_given_invented_footprint'] = -not (@($main | Where-Object id -eq 'M-06').Count)
 $planChecks['documented_kitchen_fit_reference_checks_pass'] = [bool]($sourceChecks.checks.old_kitchen_12_ft_short_axis_fails_13_ft_counter_aisle_island_aisle_chain -and $sourceChecks.checks.new_kitchen_has_4_ft_work_aisle -and $sourceChecks.checks.new_kitchen_8_ft_island_has_end_clearances -and $sourceChecks.checks.kitchen_has_seat_allowance_plus_4_ft_route)
+$mainRoomBlocks = @($main | Where-Object kind -eq 'room')
+$coreRects = @(
+    @{id='lower_to_main_run'; x=$coreXLower; y=$lowerRunStartY; w=4.0; d=$runLength},
+    @{id='lower_to_main_main_landing'; x=$coreXLower; y=$lowerTopLandingY; w=4.0; d=4.0},
+    @{id='main_to_upper_main_landing'; x=$coreXUpper; y=[double]$source.alternatives.B.core.stair_front_y; w=4.0; d=4.0},
+    @{id='main_to_upper_run'; x=$coreXUpper; y=$upperRunStartY; w=4.0; d=$runLength},
+    @{id='main_to_upper_top_landing'; x=$coreXUpper; y=$upperRunEndY; w=4.0; d=4.0},
+    @{id='lift'; x=$liftX; y=34.0; w=8.0; d=8.0}
+)
+$coreRoomHits=[System.Collections.Generic.List[object]]::new()
+foreach($coreRect in $coreRects){foreach($room in $mainRoomBlocks){$hit=Test-Overlap $coreRect $room;if($hit.overlap){$coreRoomHits.Add(@{core=$coreRect.id;room=$room.id;overlap_sf=$hit.area_sf})}}}
+$upperHall = $upper | Where-Object id -eq 'C-UPPER'
+$planChecks['proposed_main_stair_and_lift_blocks_clear_placed_main_rooms'] = ($coreRoomHits.Count -eq 0)
+$planChecks['upper_landing_reaches_rear_wing_edge'] = ([Math]::Abs(($stairCore.main_to_upper.upper_landing_ft[1]+$stairCore.main_to_upper.upper_landing_ft[3])-$upperWingStartY) -lt 0.000001)
+$planChecks['upper_connector_aligns_with_upper_hall'] = ([Math]::Abs($stairCore.main_to_upper.upper_floor_extension_ft[0]-$upperHall.x) -lt 0.000001 -and [Math]::Abs($stairCore.main_to_upper.upper_floor_extension_ft[2]-$upperHall.w) -lt 0.000001)
+$planChecks['lift_west_face_aligns_with_upper_core_hall'] = ([Math]::Abs($stairCore.lift.origin_ft[0]-($upperHall.x+$upperHall.w)) -lt 0.000001)
+$planChecks['lower_stair_landing_and_run_are_edge_adjacent'] = ([Math]::Abs($stairCore.lower_to_main.lower_landing_ft[1]-($stairCore.lower_to_main.run_ft[1]+$stairCore.lower_to_main.run_ft[3])) -lt 0.000001)
+$planChecks['lower_plan_landing_maps_to_rear_aligned_wing_edge'] = ([Math]::Abs(($stairCore.lower_to_main.lower_landing_local_ft[1]+$lowerWingOffsetY)-$stairCore.lower_to_main.lower_landing_ft[1]) -lt 0.000001 -and [Math]::Abs(($stairCore.lower_to_main.lower_landing_local_ft[1]+4)-32) -lt 0.000001)
+$planChecks['main_stair_landings_and_run_are_edge_adjacent'] = ([Math]::Abs(($stairCore.main_to_upper.main_landing_ft[1]+$stairCore.main_to_upper.main_landing_ft[3])-$stairCore.main_to_upper.run_ft[1]) -lt 0.000001 -and [Math]::Abs(($stairCore.main_to_upper.run_ft[1]+$stairCore.main_to_upper.run_ft[3])-$stairCore.main_to_upper.upper_landing_ft[1]) -lt 0.000001)
+$planChecks['main_floor_profile_matches_two_stair_runs_and_lift_void'] = ([Math]::Abs($stairCore.main_floor_profile_sf-(40*42-2*4*$runLength-64)) -lt 0.001)
+$planChecks['main_stair_openings_match_flight_reservations'] = ([Math]::Abs($stairCore.lower_to_main.main_floor_opening_ft[1]-$stairCore.lower_to_main.run_ft[1]) -lt 0.000001 -and [Math]::Abs($stairCore.lower_to_main.main_floor_opening_ft[3]-$runLength) -lt 0.000001 -and [Math]::Abs($stairCore.main_to_upper.main_floor_opening_ft[3]-$runLength) -lt 0.000001)
+$planChecks['rear_edge_opening_intervals_have_two_ordered_endpoints'] = (@($stairCore.main_shell_rear_edge_openings | Where-Object {$_.x_interval_ft.Count -ne 2 -or $_.x_interval_ft[1] -le $_.x_interval_ft[0]}).Count -eq 0)
+$planChecks['upper_floor_profile_includes_only_4x4_connector_extension'] = ([Math]::Abs($stairCore.upper_floor_profile_sf-1168) -lt 0.000001)
 
 $findings = @(
-    @{id='D-OPEN-01'; priority='P1'; status='open'; issue='The selected 8-riser concept has no connected, checked upper landing in the existing native model; coordinate stair, floor opening, headroom and structure.'},
+    @{id='D-OPEN-01'; priority='P1'; status='open'; issue='D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure.'},
     @{id='D-OPEN-02'; priority='P1'; status='open'; issue='M-06 is now a half bath by owner direction, but no footprint or position is specified; keep out of geometry and area totals pending fit study.'},
     @{id='D-OPEN-03'; priority='P1'; status='open'; issue='Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved.'},
     @{id='D-OPEN-04'; priority='P2'; status='open'; issue='Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation.'},
-    @{id='D-OPEN-05'; priority='P2'; status='open'; issue='Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified.'}
+    @{id='D-OPEN-05'; priority='P2'; status='open'; issue='Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified.'},
+    @{id='D-OPEN-06'; priority='P1'; status='open'; issue='The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified.'}
 )
 $checks = [ordered]@{
     status = 'schematic geometry checks only; unresolved design items remain'
     checks = $planChecks
-    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null }
+    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
     room_block_overlaps = @($overlaps)
+    stair_core_room_block_overlaps = @($coreRoomHits)
     findings = $findings
     exclusions = @('Door swings and clear openings','Furniture-complete route checks','Stair/landing/headroom/guard/floor-edge coordination','Lift product fit','Structure, foundation, roof, site and code','Detailed MEP and kitchen appliance-open tests','Native Revit house model and IFC export for this design iteration')
 }
 
 function Xml-Escape([string]$text) { [System.Security.SecurityElement]::Escape($text) }
 function New-PlanSvg([string]$level,[object[]]$rooms,[double]$width,[double]$depth,[string[]]$notes) {
-    $scale=10; $left=54; $top=64; $canvasWidth=[Math]::Max(660,($width*$scale)+$left+310); $canvasHeight=($depth*$scale)+$top+75
+    $scale=10; $left=54; $top=64; $extraFront=if($level -eq 'upper'){4.0}else{0.0}; $canvasWidth=[Math]::Max(660,($width*$scale)+$left+310); $canvasHeight=(($depth+$extraFront)*$scale)+$top+75
     $items=[System.Collections.Generic.List[string]]::new()
     $items.Add("<svg xmlns=`"http://www.w3.org/2000/svg`" width=`"$canvasWidth`" height=`"$canvasHeight`" viewBox=`"0 0 $canvasWidth $canvasHeight`">")
-    $items.Add('<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.header{font-size:12px;fill:#6b6257}</style>')
+    $items.Add('<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.header{font-size:12px;fill:#6b6257}</style>')
     $items.Add(('<text class="title" x="{0}" y="28">D - {1} plan - schematic room blocks</text>' -f $left,$level))
     $items.Add(('<text class="header" x="{0}" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>' -f $left))
-    $items.Add("<rect class=`"shell`" x=`"$left`" y=`"$top`" width=`"$($width*$scale)`" height=`"$($depth*$scale)`" />")
+    $shellTop=$top+$extraFront*$scale
+    $items.Add("<rect class=`"shell`" x=`"$left`" y=`"$shellTop`" width=`"$($width*$scale)`" height=`"$($depth*$scale)`" />")
     foreach ($room in $rooms) {
-        $x=$left+$room.x*$scale; $y=$top+($depth-$room.y-$room.d)*$scale; $w=$room.w*$scale; $h=$room.d*$scale
+        $x=$left+$room.x*$scale; $y=$top+($depth+$extraFront-$room.y-$room.d)*$scale; $w=$room.w*$scale; $h=$room.d*$scale
         $class=if($room.kind -eq 'circulation'){'circulation'}else{'room'}
         $items.Add("<rect class=`"$class`" x=`"$([Math]::Round($x,2))`" y=`"$([Math]::Round($y,2))`" width=`"$([Math]::Round($w,2))`" height=`"$([Math]::Round($h,2))`" />")
         $lines=@($room.id,$room.name,"$([Math]::Round($room.w,2)) x $([Math]::Round($room.d,2)) ft")
@@ -161,6 +241,25 @@ function New-PlanSvg([string]$level,[object[]]$rooms,[double]$width,[double]$dep
         $iy=$top+($depth-$kitchen.y-$k.island_origin_local_ft[1]-$k.island_ft[1])*$scale
         $items.Add("<rect class=`"island`" x=`"$([Math]::Round($ix,2))`" y=`"$([Math]::Round($iy,2))`" width=`"$($k.island_ft[0]*$scale)`" height=`"$($k.island_ft[1]*$scale)`" />")
         $items.Add(('<text class="label" x="{0}" y="{1}">8 x 4 ft island test</text>' -f [Math]::Round($ix+4,2),[Math]::Round($iy+23,2)))
+    }
+    $coreBoxes=@()
+    if($level -eq 'main'){
+        $coreBoxes=@(
+            @{id='S1 lower-to-main main landing'; rect=$stairCore.lower_to_main.main_landing_ft},
+            @{id='S1 lower-to-main run'; rect=$stairCore.lower_to_main.main_floor_opening_ft},
+            @{id='S2 main-to-upper landing'; rect=$stairCore.main_to_upper.main_landing_ft},
+            @{id='S2 upper flight and opening'; rect=$stairCore.main_to_upper.main_floor_opening_ft},
+            @{id='8 x 8 ft lift reservation'; rect=@($liftX,34,8,8)}
+        )
+    }elseif($level -eq 'lower'){
+        $coreBoxes=@(@{id='S1 lower landing';rect=$stairCore.lower_to_main.lower_landing_local_ft})
+    }elseif($level -eq 'upper'){
+        $coreBoxes=@(@{id='S2 upper landing bridge';rect=@($coreXUpper,-4,4,4)})
+    }
+    foreach($box in $coreBoxes){
+        $bx=$left+$box.rect[0]*$scale; $by=$top+($depth+$extraFront-$box.rect[1]-$box.rect[3])*$scale
+        $items.Add("<rect class=`"core`" x=`"$([Math]::Round($bx,2))`" y=`"$([Math]::Round($by,2))`" width=`"$($box.rect[2]*$scale)`" height=`"$($box.rect[3]*$scale)`" />")
+        $items.Add(('<text class="small" x="{0}" y="{1}">{2}</text>' -f [Math]::Round($bx+3,2),[Math]::Round($by+13,2),(Xml-Escape $box.id)))
     }
     $noteX=$left+$width*$scale+22; $noteY=$top+12
     foreach ($note in $notes) {
@@ -179,9 +278,9 @@ $checks | ConvertTo-Json -Depth 40 | Set-Content -LiteralPath $checksPathOut -En
 $csvRows=foreach($level in @('main','upper','lower')) { foreach($room in $study.plans[$level]) { [pscustomobject]@{level=$level;id=$room.id;name=$room.name;kind=$room.kind;width_ft=$room.w;depth_ft=$room.d;area_sf=[Math]::Round($room.w*$room.d,2)} } }
 $csvRows | Export-Csv -LiteralPath (Join-Path $target 'room-area.csv') -NoTypeInformation -Encoding utf8
 $notesByLevel=@{
-    main=@('Main shell test: 40 x 42 ft.','M-06 half bath: size and location TBD; not drawn.','Stair/lift core and connected landing: review gate, not fitted.','Kitchen block retains the prior fit-study size; not approved.')
-    upper=@('Rear upper plate: 36 x 32 ft.','Primary bath private to U-01.','Jack-and-Jill serves U-03 and U-04.','Doors, privacy boundary, stair landing and headroom need review.')
-    lower=@("Rear lower plate: 36 x 32 ft. Lower L-02 is the A-strategy block.","L-06 moved outside upper U-06 projection; overlap = $($techStack.area_sf) sf.","L-02/U-06 projected overlap = $($wetStack.area_sf) sf after the upper-room adjustment.",'Secure storage is not located in this study.')
+    main=@('Main shell test: 40 x 42 ft.','S1/S2 and lift are comparison blocks; wall openings and native landings TBD.','M-06 half bath: size and location TBD; not drawn.','Kitchen block retains the prior fit-study size; not approved.')
+    upper=@('Rear upper plate: 36 x 32 ft.','Dashed 4 x 4 ft connector joins S2 landing to shell edge.','Primary bath private to U-01; J&J serves U-03/U-04.','Native stair, wall opening, headroom and structure remain open.')
+    lower=@("Rear lower plate: 36 x 32 ft. Lower L-02 is the A-strategy block.",'S1 lower landing touches the shared shell edge; opening offset is a native review item.',"L-06 moved outside upper U-06 projection; overlap = $($techStack.area_sf) sf.",'Secure storage is not located in this study.')
 }
 foreach($level in @('main','upper','lower')) {
     $wh=if($level -eq 'main'){@(40,42)}else{@(36,32)}

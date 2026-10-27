@@ -41,6 +41,12 @@ The upper plan keeps the existing primary and hybrid suite relationships. To kee
 
 The 8 x 8 ft lower technology-room test block moves to the front/middle service area, outside the upper Jack-and-Jill projection. Its access, ventilation, equipment replacement route and acoustic separation are not demonstrated. Secure storage remains unlocated.
 
+## Proposed stair and lift plan coordination
+
+The latest D iteration lays out two comparison flights using B's inherited 8-riser arithmetic, 7 treads at 11 in and 4 ft landings. In plan, the lower-to-main route uses a lower landing at local y=28–32 ft, a 6 ft 5 in run and a main landing at y=27 ft 7 in–31 ft 7 in. For this comparison, rear edges of the 32 ft rear wing and 42 ft main shell are aligned; this maps the lower landing to main-plan y=38–42 ft. The main-to-upper run uses the same run length, with its upper landing extended 4 x 4 ft beyond the 36 x 32 ft upper wing to meet the main-shell rear edge and hall. These are schematic placements, not selected stair specifications or a verified section. Shared-wall openings, clearances, floor-edge support, headroom, guards, egress and structure remain unresolved.
+
+The 8 x 8 ft lift reservation is shifted 4 in west to align its west face with the upper core hall. Its door side, product dimensions, maneuvering clearances, pit, overrun and lower-level connection are unresolved. The shift and stair blocks are comparison geometry only.
+
 ## Measured block schedule
 
 The current placed room-block totals are:
@@ -48,20 +54,20 @@ The current placed room-block totals are:
 | Level | Placed blocks | Net room blocks | Test shell plate |
 |---|---:|---:|---:|
 | Main | 5 | 763.0 sf | 1,680 sf |
-| Upper | 6 | 759.3 sf | 1,152 sf |
+| Upper | 6 | 759.3 sf | 1,168 sf including the proposed 4 x 4 ft connector |
 | Lower | 7 | 795.1 sf | 1,152 sf |
 
-Circulation blocks are not included in net room blocks. M-06, secure storage, coat/mudroom fit, stair/lift core geometry and the garage-to-house transition are unplaced. The totals therefore do not imply that the remaining shell area is adequate or well used. Garage (576 sf) and porch (120 sf) remain separate schematic allowances.
+Circulation blocks are not included in net room blocks. M-06, secure storage, coat/mudroom fit and the garage-to-house transition are unplaced. Stair/lift reservations are drawn separately from room blocks; the main floor test profile after two 4 ft wide stair-run openings and the 8 x 8 ft lift opening is 1,564.7 sf, while the upper floor test profile includes the 16 sf connector. These profiles are not approved gross or conditioned areas. The totals do not imply that the remaining shell area is adequate or well used. Garage (576 sf) and porch (120 sf) remain separate schematic allowances.
 
 ## Verification
 
-`checks.json` records 16 passing checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; and the existing kitchen fit-reference checks. All three SVG plans parse as XML.
+`checks.json` records 27 passing checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; and floor-profile arithmetic. All three SVG plans parse as XML.
 
-These checks validate rectangles and arithmetic only. They do not validate doors, continuous routes, furnishings, stair geometry, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
+These checks validate rectangles, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
 
 ## Open design work
 
-1. Connect a stair scheme with a real upper landing and coordinated floor opening; choose the riser count and verify headroom, guards and structure in section.
+1. Reconcile the plan comparison with actual native Revit wall openings, stair runs, landings, floor edges and sections; then review headroom, guards, egress and structure. The 8-riser arithmetic remains unselected.
 2. Fit and locate M-06 half bath without assuming an area; resolve drain/service routing.
 3. Test M-02 appliances open, perimeter work zones, island seating and routes; revisit its 277.3 sf test block against the room program.
 4. Fit coat storage, garage arrival, secure storage, porch thresholds, lower-level exterior entry and the complete future-access route.

@@ -37,7 +37,7 @@
                                                                         8,
                                                                         8
                                                                     ],
-                                            "status":  "B stair arithmetic is a comparison baseline, not a selected stair specification; landing, opening, final riser count, headroom, structure and product fit remain unresolved"
+                                            "status":  "B stair arithmetic is a comparison baseline, not a selected stair specification; see proposed connected D core plan; final riser count, wall openings, headroom, structure and product fit remain unresolved"
                                         },
                       "main_public_bath":  {
                                                "type":  "half bath",
@@ -279,6 +279,111 @@
                                 }
                             ]
               },
+    "stair_core_test":  {
+                            "status":  "proposed plan coordination using inherited B comparison dimensions; stair count and lift product remain unselected",
+                            "comparison_risers_per_flight":  8,
+                            "comparison_treads_per_flight":  7,
+                            "comparison_riser_in":  7.5,
+                            "comparison_tread_in":  11,
+                            "flight_and_landing_width_ft":  4,
+                            "landing_depth_ft":  4,
+                            "run_length_ft":  6.416666666666667,
+                            "lower_to_main":  {
+                                                  "x_ft":  12.5,
+                                                  "lower_landing_ft":  [
+                                                                           12.5,
+                                                                           38,
+                                                                           4,
+                                                                           4
+                                                                       ],
+                                                  "lower_landing_local_ft":  [
+                                                                                 12.5,
+                                                                                 28,
+                                                                                 4,
+                                                                                 4
+                                                                             ],
+                                                  "run_ft":  [
+                                                                 12.5,
+                                                                 31.583333333333332,
+                                                                 4,
+                                                                 6.416666666666667
+                                                             ],
+                                                  "main_landing_ft":  [
+                                                                          12.5,
+                                                                          27.583333333333332,
+                                                                          4,
+                                                                          4
+                                                                      ],
+                                                  "main_floor_opening_ft":  [
+                                                                                12.5,
+                                                                                31.583333333333332,
+                                                                                4,
+                                                                                6.416666666666667
+                                                                            ]
+                                              },
+                            "main_to_upper":  {
+                                                  "x_ft":  17.166666666666668,
+                                                  "main_landing_ft":  [
+                                                                          17.166666666666668,
+                                                                          27.583333333333332,
+                                                                          4,
+                                                                          4
+                                                                      ],
+                                                  "run_ft":  [
+                                                                 17.166666666666668,
+                                                                 31.583333333333332,
+                                                                 4,
+                                                                 6.416666666666667
+                                                             ],
+                                                  "upper_landing_ft":  [
+                                                                           17.166666666666668,
+                                                                           38,
+                                                                           4,
+                                                                           4
+                                                                       ],
+                                                  "main_floor_opening_ft":  [
+                                                                                17.166666666666668,
+                                                                                31.583333333333332,
+                                                                                4,
+                                                                                6.416666666666667
+                                                                            ],
+                                                  "upper_floor_extension_ft":  [
+                                                                                   17.166666666666668,
+                                                                                   38,
+                                                                                   4,
+                                                                                   4
+                                                                               ]
+                                              },
+                            "lift":  {
+                                         "origin_ft":  [
+                                                           21.166666666666668,
+                                                           34
+                                                       ],
+                                         "width_ft":  8,
+                                         "depth_ft":  8,
+                                         "status":  "reservation only; product, pit, overrun and door side unselected"
+                                     },
+                            "main_shell_rear_edge_openings":  [
+                                                                  {
+                                                                      "x_interval_ft":  [
+                                                                                            12.5,
+                                                                                            16.5
+                                                                                        ],
+                                                                      "elevation_scope":  "lower/main; wall opening size and fire separation TBD",
+                                                                      "use":  "lower-to-main stair passage"
+                                                                  },
+                                                                  {
+                                                                      "x_interval_ft":  [
+                                                                                            17.166666666666668,
+                                                                                            21.166666666666668
+                                                                                        ],
+                                                                      "elevation_scope":  "main/upper; wall opening size and fire separation TBD",
+                                                                      "use":  "upper stair bridge"
+                                                                  }
+                                                              ],
+                            "main_floor_profile_sf":  1564.667,
+                            "upper_floor_profile_sf":  1168
+                        },
     "upper_door_matrix":  [
                               {
                                   "id":  "D-U01",
@@ -379,7 +484,7 @@
                                  "id":  "S-01"
                              },
                              {
-                                 "reason":  "Core geometry and connected upper landing require a native section and plan iteration.",
+                                 "reason":  "D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.",
                                  "name":  "Stair, landings and lift route",
                                  "id":  "C-01"
                              }

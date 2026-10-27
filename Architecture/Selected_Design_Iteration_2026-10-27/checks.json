@@ -16,24 +16,42 @@
                    "main_full_bath_and_main_flex_removed_from_selected_levels":  true,
                    "selected_lower_flex_room_present":  true,
                    "main_half_bath_not_given_invented_footprint":  true,
-                   "documented_kitchen_fit_reference_checks_pass":  true
+                   "documented_kitchen_fit_reference_checks_pass":  true,
+                   "proposed_main_stair_and_lift_blocks_clear_placed_main_rooms":  true,
+                   "upper_landing_reaches_rear_wing_edge":  true,
+                   "upper_connector_aligns_with_upper_hall":  true,
+                   "lift_west_face_aligns_with_upper_core_hall":  true,
+                   "lower_stair_landing_and_run_are_edge_adjacent":  true,
+                   "lower_plan_landing_maps_to_rear_aligned_wing_edge":  true,
+                   "main_stair_landings_and_run_are_edge_adjacent":  true,
+                   "main_floor_profile_matches_two_stair_runs_and_lift_void":  true,
+                   "main_stair_openings_match_flight_reservations":  true,
+                   "rear_edge_opening_intervals_have_two_ordered_endpoints":  true,
+                   "upper_floor_profile_includes_only_4x4_connector_extension":  true
                },
     "measurements":  {
                          "lower_L02_vs_upper_U06_overlap_sf":  0,
                          "lower_L06_vs_upper_U06_overlap_sf":  0,
                          "placed_main_room_count":  5,
                          "lower_L02_net_sf":  110,
-                         "selected_bath_area_sf":  null
+                         "selected_bath_area_sf":  null,
+                         "comparison_stair_run_ft":  6.416666666666667,
+                         "lift_shift_from_B_origin_in":  4,
+                         "main_floor_profile_sf":  1564.667,
+                         "upper_floor_with_connector_sf":  1168
                      },
     "room_block_overlaps":  [
 
                             ],
+    "stair_core_room_block_overlaps":  [
+
+                                       ],
     "findings":  [
                      {
                          "priority":  "P1",
                          "status":  "open",
                          "id":  "D-OPEN-01",
-                         "issue":  "The selected 8-riser concept has no connected, checked upper landing in the existing native model; coordinate stair, floor opening, headroom and structure."
+                         "issue":  "D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure."
                      },
                      {
                          "priority":  "P1",
@@ -58,6 +76,12 @@
                          "status":  "open",
                          "id":  "D-OPEN-05",
                          "issue":  "Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-06",
+                         "issue":  "The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified."
                      }
                  ],
     "exclusions":  [

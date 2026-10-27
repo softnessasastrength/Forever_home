@@ -1,7 +1,7 @@
 # Implementation progress
 
 Updated: 2026-10-27
-Status: Compact-Core C's schema-v3 BIM pipeline remains validated as a test model. Owner-selected direction D now has a reproducible schematic package and 16 passing room-block checks. D is not yet native Revit or IFC geometry; stair/core and half-bath fit remain open.
+Status: Compact-Core C's schema-v3 BIM pipeline remains validated as a test model. Owner-selected direction D has a reproducible schematic package with 27 passing plan checks, including the proposed stair/core plan connection. D is not yet native Revit or IFC geometry; wall/section coordination and half-bath fit remain open.
 
 ## Goal
 
@@ -79,3 +79,12 @@ Run generation, audit, Geometry QA and manifest exports in Revit 2027. The offli
 - Placed room-block totals are 763.0 sf main, 759.3 sf upper and 795.1 sf lower. The kitchen block is 277.3 sf; this is the existing fit-test envelope and remains unapproved. M-06, secure storage, coat/mudroom fit and stair/lift geometry are excluded from room-block totals.
 - Next milestone is **M7** in `PLAN.md`: create a separate D-specific Revit source/configuration, regenerate a new native study without overwriting C, audit it, export IFC2x3 and validate that exact D export. Do not claim C evidence validates D.
 - Repository safety check before the work showed `design/vr-tech-bom-roadmap` and its origin tracking branch both at `4366e41`, `main`/`origin/main` at `9bec5d3`, and a clean worktree. The changes remain local; no remote operation was run.
+
+## Direction D stair/core plan coordination (2026-10-27)
+
+- Corrected the lower-to-main comparison so both flights use the same documented 6 ft 5 in plan run between 4 ft landings. The rear edges of the existing 32 ft lower-wing and 42 ft main-shell test envelopes are aligned for this diagram: the lower landing is local y=28–32 ft and maps to main-plan y=38–42 ft. This is an explicit plan-study datum assumption, not a site or native Revit datum.
+- The upper landing remains a 4 x 4 ft proposed extension to the upper-floor profile, aligning it with the rear edge and upper hall. The 8 x 8 ft lift reservation moves 4 in west to align its west face with the hall. Stair count and lift product remain unselected.
+- Fixed the recorded shell-opening x intervals to store two endpoints (the prior PowerShell expression was serialized as three values, owing to expression parsing—software has once again demonstrated its gift for turning punctuation into geometry).
+- Expanded the schematic checks from 22 to 27: lower landing/run adjacency, lower landing mapping to the aligned rear edge, main stair landing/run adjacency, flight/opening agreement, correctly ordered shell-opening intervals, and exact main-floor profile arithmetic. The generator now reports **27/27 checks passing**, and all three SVGs parse as XML. The main test floor profile subtracts two 4 ft wide stair-run openings and the 8 x 8 ft lift opening (1,564.7 sf); upper profile is 1,168 sf including the 16 sf connector. These remain unapproved test areas.
+- The exact D stair arrangement has not been built in Revit or exported to IFC. Shared-wall openings, level datums, floor edges/support, native run geometry, headroom, guards, egress, structure and the lift's actual lower stop remain open under CO-001. M-06 remains unplaced at owner instruction because size and location were not supplied.
+- Verification in this turn: two executions of `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1` each passed 27/27 checks and XML parsing. SHA256 hashes for every generated package file matched across both runs. `git diff --check` passed. These are schematic checks, not host Revit or IFC validation.
