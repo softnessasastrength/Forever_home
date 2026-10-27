@@ -28,7 +28,15 @@ To run it, close Revit 2027 so the loaded add-in assembly can be replaced, then 
 ./Tools/RevitPilot/build.ps1 -Dotnet './.local/dotnet/dotnet.exe'
 ```
 
-Reopen Revit and choose **Add-Ins → Forever Home Pilot → Build selected D space study**. C is untouched: D creates a separate timestamped folder and RVT. Inspect `study-manifest.json`, `room-inventory.csv`, `export-result.json` and the IFC in that folder. The command validates D's 21 space IDs and calculated room areas. Run **Audit active document** for a generic inventory; the current Geometry QA command requires Compact-Core C markers and is not valid evidence for D. The source/build has compiled, but host execution and D IFC validation are still pending; do not treat C's audit/QA/export reports as D evidence.
+Reopen Revit and choose **Add-Ins → Forever Home Pilot → Build selected D space study**. C is untouched: D creates a separate timestamped folder and RVT. Inspect `study-manifest.json`, `room-inventory.csv`, `export-result.json` and the IFC in that folder. The command validates D's 21 space IDs and calculated room areas. Run **Audit active document** for a generic inventory; the current Geometry QA command requires Compact-Core C markers and is not valid evidence for D. The fresh Revit 2027.3 run `.local/revit-pilot/selected-d/20261027T154924018Z/` passes the independent checker with all 23 checks true, including exact source/RVT/IFC hashes, the three expected storeys (-5/0/+5 ft), all 21 spaces with matching areas and levels, and zero IFC2X3 schema issues. Rerun the same gate with:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py .local/revit-pilot/selected-d/20261027T154924018Z
+```
+
+The report is `ifc-validation.json` in that run directory. This is verified room-boundary geometry only: IFC walls, slabs, stairs, stair flights, doors and windows are intentionally absent. The separate D host evidence must not be inferred from Compact-Core C audit/QA/export reports.
+
+The exact retained D RVT was reopened and independently audited read-only at `.local/revit-pilot/audits/20261027T155514458Z/`. That report matches the saved-model SHA256 and records 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 Revit warnings. Do not run the existing Compact-Core Geometry QA command on D: its marker rules are C-specific and would produce misleading findings.
 
 After a D run, independently validate its exact RVT/IFC/source chain, IFC2X3 schema, three storeys, 21 spaces, IDs, levels, areas and intentionally empty construction categories:
 

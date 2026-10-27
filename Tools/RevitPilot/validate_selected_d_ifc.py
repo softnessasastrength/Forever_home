@@ -23,6 +23,7 @@ AREA_TOLERANCE_SQFT = 0.1
 ELEVATION_TOLERANCE_FT = 0.02
 FT_PER_METRE = 1.0 / 0.3048
 EXPECTED_EMPTY_CLASSES = ("IfcWall", "IfcSlab", "IfcStair", "IfcStairFlight", "IfcDoor", "IfcWindow")
+PLAN_LEVEL_NAMES = {"main": "Main FF", "upper": "Upper FF", "lower": "Lower FF"}
 
 
 def _sha256(path: Path) -> str:
@@ -43,24 +44,65 @@ def _space_id(space: Any) -> str:
     return str(identity.get("Number") or space.Name or "").strip()
 
 
-def _space_area(space: Any) -> float | None:
+def _space_area(space: Any, unit_scale: float = 1.0) -> float | None:
+    """Read the exported area quantity, falling back to the room's IFC footprint.
+
+    The Revit IFC exporter may omit Dimensions.Area even when the space has a
+    valid swept-solid representation. Direction D's source blocks are
+    rectangular, so accept a rectangular swept profile and convert its IFC
+    length units to square feet.
+    """
     dimensions = ifcopenshell.util.element.get_psets(space).get("Dimensions", {})
     try:
         area = float(dimensions["Area"])
     except (KeyError, TypeError, ValueError):
+        area = None
+    if area is not None and math.isfinite(area) and area > 0:
+        return area
+
+    shape = getattr(space, "Representation", None)
+    if shape is None:
         return None
-    return area if math.isfinite(area) and area > 0 else None
+    profile_areas: list[float] = []
+    unsupported_profiles = False
+    for representation in getattr(shape, "Representations", None) or []:
+        for item in getattr(representation, "Items", None) or []:
+            if not item.is_a("IfcExtrudedAreaSolid"):
+                continue
+            profile = item.SweptArea
+            if not profile.is_a("IfcRectangleProfileDef"):
+                unsupported_profiles = True
+                continue
+            length_ft_per_ifc_unit = unit_scale * FT_PER_METRE
+            width_ft = float(profile.XDim) * length_ft_per_ifc_unit
+            depth_ft = float(profile.YDim) * length_ft_per_ifc_unit
+            footprint_area = width_ft * depth_ft
+            if math.isfinite(footprint_area) and footprint_area > 0:
+                profile_areas.append(footprint_area)
+    # Direction D's current source encodes one rectangular footprint per room.
+    # Refuse compound/unsupported representations instead of summing areas that
+    # may overlap or silently omitting an unrecognized profile.
+    if unsupported_profiles or len(profile_areas) != 1:
+        return None
+    return profile_areas[0]
 
 
 def _space_level_names(model: Any) -> dict[str, str]:
     result: dict[str, str] = {}
-    for relation in model.by_type("IfcRelContainedInSpatialStructure"):
-        structure = relation.RelatingStructure
+
+    def add_spaces(structure: Any, spaces: Any) -> None:
         if not structure or not structure.is_a("IfcBuildingStorey"):
-            continue
-        for space in relation.RelatedElements or []:
+            return
+        for space in spaces or []:
             if space.is_a("IfcSpace"):
                 result[_space_id(space)] = str(structure.Name or "")
+
+    # IFC2X3 exports from this Revit workflow aggregate IfcSpaces under
+    # IfcBuildingStorey, rather than using IfcRelContainedInSpatialStructure.
+    for relation in model.by_type("IfcRelContainedInSpatialStructure"):
+        add_spaces(relation.RelatingStructure, relation.RelatedElements)
+    for relation in model.by_type("IfcRelAggregates"):
+        add_spaces(relation.RelatingObject, relation.RelatedObjects)
     return result
 
 
@@ -201,6 +243,10 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
             str(storey.Name or ""): float(storey.Elevation or 0.0) * unit_scale * FT_PER_METRE
             for storey in storeys
         }
+        observations["expected_storeys"] = [
+            {"name": name, "elevation_ft": round(elevation, 4)}
+            for name, elevation in sorted(expected_levels.items())
+        ]
         levels_match = set(observed_levels) == set(expected_levels) and all(
             abs(observed_levels[name] - elevation) <= ELEVATION_TOLERANCE_FT
             for name, elevation in expected_levels.items()
@@ -211,7 +257,22 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
             for name, elevation in sorted(observed_levels.items())
         ]
         if not levels_match:
-            errors.append("IFC storey names/elevations differ from selected-D source")
+            missing_storeys = sorted(set(expected_levels) - set(observed_levels))
+            unexpected_storeys = sorted(set(observed_levels) - set(expected_levels))
+            elevation_mismatches = sorted(
+                name for name in set(expected_levels) & set(observed_levels)
+                if abs(observed_levels[name] - expected_levels[name]) > ELEVATION_TOLERANCE_FT
+            )
+            observations["storey_mismatch"] = {
+                "missing": missing_storeys,
+                "unexpected": unexpected_storeys,
+                "elevation_mismatches": elevation_mismatches,
+            }
+            errors.append(
+                "IFC storeys differ from selected-D source: "
+                f"missing={missing_storeys}, unexpected={unexpected_storeys}, "
+                f"elevation_mismatches={elevation_mismatches}"
+            )
 
         spaces = model.by_type("IfcSpace")
         space_ids = [_space_id(space) for space in spaces]
@@ -229,12 +290,12 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
         for space in spaces:
             identifier = _space_id(space)
             expected = blocks.get(identifier)
-            area = _space_area(space)
+            area = _space_area(space, unit_scale)
             observed_level = containment.get(identifier)
             if observed_level is None:
                 psets = ifcopenshell.util.element.get_psets(space)
                 observed_level = str(psets.get("Constraints", {}).get("Level", ""))
-            expected_level = "D " + expected["level_key"] if expected else ""
+            expected_level = "D " + PLAN_LEVEL_NAMES.get(expected["level_key"], "") if expected else ""
             if expected is None or area is None or abs(area - expected["area_sf"]) > AREA_TOLERANCE_SQFT:
                 area_errors.append({"id": identifier, "expected_area_sf": expected["area_sf"] if expected else None, "ifc_area": area})
             if observed_level != expected_level:

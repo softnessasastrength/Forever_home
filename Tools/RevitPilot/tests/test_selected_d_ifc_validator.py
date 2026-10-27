@@ -2,11 +2,12 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import ifcopenshell.util.element
 
-from validate_selected_d_ifc import _expected_blocks, _space_area, validate
+from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, validate
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -22,6 +23,10 @@ class SelectedDIfcValidatorTests(unittest.TestCase):
         self.assertEqual(blocks["M-01"]["area_sf"], 240.0)
         self.assertEqual(blocks["U-01"]["area_sf"], 160.0)
         self.assertEqual(blocks["L-02"]["area_sf"], 110.0)
+        self.assertEqual(
+            {key: "D " + name for key, name in PLAN_LEVEL_NAMES.items()},
+            {"main": "D Main FF", "upper": "D Upper FF", "lower": "D Lower FF"},
+        )
 
     def test_missing_host_run_fails_and_writes_a_machine_readable_report(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -44,6 +49,36 @@ class SelectedDIfcValidatorTests(unittest.TestCase):
             self.assertIsNone(_space_area(space))
         with patch.object(ifcopenshell.util.element, "get_psets", return_value={"Dimensions": {"Area": "240.0"}}):
             self.assertEqual(_space_area(space), 240.0)
+
+    def test_space_area_falls_back_to_rectangular_ifc_body_geometry(self):
+        profile = SimpleNamespace(
+            XDim=16.0,
+            YDim=15.0,
+            is_a=lambda entity=None: entity == "IfcRectangleProfileDef",
+        )
+        solid = SimpleNamespace(
+            SweptArea=profile,
+            is_a=lambda entity=None: entity == "IfcExtrudedAreaSolid",
+        )
+        representation = SimpleNamespace(Items=[solid])
+        shape = SimpleNamespace(Representations=[representation])
+        space = SimpleNamespace(Representation=shape)
+        with patch.object(ifcopenshell.util.element, "get_psets", return_value={}):
+            self.assertAlmostEqual(_space_area(space, unit_scale=0.3048), 240.0)
+
+    def test_storey_aggregation_provides_space_levels(self):
+        from validate_selected_d_ifc import _space_level_names
+
+        space = SimpleNamespace(Name="M-01", is_a=lambda entity=None: entity == "IfcSpace")
+        storey = SimpleNamespace(Name="D Main FF", is_a=lambda entity=None: entity == "IfcBuildingStorey")
+        relation = SimpleNamespace(RelatingObject=storey, RelatedObjects=[space])
+
+        class Model:
+            def by_type(self, entity):
+                return {"IfcRelContainedInSpatialStructure": [], "IfcRelAggregates": [relation]}[entity]
+
+        with patch.object(ifcopenshell.util.element, "get_psets", return_value={}):
+            self.assertEqual(_space_level_names(Model()), {"M-01": "D Main FF"})
 
 
 if __name__ == "__main__":

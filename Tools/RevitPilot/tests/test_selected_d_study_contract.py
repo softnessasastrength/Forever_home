@@ -37,6 +37,10 @@ class SelectedDStudyContractTests(unittest.TestCase):
         self.assertIn("double cutStart=verticalEdge?edge.y1:edge.x1,cutEnd=verticalEdge?edge.y2:edge.x2;", command)
         self.assertIn('new Transaction(activeDocument,"Export selected D IFC2x3")', command)
         self.assertIn("exportTransaction.RollBack()", command)
+        self.assertIn("var seedLevels=", command)
+        self.assertIn("Math.Abs(candidate.Elevation-elevation)<1e-6", command)
+        self.assertIn("unassignedSeedLevels", command)
+        self.assertNotIn("doc.Delete(seedLevelId)", command)
         self.assertIn('Numbers(study.GetProperty("plan_frame_offsets_ft"),floor.key)', command)
         self.assertIn('"D-S1-LOWER-LANDING",r[0]+frame[0],r[1]+frame[1]', command)
 

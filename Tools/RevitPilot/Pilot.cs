@@ -762,11 +762,24 @@ public class SelectedDCommand : IExternalCommand
             using(var tx=new Transaction(doc,"D room-block and schematic boundary study"))
             {
                 tx.Start();
+                // NewProjectDocument seeds an unused Level 1 at 0 ft, which IFC otherwise
+                // exports as an extra storey. Reuse seed datums when their elevations match
+                // a source level, and refuse to leave any unplanned template datum behind.
+                var seedLevels=new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>().ToList();
+                var usedSeedLevelIds=new HashSet<ElementId>();
                 foreach(var spec in study.GetProperty("selection").GetProperty("levels").EnumerateArray())
                 {
                     string id=Text(spec,"id"), name="D "+Text(spec,"id"); double elevation=Number(spec,"elevation_ft");
-                    var level=Level.Create(doc,elevation); level.Name=name; Tag(level,id); levels.Add(id,level);
+                    var seed=seedLevels.FirstOrDefault(candidate=>!usedSeedLevelIds.Contains(candidate.Id)
+                        &&Math.Abs(candidate.Elevation-elevation)<1e-6);
+                    var level=seed??Level.Create(doc,elevation);
+                    if(seed is not null) usedSeedLevelIds.Add(seed.Id);
+                    level.Name=name; Tag(level,id); levels.Add(id,level);
                 }
+                var unassignedSeedLevels=seedLevels.Where(seed=>!usedSeedLevelIds.Contains(seed.Id)).ToArray();
+                if(unassignedSeedLevels.Length>0)
+                    throw new InvalidDataException("Fresh selected-D project contains template levels that do not match a documented D level: "+
+                        string.Join(", ",unassignedSeedLevels.Select(seed=>$"{seed.Name} ({seed.Elevation:0.###} ft)")));
                 var planType=new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v=>v.ViewFamily==ViewFamily.FloorPlan);
                 foreach(var pair in levels) { var plan=ViewPlan.Create(doc,planType.Id,pair.Value.Id); plan.Name="D "+pair.Key+" Room Blocks"; plans.Add(pair.Key,plan); }
                 doc.Regenerate();

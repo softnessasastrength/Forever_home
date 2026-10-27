@@ -1,7 +1,7 @@
 # Selected architectural direction D — schematic iteration
 
 Updated: 2026-10-27
-Status: **owner-selected direction; schematic room blocks only**. This is the first design iteration embodying the owner's choices. It is not a coordinated floor plan, native Revit house model, permit document, or approval of dimensions and construction systems.
+Status: **owner-selected direction; schematic room blocks with a separately validated Revit space study**. This iteration embodies the owner's choices. It is not a coordinated floor plan or complete native Revit house model, permit document, or approval of dimensions and construction systems.
 
 ## Direction confirmed by owner
 
@@ -68,7 +68,7 @@ The generator parses numeric allowances from `Requirements/Room_Program.md` and 
 
 `checks.json` records 30 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; floor-profile arithmetic; and lower/upper frame-to-landing/connector alignment. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
 
-These checks validate rectangles, level-frame relationships, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
+These checks validate rectangles, level-frame relationships, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. A separate Revit 2027.3 space-boundary study for D was subsequently generated at `.local/revit-pilot/selected-d/20261027T154924018Z/` and its IFC2X3 export passed all 23 checks in `validate_selected_d_ifc.py` with zero schema issues. That native file contains rooms and 2D comparison outlines only; it is not coordinated building geometry. Compact-Core C remains a separate test model.
 
 ## Open design work
 
