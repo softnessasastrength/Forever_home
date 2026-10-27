@@ -1,0 +1,251 @@
+﻿{
+    "schema":  "forever-home-direction-d-social-route-v1",
+    "status":  "unapproved furnishing and social-route proposal; not house geometry or a selected layout",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "7fce058a485c74d50377064a95cbf900559a3ce7142bcf957ab681b4ebbf9218",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "669312ea7f0df0c22909364ff79bf4a5bcef2bb576c0777609158fcfa38c4145",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                   },
+    "inputs":  {
+                   "main_shell_test_ft":  [
+                                              40,
+                                              42
+                                          ],
+                   "porch_ft":  [
+                                    12,
+                                    10
+                                ],
+                   "porch_wall_gap_ft":  0.5,
+                   "island_ft":  [
+                                     8,
+                                     4
+                                 ],
+                   "island_origin_local_ft":  [
+                                                  4.666666666666667,
+                                                  6
+                                              ],
+                   "table_ft":  [
+                                    3,
+                                    5
+                                ],
+                   "chairs_in":  [
+                                     18,
+                                     20
+                                 ],
+                   "target_route_width_ft":  3,
+                   "french_door_pair_nominal_ft":  5,
+                   "half_wall_and_minimum_opening_ft":  [
+                                                            8,
+                                                            6
+                                                        ]
+               },
+    "geometry":  {
+                     "kitchen_id":  "M-02",
+                     "dining_id":  "M-03",
+                     "living_id":  "M-01",
+                     "entry_id":  "M-05",
+                     "island_world_rect_ft":  [
+                                                  5.333,
+                                                  6.667,
+                                                  8,
+                                                  4
+                                              ],
+                     "dining_table_world_rect_ft":  [
+                                                        3.667,
+                                                        22,
+                                                        3,
+                                                        5
+                                                    ],
+                     "dining_chairs_world_rects_ft":  [
+                                                          {
+                                                              "id":  "D-chair-1",
+                                                              "x":  1.9999999999999998,
+                                                              "y":  22.249999999966668,
+                                                              "w":  1.6666666666666667,
+                                                              "d":  1.5
+                                                          },
+                                                          {
+                                                              "id":  "D-chair-2",
+                                                              "x":  1.9999999999999998,
+                                                              "y":  23.749999999966668,
+                                                              "w":  1.6666666666666667,
+                                                              "d":  1.5
+                                                          },
+                                                          {
+                                                              "id":  "D-chair-3",
+                                                              "x":  1.9999999999999998,
+                                                              "y":  25.249999999966668,
+                                                              "w":  1.6666666666666667,
+                                                              "d":  1.5
+                                                          },
+                                                          {
+                                                              "id":  "D-chair-4",
+                                                              "x":  4.4166666666666661,
+                                                              "y":  20.3333333333,
+                                                              "w":  1.5,
+                                                              "d":  1.6666666666666667
+                                                          }
+                                                      ],
+                     "alternative_dining_chairs_world_rects_ft":  [
+                                                                      {
+                                                                          "id":  "B-chair-1",
+                                                                          "x":  1.9999999999999998,
+                                                                          "y":  22.749999999966668,
+                                                                          "w":  1.6666666666666667,
+                                                                          "d":  1.5
+                                                                      },
+                                                                      {
+                                                                          "id":  "B-chair-2",
+                                                                          "x":  1.9999999999999998,
+                                                                          "y":  24.749999999966668,
+                                                                          "w":  1.6666666666666667,
+                                                                          "d":  1.5
+                                                                      },
+                                                                      {
+                                                                          "id":  "B-chair-3",
+                                                                          "x":  4.4166666666666661,
+                                                                          "y":  20.3333333333,
+                                                                          "w":  1.5,
+                                                                          "d":  1.6666666666666667
+                                                                      },
+                                                                      {
+                                                                          "id":  "B-chair-4",
+                                                                          "x":  4.4166666666666661,
+                                                                          "y":  26.999999999966668,
+                                                                          "w":  1.5,
+                                                                          "d":  1.6666666666666667
+                                                                      }
+                                                                  ],
+                     "porch_world_rect_ft":  [
+                                                 0.667,
+                                                 31.667,
+                                                 12,
+                                                 10
+                                             ],
+                     "proposed_door_opening_world_ft":  [
+                                                            3.833,
+                                                            31.167,
+                                                            5
+                                                        ],
+                     "porch_to_test_shell_edge_reserve_in":  4,
+                     "island_front_clearance_in":  48.00,
+                     "island_east_edge_clearance_in":  56.00,
+                     "island_back_total_allowance_ft":  6.000,
+                     "documented_stool_allowance_ft":  2,
+                     "post_seating_route_clear_ft":  4.000,
+                     "dining_east_clear_band_ft":  5.333,
+                     "dining_south_table_clear_ft":  4.167,
+                     "proposed_route_centerline_world_ft":  [
+                                                                [
+                                                                    9.333,
+                                                                    12.667
+                                                                ],
+                                                                [
+                                                                    9.333,
+                                                                    17.167
+                                                                ],
+                                                                [
+                                                                    9.333,
+                                                                    28.5
+                                                                ],
+                                                                [
+                                                                    6.333,
+                                                                    28.5
+                                                                ],
+                                                                [
+                                                                    6.333,
+                                                                    31.167
+                                                                ]
+                                                            ],
+                     "route_corridor_rectangles_ft":  [
+                                                          {
+                                                              "x":  7.8333333333333339,
+                                                              "y":  12.666666666666668,
+                                                              "w":  3,
+                                                              "h":  15.8333333333
+                                                          },
+                                                          {
+                                                              "x":  4.83333333333333363,
+                                                              "y":  26.999999999966668,
+                                                              "w":  6.00000000000000637,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  4.83333333333333363,
+                                                              "y":  28.499999999966668,
+                                                              "w":  3,
+                                                              "h":  2.6666666666999994
+                                                          }
+                                                      ],
+                     "kitchen_living_shared_edge_ft":  15.000,
+                     "half_wall_allowance_ft":  [
+                                                    8,
+                                                    7.000
+                                                ],
+                     "m06_window_b_remains_unassigned":  true,
+                     "entry_approach":  "Unverified; M-05 is on the east exterior wall in inherited B-first adjacency candidate."
+                 },
+    "route":  {
+                  "target_width_in":  36,
+                  "connected_by_plan_polyline":  true,
+                  "dining_furniture_arrangement":  "Three chairs on the west long side and one at the north end; no chairs at the south end or east side. Deliberately asymmetric proposal to preserve the porch route.",
+                  "nominal_door_width_in":  60,
+                  "clear_leaf_width_verified":  false,
+                  "status":  "36-in geometric corridor passes the drawn table/chair proxies; actual door clear width, leaf swing, floor transition and furnished-use clearance require product/site review."
+              },
+    "second_route_scenario":  {
+                                  "furniture_arrangement":  "Two chairs on the west long side, one north and one south; more conventional end seating, with all chairs clear of the east-side/south-turn route.",
+                                  "nominal_door_center_offset_from_dining_center_ft":  1.5,
+                                  "nominal_door_width_ft":  5,
+                                  "clear_leaf_width_verified":  false,
+                                  "route_corridor_rectangles_ft":  [
+                                                                       {
+                                                                           "x":  7.8333333333333339,
+                                                                           "y":  12.666666666666668,
+                                                                           "w":  3,
+                                                                           "h":  15.8333333333
+                                                                       },
+                                                                       {
+                                                                           "x":  6.3333333333333339,
+                                                                           "y":  26.999999999966668,
+                                                                           "w":  4.5,
+                                                                           "h":  3
+                                                                       },
+                                                                       {
+                                                                           "x":  6.3333333333333339,
+                                                                           "y":  28.499999999966668,
+                                                                           "w":  3,
+                                                                           "h":  2.6666666666999994
+                                                                       }
+                                                                   ],
+                                  "route_centerline_world_ft":  [
+                                                                    [
+                                                                        9.333,
+                                                                        12.667
+                                                                    ],
+                                                                    [
+                                                                        9.333,
+                                                                        28.5
+                                                                    ],
+                                                                    [
+                                                                        7.833,
+                                                                        28.5
+                                                                    ],
+                                                                    [
+                                                                        7.833,
+                                                                        31.167
+                                                                    ]
+                                                                ],
+                                  "tradeoff":  "The 5-ft nominal porch-door reservation shifts 1.5 ft east of the dining centerline; actual wall returns and visual alignment need review."
+                              },
+    "tradeoffs":  [
+                      "Keeping pantry-side M-06 window B clear uses the bath-first candidate, which moves M-05 entry/hall to the east exterior wall; front orientation and approach are unresolved.",
+                      "Adding the documented porch directly to dining leaves only 4 in to the 42-ft test-outline edge. The test outline cannot be treated as a coordinated exterior wall line; porch footprint or main-shell envelope needs owner/site coordination.",
+                      "The route-preserving four-seat table arrangement is asymmetric (three chairs on one long side, one at the north end). A conventional chair arrangement may obstruct the proposed route when occupied.",
+                      "A second, more evenly seated option moves the nominal 5-ft French-door reservation 1.5 ft east of the dining centerline; verify wall returns and sightline before selection.",
+                      "The 5-ft nominal French-door pair reservation is not evidence of a 36-in clear leaf; vendor clear opening and swing remain unresolved.",
+                      "The 8-ft half wall and remaining open span are only edge-length arithmetic; no wall segment location, height-bearing status or framing is defined."
+                  ],
+    "generated_utc":  "2026-10-27T21:12:03Z"
+}

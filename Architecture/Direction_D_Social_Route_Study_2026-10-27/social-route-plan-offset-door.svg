@@ -1,0 +1,34 @@
+﻿<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'><style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:36;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style><rect width='1200' height='1000' fill='#fbf9f3'/><text x='36' y='34' class='h'>Direction D social route - Option B, even table seating / offset doors</text>
+<text x='36' y='56' class='note'>B-first adjacency candidate; existing room blocks retained. Dashed test shell is 40 x 42 ft, not an approved exterior wall line.</text>
+<rect x='54' y='58' width='720' height='756' class='shell'/>
+<rect x='387' y='70' width='288' height='270' class='room'/>
+<text x='390.6' y='83.5' class='label'>M-01 Living room</text>
+<rect x='66' y='70' width='312' height='288' class='room'/>
+<text x='69.6' y='83.5' class='label'>M-02 Kitchen</text>
+<rect x='66' y='367' width='204' height='252' class='room'/>
+<text x='69.6' y='380.5' class='label'>M-03 Dining</text>
+<rect x='279' y='367' width='90' height='126' class='room'/>
+<text x='282.6' y='380.5' class='label'>M-04 Pantry</text>
+<rect x='684' y='70' width='78' height='216' class='room'/>
+<text x='687.6' y='83.5' class='label'>M-05 Front arrival / hall</text>
+<rect x='66' y='628' width='216' height='180' class='porch'/>
+<text x='70.5' y='646' class='label'>X-01 Porch 12 x 10 ft (test adjacency)</text>
+<rect x='435' y='367' width='237' height='126' class='bath'/>
+<text x='438.6' y='385' class='tiny'>M-06 B SEARCH WINDOW (unassigned; no bath fit)</text>
+<rect x='150' y='178' width='144' height='72' class='island'/>
+<text x='156.3' y='215.8' class='small'>8 x 4 island</text>
+<text x='69.6' y='345.4' class='small'>48 in post-seating route clearance to shared room edge</text>
+<rect x='120' y='454' width='54' height='90' class='table'/>
+<text x='122.7' y='502.6' class='small'>36 x 60 table</text>
+<text x='380.7' y='196' class='tiny'>8-ft half-wall + 7-ft remaining open edge (position not assigned)</text>
+<text x='54' y='839.2' class='note'>Porch-to-test-outline reserve: 4 in; this is a fit warning, not wall thickness allowance.</text>
+<text x='54' y='857.2' class='note'>Route proposal: 36 in; east dining band 5.33 ft, south table end 4.17 ft; French-door leaf clear width unresolved.</text>
+<text x='54' y='875.2' class='note'>Not for construction: room boundaries, openings, wall/floor assemblies, site orientation and entry approach are schematic or unresolved.</text>
+<text x='113.7' y='450.4' class='tiny'>2 west + 1 north + 1 south; proposal only</text>
+<rect x='90' y='467.5' width='30' height='27' class='chair'/>
+<rect x='90' y='503.5' width='30' height='27' class='chair'/>
+<rect x='133.5' y='424' width='27' height='30' class='chair'/>
+<rect x='133.5' y='544' width='27' height='30' class='chair'/>
+<polyline points='222,286 222,570.9999999994 195,570.9999999994 195,619' class='route'/>
+<line x1='150' y1='619' x2='240' y2='619' class='door'/>
+<text x='151.8' y='615.4' class='tiny'>Option B: 5-ft pair shifted 1.5 ft east of dining centerline.</text></svg>

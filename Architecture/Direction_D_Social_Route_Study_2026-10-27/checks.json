@@ -1,0 +1,60 @@
+﻿{
+    "status":  "pass",
+    "passed":  13,
+    "total":  13,
+    "checks":  [
+                   {
+                       "id":  "source_candidate_room_blocks",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "island_within_kitchen",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "island_work_aisle",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_width_at_island_exit",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_route_around_furniture",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_corridor_avoids_table_and_seated_chairs",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "offset_door_option_route_clear",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "porch_adjacent_and_inside_test_extent",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "bath_search_window_b_unassigned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "half_wall_edge_length_arithmetic",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "door_clear_width_not_overclaimed",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "documented_inputs_present",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "source_fingerprints_recorded",
+                       "pass":  true
+                   }
+               ],
+    "scope":  "Plan-coordinate, documented-clearance and provenance checks; not code/accessibility/IFC or construction validation."
+}
