@@ -795,12 +795,14 @@ public class SelectedDCommand : IExternalCommand
                         var (x,y,width,depth)=Rectangle(room,offsetX,offsetY); return RectangleEdges(x,y,x+width,y+depth);
                     })))
                     {
-                        var cuts=coordinates.Where(c=>c>=Math.Min(edge.x1,edge.x2)-1e-7&&c<=Math.Max(edge.x1,edge.x2)+1e-7)
-                            .Where(c=>Math.Abs(edge.x1-edge.x2)<1e-7 ? vertical.Any(p=>Math.Abs(p.x-edge.x1)<1e-7&&Math.Abs(p.y-c)<1e-7) : horizontal.Any(p=>Math.Abs(p.y-edge.y1)<1e-7&&Math.Abs(p.x-c)<1e-7))
+                        bool verticalEdge=Math.Abs(edge.x1-edge.x2)<1e-7;
+                        double cutStart=verticalEdge?edge.y1:edge.x1,cutEnd=verticalEdge?edge.y2:edge.x2;
+                        var cuts=coordinates.Where(c=>c>=Math.Min(cutStart,cutEnd)-1e-7&&c<=Math.Max(cutStart,cutEnd)+1e-7)
+                            .Where(c=>verticalEdge ? vertical.Any(p=>Math.Abs(p.x-edge.x1)<1e-7&&Math.Abs(p.y-c)<1e-7) : horizontal.Any(p=>Math.Abs(p.y-edge.y1)<1e-7&&Math.Abs(p.x-c)<1e-7))
                             .Distinct().OrderBy(c=>edge.x1==edge.x2?Math.Sign(edge.y2-edge.y1)*c:Math.Sign(edge.x2-edge.x1)*c).ToArray();
                         for(int i=0;i<cuts.Length-1;i++)
                         {
-                            if(Math.Abs(edge.x1-edge.x2)<1e-7) AddSegment(edge.x1,cuts[i],edge.x1,cuts[i+1]);
+                            if(verticalEdge) AddSegment(edge.x1,cuts[i],edge.x1,cuts[i+1]);
                             else AddSegment(cuts[i],edge.y1,cuts[i+1],edge.y1);
                         }
                     }
@@ -851,7 +853,17 @@ public class SelectedDCommand : IExternalCommand
             {
                 var roomLines=new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_RoomSeparationLines).WhereElementIsNotElementType().ToElementIds();
                 using(var debug=File.Create(Path.Combine(output,"room-audit-debug.json")))
-                    JsonSerializer.Serialize(debug,new{expected_room_count=rows.Count,positive_area_room_count=actualRooms.Length,room_separation_line_count=roomLines.Count,room_areas=new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>().OrderBy(r=>r.Number,StringComparer.Ordinal).Select(r=>new{id=r.Number,name=r.Name,level=r.Level?.Name,area_sf=r.Area}).ToArray()},new JsonSerializerOptions{WriteIndented=true});
+                    JsonSerializer.Serialize(debug,new{
+                        expected_room_count=rows.Count,positive_area_room_count=actualRooms.Length,room_separation_line_count=roomLines.Count,
+                        phases=new FilteredElementCollector(doc).OfClass(typeof(Phase)).Cast<Phase>().Select(p=>new{id=p.Id.Value,name=p.Name}).ToArray(),
+                        plan_phases=plans.Select(p=>new{view=p.Value.Name,phase_id=p.Value.get_Parameter(BuiltInParameter.VIEW_PHASE)?.AsElementId().Value}),
+                        room_areas=new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>().OrderBy(r=>r.Number,StringComparer.Ordinal).Select(r=>new{id=r.Number,name=r.Name,level=r.Level?.Name,area_sf=r.Area,phase_id=r.get_Parameter(BuiltInParameter.ROOM_PHASE)?.AsElementId().Value}).ToArray(),
+                        room_separation_lines=new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_RoomSeparationLines).WhereElementIsNotElementType().OfType<ModelCurve>().Select(line=>new{
+                            id=line.Id.Value,owner_view_id=line.OwnerViewId.Value,created_phase_id=line.CreatedPhaseId.Value,
+                            start_x_ft=line.GeometryCurve.GetEndPoint(0).X,start_y_ft=line.GeometryCurve.GetEndPoint(0).Y,start_z_ft=line.GeometryCurve.GetEndPoint(0).Z,
+                            end_x_ft=line.GeometryCurve.GetEndPoint(1).X,end_y_ft=line.GeometryCurve.GetEndPoint(1).Y,end_z_ft=line.GeometryCurve.GetEndPoint(1).Z
+                        }).ToArray()
+                    },new JsonSerializerOptions{WriteIndented=true});
                 // Preserve a clearly labelled diagnostic copy so boundary failures can be inspected in Revit.
                 doc.SaveAs(Path.Combine(output,"diagnostic-unvalidated.rvt"),new SaveAsOptions());
                 throw new InvalidOperationException($"Revit room enclosure/area comparison failed: expected {rows.Count} positive-area rooms, got {actualRooms.Length}; mismatches: {string.Join(",",areaMismatches.Select(r=>r.id))}");
@@ -865,7 +877,13 @@ public class SelectedDCommand : IExternalCommand
             var activeDocument=data.Application.OpenAndActivateDocument(rvt).Document;
             SavedModelIdentity.AssertSame(activeDocument,modelFingerprint);
             using var ifcOptions=new IFCExportOptions{FileVersion=IFCVersion.IFC2x3CV2,ExportBaseQuantities=true};
-            bool ifcOk=activeDocument.Export(output,"FH_Selected_D_Space_Study",ifcOptions);
+            bool ifcOk;
+            using(var exportTransaction=new Transaction(activeDocument,"Export selected D IFC2x3"))
+            {
+                exportTransaction.Start();
+                try { ifcOk=activeDocument.Export(output,"FH_Selected_D_Space_Study",ifcOptions); }
+                finally { if(exportTransaction.GetStatus()==TransactionStatus.Started) exportTransaction.RollBack(); }
+            }
             SavedModelIdentity.AssertSame(activeDocument,modelFingerprint);
             string ifcPath=Path.Combine(output,"FH_Selected_D_Space_Study.ifc");
             File.WriteAllText(Path.Combine(output,"export-result.json"),JsonSerializer.Serialize(new{ifc2x3_api_result=ifcOk,model_fingerprint=modelFingerprint,ifc_file=Path.GetFileName(ifcPath),ifc_bytes=File.Exists(ifcPath)?new FileInfo(ifcPath).Length:0,ifc_sha256=File.Exists(ifcPath)?Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant():null},new JsonSerializerOptions{WriteIndented=true}));
