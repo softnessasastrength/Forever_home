@@ -2,7 +2,15 @@ import json
 import unittest
 from pathlib import Path
 
-from validate_kitchen_island_ifc import _bounds_match, _combine_bounds, _expected_island, _expected_module_bounds
+from validate_kitchen_island_ifc import (
+    DOCUMENTED_COUNTERTOP_THICKNESS_FT,
+    DOCUMENTED_COUNTERTOP_TOP_FT,
+    _bounds_match,
+    _combine_bounds,
+    _expected_countertop,
+    _expected_island,
+    _expected_module_bounds,
+)
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -19,7 +27,8 @@ class KitchenIslandIfcValidatorTests(unittest.TestCase):
         for row in modules:
             self.assertAlmostEqual(row["length_ft"], 4.0)
             self.assertAlmostEqual(row["depth_ft"], 2.0)
-            self.assertAlmostEqual(row["height_ft"], 3.0)
+            self.assertAlmostEqual(row["height_ft"], 34.5 / 12)
+            self.assertAlmostEqual(row["z_max_ft"], 34.5 / 12)
         self.assertEqual(
             {(round(row["x_min_ft"], 6), round(row["y_min_ft"], 6)) for row in modules},
             {
@@ -30,8 +39,19 @@ class KitchenIslandIfcValidatorTests(unittest.TestCase):
             },
         )
         combined = _combine_bounds(modules)
-        for key, value in {**expected, "height_ft": 3.0}.items():
+        for key, value in {**expected, "height_ft": 34.5 / 12}.items():
             self.assertAlmostEqual(combined[key], value)
+
+    def test_countertop_uses_documented_thickness_and_owner_accepted_nominal_height(self):
+        study = json.loads(STUDY_PATH.read_text(encoding="utf-8-sig"))
+        countertop = _expected_countertop(study)
+
+        self.assertAlmostEqual(countertop["height_ft"], 1.25 / 12)
+        self.assertAlmostEqual(countertop["z_min_ft"], 34.5 / 12)
+        self.assertAlmostEqual(countertop["z_max_ft"], 35.75 / 12)
+        self.assertAlmostEqual(DOCUMENTED_COUNTERTOP_THICKNESS_FT, 1.25 / 12)
+        self.assertAlmostEqual(DOCUMENTED_COUNTERTOP_TOP_FT * 12, 35.75)
+        self.assertAlmostEqual(36 - DOCUMENTED_COUNTERTOP_TOP_FT * 12, 0.25)
 
     def test_single_family_mode_retains_whole_island_bounds(self):
         study = json.loads(STUDY_PATH.read_text(encoding="utf-8-sig"))
@@ -42,14 +62,14 @@ class KitchenIslandIfcValidatorTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "four-module"):
             _expected_module_bounds(study, 2)
 
-    def test_34_5_in_base_cabinet_does_not_satisfy_36_in_counter_height(self):
+    def test_34_5_in_base_cabinet_is_not_misreported_as_nominal_counter_height(self):
         study = json.loads(STUDY_PATH.read_text(encoding="utf-8-sig"))
-        target = _expected_module_bounds(study, 4)[0]
-        measured = dict(target)
-        measured["z_max_ft"] = 34.5 / 12
-        measured["height_ft"] = 34.5 / 12
+        measured = _expected_island(study)
+        nominal_36_in = dict(measured)
+        nominal_36_in["z_max_ft"] = 3.0
+        nominal_36_in["height_ft"] = 3.0
 
-        self.assertFalse(_bounds_match(measured, target))
+        self.assertFalse(_bounds_match(measured, nominal_36_in))
 
 
 if __name__ == "__main__":

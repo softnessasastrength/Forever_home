@@ -60,9 +60,172 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(GeometryQaCommand).FullName!));
         panel.AddItem(new PushButtonData("FHManifestExports", "Run manifest\nexports",
             Assembly.GetExecutingAssembly().Location, typeof(ManifestExportCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHIslandCountertopTest", "Build M-02\ncountertop test",
+            Assembly.GetExecutingAssembly().Location, typeof(IslandCountertopTestCommand).FullName!));
         return Result.Succeeded;
     }
     public Result OnShutdown(UIControlledApplication app) => Result.Succeeded;
+}
+
+[Transaction(TransactionMode.Manual)]
+public class IslandCountertopTestCommand : IExternalCommand
+{
+    const string ExpectedTitle = "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3";
+    const string FamilyName = "island_cabinet_Generic_7216";
+    const string Marker = "FH-M02-COUNTERTOP-TEST-7216";
+    const double CounterThicknessInches = 1.25; // Architecture/Kitchen_Dining_Porch_Specs.md §3.2
+    const double BaseCabinetHeightInches = 34.5; // same source; independently observed in candidate IFC
+    const double ToleranceFt = 0.01; // geometry serialization tolerance only
+
+    static string Text(JsonElement value, string key) => value.GetProperty(key).GetString()!;
+
+    static double[] Numbers(JsonElement value, string key) =>
+        value.GetProperty(key).EnumerateArray().Select(item => item.GetDouble()).ToArray();
+
+    static void RequireNear(double actual, double expected, string label)
+    {
+        if (!double.IsFinite(actual) || Math.Abs(actual - expected) > ToleranceFt)
+            throw new InvalidOperationException($"{label}: expected {expected:0.######} ft, found {actual:0.######} ft.");
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        var doc = data.Application.ActiveUIDocument?.Document;
+        if (doc is null)
+        {
+            message = "No active Revit document is available.";
+            return Result.Failed;
+        }
+
+        try
+        {
+            if (!string.Equals(doc.Title, ExpectedTitle, StringComparison.Ordinal))
+                throw new InvalidOperationException($"This test is restricted to '{ExpectedTitle}', not '{doc.Title}'. No elements were changed.");
+            var before = SavedModelIdentity.Capture(doc);
+            string root = File.ReadAllText(Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string studyPath = Path.Combine(root, "Architecture", "Selected_Design_Iteration_2026-10-27", "study.json");
+            using var studyDoc = JsonDocument.Parse(File.ReadAllText(studyPath).TrimStart('\uFEFF'));
+            var study = studyDoc.RootElement;
+            if (Text(study, "schema") != "forever-home.selected-house-schematic.v1")
+                throw new InvalidDataException("Unsupported selected-D study schema.");
+
+            var main = study.GetProperty("plans").GetProperty("main").EnumerateArray()
+                .Single(block => Text(block, "id") == "M-02");
+            double[] frame = Numbers(study.GetProperty("plan_frame_offsets_ft"), "main");
+            double[] localOrigin = Numbers(study.GetProperty("selection").GetProperty("kitchen"), "island_origin_local_ft");
+            double[] island = Numbers(study.GetProperty("selection").GetProperty("kitchen"), "island_ft");
+            if (frame.Length != 2 || localOrigin.Length != 2 || island.Length != 2
+                || Math.Abs(island[0] - 8) > 1e-8 || Math.Abs(island[1] - 4) > 1e-8)
+                throw new InvalidDataException("The selected-D source does not describe the expected 8 x 4 ft island frame.");
+
+            double x0 = main.GetProperty("x").GetDouble() + frame[0] + localOrigin[0];
+            double y0 = main.GetProperty("y").GetDouble() + frame[1] + localOrigin[1];
+            double x1 = x0 + island[0], y1 = y0 + island[1];
+            var level = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
+                .Single(item => item.Name == "D Main FF");
+            var modules = new FilteredElementCollector(doc).OfClass(typeof(FamilyInstance))
+                .WhereElementIsNotElementType().Cast<FamilyInstance>()
+                .Where(item => string.Equals(item.Symbol?.FamilyName, FamilyName, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            if (modules.Count != 4)
+                throw new InvalidOperationException($"Expected four '{FamilyName}' modules; found {modules.Count}. No elements were changed.");
+
+            double moduleX0 = double.PositiveInfinity, moduleY0 = double.PositiveInfinity;
+            double moduleX1 = double.NegativeInfinity, moduleY1 = double.NegativeInfinity;
+            double moduleTop = double.NegativeInfinity;
+            var expectedCells = (from cellX in new[] { (x0, (x0 + x1) / 2), ((x0 + x1) / 2, x1) }
+                                 from cellY in new[] { (y0, (y0 + y1) / 2), ((y0 + y1) / 2, y1) }
+                                 select (xMin: cellX.Item1, xMax: cellX.Item2, yMin: cellY.Item1, yMax: cellY.Item2)).ToList();
+            foreach (var module in modules)
+            {
+                var bounds = module.get_BoundingBox(null) ?? throw new InvalidOperationException("A casework module has no model bounding box.");
+                int cell = expectedCells.FindIndex(expected =>
+                    Math.Abs(bounds.Min.X - expected.xMin) <= ToleranceFt
+                    && Math.Abs(bounds.Max.X - expected.xMax) <= ToleranceFt
+                    && Math.Abs(bounds.Min.Y - expected.yMin) <= ToleranceFt
+                    && Math.Abs(bounds.Max.Y - expected.yMax) <= ToleranceFt);
+                if (cell < 0)
+                    throw new InvalidOperationException("Each casework module must occupy one distinct source-derived 4 x 2 ft island quadrant.");
+                expectedCells.RemoveAt(cell);
+                RequireNear(bounds.Max.Z, level.Elevation + BaseCabinetHeightInches / 12.0, "Casework module top");
+                moduleX0 = Math.Min(moduleX0, bounds.Min.X); moduleY0 = Math.Min(moduleY0, bounds.Min.Y);
+                moduleX1 = Math.Max(moduleX1, bounds.Max.X); moduleY1 = Math.Max(moduleY1, bounds.Max.Y);
+                moduleTop = Math.Max(moduleTop, bounds.Max.Z);
+                RequireNear(bounds.Min.Z, level.Elevation, "Casework bottom elevation");
+            }
+            if (expectedCells.Count != 0)
+                throw new InvalidOperationException("One or more source-derived island quadrants are missing.");
+            RequireNear(moduleX0, x0, "Casework island X minimum");
+            RequireNear(moduleX1, x1, "Casework island X maximum");
+            RequireNear(moduleY0, y0, "Casework island Y minimum");
+            RequireNear(moduleY1, y1, "Casework island Y maximum");
+            RequireNear(moduleTop, level.Elevation + BaseCabinetHeightInches / 12.0, "Observed casework top");
+
+            bool alreadyExists = new FilteredElementCollector(doc).OfClass(typeof(DirectShape))
+                .WhereElementIsNotElementType().Cast<DirectShape>()
+                .Any(shape => string.Equals(shape.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString(), Marker, StringComparison.Ordinal));
+            if (alreadyExists)
+                throw new InvalidOperationException("The tagged M-02 countertop test already exists. No duplicate was created.");
+
+            var corners = new[]
+            {
+                new XYZ(x0, y0, moduleTop), new XYZ(x1, y0, moduleTop),
+                new XYZ(x1, y1, moduleTop), new XYZ(x0, y1, moduleTop)
+            };
+            var profile = CurveLoop.Create(Enumerable.Range(0, corners.Length)
+                .Select(index => (Curve)Line.CreateBound(corners[index], corners[(index + 1) % corners.Length])).ToList());
+            double thicknessFt = CounterThicknessInches / 12.0;
+            var solid = GeometryCreationUtilities.CreateExtrusionGeometry(
+                new List<CurveLoop> { profile }, XYZ.BasisZ, thicknessFt);
+
+            using (var transaction = new Transaction(doc, "M-02 1.25 in countertop massing test"))
+            {
+                transaction.Start();
+                var top = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+                top.ApplicationId = "ForeverHome.Pilot";
+                top.ApplicationDataId = Marker;
+                top.Name = "M-02 countertop thickness test - finish unassigned";
+                top.SetShape(new List<GeometryObject> { solid });
+                var comments = top.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+                if (comments is not null && !comments.IsReadOnly) comments.Set(Marker);
+                doc.Regenerate();
+                transaction.Commit();
+            }
+
+            doc.Save();
+            var after = SavedModelIdentity.Capture(doc);
+            string output = Path.Combine(root, ".local", "revit-pilot", "kitchen-island-countertop-tests",
+                DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            var report = new
+            {
+                schema = "forever-home.m02-countertop-test.v1",
+                status = "saved isolated generic countertop massing placeholder; finish split and fabrication detail unassigned",
+                document_title = doc.Title,
+                model_fingerprint_before = before,
+                model_fingerprint_after = after,
+                source_study_sha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(studyPath))).ToLowerInvariant(),
+                category = "Generic Models",
+                marker = Marker,
+                base_cabinet_height_inches = BaseCabinetHeightInches,
+                countertop_thickness_inches = CounterThicknessInches,
+                total_nominal_height_inches = BaseCabinetHeightInches + CounterThicknessInches,
+                nominal_standard_height_inches = 36.0,
+                accepted_nominal_variance_inches = 0.25,
+                bounds_ft = new { x_min = x0, x_max = x1, y_min = y0, y_max = y1, z_min = moduleTop, z_max = moduleTop + thicknessFt },
+                limitations = new[] { "No quartz/butcher-block material split, seam, support, overhang detail, electrical work or finish is represented." }
+            };
+            File.WriteAllText(Path.Combine(output, "countertop-test.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
+            TaskDialog.Show("Forever Home M-02 test", $"Saved a generic, unassigned-finish countertop massing placeholder in the isolated study.\n\nResulting height: {BaseCabinetHeightInches + CounterThicknessInches:0.##} in (nominally 36 in).\nReport: {output}");
+            return Result.Succeeded;
+        }
+        catch (Exception ex)
+        {
+            message = ex.ToString();
+            return Result.Failed;
+        }
+    }
 }
 
 public class CompactApp : IExternalApplication

@@ -21,7 +21,10 @@ import ifcopenshell.validate
 import numpy as np
 
 # Architecture/Kitchen_Dining_Porch_Specs.md: island counter height is 36 in AFF.
-DOCUMENTED_COUNTER_HEIGHT_FT = 3.0
+NOMINAL_COUNTER_HEIGHT_FT = 3.0
+DOCUMENTED_BASE_CABINET_HEIGHT_FT = 34.5 / 12.0
+DOCUMENTED_COUNTERTOP_THICKNESS_FT = 1.25 / 12.0
+DOCUMENTED_COUNTERTOP_TOP_FT = DOCUMENTED_BASE_CABINET_HEIGHT_FT + DOCUMENTED_COUNTERTOP_THICKNESS_FT
 # Numeric tolerance is solely for IFC unit conversion/serialization noise; it
 # is not a design tolerance or a construction allowance.
 SERIALIZATION_TOLERANCE_FT = 0.01
@@ -59,9 +62,26 @@ def _expected_island(study: dict[str, Any]) -> dict[str, float]:
         "y_max_ft": float(room["y"] + offset_y + local_y + depth),
         "z_min_ft": float(next(level["elevation_ft"] for level in selection["levels"] if level["id"] == "Main FF")),
         "z_max_ft": float(next(level["elevation_ft"] for level in selection["levels"] if level["id"] == "Main FF"))
-        + DOCUMENTED_COUNTER_HEIGHT_FT,
+        + DOCUMENTED_BASE_CABINET_HEIGHT_FT,
         "length_ft": float(length),
         "depth_ft": float(depth),
+        "height_ft": DOCUMENTED_BASE_CABINET_HEIGHT_FT,
+    }
+
+
+def _expected_countertop(study: dict[str, Any]) -> dict[str, float]:
+    island = _expected_island(study)
+    base_elevation = island["z_min_ft"]
+    return {
+        "x_min_ft": island["x_min_ft"],
+        "x_max_ft": island["x_max_ft"],
+        "y_min_ft": island["y_min_ft"],
+        "y_max_ft": island["y_max_ft"],
+        "z_min_ft": base_elevation + DOCUMENTED_BASE_CABINET_HEIGHT_FT,
+        "z_max_ft": base_elevation + DOCUMENTED_COUNTERTOP_TOP_FT,
+        "length_ft": island["length_ft"],
+        "depth_ft": island["depth_ft"],
+        "height_ft": DOCUMENTED_COUNTERTOP_THICKNESS_FT,
     }
 
 
@@ -128,7 +148,14 @@ def _bounds_match(actual: dict[str, float] | None, expected: dict[str, float]) -
     )
 
 
-def validate(export_dir: Path, audit_dir: Path, study_path: Path, family_match: str, expected_module_count: int) -> dict[str, Any]:
+def validate(
+    export_dir: Path,
+    audit_dir: Path,
+    study_path: Path,
+    family_match: str,
+    expected_module_count: int,
+    countertop_match: str,
+) -> dict[str, Any]:
     export_dir, audit_dir, study_path = export_dir.resolve(), audit_dir.resolve(), study_path.resolve()
     export = _json(export_dir / "export-results.json")
     audit = _json(audit_dir / "audit.json")
@@ -235,6 +262,7 @@ def validate(export_dir: Path, audit_dir: Path, study_path: Path, family_match: 
             )
 
         expected_bounds = _expected_island(study)
+        expected_countertop_bounds = _expected_countertop(study)
         expected_modules = _expected_module_bounds(study, expected_module_count)
         candidate_module_bounds = sorted(
             family_bounds_list, key=lambda item: (item["x_min_ft"], item["y_min_ft"])
@@ -244,12 +272,48 @@ def validate(export_dir: Path, audit_dir: Path, study_path: Path, family_match: 
             len(candidate_module_bounds) == len(expected_modules)
             and all(_bounds_match(actual, expected) for actual, expected in zip(candidate_module_bounds, expected_modules))
         )
-        # Require both the union envelope and every module cell, so duplicates
-        # cannot conceal an unfilled quadrant while preserving the outer bounds.
-        bounds_match = _bounds_match(family_bounds, expected_bounds) and modules_match
-        checks["island bounds match documented geometry"] = bool(bounds_match)
-        if not checks["island bounds match documented geometry"]:
-            errors.append("Exported island bounds do not match the documented plan origin, 8 x 4 ft footprint and 36 in counter height.")
+        checks["casework module bounds match documented base"] = bool(modules_match)
+        if not checks["casework module bounds match documented base"]:
+            errors.append("One or more casework modules do not match their source-derived plan cell and documented 34.5 in base height.")
+
+        countertop_products = [
+            product for product in model.by_type("IfcProduct")
+            if countertop_match.casefold() in str(product.Name or "").casefold()
+        ]
+        countertop_bounds_list: list[dict[str, float]] = []
+        countertop_decode_errors: list[dict[str, str]] = []
+        for product in countertop_products:
+            try:
+                countertop_bounds_list.append(_product_bounds_ft(product, settings))
+            except Exception as exc:
+                countertop_decode_errors.append({"name": str(product.Name or ""), "error": str(exc)})
+        countertop_bounds = countertop_bounds_list[0] if len(countertop_bounds_list) == 1 else None
+        checks["countertop placeholder decoded"] = (
+            len(countertop_products) == 1 and len(countertop_bounds_list) == 1 and not countertop_decode_errors
+        )
+        if not checks["countertop placeholder decoded"]:
+            errors.append(
+                f"Expected one decodable IFC product matching '{countertop_match}'; "
+                f"found {len(countertop_products)} with {len(countertop_bounds_list)} decodable."
+            )
+
+        countertop_matches = _bounds_match(countertop_bounds, expected_countertop_bounds)
+        checks["countertop matches documented thickness and plan bounds"] = bool(countertop_matches)
+        if not checks["countertop matches documented thickness and plan bounds"]:
+            errors.append("Countertop placeholder does not match the 8 x 4 ft footprint, 1.25 in thickness and cabinet top elevation.")
+
+        assembly_bounds = _combine_bounds(family_bounds_list + countertop_bounds_list) if family_bounds_list and countertop_bounds_list else None
+        expected_assembly_bounds = dict(expected_bounds)
+        expected_assembly_bounds["z_max_ft"] = expected_bounds["z_min_ft"] + DOCUMENTED_COUNTERTOP_TOP_FT
+        expected_assembly_bounds["height_ft"] = DOCUMENTED_COUNTERTOP_TOP_FT
+        bounds_match = (
+            _bounds_match(assembly_bounds, expected_assembly_bounds)
+            and modules_match
+            and countertop_matches
+        )
+        checks["island assembly bounds match documented geometry"] = bool(bounds_match)
+        if not checks["island assembly bounds match documented geometry"]:
+            errors.append("Island assembly does not match the source-derived 8 x 4 ft base and the documented nominal 36 in countertop build-up.")
 
         observations["ifc"] = {
             "file": ifc_path.name,
@@ -268,9 +332,17 @@ def validate(export_dir: Path, audit_dir: Path, study_path: Path, family_match: 
             "candidate_class": found[0].is_a() if len(found) == 1 else None,
             "candidate_classes": sorted({product.is_a() for product in found}),
             "candidate_names": [str(product.Name or "") for product in found],
-            "candidate_bounds_ft": family_bounds,
+            "candidate_bounds_ft": assembly_bounds,
             "candidate_module_bounds_ft": candidate_module_bounds,
             "expected_module_bounds_ft": expected_modules,
+            "countertop_count": len(countertop_products),
+            "countertop_names": [str(product.Name or "") for product in countertop_products],
+            "countertop_bounds_ft": countertop_bounds,
+            "expected_countertop_bounds_ft": expected_countertop_bounds,
+            "countertop_decode_errors": countertop_decode_errors,
+            "nominal_height_inches": NOMINAL_COUNTER_HEIGHT_FT * 12,
+            "source_derived_actual_height_inches": DOCUMENTED_COUNTERTOP_TOP_FT * 12,
+            "accepted_nominal_height_variance_inches": (NOMINAL_COUNTER_HEIGHT_FT - DOCUMENTED_COUNTERTOP_TOP_FT) * 12,
             "expected_bounds_ft": expected_bounds,
             "candidate_decode_errors": family_decode_errors,
         }
@@ -303,6 +375,7 @@ def validate(export_dir: Path, audit_dir: Path, study_path: Path, family_match: 
         },
         "limitations": [
             "The documented 42 in kitchen clearances cannot be checked until perimeter counters and other obstacles are modeled.",
+            "The documented 36 in height is nominal; the specified 34.5 in cabinet plus 1.25 in countertop yields 35.75 in, accepted by the owner as nominally 36 in on 2026-10-27. This test does not resolve the material seam or fabrication detail.",
             "The result is a family-fit and IFC consistency check, not architectural approval, engineering, accessibility, code or construction certification.",
             "The IFC export cannot establish family licensing or reuse rights.",
         ],
@@ -316,10 +389,18 @@ def main() -> int:
     parser.add_argument("study_json", type=Path)
     parser.add_argument("--family-match", default="island_cabinet_Generic_7216")
     parser.add_argument("--expected-module-count", type=int, choices=(1, 4), default=4)
+    parser.add_argument("--countertop-match", default="M-02 countertop thickness test")
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()
     try:
-        report = validate(args.export_dir, args.audit_dir, args.study_json, args.family_match, args.expected_module_count)
+        report = validate(
+            args.export_dir,
+            args.audit_dir,
+            args.study_json,
+            args.family_match,
+            args.expected_module_count,
+            args.countertop_match,
+        )
     except Exception as exc:
         report = {
             "schema": "forever-home.kitchen-island-ifc-validation.v1",
