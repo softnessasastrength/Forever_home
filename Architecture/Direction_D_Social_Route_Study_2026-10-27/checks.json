@@ -1,7 +1,7 @@
 ﻿{
     "status":  "pass",
-    "passed":  13,
-    "total":  13,
+    "passed":  14,
+    "total":  14,
     "checks":  [
                    {
                        "id":  "source_candidate_room_blocks",
@@ -33,6 +33,10 @@
                    },
                    {
                        "id":  "porch_adjacent_and_inside_test_extent",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "rotated_porch_same_documented_area",
                        "pass":  true
                    },
                    {

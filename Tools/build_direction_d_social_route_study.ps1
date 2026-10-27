@@ -21,6 +21,7 @@ $shellW = [double]$shellNumbers[0].Value; $shellD = [double]$shellNumbers[1].Val
 $scale = 18.0
 $originX = 54.0; $originY = 58.0
 $porch = [ordered]@{ x=[double]$dining.x; y=([double]$dining.y+[double]$dining.d+0.5); w=12.0; d=10.0; gap_ft=0.5 }
+$porchRotated = [ordered]@{ x=([double]$dining.x+([double]$dining.w-10.0)/2); y=$porch.y; w=10.0; d=12.0; gap_ft=0.5 }
 $island = [ordered]@{
     x=([double]$kitchen.x+[double]$islandSpec.island_origin_local_ft[0])
     y=([double]$kitchen.y+[double]$islandSpec.island_origin_local_ft[1])
@@ -54,6 +55,8 @@ $routeY0 = $tableSouth
 $routeY1 = [double]$dining.y+[double]$dining.d
 $porchEast = $porch.x+$porch.w
 $porchSouth = $porch.y+$porch.d
+$rotatedPorchSouth = $porchRotated.y+$porchRotated.d
+$rotatedPorchOverflowIn = [Math]::Max(0,($rotatedPorchSouth-$shellD)*12)
 $shellEdgeReserveIn = ($shellD-$porchSouth)*12
 $islandEastClearIn = (($kitchen.x+$kitchen.w)-($island.x+$island.w))*12
 $islandFrontAisleIn = (($island.y-($kitchen.y+2.0))*12)
@@ -156,6 +159,10 @@ $report=[ordered]@{
         dining_chairs_world_rects_ft=$chairs
         alternative_dining_chairs_world_rects_ft=$chairsB
         porch_world_rect_ft=@([Math]::Round($porch.x,3),[Math]::Round($porch.y,3),$porch.w,$porch.d)
+        porch_orientation_comparison=@(
+            [ordered]@{id='12-wide-10-deep';rect_ft=@([Math]::Round($porch.x,3),[Math]::Round($porch.y,3),$porch.w,$porch.d);area_sf=120;test_outline_edge_reserve_in=[Math]::Round($shellEdgeReserveIn,2);relationship='Inside the 42-ft test outline by arithmetic; only 4 in remains at its rear edge.'},
+            [ordered]@{id='10-wide-12-deep';rect_ft=@([Math]::Round($porchRotated.x,3),[Math]::Round($porchRotated.y,3),$porchRotated.w,$porchRotated.d);area_sf=120;test_outline_extension_in=[Math]::Round($rotatedPorchOverflowIn,2);relationship='Centered on dining; 20 in extends beyond the 42-ft test outline.'}
+        )
         proposed_door_opening_world_ft=@([Math]::Round($doorX,3),[Math]::Round($routeY1,3),$doorWidth)
         porch_to_test_shell_edge_reserve_in=[Math]::Round($shellEdgeReserveIn,2)
         island_front_clearance_in=[Math]::Round($islandFrontAisleIn,2)
@@ -208,6 +215,7 @@ $checks=@(
     @{id='route_corridor_avoids_table_and_seated_chairs';pass=(@($routeRects|Where-Object{($_.x -lt $tableEast) -and (($_.x+$_.w) -gt $table.x) -and ($_.y -lt $tableSouth) -and (($_.y+$_.h) -gt $table.y)}).Count -eq 0 -and @($routeRects|Where-Object{$seg=$_; @($chairs|Where-Object{($_.x -lt ($seg.x+$seg.w)) -and (($_.x+$_.w) -gt $seg.x) -and ($_.y -lt ($seg.y+$seg.h)) -and (($_.y+$_.h) -gt $seg.y)}).Count -gt 0}).Count -eq 0)},
     @{id='offset_door_option_route_clear';pass=($doorXB -ge $dining.x -and ($doorXB+$doorWidth) -le $diningEast -and ($doorCenterB-$routeWidth/2) -ge $dining.x -and ($doorCenterB+$routeWidth/2) -le $diningEast -and ($routePathX-$routeWidth/2) -ge $tableEast -and @($routeRectsB|Where-Object{($_.x -lt $tableEast) -and (($_.x+$_.w) -gt $table.x) -and ($_.y -lt $tableSouth) -and (($_.y+$_.h) -gt $table.y)}).Count -eq 0 -and @($routeRectsB|Where-Object{$seg=$_; @($chairsB|Where-Object{($_.x -lt ($seg.x+$seg.w)) -and (($_.x+$_.w) -gt $seg.x) -and ($_.y -lt ($seg.y+$seg.h)) -and (($_.y+$_.h) -gt $seg.y)}).Count -gt 0}).Count -eq 0)},
     @{id='porch_adjacent_and_inside_test_extent';pass=([Math]::Abs($porch.y-($dining.y+$dining.d+0.5)) -lt 0.001 -and ($porchEast -le $shellW) -and ($porchSouth -le $shellD))},
+    @{id='rotated_porch_same_documented_area';pass=($porchRotated.w*$porchRotated.d -eq $porch.w*$porch.d -and [Math]::Abs(($porchRotated.x+$porchRotated.w/2)-($dining.x+$dining.w/2)) -lt 0.001 -and [Math]::Abs($rotatedPorchOverflowIn-20) -lt 0.01)},
     @{id='bath_search_window_b_unassigned';pass=($bath.id -eq 'east_of_core' -and $candidate.selection.main_public_bath.footprint -eq 'TBD')},
     @{id='half_wall_edge_length_arithmetic';pass=($sharedEdge -ge 14 -and [Math]::Abs($islandEastClearIn) -ge 42)},
     @{id='door_clear_width_not_overclaimed';pass=(-not $report.route.clear_leaf_width_verified)},
@@ -233,6 +241,36 @@ $svgB+="<line x1='$doorSvgXB' y1='$doorSvgY' x2='$($doorSvgXB+$doorWidth*$scale)
 $svgB+=TextSvg ($doorXB+0.1) ($routeY1-0.2) 'tiny' 'Option B: 5-ft pair shifted 1.5 ft east of dining centerline.'
 $svgDocB="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$($svgB -join "`n")</svg>"
 Set-Content -LiteralPath (Join-Path $out 'social-route-plan-offset-door.svg') -Value $svgDocB -Encoding UTF8
+$ps=16.0; $bx1=76.0; $bx2=620.0; $by=108.0
+$dinW=[double]$dining.w*$ps; $dinD=[double]$dining.d*$ps; $porchLocalY=14.5*$ps
+$boundaryY=$by+(42.0-[double]$dining.y)*$ps
+$porchAX=$bx1+(([double]$dining.w-12.0)/2)*$ps; $porchBX=$bx2+(([double]$dining.w-10.0)/2)*$ps
+$porchSvg=@"
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1120' height='610' viewBox='0 0 1120 610'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:21px;font-weight:bold}.lbl{font-size:15px}.note{font-size:13px;fill:#87472f}.room{fill:#eee5d5;stroke:#5a4d3e;stroke-width:2}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:2}.shell{stroke:#9b4a32;stroke-width:3;stroke-dasharray:9 5}.door{stroke:#326877;stroke-width:7}</style>
+<rect width='1120' height='610' fill='#fbf9f3'/>
+<text x='36' y='40' class='h'>Porch orientation versus the 40 x 42 ft shell test outline</text>
+<text x='$bx1' y='78' class='lbl'>Option A - 12 ft wide x 10 ft deep</text>
+<text x='$bx2' y='78' class='lbl'>Option B - rotate: 10 ft wide x 12 ft deep</text>
+<rect x='$bx1' y='$by' width='$dinW' height='$dinD' class='room'/>
+<text x='$($bx1+8)' y='$($by+24)' class='lbl'>M-03 Dining 11 ft 4 in x 14 ft</text>
+<rect x='$porchAX' y='$($by+$porchLocalY)' width='$(12*$ps)' height='$(10*$ps)' class='porch'/>
+<text x='$($porchAX+8)' y='$($by+$porchLocalY+24)' class='lbl'>X-01 Porch 12 x 10 ft</text>
+<line x1='$($bx1-30)' y1='$boundaryY' x2='$($bx1+$dinW+30)' y2='$boundaryY' class='shell'/>
+<line x1='$($bx1+$dinW/2-2.5*$ps)' y1='$($by+$dinD)' x2='$($bx1+$dinW/2+2.5*$ps)' y2='$($by+$dinD)' class='door'/>
+<text x='$bx1' y='535' class='note'>4 in to the outline edge. Numeric containment only; no credible exterior wall allowance.</text>
+<rect x='$bx2' y='$by' width='$dinW' height='$dinD' class='room'/>
+<text x='$($bx2+8)' y='$($by+24)' class='lbl'>M-03 Dining 11 ft 4 in x 14 ft</text>
+<rect x='$porchBX' y='$($by+$porchLocalY)' width='$(10*$ps)' height='$(12*$ps)' class='porch'/>
+<text x='$($porchBX+8)' y='$($by+$porchLocalY+24)' class='lbl'>X-01 Porch 10 x 12 ft; same 120 sf</text>
+<line x1='$($bx2-30)' y1='$boundaryY' x2='$($bx2+$dinW+30)' y2='$boundaryY' class='shell'/>
+<line x1='$($bx2+$dinW/2-2.5*$ps)' y1='$($by+$dinD)' x2='$($bx2+$dinW/2+2.5*$ps)' y2='$($by+$dinD)' class='door'/>
+<text x='$bx2' y='535' class='note'>Extends 20 in beyond the outline. Porch side is 8 in inside each dining edge.</text>
+<text x='36' y='580' class='note'>Blue line: centered nominal 5 ft door-pair reservation. Red dashed line: rear edge of test outline. Neither drawing defines walls or site placement.</text>
+</svg>
+"@
+Set-Content -LiteralPath (Join-Path $out 'porch-orientation-options.svg') -Value $porchSvg -Encoding UTF8
 Set-Content -LiteralPath (Join-Path $out 'checks.json') -Value ($checksOut|ConvertTo-Json -Depth 7) -Encoding UTF8
 if($checksOut.status -ne 'pass'){throw 'Social-route study checks failed.'}
 Write-Output "Direction D social-route study: $($checksOut.passed)/$($checksOut.total) checks passed."

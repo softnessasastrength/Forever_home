@@ -123,6 +123,32 @@
                                                  12,
                                                  10
                                              ],
+                     "porch_orientation_comparison":  [
+                                                          {
+                                                              "id":  "12-wide-10-deep",
+                                                              "rect_ft":  [
+                                                                              0.667,
+                                                                              31.667,
+                                                                              12,
+                                                                              10
+                                                                          ],
+                                                              "area_sf":  120,
+                                                              "test_outline_edge_reserve_in":  4,
+                                                              "relationship":  "Inside the 42-ft test outline by arithmetic; only 4 in remains at its rear edge."
+                                                          },
+                                                          {
+                                                              "id":  "10-wide-12-deep",
+                                                              "rect_ft":  [
+                                                                              1.333,
+                                                                              31.667,
+                                                                              10,
+                                                                              12
+                                                                          ],
+                                                              "area_sf":  120,
+                                                              "test_outline_extension_in":  20,
+                                                              "relationship":  "Centered on dining; 20 in extends beyond the 42-ft test outline."
+                                                          }
+                                                      ],
                      "proposed_door_opening_world_ft":  [
                                                             3.833,
                                                             31.167,
@@ -247,5 +273,5 @@
                       "The 5-ft nominal French-door pair reservation is not evidence of a 36-in clear leaf; vendor clear opening and swing remain unresolved.",
                       "The 8-ft half wall and remaining open span are only edge-length arithmetic; no wall segment location, height-bearing status or framing is defined."
                   ],
-    "generated_utc":  "2026-10-27T21:12:03Z"
+    "generated_utc":  "2026-10-27T21:13:57Z"
 }
