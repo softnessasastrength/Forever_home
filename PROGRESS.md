@@ -1,7 +1,7 @@
 # Implementation progress
 
 Updated: 2026-10-27
-Status: the checked-in schema-v3 Compact-Core config has now produced a fresh Revit study, matching native API audit and Geometry QA, and an IFC2X3 export that passes the independent schema/geometry validator. The current-source review packet passes with ten open coordination findings. C remains a study proposal; architectural coordination and manual reviews remain open.
+Status: Compact-Core C's schema-v3 BIM pipeline remains validated as a test model. Owner-selected direction D now has a reproducible schematic package and 16 passing room-block checks. D is not yet native Revit or IFC geometry; stair/core and half-bath fit remain open.
 
 ## Goal
 
@@ -33,7 +33,7 @@ Implement `PLAN.md` against `REQUIREMENTS.md`, complete each milestone, run its 
 - The prior IFC run remains compatible with the updated validators: 17 spaces, 0 schema issues, and the same 10 coordination findings. This is a regression check of the prior generator export, not evidence for the refactored Revit output.
 - The preserved 02:57 Revit run used schema v2 and remains historical. Direct schema-v3 host evidence is now available at `.local/revit-pilot/compact-core/20261027T041201025Z/`, with matching audit, QA and IFC evidence listed below. The v2 run and all prior exports remain unchanged.
 - The previous host run remains valid evidence for the previous generator revision only: `.local/revit-pilot/compact-core/20261027T021357786Z/` and its linked audit, QA and IFC outputs. It is preserved unchanged.
-- C remains a proposed test, not a selected plan. Nine room areas need review against the preliminary room program; M-06 remains an owner decision. No dimension was changed to force a pass.
+- C remains a proposed test, not a selected plan. Nine room areas need review against the preliminary room program; At that C checkpoint, M-06 remained an owner decision; the owner subsequently selected a D half bath with size and location TBD. No dimension was changed to force a pass.
 - The upper stair still does not reach the upper-floor footprint. Landing, headroom, guards, stair opening, floor solids/support, foundations, roof and lift/accessibility route remain unverified.
 - DWG binary geometry, PDF visual quality, Revit 2018 import, code, MEP/structure, and professional review remain open. Zero Revit warnings and zero IFC schema errors do not close them.
 - The default build script requires Revit to release the loaded assembly before it can replace the default output DLL.
@@ -69,3 +69,13 @@ Implement `PLAN.md` against `REQUIREMENTS.md`, complete each milestone, run its 
 ```
 
 Run generation, audit, Geometry QA and manifest exports in Revit 2027. The offline commands do not open or modify Revit models. This is a BIM pipeline acceptance record, not a permit, engineering, code or construction approval.
+
+## Owner-selected schematic direction D (2026-10-27)
+
+- The owner selected the A lower-level flex-bedroom strategy with the B 40 x 42 ft main-shell test envelope; retained the future 8 x 8 ft lift reservation and B's eight-riser arithmetic as a comparison baseline only; selected a main-floor half bath; accepted the current upper-suite privacy arrangement; and confirmed the updated perimeter-appliance / appliance-free-island kitchen.
+- Added [direction decision](Decisions/2026-10-27_Selected_Architectural_Direction_D.md), reproducible [design iteration package](Architecture/Selected_Design_Iteration_2026-10-27/README.md), and PowerShell generator `Tools/build_selected_house_schematic.ps1`. A/B source studies remain unchanged.
+- The derived package has main/upper/lower room-block plans, JSON study, area CSV, machine-readable checks and SVGs. A six-inch upper guest/bath adjustment leaves the guest room at 109.3 sf (inside its documented 100–120 sf range), keeps the 10 x 12 ft Jack-and-Jill test block, and removes the 5 sf projected overlap with lower L-02. Lower L-06 is positioned outside the upper bath footprint. Neither adjustment claims services or floor structure are coordinated.
+- The generator reported **16/16 checks passing**: shell containment, positive dimensions, zero within-level room-block overlaps, vertical room-block relationships, U-04 area range, no invented M-06 footprint, and existing kitchen arithmetic checks. All three SVGs parsed as XML. Two consecutive runs produced identical SHA256 hashes for every package file; the study records fingerprints for five source inputs. Open findings include stair landing/headroom/structure; half-bath size/location; kitchen room size/appliance-open tests; technology access/service; entry and storage; site/accessibility; systems and professional review.
+- Placed room-block totals are 763.0 sf main, 759.3 sf upper and 795.1 sf lower. The kitchen block is 277.3 sf; this is the existing fit-test envelope and remains unapproved. M-06, secure storage, coat/mudroom fit and stair/lift geometry are excluded from room-block totals.
+- Next milestone is **M7** in `PLAN.md`: create a separate D-specific Revit source/configuration, regenerate a new native study without overwriting C, audit it, export IFC2x3 and validate that exact D export. Do not claim C evidence validates D.
+- Repository safety check before the work showed `design/vr-tech-bom-roadmap` and its origin tracking branch both at `4366e41`, `main`/`origin/main` at `9bec5d3`, and a clean worktree. The changes remain local; no remote operation was run.

@@ -1,0 +1,74 @@
+﻿{
+    "status":  "schematic geometry checks only; unresolved design items remain",
+    "checks":  {
+                   "main_room_blocks_inside_shell":  true,
+                   "main_positive_room_dimensions":  true,
+                   "main_no_room_block_overlap":  true,
+                   "upper_room_blocks_inside_shell":  true,
+                   "upper_positive_room_dimensions":  true,
+                   "upper_no_room_block_overlap":  true,
+                   "lower_room_blocks_inside_shell":  true,
+                   "lower_positive_room_dimensions":  true,
+                   "lower_no_room_block_overlap":  true,
+                   "upper_jack_jill_and_lower_technology_do_not_overlap":  true,
+                   "upper_jack_jill_and_lower_flex_do_not_overlap":  true,
+                   "guest_room_remains_within_documented_100_to_120_sf_allowance":  true,
+                   "main_full_bath_and_main_flex_removed_from_selected_levels":  true,
+                   "selected_lower_flex_room_present":  true,
+                   "main_half_bath_not_given_invented_footprint":  true,
+                   "documented_kitchen_fit_reference_checks_pass":  true
+               },
+    "measurements":  {
+                         "lower_L02_vs_upper_U06_overlap_sf":  0,
+                         "lower_L06_vs_upper_U06_overlap_sf":  0,
+                         "placed_main_room_count":  5,
+                         "lower_L02_net_sf":  110,
+                         "selected_bath_area_sf":  null
+                     },
+    "room_block_overlaps":  [
+
+                            ],
+    "findings":  [
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-01",
+                         "issue":  "The selected 8-riser concept has no connected, checked upper landing in the existing native model; coordinate stair, floor opening, headroom and structure."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-02",
+                         "issue":  "M-06 is now a half bath by owner direction, but no footprint or position is specified; keep out of geometry and area totals pending fit study."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-03",
+                         "issue":  "Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved."
+                     },
+                     {
+                         "priority":  "P2",
+                         "status":  "open",
+                         "id":  "D-OPEN-04",
+                         "issue":  "Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation."
+                     },
+                     {
+                         "priority":  "P2",
+                         "status":  "open",
+                         "id":  "D-OPEN-05",
+                         "issue":  "Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified."
+                     }
+                 ],
+    "exclusions":  [
+                       "Door swings and clear openings",
+                       "Furniture-complete route checks",
+                       "Stair/landing/headroom/guard/floor-edge coordination",
+                       "Lift product fit",
+                       "Structure, foundation, roof, site and code",
+                       "Detailed MEP and kitchen appliance-open tests",
+                       "Native Revit house model and IFC export for this design iteration"
+                   ],
+    "all_geometry_checks_pass":  true,
+    "all_svg_files_parse_as_xml":  true
+}
