@@ -65,6 +65,12 @@ The living, dining, and kitchen spaces should feel connected without becoming on
 
 Dimensional schematic specs for kitchen, dining, and three-season porch: [Kitchen_Dining_Porch_Specs.md](Kitchen_Dining_Porch_Specs.md).
 
+### Deferred exterior gathering area furnishing
+
+- When the poolside, patio, or outdoor-fireplace gathering area is developed, include the **Adirondack chair model already selected by the owner**. Carry that selection forward; do not substitute or restart the product choice.
+- Defer count, exact placement, orientation, clearances, and relationship to the pool/fire feature until the site and exterior gathering layout are developed.
+- The exact selected product reference or asset path is not recorded in this repository yet. Retrieve the owner's existing selection before placing or modeling the chairs; do not infer a replacement from this note.
+
 ### Vertical circulation
 
 Half-story stair runs (**five to seven steps**, preferred **six risers**) connect lower ↔ main and main ↔ upper private levels. Baseline: carpeted treads, traditional turned-baluster railings. See [Stairs_Half_Story.md](Stairs_Half_Story.md).

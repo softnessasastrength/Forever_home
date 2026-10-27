@@ -311,3 +311,8 @@ Run generation, audit, Geometry QA and manifest exports in Revit 2027. The offli
 - Reproducibility check ran the generator twice from the same inputs. `checks.json` and all three SVG SHA256 hashes matched exactly; normalized `study.json` matched after removing its intentionally variable `generated_utc`. All **3/3 SVGs** parse as XML. Selected-D source SHA256 remains `669312ea7f0df0c22909364ff79bf4a5bcef2bb576c0777609158fcfa38c4145`.
 - Re-ran the documented upstream `BathFirstAdjacencyCandidate` generator: **50/50** room-block checks pass and its SVG parses. It refreshed only the candidate report's kitchen-island decision-source fingerprint; the generated room geometry is otherwise unchanged. The social-route generator then passed **16/16** against that refreshed dependency.
 - Updated the package README and M18 acceptance record in `PLAN.md`. The study remains unapproved and schematic; no Revit/IFC geometry was changed. Actual door product/clear opening, swing, threshold, wall returns, site orientation, entry approach and full furnished use remain unresolved. Existing porch trade-off remains: 4 in to the test outline in the 12-ft orientation, or 20 in beyond it in the rotated orientation.
+
+## Future exterior gathering area furnishing cue (2026-10-27)
+
+- Recorded the owner's already-selected Adirondack chair model as a required furnishing for the future poolside, patio, or outdoor-fireplace gathering area in `Architecture/Building_Program.md`.
+- The exact product reference/asset path is not currently present in the repository. Preserve the existing selection and retrieve it before modeling; chair count, placement and site relationship remain deferred. No exterior geometry was changed.
