@@ -717,10 +717,24 @@ public class SelectedDCommand : IExternalCommand
     }
 
     static string PointKey(double x, double y) => $"{Math.Round(x,6).ToString("0.000000",CultureInfo.InvariantCulture)},{Math.Round(y,6).ToString("0.000000",CultureInfo.InvariantCulture)}";
-    static void AddRectangleEdges(JsonElement rectangle, List<(double x,double y)> xs, List<(double x,double y)> ys)
+    static (double x,double y,double width,double depth) Rectangle(JsonElement rectangle,double offsetX=0,double offsetY=0)
     {
-        var origin = Numbers(rectangle,"origin_ft"); double width=Number(rectangle,"width_ft"), depth=Number(rectangle,"depth_ft");
-        double x1=origin[0],x2=x1+width,y1=origin[1],y2=y1+depth;
+        // Selected-D room blocks use x/y/w/d; core reservations use origin/size fields.
+        if(rectangle.TryGetProperty("x",out var x) && rectangle.TryGetProperty("y",out var y)
+            && rectangle.TryGetProperty("w",out var width) && rectangle.TryGetProperty("d",out var depth))
+            return (x.GetDouble()+offsetX,y.GetDouble()+offsetY,width.GetDouble(),depth.GetDouble());
+        if(rectangle.TryGetProperty("origin_ft",out var origin)
+            && rectangle.TryGetProperty("width_ft",out width) && rectangle.TryGetProperty("depth_ft",out depth))
+        {
+            var point=origin.EnumerateArray().Select(v=>v.GetDouble()).ToArray();
+            if(point.Length==2) return (point[0]+offsetX,point[1]+offsetY,width.GetDouble(),depth.GetDouble());
+        }
+        throw new InvalidDataException("Selected-D room block must use x/y/w/d or origin_ft/width_ft/depth_ft.");
+    }
+    static void AddRectangleEdges(JsonElement rectangle, List<(double x,double y)> xs, List<(double x,double y)> ys,double offsetX,double offsetY)
+    {
+        var (x,y,width,depth)=Rectangle(rectangle,offsetX,offsetY);
+        double x1=x,x2=x+width,y1=y,y2=y+depth;
         xs.Add((x1,y1)); xs.Add((x2,y1)); xs.Add((x1,y2)); xs.Add((x2,y2));
         ys.Add((x1,y1)); ys.Add((x2,y1)); ys.Add((x1,y2)); ys.Add((x2,y2));
     }
@@ -759,10 +773,12 @@ public class SelectedDCommand : IExternalCommand
                 var planDefs=new[]{(key:"main",level:"Main FF",size:Numbers(study.GetProperty("shells"),"main")),(key:"upper",level:"Upper FF",size:Numbers(study.GetProperty("shells"),"rear_upper")),(key:"lower",level:"Lower FF",size:Numbers(study.GetProperty("shells"),"rear_lower"))};
                 foreach(var floor in planDefs)
                 {
+                    var frame=Numbers(study.GetProperty("plan_frame_offsets_ft"),floor.key);
+                    double offsetX=frame[0],offsetY=frame[1];
                     var roomSpecs=study.GetProperty("plans").GetProperty(floor.key).EnumerateArray().ToArray();
                     var horizontal=new List<(double x,double y)>(); var vertical=new List<(double x,double y)>();
-                    foreach(var room in roomSpecs) AddRectangleEdges(room,horizontal,vertical);
-                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]))
+                    foreach(var room in roomSpecs) AddRectangleEdges(room,horizontal,vertical,offsetX,offsetY);
+                    foreach(var edge in RectangleEdges(offsetX,offsetY,offsetX+floor.size[0],offsetY+floor.size[1]))
                     { horizontal.Add((edge.x1,edge.y1)); horizontal.Add((edge.x2,edge.y2)); vertical.Add((edge.x1,edge.y1)); vertical.Add((edge.x2,edge.y2)); }
                     var coordinates=horizontal.Concat(vertical).SelectMany(p=>new[]{p.x,p.y}).Distinct().ToArray();
                     var segments=new Dictionary<string,(double x1,double y1,double x2,double y2)>(StringComparer.Ordinal);
@@ -771,8 +787,8 @@ public class SelectedDCommand : IExternalCommand
                         string ka=PointKey(ax,ay),kb=PointKey(bx,by); string key=string.CompareOrdinal(ka,kb)<0?ka+"|"+kb:kb+"|"+ka;
                         if(!segments.ContainsKey(key)) segments.Add(key,(ax,ay,bx,by));
                     }
-                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]).Concat(roomSpecs.SelectMany(room=>{
-                        var origin=Numbers(room,"origin_ft"); return RectangleEdges(origin[0],origin[1],origin[0]+Number(room,"width_ft"),origin[1]+Number(room,"depth_ft"));
+                    foreach(var edge in RectangleEdges(offsetX,offsetY,offsetX+floor.size[0],offsetY+floor.size[1]).Concat(roomSpecs.SelectMany(room=>{
+                        var (x,y,width,depth)=Rectangle(room,offsetX,offsetY); return RectangleEdges(x,y,x+width,y+depth);
                     })))
                     {
                         var cuts=coordinates.Where(c=>c>=Math.Min(edge.x1,edge.x2)-1e-7&&c<=Math.Max(edge.x1,edge.x2)+1e-7)
@@ -791,13 +807,13 @@ public class SelectedDCommand : IExternalCommand
                     doc.Regenerate();
                     foreach(var roomSpec in roomSpecs)
                     {
-                        var origin=Numbers(roomSpec,"origin_ft"); double width=Number(roomSpec,"width_ft"),depth=Number(roomSpec,"depth_ft");
-                        string id=Text(roomSpec,"id"); var room=doc.Create.NewRoom(levels[floor.level],new UV(origin[0]+width/2,origin[1]+depth/2));
+                        var (x,y,width,depth)=Rectangle(roomSpec,offsetX,offsetY);
+                        string id=Text(roomSpec,"id"); var room=doc.Create.NewRoom(levels[floor.level],new UV(x+width/2,y+depth/2));
                         room.Number=id; room.Name=Text(roomSpec,"name"); Tag(room,id);
                         rows.Add((id,room.Name,floor.level,Text(roomSpec,"kind"),width*depth));
                     }
                     // A separate tagged model-curve outline makes the test envelope visible without implying a wall height or assembly.
-                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]))
+                    foreach(var edge in RectangleEdges(offsetX,offsetY,offsetX+floor.size[0],offsetY+floor.size[1]))
                     {
                         var model=doc.Create.NewModelCurve(Line.CreateBound(new XYZ(edge.x1,edge.y1,z),new XYZ(edge.x2,edge.y2,z)),sketch);
                         Tag(model,"D-SHELL-OUTLINE-"+floor.key);
@@ -807,7 +823,7 @@ public class SelectedDCommand : IExternalCommand
                 foreach(var levelPair in new[]{(key:"lower",level:"Lower FF"),(key:"main",level:"Main FF"),(key:"upper",level:"Upper FF")})
                 {
                     var core=study.GetProperty("stair_core_test"); var rectangles=new List<(string id,double x,double y,double w,double d)>();
-                    if(levelPair.key=="lower") { var r=core.GetProperty("lower_to_main").GetProperty("lower_landing_local_ft").EnumerateArray().Select(v=>v.GetDouble()).ToArray(); rectangles.Add(("D-S1-LOWER-LANDING",r[0],r[1],r[2],r[3])); }
+                    if(levelPair.key=="lower") { var r=core.GetProperty("lower_to_main").GetProperty("lower_landing_local_ft").EnumerateArray().Select(v=>v.GetDouble()).ToArray(); var frame=Numbers(study.GetProperty("plan_frame_offsets_ft"),"lower"); rectangles.Add(("D-S1-LOWER-LANDING",r[0]+frame[0],r[1]+frame[1],r[2],r[3])); }
                     if(levelPair.key=="main")
                     {
                         foreach(var name in new[]{"lower_to_main","main_to_upper"}) foreach(var part in new[]{"main_landing_ft","run_ft"})

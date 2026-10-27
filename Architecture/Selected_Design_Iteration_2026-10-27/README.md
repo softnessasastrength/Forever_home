@@ -48,6 +48,8 @@ The latest D iteration lays out two comparison flights using B's inherited 8-ris
 
 The 8 x 8 ft lift reservation is shifted 4 in west to align its west face with the upper core hall. Its door side, product dimensions, maneuvering clearances, pit, overrun and lower-level connection are unresolved. The shift and stair blocks are comparison geometry only.
 
+The generated plan_frame_offsets_ft records how wing-local room blocks map into the shared Revit plan frame: main (0, 0), lower (0, +10 ft) so local y=28–32 ft maps to main y=38–42 ft, and upper (0, +6 ft) so its 32 ft plate ends at the upper connector start y=38 ft. The connector then reaches y=42 ft, the main-shell rear edge. These offsets derive from the current comparison geometry and are not a site datum or georeference.
+
 ## Measured block schedule
 
 The current placed room-block totals are:
@@ -64,9 +66,9 @@ The generator parses numeric allowances from `Requirements/Room_Program.md` and 
 
 ## Verification
 
-`checks.json` records 28 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; and floor-profile arithmetic. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
+`checks.json` records 30 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; floor-profile arithmetic; and lower/upper frame-to-landing/connector alignment. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
 
-These checks validate rectangles, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
+These checks validate rectangles, level-frame relationships, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
 
 ## Open design work
 

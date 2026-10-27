@@ -18,9 +18,9 @@ The validator checks the three C levels, 17 stable program IDs and room boundary
 
 ## Selected direction D space study
 
-The **Build selected D space study** command consumes the generated [direction D study](../../Architecture/Selected_Design_Iteration_2026-10-27/study.json) and writes a new timestamped run under `.local/revit-pilot/selected-d/`. It creates separate Lower/Main/Upper levels, room-separation boundaries for all 18 room blocks and 3 circulation blocks, tagged 2D test-shell/core outlines, a room-area CSV, the retained source JSON and an IFC2x3 export. The command fails if Revit does not create all 21 enclosed spaces or if its room areas differ from the source room blocks by more than 0.1 sf.
+The **Build selected D space study** command consumes the generated [direction D study](../../Architecture/Selected_Design_Iteration_2026-10-27/study.json) and writes a new timestamped run under `.local/revit-pilot/selected-d/`. It creates separate Lower/Main/Upper levels, room-separation boundaries for all 18 room blocks and 3 circulation blocks, tagged 2D test-shell/core outlines, a room-area CSV, the retained source JSON and an IFC2x3 export. It applies the source's shared-frame offsets to the wing-local plans and lower stair landing. The command fails if Revit does not create all 21 enclosed spaces or if its room areas differ from the source room blocks by more than 0.1 sf.
 
-This is a native Revit **space study**, not a complete house model. It creates no walls, doors, floor solids/assemblies, native stairs, lift product or roof. The test-shell/core outlines are plan curves only. The upper connector, stair runs, main-floor voids and aligned rear-edge datum remain schematic coordination inputs; no structural or code claim follows from their presence.
+This is a native Revit **space study**, not a complete house model. It creates no walls, doors, floor solids/assemblies, native stairs, lift product or roof. The test-shell/core outlines are plan curves only. The upper connector, stair runs, main-floor voids and derived +10 ft lower / +6 ft upper wing offsets remain schematic coordination inputs; no structural or code claim follows from their presence.
 
 To run it, close Revit 2027 so the loaded add-in assembly can be replaced, then run:
 
@@ -29,6 +29,14 @@ To run it, close Revit 2027 so the loaded add-in assembly can be replaced, then 
 ```
 
 Reopen Revit and choose **Add-Ins → Forever Home Pilot → Build selected D space study**. C is untouched: D creates a separate timestamped folder and RVT. Inspect `study-manifest.json`, `room-inventory.csv`, `export-result.json` and the IFC in that folder. The command validates D's 21 space IDs and calculated room areas. Run **Audit active document** for a generic inventory; the current Geometry QA command requires Compact-Core C markers and is not valid evidence for D. The source/build has compiled, but host execution and D IFC validation are still pending; do not treat C's audit/QA/export reports as D evidence.
+
+After a D run, independently validate its exact RVT/IFC/source chain, IFC2X3 schema, three storeys, 21 spaces, IDs, levels, areas and intentionally empty construction categories:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py '.local/revit-pilot/selected-d/<timestamp>'
+```
+
+The validator writes `ifc-validation.json` into that run folder and exits nonzero on any missing artifact or failed check. It also carries the current room-program variances as observations. Area allowances are not automatic geometry acceptance limits.
 
 Run the no-Revit preflight before a batch reload:
 

@@ -80,6 +80,12 @@ $upperRunEndY = $upperRunStartY + $runLength
 # Both flights then share a 6 ft 5 in plan run from y=31 ft 7 in to y=38 ft,
 # with four-foot landings at each end. This is not a native section check.
 $lowerWingOffsetY = $mainDepth - 32.0
+$upperWingOffsetY = $upperRunEndY - 32.0
+$planFrameOffsets = [ordered]@{
+    main = @(0.0,0.0)
+    upper = @(0.0,$upperWingOffsetY)
+    lower = @(0.0,$lowerWingOffsetY)
+}
 $lowerLandingLocalY = 28.0
 $lowerLandingMainY = $lowerLandingLocalY + $lowerWingOffsetY
 $lowerRunStartY = [double]$source.alternatives.B.core.stair_run_y
@@ -125,6 +131,7 @@ $study = [ordered]@{
     source = 'Derived from the existing A/B schematic study; source alternatives remain unchanged.'
     source_fingerprints_sha256 = $sourceFingerprints
     units = 'feet; local x right, local y toward rear; no site orientation or georeference'
+    plan_frame_offsets_ft = $planFrameOffsets
     selection = [ordered]@{
         bedroom_flex_level = 'lower (A strategy)'
         main_shell = '40 x 42 ft (B test envelope)'
@@ -218,6 +225,8 @@ $planChecks['upper_connector_aligns_with_upper_hall'] = ([Math]::Abs($stairCore.
 $planChecks['lift_west_face_aligns_with_upper_core_hall'] = ([Math]::Abs($stairCore.lift.origin_ft[0]-($upperHall.x+$upperHall.w)) -lt 0.000001)
 $planChecks['lower_stair_landing_and_run_are_edge_adjacent'] = ([Math]::Abs($stairCore.lower_to_main.lower_landing_ft[1]-($stairCore.lower_to_main.run_ft[1]+$stairCore.lower_to_main.run_ft[3])) -lt 0.000001)
 $planChecks['lower_plan_landing_maps_to_rear_aligned_wing_edge'] = ([Math]::Abs(($stairCore.lower_to_main.lower_landing_local_ft[1]+$lowerWingOffsetY)-$stairCore.lower_to_main.lower_landing_ft[1]) -lt 0.000001 -and [Math]::Abs(($stairCore.lower_to_main.lower_landing_local_ft[1]+4)-32) -lt 0.000001)
+$planChecks['upper_wing_frame_meets_upper_connector'] = ([Math]::Abs($planFrameOffsets.upper[1]+32-$stairCore.main_to_upper.upper_floor_extension_ft[1]) -lt 0.000001)
+$planChecks['lower_wing_frame_meets_main_landing'] = ([Math]::Abs($planFrameOffsets.lower[1]+$stairCore.lower_to_main.lower_landing_local_ft[1]-$stairCore.lower_to_main.lower_landing_ft[1]) -lt 0.000001)
 $planChecks['main_stair_landings_and_run_are_edge_adjacent'] = ([Math]::Abs(($stairCore.main_to_upper.main_landing_ft[1]+$stairCore.main_to_upper.main_landing_ft[3])-$stairCore.main_to_upper.run_ft[1]) -lt 0.000001 -and [Math]::Abs(($stairCore.main_to_upper.run_ft[1]+$stairCore.main_to_upper.run_ft[3])-$stairCore.main_to_upper.upper_landing_ft[1]) -lt 0.000001)
 $planChecks['main_floor_profile_matches_two_stair_runs_and_lift_void'] = ([Math]::Abs($stairCore.main_floor_profile_sf-(40*42-2*4*$runLength-64)) -lt 0.001)
 $planChecks['main_stair_openings_match_flight_reservations'] = ([Math]::Abs($stairCore.lower_to_main.main_floor_opening_ft[1]-$stairCore.lower_to_main.run_ft[1]) -lt 0.000001 -and [Math]::Abs($stairCore.lower_to_main.main_floor_opening_ft[3]-$runLength) -lt 0.000001 -and [Math]::Abs($stairCore.main_to_upper.main_floor_opening_ft[3]-$runLength) -lt 0.000001)

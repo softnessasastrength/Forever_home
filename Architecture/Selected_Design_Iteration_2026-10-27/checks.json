@@ -24,6 +24,8 @@
                    "lift_west_face_aligns_with_upper_core_hall":  true,
                    "lower_stair_landing_and_run_are_edge_adjacent":  true,
                    "lower_plan_landing_maps_to_rear_aligned_wing_edge":  true,
+                   "upper_wing_frame_meets_upper_connector":  true,
+                   "lower_wing_frame_meets_main_landing":  true,
                    "main_stair_landings_and_run_are_edge_adjacent":  true,
                    "main_floor_profile_matches_two_stair_runs_and_lift_void":  true,
                    "main_stair_openings_match_flight_reservations":  true,

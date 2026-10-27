@@ -11,6 +11,20 @@
                                        "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "1d76cad39d6000be1f746f931c02cff321d4a318589ac903196b11e3b2ae834e"
                                    },
     "units":  "feet; local x right, local y toward rear; no site orientation or georeference",
+    "plan_frame_offsets_ft":  {
+                                  "main":  [
+                                               0,
+                                               0
+                                           ],
+                                  "upper":  [
+                                                0,
+                                                6
+                                            ],
+                                  "lower":  [
+                                                0,
+                                                10
+                                            ]
+                              },
     "selection":  {
                       "bedroom_flex_level":  "lower (A strategy)",
                       "main_shell":  "40 x 42 ft (B test envelope)",
