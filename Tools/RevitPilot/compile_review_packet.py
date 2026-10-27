@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -41,6 +42,37 @@ def relative_artifact(root: Path, path: Path | None) -> str | None:
     return path.relative_to(root).as_posix()
 
 
+def run_timestamp(path: Path | None) -> datetime | None:
+    """Read the UTC timestamp encoded in a RevitPilot run directory name."""
+    if path is None:
+        return None
+    match = re.fullmatch(r"(\d{8}T\d{6})(\d{0,6})Z", path.name)
+    if not match:
+        return None
+    value = match.group(1) + match.group(2).ljust(6, "0") + "Z"
+    try:
+        return datetime.strptime(value, "%Y%m%dT%H%M%S%fZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def assess_freshness(evidence: Path | None, study: Path | None) -> dict[str, str | None]:
+    """Flag timestamped evidence that predates the study being summarized."""
+    evidence_time = run_timestamp(evidence)
+    study_time = run_timestamp(study)
+    if evidence is None or study is None:
+        status = "UNKNOWN"
+    elif evidence_time is None or study_time is None:
+        status = "UNVERIFIED"
+    else:
+        status = "CURRENT" if evidence_time >= study_time else "STALE"
+    return {
+        "status": status,
+        "evidence_run": evidence.name if evidence else None,
+        "study_run": study.name if study else None,
+    }
+
+
 def build_packet(root: Path) -> dict[str, Any]:
     compact = latest_dir(root, ".local/revit-pilot/compact-core")
     audit = latest_dir(root, ".local/revit-pilot/audits")
@@ -53,7 +85,13 @@ def build_packet(root: Path) -> dict[str, Any]:
     manifest_path = compact / "study-manifest.json" if compact else None
     manifest_data = read_json(manifest_path)
     manifest_errors = validate_manifest(manifest_path) if manifest_path and isinstance(manifest_data, dict) else ["No study manifest found"]
-    ifc_report = validate_ifc(export, compact) if export and compact else None
+    freshness = {
+        "api_audit": assess_freshness(audit, compact),
+        "geometry_qa": assess_freshness(qa, compact),
+        "ifc_export": assess_freshness(export, compact),
+    }
+    ifc_fresh = freshness["ifc_export"]["status"] == "CURRENT"
+    ifc_report = validate_ifc(export, compact) if export and compact and ifc_fresh else None
 
     warning_count = len(warnings) if isinstance(warnings, list) else None
     audit_summary = audit_data.get("summary", {}) if isinstance(audit_data, dict) else {}
@@ -74,7 +112,10 @@ def build_packet(root: Path) -> dict[str, Any]:
         },
         {
             "name": "Read-only API inventory",
-            "status": "PASS" if audit_summary.get("warning_count") == 0 and audit_floor_count == 3 and audit_level_count == 3 else "OPEN" if audit_summary else "NOT FOUND",
+            "status": ("STALE" if freshness["api_audit"]["status"] == "STALE" else
+                       "UNVERIFIED" if freshness["api_audit"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["api_audit"]["evidence_run"] else
+                       "PASS" if audit_summary.get("warning_count") == 0 and audit_floor_count == 3 and audit_level_count == 3 else
+                       "OPEN" if audit_summary else "NOT FOUND"),
             "detail": (
                 f"{audit_level_count if audit_level_count is not None else '?'} levels, "
                 f"{audit_floor_count if audit_floor_count is not None else '?'} floors, "
@@ -87,7 +128,10 @@ def build_packet(root: Path) -> dict[str, Any]:
         },
         {
             "name": "Read-only Geometry QA",
-            "status": "PASS" if qa_summary.get("issue_count") == 0 and qa_summary.get("floor_count") == 3 else "OPEN" if qa_summary else "NOT FOUND",
+            "status": ("STALE" if freshness["geometry_qa"]["status"] == "STALE" else
+                       "UNVERIFIED" if freshness["geometry_qa"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["geometry_qa"]["evidence_run"] else
+                       "PASS" if qa_summary.get("issue_count") == 0 and qa_summary.get("floor_count") == 3 else
+                       "OPEN" if qa_summary else "NOT FOUND"),
             "detail": (
                 f"{qa_summary.get('issue_count', '?')} issues; "
                 f"{qa_summary.get('room_count', '?')} rooms, "
@@ -106,7 +150,9 @@ def build_packet(root: Path) -> dict[str, Any]:
         },
         {
             "name": "Independent Compact-Core IFC validation",
-            "status": ("PASS" if ifc_report and ifc_report["passed"] and not ifc_report["open_findings"] else
+            "status": ("STALE" if freshness["ifc_export"]["status"] == "STALE" else
+                       "UNVERIFIED" if freshness["ifc_export"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["ifc_export"]["evidence_run"] else
+                       "PASS" if ifc_report and ifc_report["passed"] and not ifc_report["open_findings"] else
                        "PASS WITH OPEN ITEMS" if ifc_report and ifc_report["passed"] else
                        "FAIL" if ifc_report else "NOT FOUND"),
             "detail": (
@@ -114,7 +160,13 @@ def build_packet(root: Path) -> dict[str, Any]:
                 f"{ifc_report['observations'].get('space_count', '?')} spaces; "
                 f"{ifc_report['observations'].get('geometry', {}).get('physical_product_decode_failure_count', '?')} physical geometry decode failures; "
                 f"{len(ifc_report['open_findings'])} open coordination finding(s)"
-            ) if ifc_report else "No export or study manifest available",
+            ) if ifc_report else (
+                "Latest export predates the latest study; no cross-run IFC validation was performed"
+                if freshness["ifc_export"]["status"] == "STALE" else
+                "Run timestamps could not be compared; IFC freshness is unverified"
+                if freshness["ifc_export"]["status"] == "UNVERIFIED" else
+                "No export or study manifest available"
+            ),
             "artifact": relative_artifact(root, export / "FH_Compact_Core_Study.ifc" if export else None),
         },
     ]
@@ -126,6 +178,12 @@ def build_packet(root: Path) -> dict[str, Any]:
         open_items.extend({"source": "geometry-qa.json", **item} for item in qa_data["issues"])
     if ifc_report:
         open_items.extend({"source": "IFC validation", **item} for item in ifc_report["open_findings"])
+    for name, result in freshness.items():
+        if result["status"] in {"STALE", "UNVERIFIED", "UNKNOWN"} and result["evidence_run"]:
+            open_items.append({
+                "source": "evidence freshness",
+                "description": f"{name} is {result['status'].lower()} relative to study {result['study_run']}; evidence run: {result['evidence_run']}",
+            })
 
     return {
         "schema": "forever-home.revit-review-packet.v1",
@@ -138,11 +196,13 @@ def build_packet(root: Path) -> dict[str, Any]:
             "geometry_qa": relative_artifact(root, qa),
             "ifc_export": relative_artifact(root, export),
         },
+        "source_freshness": freshness,
         "ifc_validation": ifc_report,
         "checks": checks,
         "open_items": open_items,
         "limitations": [
             "This packet summarizes recorded evidence; it does not rerun Revit or validate unseen model state.",
+            "Timestamp comparison prevents obviously older reports from being presented as current; matching timestamps do not prove native document identity because reports omit the document path.",
             "PASS means the specific recorded check returned no findings, not code, accessibility, structural, engineering or permit approval.",
             "Visual review, export fidelity, Revit 2018 interoperability and professional review remain separate gates.",
         ],

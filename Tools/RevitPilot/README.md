@@ -24,6 +24,8 @@ Run the no-Revit preflight before a batch reload:
 
 The JSON config is the runtime source for Compact-Core levels, room boundaries and placement points, shell/core walls, doors, stair runs, floor polygons and illustrative overlays. RevitPilot copies the exact input beside each generated study and records its SHA256 in the manifest. Manifest validation checks the snapshot hash and its levels, room/door IDs, shell/lift targets and floor profile against the generated manifest. The file preserves the current proposed values; it does not replace the native RVT or approve the design.
 
+The config-driven generator produced `.local/revit-pilot/compact-core/20261027T025740849Z/`; its manifest hash matches the current source JSON, the manifest validator passes, and the warning report is empty. This run does not yet have a matching native API audit, floor-aware Geometry QA or IFC export. Earlier runs' audit/export evidence must not be represented as validation of this timestamp.
+
 Run the offline configuration and manifest-provenance regression tests:
 
 ```powershell
@@ -58,7 +60,7 @@ Compile the latest evidence into one offline review packet:
 ./.venv/Scripts/python.exe Tools/RevitPilot/compile_review_packet.py
 ```
 
-This reads the latest compact-core warning report, API audit, Geometry QA, manifest and IFC export, revalidates IFC against the supplied study manifest, then writes `review-packet.json` and `review-packet.html` under ignored `.local/revit-pilot/review-packets/<timestamp>/`. It reports the exact source run directories and carries open area/stair findings into the packet. It does not open Revit, modify a model or treat a passing check as professional approval.
+This reads the latest compact-core warning report, API audit, Geometry QA, manifest and IFC export, revalidates IFC against the supplied study manifest when the export timestamp is not older than the study, then writes `review-packet.json` and `review-packet.html` under ignored `.local/revit-pilot/review-packets/<timestamp>/`. It reports source run directories, marks older or unparseable QA/export evidence `STALE` or `UNVERIFIED`, and carries open area/stair findings into the packet. Timestamp order cannot prove document identity because the host reports omit document paths. It does not open Revit, modify a model or treat a passing check as professional approval.
 
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
