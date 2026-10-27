@@ -1,7 +1,11 @@
 """Validate a Revit compact-core study manifest without opening Revit."""
+import hashlib
 import json
+import re
 import sys
 from pathlib import Path
+
+from preflight_compact_study import validate as validate_config
 
 EXPECTED_LEVELS = {"FH-C-LEVEL-LOWER", "FH-C-LEVEL-MAIN", "FH-C-LEVEL-UPPER"}
 EXPECTED_ROOMS = {
@@ -20,6 +24,55 @@ EXPECTED_FLOORS = {
 def validate(path: Path) -> list[str]:
     data = json.loads(path.read_text(encoding="utf-8"))
     errors = []
+    config_schema = data.get("config_schema")
+    config_hash = data.get("config_sha256")
+    if config_schema is not None:
+        if config_schema != "forever-home.compact-study-config.v2":
+            errors.append(f"unsupported generator config schema: {config_schema}")
+        if not isinstance(config_hash, str) or re.fullmatch(r"[0-9a-f]{64}", config_hash) is None:
+            errors.append("config-driven manifest must include a lowercase SHA256 fingerprint")
+        config_file = data.get("config_file")
+        config_path = path.parent / config_file if isinstance(config_file, str) and Path(config_file).name == config_file else None
+        if config_path is None or not config_path.is_file():
+            errors.append("config-driven manifest must retain its adjacent configuration snapshot")
+        else:
+            config_bytes = config_path.read_bytes()
+            if hashlib.sha256(config_bytes).hexdigest() != config_hash:
+                errors.append("configuration snapshot SHA256 does not match the manifest")
+            try:
+                config_data = json.loads(config_bytes.decode("utf-8"))
+                errors.extend(f"configuration snapshot: {item}" for item in validate_config(config_data))
+                config_level_ids = {item["id"] for item in config_data["levels"]}
+                manifest_level_ids = {item["id"] for item in data.get("levels", [])}
+                if config_level_ids != manifest_level_ids:
+                    errors.append("manifest levels differ from the configuration snapshot")
+                config_levels = {item["id"]: item for item in config_data["levels"]}
+                manifest_levels = {item["id"]: item for item in data.get("levels", [])}
+                for level_id in config_level_ids & manifest_level_ids:
+                    if (manifest_levels[level_id].get("name") != config_levels[level_id]["name"]
+                            or manifest_levels[level_id].get("elevation_ft") != config_levels[level_id]["elevation_ft"]):
+                        errors.append(f"manifest level {level_id} name/elevation differs from the configuration snapshot")
+                if set(config_data.get("rooms", [])) != set(data.get("rooms", [])):
+                    errors.append("manifest room IDs differ from the configuration snapshot")
+                if {item["id"] for item in config_data.get("doors", [])} != set(data.get("doors", [])):
+                    errors.append("manifest door IDs differ from the configuration snapshot")
+                config_floors = {item["marker"]: item for item in config_data.get("floors", [])}
+                manifest_floors = {item["marker"]: item for item in data.get("floors", [])}
+                if set(config_floors) != set(manifest_floors):
+                    errors.append("manifest floor markers differ from the configuration snapshot")
+                for marker in config_floors.keys() & manifest_floors.keys():
+                    source, generated = config_floors[marker], manifest_floors[marker]
+                    if generated.get("gross_footprint_sqft") != source.get("gross_footprint_sqft") or generated.get("profile_area_sqft") != source.get("profile_area_sqft"):
+                        errors.append(f"manifest floor profile for {marker} differs from the configuration snapshot")
+                    if generated.get("level") != config_levels.get(source.get("level_id"), {}).get("name"):
+                        errors.append(f"manifest floor level for {marker} differs from the configuration snapshot")
+                if data.get("shell") != {key: config_data["shell"][key] for key in ("main_width_ft", "main_depth_ft", "rear_width_ft", "rear_depth_ft")}:
+                    errors.append("manifest shell targets differ from the configuration snapshot")
+                lift = config_data["lift_reservation"]
+                if data.get("lift_reservation", {}).get("width_ft") != lift["width_ft"] or data.get("lift_reservation", {}).get("depth_ft") != lift["depth_ft"]:
+                    errors.append("manifest lift reservation differs from the configuration snapshot")
+            except (UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError) as exc:
+                errors.append(f"configuration snapshot is invalid: {exc}")
     levels = {item["id"] for item in data.get("levels", [])}
     rooms = set(data.get("rooms", []))
     if levels != EXPECTED_LEVELS:

@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-27  
-Status: active; M0–M4 are complete for the recorded pipeline run. Compact-Core C remains a test study and is not geometry-frozen.
+Status: active; M0–M4 are complete for the recorded pipeline run. M5 implements config-driven geometry but awaits a new Revit host run. Compact-Core C remains a test study and is not geometry-frozen.
 
 ## Repository safety baseline
 
@@ -16,10 +16,11 @@ Status: active; M0–M4 are complete for the recorded pipeline run. Compact-Core
 | Milestone | Work | Acceptance criteria | Status |
 |---|---|---|---|
 | M0 — Repository safety and baseline | Audit worktree, branches, reflogs, remotes, history, existing outputs and project sources. Preserve any unreachable evidence. | Clean starting worktree; local/remote branch relation recorded; no missing commits identified; requirements cite project sources. | Complete: see this baseline and `PROGRESS.md`. |
-| M1 — Reproducible study generation | Run the checked-in Revit 2027 Compact-Core C generator as a separate timestamped study; validate the generated manifest and native inventory against BIM-01 through BIM-05. | Unique RVT and manifest; exact three levels, 17 room IDs, target shells/lift, three floor profiles, native category counts and warnings recorded. Existing studies remain untouched. | Complete for the recorded host run; `compact-study-config.json` remains a preflight target file, while generator geometry is currently explicit in `Pilot.cs`. |
+| M1 — Reproducible study generation | Run the checked-in Revit 2027 Compact-Core C generator as a separate timestamped study; validate the generated manifest and native inventory against BIM-01 through BIM-05. | Unique RVT and manifest; exact three levels, 17 room IDs, target shells/lift, three floor profiles, native category counts and warnings recorded. Existing studies remain untouched. | Complete for the prior host run. The configuration-source refactor is tracked separately in M5 and does not yet have fresh host evidence. |
 | M2 — Independent IFC validation | Export the generated study as IFC2X3 through the existing manifest command; independently validate schema, validation statements, levels, spaces/IDs, major categories, room areas/CSV, floor markers/areas, and physical-product geometry. | Validator exits 0 only when BIM-02 through BIM-08 checks pass; known annotation exception and area/stair discrepancies are reported separately; report records IFC hash and findings. | Complete for the recorded host run; validation passes with open coordination findings. |
 | M3 — One coherent review packet | Connect the export validation to the offline packet and prevent a packet from representing an IFC as passing when its validation artifact is absent or stale. | Packet names its exact source run directories and displays IFC validation status plus open findings. | Complete; latest packet carries the IFC validation and coordination findings. |
 | M4 — Documentation and handoff | Update `PROGRESS.md`, execution instructions and checklists with commands, observed evidence, blockers and limitations. | A second operator can follow the documented commands and distinguish host-only steps from offline steps. | Complete for this milestone; commands were rerun from the repository venv and the packet refreshed. |
+| M5 — Configuration-driven geometry | Move current Compact-Core authoring inputs into `compact-study-config.json`; consume them at runtime, preserve an exact config snapshot, and fingerprint the input in the generated manifest. | Preflight validates levels, all room boundary/seed data, shell/lift, door hosts, stair runs, overlay extents and floor-loop areas; manifest validation matches the preserved input snapshot to generated levels, IDs and floor targets; Revit regenerates a new study with matching native audit/QA counts and IFC validation, while all previous runs remain intact. | Implementation and offline checks pass; fresh Revit host generation/audit/QA/export remains pending. |
 
 ## Execution sequence
 

@@ -1,13 +1,83 @@
 {
+  "schema": "forever-home.compact-study-config.v2",
   "study": "C compact core",
   "levels": [
-    {"id": "FH-C-LEVEL-LOWER", "elevation_ft": -5},
-    {"id": "FH-C-LEVEL-MAIN", "elevation_ft": 0},
-    {"id": "FH-C-LEVEL-UPPER", "elevation_ft": 5}
+    {"id": "FH-C-LEVEL-LOWER", "name": "C Lower -5 ft", "elevation_ft": -5},
+    {"id": "FH-C-LEVEL-MAIN", "name": "C Main 0 ft", "elevation_ft": 0},
+    {"id": "FH-C-LEVEL-UPPER", "name": "C Upper +5 ft", "elevation_ft": 5}
   ],
-  "shell": {"main_width_ft": 40, "main_depth_ft": 40, "rear_width_ft": 36, "rear_depth_ft": 32},
-  "lift_reservation": {"width_ft": 8, "depth_ft": 8},
+  "shell": {
+    "main_origin_ft": [0, 0], "main_width_ft": 40, "main_depth_ft": 40,
+    "rear_origin_ft": [0, 40], "rear_width_ft": 36, "rear_depth_ft": 32,
+    "wall_level_id": "FH-C-LEVEL-LOWER", "wall_height_ft": 20
+  },
+  "lift_reservation": {"origin_ft": [21.5, 30.5], "width_ft": 8, "depth_ft": 8, "wall_level_id": "FH-C-LEVEL-MAIN", "wall_height_ft": 10},
   "rooms": ["M-01", "M-02", "M-03", "M-06", "L-02", "U-01", "U-02", "U-03", "U-04", "U-05", "U-06", "L-01", "L-03", "L-04", "L-05", "L-06", "L-07"],
-  "doors": ["D-MAIN-ENTRY", "D-MAIN-BATH", "D-MAIN-FLEX", "D-PRIMARY-BATH", "D-TECH-SERVICE"],
-  "unresolved": ["wall overlap warnings", "door openings and swings", "stair headroom", "lift product fit", "full accessibility route", "structure and MEP coordination", "code review"]
+  "room_specs": [
+    {"id":"M-01","name":"Living room","wall_marker":"FH-C-M-01-LIVING","level_id":"FH-C-LEVEL-MAIN","origin_ft":[1,1],"width_ft":16,"depth_ft":15,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[9,8]},
+    {"id":"M-02","name":"Kitchen","wall_marker":"FH-C-M-02-KITCHEN","level_id":"FH-C-LEVEL-MAIN","origin_ft":[22,1],"width_ft":17,"depth_ft":16,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[30,9]},
+    {"id":"M-03","name":"Dining","wall_marker":"FH-C-M-03-DINING","level_id":"FH-C-LEVEL-MAIN","origin_ft":[1,17],"width_ft":11,"depth_ft":13.5,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[6,23]},
+    {"id":"M-06","name":"Proposed main full bath","wall_marker":"FH-C-M-06-MAIN-BATH","level_id":"FH-C-LEVEL-MAIN","origin_ft":[30.5,27],"width_ft":8,"depth_ft":10,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[34,32]},
+    {"id":"L-02","name":"Main flex sleeping room","wall_marker":"FH-C-L-02-MAIN-FLEX","level_id":"FH-C-LEVEL-MAIN","origin_ft":[1,31.5],"width_ft":11,"depth_ft":7.5,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[6,35]},
+    {"id":"U-01","name":"Primary bedroom","wall_marker":"FH-C-U-01-PRIMARY","level_id":"FH-C-LEVEL-UPPER","origin_ft":[1,41],"width_ft":16,"depth_ft":10,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[9,46]},
+    {"id":"U-05","name":"Primary bath","wall_marker":"FH-C-U-05-PRIMARY-BATH","level_id":"FH-C-LEVEL-UPPER","origin_ft":[1,52],"width_ft":9,"depth_ft":10,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[5,57]},
+    {"id":"U-02","name":"Boutique","wall_marker":"FH-C-U-02-BOUTIQUE","level_id":"FH-C-LEVEL-UPPER","origin_ft":[1,63],"width_ft":16,"depth_ft":8,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[9,67]},
+    {"id":"U-04","name":"Guest bedroom","wall_marker":"FH-C-U-04-GUEST","level_id":"FH-C-LEVEL-UPPER","origin_ft":[18,41],"width_ft":12,"depth_ft":8.5,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[24,45]},
+    {"id":"U-06","name":"Jack and Jill bath","wall_marker":"FH-C-U-06-JACK-JILL","level_id":"FH-C-LEVEL-UPPER","origin_ft":[25,50.5],"width_ft":10,"depth_ft":12,"wall_height_ft":10,"skipped_edges":[2],"room_seed_ft":[30,56]},
+    {"id":"U-03","name":"Hybrid bedroom office","wall_marker":"FH-C-U-03-HYBRID","level_id":"FH-C-LEVEL-UPPER","origin_ft":[18,63.5],"width_ft":13,"depth_ft":7.5,"wall_height_ft":10,"skipped_edges":[0],"room_seed_ft":[24,67]},
+    {"id":"L-03","name":"Lower full bath","wall_marker":"FH-C-L-03-LOWER-BATH","level_id":"FH-C-LEVEL-LOWER","origin_ft":[1,41],"width_ft":9,"depth_ft":10,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[5,46]},
+    {"id":"L-04","name":"Laundry","wall_marker":"FH-C-L-04-LAUNDRY","level_id":"FH-C-LEVEL-LOWER","origin_ft":[1,52],"width_ft":9,"depth_ft":8,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[5,56]},
+    {"id":"L-05","name":"MEP reservation","wall_marker":"FH-C-L-05-MEP","level_id":"FH-C-LEVEL-LOWER","origin_ft":[1,61],"width_ft":9,"depth_ft":9,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[5,65]},
+    {"id":"L-07","name":"Arrival and dry storage","wall_marker":"FH-C-L-07-ARRIVAL","level_id":"FH-C-LEVEL-LOWER","origin_ft":[26,41],"width_ft":9,"depth_ft":11.5,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[30,46]},
+    {"id":"L-01","name":"Lower flexible living","wall_marker":"FH-C-L-01-FLEX-LIVING","level_id":"FH-C-LEVEL-LOWER","origin_ft":[11,53],"width_ft":13,"depth_ft":18,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[17,62]},
+    {"id":"L-06","name":"Relocated technology room","wall_marker":"FH-C-L-06-TECH-RELOCATED","level_id":"FH-C-LEVEL-LOWER","origin_ft":[26,63],"width_ft":8,"depth_ft":8,"wall_height_ft":10,"skipped_edges":[],"room_seed_ft":[30,67]}
+  ],
+  "shared_walls": [
+    {"marker":"FH-C-U-06-U-03-SHARED-DIVIDER","level_id":"FH-C-LEVEL-UPPER","start_ft":[18,62.25,0],"end_ft":[35,62.25,0],"height_ft":10}
+  ],
+  "doors": [
+    {"id":"D-MAIN-ENTRY","wall_marker":"FH-C-SHELL-01","level_id":"FH-C-LEVEL-MAIN","point_ft":[6,0,0]},
+    {"id":"D-MAIN-BATH","wall_marker":"FH-C-M-06-MAIN-BATH-01","level_id":"FH-C-LEVEL-MAIN","point_ft":[34,27,0]},
+    {"id":"D-MAIN-FLEX","wall_marker":"FH-C-L-02-MAIN-FLEX-01","level_id":"FH-C-LEVEL-MAIN","point_ft":[6,31.5,0]},
+    {"id":"D-PRIMARY-BATH","wall_marker":"FH-C-U-05-PRIMARY-BATH-01","level_id":"FH-C-LEVEL-UPPER","point_ft":[5,52,0]},
+    {"id":"D-TECH-SERVICE","wall_marker":"FH-C-L-06-TECH-RELOCATED-01","level_id":"FH-C-LEVEL-LOWER","point_ft":[30,63,0]}
+  ],
+  "stairs": [
+    {"marker":"FH-C-STAIR-LOWER-MAIN","name":"C compact core native stairs","transaction_name":"C lower-to-main stair run","from_level_id":"FH-C-LEVEL-LOWER","to_level_id":"FH-C-LEVEL-MAIN","start_ft":[12.5,27,-5],"end_ft":[12.5,36,-5],"desired_risers":10,"run_top_elevation_ft":5},
+    {"marker":"FH-C-STAIR-MAIN-UPPER","name":"C compact core upper stairs","transaction_name":"C main-to-upper stair run","from_level_id":"FH-C-LEVEL-MAIN","to_level_id":"FH-C-LEVEL-UPPER","start_ft":[17,27,0],"end_ft":[17,34,0],"desired_risers":9}
+  ],
+  "floors": [
+    {"marker":"FH-C-FLOOR-LOWER","level_id":"FH-C-LEVEL-LOWER","gross_footprint_sqft":2752,"profile_area_sqft":2752,"loops":[[[0,0],[40,0],[40,40],[36,40],[36,72],[0,72],[0,40]]]},
+    {"marker":"FH-C-FLOOR-MAIN","level_id":"FH-C-LEVEL-MAIN","gross_footprint_sqft":1600,"profile_area_sqft":1410,"loops":[[[0,0],[40,0],[40,40],[0,40]],[[10.5,24.5],[19.5,24.5],[19.5,38.5],[10.5,38.5]],[[21.5,30.5],[29.5,30.5],[29.5,38.5],[21.5,38.5]]]},
+    {"marker":"FH-C-FLOOR-UPPER","level_id":"FH-C-LEVEL-UPPER","gross_footprint_sqft":1152,"profile_area_sqft":1152,"loops":[[[0,40],[36,40],[36,72],[0,72]]]}
+  ],
+  "overlays": {
+    "boxes": [
+      {"origin_ft":[26.5,7],"width_ft":8,"depth_ft":4},
+      {"origin_ft":[4,20],"width_ft":5,"depth_ft":3},
+      {"origin_ft":[2,3],"width_ft":4,"depth_ft":7},
+      {"origin_ft":[12,2],"width_ft":5,"depth_ft":5},
+      {"origin_ft":[7,10],"width_ft":6,"depth_ft":3},
+      {"origin_ft":[31,28],"width_ft":5,"depth_ft":1.8},
+      {"origin_ft":[30.5,35],"width_ft":5,"depth_ft":3},
+      {"origin_ft":[36,35],"width_ft":1.5,"depth_ft":2.5}
+    ],
+    "lines": [{"start_ft":[22,2,0],"end_ft":[39,2,0]}],
+    "route_note": {"level_id":"FH-C-LEVEL-MAIN","point_ft":[14,20,0],"text":"C route test: entry > living > kitchen > dining > main bath > main flex\nNominal doors only; clearances, swings and accessibility remain unverified."},
+    "plan_notes": [
+      {"level_id":"FH-C-LEVEL-MAIN","point_ft":[23,6,0],"text":"8 x 4 island | appliance-free"},
+      {"level_id":"FH-C-LEVEL-MAIN","point_ft":[2,19,0],"text":"5 x 3 dining table | 4 ft porch lane target"},
+      {"level_id":"FH-C-LEVEL-MAIN","point_ft":[2,2,0],"text":"TV/service 4 x 7 | hearth 5 x 5 | furniture placeholders"},
+      {"level_id":"FH-C-LEVEL-MAIN","point_ft":[30,27,0],"text":"M-06 nominal fixtures | turn/approach/door checks pending"}
+    ],
+    "floor_notes": [
+      {"level_id":"FH-C-LEVEL-LOWER","point_ft":[2,69,0],"text":"PROVISIONAL FLOOR PLATE | template type only | assembly, foundation and lift pit not selected"},
+      {"level_id":"FH-C-LEVEL-MAIN","point_ft":[1,39,0],"text":"PROVISIONAL FLOOR PLATE | stair and 8 x 8 lift openings are coordination envelopes; verify edges, landings and structure"},
+      {"level_id":"FH-C-LEVEL-UPPER","point_ft":[1,69,0],"text":"PROVISIONAL FLOOR PLATE | template type only | upper stair landing does not reach this rear-wing footprint"}
+    ]
+  },
+  "floor_assembly_assumption": {"planning_placeholder_thickness_ft":1.25,"is_selected_assembly":false,"source":"15 in arithmetic placeholder in compact-core brief; not the modeled Revit type"},
+  "roof": {"status":"not modeled","reason":"roof form, pitch, site response and structure have no approved model input"},
+  "stair_floor_coordination": {"status":"open","issue":"C main-to-upper stair terminates at y=34 ft, while upper floor plate begins at y=40 ft; provide a connected landing and resolve the upper-level circulation footprint"},
+  "unresolved": ["floor type and layered assemblies unselected", "stair and lift opening dimensions and supporting structure", "upper stair landing disconnected from upper plate", "lower foundation and lift pit", "roof form, pitch and site response", "door clear openings and swings", "stair headroom", "lift product fit", "full accessibility route", "structure and MEP coordination", "code review"]
 }

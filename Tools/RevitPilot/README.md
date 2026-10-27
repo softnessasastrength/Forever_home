@@ -14,7 +14,7 @@ The compact-core command is a separate study entry point. It writes `study-manif
 ./.venv/Scripts/python.exe Tools/RevitPilot/validate_compact_manifest.py .local/revit-pilot/compact-core/<run>/study-manifest.json
 ```
 
-The validator checks the three C levels, 17 stable program IDs, five nominal door IDs, three floor markers and profile areas, the 40 x 40 ft main target, the 8 x 8 ft lift reservation, and unresolved roof/stair review flags. It does not certify geometry, code, accessibility or product fit. A successful command run is not a substitute for reviewing the native RVT, floor edges, openings and vertical connections.
+The validator checks the three C levels, 17 stable program IDs and room boundary/placement points, five nominal door hosts, stair runs, three floor markers and polygon-computed profile areas, the 40 x 40 ft main target, the 36 x 32 ft rear wing and 8 x 8 ft lift reservation, and unresolved roof/stair review flags. It does not certify geometry, code, accessibility or product fit. A successful command run is not a substitute for reviewing the native RVT, floor edges, openings and vertical connections.
 
 Run the no-Revit preflight before a batch reload:
 
@@ -22,7 +22,13 @@ Run the no-Revit preflight before a batch reload:
 ./.venv/Scripts/python.exe Tools/RevitPilot/preflight_compact_study.py
 ```
 
-The JSON config is the batch target record; it does not replace the native RVT or approve the design.
+The JSON config is the runtime source for Compact-Core levels, room boundaries and placement points, shell/core walls, doors, stair runs, floor polygons and illustrative overlays. RevitPilot copies the exact input beside each generated study and records its SHA256 in the manifest. Manifest validation checks the snapshot hash and its levels, room/door IDs, shell/lift targets and floor profile against the generated manifest. The file preserves the current proposed values; it does not replace the native RVT or approve the design.
+
+Run the offline configuration and manifest-provenance regression tests:
+
+```powershell
+./.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v
+```
 
 Validate the quarantined family files and their CSV links before opening Revit:
 

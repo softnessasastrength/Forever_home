@@ -1,7 +1,7 @@
 # Implementation progress
 
 Updated: 2026-10-27
-Status: reproducible Compact-Core C generation/export/validation milestone verified; architectural coordination remains open.
+Status: prior Compact-Core generation/export/IFC milestone verified; geometry inputs are now configuration-driven in source, pending a fresh Revit host run. Architectural coordination remains open.
 
 ## Goal
 
@@ -28,7 +28,11 @@ Implement `PLAN.md` against `REQUIREMENTS.md`, complete each milestone, run its 
 
 ## Remaining limitations and next work
 
-- The Compact-Core generator still authors room coordinates and fixture geometry explicitly in `Pilot.cs`; `compact-study-config.json` currently serves as a preflight inventory, not the generator's source of geometry. Unifying those inputs is a suitable next pipeline increment, provided current geometry is preserved and the result is host-verified.
+- M5 now moves the existing level, shell/core, room boundary/seed, door, stair, floor-loop and illustrative overlay inputs into `compact-study-config.json`. `Pilot.cs` reads the file at runtime, preserves a byte-for-byte copy beside each generated run, and writes its SHA256/schema into the study manifest. Manifest validation checks the snapshot hash and matches levels, room/door IDs, shell/lift targets and floor profile targets. The source values were copied unchanged from the prior generator; geometry intent was not revised.
+- M5 offline checks pass: preflight validates all room IDs, in-boundary seeds, door host references, stair endpoints, overlay geometry and floor polygon areas. Five unittest cases cover valid input, three invalid-geometry mutations, and config-snapshot/manifest hash consistency. Python files compile; the RevitPilot C# project builds with 0 errors and the existing 2 reference-resolution warnings.
+- The prior IFC run remains compatible with the updated validators: 17 spaces, 0 schema issues, and the same 10 coordination findings. This is a regression check of the prior generator export, not evidence for the refactored Revit output.
+- A fresh Revit host generation/audit/Geometry QA/IFC export has not yet been run against the final configuration-driven build. After Revit closed, the default add-in output was rebuilt successfully (0 errors, 2 reference-resolution warnings), and Revit 2027 was relaunched to Home. The computer-use bridge then returned `Accessibility state unavailable for window 331914`, so the command could not be invoked and no geometry success is claimed for M5 until the host check is completed.
+- The previous host run remains valid evidence for the previous generator revision only: `.local/revit-pilot/compact-core/20261027T021357786Z/` and its linked audit, QA and IFC outputs. It is preserved unchanged.
 - C remains a proposed test, not a selected plan. Nine room areas need review against the preliminary room program; M-06 remains an owner decision. No dimension was changed to force a pass.
 - The upper stair still does not reach the upper-floor footprint. Landing, headroom, guards, stair opening, floor solids/support, foundations, roof and lift/accessibility route remain unverified.
 - DWG binary geometry, PDF visual quality, Revit 2018 import, code, MEP/structure, and professional review remain open. Zero Revit warnings and zero IFC schema errors do not close them.

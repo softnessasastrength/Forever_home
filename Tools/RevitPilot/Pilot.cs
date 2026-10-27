@@ -663,19 +663,32 @@ public class FamilyIntakeCommand : IExternalCommand
 [Transaction(TransactionMode.Manual)]
 public class CompactCoreCommand : IExternalCommand
 {
+    static double Number(JsonElement item, string key) => item.GetProperty(key).GetDouble();
+    static string Text(JsonElement item, string key) => item.GetProperty(key).GetString()!;
+    static double[] Numbers(JsonElement item, string key) => item.GetProperty(key).EnumerateArray().Select(value => value.GetDouble()).ToArray();
+    static XYZ Point3(JsonElement item, string key)
+    {
+        var values = Numbers(item, key);
+        if (values.Length != 3) throw new InvalidDataException($"{key} must contain exactly three coordinates.");
+        return new XYZ(values[0], values[1], values[2]);
+    }
+
     static void Tag(Element e, string id)
     {
         var p = e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
         if (p is not null && !p.IsReadOnly) p.Set(id);
     }
 
-    static CurveLoop ProfileLoop(Level level, params (double X, double Y)[] points)
+    static CurveLoop ProfileLoop(Level level, JsonElement points)
     {
         var loop = new CurveLoop();
-        for (int i = 0; i < points.Length; i++)
+        var vertices = points.EnumerateArray().Select(point => point.EnumerateArray().Select(value => value.GetDouble()).ToArray()).ToArray();
+        if (vertices.Length < 3 || vertices.Any(point => point.Length != 2))
+            throw new InvalidDataException("A floor polygon must contain at least three XY vertices.");
+        for (int i = 0; i < vertices.Length; i++)
         {
-            var a = points[i]; var b = points[(i + 1) % points.Length];
-            loop.Append(Line.CreateBound(new XYZ(a.X, a.Y, level.Elevation), new XYZ(b.X, b.Y, level.Elevation)));
+            var a = vertices[i]; var b = vertices[(i + 1) % vertices.Length];
+            loop.Append(Line.CreateBound(new XYZ(a[0], a[1], level.Elevation), new XYZ(b[0], b[1], level.Elevation)));
         }
         return loop;
     }
@@ -690,18 +703,33 @@ public class CompactCoreCommand : IExternalCommand
             string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
             string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
+            var configPath = Path.Combine(root, "Tools", "RevitPilot", "compact-study-config.json");
+            byte[] configBytes = File.ReadAllBytes(configPath);
+            File.WriteAllBytes(Path.Combine(output, "compact-study-config.json"), configBytes);
+            using var configDocument = JsonDocument.Parse(configBytes);
+            var config = configDocument.RootElement;
+            var studyName = Text(config, "study");
             var door = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_C_Nominal_Door", 3, .15, 7);
-            Level lower, main, upper;
+            var levels = new Dictionary<string, Level>();
+            Level lower = null!, main = null!, upper = null!;
+            var shellSpec = config.GetProperty("shell");
+            var liftSpec = config.GetProperty("lift_reservation");
+            double liftWidth = Number(liftSpec, "width_ft"), liftDepth = Number(liftSpec, "depth_ft");
             using (var t = new Transaction(doc, "C compact core study; proposal only"))
             {
                 t.Start();
-                lower = Level.Create(doc, -5); lower.Name = "C Lower -5 ft";
-                // NewProjectDocument starts from a template that already has a level at
-                // 0 ft. Reuse it as the study's main datum instead of creating a duplicate.
-                main = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
-                    .FirstOrDefault(level => Math.Abs(level.Elevation) < 1e-6) ?? Level.Create(doc, 0);
-                main.Name = "C Main 0 ft";
-                upper = Level.Create(doc, 5); upper.Name = "C Upper +5 ft";
+                foreach (var levelSpec in config.GetProperty("levels").EnumerateArray())
+                {
+                    double elevation = Number(levelSpec, "elevation_ft");
+                    var level = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
+                        .FirstOrDefault(candidate => Math.Abs(candidate.Elevation - elevation) < 1e-6) ?? Level.Create(doc, elevation);
+                    level.Name = Text(levelSpec, "name");
+                    Tag(level, Text(levelSpec, "id"));
+                    levels.Add(Text(levelSpec, "id"), level);
+                }
+                lower = levels["FH-C-LEVEL-LOWER"];
+                main = levels["FH-C-LEVEL-MAIN"];
+                upper = levels["FH-C-LEVEL-UPPER"];
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
                     .First(w => w.Kind == WallKind.Basic);
                 void WallAtLevel(Level level, XYZ a, XYZ b, string id, double height = 10)
@@ -712,85 +740,66 @@ public class CompactCoreCommand : IExternalCommand
                     // exact highlighted-wall overlap warning this study is meant to expose.
                     Tag(w,id);
                 }
-                void WallAt(XYZ a, XYZ b, string id) => WallAtLevel(main,a,b,id);
-                void RoomBoxAt(Level level, string id, double x, double y, double width, double depth, params int[] skippedEdges)
+                void WallPolygon(Level level, string markerPrefix, IReadOnlyList<XYZ> points, double height, IEnumerable<int>? skippedEdges = null, int markerOffset = 1)
                 {
-                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
-                    var skip = skippedEdges.ToHashSet();
-                    for (int i=0;i<4;i++)
-                        if (!skip.Contains(i)) WallAtLevel(level,pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                    var skip = (skippedEdges ?? Array.Empty<int>()).ToHashSet();
+                    for (int i=0;i<points.Count;i++)
+                        if (!skip.Contains(i)) WallAtLevel(level, points[i], points[(i+1)%points.Count], $"{markerPrefix}-{i+markerOffset:00}", height);
                 }
-                var shell = new[] { new XYZ(0,0,0), new XYZ(40,0,0), new XYZ(40,40,0), new XYZ(0,40,0) };
-                // Span the main shell from the lower datum so its rear wall can serve as
-                // the shared boundary for the stacked rear envelope. This avoids creating
-                // a second coincident wall along the y=40 seam.
-                for (int i=0;i<4;i++) WallAtLevel(lower, shell[i], shell[(i+1)%4], $"FH-C-SHELL-{i+1:00}", 20);
-                var core = new[] { new XYZ(21.5,30.5,0), new XYZ(29.5,30.5,0), new XYZ(29.5,38.5,0), new XYZ(21.5,38.5,0) };
-                for (int i=0;i<4;i++) WallAt(core[i],core[(i+1)%4],$"FH-C-LIFT-RES-{i+1:00}");
-                void RoomBox(string id, double x, double y, double width, double depth)
+                var shellOrigin = Numbers(shellSpec, "main_origin_ft");
+                double shellWidth = Number(shellSpec, "main_width_ft"), shellDepth = Number(shellSpec, "main_depth_ft");
+                WallPolygon(levels[Text(shellSpec, "wall_level_id")], "FH-C-SHELL", new[] {
+                    new XYZ(shellOrigin[0],shellOrigin[1],0), new XYZ(shellOrigin[0]+shellWidth,shellOrigin[1],0),
+                    new XYZ(shellOrigin[0]+shellWidth,shellOrigin[1]+shellDepth,0), new XYZ(shellOrigin[0],shellOrigin[1]+shellDepth,0)
+                }, Number(shellSpec, "wall_height_ft"));
+                var liftOrigin = Numbers(liftSpec, "origin_ft");
+                WallPolygon(levels[Text(liftSpec, "wall_level_id")], "FH-C-LIFT-RES", new[] {
+                    new XYZ(liftOrigin[0],liftOrigin[1],0), new XYZ(liftOrigin[0]+liftWidth,liftOrigin[1],0),
+                    new XYZ(liftOrigin[0]+liftWidth,liftOrigin[1]+liftDepth,0), new XYZ(liftOrigin[0],liftOrigin[1]+liftDepth,0)
+                }, Number(liftSpec, "wall_height_ft"));
+                var roomSpecs = config.GetProperty("room_specs").EnumerateArray().ToArray();
+                foreach (var roomSpec in roomSpecs.Where(item => Text(item, "level_id") == "FH-C-LEVEL-MAIN"))
                 {
-                    var pts = new[] { new XYZ(x,y,0), new XYZ(x+width,y,0), new XYZ(x+width,y+depth,0), new XYZ(x,y+depth,0) };
-                    for (int i=0;i<4;i++) WallAt(pts[i],pts[(i+1)%4],$"FH-C-{id}-{i+1:00}");
+                    var origin = Numbers(roomSpec, "origin_ft");
+                    double width = Number(roomSpec, "width_ft"), depth = Number(roomSpec, "depth_ft");
+                    var points = new[] { new XYZ(origin[0],origin[1],0), new XYZ(origin[0]+width,origin[1],0),
+                        new XYZ(origin[0]+width,origin[1]+depth,0), new XYZ(origin[0],origin[1]+depth,0) };
+                    var skipped = roomSpec.GetProperty("skipped_edges").EnumerateArray().Select(value => value.GetInt32());
+                    WallPolygon(levels[Text(roomSpec, "level_id")], Text(roomSpec, "wall_marker"), points,
+                        Number(roomSpec, "wall_height_ft"), skipped);
                 }
-                RoomBox("M-01-LIVING", 1, 1, 16, 15);
-                RoomBox("M-02-KITCHEN", 22, 1, 17, 16);
-                RoomBox("M-03-DINING", 1, 17, 11, 13.5);
-                RoomBox("M-06-MAIN-BATH", 30.5, 27, 8, 10);
-                RoomBox("L-02-MAIN-FLEX", 1, 31.5, 11, 7.5);
-                var stackedShell = new[] { new XYZ(0,40,0), new XYZ(36,40,0), new XYZ(36,72,0), new XYZ(0,72,0) };
-                // The lower and upper study envelopes share the same XY shell. Build one
-                // continuous 20 ft wall loop from the lower datum instead of two coincident
-                // wall loops meeting at the upper datum; the latter triggers Revit's
-                // highlighted-wall overlap warning and can make room-boundary resolution
-                // ambiguous.
-                // The first stacked edge is the main shell's shared rear wall; do not
-                // create a duplicate wall over that same line.
-                for (int i=1;i<4;i++)
-                    WallAtLevel(lower, stackedShell[i], stackedShell[(i+1)%4], $"FH-C-STACKED-SHELL-{i+1:00}", 20);
-                RoomBoxAt(upper,"U-01-PRIMARY", 1,41,16,10);
-                RoomBoxAt(upper,"U-05-PRIMARY-BATH", 1,52,9,10);
-                RoomBoxAt(upper,"U-02-BOUTIQUE", 1,63,16,8);
-                RoomBoxAt(upper,"U-04-GUEST", 18,41,12,8.5);
-                // Use one shared divider instead of two near-coincident wall segments.
-                // This preserves both room envelopes while avoiding ambiguous room-boundary
-                // resolution at the Jack-and-Jill / hybrid-room seam.
-                RoomBoxAt(upper,"U-06-JACK-JILL", 25,50.5,10,12, 2);
-                RoomBoxAt(upper,"U-03-HYBRID", 18,63.5,13,7.5, 0);
-                WallAtLevel(upper, new XYZ(18,62.25,0), new XYZ(35,62.25,0), "FH-C-U-06-U-03-SHARED-DIVIDER");
-                RoomBoxAt(lower,"L-03-LOWER-BATH", 1,41,9,10);
-                RoomBoxAt(lower,"L-04-LAUNDRY", 1,52,9,8);
-                RoomBoxAt(lower,"L-05-MEP", 1,61,9,9);
-                RoomBoxAt(lower,"L-07-ARRIVAL", 26,41,9,11.5);
-                RoomBoxAt(lower,"L-01-FLEX-LIVING", 11,53,13,18);
-                RoomBoxAt(lower,"L-06-TECH-RELOCATED", 26,63,8,8);
+                var rearOrigin = Numbers(shellSpec, "rear_origin_ft");
+                double rearWidth = Number(shellSpec, "rear_width_ft"), rearDepth = Number(shellSpec, "rear_depth_ft");
+                WallPolygon(levels[Text(shellSpec, "wall_level_id")], "FH-C-STACKED-SHELL", new[] {
+                    new XYZ(rearOrigin[0],rearOrigin[1],0), new XYZ(rearOrigin[0]+rearWidth,rearOrigin[1],0),
+                    new XYZ(rearOrigin[0]+rearWidth,rearOrigin[1]+rearDepth,0), new XYZ(rearOrigin[0],rearOrigin[1]+rearDepth,0)
+                }, Number(shellSpec, "wall_height_ft"), new[] { 0 });
+                foreach (var roomSpec in roomSpecs.Where(item => Text(item, "level_id") != "FH-C-LEVEL-MAIN"))
+                {
+                    var origin = Numbers(roomSpec, "origin_ft");
+                    double width = Number(roomSpec, "width_ft"), depth = Number(roomSpec, "depth_ft");
+                    var points = new[] { new XYZ(origin[0],origin[1],0), new XYZ(origin[0]+width,origin[1],0),
+                        new XYZ(origin[0]+width,origin[1]+depth,0), new XYZ(origin[0],origin[1]+depth,0) };
+                    var skipped = roomSpec.GetProperty("skipped_edges").EnumerateArray().Select(value => value.GetInt32());
+                    WallPolygon(levels[Text(roomSpec, "level_id")], Text(roomSpec, "wall_marker"), points,
+                        Number(roomSpec, "wall_height_ft"), skipped);
+                }
+                foreach (var sharedWall in config.GetProperty("shared_walls").EnumerateArray())
+                    WallAtLevel(levels[Text(sharedWall, "level_id")], Point3(sharedWall, "start_ft"), Point3(sharedWall, "end_ft"),
+                        Text(sharedWall, "marker"), Number(sharedWall, "height_ft"));
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "C Compact Core 3D";
                 var planType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v => v.ViewFamily == ViewFamily.FloorPlan);
                 var mainPlan = ViewPlan.Create(doc, planType.Id, main.Id); mainPlan.Name = "C Main Room Blocks";
                 var upperPlan = ViewPlan.Create(doc, planType.Id, upper.Id); upperPlan.Name = "C Upper Room Blocks";
                 var lowerPlan = ViewPlan.Create(doc, planType.Id, lower.Id); lowerPlan.Name = "C Lower Room Blocks";
-                void RoomAt(Level level, string id, string name, double x, double y)
+                foreach (var roomSpec in roomSpecs)
                 {
-                    var room = doc.Create.NewRoom(level, new UV(x,y));
-                    room.Number = id; room.Name = name; Tag(room,id);
+                    var seed = Numbers(roomSpec, "room_seed_ft");
+                    string id = Text(roomSpec, "id");
+                    var room = doc.Create.NewRoom(levels[Text(roomSpec, "level_id")], new UV(seed[0],seed[1]));
+                    room.Number = id; room.Name = Text(roomSpec, "name"); Tag(room,id);
                 }
-                RoomAt(main,"M-01","Living room",9,8);
-                RoomAt(main,"M-02","Kitchen",30,9);
-                RoomAt(main,"M-03","Dining",6,23);
-                RoomAt(main,"M-06","Proposed main full bath",34,32);
-                RoomAt(main,"L-02","Main flex sleeping room",6,35);
-                RoomAt(upper,"U-01","Primary bedroom",9,46);
-                RoomAt(upper,"U-05","Primary bath",5,57);
-                RoomAt(upper,"U-02","Boutique",9,67);
-                RoomAt(upper,"U-04","Guest bedroom",24,45);
-                RoomAt(upper,"U-06","Jack and Jill bath",30,56);
-                RoomAt(upper,"U-03","Hybrid bedroom office",24,67);
-                RoomAt(lower,"L-03","Lower full bath",5,46);
-                RoomAt(lower,"L-04","Laundry",5,56);
-                RoomAt(lower,"L-05","MEP reservation",5,65);
-                RoomAt(lower,"L-07","Arrival and dry storage",30,46);
-                RoomAt(lower,"L-01","Lower flexible living",17,62);
-                RoomAt(lower,"L-06","Relocated technology room",30,67);
                 door.Activate(); doc.Regenerate();
                 Wall FindWall(string marker)
                 {
@@ -804,50 +813,51 @@ public class CompactCoreCommand : IExternalCommand
                     var instance = doc.Create.NewFamilyInstance(point, door, FindWall(marker), level, StructuralType.NonStructural);
                     Tag(instance,id);
                 }
-                PlaceDoor("FH-C-SHELL-01", new XYZ(6,0,0), main, "D-MAIN-ENTRY");
-                PlaceDoor("FH-C-M-06-MAIN-BATH-01", new XYZ(34,27,0), main, "D-MAIN-BATH");
-                PlaceDoor("FH-C-L-02-MAIN-FLEX-01", new XYZ(6,31.5,0), main, "D-MAIN-FLEX");
-                PlaceDoor("FH-C-U-05-PRIMARY-BATH-01", new XYZ(5,52,0), upper, "D-PRIMARY-BATH");
-                PlaceDoor("FH-C-L-06-TECH-RELOCATED-01", new XYZ(30,63,0), lower, "D-TECH-SERVICE");
+                foreach (var doorSpec in config.GetProperty("doors").EnumerateArray())
+                    PlaceDoor(Text(doorSpec, "wall_marker"), Point3(doorSpec, "point_ft"),
+                        levels[Text(doorSpec, "level_id")], Text(doorSpec, "id"));
                 var schedule = ViewSchedule.CreateSchedule(doc, new ElementId(BuiltInCategory.OST_Rooms)); schedule.Name = "C Room Area Schedule";
                 var textType = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType)).FirstElementId();
-                TextNote.Create(doc, mainPlan.Id, new XYZ(14,20,0), "C route test: entry > living > kitchen > dining > main bath > main flex\nNominal doors only; clearances, swings and accessibility remain unverified.", textType);
+                ViewPlan PlanForLevel(Level level) => level.Id == lower.Id ? lowerPlan : level.Id == main.Id ? mainPlan : upperPlan;
+                var overlays = config.GetProperty("overlays");
+                var routeNote = overlays.GetProperty("route_note");
+                TextNote.Create(doc, PlanForLevel(levels[Text(routeNote, "level_id")]).Id, Point3(routeNote, "point_ft"), Text(routeNote, "text"), textType);
                 var sketchPlane = SketchPlane.Create(doc, Plane.CreateByNormalAndOrigin(XYZ.BasisZ, XYZ.Zero));
-                void StudyLine(double x1, double y1, double x2, double y2)
-                { doc.Create.NewModelCurve(Line.CreateBound(new XYZ(x1,y1,0), new XYZ(x2,y2,0)), sketchPlane); }
-                void StudyBox(double x, double y, double width, double depth)
-                { StudyLine(x,y,x+width,y); StudyLine(x+width,y,x+width,y+depth); StudyLine(x+width,y+depth,x,y+depth); StudyLine(x,y+depth,x,y); }
-                StudyBox(26.5,7,8,4);     // appliance-free island
-                StudyLine(22,2,39,2);      // perimeter counter run
-                StudyBox(4,20,5,3);        // dining table
-                StudyBox(2,3,4,7);         // TV/service envelope
-                StudyBox(12,2,5,5);        // hearth envelope
-                StudyBox(7,10,6,3);        // loveseat envelope
-                StudyBox(31,28,5,1.8);     // main-bath vanity
-                StudyBox(30.5,35,5,3);     // main-bath shower
-                StudyBox(36,35,1.5,2.5);   // main-bath toilet
-                TextNote.Create(doc, mainPlan.Id, new XYZ(23,6,0), "8 x 4 island | appliance-free", textType);
-                TextNote.Create(doc, mainPlan.Id, new XYZ(2,19,0), "5 x 3 dining table | 4 ft porch lane target", textType);
-                TextNote.Create(doc, mainPlan.Id, new XYZ(2,2,0), "TV/service 4 x 7 | hearth 5 x 5 | furniture placeholders", textType);
-                TextNote.Create(doc, mainPlan.Id, new XYZ(30,27,0), "M-06 nominal fixtures | turn/approach/door checks pending", textType);
-                Tag(lower,"FH-C-LEVEL-LOWER"); Tag(main,"FH-C-LEVEL-MAIN"); Tag(upper,"FH-C-LEVEL-UPPER");
+                void StudyLine(JsonElement spec)
+                    => doc.Create.NewModelCurve(Line.CreateBound(Point3(spec, "start_ft"), Point3(spec, "end_ft")), sketchPlane);
+                void StudyBox(JsonElement spec)
+                {
+                    var origin = Numbers(spec, "origin_ft");
+                    double width = Number(spec, "width_ft"), depth = Number(spec, "depth_ft");
+                    var points = new[] { new XYZ(origin[0],origin[1],0), new XYZ(origin[0]+width,origin[1],0),
+                        new XYZ(origin[0]+width,origin[1]+depth,0), new XYZ(origin[0],origin[1]+depth,0) };
+                    for (int i=0;i<points.Length;i++)
+                        doc.Create.NewModelCurve(Line.CreateBound(points[i], points[(i+1)%points.Length]), sketchPlane);
+                }
+                foreach (var box in overlays.GetProperty("boxes").EnumerateArray()) StudyBox(box);
+                foreach (var line in overlays.GetProperty("lines").EnumerateArray()) StudyLine(line);
+                foreach (var note in overlays.GetProperty("plan_notes").EnumerateArray())
+                    TextNote.Create(doc, PlanForLevel(levels[Text(note, "level_id")]).Id, Point3(note, "point_ft"), Text(note, "text"), textType);
                 t.Commit();
             }
-            using (var scope = new StairsEditScope(doc, "C compact core native stairs"))
+            foreach (var stairSpec in config.GetProperty("stairs").EnumerateArray())
             {
-                var stairsId = scope.Start(lower.Id, main.Id);
-                using (var t = new Transaction(doc, "C lower-to-main stair run"))
-                { t.Start(); var stairs = (Stairs)doc.GetElement(stairsId); var run = StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(12.5,27,-5), new XYZ(12.5,36,-5)), StairsRunJustification.Center); stairs.DesiredRisersNumber = 10; run.TopElevation = 5; t.Commit(); }
+                using var scope = new StairsEditScope(doc, Text(stairSpec, "name"));
+                var stairsId = scope.Start(levels[Text(stairSpec, "from_level_id")].Id, levels[Text(stairSpec, "to_level_id")].Id);
+                using (var t = new Transaction(doc, Text(stairSpec, "transaction_name")))
+                {
+                    t.Start();
+                    var stairs = (Stairs)doc.GetElement(stairsId);
+                    stairs.DesiredRisersNumber = stairSpec.GetProperty("desired_risers").GetInt32();
+                    var run = StairsRun.CreateStraightRun(doc, stairsId,
+                        Line.CreateBound(Point3(stairSpec, "start_ft"), Point3(stairSpec, "end_ft")), StairsRunJustification.Center);
+                    if (stairSpec.TryGetProperty("run_top_elevation_ft", out var topElevation))
+                        run.TopElevation = topElevation.GetDouble();
+                    t.Commit();
+                }
                 scope.Commit(new FailureRecorder());
-                using (var t = new Transaction(doc, "Tag C lower stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-LOWER-MAIN"); t.Commit(); }
-            }
-            using (var scope = new StairsEditScope(doc, "C compact core upper stairs"))
-            {
-                var stairsId = scope.Start(main.Id, upper.Id);
-                using (var t = new Transaction(doc, "C main-to-upper stair run"))
-                { t.Start(); var stairs = (Stairs)doc.GetElement(stairsId); stairs.DesiredRisersNumber = 9; StairsRun.CreateStraightRun(doc, stairsId, Line.CreateBound(new XYZ(17,27,0), new XYZ(17,34,0)), StairsRunJustification.Center); t.Commit(); }
-                scope.Commit(new FailureRecorder());
-                using (var t = new Transaction(doc, "Tag C upper stair")) { t.Start(); Tag(doc.GetElement(stairsId),"FH-C-STAIR-MAIN-UPPER"); t.Commit(); }
+                using (var t = new Transaction(doc, "Tag " + Text(stairSpec, "marker")))
+                { t.Start(); Tag(doc.GetElement(stairsId), Text(stairSpec, "marker")); t.Commit(); }
             }
             var floorRows = new List<object>();
             using (var t = new Transaction(doc, "C provisional native floor plates"))
@@ -873,22 +883,22 @@ public class CompactCoreCommand : IExternalCommand
                     });
                     return plate;
                 }
-                AddPlate(lower, "FH-C-FLOOR-LOWER", 2752, 2752,
-                    ProfileLoop(lower, (0,0),(40,0),(40,40),(36,40),(36,72),(0,72),(0,40)));
-                AddPlate(main, "FH-C-FLOOR-MAIN", 1600, 1410,
-                    ProfileLoop(main, (0,0),(40,0),(40,40),(0,40)),
-                    ProfileLoop(main, (10.5,24.5),(19.5,24.5),(19.5,38.5),(10.5,38.5)),
-                    ProfileLoop(main, (21.5,30.5),(29.5,30.5),(29.5,38.5),(21.5,38.5)));
-                AddPlate(upper, "FH-C-FLOOR-UPPER", 1152, 1152,
-                    ProfileLoop(upper, (0,40),(36,40),(36,72),(0,72)));
+                foreach (var floorSpec in config.GetProperty("floors").EnumerateArray())
+                {
+                    var level = levels[Text(floorSpec, "level_id")];
+                    var loops = floorSpec.GetProperty("loops").EnumerateArray()
+                        .Select(points => ProfileLoop(level, points)).ToArray();
+                    AddPlate(level, Text(floorSpec, "marker"), Number(floorSpec, "gross_footprint_sqft"),
+                        Number(floorSpec, "profile_area_sqft"), loops);
+                }
                 var noteType = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType)).FirstElementId();
                 ViewPlan PlanFor(Level level) => new FilteredElementCollector(doc).OfClass(typeof(ViewPlan)).Cast<ViewPlan>().First(v => v.GenLevel?.Id == level.Id);
-                TextNote.Create(doc, PlanFor(lower).Id, new XYZ(2,69,lower.Elevation),
-                    "PROVISIONAL FLOOR PLATE | template type only | assembly, foundation and lift pit not selected", noteType);
-                TextNote.Create(doc, PlanFor(main).Id, new XYZ(1,39,main.Elevation),
-                    "PROVISIONAL FLOOR PLATE | stair and 8 x 8 lift openings are coordination envelopes; verify edges, landings and structure", noteType);
-                TextNote.Create(doc, PlanFor(upper).Id, new XYZ(1,69,upper.Elevation),
-                    "PROVISIONAL FLOOR PLATE | template type only | upper stair landing does not reach this rear-wing footprint", noteType);
+                foreach (var note in config.GetProperty("overlays").GetProperty("floor_notes").EnumerateArray())
+                {
+                    var level = levels[Text(note, "level_id")];
+                    var point = Point3(note, "point_ft");
+                    TextNote.Create(doc, PlanFor(level).Id, new XYZ(point.X, point.Y, level.Elevation), Text(note, "text"), noteType);
+                }
                 t.Commit();
             }
             string path = Path.Combine(output, "FH_Compact_Core_Study.rvt");
@@ -914,17 +924,20 @@ public class CompactCoreCommand : IExternalCommand
             doc.SaveAs(path, new SaveAsOptions());
             var manifest = new {
                 status = "generated by Revit 2027 command; native verification required",
-                study = "C compact core",
-                levels = new[] { new { id="FH-C-LEVEL-LOWER", elevation_ft=-5 }, new { id="FH-C-LEVEL-MAIN", elevation_ft=0 }, new { id="FH-C-LEVEL-UPPER", elevation_ft=5 } },
-                shell = new { main_width_ft=40, main_depth_ft=40, rear_width_ft=36, rear_depth_ft=32 },
-                lift_reservation = new { width_ft=8, depth_ft=8, product_selected=false },
-                rooms = new[] { "M-01","M-02","M-03","M-06","L-02","U-01","U-02","U-03","U-04","U-05","U-06","L-01","L-03","L-04","L-05","L-06","L-07" },
-                doors = new[] { "D-MAIN-ENTRY","D-MAIN-BATH","D-MAIN-FLEX","D-PRIMARY-BATH","D-TECH-SERVICE" },
+                study = studyName,
+                config_schema = Text(config, "schema"),
+                config_file = "compact-study-config.json",
+                config_sha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(configBytes)).ToLowerInvariant(),
+                levels = config.GetProperty("levels").EnumerateArray().Select(item => new { id = Text(item,"id"), name = Text(item,"name"), elevation_ft = Number(item,"elevation_ft") }).ToArray(),
+                shell = new { main_width_ft=Number(shellSpec,"main_width_ft"), main_depth_ft=Number(shellSpec,"main_depth_ft"), rear_width_ft=Number(shellSpec,"rear_width_ft"), rear_depth_ft=Number(shellSpec,"rear_depth_ft") },
+                lift_reservation = new { width_ft=liftWidth, depth_ft=liftDepth, product_selected=false },
+                rooms = config.GetProperty("rooms").EnumerateArray().Select(item => item.GetString()).ToArray(),
+                doors = config.GetProperty("doors").EnumerateArray().Select(item => Text(item,"id")).ToArray(),
                 floors = floorRows,
-                floor_assembly_assumption = new { planning_placeholder_thickness_ft = 1.25, is_selected_assembly = false, source = "15 in arithmetic placeholder in compact-core brief; not the modeled Revit type" },
-                roof = new { status = "not modeled", reason = "roof form, pitch, site response and structure have no approved model input" },
-                stair_floor_coordination = new { status = "open", issue = "C main-to-upper stair terminates at y=34 ft, while upper floor plate begins at y=40 ft; provide a connected landing and resolve the upper-level circulation footprint" },
-                unresolved = new[] { "floor type and layered assemblies unselected", "stair and lift opening dimensions and supporting structure", "upper stair landing disconnected from upper plate", "lower foundation and lift pit", "roof form, pitch and site response", "door clear openings and swings", "stair headroom", "lift product fit", "full accessibility route", "structure and MEP coordination", "code review" },
+                floor_assembly_assumption = config.GetProperty("floor_assembly_assumption"),
+                roof = config.GetProperty("roof"),
+                stair_floor_coordination = config.GetProperty("stair_floor_coordination"),
+                unresolved = config.GetProperty("unresolved"),
                 source_rvt = path
             };
             File.WriteAllText(Path.Combine(output, "study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented=true }));
