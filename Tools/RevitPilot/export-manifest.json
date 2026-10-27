@@ -1,0 +1,39 @@
+{
+  "schema": "forever-home.revit-export-manifest.v1",
+  "expected_document_title": "FH_Compact_Core_Study",
+  "ifc": {
+    "enabled": true,
+    "file_name": "FH_Compact_Core_Study",
+    "export_base_quantities": true,
+    "export_internal_property_sets": true,
+    "filter_view_name": null
+  },
+  "dwg": {
+    "enabled": true,
+    "file_name": "FH_Compact_Core_Study_Plans",
+    "view_names": [
+      "C Main Room Blocks",
+      "C Upper Room Blocks",
+      "C Lower Room Blocks"
+    ],
+    "merged_views": true
+  },
+  "pdf": {
+    "enabled": true,
+    "file_name": "FH_Compact_Core_Study_Review",
+    "view_names": [
+      "C Main Room Blocks",
+      "C Upper Room Blocks",
+      "C Lower Room Blocks",
+      "C Compact Core 3D"
+    ],
+    "combine": true
+  },
+  "csv": {
+    "enabled": true,
+    "category": "rooms",
+    "file_name": "FH_Compact_Core_Room_Inventory",
+    "fields": ["number", "name", "area_sqft", "level", "element_id", "unique_id"],
+    "minimum_data_rows": 1
+  }
+}

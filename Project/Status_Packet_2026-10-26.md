@@ -22,7 +22,9 @@ This packet is the short path through the current project documentation. It pres
 - The desired character is established: warm, collected, whimsical traditional New England, with togetherness and privacy.
 - The room program is reconciled enough for schematic testing, but dimensions, area totals, level relationships and accessibility remain provisional.
 - A and B remain comparison alternatives. C is the next native-Revit test, not a selected plan.
-- The latest C study executed in Revit 2027 with 0 errors and 3 recorded wall-overlap warnings. The warning condition remains open for cleanup.
+- The latest C study executed in Revit 2027 with 0 errors and 0 recorded Revit warnings; the read-only API audit recorded 17 enclosed rooms, 78 walls, 5 openings and 0 warnings.
+- The floor-aware read-only Geometry QA was subsequently host-run on 2026-10-27: 17 rooms, 78 walls, 2 stairs, 5 doors and 3 floors; 0 native warnings, 0 heuristic issues and 0 errors. The updated offline review packet passes all four recorded checks. The floors still use an unselected 1 ft template type.
+- The manifest-driven export command has a partial host run: IFC2x3, three plan DWGs and combined PDF were created, but the native room-schedule CSV had no fields/data and failed content review. A direct Room inventory CSV replaced that path and compiled successfully; it still needs Revit execution. DWG/PDF visual review and IFC independent review remain open.
 - Native levels, the 40 x 40 ft main shell target, an 8 x 8 ft lift reservation, 17 stable room IDs, five nominal door IDs and study markers were evidenced across the verification runs.
 - Stairs are native study objects, but riser/tread documentation, headroom, guards, finish buildup and code review are not complete.
 - The kitchen island, hearth, television, bath fixtures, lift and furniture markers are spatial studies, not selected products or approved clearances.
@@ -38,14 +40,14 @@ This packet is the short path through the current project documentation. It pres
 ## Blockers before a design-review-complete claim
 
 - Site, grade, jurisdiction and adopted code editions are unknown.
-- No continuous accessible route, lift product layout, stair/headroom check or egress review is verified.
+- No continuous accessible route, lift product layout, stair/headroom check or egress review is verified; the generator warning is cleared, but design review is not.
 - Structural, MEP, fire/life-safety, equipment-load and service-route coordination remains open.
 - Revit 2027-to-2018 import and independent DWG fidelity remain pending.
-- The wall-overlap warning and the unresolved room/door/service clearances must be addressed or explicitly accepted as study limitations.
+- Unresolved room/door/service clearances and stair/headroom/egress review remain study limitations.
 
 ## Next bounded work
 
-Run one planned native-Revit reload using the current C batch, then record only observed results: room/door schedules, stair section/headroom observations, lift-route geometry, wet-stack/technology separation, furnished kitchen/bath clearances, warning disposition and export inspection. If C fails a target clearance, retain the evidence and return to B/A rather than silently shrinking the program.
+Continue the C review with the unresolved physical geometry: floor profile/opening fit and support, the upper stair landing/headroom, lift-route geometry, wet-stack/technology separation, and furnished kitchen/bath clearances. Record observed results and keep failed targets visible; if C fails a target clearance, return to B/A rather than silently shrinking the program. For RevitPilot, host-run the revised direct Room CSV export and independently inspect the IFC/DWG/PDF outputs before extending the exporter.
 
 ## Authority and limitations
 

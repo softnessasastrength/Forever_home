@@ -10,6 +10,11 @@ EXPECTED_ROOMS = {
     "L-01", "L-03", "L-04", "L-05", "L-06", "L-07",
 }
 EXPECTED_DOORS = {"D-MAIN-ENTRY", "D-MAIN-BATH", "D-MAIN-FLEX", "D-PRIMARY-BATH", "D-TECH-SERVICE"}
+EXPECTED_FLOORS = {
+    "FH-C-FLOOR-LOWER": ("C Lower -5 ft", 2752, 2752),
+    "FH-C-FLOOR-MAIN": ("C Main 0 ft", 1600, 1410),
+    "FH-C-FLOOR-UPPER": ("C Upper +5 ft", 1152, 1152),
+}
 
 
 def validate(path: Path) -> list[str]:
@@ -32,6 +37,24 @@ def validate(path: Path) -> list[str]:
         errors.append("lift reservation target is not 8 x 8 ft")
     if not data.get("unresolved"):
         errors.append("unresolved-review flags are missing")
+    floors = data.get("floors", [])
+    floor_by_marker = {item.get("marker"): item for item in floors}
+    if set(floor_by_marker) != set(EXPECTED_FLOORS) or len(floors) != len(EXPECTED_FLOORS):
+        errors.append("three stable lower/main/upper floor markers are required")
+    for marker, (level, gross_area, profile_area) in EXPECTED_FLOORS.items():
+        floor = floor_by_marker.get(marker, {})
+        if floor.get("level") != level:
+            errors.append(f"{marker} is assigned to the wrong level")
+        if floor.get("gross_footprint_sqft") != gross_area:
+            errors.append(f"{marker} gross footprint mismatch")
+        if floor.get("profile_area_sqft") != profile_area:
+            errors.append(f"{marker} profile area mismatch")
+        if floor.get("selected_assembly") is not False or floor.get("finish_material_selected") is not False:
+            errors.append(f"{marker} must remain explicitly unselected")
+    if data.get("roof", {}).get("status") != "not modeled":
+        errors.append("roof must remain explicitly unmodeled pending an approved design input")
+    if data.get("stair_floor_coordination", {}).get("status") != "open":
+        errors.append("stair/floor coordination must remain an open issue")
     return errors
 
 
@@ -44,7 +67,7 @@ def main() -> int:
         for error in errors:
             print(f"FAIL: {error}")
         return 1
-    print(f"PASS: compact manifest schema and {len(EXPECTED_ROOMS)} room IDs validated")
+    print(f"PASS: compact manifest; {len(EXPECTED_ROOMS)} rooms, {len(EXPECTED_FLOORS)} floor plates, roof/stair issues retained")
     return 0
 
 

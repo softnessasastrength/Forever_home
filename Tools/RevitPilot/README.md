@@ -8,13 +8,13 @@ Use a native Revit-hosted C# add-in to create a separate disposable project with
 
 The command writes a new timestamped run under ignored `.local/revit-pilot/runs/` on every invocation. It attempts IFC2x3 Coordination View 2.0, AutoCAD 2010 DWG, PDF and CSV exports separately, records failures, saves native RVT/RFA, and reopens both source and backup to verify fixture element identities. Comments carry stable fixture IDs; room Number carries its ID too. Native UniqueIds are retained in JSON/CSV. IFC identity retention is measured rather than assumed.
 
-The compact-core command is a separate study entry point. It writes `study-manifest.json` beside each generated RVT. Validate a host-generated manifest without opening Revit:
+The compact-core command is a separate study entry point. It writes `study-manifest.json`, `study-warnings.json` and `floor-assembly-schedule.csv` beside each generated RVT. The study contains provisional lower, main and upper native floor plates, using the Revit template's default floor type; no structural build-up or finish is selected. The main plate has schematic stair and lift reservation openings. Its profile area is calculated from those authored loops, not read as a Revit quantity schedule. The report keeps the 15 in planning arithmetic placeholder separate from the template floor type. The warning report records each Revit warning's failing element IDs, categories, names and Forever Home markers so wall-boundary issues can be repaired by identity rather than by guesswork. The manifest also flags the upper stair-to-floor disconnect and the unmodeled roof. Validate a host-generated manifest without opening Revit:
 
 ```powershell
 ./.venv/Scripts/python.exe Tools/RevitPilot/validate_compact_manifest.py .local/revit-pilot/compact-core/<run>/study-manifest.json
 ```
 
-The validator checks the three C levels, 17 stable program IDs, five nominal door IDs, the 40 x 40 ft main target, the 8 x 8 ft lift reservation and unresolved-review flags. It does not certify geometry, code, accessibility or product fit.
+The validator checks the three C levels, 17 stable program IDs, five nominal door IDs, three floor markers and profile areas, the 40 x 40 ft main target, the 8 x 8 ft lift reservation, and unresolved roof/stair review flags. It does not certify geometry, code, accessibility or product fit. A successful command run is not a substitute for reviewing the native RVT, floor edges, openings and vertical connections.
 
 Run the no-Revit preflight before a batch reload:
 
@@ -31,6 +31,20 @@ Validate the quarantined family files and their CSV links before opening Revit:
 ```
 
 The **Run family intake test** command loads every `.rfa` in `Revit/Family_Intake/Incoming/` into a new disposable Revit 2027 project. It never edits the compact-core study. Each run saves `FH_Family_Intake_Study.rvt` and `intake-manifest.json` under ignored `.local/revit-pilot/family-intake/<timestamp>/`. A `loaded`, `already_present`, or `failed` result is evidence about family loading only; placement, hosting, visual quality, licensing and production approval remain separate review gates.
+
+The **Audit active document** command is a read-only Revit API bridge for reducing computer-use dependence. It inspects the currently active document and writes `audit.json`, `rooms.csv`, `openings.csv` and a short `README.txt` under ignored `.local/revit-pilot/audits/<timestamp>/`. It records native levels, category counts, enclosed rooms, walls, doors/windows, warning descriptions and stable element IDs. It does not save, modify, export or close the active document, and it intentionally omits the document path. The report is an observation package, not a code, accessibility, structural or engineering approval.
+
+The **Run geometry QA** command is a second read-only bridge. It writes `geometry-qa.json` and `README.txt` under ignored `.local/revit-pilot/geometry-qa/<timestamp>/`. It checks native room enclosure, duplicate wall centerlines by level, stair elevations and riser counts, door hosts, required compact-core markers, native floor markers/levels/computed areas/type thicknesses, and the native Revit warning inventory. The floor-aware increment has been host-executed against the Compact-Core study in Revit 2027. The run at `.local/revit-pilot/geometry-qa/20261027T004729569Z/` returned 0 issues across 17 rooms, 78 walls, 2 stairs, 5 doors and 3 floors. Older QA reports do not contain floor inventory and are not accepted as passing this check. Findings are conservative heuristics: they do not certify solid intersections, clear widths, accessibility, egress, structure, fire/life safety or code compliance. The floor plates use the template `Floor 1` type (1 ft compound width); that is not a selected assembly.
+
+The **Run manifest exports** command reads `export-manifest.json` and requires the active document title to match the configured study. It writes IFC2x3, selected plan DWGs, a combined review PDF, a native Room inventory CSV, and per-export status/file hashes under `.local/revit-pilot/exports/<timestamp>/`. It does not save or edit the active model; the IFC call uses a rolled-back transaction. The first host run at `.local/revit-pilot/exports/20261027T005253025Z/` created IFC, three DWGs and PDF successfully, but the attempted native room-schedule CSV contained only its title and correctly failed its content check. The current revision generates CSV rows directly from native Room elements; it compiled with 0 errors but still needs a fresh Revit host execution. These exports are artifact-generation evidence, not geometry or fidelity approval.
+
+Compile the latest evidence into one offline review packet:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/compile_review_packet.py
+```
+
+This reads the latest compact-core warning report, API audit, Geometry QA and manifest, then writes `review-packet.json` and `review-packet.html` under ignored `.local/revit-pilot/review-packets/<timestamp>/`. It does not open Revit, modify a model or treat a passing check as professional approval.
 
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
@@ -61,6 +75,8 @@ No NuGet packages are required. `RevitInstallDir` in the project can be overridd
 ```
 
 The validator writes SHA256 hashes and relative filenames to `manifest.json`, checks CSV/JSON identity consistency, IFC schema and geometry, expected IFC categories, ID retention, DWG version header and PDF header. Its nonzero exit code means at least one implemented check failed. It does not mark the remaining manual acceptance checks complete.
+
+For an existing model, choose **Add-Ins → Forever Home Pilot → Audit active document**. Review `audit.json` first, then use the CSVs for room/opening comparison and the warning list for the coordination register. Re-run after each meaningful model revision and retain the timestamped reports as evidence; do not treat a report as proof that the model is coordinated or compliant.
 
 For another computer, package a validated run with `package.py <run_folder> <output_zip>`. It checks manifest hashes before packaging, adds the [2018 review checklist](2018_REVIEW.md), refuses to overwrite an existing ZIP, and verifies ZIP CRCs. Regenerate the manifest if adding review images before packaging. Keep the package local until the owner transfers it; no automatic upload is performed.
 
