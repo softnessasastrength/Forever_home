@@ -15,7 +15,7 @@ Revit automation milestone: a separate compatibility fixture has now executed in
 
 API tooling milestone: RevitPilot includes read-only **Audit active document** and **Run geometry QA** commands, plus an offline review-packet compiler. The latest Revit 2027 audit at `.local/revit-pilot/audits/20261026T232201806Z/` confirms the compact-core study has 3 levels, 3 Floors, 17 enclosed rooms, 78 walls, 5 openings and 0 warnings. Floor-aware Geometry QA was subsequently host-verified at `.local/revit-pilot/geometry-qa/20261027T004729569Z/`: 17 rooms, 78 walls, 2 stairs, 5 doors, 3 floors, 0 warnings, 0 heuristic issues and 0 errors. The compiled packet at `.local/revit-pilot/review-packets/20261027T004753549365Z/` passes all four recorded checks. See [API tooling roadmap](Revit_API_Tooling_Roadmap_2026-10-26.md).
 
-The manifest-driven export command is implemented. Its first host run produced IFC2x3, three plan DWGs and a combined PDF, while the native room-schedule CSV failed because the schedule has no populated fields. The CSV was changed to a read-only Room inventory extract and compiled successfully, but that revision still needs in-host execution. See the export evidence and limits in the [API tooling roadmap](Revit_API_Tooling_Roadmap_2026-10-26.md) and [RevitPilot instructions](../Tools/RevitPilot/README.md).
+The manifest-driven export command is implemented and host-verified at `.local/revit-pilot/exports/20261027T011547441Z/`. IFC2x3, three plan DWGs, combined PDF and a direct Room inventory CSV all reported success; the CSV contains 17 unique room rows with nonblank areas. The earlier attempt to export the empty native room schedule is retained as a documented failure. Export creation is not fidelity review: independent IFC semantic inspection, PDF/DWG visual inspection and Revit 2018 import remain open. See the [API tooling roadmap](Revit_API_Tooling_Roadmap_2026-10-26.md) and [RevitPilot instructions](../Tools/RevitPilot/README.md).
 
 The first bounded native-house test also executed: [compact-core study verification](Revit_Compact_Core_Study_2026-10-26.md). It is a separate RVT with C levels, a 40 x 40 ft shell/core reservation and two native stair objects. A shell/core wall-overlap warning was accepted for study purposes; no headroom, lift-product, room, accessibility or export verification is claimed.
 
@@ -38,7 +38,7 @@ Schematic milestone: [two measured room-block/volume proposals](../Architecture/
 3. Design bathrooms, stairs, future lift/accessibility route and kitchen/living room spatial envelopes.
 4. Establish disciplined Revit model and early test of IFC2x3/DWG/CSV exports into 2018.
 5. Maintain code issue register, MEP reservations, structural assumptions, drawing index and export checklist.
-6. Run and inspect the revised direct Room CSV export in Revit, then independently review the IFC/DWG/PDF outputs. The command's initial partial host run and current limits are documented; remaining stair/floor/accessibility coordination stays open.
+6. Independently inspect the IFC/DWG/PDF outputs from the completed export run; keep stair/floor/accessibility coordination open.
 
 ## Reading order
 1. `AGENTS.md` and `Agents/README.md`
