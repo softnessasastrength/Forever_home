@@ -102,7 +102,7 @@
     "m06_fixture_clearance_study":  {
                                         "status":  "Clearance-zone arrangement inside the unassigned B search window only; not a room or fixture-fit approval.",
                                         "owner_selected_window":  "east_of_core",
-                                        "source":  "Architecture/Bathrooms_Specs.md Â§Â§3.2â€“3.4; full-bath fixture references only, not powder-room requirements.",
+                                        "source":  "Architecture/Bathrooms_Specs.md §§3.2–3.4; full-bath fixture references only, not powder-room requirements.",
                                         "vanity_fixture_ft":  {
                                                                   "x":  21.166666666666668,
                                                                   "y":  22.333333333333336,

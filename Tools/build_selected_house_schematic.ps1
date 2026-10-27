@@ -1,4 +1,4 @@
-param(
+﻿param(
     [ValidateSet('OwnerSelectedD','AdjacencyCandidate','BathFirstAdjacencyCandidate')]
     [string]$LayoutVariant = 'OwnerSelectedD',
     [string]$OutputDirectory = ''
