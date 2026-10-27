@@ -24,7 +24,7 @@ Run the no-Revit preflight before a batch reload:
 
 The JSON config is the runtime source for Compact-Core levels, room boundaries and placement points, shell/core walls, doors, stair runs, floor polygons and illustrative overlays. RevitPilot copies the exact input beside each generated study and records its SHA256 in the manifest. Manifest validation checks the snapshot hash and its levels, room/door IDs, shell/lift targets and floor profile against the generated manifest. The file preserves the current proposed values; it does not replace the native RVT or approve the design.
 
-The config-driven generator produced `.local/revit-pilot/compact-core/20261027T025740849Z/`; its manifest hash matches the current source JSON, the manifest validator passes, and the warning report is empty. This run does not yet have a matching native API audit, floor-aware Geometry QA or IFC export. Earlier runs' audit/export evidence must not be represented as validation of this timestamp.
+The v2 generator produced `.local/revit-pilot/compact-core/20261027T025740849Z/`; its manifest validates against its retained v2 snapshot, which remains preserved as historical evidence. V3 moves the prior hardcoded nominal door-family geometry (3 x 0.15 x 7 ft; clear opening unselected) and rear-shell skipped edge `[0]` into the config without changing values. A fresh v3 host run is recorded at `.local/revit-pilot/compact-core/20261027T041201025Z/`, with matching API audit `.local/revit-pilot/audits/20261027T041319416Z/`, Geometry QA `.local/revit-pilot/geometry-qa/20261027T041352458Z/`, and IFC export `.local/revit-pilot/exports/20261027T041437145Z/`. The IFC validator reports IFC2X3 and 0 schema issues; packet `.local/revit-pilot/review-packets/20261027T041608910684Z/` links the four current evidence runs and carries ten open coordination findings. The pinned IfcOpenShell validator and packet compiler use the repository Python environment because no standalone CLI equivalents are installed. This pipeline milestone does not close design coordination or manual Revit/drawing review.
 
 Run the offline configuration and manifest-provenance regression tests:
 
@@ -60,7 +60,7 @@ Compile the latest evidence into one offline review packet:
 ./.venv/Scripts/python.exe Tools/RevitPilot/compile_review_packet.py
 ```
 
-This reads the latest compact-core warning report, API audit, Geometry QA, manifest and IFC export, revalidates IFC against the supplied study manifest when the export timestamp is not older than the study, then writes `review-packet.json` and `review-packet.html` under ignored `.local/revit-pilot/review-packets/<timestamp>/`. It reports source run directories, marks older or unparseable QA/export evidence `STALE` or `UNVERIFIED`, and carries open area/stair findings into the packet. Timestamp order cannot prove document identity because the host reports omit document paths. It does not open Revit, modify a model or treat a passing check as professional approval.
+This reads the latest compact-core warning report, API audit, Geometry QA, manifest and IFC export, compares the retained config hash with the checked-in source, and revalidates IFC only when the export is not older than the study. It writes `review-packet.json` and `review-packet.html` under ignored `.local/revit-pilot/review-packets/<timestamp>/`. Older or unparseable QA/export evidence and config-source mismatches are marked `STALE` or `UNVERIFIED`. Timestamp order cannot prove document identity because host reports omit document paths. The compiler does not open Revit, modify a model or treat a passing check as professional approval.
 
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
@@ -75,7 +75,7 @@ Success requires actual in-Revit execution, all expected fixture objects, succes
 ./Tools/RevitPilot/build.ps1 -Dotnet './.local/dotnet/dotnet.exe'
 ```
 
-No NuGet packages are required. `RevitInstallDir` in the project can be overridden for another installation. Build products, workspace marker, manifests with local paths, native models, family files and exports remain ignored. The build uses an isolated CLI home with telemetry disabled. A portable SDK may be extracted under `.local/dotnet`; verify its SHA512 against Microsoft's release metadata before use.
+No NuGet packages are required. `RevitInstallDir` in the project can be overridden for another installation. Build products, workspace marker, manifests with local paths, native models, family files and exports remain ignored. The project excludes generated C# files under `Tools/RevitPilot/obj/` and `.local/` from SDK source globs so isolated builds cannot accidentally compile their own intermediates. The build uses an isolated CLI home with telemetry disabled. A portable SDK may be extracted under `.local/dotnet`; verify its SHA512 against Microsoft's release metadata before use.
 
 ## Load and execute
 

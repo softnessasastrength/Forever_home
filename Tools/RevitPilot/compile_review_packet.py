@@ -6,6 +6,7 @@ artifacts already produced by the add-in and the compact-core preflight.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -73,6 +74,28 @@ def assess_freshness(evidence: Path | None, study: Path | None) -> dict[str, str
     }
 
 
+def assess_config_source(root: Path, study: Path | None, manifest: dict[str, Any] | None) -> dict[str, str | None]:
+    """Compare a study's retained config with the checked-in generator input."""
+    source = root / "Tools" / "RevitPilot" / "compact-study-config.json"
+    config_name = manifest.get("config_file") if manifest else None
+    snapshot = study / config_name if study and isinstance(config_name, str) and Path(config_name).name == config_name else None
+    if not study or not manifest or not isinstance(manifest.get("config_sha256"), str) or not source.is_file() or snapshot is None or not snapshot.is_file():
+        status = "UNVERIFIED"
+        source_hash = None
+        snapshot_hash = None
+    else:
+        source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+        snapshot_hash = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        status = "CURRENT" if source_hash == snapshot_hash == manifest.get("config_sha256") else "STALE"
+    return {
+        "status": status,
+        "evidence_run": study.name if study else None,
+        "study_run": study.name if study else None,
+        "source_hash": source_hash,
+        "snapshot_hash": snapshot_hash,
+    }
+
+
 def build_packet(root: Path) -> dict[str, Any]:
     compact = latest_dir(root, ".local/revit-pilot/compact-core")
     audit = latest_dir(root, ".local/revit-pilot/audits")
@@ -86,6 +109,7 @@ def build_packet(root: Path) -> dict[str, Any]:
     manifest_data = read_json(manifest_path)
     manifest_errors = validate_manifest(manifest_path) if manifest_path and isinstance(manifest_data, dict) else ["No study manifest found"]
     freshness = {
+        "checked_in_config": assess_config_source(root, compact, manifest_data if isinstance(manifest_data, dict) else None),
         "api_audit": assess_freshness(audit, compact),
         "geometry_qa": assess_freshness(qa, compact),
         "ifc_export": assess_freshness(export, compact),
@@ -149,6 +173,17 @@ def build_packet(root: Path) -> dict[str, Any]:
             "artifact": relative_artifact(root, manifest_path),
         },
         {
+            "name": "Study config matches checked-in source",
+            "status": ("PASS" if freshness["checked_in_config"]["status"] == "CURRENT" else
+                       freshness["checked_in_config"]["status"]),
+            "detail": ("Retained study config SHA256 matches the checked-in generator input"
+                       if freshness["checked_in_config"]["status"] == "CURRENT" else
+                       "Study used a different config snapshot from the checked-in generator input"
+                       if freshness["checked_in_config"]["status"] == "STALE" else
+                       "Config snapshot or current source could not be compared"),
+            "artifact": relative_artifact(root, compact / "compact-study-config.json" if compact else None),
+        },
+        {
             "name": "Independent Compact-Core IFC validation",
             "status": ("STALE" if freshness["ifc_export"]["status"] == "STALE" else
                        "UNVERIFIED" if freshness["ifc_export"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["ifc_export"]["evidence_run"] else
@@ -182,7 +217,8 @@ def build_packet(root: Path) -> dict[str, Any]:
         if result["status"] in {"STALE", "UNVERIFIED", "UNKNOWN"} and result["evidence_run"]:
             open_items.append({
                 "source": "evidence freshness",
-                "description": f"{name} is {result['status'].lower()} relative to study {result['study_run']}; evidence run: {result['evidence_run']}",
+                "description": (f"{name} is {result['status'].lower()} relative to study {result['study_run']}; "
+                                f"evidence run: {result['evidence_run']}"),
             })
 
     return {

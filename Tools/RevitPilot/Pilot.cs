@@ -709,7 +709,9 @@ public class CompactCoreCommand : IExternalCommand
             using var configDocument = JsonDocument.Parse(configBytes);
             var config = configDocument.RootElement;
             var studyName = Text(config, "study");
-            var door = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_C_Nominal_Door", 3, .15, 7);
+            var doorFamilySpec = config.GetProperty("nominal_door_family");
+            var door = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_C_Nominal_Door",
+                Number(doorFamilySpec, "width_ft"), Number(doorFamilySpec, "depth_ft"), Number(doorFamilySpec, "height_ft"));
             var levels = new Dictionary<string, Level>();
             Level lower = null!, main = null!, upper = null!;
             var shellSpec = config.GetProperty("shell");
@@ -732,7 +734,7 @@ public class CompactCoreCommand : IExternalCommand
                 upper = levels["FH-C-LEVEL-UPPER"];
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
                     .First(w => w.Kind == WallKind.Basic);
-                void WallAtLevel(Level level, XYZ a, XYZ b, string id, double height = 10)
+                void WallAtLevel(Level level, XYZ a, XYZ b, string id, double height)
                 {
                     var w = Wall.Create(doc, Line.CreateBound(a,b), wallType.Id, level.Id, height, 0, false, false);
                     // Keep normal Revit end joins enabled. Suppressing joins leaves each
@@ -773,7 +775,8 @@ public class CompactCoreCommand : IExternalCommand
                 WallPolygon(levels[Text(shellSpec, "wall_level_id")], "FH-C-STACKED-SHELL", new[] {
                     new XYZ(rearOrigin[0],rearOrigin[1],0), new XYZ(rearOrigin[0]+rearWidth,rearOrigin[1],0),
                     new XYZ(rearOrigin[0]+rearWidth,rearOrigin[1]+rearDepth,0), new XYZ(rearOrigin[0],rearOrigin[1]+rearDepth,0)
-                }, Number(shellSpec, "wall_height_ft"), new[] { 0 });
+                }, Number(shellSpec, "wall_height_ft"),
+                    shellSpec.GetProperty("rear_skipped_edges").EnumerateArray().Select(value => value.GetInt32()));
                 foreach (var roomSpec in roomSpecs.Where(item => Text(item, "level_id") != "FH-C-LEVEL-MAIN"))
                 {
                     var origin = Numbers(roomSpec, "origin_ft");
@@ -928,6 +931,13 @@ public class CompactCoreCommand : IExternalCommand
                 config_schema = Text(config, "schema"),
                 config_file = "compact-study-config.json",
                 config_sha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(configBytes)).ToLowerInvariant(),
+                nominal_door_family = new {
+                    width_ft = Number(doorFamilySpec, "width_ft"), depth_ft = Number(doorFamilySpec, "depth_ft"),
+                    height_ft = Number(doorFamilySpec, "height_ft"),
+                    clear_opening_selected = doorFamilySpec.GetProperty("clear_opening_selected").GetBoolean(),
+                    status = Text(doorFamilySpec, "status")
+                },
+                rear_shell_skipped_edges = shellSpec.GetProperty("rear_skipped_edges").EnumerateArray().Select(value => value.GetInt32()).ToArray(),
                 levels = config.GetProperty("levels").EnumerateArray().Select(item => new { id = Text(item,"id"), name = Text(item,"name"), elevation_ft = Number(item,"elevation_ft") }).ToArray(),
                 shell = new { main_width_ft=Number(shellSpec,"main_width_ft"), main_depth_ft=Number(shellSpec,"main_depth_ft"), rear_width_ft=Number(shellSpec,"rear_width_ft"), rear_depth_ft=Number(shellSpec,"rear_depth_ft") },
                 lift_reservation = new { width_ft=liftWidth, depth_ft=liftDepth, product_selected=false },

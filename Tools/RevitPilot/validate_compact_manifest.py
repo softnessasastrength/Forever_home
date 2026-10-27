@@ -27,7 +27,7 @@ def validate(path: Path) -> list[str]:
     config_schema = data.get("config_schema")
     config_hash = data.get("config_sha256")
     if config_schema is not None:
-        if config_schema != "forever-home.compact-study-config.v2":
+        if config_schema not in {"forever-home.compact-study-config.v2", "forever-home.compact-study-config.v3"}:
             errors.append(f"unsupported generator config schema: {config_schema}")
         if not isinstance(config_hash, str) or re.fullmatch(r"[0-9a-f]{64}", config_hash) is None:
             errors.append("config-driven manifest must include a lowercase SHA256 fingerprint")
@@ -71,6 +71,14 @@ def validate(path: Path) -> list[str]:
                 lift = config_data["lift_reservation"]
                 if data.get("lift_reservation", {}).get("width_ft") != lift["width_ft"] or data.get("lift_reservation", {}).get("depth_ft") != lift["depth_ft"]:
                     errors.append("manifest lift reservation differs from the configuration snapshot")
+                if config_schema == "forever-home.compact-study-config.v3":
+                    door_family = config_data["nominal_door_family"]
+                    manifest_door_family = data.get("nominal_door_family", {})
+                    for key in ("width_ft", "depth_ft", "height_ft", "clear_opening_selected", "status"):
+                        if manifest_door_family.get(key) != door_family.get(key):
+                            errors.append(f"manifest nominal door-family {key} differs from the configuration snapshot")
+                    if data.get("rear_shell_skipped_edges") != config_data["shell"]["rear_skipped_edges"]:
+                        errors.append("manifest rear-shell wall topology differs from the configuration snapshot")
             except (UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError) as exc:
                 errors.append(f"configuration snapshot is invalid: {exc}")
     levels = {item["id"] for item in data.get("levels", [])}

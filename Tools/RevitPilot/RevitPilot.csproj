@@ -9,6 +9,10 @@
     <BaseOutputPath>../../.local/revit-pilot/build/</BaseOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="obj/**/*.cs" />
+    <Compile Remove="../../.local/**/*.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="RevitAPI"><HintPath>$(RevitInstallDir)/RevitAPI.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="RevitAPIUI"><HintPath>$(RevitInstallDir)/RevitAPIUI.dll</HintPath><Private>false</Private></Reference>
   </ItemGroup>

@@ -40,6 +40,28 @@ class CompactStudyConfigTests(unittest.TestCase):
         config["floors"][1]["loops"][0][1][0] += 1
         self.assertTrue(validate_config(config))
 
+    def test_nominal_door_family_geometry_is_validated(self) -> None:
+        config = copy.deepcopy(self.config)
+        config["nominal_door_family"]["width_ft"] = 0
+        self.assertTrue(any("door-family" in error for error in validate_config(config)))
+
+    def test_nonfinite_door_family_geometry_is_rejected(self) -> None:
+        config = copy.deepcopy(self.config)
+        config["nominal_door_family"]["depth_ft"] = float("nan")
+        self.assertTrue(any("door-family" in error for error in validate_config(config)))
+
+    def test_rear_shell_topology_is_validated(self) -> None:
+        config = copy.deepcopy(self.config)
+        config["shell"]["rear_skipped_edges"] = [0, 0]
+        self.assertTrue(any("rear shell skipped" in error for error in validate_config(config)))
+
+    def test_legacy_v2_config_remains_valid(self) -> None:
+        config = copy.deepcopy(self.config)
+        config["schema"] = "forever-home.compact-study-config.v2"
+        config["shell"].pop("rear_skipped_edges")
+        config.pop("nominal_door_family")
+        self.assertEqual(validate_config(config), [])
+
     def test_manifest_matches_preserved_config_snapshot(self) -> None:
         config_bytes = json.dumps(self.config, ensure_ascii=False, indent=2).encode("utf-8")
         level_names = {item["id"]: item["name"] for item in self.config["levels"]}
@@ -66,6 +88,8 @@ class CompactStudyConfigTests(unittest.TestCase):
             "unresolved": self.config["unresolved"],
             "roof": self.config["roof"],
             "stair_floor_coordination": self.config["stair_floor_coordination"],
+            "nominal_door_family": self.config["nominal_door_family"],
+            "rear_shell_skipped_edges": self.config["shell"]["rear_skipped_edges"],
         }
         with tempfile.TemporaryDirectory(prefix="fh-compact-config-") as temp:
             folder = Path(temp)

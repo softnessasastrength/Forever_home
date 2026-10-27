@@ -10,7 +10,7 @@ from pathlib import Path
 PILOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PILOT_DIR))
 
-from compile_review_packet import assess_freshness, build_packet  # noqa: E402
+from compile_review_packet import assess_config_source, assess_freshness, build_packet  # noqa: E402
 
 
 class ReviewPacketFreshnessTests(unittest.TestCase):
@@ -31,6 +31,39 @@ class ReviewPacketFreshnessTests(unittest.TestCase):
     def test_missing_study_cannot_make_evidence_current(self) -> None:
         result = assess_freshness(Path("20261027T025740849Z"), None)
         self.assertEqual(result["status"], "UNKNOWN")
+
+    def test_checked_in_config_hash_matches_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="fh-config-freshness-") as temp:
+            root = Path(temp)
+            study = root / ".local/revit-pilot/compact-core/20261027T025740849Z"
+            source = root / "Tools/RevitPilot/compact-study-config.json"
+            study.mkdir(parents=True)
+            source.parent.mkdir(parents=True)
+            content = b'{"schema":"test"}\n'
+            source.write_bytes(content)
+            (study / "compact-study-config.json").write_bytes(content)
+            import hashlib
+            manifest = {"config_file": "compact-study-config.json", "config_sha256": hashlib.sha256(content).hexdigest()}
+            result = assess_config_source(root, study, manifest)
+            self.assertEqual(result["status"], "CURRENT")
+
+    def test_config_snapshot_difference_is_stale(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="fh-config-freshness-") as temp:
+            root = Path(temp)
+            study = root / ".local/revit-pilot/compact-core/20261027T025740849Z"
+            source = root / "Tools/RevitPilot/compact-study-config.json"
+            study.mkdir(parents=True)
+            source.parent.mkdir(parents=True)
+            source.write_text("current", encoding="utf-8")
+            (study / "config.json").write_text("older", encoding="utf-8")
+            import hashlib
+            manifest = {"config_file": "config.json", "config_sha256": hashlib.sha256(b"older").hexdigest()}
+            result = assess_config_source(root, study, manifest)
+            self.assertEqual(result["status"], "STALE")
+
+    def test_missing_config_snapshot_is_unverified(self) -> None:
+        result = assess_config_source(Path("/no-such-root"), Path("study"), {"config_file": "config.json", "config_sha256": "0" * 64})
+        self.assertEqual(result["status"], "UNVERIFIED")
 
     def test_packet_does_not_validate_prior_ifc_against_newer_study(self) -> None:
         with tempfile.TemporaryDirectory(prefix="fh-review-packet-") as temp:

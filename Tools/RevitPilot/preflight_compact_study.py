@@ -1,5 +1,6 @@
 """Validate the complete Compact-Core generator input without requiring Revit."""
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -28,7 +29,8 @@ def _polygon_area(points: list[list[float]]) -> float:
 
 def validate(data: dict) -> list[str]:
     errors: list[str] = []
-    if data.get("schema") != "forever-home.compact-study-config.v2":
+    schema = data.get("schema")
+    if schema not in {"forever-home.compact-study-config.v2", "forever-home.compact-study-config.v3"}:
         errors.append("unsupported or missing compact-study config schema")
     levels = data.get("levels", [])
     level_ids = [item.get("id") for item in levels]
@@ -44,6 +46,18 @@ def validate(data: dict) -> list[str]:
             or shell.get("wall_level_id") not in {item.get("id") for item in levels}
             or shell.get("wall_height_ft", 0) <= 0):
         errors.append("shell origin, wall level, or wall height is invalid")
+    rear_skipped_edges = shell.get("rear_skipped_edges", [0] if schema == "forever-home.compact-study-config.v2" else None)
+    if (not isinstance(rear_skipped_edges, list)
+            or any(type(edge) is not int or edge not in range(4) for edge in rear_skipped_edges)
+            or len(rear_skipped_edges) != len(set(rear_skipped_edges))):
+        errors.append("rear shell skipped wall edges must be unique indexes from 0 through 3")
+    if schema == "forever-home.compact-study-config.v3":
+        family = data.get("nominal_door_family", {})
+        dimensions = [family.get(key) for key in ("width_ft", "depth_ft", "height_ft")]
+        if any(type(value) not in (int, float) or not math.isfinite(value) or value <= 0 for value in dimensions):
+            errors.append("nominal door-family width, depth and height must be positive geometry values")
+        if family.get("clear_opening_selected") is not False or not family.get("status"):
+            errors.append("nominal door-family geometry must remain labelled as a non-approved clear-opening placeholder")
     if (shell.get("main_width_ft"), shell.get("main_depth_ft")) != (40, 40):
         errors.append("main shell target drifted from 40 x 40 ft")
     if (shell.get("rear_width_ft"), shell.get("rear_depth_ft")) != (36, 32):
@@ -68,7 +82,8 @@ def validate(data: dict) -> list[str]:
     # Shell and lift wall marker numbering follows the authored polygon edge order.
     generated_wall_markers.update(f"FH-C-SHELL-{i:02d}" for i in range(1, 5))
     generated_wall_markers.update(f"FH-C-LIFT-RES-{i:02d}" for i in range(1, 5))
-    generated_wall_markers.update(f"FH-C-STACKED-SHELL-{i:02d}" for i in (2, 3, 4))
+    if isinstance(rear_skipped_edges, list):
+        generated_wall_markers.update(f"FH-C-STACKED-SHELL-{i + 1:02d}" for i in range(4) if i not in rear_skipped_edges)
     for spec in room_specs:
         if spec.get("level_id") not in level_by_id:
             errors.append(f"{spec.get('id')} references an unknown level")
