@@ -17,6 +17,7 @@
                    "selected_lower_flex_room_present":  true,
                    "main_half_bath_not_given_invented_footprint":  true,
                    "documented_kitchen_fit_reference_checks_pass":  true,
+                   "placed_rooms_have_program_allowance_review_record":  true,
                    "proposed_main_stair_and_lift_blocks_clear_placed_main_rooms":  true,
                    "upper_landing_reaches_rear_wing_edge":  true,
                    "upper_connector_aligns_with_upper_hall":  true,
@@ -46,6 +47,188 @@
     "stair_core_room_block_overlaps":  [
 
                                        ],
+    "program_area_review":  [
+                                {
+                                    "level":  "main",
+                                    "id":  "M-01",
+                                    "name":  "Living room",
+                                    "area_sf":  240,
+                                    "minimum_sf":  180,
+                                    "maximum_sf":  220,
+                                    "status":  "above study reference",
+                                    "reference_text":  "180–220 sf, retest"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-02",
+                                    "name":  "Kitchen",
+                                    "area_sf":  277.33,
+                                    "minimum_sf":  150,
+                                    "maximum_sf":  185,
+                                    "status":  "above study reference",
+                                    "reference_text":  "150–185 sf; 14 x 12 ft study"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-03",
+                                    "name":  "Dining",
+                                    "area_sf":  158.67,
+                                    "minimum_sf":  90,
+                                    "maximum_sf":  120,
+                                    "status":  "above study reference",
+                                    "reference_text":  "90–120 sf; 11 x 10 ft study"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-04",
+                                    "name":  "Pantry",
+                                    "area_sf":  35,
+                                    "minimum_sf":  25,
+                                    "maximum_sf":  45,
+                                    "status":  "within study reference",
+                                    "reference_text":  "25–45 sf"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-05",
+                                    "name":  "Front arrival / hall",
+                                    "area_sf":  52,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-01",
+                                    "name":  "Primary bedroom",
+                                    "area_sf":  160,
+                                    "minimum_sf":  150,
+                                    "maximum_sf":  170,
+                                    "status":  "within study reference",
+                                    "reference_text":  "150–170 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-05",
+                                    "name":  "Primary bath",
+                                    "area_sf":  90,
+                                    "minimum_sf":  90,
+                                    "maximum_sf":  90,
+                                    "status":  "within study reference",
+                                    "reference_text":  "90 sf; 9 x 10 ft"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-02",
+                                    "name":  "Boutique",
+                                    "area_sf":  154.67,
+                                    "minimum_sf":  110,
+                                    "maximum_sf":  160,
+                                    "status":  "within study reference",
+                                    "reference_text":  "110–160 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-04",
+                                    "name":  "Guest bedroom",
+                                    "area_sf":  109.33,
+                                    "minimum_sf":  100,
+                                    "maximum_sf":  120,
+                                    "status":  "within study reference",
+                                    "reference_text":  "100–120 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-06",
+                                    "name":  "Jack and Jill bath",
+                                    "area_sf":  120,
+                                    "minimum_sf":  120,
+                                    "maximum_sf":  120,
+                                    "status":  "within study reference",
+                                    "reference_text":  "120 sf; 10 x 12 ft"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-03",
+                                    "name":  "Hybrid bedroom / office",
+                                    "area_sf":  125.28,
+                                    "minimum_sf":  120,
+                                    "maximum_sf":  150,
+                                    "status":  "within study reference",
+                                    "reference_text":  "120–150 sf"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-03",
+                                    "name":  "Lower full bath",
+                                    "area_sf":  90,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-04",
+                                    "name":  "Enclosed laundry",
+                                    "area_sf":  72,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-05",
+                                    "name":  "MEP equipment reservation",
+                                    "area_sf":  105,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-07",
+                                    "name":  "Arrival + dry storage",
+                                    "area_sf":  103.5,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-06",
+                                    "name":  "Ventilated technology room",
+                                    "area_sf":  64,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-01",
+                                    "name":  "Lower flexible living",
+                                    "area_sf":  250.56,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-02",
+                                    "name":  "Bedroom-capable flex",
+                                    "area_sf":  110,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                }
+                            ],
     "findings":  [
                      {
                          "priority":  "P1",

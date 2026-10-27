@@ -27,6 +27,23 @@ $main = @(Copy-Rooms $source.alternatives.B.plans.main | Where-Object { $_.id -n
 $upper = @(Copy-Rooms $source.alternatives.B.plans.upper)
 $lower = @(Copy-Rooms $source.alternatives.A.plans.lower | Where-Object { $_.id -ne 'S-01' })
 
+# Read room allowances directly from the documented program, rather than
+# copying ranges into this generator. These are study references, not hard
+# fit/pass requirements.
+$programPath = Join-Path $root 'Requirements/Room_Program.md'
+$programById = @{}
+foreach ($line in [System.IO.File]::ReadAllLines($programPath)) {
+    if ($line -match '^\|\s*(?<id>[A-Z]-\d{2})\s*\|[^|]*\|[^|]*\|\s*(?<allowance>[^|]*)\|') {
+        $id = $Matches.id
+        $allowanceText = $Matches.allowance.Trim()
+        $sfCell = [regex]::Match($allowanceText,'(?i)^(?<area>.*?)\bsf\b')
+        $areaNumbers = @([regex]::Matches($sfCell.Groups['area'].Value,'\d+(?:\.\d+)?') | ForEach-Object { [double]::Parse($_.Value,[Globalization.CultureInfo]::InvariantCulture) })
+        if ($areaNumbers.Count -ge 2) { $programById[$id] = [ordered]@{minimum_sf=$areaNumbers[0];maximum_sf=$areaNumbers[1];source_text=$allowanceText} }
+        elseif ($areaNumbers.Count -eq 1) { $programById[$id] = [ordered]@{minimum_sf=$areaNumbers[0];maximum_sf=$areaNumbers[0];source_text=$allowanceText} }
+        else { $programById[$id] = [ordered]@{minimum_sf=$null;maximum_sf=$null;source_text=$allowanceText} }
+    }
+}
+
 # Reconcile the existing 6 in gap between guest and Jack-and-Jill blocks:
 # keep a 6 in wall/service allowance, retain the 10 x 12 ft bath, and keep
 # the 11 x 10 ft lower flex room clear of the bath projection. U-04 remains
@@ -174,6 +191,15 @@ $planChecks['main_full_bath_and_main_flex_removed_from_selected_levels'] = -not 
 $planChecks['selected_lower_flex_room_present'] = [bool]$lowerFlex
 $planChecks['main_half_bath_not_given_invented_footprint'] = -not (@($main | Where-Object id -eq 'M-06').Count)
 $planChecks['documented_kitchen_fit_reference_checks_pass'] = [bool]($sourceChecks.checks.old_kitchen_12_ft_short_axis_fails_13_ft_counter_aisle_island_aisle_chain -and $sourceChecks.checks.new_kitchen_has_4_ft_work_aisle -and $sourceChecks.checks.new_kitchen_8_ft_island_has_end_clearances -and $sourceChecks.checks.kitchen_has_seat_allowance_plus_4_ft_route)
+$placedRoomIds = @($main + $upper + $lower | Where-Object kind -eq 'room' | ForEach-Object id)
+$planChecks['placed_rooms_have_program_allowance_review_record'] = (@($placedRoomIds | Where-Object { -not $programById.ContainsKey($_) }).Count -eq 0)
+$programAreaReview = @($main + $upper + $lower | Where-Object kind -eq 'room' | ForEach-Object {
+    $room = $_
+    $reference = $programById[$room.id]
+    $area = [Math]::Round($room.w*$room.d,2)
+    $status = if ($null -eq $reference.minimum_sf) {'no numeric area reference'} elseif ($area -lt $reference.minimum_sf) {'below study reference'} elseif ($area -gt $reference.maximum_sf) {'above study reference'} else {'within study reference'}
+    [ordered]@{level=if($room.id -like 'M-*'){'main'}elseif($room.id -like 'U-*'){'upper'}else{'lower'};id=$room.id;name=$room.name;area_sf=$area;minimum_sf=$reference.minimum_sf;maximum_sf=$reference.maximum_sf;status=$status;reference_text=$reference.source_text}
+})
 $mainRoomBlocks = @($main | Where-Object kind -eq 'room')
 $coreRects = @(
     @{id='lower_to_main_run'; x=$coreXLower; y=$lowerRunStartY; w=4.0; d=$runLength},
@@ -212,6 +238,7 @@ $checks = [ordered]@{
     measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
     room_block_overlaps = @($overlaps)
     stair_core_room_block_overlaps = @($coreRoomHits)
+    program_area_review = $programAreaReview
     findings = $findings
     exclusions = @('Door swings and clear openings','Furniture-complete route checks','Stair/landing/headroom/guard/floor-edge coordination','Lift product fit','Structure, foundation, roof, site and code','Detailed MEP and kitchen appliance-open tests','Native Revit house model and IFC export for this design iteration')
 }
@@ -277,6 +304,7 @@ $study | ConvertTo-Json -Depth 40 | Set-Content -LiteralPath $jsonPath -Encoding
 $checks | ConvertTo-Json -Depth 40 | Set-Content -LiteralPath $checksPathOut -Encoding utf8
 $csvRows=foreach($level in @('main','upper','lower')) { foreach($room in $study.plans[$level]) { [pscustomobject]@{level=$level;id=$room.id;name=$room.name;kind=$room.kind;width_ft=$room.w;depth_ft=$room.d;area_sf=[Math]::Round($room.w*$room.d,2)} } }
 $csvRows | Export-Csv -LiteralPath (Join-Path $target 'room-area.csv') -NoTypeInformation -Encoding utf8
+$programAreaReview | ForEach-Object { [pscustomobject]@{level=$_.level;id=$_.id;name=$_.name;area_sf=$_.area_sf;minimum_sf=$_.minimum_sf;maximum_sf=$_.maximum_sf;status=$_.status;reference_text=$_.reference_text} } | Export-Csv -LiteralPath (Join-Path $target 'program-area-review.csv') -NoTypeInformation -Encoding utf8
 $notesByLevel=@{
     main=@('Main shell test: 40 x 42 ft.','S1/S2 and lift are comparison blocks; wall openings and native landings TBD.','M-06 half bath: size and location TBD; not drawn.','Kitchen block retains the prior fit-study size; not approved.')
     upper=@('Rear upper plate: 36 x 32 ft.','Dashed 4 x 4 ft connector joins S2 landing to shell edge.','Primary bath private to U-01; J&J serves U-03/U-04.','Native stair, wall opening, headroom and structure remain open.')

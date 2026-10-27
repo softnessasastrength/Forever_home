@@ -21,6 +21,7 @@ Status: **owner-selected direction; schematic room blocks only**. This is the fi
 - [Lower floor room-block plan](lower-plan.svg)
 - [Machine-readable study](study.json)
 - [Room-block area schedule](room-area.csv)
+- [Room-program comparison](program-area-review.csv)
 - [Geometry checks and open findings](checks.json)
 
 Regenerate the package from the unchanged A/B study source with Windows PowerShell:
@@ -59,9 +60,11 @@ The current placed room-block totals are:
 
 Circulation blocks are not included in net room blocks. M-06, secure storage, coat/mudroom fit and the garage-to-house transition are unplaced. Stair/lift reservations are drawn separately from room blocks; the main floor test profile after two 4 ft wide stair-run openings and the 8 x 8 ft lift opening is 1,564.7 sf, while the upper floor test profile includes the 16 sf connector. These profiles are not approved gross or conditioned areas. The totals do not imply that the remaining shell area is adequate or well used. Garage (576 sf) and porch (120 sf) remain separate schematic allowances.
 
+The generator parses numeric allowances from `Requirements/Room_Program.md` and writes one row per placed room to `program-area-review.csv`. Current B-derived D blocks are above the study ranges for M-01 living (240 sf versus 180–220), M-02 kitchen (277.3 sf versus 150–185) and M-03 dining (158.7 sf versus 90–120). Those inherited test blocks remain unchanged pending a design tradeoff; the comparison is not an approval or automatic pass/fail rule. The area basis itself remains preliminary. M-06 is unplaced and has no numeric reference to compare.
+
 ## Verification
 
-`checks.json` records 27 passing checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; and floor-profile arithmetic. All three SVG plans parse as XML.
+`checks.json` records 28 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; and floor-profile arithmetic. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
 
 These checks validate rectangles, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. The currently validated Revit/IFC artifacts are still the separate Compact-Core C test, not this selected design direction.
 
