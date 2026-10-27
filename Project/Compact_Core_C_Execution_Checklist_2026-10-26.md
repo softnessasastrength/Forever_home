@@ -13,15 +13,16 @@ The C study is ready for review only when each item has an evidence reference or
 | C-02 | Levels and shell/core reservations are present | Level names/elevations and plan screenshot | Partially verified; native levels, 40 x 40 ft shell and 8 x 8 ft reservation evidenced |
 | C-03 | Stairs are native objects and geometry is recorded | Riser/tread/run/headroom observations | Partially verified; IFC bounds quantify a 5.62 ft plan gap from the main-to-upper stair flight to the upper slab; landing, headroom and finish buildup remain open |
 | C-04 | Future lift route is spatially reserved | Route plan/section with turns and clearances | Partially verified; reservation exists, product/route/clearances open |
-| C-05 | Kitchen, dining and living envelopes fit together | Dimensioned plan with island, aisles and seating | Partially verified; study markers exist, furnished clearance test open |
-| C-06 | Primary and Jack & Jill bath privacy is workable | Door matrix and furnished clearance check | Open |
-| C-07 | Main-bath proposal is identified separately from approved intent | Updated plan plus owner-review note | Partially verified; proposal is labelled and remains owner decision |
+| C-05 | Kitchen, dining and living envelopes fit together | Dimensioned plan with island, aisles and seating | Partially verified; IFC area report finds M-02/M-03 above preliminary program ranges; furnished appliance/chair clearances remain open |
+| C-06 | Primary and Jack & Jill bath privacy is workable | Door matrix and furnished clearance check | Open; IFC areas for U-05/U-06 are below schematic room-program sizes; privacy and fixture clearances remain untested |
+| C-07 | Main-bath proposal is identified separately from approved intent | Updated plan plus owner-review note | Partially verified; proposed M-06 is labelled, measures 68.44 sq ft against the 90 sq ft C test target, and remains an owner decision |
 | C-08 | Technology area and wet routes are separated | Service-chase/stack diagram | Open |
 | C-09 | Furniture, delivery and maintenance routes are tested | Annotated route plan | Open |
 | C-10 | Warnings are recorded without being silently dismissed | Warning list and disposition | Verified for the latest study run: 0 native Revit warnings; geometric coordination issues remain open |
 | C-11 | Room/door/window schedules export and can be inspected | CSV/PDF or equivalent evidence | Open |
 | C-12 | Study limitations and unresolved safety issues are handed back | Verification note and coordination-register updates | Partially verified; verification note exists, register updates remain |
-| C-13 | Native floor inventory is stable and reported | Floor markers, levels, computed profile areas and type widths in host QA | Reconfirmed in Revit 2027.3 at `.local/revit-pilot/geometry-qa/20261027T020317046Z/`; floor solids/openings, assembly, support and stair landing remain open |
+| C-13 | Native floor inventory is stable and reported | Floor markers, levels, computed profile areas and type widths in host QA | Reconfirmed in Revit 2027.3 at `.local/revit-pilot/geometry-qa/20261027T021454801Z/`; floor solids/openings, assembly, support and stair landing remain open |
+| C-14 | IFC export is independently checked against the generated manifest and room inventory | IFC hash/schema, storeys, spaces/areas, major classes, floor markers and physical geometry report | Verified at `.local/revit-pilot/exports/20261027T021506070Z/`; zero schema/physical geometry failures, one informational annotation exception; CO-001 stair gap and CO-018 room-area variances remain open |
 
 ## Execution order
 

@@ -15,6 +15,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from validate_compact_manifest import validate as validate_manifest
+from validate_compact_ifc import validate as validate_ifc
 
 
 def latest_dir(root: Path, relative: str) -> Path | None:
@@ -44,6 +45,7 @@ def build_packet(root: Path) -> dict[str, Any]:
     compact = latest_dir(root, ".local/revit-pilot/compact-core")
     audit = latest_dir(root, ".local/revit-pilot/audits")
     qa = latest_dir(root, ".local/revit-pilot/geometry-qa")
+    export = latest_dir(root, ".local/revit-pilot/exports")
 
     warnings = read_json(compact / "study-warnings.json" if compact else None)
     audit_data = read_json(audit / "audit.json" if audit else None)
@@ -51,6 +53,7 @@ def build_packet(root: Path) -> dict[str, Any]:
     manifest_path = compact / "study-manifest.json" if compact else None
     manifest_data = read_json(manifest_path)
     manifest_errors = validate_manifest(manifest_path) if manifest_path and isinstance(manifest_data, dict) else ["No study manifest found"]
+    ifc_report = validate_ifc(export, compact) if export and compact else None
 
     warning_count = len(warnings) if isinstance(warnings, list) else None
     audit_summary = audit_data.get("summary", {}) if isinstance(audit_data, dict) else {}
@@ -101,6 +104,19 @@ def build_packet(root: Path) -> dict[str, Any]:
             "detail": "Schema, IDs and dimensional targets validated" if not manifest_errors else "; ".join(manifest_errors),
             "artifact": relative_artifact(root, manifest_path),
         },
+        {
+            "name": "Independent Compact-Core IFC validation",
+            "status": ("PASS" if ifc_report and ifc_report["passed"] and not ifc_report["open_findings"] else
+                       "PASS WITH OPEN ITEMS" if ifc_report and ifc_report["passed"] else
+                       "FAIL" if ifc_report else "NOT FOUND"),
+            "detail": (
+                f"{ifc_report['observations'].get('schema_issue_count', '?')} schema issues; "
+                f"{ifc_report['observations'].get('space_count', '?')} spaces; "
+                f"{ifc_report['observations'].get('geometry', {}).get('physical_product_decode_failure_count', '?')} physical geometry decode failures; "
+                f"{len(ifc_report['open_findings'])} open coordination finding(s)"
+            ) if ifc_report else "No export or study manifest available",
+            "artifact": relative_artifact(root, export / "FH_Compact_Core_Study.ifc" if export else None),
+        },
     ]
 
     open_items: list[dict[str, Any]] = []
@@ -108,6 +124,8 @@ def build_packet(root: Path) -> dict[str, Any]:
         open_items.extend({"source": "study-warnings.json", **item} for item in warnings)
     if isinstance(qa_data, dict) and isinstance(qa_data.get("issues"), list):
         open_items.extend({"source": "geometry-qa.json", **item} for item in qa_data["issues"])
+    if ifc_report:
+        open_items.extend({"source": "IFC validation", **item} for item in ifc_report["open_findings"])
 
     return {
         "schema": "forever-home.revit-review-packet.v1",
@@ -118,7 +136,9 @@ def build_packet(root: Path) -> dict[str, Any]:
             "compact_core": relative_artifact(root, compact),
             "api_audit": relative_artifact(root, audit),
             "geometry_qa": relative_artifact(root, qa),
+            "ifc_export": relative_artifact(root, export),
         },
+        "ifc_validation": ifc_report,
         "checks": checks,
         "open_items": open_items,
         "limitations": [
