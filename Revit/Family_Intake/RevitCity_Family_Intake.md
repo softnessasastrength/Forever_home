@@ -50,7 +50,7 @@ Disposition: **retired from the active candidate pool**; source bytes are retain
 ## M-06 vanity candidate — research only
 
 - The already-received RevitCity 22366 [listing](https://www.revitcity.com/downloads.php?action=view&object_id=22366) describes a parameter-controlled solid-surface vanity with adjustable counter dimensions, backsplash, basin offset, material and faucet visibility. It lists Revit Architecture 2020 and explicitly says the family has no casework below. It is a vanity/counter candidate, not a bathroom fit or complete cabinet.
-- The product claims and family geometry have not been independently inspected in Revit. The bathroom project specification excludes powder rooms, and M-06 has no approved footprint or service route. Keep 22366 queued; do not place it until the B-window fit criteria are documented.
+- The product claims and family geometry have not yet been independently inspected in Revit. The enhanced RevitPilot intake report will capture each loaded type's symbol-local bounds, positive-volume solid metrics, category, placement type and type parameters; compilation succeeded, but a new host run is still pending. The bathroom project specification excludes powder rooms, and M-06 has no approved footprint or service route. Keep 22366 queued; the family must not be placed in the house model merely because its measured size can fit a search window.
 
 No family is approved by being visually attractive or by loading without warnings. A family is accepted only with evidence in the intake record and a corresponding model/schedule update.
 

@@ -23,6 +23,10 @@ The current [American Standard page](https://www.americanstandard-us.com/product
 
 This recommendation is for a schematic comparison only. The bathroom brief now records M-06 as a distinct half bath in §1.1 while retaining the two full-bath designs; it assigns no fixture or room dimensions. The sink selection, room/door arrangement, actual clearances, building location and applicable code, rough-in location, water pressure/flow and drain/vent route are all open. A product listing's ADA or standards language is not proof that this room or house is accessible or compliant.
 
+### Provisional body-envelope screen
+
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/screen_m06_toilet_family_envelope.ps1` to compare the documented 211AA predecessor-family body rectangle with the two existing D search-window rectangles. The generated [screen report](M06_Champion_PRO_Family_Envelope_Screen_2026-10-27.json) finds that the 19 × 30-1/4 in plan envelope is geometrically contained in B in both tested plan orientations; it also fits the gross A search rectangle. This means only that the predecessor-family body envelope does not rule out B at this coarse screening stage. The allowable origin ranges in the report are mathematical bounds, not selected fixture positions. The comparison deliberately does not promote predecessor dimensions to exact 610AA geometry, assign a room, or test M-06 clearances, vanity, wall/rough-in position, door, user approach, services or IFC. The RevitCity vanity RFA remains queued for a Revit-hosted geometry inspection.
+
 ## Safety and evidence cautions
 
 - Flushmate's recall applies to specified Flushmate III Series 503 vessels manufactured from October 14, 1997 through April 30, 2011, because a vessel could rupture. It does **not** establish that a newly specified 503H toilet is affected; it does mean a used/legacy pressure-assist unit must have its exact model and serial checked against the current [Flushmate recall notice](https://www.flushmate.com/recall).

@@ -23,6 +23,7 @@ The primary and Jack & Jill baths remain **full baths** (toilet + lavatory + bat
 
 - **Function:** toilet and lavatory; no bathing fixture.
 - **Selected test zone:** arrival / hall edge; pantry-side search window B is the first fit candidate. The selections narrow the search area but do not place the room. See [Direction D](../Decisions/2026-10-27_Selected_Architectural_Direction_D.md).
+- **First toilet candidate for investigation:** American Standard Champion PRO 610AA001.020. This is a research target only: exact-SKU body geometry, final fixture selection, clearances and layout are still unverified. See [M-06 toilet research](../Research/M06_Toilet_Options_2026-10-27.md).
 - **Not assigned:** room position/footprint/area, toilet model, lavatory/casework model, fixture clearances, wall thickness, door/location/swing, approach route, ventilation, drain/vent/service route, or construction assemblies.
 - **Design gate:** establish product-specific plan envelopes and a cited M-06 clearance basis, then test door/hall circulation and a plausible services route. Review the applicable location-specific code once the building site is known. Do not borrow full-bath clearances as powder-room criteria.
 - This scope records the owner-selected program only; it is not an accessibility, code-compliance, plumbing-engineering, permit, or construction claim.

@@ -877,6 +877,111 @@ public class GeometryQaCommand : IExternalCommand
 [Transaction(TransactionMode.Manual)]
 public class FamilyIntakeCommand : IExternalCommand
 {
+    static string? ParameterValue(Parameter parameter) => parameter.StorageType switch
+    {
+        StorageType.Double => parameter.AsValueString() ?? parameter.AsDouble().ToString("G17", CultureInfo.InvariantCulture),
+        StorageType.Integer => parameter.AsValueString() ?? parameter.AsInteger().ToString(CultureInfo.InvariantCulture),
+        StorageType.String => parameter.AsString(),
+        StorageType.ElementId => parameter.AsValueString() ?? parameter.AsElementId().Value.ToString(CultureInfo.InvariantCulture),
+        _ => null
+    };
+
+    static (XYZ? Min, XYZ? Max, int Count, double VolumeFt3, int VertexCount) AnalyzePhysicalSolids(GeometryElement geometry)
+    {
+        int count = 0;
+        double volume = 0;
+        int vertexCount = 0;
+        double minX = double.PositiveInfinity, minY = double.PositiveInfinity, minZ = double.PositiveInfinity;
+        double maxX = double.NegativeInfinity, maxY = double.NegativeInfinity, maxZ = double.NegativeInfinity;
+
+        void Include(XYZ point)
+        {
+            if (!double.IsFinite(point.X) || !double.IsFinite(point.Y) || !double.IsFinite(point.Z)) return;
+            minX = Math.Min(minX, point.X); minY = Math.Min(minY, point.Y); minZ = Math.Min(minZ, point.Z);
+            maxX = Math.Max(maxX, point.X); maxY = Math.Max(maxY, point.Y); maxZ = Math.Max(maxZ, point.Z);
+            vertexCount++;
+        }
+
+        void Visit(GeometryElement current, Transform parentTransform)
+        {
+            foreach (GeometryObject item in current)
+            {
+                if (item is Solid solid && double.IsFinite(solid.Volume) && solid.Volume > 1e-9)
+                {
+                    count++;
+                    volume += solid.Volume;
+                    foreach (Face face in solid.Faces)
+                    {
+                        var mesh = face.Triangulate();
+                        foreach (XYZ vertex in mesh.Vertices) Include(parentTransform.OfPoint(vertex));
+                    }
+                }
+                else if (item is GeometryInstance nested)
+                {
+                    Visit(nested.GetSymbolGeometry(), parentTransform.Multiply(nested.Transform));
+                }
+            }
+        }
+
+        Visit(geometry, Transform.Identity);
+        XYZ? min = vertexCount == 0 ? null : new XYZ(minX, minY, minZ);
+        XYZ? max = vertexCount == 0 ? null : new XYZ(maxX, maxY, maxZ);
+        return (min, max, count, volume, vertexCount);
+    }
+
+    static object InspectSymbol(FamilySymbol symbol)
+    {
+        var options = new Options
+        {
+            DetailLevel = ViewDetailLevel.Fine,
+            IncludeNonVisibleObjects = false
+        };
+        var geometry = symbol.get_Geometry(options);
+        if (geometry is null)
+            return new { type = symbol.Name, geometry_status = "unavailable", geometry_error = "FamilySymbol returned no geometry." };
+
+        var metrics = AnalyzePhysicalSolids(geometry);
+        object? boundsIn = null;
+        if (metrics.Min is not null && metrics.Max is not null)
+        {
+            var min = metrics.Min;
+            var max = metrics.Max;
+            boundsIn = new
+            {
+                coordinate_frame = "family symbol positive-volume solids; not placed, hosted or oriented in the project",
+                min_x = Math.Round(min.X * 12, 4), max_x = Math.Round(max.X * 12, 4),
+                min_y = Math.Round(min.Y * 12, 4), max_y = Math.Round(max.Y * 12, 4),
+                min_z = Math.Round(min.Z * 12, 4), max_z = Math.Round(max.Z * 12, 4),
+                width_x = Math.Round((max.X - min.X) * 12, 4),
+                depth_y = Math.Round((max.Y - min.Y) * 12, 4),
+                height_z = Math.Round((max.Z - min.Z) * 12, 4),
+                triangulated_vertex_count = metrics.VertexCount,
+                units = "inches"
+            };
+        }
+
+        var parameters = symbol.Parameters.Cast<Parameter>()
+            .Select(parameter => new
+            {
+                name = parameter.Definition?.Name ?? "<unnamed>",
+                storage_type = parameter.StorageType.ToString(),
+                value = ParameterValue(parameter),
+                is_read_only = parameter.IsReadOnly
+            })
+            .OrderBy(parameter => parameter.name, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(parameter => parameter.storage_type, StringComparer.Ordinal)
+            .ToList();
+
+        return new
+        {
+            type = symbol.Name,
+            geometry_status = boundsIn is null ? "no_measurable_physical_solids" : "measured_from_positive_volume_solids",
+            solid_metrics = new { positive_volume_solid_count = metrics.Count, total_volume_ft3 = Math.Round(metrics.VolumeFt3, 6) },
+            bounds = boundsIn,
+            parameters
+        };
+    }
+
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
         Document? target = null;
@@ -903,9 +1008,35 @@ public class FamilyIntakeCommand : IExternalCommand
                         loaded = target.LoadFamily(path, out family);
                         t.Commit();
                     }
-                    var symbols = family is null ? new List<string>() : family.GetFamilySymbolIds()
-                        .Select(id => target.GetElement(id)?.Name ?? id.Value.ToString()).ToList();
-                    results.Add(new { file = Path.GetFileName(path), status = loaded ? "loaded" : "already_present", family = family?.Name, symbols });
+                    var symbols = family is null ? new List<FamilySymbol>() : family.GetFamilySymbolIds()
+                        .Select(id => target.GetElement(id)).OfType<FamilySymbol>().ToList();
+                    if (symbols.Any(symbol => !symbol.IsActive))
+                    {
+                        using var activate = new Transaction(target, $"Activate intake symbols {familyName}");
+                        activate.Start();
+                        foreach (var symbol in symbols.Where(symbol => !symbol.IsActive)) symbol.Activate();
+                        activate.Commit();
+                        target.Regenerate();
+                    }
+                    var inspected = new List<object>();
+                    foreach (var symbol in symbols)
+                    {
+                        try { inspected.Add(InspectSymbol(symbol)); }
+                        catch (Exception ex)
+                        {
+                            inspected.Add(new { type = symbol.Name, geometry_status = "inspection_failed", geometry_error = ex.Message });
+                        }
+                    }
+                    results.Add(new
+                    {
+                        file = Path.GetFileName(path),
+                        status = loaded ? "loaded" : "already_present",
+                        family = family?.Name,
+                        category = family?.FamilyCategory?.Name,
+                        placement_type = family?.FamilyPlacementType.ToString(),
+                        type_count = inspected.Count,
+                        types = inspected
+                    });
                 }
                 catch (Exception ex)
                 {
@@ -917,7 +1048,7 @@ public class FamilyIntakeCommand : IExternalCommand
             target.SaveAs(study, new SaveAsOptions());
             File.WriteAllText(Path.Combine(output, "intake-manifest.json"), JsonSerializer.Serialize(new
             {
-                status = "executed; review family load results and placement behavior separately",
+                status = "executed; symbol-local bounds and type parameters are screening evidence, not placed-family fit or approval",
                 utc = DateTime.UtcNow,
                 revit_version = app.VersionNumber,
                 revit_build = app.VersionBuild,
