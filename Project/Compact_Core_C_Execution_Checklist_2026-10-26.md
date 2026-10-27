@@ -21,7 +21,7 @@ The C study is ready for review only when each item has an evidence reference or
 | C-10 | Warnings are recorded without being silently dismissed | Warning list and disposition | Verified for the latest study run: 0 native Revit warnings; geometric coordination issues remain open |
 | C-11 | Room/door/window schedules export and can be inspected | CSV/PDF or equivalent evidence | Open |
 | C-12 | Study limitations and unresolved safety issues are handed back | Verification note and coordination-register updates | Partially verified; verification note exists, register updates remain |
-| C-13 | Native floor inventory is stable and reported | Floor markers, levels, computed profile areas and type widths in host QA | Verified for inventory at `.local/revit-pilot/geometry-qa/20261027T004729569Z/`; floor solids/openings, assembly, support and stair landing remain open |
+| C-13 | Native floor inventory is stable and reported | Floor markers, levels, computed profile areas and type widths in host QA | Reconfirmed in Revit 2027.3 at `.local/revit-pilot/geometry-qa/20261027T020317046Z/`; floor solids/openings, assembly, support and stair landing remain open |
 
 ## Execution order
 
