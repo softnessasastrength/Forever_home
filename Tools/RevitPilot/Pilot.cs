@@ -88,6 +88,55 @@ public class IslandCountertopTestCommand : IExternalCommand
             throw new InvalidOperationException($"{label}: expected {expected:0.######} ft, found {actual:0.######} ft.");
     }
 
+    static (XYZ Min, XYZ Max) PhysicalSolidBounds(FamilyInstance instance)
+    {
+        double minX = double.PositiveInfinity, minY = double.PositiveInfinity, minZ = double.PositiveInfinity;
+        double maxX = double.NegativeInfinity, maxY = double.NegativeInfinity, maxZ = double.NegativeInfinity;
+        int vertexCount = 0;
+        var options = new Options { DetailLevel = ViewDetailLevel.Fine, IncludeNonVisibleObjects = false };
+
+        void Include(XYZ point)
+        {
+            if (!double.IsFinite(point.X) || !double.IsFinite(point.Y) || !double.IsFinite(point.Z))
+                return; // Revit may emit a non-finite tessellation vertex for a degenerate face.
+            minX = Math.Min(minX, point.X); minY = Math.Min(minY, point.Y); minZ = Math.Min(minZ, point.Z);
+            maxX = Math.Max(maxX, point.X); maxY = Math.Max(maxY, point.Y); maxZ = Math.Max(maxZ, point.Z);
+            vertexCount++;
+        }
+
+        void Visit(GeometryElement geometry, Transform parentTransform)
+        {
+            foreach (GeometryObject item in geometry)
+            {
+                if (item is Solid solid && solid.Volume > 1e-9)
+                {
+                    foreach (Face face in solid.Faces)
+                    {
+                        var mesh = face.Triangulate();
+                        foreach (XYZ vertex in mesh.Vertices)
+                        {
+                            if (!double.IsFinite(vertex.X) || !double.IsFinite(vertex.Y) || !double.IsFinite(vertex.Z))
+                                continue;
+                            var point = parentTransform.OfPoint(vertex);
+                            Include(point);
+                        }
+                    }
+                }
+                else if (item is GeometryInstance nested)
+                {
+                    Visit(nested.GetSymbolGeometry(), parentTransform.Multiply(nested.Transform));
+                }
+            }
+        }
+
+        var rootGeometry = instance.get_Geometry(options)
+            ?? throw new InvalidOperationException($"Casework module {instance.Id.Value} returned no physical geometry.");
+        Visit(rootGeometry, Transform.Identity);
+        if (vertexCount == 0 || !double.IsFinite(minZ) || !double.IsFinite(maxZ))
+            throw new InvalidOperationException($"Casework module {instance.Id.Value} contains no measurable positive-volume solid geometry.");
+        return (new XYZ(minX, minY, minZ), new XYZ(maxX, maxY, maxZ));
+    }
+
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
         var doc = data.Application.ActiveUIDocument?.Document;
@@ -139,7 +188,7 @@ public class IslandCountertopTestCommand : IExternalCommand
                                  select (xMin: cellX.Item1, xMax: cellX.Item2, yMin: cellY.Item1, yMax: cellY.Item2)).ToList();
             foreach (var module in modules)
             {
-                var bounds = module.get_BoundingBox(null) ?? throw new InvalidOperationException("A casework module has no model bounding box.");
+                var bounds = PhysicalSolidBounds(module);
                 int cell = expectedCells.FindIndex(expected =>
                     Math.Abs(bounds.Min.X - expected.xMin) <= ToleranceFt
                     && Math.Abs(bounds.Max.X - expected.xMax) <= ToleranceFt
@@ -148,11 +197,11 @@ public class IslandCountertopTestCommand : IExternalCommand
                 if (cell < 0)
                     throw new InvalidOperationException("Each casework module must occupy one distinct source-derived 4 x 2 ft island quadrant.");
                 expectedCells.RemoveAt(cell);
-                RequireNear(bounds.Max.Z, level.Elevation + BaseCabinetHeightInches / 12.0, "Casework module top");
+                RequireNear(bounds.Max.Z, level.Elevation + BaseCabinetHeightInches / 12.0, "Casework physical-solid top");
                 moduleX0 = Math.Min(moduleX0, bounds.Min.X); moduleY0 = Math.Min(moduleY0, bounds.Min.Y);
                 moduleX1 = Math.Max(moduleX1, bounds.Max.X); moduleY1 = Math.Max(moduleY1, bounds.Max.Y);
                 moduleTop = Math.Max(moduleTop, bounds.Max.Z);
-                RequireNear(bounds.Min.Z, level.Elevation, "Casework bottom elevation");
+                RequireNear(bounds.Min.Z, level.Elevation, "Casework physical-solid bottom elevation");
             }
             if (expectedCells.Count != 0)
                 throw new InvalidOperationException("One or more source-derived island quadrants are missing.");
