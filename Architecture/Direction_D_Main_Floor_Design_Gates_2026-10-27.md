@@ -45,6 +45,16 @@ This placement clears the current room/core rectangles and preserves all five ro
 
 Reproduce with `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1 -LayoutVariant AdjacencyCandidate`. Its separate drawing package passes 46/46 rectangle/provenance checks and XML parsing. It has not been exported to Revit or IFC because it is not the owner-selected room placement. See [the candidate study](Direction_D_Adjacency_Study_2026-10-27/README.md). The owner-selected D arrangement and its validated Revit/IFC evidence remain unchanged.
 
+## B-first adjacency candidate — not owner-selected
+
+A second comparison protects the owner's pantry-side first-fit priority while retaining direct kitchen/living, kitchen/dining and kitchen/pantry edges. It preserves the five room areas and keeps B's 13 ft 2 in × 7 ft (92.17 sf) search extent clear of the proposed room blocks and stair/lift comparison geometry. The search window's 63 sf projection over upper U-06 remains a potential stack coordination clue only.
+
+The candidate moves M-01 east of M-02, places M-03 and M-04 north of M-02, and moves M-05 to the east exterior wall near the front of the local plan. The entry's facade orientation, exterior approach and porch connection are not established. Window A then overlaps the relocated kitchen/pantry by 35.25 sf, so A is unavailable as a fallback in this comparison.
+
+As an additional B-window check, the PowerShell output places the documented 48 in × 22 in full-bath vanity reference, its preferred 36 in approach, and the documented 30 in × 21 in toilet-front clearance reference inside B without overlap. These are source-referenced clearance rectangles, not a powder-room specification, toilet body, room boundary or M-06 fit. The existing bathroom specification excludes the powder room; exact bath area, door/swing, approach, vent, drain and service route remain unresolved.
+
+Reproduce with `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1 -LayoutVariant BathFirstAdjacencyCandidate`. The package passes 50/50 geometry/provenance/clearance-reference checks and all SVGs parse as XML. It has not been exported to Revit or IFC because it remains unapproved. See [the B-first candidate](Direction_D_BathFirst_Adjacency_Study_2026-10-27/README.md).
+
 ## M-06 public half-bath zone options
 
 The owner selected the arrival / hall edge as the first public zone to test for M-06. Its exact position, footprint and service route remain unassigned. Options B and C are deferred unless the arrival/hall test proves unworkable:

@@ -23,4 +23,10 @@ The owner selected the arrival / hall edge as the first public zone to test for 
 
 The owner then selected the pantry-side window (search window B, east of the core alignment) as the first fit-study candidate. Its 13 ft 2 in × 7 ft envelope is unassigned open block space, not an approved bathroom dimension. Keep the dining-side window A as an alternate if the pantry-side fit conflicts with room organization, fixture clearances or service coordination.
 
+## Preserve B while testing social-room adjacencies (2026-10-27)
+
+The owner confirmed that pantry-side B remains the working M-06 priority while another main-floor arrangement is tested for kitchen/living and kitchen/dining adjacency. This authorizes comparison work; it does not select a new room placement, entry location, bath footprint, fixture layout, wall or service route.
+
+The unapproved [B-first adjacency candidate](../Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/README.md) keeps B clear and reconnects the social-room blocks, but moves M-05 to the east exterior wall and blocks search window A. Review that entry/approach tradeoff before considering adoption. B's envelope and source-referenced fixture-clearance comparison remain schematic only; the main half-bath fit and service routing are unresolved.
+
 No structural, code, accessibility, professional approval, permit, or construction-readiness claim follows from this decision.

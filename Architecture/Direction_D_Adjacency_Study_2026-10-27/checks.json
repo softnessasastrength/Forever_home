@@ -85,13 +85,17 @@
                              "entry_to_living":  {
                                                      "nominal_wall_gap_ft":  0.5,
                                                      "shared_edge_ft":  12,
+                                                     "entry_side":  "Front / hall edge; exterior approach unverified.",
                                                      "entry_door":  "Not modeled."
                                                  },
                              "m06_owner_selected_B_conflict_sf":  79.33,
+                             "m06_alternate_A_conflict_sf":  0,
                              "m06_B_vs_upper_U06_projection_sf":  59.5,
-                             "m06_A_fallback_status":  "Search gap remains clear of proposed room and core rectangles; no bath fit, door or fixture clearance established.",
+                             "m06_A_status":  "Search gap is clear of candidate room/core rectangles; no bath fit, door or fixture clearance established.",
+                             "m06_B_status":  "Blocked by candidate room rectangles (79.33 sf overlap); no bath fit tested.",
                              "owner_approval":  "Not selected; compare with the owner-selected D placement before replacing it."
                          },
+    "m06_fixture_clearance_study":  null,
     "room_block_overlaps":  [
 
                             ],

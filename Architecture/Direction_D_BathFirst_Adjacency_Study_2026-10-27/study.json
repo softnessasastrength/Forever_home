@@ -1,0 +1,559 @@
+﻿{
+    "schema":  "forever-home.selected-house-schematic.v1",
+    "title":  "Direction D bath-first adjacency candidate",
+    "status":  "Unapproved bath-first adjacency alternative; room areas preserved; schematic blocks only",
+    "layout_variant":  "BathFirstAdjacencyCandidate",
+    "source":  "Derived from the existing A/B schematic study; source alternatives remain unchanged.",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Schematic_Study_2026-10-25/study.json":  "b99fdb8ab4a1e3440ff6ee8f17c8e81bfce0a1360ff03213d060b998ab2d319b",
+                                       "Architecture/Schematic_Study_2026-10-25/checks.json":  "f2b713aaed861c8bea951e82b9e0298ff41aaf0a13420e0fb5432ea02e9b1779",
+                                       "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
+                                       "Decisions/Kitchen_Island_Finish.md":  "5165aea0df46c28f22ec87ccae658e6164cde52939510d0e9af82f3d771a8b95",
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                   },
+    "units":  "feet; local x right, local y toward rear; no site orientation or georeference",
+    "plan_frame_offsets_ft":  {
+                                  "main":  [
+                                               0,
+                                               0
+                                           ],
+                                  "upper":  [
+                                                0,
+                                                6
+                                            ],
+                                  "lower":  [
+                                                0,
+                                                10
+                                            ]
+                              },
+    "selection":  {
+                      "bedroom_flex_level":  "lower (A strategy)",
+                      "main_shell":  "40 x 42 ft (B test envelope)",
+                      "levels":  [
+                                     {
+                                         "id":  "Lower FF",
+                                         "elevation_ft":  -5
+                                     },
+                                     {
+                                         "id":  "Main FF",
+                                         "elevation_ft":  0
+                                     },
+                                     {
+                                         "id":  "Upper FF",
+                                         "elevation_ft":  5
+                                     }
+                                 ],
+                      "vertical_core":  {
+                                            "comparison_risers_per_half_flight":  8,
+                                            "comparison_riser_in":  7.5,
+                                            "comparison_tread_in":  11,
+                                            "floor_assembly_placeholder_in":  15,
+                                            "lift_reservation_ft":  [
+                                                                        8,
+                                                                        8
+                                                                    ],
+                                            "status":  "B stair arithmetic is a comparison baseline, not a selected stair specification; see proposed connected D core plan; final riser count, wall openings, headroom, structure and product fit remain unresolved"
+                                        },
+                      "main_public_bath":  {
+                                               "type":  "half bath",
+                                               "id":  "M-06",
+                                               "test_zone":  "arrival / hall edge",
+                                               "owner_selected_first_fit_candidate":  "east_of_core",
+                                               "first_fit_candidate":  "east_of_core",
+                                               "blocked_candidate_ids":  "west_of_core",
+                                               "footprint":  "TBD",
+                                               "position":  "TBD",
+                                               "service_route":  "TBD",
+                                               "status":  "Unapproved bath-first comparison: pantry-side B remains clear in the room-block plan; dining-side A is blocked by relocated kitchen/pantry blocks. B is still only a search window, not a bath fit; exact position, footprint and service route remain unresolved.",
+                                               "cross_level_comparison":  {
+                                                                              "candidate_window_id":  "east_of_core",
+                                                                              "upper_room_id":  "U-06",
+                                                                              "projected_overlap_sf":  63,
+                                                                              "projected_bounds_ft":  [
+                                                                                                          25.333333333333332,
+                                                                                                          17.166666666666668,
+                                                                                                          9.0000000000000036,
+                                                                                                          7
+                                                                                                      ],
+                                                                              "status":  "Plan projection only; no fixture wet wall, drain, vent or service route is established."
+                                                                          },
+                                               "search_windows":  [
+                                                                      {
+                                                                          "id":  "west_of_core",
+                                                                          "label":  "Dining-side search window",
+                                                                          "x":  12,
+                                                                          "y":  16.166666666666668,
+                                                                          "w":  5.1666666666666679,
+                                                                          "d":  11.416666666666664,
+                                                                          "gross_area_sf":  58.99,
+                                                                          "status":  "Blocked by relocated kitchen/pantry room blocks in the bath-first adjacency candidate; not an available M-06 search gap."
+                                                                      },
+                                                                      {
+                                                                          "id":  "east_of_core",
+                                                                          "label":  "Pantry-side search window",
+                                                                          "x":  21.166666666666668,
+                                                                          "y":  17.166666666666668,
+                                                                          "w":  13.166666666666668,
+                                                                          "d":  7,
+                                                                          "gross_area_sf":  92.17,
+                                                                          "status":  "Unassigned room-block gap only; not a bath footprint."
+                                                                      }
+                                                                  ],
+                                               "blocked_candidate_conflicts":  [
+                                                                                   {
+                                                                                       "room":  "M-02",
+                                                                                       "overlap_sf":  2.5833,
+                                                                                       "window":  "west_of_core"
+                                                                                   },
+                                                                                   {
+                                                                                       "room":  "M-04",
+                                                                                       "overlap_sf":  32.6667,
+                                                                                       "window":  "west_of_core"
+                                                                                   }
+                                                                               ],
+                                               "candidate_layout_status":  "Unapproved room-placement alternative; pantry-side B remains clear; dining-side A is blocked."
+                                           },
+                      "suite_strategy":  "Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.",
+                      "kitchen":  {
+                                      "perimeter_induction":  true,
+                                      "perimeter_sink_and_dishwasher":  true,
+                                      "island_appliance_free":  true,
+                                      "island_ft":  [
+                                                        8,
+                                                        4
+                                                    ],
+                                      "island_origin_local_ft":  [
+                                                                     4.666666666666667,
+                                                                     6
+                                                                 ],
+                                      "counter_finish":  "approximately 6 ft cream quartz + 2 ft butcher block",
+                                      "plan_test":  "17 ft 4 in x 16 ft room block inherited from the documented fit test; area is not approved"
+                                  }
+                  },
+    "shells":  {
+                   "main":  [
+                                40,
+                                42
+                            ],
+                   "rear_lower":  [
+                                      36,
+                                      32
+                                  ],
+                   "rear_upper":  [
+                                      36,
+                                      32
+                                  ],
+                   "garage_sf":  576,
+                   "porch_ft":  [
+                                    12,
+                                    10
+                                ]
+               },
+    "plans":  {
+                  "main":  [
+                               {
+                                   "id":  "M-01",
+                                   "name":  "Living room",
+                                   "x":  18.5,
+                                   "y":  0.66666666666666663,
+                                   "w":  16,
+                                   "d":  15,
+                                   "kind":  "room"
+                               },
+                               {
+                                   "id":  "M-02",
+                                   "name":  "Kitchen",
+                                   "x":  0.66666666666666663,
+                                   "y":  0.66666666666666663,
+                                   "w":  17.333333333333332,
+                                   "d":  16,
+                                   "kind":  "room"
+                               },
+                               {
+                                   "id":  "M-03",
+                                   "name":  "Dining",
+                                   "x":  0.66666666666666663,
+                                   "y":  17.166666666666668,
+                                   "w":  11.333333333333334,
+                                   "d":  14,
+                                   "kind":  "room"
+                               },
+                               {
+                                   "id":  "M-04",
+                                   "name":  "Pantry",
+                                   "x":  12.5,
+                                   "y":  17.166666666666668,
+                                   "w":  5,
+                                   "d":  7,
+                                   "kind":  "room"
+                               },
+                               {
+                                   "id":  "M-05",
+                                   "name":  "Front arrival / hall",
+                                   "x":  35,
+                                   "y":  0.66666666666666663,
+                                   "w":  4.333333333333333,
+                                   "d":  12,
+                                   "kind":  "room"
+                               }
+                           ],
+                  "upper":  [
+                                {
+                                    "id":  "U-01",
+                                    "name":  "Primary bedroom",
+                                    "x":  0.66666666666666663,
+                                    "y":  0.66666666666666663,
+                                    "w":  16,
+                                    "d":  10,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "U-05",
+                                    "name":  "Primary bath",
+                                    "x":  0.66666666666666663,
+                                    "y":  11.166666666666666,
+                                    "w":  9,
+                                    "d":  10,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "C-PRIVATE",
+                                    "name":  "Private connector",
+                                    "x":  10.166666666666666,
+                                    "y":  11.166666666666666,
+                                    "w":  6.5,
+                                    "d":  10,
+                                    "kind":  "circulation"
+                                },
+                                {
+                                    "id":  "U-02",
+                                    "name":  "Boutique",
+                                    "x":  0.66666666666666663,
+                                    "y":  21.666666666666668,
+                                    "w":  16,
+                                    "d":  9.6666666666666661,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "C-UPPER",
+                                    "name":  "4 ft suite / public hall",
+                                    "x":  17.166666666666668,
+                                    "y":  0.66666666666666663,
+                                    "w":  4,
+                                    "d":  30.666666666666668,
+                                    "kind":  "circulation"
+                                },
+                                {
+                                    "id":  "U-04",
+                                    "name":  "Guest bedroom",
+                                    "x":  21.666666666666668,
+                                    "y":  0.66666666666666663,
+                                    "w":  13.666666666666666,
+                                    "d":  8,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "U-06",
+                                    "name":  "Jack and Jill bath",
+                                    "x":  25.333333333333332,
+                                    "y":  9.1666666666666661,
+                                    "w":  10,
+                                    "d":  12,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "U-03",
+                                    "name":  "Hybrid bedroom / office",
+                                    "x":  21.666666666666668,
+                                    "y":  22.166666666666668,
+                                    "w":  13.666666666666666,
+                                    "d":  9.1666666666666661,
+                                    "kind":  "room"
+                                }
+                            ],
+                  "lower":  [
+                                {
+                                    "id":  "L-03",
+                                    "name":  "Lower full bath",
+                                    "x":  0.66666666666666663,
+                                    "y":  0.66666666666666663,
+                                    "w":  9,
+                                    "d":  10,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "L-04",
+                                    "name":  "Enclosed laundry",
+                                    "x":  0.66666666666666663,
+                                    "y":  11.166666666666666,
+                                    "w":  9,
+                                    "d":  8,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "L-05",
+                                    "name":  "MEP equipment reservation",
+                                    "x":  0.66666666666666663,
+                                    "y":  19.666666666666668,
+                                    "w":  9,
+                                    "d":  11.666666666666666,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "L-07",
+                                    "name":  "Arrival + dry storage",
+                                    "x":  26.333333333333332,
+                                    "y":  0.66666666666666663,
+                                    "w":  9,
+                                    "d":  11.5,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "L-06",
+                                    "name":  "Ventilated technology room",
+                                    "x":  17.333333333333332,
+                                    "y":  0.66666666666666663,
+                                    "w":  8,
+                                    "d":  8,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "L-01",
+                                    "name":  "Lower flexible living",
+                                    "x":  10.166666666666666,
+                                    "y":  13,
+                                    "w":  13.666666666666666,
+                                    "d":  18.333333333333332,
+                                    "kind":  "room"
+                                },
+                                {
+                                    "id":  "C-LOWER",
+                                    "name":  "Lower arrival / circulation",
+                                    "x":  10.166666666666666,
+                                    "y":  0.66666666666666663,
+                                    "w":  6.666666666666667,
+                                    "d":  11.833333333333334,
+                                    "kind":  "circulation"
+                                },
+                                {
+                                    "id":  "L-02",
+                                    "name":  "Bedroom-capable flex",
+                                    "x":  24.333333333333332,
+                                    "y":  21.166666666666668,
+                                    "w":  11,
+                                    "d":  10,
+                                    "kind":  "room"
+                                }
+                            ]
+              },
+    "stair_core_test":  {
+                            "status":  "proposed plan coordination using inherited B comparison dimensions; stair count and lift product remain unselected",
+                            "comparison_risers_per_flight":  8,
+                            "comparison_treads_per_flight":  7,
+                            "comparison_riser_in":  7.5,
+                            "comparison_tread_in":  11,
+                            "flight_and_landing_width_ft":  4,
+                            "landing_depth_ft":  4,
+                            "run_length_ft":  6.416666666666667,
+                            "lower_to_main":  {
+                                                  "x_ft":  12.5,
+                                                  "lower_landing_ft":  [
+                                                                           12.5,
+                                                                           38,
+                                                                           4,
+                                                                           4
+                                                                       ],
+                                                  "lower_landing_local_ft":  [
+                                                                                 12.5,
+                                                                                 28,
+                                                                                 4,
+                                                                                 4
+                                                                             ],
+                                                  "run_ft":  [
+                                                                 12.5,
+                                                                 31.583333333333332,
+                                                                 4,
+                                                                 6.416666666666667
+                                                             ],
+                                                  "main_landing_ft":  [
+                                                                          12.5,
+                                                                          27.583333333333332,
+                                                                          4,
+                                                                          4
+                                                                      ],
+                                                  "main_floor_opening_ft":  [
+                                                                                12.5,
+                                                                                31.583333333333332,
+                                                                                4,
+                                                                                6.416666666666667
+                                                                            ]
+                                              },
+                            "main_to_upper":  {
+                                                  "x_ft":  17.166666666666668,
+                                                  "main_landing_ft":  [
+                                                                          17.166666666666668,
+                                                                          27.583333333333332,
+                                                                          4,
+                                                                          4
+                                                                      ],
+                                                  "run_ft":  [
+                                                                 17.166666666666668,
+                                                                 31.583333333333332,
+                                                                 4,
+                                                                 6.416666666666667
+                                                             ],
+                                                  "upper_landing_ft":  [
+                                                                           17.166666666666668,
+                                                                           38,
+                                                                           4,
+                                                                           4
+                                                                       ],
+                                                  "main_floor_opening_ft":  [
+                                                                                17.166666666666668,
+                                                                                31.583333333333332,
+                                                                                4,
+                                                                                6.416666666666667
+                                                                            ],
+                                                  "upper_floor_extension_ft":  [
+                                                                                   17.166666666666668,
+                                                                                   38,
+                                                                                   4,
+                                                                                   4
+                                                                               ]
+                                              },
+                            "lift":  {
+                                         "origin_ft":  [
+                                                           21.166666666666668,
+                                                           34
+                                                       ],
+                                         "width_ft":  8,
+                                         "depth_ft":  8,
+                                         "status":  "reservation only; product, pit, overrun and door side unselected"
+                                     },
+                            "main_shell_rear_edge_openings":  [
+                                                                  {
+                                                                      "x_interval_ft":  [
+                                                                                            12.5,
+                                                                                            16.5
+                                                                                        ],
+                                                                      "elevation_scope":  "lower/main; wall opening size and fire separation TBD",
+                                                                      "use":  "lower-to-main stair passage"
+                                                                  },
+                                                                  {
+                                                                      "x_interval_ft":  [
+                                                                                            17.166666666666668,
+                                                                                            21.166666666666668
+                                                                                        ],
+                                                                      "elevation_scope":  "main/upper; wall opening size and fire separation TBD",
+                                                                      "use":  "upper stair bridge"
+                                                                  }
+                                                              ],
+                            "main_floor_profile_sf":  1564.667,
+                            "upper_floor_profile_sf":  1168
+                        },
+    "upper_door_matrix":  [
+                              {
+                                  "id":  "D-U01",
+                                  "a":  "C-UPPER",
+                                  "b":  "U-01",
+                                  "x":  16.833333333333332,
+                                  "y":  5,
+                                  "axis":  "v",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U02",
+                                  "a":  "U-01",
+                                  "b":  "U-05",
+                                  "x":  5,
+                                  "y":  10.916666666666666,
+                                  "axis":  "h",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U03",
+                                  "a":  "U-01",
+                                  "b":  "C-PRIVATE",
+                                  "x":  13,
+                                  "y":  10.916666666666666,
+                                  "axis":  "h",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U04",
+                                  "a":  "C-PRIVATE",
+                                  "b":  "U-02",
+                                  "x":  13,
+                                  "y":  21.416666666666668,
+                                  "axis":  "h",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U05",
+                                  "a":  "U-02",
+                                  "b":  "C-UPPER",
+                                  "x":  16.833333333333332,
+                                  "y":  27,
+                                  "axis":  "v",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U06",
+                                  "a":  "U-03",
+                                  "b":  "C-UPPER",
+                                  "x":  21.416666666666668,
+                                  "y":  27,
+                                  "axis":  "v",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U07",
+                                  "a":  "U-04",
+                                  "b":  "C-UPPER",
+                                  "x":  21.416666666666668,
+                                  "y":  5,
+                                  "axis":  "v",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U08",
+                                  "a":  "U-04",
+                                  "b":  "U-06",
+                                  "x":  30,
+                                  "y":  8.9166666666666661,
+                                  "axis":  "h",
+                                  "nominal_reservation_ft":  3.5
+                              },
+                              {
+                                  "id":  "D-U09",
+                                  "a":  "U-03",
+                                  "b":  "U-06",
+                                  "x":  30,
+                                  "y":  21.666666666666668,
+                                  "axis":  "h",
+                                  "nominal_reservation_ft":  3.5
+                              }
+                          ],
+    "unplaced_program":  [
+                             {
+                                 "reason":  "Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD.",
+                                 "name":  "Main half bath",
+                                 "id":  "M-06"
+                             },
+                             {
+                                 "reason":  "Current source block is an entry/hall reservation; storage and garage arrival are not resolved.",
+                                 "name":  "Coat storage / mudroom fit",
+                                 "id":  "M-05"
+                             },
+                             {
+                                 "reason":  "Discreet conditioned location remains TBD; omitted from geometric blocks.",
+                                 "name":  "Secure storage",
+                                 "id":  "S-01"
+                             },
+                             {
+                                 "reason":  "D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.",
+                                 "name":  "Stair, landings and lift route",
+                                 "id":  "C-01"
+                             }
+                         ]
+}

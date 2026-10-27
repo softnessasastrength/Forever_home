@@ -9,7 +9,7 @@
                                        "Architecture/Schematic_Study_2026-10-25/checks.json":  "f2b713aaed861c8bea951e82b9e0298ff41aaf0a13420e0fb5432ea02e9b1779",
                                        "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
                                        "Decisions/Kitchen_Island_Finish.md":  "5165aea0df46c28f22ec87ccae658e6164cde52939510d0e9af82f3d771a8b95",
-                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "b059b8d6c28f55d380074d7512d2bed9bda761d1d5fd738da26f24d226d4d099"
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
                                    },
     "units":  "feet; local x right, local y toward rear; no site orientation or georeference",
     "plan_frame_offsets_ft":  {
