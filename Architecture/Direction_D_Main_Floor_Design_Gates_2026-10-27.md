@@ -30,6 +30,21 @@ The inherited D island coordinates provide a separate, more specific depth check
 
 Conclusion: keep the 17 ft 4 in × 16 ft M-02 block as a fit-test envelope, not an approved room size. Before freezing a kitchen layout, place the half wall relative to both axes and test cabinet runs, appliance doors, stool occupation and the independent dining route in the same plan. No dimension has been changed.
 
+## Main-floor adjacency candidate — not owner-selected
+
+The owner-selected D room arrangement does not place the kitchen directly beside dining or living. A separate candidate test now repositions the same five main-floor room blocks without changing their dimensions or areas. It derives each shift from the existing 6 in wall allowance; this is a comparison layout, not a replacement decision.
+
+| Relationship | Candidate plan result | Limit |
+|---|---|---|
+| Kitchen ↔ living | 15 ft shared edge; an 8 ft half-wall segment leaves 7 ft open, above the documented 6 ft minimum | Wall segment location, actual opening and room interfaces remain unmodeled |
+| Kitchen ↔ dining | 11 ft 4 in shared edge across a 6 in nominal wall zone | No opening, porch doors, floor continuity or chair clearance tested |
+| Kitchen ↔ pantry | 5 ft shared edge across a 6 in nominal wall zone; documented 2 ft 6 in door reservation fits in plan | Door swing and cabinet/appliance conflicts untested |
+| Entry / hall ↔ living | 12 ft shared edge across a 6 in nominal wall zone | Entry door and clear opening not modeled |
+
+This placement clears the current room/core rectangles and preserves all five room areas. It also blocks the owner-selected pantry-side M-06 window B: **79.33 sf of the 88.67 sf search window overlaps the proposed dining block**. B still projects over upper U-06 by 59.5 sf, but no fixture alignment or service route is established. The dining-side window A remains clear in this room-block test and is only a fallback candidate; it is 5 ft 2 in × 11 ft 5 in gross and has no demonstrated bath fit. The candidate retains the living, kitchen and dining program-area variances.
+
+Reproduce with `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1 -LayoutVariant AdjacencyCandidate`. Its separate drawing package passes 46/46 rectangle/provenance checks and XML parsing. It has not been exported to Revit or IFC because it is not the owner-selected room placement. See [the candidate study](Direction_D_Adjacency_Study_2026-10-27/README.md). The owner-selected D arrangement and its validated Revit/IFC evidence remain unchanged.
+
 ## M-06 public half-bath zone options
 
 The owner selected the arrival / hall edge as the first public zone to test for M-06. Its exact position, footprint and service route remain unassigned. Options B and C are deferred unless the arrival/hall test proves unworkable:

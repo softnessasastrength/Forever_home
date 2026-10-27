@@ -1,7 +1,8 @@
 ﻿{
     "schema":  "forever-home.selected-house-schematic.v1",
-    "title":  "Selected direction D â€” lower flex room / B-sized main shell",
+    "title":  "Selected direction D - lower flex room / B-sized main shell",
     "status":  "owner-selected design direction; schematic blocks only; not a coordinated or approved house plan",
+    "layout_variant":  "OwnerSelectedD",
     "source":  "Derived from the existing A/B schematic study; source alternatives remain unchanged.",
     "source_fingerprints_sha256":  {
                                        "Architecture/Schematic_Study_2026-10-25/study.json":  "b99fdb8ab4a1e3440ff6ee8f17c8e81bfce0a1360ff03213d060b998ab2d319b",
@@ -57,7 +58,11 @@
                                                "type":  "half bath",
                                                "id":  "M-06",
                                                "test_zone":  "arrival / hall edge",
+                                               "owner_selected_first_fit_candidate":  "east_of_core",
                                                "first_fit_candidate":  "east_of_core",
+                                               "blocked_candidate_ids":  {
+
+                                                                         },
                                                "footprint":  "TBD",
                                                "position":  "TBD",
                                                "service_route":  "TBD",
@@ -95,7 +100,11 @@
                                                                           "gross_area_sf":  92.17,
                                                                           "status":  "Unassigned room-block gap only; not a bath footprint."
                                                                       }
-                                                                  ]
+                                                                  ],
+                                               "blocked_candidate_conflicts":  [
+
+                                                                               ],
+                                               "candidate_layout_status":  "Owner-selected room placement; pantry-side B remains the first search candidate."
                                            },
                       "suite_strategy":  "Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.",
                       "kitchen":  {

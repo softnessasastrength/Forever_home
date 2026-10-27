@@ -1,7 +1,7 @@
 # Implementation progress
 
 Updated: 2026-10-27
-Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fixture. Owner-selected direction D now also has a reproducible Revit 2027.3 room-space study and independently validated IFC2X3 export. Run `20261027T162833498Z` passes all 23 selected-D IFC checks, with 3 expected levels, 21 spaces and zero schema issues. D is not yet coordinated architectural building geometry; M-06 fit/location, room-area tradeoffs, wall/floor assemblies, openings and native stair coordination remain open.
+Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fixture. Owner-selected direction D now also has a reproducible Revit 2027.3 room-space study and independently validated IFC2X3 export. Latest run `20261027T164221478Z` passes all 23 selected-D IFC checks, with 3 expected levels, 21 spaces and zero schema issues; matching audit `20261027T164310404Z` records 0 walls, 0 openings and 0 warnings. D is not yet coordinated architectural building geometry; M-06 fit/location, room-area tradeoffs, wall/floor assemblies, openings and native stair coordination remain open.
 
 ## Selected-D Revit and IFC round trip (2026-10-27)
 
@@ -24,6 +24,24 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - Independent validator command: `./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py .local/revit-pilot/selected-d/20261027T162833498Z`. Result: **PASS, 23/23 checks**, IFC2X3 schema validation clean with zero issues; exact three storeys at -5/0/+5 ft; 21 unique room/space IDs, areas and levels match source; Revit inventory and IFC fingerprints match the saved model.
 - Read-only native Revit audit `.local/revit-pilot/audits/20261027T162907942Z/` matches the exact saved RVT fingerprint and records Revit 2027.3, 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 warnings. The model remains a room-boundary study, not a coordinated or construction-ready house model.
 - Open design choices: test M-06 in pantry-side window B and use dining-side A if B fails; place kitchen half wall and verify cabinet/appliance-open clearances; resolve room-area variances, actual service paths, wall/floor assemblies, openings, native stair section/headroom, site and professional review. No code-compliance, structural-safety or construction-readiness claim is made.
+
+## Unapproved Direction D main-floor adjacency candidate (2026-10-27)
+
+- Added `-LayoutVariant AdjacencyCandidate` to the PowerShell room-block generator. The default owner-selected D output remains separate and unchanged in intent; the alternative writes to `Architecture/Direction_D_Adjacency_Study_2026-10-27/`.
+- The alternative moves M-01, M-03, M-04 and M-05 around the retained M-02, using the documented 6 in wall allowance and preserving the original five room dimensions/areas. The main rooms remain inside the 40 × 42 ft test shell, have no overlaps, and clear stair/lift comparison blocks.
+- It provides a 15 ft kitchen/living shared edge. An 8 ft half-wall segment leaves a 7 ft open span, above the documented 6 ft minimum. Kitchen/dining share an 11 ft 4 in edge; kitchen/pantry share a 5 ft edge, enough in plan for the documented 2 ft 6 in pantry-door reservation. These are plan relationships only; no wall/opening/door is authored.
+- In this arrangement, 79.33 sf of M-06 pantry-side B's 88.67 sf search window overlaps relocated dining. It remains a 59.5 sf projection above U-06, but the room conflict prevents treating it as an available bath gap. Dining-side A stays clear of the candidate room/core rectangles and is shown as a fallback search area only; bath size, fixtures, door and service route remain TBD.
+- Reproducible command: `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1 -LayoutVariant AdjacencyCandidate`. Result: **46/46 checks pass**, all three generated SVGs parse as XML. The owner-selected D placement remains the validated Revit/IFC baseline. This alternative has not been exported to Revit/IFC because it has not been selected by the owner.
+- Owner decision still required before replacing the baseline: retain the current placement and M-06 B stacking opportunity, or prefer the connected social-room arrangement and test M-06 in A. No room placement was promoted to an owner decision in this chunk.
+
+## Refreshed owner-selected D export and adjacency candidate rerun (2026-10-27)
+
+- Regenerated the default owner-selected schematic with `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1`: **40/40 checks pass**, three SVGs parse as XML, and the selected M-06 pantry-side B choice remains encoded. Current study SHA256: `00792b81ef66b9d23c69c17e49ba5528340014a4fd2540d4bba8410df5a207f6`.
+- Revit 2027.3 regenerated the selected D room-boundary study at `.local/revit-pilot/selected-d/20261027T164221478Z/`. It records the exact checked-in source SHA above, a separate 520,192-byte RVT, and an 80,281-byte IFC2X3. RVT SHA256: `4ca2c6a7adb65c6e4ad6a35466aee86b3953f2514b5e958d6b7b0d2514ad13e5`; IFC SHA256: `e720a50c4f735397320ceac8196b2d2937f9af4c84316b9adf81698c87dd67d0`.
+- `./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py .local/revit-pilot/selected-d/20261027T164221478Z` exits 0: **23/23 checks pass**, IFC2X3 schema validation is clean, and source, manifest, saved RVT and export fingerprints agree.
+- Read-only Revit audit `.local/revit-pilot/audits/20261027T164310404Z/` matches the saved RVT fingerprint and confirms Revit 2027.3, 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 warnings. This is a room-boundary study, not coordinated building geometry.
+- Regenerated the unapproved adjacency candidate separately: `-LayoutVariant AdjacencyCandidate` passes **46/46 checks** and all three SVGs parse as XML. The PowerShell output is the authoritative check summary; no candidate Revit/IFC export was run because the layout remains unselected.
+- `git diff --check` passes. No remote state or existing run was modified; no commit or push has yet been made in this checkpoint.
 
 ## Saved-model evidence identity hardening (2026-10-27)
 

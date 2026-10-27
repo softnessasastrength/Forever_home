@@ -1,0 +1,293 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="724" height="459" viewBox="0 0 724 459">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.bath-search-blocked{fill:#d9665e;fill-opacity:.28;stroke:#a83732;stroke-width:2.4;stroke-dasharray:5 3}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>
+<text class="title" x="54" y="28">D - lower plan - schematic room blocks</text>
+<text class="header" x="54" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>
+<rect class="shell" x="54" y="64" width="360" height="320" />
+<rect class="room" x="60.67" y="277.33" width="90" height="100" />
+<text class="label" x="64.67" y="317.33">L-03</text>
+<text class="label" x="64.67" y="330.33">Lower full bath</text>
+<text class="label" x="64.67" y="343.33">9 x 10 ft</text>
+<rect class="room" x="60.67" y="192.33" width="90" height="80" />
+<text class="label" x="64.67" y="222.33">L-04</text>
+<text class="label" x="64.67" y="235.33">Enclosed laundry</text>
+<text class="label" x="64.67" y="248.33">9 x 8 ft</text>
+<rect class="room" x="60.67" y="70.67" width="90" height="116.67" />
+<text class="label" x="64.67" y="118.67">L-05</text>
+<text class="label" x="64.67" y="131.67">MEP equipment reservation</text>
+<text class="label" x="64.67" y="144.67">9 x 11.67 ft</text>
+<rect class="room" x="317.33" y="262.33" width="90" height="115" />
+<text class="label" x="321.33" y="310.33">L-07</text>
+<text class="label" x="321.33" y="323.33">Arrival + dry storage</text>
+<text class="label" x="321.33" y="336.33">9 x 11.5 ft</text>
+<rect class="room" x="227.33" y="297.33" width="80" height="80" />
+<text class="label" x="231.33" y="327.33">L-06</text>
+<text class="label" x="231.33" y="340.33">Ventilated technology room</text>
+<text class="label" x="231.33" y="353.33">8 x 8 ft</text>
+<rect class="room" x="155.67" y="70.67" width="136.67" height="183.33" />
+<text class="label" x="159.67" y="152.67">L-01</text>
+<text class="label" x="159.67" y="165.67">Lower flexible living</text>
+<text class="label" x="159.67" y="178.67">13.67 x 18.33 ft</text>
+<rect class="circulation" x="155.67" y="259" width="66.67" height="118.33" />
+<text class="label" x="159.67" y="308">C-LOWER</text>
+<text class="label" x="159.67" y="321">Lower arrival / circulation</text>
+<text class="label" x="159.67" y="334">6.67 x 11.83 ft</text>
+<rect class="room" x="297.33" y="72.33" width="110" height="100" />
+<text class="label" x="301.33" y="112.33">L-02</text>
+<text class="label" x="301.33" y="125.33">Bedroom-capable flex</text>
+<text class="label" x="301.33" y="138.33">11 x 10 ft</text>
+<rect class="core" x="179" y="64" width="40" height="40" />
+<text class="small" x="182" y="77">S1 lower landing</text>
+<text class="small" x="436" y="76">R</text>
+<text class="small" x="436" y="90">e</text>
+<text class="small" x="436" y="104">a</text>
+<text class="small" x="436" y="118">r</text>
+<text class="small" x="436" y="132"> </text>
+<text class="small" x="436" y="146">l</text>
+<text class="small" x="436" y="160">o</text>
+<text class="small" x="436" y="174">w</text>
+<text class="small" x="436" y="188">e</text>
+<text class="small" x="436" y="202">r</text>
+<text class="small" x="436" y="216"> </text>
+<text class="small" x="436" y="230">p</text>
+<text class="small" x="436" y="244">l</text>
+<text class="small" x="436" y="258">a</text>
+<text class="small" x="436" y="272">t</text>
+<text class="small" x="436" y="286">e</text>
+<text class="small" x="436" y="300">:</text>
+<text class="small" x="436" y="314"> </text>
+<text class="small" x="436" y="328">3</text>
+<text class="small" x="436" y="342">6</text>
+<text class="small" x="436" y="356"> </text>
+<text class="small" x="436" y="370">x</text>
+<text class="small" x="436" y="384"> </text>
+<text class="small" x="436" y="398">3</text>
+<text class="small" x="436" y="412">2</text>
+<text class="small" x="436" y="426"> </text>
+<text class="small" x="436" y="440">f</text>
+<text class="small" x="436" y="454">t</text>
+<text class="small" x="436" y="468">.</text>
+<text class="small" x="436" y="482"> </text>
+<text class="small" x="436" y="496">L</text>
+<text class="small" x="436" y="510">o</text>
+<text class="small" x="436" y="524">w</text>
+<text class="small" x="436" y="538">e</text>
+<text class="small" x="436" y="552">r</text>
+<text class="small" x="436" y="566"> </text>
+<text class="small" x="436" y="580">L</text>
+<text class="small" x="436" y="594">-</text>
+<text class="small" x="436" y="608">0</text>
+<text class="small" x="436" y="622">2</text>
+<text class="small" x="436" y="636"> </text>
+<text class="small" x="436" y="650">i</text>
+<text class="small" x="436" y="664">s</text>
+<text class="small" x="436" y="678"> </text>
+<text class="small" x="436" y="692">t</text>
+<text class="small" x="436" y="706">h</text>
+<text class="small" x="436" y="720">e</text>
+<text class="small" x="436" y="734"> </text>
+<text class="small" x="436" y="748">A</text>
+<text class="small" x="436" y="762">-</text>
+<text class="small" x="436" y="776">s</text>
+<text class="small" x="436" y="790">t</text>
+<text class="small" x="436" y="804">r</text>
+<text class="small" x="436" y="818">a</text>
+<text class="small" x="436" y="832">t</text>
+<text class="small" x="436" y="846">e</text>
+<text class="small" x="436" y="860">g</text>
+<text class="small" x="436" y="874">y</text>
+<text class="small" x="436" y="888"> </text>
+<text class="small" x="436" y="902">b</text>
+<text class="small" x="436" y="916">l</text>
+<text class="small" x="436" y="930">o</text>
+<text class="small" x="436" y="944">c</text>
+<text class="small" x="436" y="958">k</text>
+<text class="small" x="436" y="972">.</text>
+<text class="small" x="436" y="994">S</text>
+<text class="small" x="436" y="1008">1</text>
+<text class="small" x="436" y="1022"> </text>
+<text class="small" x="436" y="1036">l</text>
+<text class="small" x="436" y="1050">o</text>
+<text class="small" x="436" y="1064">w</text>
+<text class="small" x="436" y="1078">e</text>
+<text class="small" x="436" y="1092">r</text>
+<text class="small" x="436" y="1106"> </text>
+<text class="small" x="436" y="1120">l</text>
+<text class="small" x="436" y="1134">a</text>
+<text class="small" x="436" y="1148">n</text>
+<text class="small" x="436" y="1162">d</text>
+<text class="small" x="436" y="1176">i</text>
+<text class="small" x="436" y="1190">n</text>
+<text class="small" x="436" y="1204">g</text>
+<text class="small" x="436" y="1218"> </text>
+<text class="small" x="436" y="1232">t</text>
+<text class="small" x="436" y="1246">o</text>
+<text class="small" x="436" y="1260">u</text>
+<text class="small" x="436" y="1274">c</text>
+<text class="small" x="436" y="1288">h</text>
+<text class="small" x="436" y="1302">e</text>
+<text class="small" x="436" y="1316">s</text>
+<text class="small" x="436" y="1330"> </text>
+<text class="small" x="436" y="1344">t</text>
+<text class="small" x="436" y="1358">h</text>
+<text class="small" x="436" y="1372">e</text>
+<text class="small" x="436" y="1386"> </text>
+<text class="small" x="436" y="1400">s</text>
+<text class="small" x="436" y="1414">h</text>
+<text class="small" x="436" y="1428">a</text>
+<text class="small" x="436" y="1442">r</text>
+<text class="small" x="436" y="1456">e</text>
+<text class="small" x="436" y="1470">d</text>
+<text class="small" x="436" y="1484"> </text>
+<text class="small" x="436" y="1498">s</text>
+<text class="small" x="436" y="1512">h</text>
+<text class="small" x="436" y="1526">e</text>
+<text class="small" x="436" y="1540">l</text>
+<text class="small" x="436" y="1554">l</text>
+<text class="small" x="436" y="1568"> </text>
+<text class="small" x="436" y="1582">e</text>
+<text class="small" x="436" y="1596">d</text>
+<text class="small" x="436" y="1610">g</text>
+<text class="small" x="436" y="1624">e</text>
+<text class="small" x="436" y="1638">;</text>
+<text class="small" x="436" y="1652"> </text>
+<text class="small" x="436" y="1666">o</text>
+<text class="small" x="436" y="1680">p</text>
+<text class="small" x="436" y="1694">e</text>
+<text class="small" x="436" y="1708">n</text>
+<text class="small" x="436" y="1722">i</text>
+<text class="small" x="436" y="1736">n</text>
+<text class="small" x="436" y="1750">g</text>
+<text class="small" x="436" y="1764"> </text>
+<text class="small" x="436" y="1778">o</text>
+<text class="small" x="436" y="1792">f</text>
+<text class="small" x="436" y="1806">f</text>
+<text class="small" x="436" y="1820">s</text>
+<text class="small" x="436" y="1834">e</text>
+<text class="small" x="436" y="1848">t</text>
+<text class="small" x="436" y="1862"> </text>
+<text class="small" x="436" y="1876">i</text>
+<text class="small" x="436" y="1890">s</text>
+<text class="small" x="436" y="1904"> </text>
+<text class="small" x="436" y="1918">a</text>
+<text class="small" x="436" y="1932"> </text>
+<text class="small" x="436" y="1946">n</text>
+<text class="small" x="436" y="1960">a</text>
+<text class="small" x="436" y="1974">t</text>
+<text class="small" x="436" y="1988">i</text>
+<text class="small" x="436" y="2002">v</text>
+<text class="small" x="436" y="2016">e</text>
+<text class="small" x="436" y="2030"> </text>
+<text class="small" x="436" y="2044">r</text>
+<text class="small" x="436" y="2058">e</text>
+<text class="small" x="436" y="2072">v</text>
+<text class="small" x="436" y="2086">i</text>
+<text class="small" x="436" y="2100">e</text>
+<text class="small" x="436" y="2114">w</text>
+<text class="small" x="436" y="2128"> </text>
+<text class="small" x="436" y="2142">i</text>
+<text class="small" x="436" y="2156">t</text>
+<text class="small" x="436" y="2170">e</text>
+<text class="small" x="436" y="2184">m</text>
+<text class="small" x="436" y="2198">.</text>
+<text class="small" x="436" y="2220">L</text>
+<text class="small" x="436" y="2234">-</text>
+<text class="small" x="436" y="2248">0</text>
+<text class="small" x="436" y="2262">6</text>
+<text class="small" x="436" y="2276"> </text>
+<text class="small" x="436" y="2290">m</text>
+<text class="small" x="436" y="2304">o</text>
+<text class="small" x="436" y="2318">v</text>
+<text class="small" x="436" y="2332">e</text>
+<text class="small" x="436" y="2346">d</text>
+<text class="small" x="436" y="2360"> </text>
+<text class="small" x="436" y="2374">o</text>
+<text class="small" x="436" y="2388">u</text>
+<text class="small" x="436" y="2402">t</text>
+<text class="small" x="436" y="2416">s</text>
+<text class="small" x="436" y="2430">i</text>
+<text class="small" x="436" y="2444">d</text>
+<text class="small" x="436" y="2458">e</text>
+<text class="small" x="436" y="2472"> </text>
+<text class="small" x="436" y="2486">u</text>
+<text class="small" x="436" y="2500">p</text>
+<text class="small" x="436" y="2514">p</text>
+<text class="small" x="436" y="2528">e</text>
+<text class="small" x="436" y="2542">r</text>
+<text class="small" x="436" y="2556"> </text>
+<text class="small" x="436" y="2570">U</text>
+<text class="small" x="436" y="2584">-</text>
+<text class="small" x="436" y="2598">0</text>
+<text class="small" x="436" y="2612">6</text>
+<text class="small" x="436" y="2626"> </text>
+<text class="small" x="436" y="2640">p</text>
+<text class="small" x="436" y="2654">r</text>
+<text class="small" x="436" y="2668">o</text>
+<text class="small" x="436" y="2682">j</text>
+<text class="small" x="436" y="2696">e</text>
+<text class="small" x="436" y="2710">c</text>
+<text class="small" x="436" y="2724">t</text>
+<text class="small" x="436" y="2738">i</text>
+<text class="small" x="436" y="2752">o</text>
+<text class="small" x="436" y="2766">n</text>
+<text class="small" x="436" y="2780">;</text>
+<text class="small" x="436" y="2794"> </text>
+<text class="small" x="436" y="2808">o</text>
+<text class="small" x="436" y="2822">v</text>
+<text class="small" x="436" y="2836">e</text>
+<text class="small" x="436" y="2850">r</text>
+<text class="small" x="436" y="2864">l</text>
+<text class="small" x="436" y="2878">a</text>
+<text class="small" x="436" y="2892">p</text>
+<text class="small" x="436" y="2906"> </text>
+<text class="small" x="436" y="2920">=</text>
+<text class="small" x="436" y="2934"> </text>
+<text class="small" x="436" y="2948">0</text>
+<text class="small" x="436" y="2962"> </text>
+<text class="small" x="436" y="2976">s</text>
+<text class="small" x="436" y="2990">f</text>
+<text class="small" x="436" y="3004">.</text>
+<text class="small" x="436" y="3026">S</text>
+<text class="small" x="436" y="3040">e</text>
+<text class="small" x="436" y="3054">c</text>
+<text class="small" x="436" y="3068">u</text>
+<text class="small" x="436" y="3082">r</text>
+<text class="small" x="436" y="3096">e</text>
+<text class="small" x="436" y="3110"> </text>
+<text class="small" x="436" y="3124">s</text>
+<text class="small" x="436" y="3138">t</text>
+<text class="small" x="436" y="3152">o</text>
+<text class="small" x="436" y="3166">r</text>
+<text class="small" x="436" y="3180">a</text>
+<text class="small" x="436" y="3194">g</text>
+<text class="small" x="436" y="3208">e</text>
+<text class="small" x="436" y="3222"> </text>
+<text class="small" x="436" y="3236">i</text>
+<text class="small" x="436" y="3250">s</text>
+<text class="small" x="436" y="3264"> </text>
+<text class="small" x="436" y="3278">n</text>
+<text class="small" x="436" y="3292">o</text>
+<text class="small" x="436" y="3306">t</text>
+<text class="small" x="436" y="3320"> </text>
+<text class="small" x="436" y="3334">l</text>
+<text class="small" x="436" y="3348">o</text>
+<text class="small" x="436" y="3362">c</text>
+<text class="small" x="436" y="3376">a</text>
+<text class="small" x="436" y="3390">t</text>
+<text class="small" x="436" y="3404">e</text>
+<text class="small" x="436" y="3418">d</text>
+<text class="small" x="436" y="3432"> </text>
+<text class="small" x="436" y="3446">i</text>
+<text class="small" x="436" y="3460">n</text>
+<text class="small" x="436" y="3474"> </text>
+<text class="small" x="436" y="3488">t</text>
+<text class="small" x="436" y="3502">h</text>
+<text class="small" x="436" y="3516">i</text>
+<text class="small" x="436" y="3530">s</text>
+<text class="small" x="436" y="3544"> </text>
+<text class="small" x="436" y="3558">s</text>
+<text class="small" x="436" y="3572">t</text>
+<text class="small" x="436" y="3586">u</text>
+<text class="small" x="436" y="3600">d</text>
+<text class="small" x="436" y="3614">y</text>
+<text class="small" x="436" y="3628">.</text>
+</svg>

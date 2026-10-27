@@ -1,9 +1,14 @@
 ﻿param(
-    [string]$OutputDirectory = "Architecture/Selected_Design_Iteration_2026-10-27"
+    [ValidateSet('OwnerSelectedD','AdjacencyCandidate')]
+    [string]$LayoutVariant = 'OwnerSelectedD',
+    [string]$OutputDirectory = ''
 )
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
+    $OutputDirectory = if ($LayoutVariant -eq 'AdjacencyCandidate') { 'Architecture/Direction_D_Adjacency_Study_2026-10-27' } else { 'Architecture/Selected_Design_Iteration_2026-10-27' }
+}
 $sourcePath = Join-Path $root 'Architecture/Schematic_Study_2026-10-25/study.json'
 $checksPath = Join-Path $root 'Architecture/Schematic_Study_2026-10-25/checks.json'
 $target = Join-Path $root $OutputDirectory
@@ -24,8 +29,25 @@ function Copy-Rooms($rooms) {
 }
 
 $main = @(Copy-Rooms $source.alternatives.B.plans.main | Where-Object { $_.id -notin @('M-06','L-02') })
+$baseMain = @(Copy-Rooms $source.alternatives.B.plans.main | Where-Object { $_.id -notin @('M-06','L-02') })
 $upper = @(Copy-Rooms $source.alternatives.B.plans.upper)
 $lower = @(Copy-Rooms $source.alternatives.A.plans.lower | Where-Object { $_.id -ne 'S-01' })
+$isAdjacencyCandidate = $LayoutVariant -eq 'AdjacencyCandidate'
+if ($isAdjacencyCandidate) {
+    # Preserve all owner-selected room areas and use only the documented
+    # six-inch wall zone to derive a main-floor adjacency alternative.
+    $living = $main | Where-Object id -eq 'M-01'
+    $kitchen = $main | Where-Object id -eq 'M-02'
+    $dining = $main | Where-Object id -eq 'M-03'
+    $pantry = $main | Where-Object id -eq 'M-04'
+    $entry = $main | Where-Object id -eq 'M-05'
+    $living.x = $kitchen.x - 0.5 - $living.w
+    $entry.x = 2.0 / 3.0
+    $dining.x = $kitchen.x
+    $dining.y = $kitchen.y + $kitchen.d + 0.5
+    $pantry.x = $dining.x + $dining.w + 0.5
+    $pantry.y = $dining.y
+}
 
 # Read room allowances directly from the documented program, rather than
 # copying ranges into this generator. These are study references, not hard
@@ -124,10 +146,16 @@ $stairCore = [ordered]@{
     upper_floor_profile_sf=1152+4*($upperWingStartY-$upperRunEndY)
 }
 
+$layoutTitle = if ($isAdjacencyCandidate) { 'Direction D adjacency candidate - main social sequence study' } else { 'Selected direction D - lower flex room / B-sized main shell' }
+$layoutStatus = if ($isAdjacencyCandidate) { 'Unapproved adjacency alternative; room areas preserved; schematic blocks only' } else { 'owner-selected design direction; schematic blocks only; not a coordinated or approved house plan' }
+$m06FirstFitCandidate = if ($isAdjacencyCandidate) { 'west_of_core' } else { 'east_of_core' }
+$m06BlockedCandidateIds = if ($isAdjacencyCandidate) { @('east_of_core') } else { @() }
+$m06Status = if ($isAdjacencyCandidate) { 'Unapproved adjacency layout test: pantry-side B conflicts with relocated dining/pantry; dining-side A is shown as fallback. Exact position, footprint and service route remain unresolved.' } else { 'owner-selected room type and test zone; pantry-side search window selected for first fit study; exact location, footprint and service route remain unresolved' }
 $study = [ordered]@{
     schema = 'forever-home.selected-house-schematic.v1'
-    title = 'Selected direction D â€” lower flex room / B-sized main shell'
-    status = 'owner-selected design direction; schematic blocks only; not a coordinated or approved house plan'
+    title = $layoutTitle
+    status = $layoutStatus
+    layout_variant = $LayoutVariant
     source = 'Derived from the existing A/B schematic study; source alternatives remain unchanged.'
     source_fingerprints_sha256 = $sourceFingerprints
     units = 'feet; local x right, local y toward rear; no site orientation or georeference'
@@ -137,7 +165,7 @@ $study = [ordered]@{
         main_shell = '40 x 42 ft (B test envelope)'
         levels = @(@{id='Lower FF'; elevation_ft=-5},@{id='Main FF'; elevation_ft=0},@{id='Upper FF'; elevation_ft=5})
         vertical_core = [ordered]@{ comparison_risers_per_half_flight=8; comparison_riser_in=7.5; comparison_tread_in=11; floor_assembly_placeholder_in=15; lift_reservation_ft=@(8,8); status='B stair arithmetic is a comparison baseline, not a selected stair specification; see proposed connected D core plan; final riser count, wall openings, headroom, structure and product fit remain unresolved' }
-        main_public_bath = [ordered]@{ type='half bath'; id='M-06'; test_zone='arrival / hall edge'; first_fit_candidate='east_of_core'; footprint='TBD'; position='TBD'; service_route='TBD'; status='owner-selected room type and test zone; pantry-side search window selected for first fit study; exact location, footprint and service route remain unresolved' }
+        main_public_bath = [ordered]@{ type='half bath'; id='M-06'; test_zone='arrival / hall edge'; owner_selected_first_fit_candidate='east_of_core'; first_fit_candidate=$m06FirstFitCandidate; blocked_candidate_ids=$m06BlockedCandidateIds; footprint='TBD'; position='TBD'; service_route='TBD'; status=$m06Status }
         suite_strategy = 'Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.'
         kitchen = [ordered]@{ perimeter_induction=$true; perimeter_sink_and_dishwasher=$true; island_appliance_free=$true; island_ft=@(8,4); island_origin_local_ft=@([double]$source.kitchen_test.island.x,[double]$source.kitchen_test.island.y); counter_finish='approximately 6 ft cream quartz + 2 ft butcher block'; plan_test='17 ft 4 in x 16 ft room block inherited from the documented fit test; area is not approved' }
     }
@@ -198,7 +226,7 @@ $planChecks['main_full_bath_and_main_flex_removed_from_selected_levels'] = -not 
 $planChecks['selected_lower_flex_room_present'] = [bool]$lowerFlex
 $planChecks['main_half_bath_not_given_invented_footprint'] = -not (@($main | Where-Object id -eq 'M-06').Count)
 $planChecks['selected_m06_test_zone_is_arrival_hall_edge'] = ($study.selection.main_public_bath.test_zone -eq 'arrival / hall edge')
-$planChecks['selected_m06_first_fit_candidate_is_pantry_side_window'] = ($study.selection.main_public_bath.first_fit_candidate -eq 'east_of_core')
+$planChecks['owner_selected_m06_first_fit_candidate_is_pantry_side_window'] = ($study.selection.main_public_bath.owner_selected_first_fit_candidate -eq 'east_of_core')
 $planChecks['m06_location_footprint_and_service_route_remain_tbd'] = ($study.selection.main_public_bath.position -eq 'TBD' -and $study.selection.main_public_bath.footprint -eq 'TBD' -and $study.selection.main_public_bath.service_route -eq 'TBD')
 $planChecks['documented_kitchen_fit_reference_checks_pass'] = [bool]($sourceChecks.checks.old_kitchen_12_ft_short_axis_fails_13_ft_counter_aisle_island_aisle_chain -and $sourceChecks.checks.new_kitchen_has_4_ft_work_aisle -and $sourceChecks.checks.new_kitchen_8_ft_island_has_end_clearances -and $sourceChecks.checks.kitchen_has_seat_allowance_plus_4_ft_route)
 $placedRoomIds = @($main + $upper + $lower | Where-Object kind -eq 'room' | ForEach-Object id)
@@ -225,25 +253,29 @@ $dining=$main | Where-Object id -eq 'M-03'
 $pantry=$main | Where-Object id -eq 'M-04'
 $s1Landing=$stairCore.lower_to_main.main_landing_ft
 $s2Landing=$stairCore.main_to_upper.main_landing_ft
-$westSearchX=$dining.x+$dining.w
-$westSearchY=$dining.y
+$baseDining = $baseMain | Where-Object id -eq 'M-03'
+$westSearchX=$baseDining.x+$baseDining.w
+$westSearchY=$baseDining.y
 $westSearchW=$s2Landing[0]-$westSearchX
 $westSearchD=$s1Landing[1]-$westSearchY
 $eastSearchX=$s2Landing[0]+$s2Landing[2]
 $eastSearchY=$pantry.y
 $eastSearchW=$pantry.x-$eastSearchX
 $eastSearchD=$pantry.d
+$eastSearchStatus = if ($isAdjacencyCandidate) { 'Blocked by proposed dining/pantry placement in the adjacency candidate; not an available M-06 search gap.' } else { 'Unassigned room-block gap only; not a bath footprint.' }
 $m06SearchWindows=@(
     [ordered]@{id='west_of_core'; label='Dining-side search window'; x=$westSearchX; y=$westSearchY; w=$westSearchW; d=$westSearchD; gross_area_sf=[Math]::Round($westSearchW*$westSearchD,2); status='Unassigned room-block gap only; not a bath footprint.'},
-    [ordered]@{id='east_of_core'; label='Pantry-side search window'; x=$eastSearchX; y=$eastSearchY; w=$eastSearchW; d=$eastSearchD; gross_area_sf=[Math]::Round($eastSearchW*$eastSearchD,2); status='Unassigned room-block gap only; not a bath footprint.'}
+    [ordered]@{id='east_of_core'; label='Pantry-side search window'; x=$eastSearchX; y=$eastSearchY; w=$eastSearchW; d=$eastSearchD; gross_area_sf=[Math]::Round($eastSearchW*$eastSearchD,2); status=$eastSearchStatus}
 )
 $selectedM06Window = $m06SearchWindows | Where-Object id -eq $study.selection.main_public_bath.first_fit_candidate
 $upperBathProjected = [ordered]@{x=[double]$jill.x; y=([double]$jill.y+[double]$planFrameOffsets.upper[1]); w=[double]$jill.w; d=[double]$jill.d}
 $m06UpperBathProjection = Test-Overlap $selectedM06Window $upperBathProjected
 $projectionX = [Math]::Max([double]$selectedM06Window.x,[double]$upperBathProjected.x)
 $projectionY = [Math]::Max([double]$selectedM06Window.y,[double]$upperBathProjected.y)
-$projectionW = [Math]::Min(([double]$selectedM06Window.x+[double]$selectedM06Window.w),([double]$upperBathProjected.x+[double]$upperBathProjected.w))-$projectionX
-$projectionD = [Math]::Min(([double]$selectedM06Window.y+[double]$selectedM06Window.d),([double]$upperBathProjected.y+[double]$upperBathProjected.d))-$projectionY
+$projectionW = if ($m06UpperBathProjection.overlap) { [Math]::Min(([double]$selectedM06Window.x+[double]$selectedM06Window.w),([double]$upperBathProjected.x+[double]$upperBathProjected.w))-$projectionX } else { 0 }
+$projectionD = if ($m06UpperBathProjection.overlap) { [Math]::Min(([double]$selectedM06Window.y+[double]$selectedM06Window.d),([double]$upperBathProjected.y+[double]$upperBathProjected.d))-$projectionY } else { 0 }
+$projectionX = if ($m06UpperBathProjection.overlap) { $projectionX } else { [double]$selectedM06Window.x }
+$projectionY = if ($m06UpperBathProjection.overlap) { $projectionY } else { [double]$selectedM06Window.y }
 $study.selection.main_public_bath['cross_level_comparison'] = [ordered]@{
     candidate_window_id=$selectedM06Window.id
     upper_room_id='U-06'
@@ -254,16 +286,65 @@ $study.selection.main_public_bath['cross_level_comparison'] = [ordered]@{
 $study.selection.main_public_bath['search_windows']=$m06SearchWindows
 $m06SearchRoomHits=[System.Collections.Generic.List[object]]::new()
 foreach($window in $m06SearchWindows){foreach($room in $mainRoomBlocks){$hit=Test-Overlap $window $room;if($hit.overlap){$m06SearchRoomHits.Add(@{window=$window.id;room=$room.id;overlap_sf=$hit.area_sf})}}}
+$availableM06Windows = @($m06SearchWindows | Where-Object id -eq $study.selection.main_public_bath.first_fit_candidate)
+$blockedM06Conflicts = @($m06SearchRoomHits | Where-Object { $study.selection.main_public_bath.blocked_candidate_ids -contains $_.window })
+$study.selection.main_public_bath['blocked_candidate_conflicts'] = $blockedM06Conflicts
+$study.selection.main_public_bath['candidate_layout_status'] = if($isAdjacencyCandidate){'Unapproved room-placement alternative; pantry-side B is blocked and dining-side A is the fallback search window.'}else{'Owner-selected room placement; pantry-side B remains the first search candidate.'}
 $m06SearchCoreHits=[System.Collections.Generic.List[object]]::new()
 foreach($window in $m06SearchWindows){foreach($coreRect in $coreRects){$hit=Test-Overlap $window $coreRect;if($hit.overlap){$m06SearchCoreHits.Add(@{window=$window.id;core=$coreRect.id;overlap_sf=$hit.area_sf})}}}
 $m06SearchInside=@($m06SearchWindows | Where-Object { $_.x -lt 0 -or $_.y -lt 0 -or ($_.x+$_.w) -gt 40 -or ($_.y+$_.d) -gt 42 }).Count -eq 0
 $planChecks['m06_search_windows_inside_main_shell'] = $m06SearchInside
-$planChecks['m06_search_windows_clear_of_placed_rooms'] = ($m06SearchRoomHits.Count -eq 0)
+$planChecks['m06_available_search_window_clear_of_placed_rooms'] = (@($m06SearchRoomHits | Where-Object { @($availableM06Windows.id) -contains $_.window }).Count -eq 0)
 $planChecks['m06_search_windows_clear_of_stair_and_lift_comparison_blocks'] = ($m06SearchCoreHits.Count -eq 0)
 $planChecks['m06_search_windows_are_not_placed_as_bath_geometry'] = (-not (@($main | Where-Object id -eq 'M-06').Count) -and $study.selection.main_public_bath.footprint -eq 'TBD')
 $planChecks['m06_first_fit_candidate_is_defined_search_window'] = (@($m06SearchWindows | Where-Object id -eq $study.selection.main_public_bath.first_fit_candidate).Count -eq 1)
 $planChecks['m06_first_fit_candidate_is_not_placed_room_geometry'] = (-not (@($main | Where-Object id -eq 'M-06').Count))
-$planChecks['m06_pantry_window_has_documented_u06_vertical_projection'] = ([Math]::Abs($m06UpperBathProjection.area_sf-63.0) -lt 0.001 -and $study.selection.main_public_bath.cross_level_comparison.status -like 'Plan projection only;*')
+$expectedM06Projection = if($isAdjacencyCandidate){0.0}else{63.0}
+$planChecks['m06_selected_window_vertical_projection_matches_derived_layout'] = ([Math]::Abs($m06UpperBathProjection.area_sf-$expectedM06Projection) -lt 0.001 -and $study.selection.main_public_bath.cross_level_comparison.status -like 'Plan projection only;*')
+if ($isAdjacencyCandidate) {
+    $planChecks['m06_b_candidate_conflict_is_explicit'] = ($blockedM06Conflicts.Count -gt 0 -and $study.selection.main_public_bath.first_fit_candidate -eq 'west_of_core')
+}
+$adjacencyReview = $null
+if ($isAdjacencyCandidate) {
+    $living = $main | Where-Object id -eq 'M-01'
+    $kitchen = $main | Where-Object id -eq 'M-02'
+    $dining = $main | Where-Object id -eq 'M-03'
+    $pantry = $main | Where-Object id -eq 'M-04'
+    $entry = $main | Where-Object id -eq 'M-05'
+    $livingKitchenGap = [Math]::Round([double]$kitchen.x-([double]$living.x+[double]$living.w),3)
+    $livingKitchenShared = [Math]::Min(($living.y+$living.d),($kitchen.y+$kitchen.d))-[Math]::Max($living.y,$kitchen.y)
+    $halfWallLength = 8.0
+    $clearOpening = [Math]::Round($livingKitchenShared-$halfWallLength,3)
+    $kitchenDiningGap = [Math]::Round([double]$dining.y-([double]$kitchen.y+[double]$kitchen.d),3)
+    $kitchenDiningShared = [Math]::Min(($kitchen.x+$kitchen.w),($dining.x+$dining.w))-[Math]::Max($kitchen.x,$dining.x)
+    $kitchenPantryGap = [Math]::Round([double]$pantry.y-([double]$kitchen.y+[double]$kitchen.d),3)
+    $kitchenPantryShared = [Math]::Min(($kitchen.x+$kitchen.w),($pantry.x+$pantry.w))-[Math]::Max($kitchen.x,$pantry.x)
+    $entryLivingGap = [Math]::Round([double]$living.x-([double]$entry.x+[double]$entry.w),3)
+    $entryLivingShared = [Math]::Min(($living.y+$living.d),($entry.y+$entry.d))-[Math]::Max($living.y,$entry.y)
+    $m06BConflictSf = 0.0
+    foreach($conflict in $blockedM06Conflicts){$m06BConflictSf += [double]$conflict.overlap_sf}
+    $m06BConflictSf = [Math]::Round($m06BConflictSf,2)
+    $candidateRoomAreaSum = 0.0
+    foreach($room in $main){if($room.id -in @('M-01','M-02','M-03','M-04','M-05')){$candidateRoomAreaSum += [double]$room.w*[double]$room.d}}
+    $blockedBWindow = $m06SearchWindows | Where-Object id -eq 'east_of_core'
+    $blockedBUpperBathProjection = Test-Overlap $blockedBWindow $upperBathProjected
+    $planChecks['candidate_halfwall_and_six_foot_clear_opening_fit_shared_edge'] = ($livingKitchenGap -eq 0.5 -and $livingKitchenShared -ge $halfWallLength+6.0)
+    $planChecks['candidate_kitchen_and_dining_are_directly_adjacent'] = ($kitchenDiningGap -eq 0.5 -and $kitchenDiningShared -ge 8.0)
+    $planChecks['candidate_pantry_edge_can_host_documented_door_reservation'] = ($kitchenPantryGap -eq 0.5 -and $kitchenPantryShared -ge 2.5)
+    $planChecks['candidate_entry_hall_and_living_share_edge'] = ($entryLivingGap -eq 0.5 -and $entryLivingShared -ge 6.0)
+    $planChecks['candidate_keeps_original_room_areas'] = ([Math]::Abs($candidateRoomAreaSum-763.0) -lt 0.001)
+    $adjacencyReview = [ordered]@{
+        status='Unapproved room-placement option; same room areas and documented test dimensions retained.'
+        kitchen_to_living=[ordered]@{nominal_wall_gap_ft=$livingKitchenGap;shared_edge_ft=[Math]::Round($livingKitchenShared,3);documented_half_wall_ft=$halfWallLength;remaining_opening_ft=$clearOpening;minimum_opening_ft=6;wall_segment_location='TBD'}
+        kitchen_to_dining=[ordered]@{nominal_wall_gap_ft=$kitchenDiningGap;shared_edge_ft=[Math]::Round($kitchenDiningShared,3);status='Direct plan adjacency candidate; actual opening/floor/porch interface not modeled.'}
+        kitchen_to_pantry=[ordered]@{nominal_wall_gap_ft=$kitchenPantryGap;shared_edge_ft=[Math]::Round($kitchenPantryShared,3);documented_door_width_ft=2.5;door_swing='TBD'}
+        entry_to_living=[ordered]@{nominal_wall_gap_ft=$entryLivingGap;shared_edge_ft=[Math]::Round($entryLivingShared,3);entry_door='Not modeled.'}
+        m06_owner_selected_B_conflict_sf=$m06BConflictSf
+        m06_B_vs_upper_U06_projection_sf=$blockedBUpperBathProjection.area_sf
+        m06_A_fallback_status='Search gap remains clear of proposed room and core rectangles; no bath fit, door or fixture clearance established.'
+        owner_approval='Not selected; compare with the owner-selected D placement before replacing it.'
+    }
+}
 $upperHall = $upper | Where-Object id -eq 'C-UPPER'
 $planChecks['proposed_main_stair_and_lift_blocks_clear_placed_main_rooms'] = ($coreRoomHits.Count -eq 0)
 $planChecks['upper_landing_reaches_rear_wing_edge'] = ([Math]::Abs(($stairCore.main_to_upper.upper_landing_ft[1]+$stairCore.main_to_upper.upper_landing_ft[3])-$upperWingStartY) -lt 0.000001)
@@ -288,9 +369,11 @@ $findings = @(
     @{id='D-OPEN-06'; priority='P1'; status='open'; issue='The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified.'}
 )
 $checks = [ordered]@{
-    status = 'schematic geometry checks only; unresolved design items remain'
+    status = if($isAdjacencyCandidate){'unapproved adjacency candidate; geometry checks only; owner selection required before replacement'}else{'schematic geometry checks only; unresolved design items remain'}
+    layout_variant = $LayoutVariant
     checks = $planChecks
-    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; m06_B_vs_upper_U06_projected_overlap_sf=$m06UpperBathProjection.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
+    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; selected_M06_vs_U06_projected_overlap_sf=$m06UpperBathProjection.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
+    adjacency_review = $adjacencyReview
     room_block_overlaps = @($overlaps)
     stair_core_room_block_overlaps = @($coreRoomHits)
     program_area_review = $programAreaReview
@@ -303,7 +386,7 @@ function New-PlanSvg([string]$level,[object[]]$rooms,[double]$width,[double]$dep
     $scale=10; $left=54; $top=64; $extraFront=if($level -eq 'upper'){4.0}else{0.0}; $canvasWidth=[Math]::Max(660,($width*$scale)+$left+310); $canvasHeight=(($depth+$extraFront)*$scale)+$top+75
     $items=[System.Collections.Generic.List[string]]::new()
     $items.Add("<svg xmlns=`"http://www.w3.org/2000/svg`" width=`"$canvasWidth`" height=`"$canvasHeight`" viewBox=`"0 0 $canvasWidth $canvasHeight`">")
-    $items.Add('<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>')
+    $items.Add('<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.bath-search-blocked{fill:#d9665e;fill-opacity:.28;stroke:#a83732;stroke-width:2.4;stroke-dasharray:5 3}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>')
     $items.Add(('<text class="title" x="{0}" y="28">D - {1} plan - schematic room blocks</text>' -f $left,$level))
     $items.Add(('<text class="header" x="{0}" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>' -f $left))
     $shellTop=$top+$extraFront*$scale
@@ -319,16 +402,18 @@ function New-PlanSvg([string]$level,[object[]]$rooms,[double]$width,[double]$dep
     if ($level -eq 'main') {
         foreach($window in $study.selection.main_public_bath.search_windows){
             $zx=$left+$window.x*$scale; $zy=$top+($depth-$window.y-$window.d)*$scale; $zw=$window.w*$scale; $zh=$window.d*$scale
-            $zoneClass=if($window.id -eq $study.selection.main_public_bath.first_fit_candidate){'bath-search-selected'}else{'bath-search'}
-            $zoneTag=if($window.id -eq 'west_of_core'){'A'}else{'B'}
+            $zoneClass=if($study.selection.main_public_bath.blocked_candidate_ids -contains $window.id){'bath-search-blocked'}elseif($window.id -eq $study.selection.main_public_bath.first_fit_candidate){'bath-search-selected'}else{'bath-search'}
+            $zoneTag=if($study.selection.main_public_bath.blocked_candidate_ids -contains $window.id){'B blocked'}elseif($window.id -eq 'west_of_core'){'A'}else{'B'}
             $items.Add("<rect class=`"$zoneClass`" x=`"$([Math]::Round($zx,2))`" y=`"$([Math]::Round($zy,2))`" width=`"$([Math]::Round($zw,2))`" height=`"$([Math]::Round($zh,2))`" />")
             $items.Add(('<text class="label" x="{0}" y="{1}">M-06 {2}</text>' -f [Math]::Round($zx+4,2),[Math]::Round($zy+16,2),$zoneTag))
         }
         $projection=$study.selection.main_public_bath.cross_level_comparison.projected_bounds_ft
-        $px=$left+$projection[0]*$scale; $py=$top+($depth-$projection[1]-$projection[3])*$scale
-        $pw=$projection[2]*$scale; $ph=$projection[3]*$scale
-        $items.Add("<rect class=`"crosslevel`" x=`"$([Math]::Round($px,2))`" y=`"$([Math]::Round($py,2))`" width=`"$([Math]::Round($pw,2))`" height=`"$([Math]::Round($ph,2))`" />")
-        $items.Add(('<text class="small" x="{0}" y="{1}">U-06 above: 63 sf</text>' -f [Math]::Round($px+4,2),[Math]::Round($py+35,2)))
+        if ($projection[2] -gt 0 -and $projection[3] -gt 0) {
+            $px=$left+$projection[0]*$scale; $py=$top+($depth-$projection[1]-$projection[3])*$scale
+            $pw=$projection[2]*$scale; $ph=$projection[3]*$scale
+            $items.Add("<rect class=`"crosslevel`" x=`"$([Math]::Round($px,2))`" y=`"$([Math]::Round($py,2))`" width=`"$([Math]::Round($pw,2))`" height=`"$([Math]::Round($ph,2))`" />")
+            $items.Add(('<text class="small" x="{0}" y="{1}">U-06 above: {2} sf</text>' -f [Math]::Round($px+4,2),[Math]::Round($py+35,2),$study.selection.main_public_bath.cross_level_comparison.projected_overlap_sf))
+        }
     }
     if ($level -eq 'main') {
         $kitchen=$main | Where-Object id -eq 'M-02'
@@ -379,6 +464,7 @@ $notesByLevel=@{
     upper=@('Rear upper plate: 36 x 32 ft.','Dashed 4 x 4 ft connector joins S2 landing to shell edge.','Primary bath private to U-01; J&J serves U-03/U-04.','Native stair, wall opening, headroom and structure remain open.')
     lower=@("Rear lower plate: 36 x 32 ft. Lower L-02 is the A-strategy block.",'S1 lower landing touches the shared shell edge; opening offset is a native review item.',"L-06 moved outside upper U-06 projection; overlap = $($techStack.area_sf) sf.",'Secure storage is not located in this study.')
 }
+if($isAdjacencyCandidate){$notesByLevel.main += @('ADJACENCY CANDIDATE ONLY; M-06 B conflicts with relocated dining; A fallback is unassigned.','Kitchen/living edge fits 8 ft half-wall plus 7 ft open span by plan arithmetic; wall not placed.')}
 foreach($level in @('main','upper','lower')) {
     $wh=if($level -eq 'main'){@(40,42)}else{@(36,32)}
     $svg=New-PlanSvg $level $study.plans[$level] $wh[0] $wh[1] $notesByLevel[$level]
