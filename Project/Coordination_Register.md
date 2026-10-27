@@ -27,3 +27,4 @@ Priority P1 means resolve before freezing affected geometry or claiming review c
 
 ## Next review package
 [First A/B room-block package](../Architecture/Schematic_Study_2026-10-25/README.md) records footprint/volume alternatives, kitchen/dining and main bath/living tests, suite matrix and route strategies. Neither alternative is selected. The [compact-core Revit brief](Revit_Compact_Core_Brief_2026-10-25.md) is the next implementation target: test C's smaller B-derived envelope, dining-side bedroom privacy, a feasible lift/core layout, floor assemblies, wet-stack relocation, stairs/headroom, furniture and door routes in native Revit. Grade, roof/PV, equipment and professional review remain unresolved; limited geometric checks do not close safety issues.
+
