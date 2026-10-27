@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-27
-Status: the reproducible v3 BIM pipeline is accepted for Compact-Core C, which remains a test model. Owner-selected architectural direction D now has a reproducible, checked schematic room-block package; it is not yet a native Revit house model or coordinated plan. Native authoring and IFC validation for D remain next.
+Status: the reproducible v3 geometry pipeline is accepted for Compact-Core C, which remains a test model. Saved-model fingerprint hardening is implemented and offline-tested; a fresh Revit host run is required to produce v2 evidence. Direction D remains a schematic room-block package, not a coordinated building model.
 
 ## Repository safety baseline
 
@@ -24,6 +24,21 @@ Status: the reproducible v3 BIM pipeline is accepted for Compact-Core C, which r
 | M6 — Owner-selected schematic direction D | Turn the owner's six selections into a reproducible main/upper/lower room-block design; preserve A/B source studies; document deliberate geometry changes, area schedule, checks and unresolved decisions. | PowerShell generator deterministically derives D from A/B source geometry; room blocks fit the test shells without same-level overlaps; room IDs are joined to the program; all program-area variances are listed; selected half bath has no invented size; comparison stair/landing blocks align in plan; review drawings and open findings are emitted. | Complete as an initial schematic iteration. 28/28 geometry/provenance checks pass; three plan SVGs parse; room-area report explicitly flags main living/kitchen/dining above their study ranges; lower L-02 and upper U-06 have no projected overlap. Stair geometry remains a plan comparison only; native wall openings, section, headroom, structure and half-bath fit remain open. See `Architecture/Selected_Design_Iteration_2026-10-27/README.md`. |
 | M7 — Native Revit space study D | Create a separate D-specific native Revit room-block study and IFC2x3 export from the selected schematic; do not overwrite Compact-Core C or prior evidence. Avoid assigning wall heights, door sizes, floor assemblies or stair solids that have not been selected. | Revit creates the three documented levels and all 21 room/circulation blocks from the exact D `study.json`; actual Revit room areas match the schematic schedule within 0.1 sf; shell/core comparison outlines are marked as 2D placeholders; the separate RVT and IFC2x3 export are saved with exact source SHA; independent IFC parsing/schema/space inventory checks pass; no C artifact is overwritten. | Implementation added and isolated C# build passes with 0 errors (2 existing MSBuild reference-resolution warnings). Host execution and IFC validation remain pending; Revit is open on C and the available computer-use bridge cannot reactivate the minimized application. No D native/IFC success is claimed yet. |
 | M8 — Coordinated building geometry D | Add walls, openings/doors, floors and native stairs only after their needed geometry and assembly inputs are documented; preserve space-study output as the stable comparison base. | Source dimensions/assemblies are supported by approved project inputs; native Revit audit/Geometry QA and IFC2x3 checks pass for the same D source; all variance and safety-critical coordination findings remain visible. | Not started; wall heights, floor assemblies, shared-wall openings and actual stair/landing construction geometry are unresolved. |
+
+## M9 — Saved-model evidence identity
+
+Bind native API audit, Geometry QA and IFC export reports to the exact saved RVT by content fingerprint, and make the offline packet and IFC validator enforce that identity.
+
+Acceptance criteria:
+
+- Revit commands refuse unsaved or pathless documents.
+- SHA256 and byte length are recorded before collection/export and the same saved RVT is verified unchanged afterward.
+- The study manifest fingerprint matches the retained RVT bytes; audit, QA and export fingerprints must match that model before the packet calls evidence current or validates IFC.
+- Mismatched fingerprints are stale, absent fingerprints are unverified, and timestamps are diagnostic only.
+- Regression coverage includes same model with older evidence timestamp, different model with newer evidence timestamp, missing fingerprint and retained RVT mutation.
+- No architectural design inputs change.
+
+Status: complete. Fresh Revit 2027 run `20261027T134407752Z`, audit `20261027T134515539Z`, Geometry QA `20261027T134534012Z`, export `20261027T134558841Z` and packet `20261027T134651811293Z` all carry or verify the exact saved model SHA256 `9292968088c9fe29c628a94991628e778fd6910c72350721283cc093f1b4ea1c`. IFC2X3 validation passes with 0 schema issues and 0 represented physical geometry decode failures; ten coordination findings remain open. The build succeeds with 0 errors; all 22 offline regression tests pass. Older reports remain intact as historical evidence.
 
 ## Execution sequence
 

@@ -93,6 +93,15 @@ class CompactStudyConfigTests(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory(prefix="fh-compact-config-") as temp:
             folder = Path(temp)
+            model_bytes = b"fixture saved RVT"
+            model_file = folder / "study.rvt"
+            model_file.write_bytes(model_bytes)
+            manifest["model_fingerprint"] = {
+                "algorithm": "sha256-of-saved-rvt-bytes-v1",
+                "sha256": hashlib.sha256(model_bytes).hexdigest(),
+                "file_name": model_file.name,
+                "bytes": len(model_bytes),
+            }
             manifest_path = folder / "study-manifest.json"
             manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
             (folder / "compact-study-config.json").write_bytes(config_bytes)

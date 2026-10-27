@@ -26,6 +26,19 @@ def validate(path: Path) -> list[str]:
     errors = []
     config_schema = data.get("config_schema")
     config_hash = data.get("config_sha256")
+    model_identity = data.get("model_fingerprint")
+    if not isinstance(model_identity, dict):
+        errors.append("study manifest must include the saved RVT content fingerprint")
+    else:
+        model_name = model_identity.get("file_name")
+        model_path = path.parent / model_name if isinstance(model_name, str) and Path(model_name).name == model_name else None
+        if (model_identity.get("algorithm") != "sha256-of-saved-rvt-bytes-v1"
+                or not isinstance(model_identity.get("sha256"), str)
+                or re.fullmatch(r"[0-9a-f]{64}", model_identity.get("sha256", "")) is None
+                or model_path is None or not model_path.is_file()):
+            errors.append("study model fingerprint is malformed or its RVT file is missing")
+        elif model_identity.get("bytes") != model_path.stat().st_size or model_identity.get("sha256") != hashlib.sha256(model_path.read_bytes()).hexdigest():
+            errors.append("study model fingerprint does not match the retained RVT bytes")
     if config_schema is not None:
         if config_schema not in {"forever-home.compact-study-config.v2", "forever-home.compact-study-config.v3"}:
             errors.append(f"unsupported generator config schema: {config_schema}")

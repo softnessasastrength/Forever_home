@@ -170,17 +170,45 @@ def validate(export_dir: Path, study_dir: Path) -> dict[str, Any]:
     study = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.is_file() else {}
     expected_rooms = set(study.get("rooms", []))
 
+    model_identity = study.get("model_fingerprint", {})
+    model_file = model_identity.get("file_name") if isinstance(model_identity, dict) else None
+    rvt_path = study_dir / model_file if isinstance(model_file, str) and Path(model_file).name == model_file else None
+    study_model_matches = bool(
+        rvt_path and rvt_path.is_file()
+        and model_identity.get("algorithm") == "sha256-of-saved-rvt-bytes-v1"
+        and model_identity.get("bytes") == rvt_path.stat().st_size
+        and model_identity.get("sha256") == _sha256(rvt_path)
+    )
+    checks["study_model_fingerprint_matches_retained_rvt"] = study_model_matches
+    if not study_model_matches:
+        errors.append("study manifest model fingerprint does not match the retained RVT bytes")
+
     export_results = json.loads(export_results_path.read_text(encoding="utf-8")) if export_results_path.is_file() else {}
     ifc_export = export_results.get("exports", {}).get("ifc2x3", {})
     export_record = next((item for item in ifc_export.get("files", []) if item.get("file") == ifc_path.name), {})
     checks["export_recorded_success"] = bool(
-        export_results.get("schema") == "forever-home.revit-export-results.v1"
+        export_results.get("schema") == "forever-home.revit-export-results.v2"
         and export_results.get("document_title") == "FH_Compact_Core_Study"
         and ifc_export.get("success") is True
         and export_record
     )
     if not checks["export_recorded_success"]:
         errors.append("IFC export result is missing, failed, or names a different active document")
+
+    export_model = export_results.get("model_fingerprint", {})
+    export_model_matches = bool(
+        study_model_matches
+        and isinstance(model_identity, dict) and isinstance(export_model, dict)
+        and model_identity.get("algorithm") == "sha256-of-saved-rvt-bytes-v1"
+        and export_model.get("algorithm") == model_identity.get("algorithm")
+        and isinstance(export_model.get("sha256"), str)
+        and len(export_model.get("sha256", "")) == 64
+        and export_model.get("sha256") == model_identity.get("sha256")
+        and export_model.get("bytes") == model_identity.get("bytes")
+    )
+    checks["ifc_export_fingerprint_matches_study"] = export_model_matches
+    if not export_model_matches:
+        errors.append("IFC export was not recorded against the exact retained study RVT fingerprint")
 
     checks["ifc_file_present"] = ifc_path.is_file() and ifc_path.stat().st_size > 0
     if not checks["ifc_file_present"]:
@@ -381,7 +409,7 @@ def _result(
         "inputs": {
             "export_dir": export_dir.name,
             "study_dir": study_dir.name,
-            "lineage_basis": "content validated against the supplied study manifest; Revit export record identifies the C study title",
+            "lineage_basis": "retained study RVT SHA256 matches its manifest and the matching Revit v2 export fingerprint",
         },
         "checks": checks,
         "observations": observations,

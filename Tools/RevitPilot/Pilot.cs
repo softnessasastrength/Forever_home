@@ -10,6 +10,37 @@ using System.Text.Json;
 
 namespace ForeverHome.Pilot;
 
+internal sealed record SavedModelFingerprint(string algorithm, string sha256, string file_name, long bytes);
+
+internal static class SavedModelIdentity
+{
+    internal static SavedModelFingerprint Capture(Document doc)
+    {
+        if (doc.IsModified)
+            throw new InvalidOperationException("The active Revit document has unsaved changes; save it before collecting review evidence.");
+        string path = doc.PathName;
+        if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+            throw new InvalidOperationException("The active Revit document has no accessible saved RVT file; save it before collecting review evidence.");
+        var info = new FileInfo(path);
+        long length = info.Length;
+        DateTime writeTime = info.LastWriteTimeUtc;
+        string digest;
+        using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+            digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(stream)).ToLowerInvariant();
+        info.Refresh();
+        if (info.Length != length || info.LastWriteTimeUtc != writeTime)
+            throw new IOException("The saved RVT changed while its content fingerprint was being calculated.");
+        return new SavedModelFingerprint("sha256-of-saved-rvt-bytes-v1", digest, Path.GetFileName(path), length);
+    }
+
+    internal static void AssertSame(Document doc, SavedModelFingerprint expected)
+    {
+        var actual = Capture(doc);
+        if (actual != expected)
+            throw new InvalidOperationException("The active saved RVT changed while review evidence was being collected.");
+    }
+}
+
 public class App : IExternalApplication
 {
     public Result OnStartup(UIControlledApplication app)
@@ -68,6 +99,7 @@ public class ApiAuditCommand : IExternalCommand
 
         try
         {
+            var modelFingerprint = SavedModelIdentity.Capture(doc);
             string root = File.ReadAllText(Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
             string output = Path.Combine(root, ".local", "revit-pilot", "audits",
@@ -143,6 +175,8 @@ public class ApiAuditCommand : IExternalCommand
                 })
                 .ToList();
 
+            SavedModelIdentity.AssertSame(doc, modelFingerprint);
+
             static string Csv(string? value) => "\"" + (value ?? "").Replace("\"", "\"\"") + "\"";
             File.WriteAllLines(Path.Combine(output, "rooms.csv"),
                 new[] { "id,unique_id,number,name,area_sf,level_id,level" }
@@ -156,13 +190,14 @@ public class ApiAuditCommand : IExternalCommand
 
             var report = new
             {
-                schema = "forever-home.revit-api-audit.v1",
+                schema = "forever-home.revit-api-audit.v2",
                 status = "executed; read-only active-document audit",
                 utc = DateTime.UtcNow,
                 revit_version = data.Application.Application.VersionNumber,
                 revit_build = data.Application.Application.VersionBuild,
                 document_title = doc.Title,
                 document_path_recorded = false,
+                model_fingerprint = modelFingerprint,
                 document_is_workshared = doc.IsWorkshared,
                 summary = new
                 {
@@ -183,7 +218,7 @@ public class ApiAuditCommand : IExternalCommand
                 limitations = new[]
                 {
                     "Read-only inventory; no geometry, code, accessibility, structural or engineering approval.",
-                    "Document path is intentionally not written to the report.",
+                    "The saved RVT is identified by SHA256 of its exact file bytes; local path is intentionally omitted.",
                     "Room area and warning results are native Revit observations and require design-context review."
                 }
             };
@@ -228,6 +263,7 @@ public class ManifestExportCommand : IExternalCommand
             string expectedTitle = config.GetProperty("expected_document_title").GetString() ?? "";
             if (!string.Equals(doc.Title, expectedTitle, StringComparison.Ordinal))
                 throw new InvalidOperationException($"Manifest expects active document '{expectedTitle}', but the active document is '{doc.Title}'. No exports were run.");
+            var modelFingerprint = SavedModelIdentity.Capture(doc);
 
             string output = Path.Combine(root, ".local", "revit-pilot", "exports",
                 DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
@@ -372,15 +408,17 @@ public class ManifestExportCommand : IExternalCommand
 
             bool allPassed = results.Count > 0 && results.Values.All(value =>
                 (bool)value.GetType().GetProperty("success")!.GetValue(value)!);
+            SavedModelIdentity.AssertSame(doc, modelFingerprint);
             var report = new
             {
-                schema = "forever-home.revit-export-results.v1",
+                schema = "forever-home.revit-export-results.v2",
                 status = allPassed ? "executed; all configured exports produced nonempty files" : "executed; one or more exports failed",
                 utc = DateTime.UtcNow,
                 revit_version = data.Application.Application.VersionNumber,
                 revit_build = data.Application.Application.VersionBuild,
                 document_title = doc.Title,
                 document_path_recorded = false,
+                model_fingerprint = modelFingerprint,
                 manifest = "Tools/RevitPilot/export-manifest.json",
                 exports = results,
                 limitations = new[]
@@ -418,6 +456,7 @@ public class GeometryQaCommand : IExternalCommand
 
         try
         {
+            var modelFingerprint = SavedModelIdentity.Capture(doc);
             string root = File.ReadAllText(Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
             string output = Path.Combine(root, ".local", "revit-pilot", "geometry-qa",
@@ -541,14 +580,17 @@ public class GeometryQaCommand : IExternalCommand
                 issues.Add(new { severity = "warning", check = "revit-warning", element_id = (int?)null, marker = (string?)null, detail = warning.description });
             }
 
+            SavedModelIdentity.AssertSame(doc, modelFingerprint);
+
             var report = new
             {
-                schema = "forever-home.revit-geometry-qa.v1",
+                schema = "forever-home.revit-geometry-qa.v2",
                 status = "executed; read-only active-document geometry and coordination QA",
                 utc = DateTime.UtcNow,
                 revit_version = data.Application.Application.VersionNumber,
                 revit_build = data.Application.Application.VersionBuild,
                 document_title = doc.Title,
+                model_fingerprint = modelFingerprint,
                 summary = new
                 {
                     room_count = rooms.Count,
@@ -789,15 +831,18 @@ public class SelectedDCommand : IExternalCommand
             if(actualRooms.Length!=rows.Count||areaMismatches.Length>0)
                 throw new InvalidOperationException($"Revit room enclosure/area comparison failed: expected {rows.Count} positive-area rooms, got {actualRooms.Length}; mismatches: {string.Join(",",areaMismatches.Select(r=>r.id))}");
             string rvt=Path.Combine(output,"FH_Selected_D_Space_Study.rvt"); doc.SaveAs(rvt,new SaveAsOptions());
+            var modelFingerprint=SavedModelIdentity.Capture(doc);
             using(var stream=File.Create(Path.Combine(output,"study-manifest.json")))
-                JsonSerializer.Serialize(stream,new{status="native Revit D room-boundary study; not a coordinated building model",source="study.json",source_sha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(sourceBytes)).ToLowerInvariant(),levels=study.GetProperty("selection").GetProperty("levels").EnumerateArray().Select(l=>new{id=Text(l,"id"),elevation_ft=Number(l,"elevation_ft")}).ToArray(),rooms=actualRooms,wall_count=0,door_count=0,floor_count=0,stair_count=0,unmodeled=new[]{"walls and wall heights","doors/openings","floor solids and assemblies","native stairs and guards","roof","structure","MEP","lift product"}},new JsonSerializerOptions{WriteIndented=true});
+                JsonSerializer.Serialize(stream,new{status="native Revit D room-boundary study; not a coordinated building model",source="study.json",source_sha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(sourceBytes)).ToLowerInvariant(),model_fingerprint=modelFingerprint,levels=study.GetProperty("selection").GetProperty("levels").EnumerateArray().Select(l=>new{id=Text(l,"id"),elevation_ft=Number(l,"elevation_ft")}).ToArray(),rooms=actualRooms,wall_count=0,door_count=0,floor_count=0,stair_count=0,unmodeled=new[]{"walls and wall heights","doors/openings","floor solids and assemblies","native stairs and guards","roof","structure","MEP","lift product"}},new JsonSerializerOptions{WriteIndented=true});
             using(var writer=new StreamWriter(Path.Combine(output,"room-inventory.csv"),false,new System.Text.UTF8Encoding(true)))
             { writer.WriteLine("id,name,level,kind,expected_area_sf,revit_area_sf"); foreach(var row in rows.OrderBy(r=>r.id,StringComparer.Ordinal)){var actual=actualRooms.FirstOrDefault(r=>r.id==row.id); writer.WriteLine(string.Join(",",new[]{row.id,row.name,row.level,row.kind,row.area.ToString("0.##",CultureInfo.InvariantCulture),actual?.area_sf.ToString(CultureInfo.InvariantCulture)??""}.Select(v=>"\""+v.Replace("\"","\"\"")+"\"")));} }
             var activeDocument=data.Application.OpenAndActivateDocument(rvt).Document;
+            SavedModelIdentity.AssertSame(activeDocument,modelFingerprint);
             using var ifcOptions=new IFCExportOptions{FileVersion=IFCVersion.IFC2x3CV2,ExportBaseQuantities=true};
             bool ifcOk=activeDocument.Export(output,"FH_Selected_D_Space_Study",ifcOptions);
+            SavedModelIdentity.AssertSame(activeDocument,modelFingerprint);
             string ifcPath=Path.Combine(output,"FH_Selected_D_Space_Study.ifc");
-            File.WriteAllText(Path.Combine(output,"export-result.json"),JsonSerializer.Serialize(new{ifc2x3_api_result=ifcOk,ifc_file=Path.GetFileName(ifcPath),ifc_bytes=File.Exists(ifcPath)?new FileInfo(ifcPath).Length:0,ifc_sha256=File.Exists(ifcPath)?Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant():null},new JsonSerializerOptions{WriteIndented=true}));
+            File.WriteAllText(Path.Combine(output,"export-result.json"),JsonSerializer.Serialize(new{ifc2x3_api_result=ifcOk,model_fingerprint=modelFingerprint,ifc_file=Path.GetFileName(ifcPath),ifc_bytes=File.Exists(ifcPath)?new FileInfo(ifcPath).Length:0,ifc_sha256=File.Exists(ifcPath)?Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant():null},new JsonSerializerOptions{WriteIndented=true}));
             TaskDialog.Show("Forever Home direction D",$"Saved separate room-boundary study (no construction geometry implied):\n{output}\n\nIFC2x3 export API: {ifcOk}");
             return ifcOk?Result.Succeeded:Result.Failed;
         }
@@ -1070,6 +1115,7 @@ public class CompactCoreCommand : IExternalCommand
             File.WriteAllText(Path.Combine(output, "study-warnings.json"),
                 JsonSerializer.Serialize(warningRecords, new JsonSerializerOptions { WriteIndented = true }));
             doc.SaveAs(path, new SaveAsOptions());
+            var modelFingerprint = SavedModelIdentity.Capture(doc);
             var manifest = new {
                 status = "generated by Revit 2027 command; native verification required",
                 study = studyName,
@@ -1093,6 +1139,7 @@ public class CompactCoreCommand : IExternalCommand
                 roof = config.GetProperty("roof"),
                 stair_floor_coordination = config.GetProperty("stair_floor_coordination"),
                 unresolved = config.GetProperty("unresolved"),
+                model_fingerprint = modelFingerprint,
                 source_rvt = path
             };
             File.WriteAllText(Path.Combine(output, "study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented=true }));

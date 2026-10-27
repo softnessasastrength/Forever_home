@@ -74,6 +74,44 @@ def assess_freshness(evidence: Path | None, study: Path | None) -> dict[str, str
     }
 
 
+def assess_model_fingerprint(evidence_data: dict[str, Any] | None,
+                            study_manifest: dict[str, Any] | None,
+                            study_dir: Path | None) -> dict[str, str | None]:
+    """Require evidence SHA256 to identify the exact RVT bytes retained by the study."""
+    model = (study_manifest or {}).get("model_fingerprint")
+    observed = (evidence_data or {}).get("model_fingerprint")
+    if evidence_data is None:
+        return {"status": "UNKNOWN", "study_sha256": None, "evidence_sha256": None}
+    if observed is None:
+        return {"status": "UNVERIFIED", "study_sha256": None, "evidence_sha256": None}
+    if not isinstance(model, dict) or not isinstance(observed, dict) or study_dir is None:
+        return {"status": "UNVERIFIED", "study_sha256": None, "evidence_sha256": None}
+    expected = model.get("sha256")
+    actual = observed.get("sha256")
+    filename = model.get("file_name")
+    if (model.get("algorithm") != "sha256-of-saved-rvt-bytes-v1"
+            or not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected)
+            or not isinstance(model.get("bytes"), int) or model.get("bytes") <= 0):
+        return {"status": "UNVERIFIED", "study_sha256": None, "evidence_sha256": actual if isinstance(actual, str) else None}
+    if not isinstance(filename, str) or Path(filename).name != filename:
+        return {"status": "UNVERIFIED", "study_sha256": expected, "evidence_sha256": actual if isinstance(actual, str) else None}
+    rvt = study_dir / filename
+    if not rvt.is_file():
+        return {"status": "UNVERIFIED", "study_sha256": expected, "evidence_sha256": actual if isinstance(actual, str) else None}
+    retained = hashlib.sha256(rvt.read_bytes()).hexdigest()
+    if retained != expected or rvt.stat().st_size != model.get("bytes"):
+        return {"status": "STALE", "study_sha256": expected, "evidence_sha256": actual if isinstance(actual, str) else None}
+    if (observed.get("algorithm") != model.get("algorithm")
+            or observed.get("bytes") != model.get("bytes")
+            or not isinstance(actual, str) or not re.fullmatch(r"[0-9a-f]{64}", actual)):
+        return {"status": "UNVERIFIED", "study_sha256": expected, "evidence_sha256": None}
+    return {
+        "status": "CURRENT" if actual == expected else "STALE",
+        "study_sha256": expected,
+        "evidence_sha256": actual,
+    }
+
+
 def assess_config_source(root: Path, study: Path | None, manifest: dict[str, Any] | None) -> dict[str, str | None]:
     """Compare a study's retained config with the checked-in generator input."""
     source = root / "Tools" / "RevitPilot" / "compact-study-config.json"
@@ -105,15 +143,26 @@ def build_packet(root: Path) -> dict[str, Any]:
     warnings = read_json(compact / "study-warnings.json" if compact else None)
     audit_data = read_json(audit / "audit.json" if audit else None)
     qa_data = read_json(qa / "geometry-qa.json" if qa else None)
+    export_data = read_json(export / "export-results.json" if export else None)
     manifest_path = compact / "study-manifest.json" if compact else None
     manifest_data = read_json(manifest_path)
     manifest_errors = validate_manifest(manifest_path) if manifest_path and isinstance(manifest_data, dict) else ["No study manifest found"]
     freshness = {
         "checked_in_config": assess_config_source(root, compact, manifest_data if isinstance(manifest_data, dict) else None),
-        "api_audit": assess_freshness(audit, compact),
-        "geometry_qa": assess_freshness(qa, compact),
-        "ifc_export": assess_freshness(export, compact),
+        "study_model": assess_model_fingerprint(
+            {"model_fingerprint": (manifest_data or {}).get("model_fingerprint")},
+            manifest_data if isinstance(manifest_data, dict) else None, compact),
+        "api_audit": assess_model_fingerprint(audit_data if isinstance(audit_data, dict) else None,
+            manifest_data if isinstance(manifest_data, dict) else None, compact),
+        "geometry_qa": assess_model_fingerprint(qa_data if isinstance(qa_data, dict) else None,
+            manifest_data if isinstance(manifest_data, dict) else None, compact),
+        "ifc_export": assess_model_fingerprint(export_data if isinstance(export_data, dict) else None,
+            manifest_data if isinstance(manifest_data, dict) else None, compact),
     }
+    for key, evidence_dir in (("api_audit", audit), ("geometry_qa", qa), ("ifc_export", export)):
+        freshness[key]["evidence_run"] = evidence_dir.name if evidence_dir else None
+        freshness[key]["study_run"] = compact.name if compact else None
+        freshness[key]["timestamp_order"] = assess_freshness(evidence_dir, compact)["status"]
     ifc_fresh = freshness["ifc_export"]["status"] == "CURRENT"
     ifc_report = validate_ifc(export, compact) if export and compact and ifc_fresh else None
 
@@ -129,6 +178,14 @@ def build_packet(root: Path) -> dict[str, Any]:
 
     checks = [
         {
+            "name": "Retained study RVT fingerprint",
+            "status": "PASS" if freshness["study_model"]["status"] == "CURRENT" else freshness["study_model"]["status"],
+            "detail": (f"SHA256 {freshness['study_model'].get('study_sha256')} matches the retained RVT bytes"
+                       if freshness["study_model"]["status"] == "CURRENT" else
+                       "Study manifest fingerprint is missing, invalid, or differs from the retained RVT bytes"),
+            "artifact": relative_artifact(root, compact / "study-manifest.json" if compact else None),
+        },
+        {
             "name": "Compact-core native Revit warnings",
             "status": "PASS" if warning_count == 0 else "OPEN" if warning_count is not None else "NOT FOUND",
             "detail": f"{warning_count} warning(s) in study-warnings.json" if warning_count is not None else "No study warning report found",
@@ -137,7 +194,7 @@ def build_packet(root: Path) -> dict[str, Any]:
         {
             "name": "Read-only API inventory",
             "status": ("STALE" if freshness["api_audit"]["status"] == "STALE" else
-                       "UNVERIFIED" if freshness["api_audit"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["api_audit"]["evidence_run"] else
+                       "UNVERIFIED" if freshness["api_audit"]["status"] == "UNVERIFIED" else
                        "PASS" if audit_summary.get("warning_count") == 0 and audit_floor_count == 3 and audit_level_count == 3 else
                        "OPEN" if audit_summary else "NOT FOUND"),
             "detail": (
@@ -153,7 +210,7 @@ def build_packet(root: Path) -> dict[str, Any]:
         {
             "name": "Read-only Geometry QA",
             "status": ("STALE" if freshness["geometry_qa"]["status"] == "STALE" else
-                       "UNVERIFIED" if freshness["geometry_qa"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["geometry_qa"]["evidence_run"] else
+                       "UNVERIFIED" if freshness["geometry_qa"]["status"] == "UNVERIFIED" else
                        "PASS" if qa_summary.get("issue_count") == 0 and qa_summary.get("floor_count") == 3 else
                        "OPEN" if qa_summary else "NOT FOUND"),
             "detail": (
@@ -186,7 +243,7 @@ def build_packet(root: Path) -> dict[str, Any]:
         {
             "name": "Independent Compact-Core IFC validation",
             "status": ("STALE" if freshness["ifc_export"]["status"] == "STALE" else
-                       "UNVERIFIED" if freshness["ifc_export"]["status"] in {"UNVERIFIED", "UNKNOWN"} and freshness["ifc_export"]["evidence_run"] else
+                       "UNVERIFIED" if freshness["ifc_export"]["status"] == "UNVERIFIED" else
                        "PASS" if ifc_report and ifc_report["passed"] and not ifc_report["open_findings"] else
                        "PASS WITH OPEN ITEMS" if ifc_report and ifc_report["passed"] else
                        "FAIL" if ifc_report else "NOT FOUND"),
@@ -196,9 +253,9 @@ def build_packet(root: Path) -> dict[str, Any]:
                 f"{ifc_report['observations'].get('geometry', {}).get('physical_product_decode_failure_count', '?')} physical geometry decode failures; "
                 f"{len(ifc_report['open_findings'])} open coordination finding(s)"
             ) if ifc_report else (
-                "Latest export predates the latest study; no cross-run IFC validation was performed"
+                "Export RVT fingerprint differs from the retained study model; no cross-model IFC validation was performed"
                 if freshness["ifc_export"]["status"] == "STALE" else
-                "Run timestamps could not be compared; IFC freshness is unverified"
+                "Export evidence lacks a verified saved-model fingerprint"
                 if freshness["ifc_export"]["status"] == "UNVERIFIED" else
                 "No export or study manifest available"
             ),
@@ -214,11 +271,12 @@ def build_packet(root: Path) -> dict[str, Any]:
     if ifc_report:
         open_items.extend({"source": "IFC validation", **item} for item in ifc_report["open_findings"])
     for name, result in freshness.items():
-        if result["status"] in {"STALE", "UNVERIFIED", "UNKNOWN"} and result["evidence_run"]:
+        if result["status"] in {"STALE", "UNVERIFIED"} and result.get("evidence_run"):
             open_items.append({
                 "source": "evidence freshness",
-                "description": (f"{name} is {result['status'].lower()} relative to study {result['study_run']}; "
-                                f"evidence run: {result['evidence_run']}"),
+                "description": (f"{name} model fingerprint is {result['status'].lower()} relative to "
+                                f"study {result.get('study_run')}; evidence run: {result.get('evidence_run')}; "
+                                f"timestamp order (diagnostic only): {result.get('timestamp_order')}"),
             })
 
     return {
@@ -238,7 +296,7 @@ def build_packet(root: Path) -> dict[str, Any]:
         "open_items": open_items,
         "limitations": [
             "This packet summarizes recorded evidence; it does not rerun Revit or validate unseen model state.",
-            "Timestamp comparison prevents obviously older reports from being presented as current; matching timestamps do not prove native document identity because reports omit the document path.",
+            "API audit, Geometry QA and IFC evidence are current only when their saved-RVT SHA256 matches the retained study RVT bytes. Run timestamps are diagnostic and cannot establish model identity.",
             "PASS means the specific recorded check returned no findings, not code, accessibility, structural, engineering or permit approval.",
             "Visual review, export fidelity, Revit 2018 interoperability and professional review remain separate gates.",
         ],
