@@ -1,7 +1,7 @@
 ﻿{
     "status":  "pass",
-    "passed":  16,
-    "total":  16,
+    "passed":  22,
+    "total":  22,
     "checks":  [
                    {
                        "id":  "source_candidate_room_blocks",
@@ -17,6 +17,30 @@
                    },
                    {
                        "id":  "island_work_aisle",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_perimeter_run_inside_kitchen",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_island_to_counter_aisle",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_documented_range_landings",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_sink_dw_adjacent",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_fixture_sizes_match_documented_sources",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "m19_specified_appliance_operation_not_claimed",
                        "pass":  true
                    },
                    {

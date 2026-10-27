@@ -7,8 +7,10 @@ $candidatePath = Join-Path $root 'Architecture/Direction_D_BathFirst_Adjacency_S
 $dPath = Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27/study.json'
 $specPath = Join-Path $root 'Architecture/Kitchen_Dining_Porch_Specs.md'
 $decisionPath = Join-Path $root 'Decisions/2026-10-27_Selected_Architectural_Direction_D.md'
+$kitchenFinishPath = Join-Path $root 'Decisions/Kitchen_Island_Finish.md'
 $specText = Get-Content -Raw $specPath
 $decisionText = Get-Content -Raw $decisionPath
+$kitchenFinishText = Get-Content -Raw $kitchenFinishPath
 $candidate = Get-Content -Raw $candidatePath | ConvertFrom-Json
 $dSource = Get-Content -Raw $dPath | ConvertFrom-Json
 $kitchen = $candidate.plans.main | Where-Object id -eq 'M-02'
@@ -28,6 +30,23 @@ $island = [ordered]@{
     w=[double]$islandSpec.island_ft[0]
     d=[double]$islandSpec.island_ft[1]
 }
+# M19 fit envelope: source-documented 24-in perimeter depth and module widths.
+# This is one schematic north-wall arrangement, not an approved appliance plan.
+$perimeterDepthFt = 2.0
+$perimeterRunFt = (36+24+12+30+12+36)/12.0 # sink, DW, min landing, range, min landing, refrigerator
+$perimeterX = [double]$kitchen.x + ([double]$kitchen.w-$perimeterRunFt)/2.0
+$perimeterY = [double]$kitchen.y + [double]$kitchen.d-$perimeterDepthFt
+$perimeterModules = @(
+    [ordered]@{id='sink_base';label='36 in sink base';width_ft=3.0},
+    [ordered]@{id='dishwasher';label='24 in dishwasher';width_ft=2.0},
+    [ordered]@{id='range_landing_west';label='12 in landing';width_ft=1.0},
+    [ordered]@{id='induction_range';label='30 in induction range';width_ft=2.5},
+    [ordered]@{id='range_landing_east';label='12 in landing';width_ft=1.0},
+    [ordered]@{id='refrigerator';label='36 in refrigerator';width_ft=3.0}
+)
+$moduleX=$perimeterX
+foreach($m in $perimeterModules){$m['x']=$moduleX;$m['y']=$perimeterY;$m['depth_ft']=$perimeterDepthFt;$moduleX += [double]$m.width_ft}
+$islandToCounterIn = ($perimeterY-$island.y-$island.d)*12
 $table = [ordered]@{ x=([double]$dining.x+3.5); y=([double]$dining.y+([double]$dining.d-5.0)/2); w=3.0; d=5.0 }
 $chairs = @(
     [ordered]@{ id='D-chair-1'; x=($table.x-20.0/12); y=($table.y+0.75); w=20.0/12; d=1.5 },
@@ -108,6 +127,12 @@ $svg += RectSvg ([double]$bath.x) ([double]$bath.y) ([double]$bath.w) ([double]$
 $svg += TextSvg ([double]$bath.x+0.2) ([double]$bath.y+1.0) 'tiny' 'M-06 B SEARCH WINDOW (unassigned; no bath fit)'
 $svg += RectSvg $island.x $island.y $island.w $island.d 'island'
 $svg += TextSvg ($island.x+0.35) ($island.y+2.1) 'small' '8 x 4 island'
+$svg += RectSvg $perimeterX $perimeterY $perimeterRunFt $perimeterDepthFt 'counter'
+$svg += TextSvg ($perimeterX+0.1) ($perimeterY+0.75) 'tiny' 'M19 perimeter run: 12 ft 6 in; source-sized schematic placeholders'
+foreach($m in $perimeterModules){
+    $svg += RectSvg ([double]$m.x) ([double]$m.y) ([double]$m.width_ft) $perimeterDepthFt 'appliance'
+    $svg += TextSvg ([double]$m.x+0.05) ([double]$m.y+1.35) 'tiny' ([string]$m.id)
+}
 $svg += TextSvg ($kitchen.x+0.2) ($kitchen.y+15.3) 'small' '48 in post-seating route clearance to shared room edge'
 # Dining table and four documented 18 x 20 in chair proxies. This deliberately
 # asymmetrical proposal reserves the east side and south end as the route.
@@ -160,6 +185,7 @@ $report=[ordered]@{
         'Architecture/Selected_Design_Iteration_2026-10-27/study.json'=Sha $dPath
         'Architecture/Kitchen_Dining_Porch_Specs.md'=Sha $specPath
         'Decisions/2026-10-27_Selected_Architectural_Direction_D.md'=Sha $decisionPath
+        'Decisions/Kitchen_Island_Finish.md'=Sha $kitchenFinishPath
     }
     inputs=[ordered]@{
         main_shell_test_ft=@($shellW,$shellD)
@@ -176,6 +202,16 @@ $report=[ordered]@{
     geometry=[ordered]@{
         kitchen_id='M-02'; dining_id='M-03'; living_id='M-01'; entry_id='M-05'
         island_world_rect_ft=@([Math]::Round($island.x,3),[Math]::Round($island.y,3),$island.w,$island.d)
+        kitchen_fit_study=[ordered]@{
+            status='Schematic M19 fit option; positions/order are a test arrangement, not owner-selected fixture locations.'
+            perimeter_run_world_rect_ft=@([Math]::Round($perimeterX,3),[Math]::Round($perimeterY,3),[Math]::Round($perimeterRunFt,3),$perimeterDepthFt)
+            perimeter_modules=$perimeterModules
+            island_to_perimeter_counter_clearance_in=[Math]::Round($islandToCounterIn,2)
+            required_range_landing_each_side_in=12
+            appliance_open_clearances_modeled=$false
+            service_routes_modeled=$false
+            layout_assumptions=@('One north-wall run centered within the M-02 room-block test rectangle.','Source-size modules arranged sink, adjacent dishwasher, range with 12-in minimum landings and refrigerator.','Module footprints use the documented 24-in base depth; appliance door swings and operating envelopes are not modeled.')
+        }
         dining_table_world_rect_ft=@([Math]::Round($table.x,3),[Math]::Round($table.y,3),$table.w,$table.d)
         table_edge_clearances_ft=$tableClearancesFt
         dining_chairs_world_rects_ft=$chairs
@@ -240,6 +276,12 @@ $checks=@(
     @{id='table_documented_preferred_clearances';pass=(@($tableClearancesFt.Values|Where-Object{$_ -lt 3.5}).Count -eq 0)},
     @{id='island_within_kitchen';pass=($island.x -ge $kitchen.x -and $island.y -ge $kitchen.y -and ($island.x+$island.w) -le ($kitchen.x+$kitchen.w) -and ($island.y+$island.d) -le ($kitchen.y+$kitchen.d))},
     @{id='island_work_aisle';pass=($islandFrontAisleIn -ge 42 -and $islandFrontAisleIn -ge 48 -and $islandEastClearIn -ge 42)},
+    @{id='m19_perimeter_run_inside_kitchen';pass=($perimeterX -ge $kitchen.x -and ($perimeterX+$perimeterRunFt) -le ($kitchen.x+$kitchen.w) -and [Math]::Abs($moduleX-($perimeterX+$perimeterRunFt)) -lt 0.001)},
+    @{id='m19_island_to_counter_aisle';pass=($perimeterY -ge ($island.y+$island.d) -and $islandToCounterIn -ge 48)},
+    @{id='m19_documented_range_landings';pass=(@($perimeterModules|Where-Object{$_.id -like 'range_landing_*'}).Count -eq 2 -and @($perimeterModules|Where-Object{$_.id -eq 'induction_range' -and $_.width_ft -eq 2.5}).Count -eq 1)},
+    @{id='m19_sink_dw_adjacent';pass=([Math]::Abs(($perimeterModules[1].x)-($perimeterModules[0].x+$perimeterModules[0].width_ft)) -lt 0.001)},
+    @{id='m19_fixture_sizes_match_documented_sources';pass=($specText -match '24" deep' -and $specText -match '36" wide.*double-bowl' -and $specText -match '24" wide.*immediately adjacent' -and $specText -match '36" W.*counter-depth' -and $kitchenFinishText -match '30 in induction unit on the perimeter wall')},
+    @{id='m19_specified_appliance_operation_not_claimed';pass=(-not $report.geometry.kitchen_fit_study.appliance_open_clearances_modeled -and -not $report.geometry.kitchen_fit_study.service_routes_modeled)},
     @{id='route_width_at_island_exit';pass=($islandBackRouteClearFt*12 -ge 36)},
     @{id='dining_route_around_furniture';pass=($eastRouteClearFt -ge 3 -and $southTableClearFt -ge 3 -and ($routePathX-$routeWidth/2) -ge $tableEast -and ($routePathX+$routeWidth/2) -le $diningEast -and $doorX -le ($dining.x+$dining.w/2) -and ($doorX+$doorWidth) -ge ($dining.x+$dining.w/2))},
     @{id='centered_door_route_chair_clearance_measured';pass=($routeChairGapAIn -ge 0)},
@@ -251,13 +293,13 @@ $checks=@(
     @{id='half_wall_edge_length_arithmetic';pass=($sharedEdge -ge 14 -and [Math]::Abs($islandEastClearIn) -ge 42)},
     @{id='door_clear_width_not_overclaimed';pass=(-not $report.route.clear_leaf_width_verified)},
     @{id='documented_inputs_present';pass=($specText -match '8''-0.*4''-0' -and $specText -match '12''-0.*10''-0' -and $specText -match '36.*60.*30' -and $specText -match '18.*20' -and $specText -match '5''-0' -and $specText -match '36" min' -and $specText -match '42" min' -and $decisionText -match '40 x 42' -and $decisionText -match 'search window B, east')},
-    @{id='source_fingerprints_recorded';pass=($report.source_fingerprints_sha256.Count -eq 4)}
+    @{id='source_fingerprints_recorded';pass=($report.source_fingerprints_sha256.Count -eq 5)}
 )
 $checksOut=[ordered]@{status=if(@($checks|Where-Object{-not $_.pass}).Count -eq 0){'pass'}else{'fail'};passed=@($checks|Where-Object pass).Count;total=$checks.Count;checks=$checks;scope='Plan-coordinate, documented-clearance and provenance checks; not code/accessibility/IFC or construction validation.'}
 $report['generated_utc']=[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
 New-Item -ItemType Directory -Force -Path $out|Out-Null
 Set-Content -LiteralPath (Join-Path $out 'study.json') -Value ($report|ConvertTo-Json -Depth 12) -Encoding UTF8
-$style="<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style>"
+$style="<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.counter{fill:#f1e9dc;stroke:#675a4b;stroke-width:1.5}.appliance{fill:#e7d8c6;fill-opacity:.72;stroke:#625242;stroke-width:1;stroke-dasharray:3 2}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style>"
 $svgBody=$svg -join "`n"
 $svgDoc="<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'>$style<rect width='1200' height='1000' fill='#fbf9f3'/>$svgBody</svg>"
 Set-Content -LiteralPath (Join-Path $out 'social-route-plan.svg') -Value $svgDoc -Encoding UTF8

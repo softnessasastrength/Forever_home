@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'><style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style><rect width='1200' height='1000' fill='#fbf9f3'/><text x='36' y='34' class='h'>Direction D social route and furnishing fit - unapproved schematic</text>
+﻿<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1000' viewBox='0 0 1200 1000'><style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:11px;font-weight:bold}.small{font-size:9px}.tiny{font-size:8px}.note{font-size:11px;fill:#8a482e}.shell{fill:none;stroke:#444;stroke-width:2;stroke-dasharray:8 5}.room{fill:#e8dfce;stroke:#554d44;stroke-width:1.4}.bath{fill:#fff4d3;stroke:#a57b27;stroke-width:1;stroke-dasharray:4 3}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:1.4}.island{fill:#d4dfc8;stroke:#5c704d;stroke-width:1.5}.counter{fill:#f1e9dc;stroke:#675a4b;stroke-width:1.5}.appliance{fill:#e7d8c6;fill-opacity:.72;stroke:#625242;stroke-width:1;stroke-dasharray:3 2}.table{fill:#bd8e61;stroke:#593c24;stroke-width:1.3}.chair{fill:#f4e5c9;stroke:#6f593b;stroke-width:1}.route{fill:none;stroke:#2c91a6;stroke-width:54;stroke-opacity:.4;stroke-linejoin:round;stroke-linecap:butt}.door{stroke:#265866;stroke-width:5}</style><rect width='1200' height='1000' fill='#fbf9f3'/><text x='36' y='34' class='h'>Direction D social route and furnishing fit - unapproved schematic</text>
 <text x='36' y='56' class='note'>B-first adjacency candidate; existing room blocks retained. Dashed test shell is 40 x 42 ft, not an approved exterior wall line.</text>
 <rect x='54' y='58' width='720' height='756' class='shell'/>
 <rect x='387' y='70' width='288' height='270' class='room'/>
@@ -17,6 +17,20 @@
 <text x='438.6' y='385' class='tiny'>M-06 B SEARCH WINDOW (unassigned; no bath fit)</text>
 <rect x='150' y='178' width='144' height='72' class='island'/>
 <text x='156.3' y='215.8' class='small'>8 x 4 island</text>
+<rect x='109.5' y='322' width='225' height='36' class='counter'/>
+<text x='111.3' y='335.5' class='tiny'>M19 perimeter run: 12 ft 6 in; source-sized schematic placeholders</text>
+<rect x='109.5' y='322' width='54' height='36' class='appliance'/>
+<text x='110.4' y='346.3' class='tiny'>sink_base</text>
+<rect x='163.5' y='322' width='36' height='36' class='appliance'/>
+<text x='164.4' y='346.3' class='tiny'>dishwasher</text>
+<rect x='199.5' y='322' width='18' height='36' class='appliance'/>
+<text x='200.4' y='346.3' class='tiny'>range_landing_west</text>
+<rect x='217.5' y='322' width='45' height='36' class='appliance'/>
+<text x='218.4' y='346.3' class='tiny'>induction_range</text>
+<rect x='262.5' y='322' width='18' height='36' class='appliance'/>
+<text x='263.4' y='346.3' class='tiny'>range_landing_east</text>
+<rect x='280.5' y='322' width='54' height='36' class='appliance'/>
+<text x='281.4' y='346.3' class='tiny'>refrigerator</text>
 <text x='69.6' y='345.4' class='small'>48 in post-seating route clearance to shared room edge</text>
 <rect x='129' y='448' width='54' height='90' class='table'/>
 <text x='131.7' y='496.6' class='small'>36 x 60 table</text>

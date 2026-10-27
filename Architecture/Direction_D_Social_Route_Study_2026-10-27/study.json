@@ -2,10 +2,11 @@
     "schema":  "forever-home-direction-d-social-route-v1",
     "status":  "unapproved furnishing and social-route proposal; not house geometry or a selected layout",
     "source_fingerprints_sha256":  {
-                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "2a9e9f6f15a5e2f99f784ad4af0588ef7b214c2048f5fa9b08fbea99453bbfa4",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "f06fc345a915a67b2712a997a04cf01e9c1d86ea3384ab9f6cfc70fc88f540e1",
                                        "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "669312ea7f0df0c22909364ff79bf4a5bcef2bb576c0777609158fcfa38c4145",
                                        "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
-                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e",
+                                       "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290"
                                    },
     "inputs":  {
                    "main_shell_test_ft":  [
@@ -51,6 +52,74 @@
                                                   8,
                                                   4
                                               ],
+                     "kitchen_fit_study":  {
+                                               "status":  "Schematic M19 fit option; positions/order are a test arrangement, not owner-selected fixture locations.",
+                                               "perimeter_run_world_rect_ft":  [
+                                                                                   3.083,
+                                                                                   14.667,
+                                                                                   12.5,
+                                                                                   2
+                                                                               ],
+                                               "perimeter_modules":  [
+                                                                         {
+                                                                             "id":  "sink_base",
+                                                                             "label":  "36 in sink base",
+                                                                             "width_ft":  3,
+                                                                             "x":  3.0833333333333326,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         },
+                                                                         {
+                                                                             "id":  "dishwasher",
+                                                                             "label":  "24 in dishwasher",
+                                                                             "width_ft":  2,
+                                                                             "x":  6.0833333333333321,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         },
+                                                                         {
+                                                                             "id":  "range_landing_west",
+                                                                             "label":  "12 in landing",
+                                                                             "width_ft":  1,
+                                                                             "x":  8.0833333333333321,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         },
+                                                                         {
+                                                                             "id":  "induction_range",
+                                                                             "label":  "30 in induction range",
+                                                                             "width_ft":  2.5,
+                                                                             "x":  9.0833333333333321,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         },
+                                                                         {
+                                                                             "id":  "range_landing_east",
+                                                                             "label":  "12 in landing",
+                                                                             "width_ft":  1,
+                                                                             "x":  11.583333333333332,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         },
+                                                                         {
+                                                                             "id":  "refrigerator",
+                                                                             "label":  "36 in refrigerator",
+                                                                             "width_ft":  3,
+                                                                             "x":  12.583333333333332,
+                                                                             "y":  14.666666666666668,
+                                                                             "depth_ft":  2
+                                                                         }
+                                                                     ],
+                                               "island_to_perimeter_counter_clearance_in":  48,
+                                               "required_range_landing_each_side_in":  12,
+                                               "appliance_open_clearances_modeled":  false,
+                                               "service_routes_modeled":  false,
+                                               "layout_assumptions":  [
+                                                                          "One north-wall run centered within the M-02 room-block test rectangle.",
+                                                                          "Source-size modules arranged sink, adjacent dishwasher, range with 12-in minimum landings and refrigerator.",
+                                                                          "Module footprints use the documented 24-in base depth; appliance door swings and operating envelopes are not modeled."
+                                                                      ]
+                                           },
                      "dining_table_world_rect_ft":  [
                                                         4.167,
                                                         21.667,
@@ -298,5 +367,5 @@
                       "The 5-ft nominal French-door pair reservation is not evidence of a 36-in clear leaf; vendor clear opening and swing remain unresolved.",
                       "The 8-ft half wall and remaining open span are only edge-length arithmetic; no wall segment location, height-bearing status or framing is defined."
                   ],
-    "generated_utc":  "2026-10-27T21:29:45Z"
+    "generated_utc":  "2026-10-27T22:41:03Z"
 }

@@ -163,6 +163,8 @@ These are **proposals for momentum**, not new owner-approved layout decisions. K
 
 ### M19 — Integrate the accepted M-02 island assembly into a kitchen fit plan
 
+**Sandbox progress (2026-10-27):** the 2D social-route derivative now includes a reproducible source-sized perimeter-run fit option. Its Windows PowerShell generator passes 22/22 checks, including a source-dimension fingerprint check, 48 in island-to-counter clearance and the documented range landing minima. Fixture positions/order are explicitly provisional assumptions; appliance-open envelopes and service routes remain unmodeled. This does not promote the candidate to Revit/IFC or select it as the design.
+
 Acceptance criteria:
 
 - Retire RevitCity 19967 and 21015 from the active island candidate pool; preserve their source bytes and failed evidence under `Revit/Family_Intake/Rejected/` or the ignored local rejection archive.
