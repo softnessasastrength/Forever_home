@@ -11,7 +11,7 @@ The C study is ready for review only when each item has an evidence reference or
 |---|---|---|---|
 | C-01 | Native Revit source opens and is saved as a distinct study | RVT path, version, backup note | Verified for 2027 study; backup/export handoff remains separate |
 | C-02 | Levels and shell/core reservations are present | Level names/elevations and plan screenshot | Partially verified; native levels, 40 x 40 ft shell and 8 x 8 ft reservation evidenced |
-| C-03 | Stairs are native objects and geometry is recorded | Riser/tread/run/headroom observations | Partially verified; native objects observed, headroom and finish buildup open |
+| C-03 | Stairs are native objects and geometry is recorded | Riser/tread/run/headroom observations | Partially verified; IFC bounds quantify a 5.62 ft plan gap from the main-to-upper stair flight to the upper slab; landing, headroom and finish buildup remain open |
 | C-04 | Future lift route is spatially reserved | Route plan/section with turns and clearances | Partially verified; reservation exists, product/route/clearances open |
 | C-05 | Kitchen, dining and living envelopes fit together | Dimensioned plan with island, aisles and seating | Partially verified; study markers exist, furnished clearance test open |
 | C-06 | Primary and Jack & Jill bath privacy is workable | Door matrix and furnished clearance check | Open |
@@ -53,3 +53,4 @@ Stop and record an open issue if:
 - Assumptions and safety/code concerns
 - Outstanding issues and recommended next task
 - Commit reference, if committed
+
