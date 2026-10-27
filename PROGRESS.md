@@ -41,7 +41,7 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - `./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py .local/revit-pilot/selected-d/20261027T164221478Z` exits 0: **23/23 checks pass**, IFC2X3 schema validation is clean, and source, manifest, saved RVT and export fingerprints agree.
 - Read-only Revit audit `.local/revit-pilot/audits/20261027T164310404Z/` matches the saved RVT fingerprint and confirms Revit 2027.3, 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 warnings. This is a room-boundary study, not coordinated building geometry.
 - Regenerated the unapproved adjacency candidate separately: `-LayoutVariant AdjacencyCandidate` passes **46/46 checks** and all three SVGs parse as XML. The PowerShell output is the authoritative check summary; no candidate Revit/IFC export was run because the layout remains unselected.
-- `git diff --check` passes. No remote state or existing run was modified; no commit or push has yet been made in this checkpoint.
+- `git diff --check` passes. The verified work was committed locally as `76b07b6` (`Explore connected Direction D room adjacencies`). No remote state or existing run was modified, and no push was made.
 
 ## Saved-model evidence identity hardening (2026-10-27)
 
