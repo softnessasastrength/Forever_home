@@ -19,6 +19,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
         panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
             Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHSelectedDStudy", "Build selected D\nspace study",
+            Assembly.GetExecutingAssembly().Location, typeof(SelectedDCommand).FullName!));
         panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
@@ -658,6 +660,149 @@ public class FamilyIntakeCommand : IExternalCommand
     }
 
     static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
+}
+
+[Transaction(TransactionMode.Manual)]
+public class SelectedDCommand : IExternalCommand
+{
+    static double Number(JsonElement item, string key) => item.GetProperty(key).GetDouble();
+    static string Text(JsonElement item, string key) => item.GetProperty(key).GetString()!;
+    static double[] Numbers(JsonElement item, string key) => item.GetProperty(key).EnumerateArray().Select(v => v.GetDouble()).ToArray();
+    static void Tag(Element element, string id)
+    {
+        var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (parameter is not null && !parameter.IsReadOnly) parameter.Set(id);
+    }
+
+    static string PointKey(double x, double y) => $"{Math.Round(x,6).ToString("0.000000",CultureInfo.InvariantCulture)},{Math.Round(y,6).ToString("0.000000",CultureInfo.InvariantCulture)}";
+    static void AddRectangleEdges(JsonElement rectangle, List<(double x,double y)> xs, List<(double x,double y)> ys)
+    {
+        var origin = Numbers(rectangle,"origin_ft"); double width=Number(rectangle,"width_ft"), depth=Number(rectangle,"depth_ft");
+        double x1=origin[0],x2=x1+width,y1=origin[1],y2=y1+depth;
+        xs.Add((x1,y1)); xs.Add((x2,y1)); xs.Add((x1,y2)); xs.Add((x2,y2));
+        ys.Add((x1,y1)); ys.Add((x2,y1)); ys.Add((x1,y2)); ys.Add((x2,y2));
+    }
+    static IEnumerable<(double x1,double y1,double x2,double y2)> RectangleEdges(double x1,double y1,double x2,double y2)
+    {
+        yield return (x1,y1,x2,y1); yield return (x2,y1,x2,y2); yield return (x2,y2,x1,y2); yield return (x1,y2,x1,y1);
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? doc=null;
+        try
+        {
+            string root=File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!,"workspace.txt")).Trim();
+            string sourcePath=Path.Combine(root,"Architecture","Selected_Design_Iteration_2026-10-27","study.json");
+            byte[] sourceBytes=File.ReadAllBytes(sourcePath); using var studyDoc=JsonDocument.Parse(File.ReadAllText(sourcePath).TrimStart('\uFEFF')); var study=studyDoc.RootElement;
+            if(Text(study,"schema")!="forever-home.selected-house-schematic.v1") throw new InvalidDataException("Unsupported selected-D schematic schema.");
+            string output=Path.Combine(root,".local","revit-pilot","selected-d",DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            File.WriteAllBytes(Path.Combine(output,"study.json"),sourceBytes);
+            doc=data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            var levels=new Dictionary<string,Level>(StringComparer.Ordinal);
+            var plans=new Dictionary<string,ViewPlan>(StringComparer.Ordinal);
+            var rows=new List<(string id,string name,string level,string kind,double area)>();
+            using(var tx=new Transaction(doc,"D room-block and schematic boundary study"))
+            {
+                tx.Start();
+                foreach(var spec in study.GetProperty("selection").GetProperty("levels").EnumerateArray())
+                {
+                    string id=Text(spec,"id"), name="D "+Text(spec,"id"); double elevation=Number(spec,"elevation_ft");
+                    var level=Level.Create(doc,elevation); level.Name=name; Tag(level,id); levels.Add(id,level);
+                }
+                var planType=new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(v=>v.ViewFamily==ViewFamily.FloorPlan);
+                foreach(var pair in levels) { var plan=ViewPlan.Create(doc,planType.Id,pair.Value.Id); plan.Name="D "+pair.Key+" Room Blocks"; plans.Add(pair.Key,plan); }
+                doc.Regenerate();
+                var planDefs=new[]{(key:"main",level:"Main FF",size:Numbers(study.GetProperty("shells"),"main")),(key:"upper",level:"Upper FF",size:Numbers(study.GetProperty("shells"),"rear_upper")),(key:"lower",level:"Lower FF",size:Numbers(study.GetProperty("shells"),"rear_lower"))};
+                foreach(var floor in planDefs)
+                {
+                    var roomSpecs=study.GetProperty("plans").GetProperty(floor.key).EnumerateArray().ToArray();
+                    var horizontal=new List<(double x,double y)>(); var vertical=new List<(double x,double y)>();
+                    foreach(var room in roomSpecs) AddRectangleEdges(room,horizontal,vertical);
+                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]))
+                    { horizontal.Add((edge.x1,edge.y1)); horizontal.Add((edge.x2,edge.y2)); vertical.Add((edge.x1,edge.y1)); vertical.Add((edge.x2,edge.y2)); }
+                    var coordinates=horizontal.Concat(vertical).SelectMany(p=>new[]{p.x,p.y}).Distinct().ToArray();
+                    var segments=new Dictionary<string,(double x1,double y1,double x2,double y2)>(StringComparer.Ordinal);
+                    void AddSegment(double ax,double ay,double bx,double by)
+                    {
+                        string ka=PointKey(ax,ay),kb=PointKey(bx,by); string key=string.CompareOrdinal(ka,kb)<0?ka+"|"+kb:kb+"|"+ka;
+                        if(!segments.ContainsKey(key)) segments.Add(key,(ax,ay,bx,by));
+                    }
+                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]).Concat(roomSpecs.SelectMany(room=>{
+                        var origin=Numbers(room,"origin_ft"); return RectangleEdges(origin[0],origin[1],origin[0]+Number(room,"width_ft"),origin[1]+Number(room,"depth_ft"));
+                    })))
+                    {
+                        var cuts=coordinates.Where(c=>c>=Math.Min(edge.x1,edge.x2)-1e-7&&c<=Math.Max(edge.x1,edge.x2)+1e-7)
+                            .Where(c=>Math.Abs(edge.x1-edge.x2)<1e-7 ? vertical.Any(p=>Math.Abs(p.x-edge.x1)<1e-7&&Math.Abs(p.y-c)<1e-7) : horizontal.Any(p=>Math.Abs(p.y-edge.y1)<1e-7&&Math.Abs(p.x-c)<1e-7))
+                            .Distinct().OrderBy(c=>edge.x1==edge.x2?Math.Sign(edge.y2-edge.y1)*c:Math.Sign(edge.x2-edge.x1)*c).ToArray();
+                        for(int i=0;i<cuts.Length-1;i++)
+                        {
+                            if(Math.Abs(edge.x1-edge.x2)<1e-7) AddSegment(edge.x1,cuts[i],edge.x1,cuts[i+1]);
+                            else AddSegment(cuts[i],edge.y1,cuts[i+1],edge.y1);
+                        }
+                    }
+                    var curveArray=new CurveArray(); double z=levels[floor.level].Elevation;
+                    foreach(var segment in segments.Values) curveArray.Append(Line.CreateBound(new XYZ(segment.x1,segment.y1,z),new XYZ(segment.x2,segment.y2,z)));
+                    var sketch=SketchPlane.Create(doc,Plane.CreateByNormalAndOrigin(XYZ.BasisZ,new XYZ(0,0,z)));
+                    doc.Create.NewRoomBoundaryLines(sketch,curveArray,plans[floor.level]);
+                    doc.Regenerate();
+                    foreach(var roomSpec in roomSpecs)
+                    {
+                        var origin=Numbers(roomSpec,"origin_ft"); double width=Number(roomSpec,"width_ft"),depth=Number(roomSpec,"depth_ft");
+                        string id=Text(roomSpec,"id"); var room=doc.Create.NewRoom(levels[floor.level],new UV(origin[0]+width/2,origin[1]+depth/2));
+                        room.Number=id; room.Name=Text(roomSpec,"name"); Tag(room,id);
+                        rows.Add((id,room.Name,floor.level,Text(roomSpec,"kind"),width*depth));
+                    }
+                    // A separate tagged model-curve outline makes the test envelope visible without implying a wall height or assembly.
+                    foreach(var edge in RectangleEdges(0,0,floor.size[0],floor.size[1]))
+                    {
+                        var model=doc.Create.NewModelCurve(Line.CreateBound(new XYZ(edge.x1,edge.y1,z),new XYZ(edge.x2,edge.y2,z)),sketch);
+                        Tag(model,"D-SHELL-OUTLINE-"+floor.key);
+                    }
+                }
+                doc.Regenerate();
+                foreach(var levelPair in new[]{(key:"lower",level:"Lower FF"),(key:"main",level:"Main FF"),(key:"upper",level:"Upper FF")})
+                {
+                    var core=study.GetProperty("stair_core_test"); var rectangles=new List<(string id,double x,double y,double w,double d)>();
+                    if(levelPair.key=="lower") { var r=core.GetProperty("lower_to_main").GetProperty("lower_landing_local_ft").EnumerateArray().Select(v=>v.GetDouble()).ToArray(); rectangles.Add(("D-S1-LOWER-LANDING",r[0],r[1],r[2],r[3])); }
+                    if(levelPair.key=="main")
+                    {
+                        foreach(var name in new[]{"lower_to_main","main_to_upper"}) foreach(var part in new[]{"main_landing_ft","run_ft"})
+                        { var r=core.GetProperty(name).GetProperty(part).EnumerateArray().Select(v=>v.GetDouble()).ToArray(); rectangles.Add(("D-"+name+"-"+part,r[0],r[1],r[2],r[3])); }
+                        var lift=core.GetProperty("lift"); var o=Numbers(lift,"origin_ft"); rectangles.Add(("D-LIFT-RESERVATION",o[0],o[1],Number(lift,"width_ft"),Number(lift,"depth_ft")));
+                    }
+                    if(levelPair.key=="upper") { var r=core.GetProperty("main_to_upper").GetProperty("upper_floor_extension_ft").EnumerateArray().Select(v=>v.GetDouble()).ToArray(); rectangles.Add(("D-S2-UPPER-CONNECTOR",r[0],r[1],r[2],r[3])); }
+                    var sketch=SketchPlane.Create(doc,Plane.CreateByNormalAndOrigin(XYZ.BasisZ,new XYZ(0,0,levels[levelPair.level].Elevation)));
+                    foreach(var r in rectangles) foreach(var edge in RectangleEdges(r.x,r.y,r.x+r.w,r.y+r.d))
+                    { var line=doc.Create.NewModelCurve(Line.CreateBound(new XYZ(edge.x1,edge.y1,levels[levelPair.level].Elevation),new XYZ(edge.x2,edge.y2,levels[levelPair.level].Elevation)),sketch); Tag(line,r.id); }
+                }
+                tx.Commit();
+            }
+            doc.Regenerate();
+            var actualRooms=new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>()
+                .Where(r=>r.Area>0).OrderBy(r=>r.Number,StringComparer.Ordinal).Select(r=>new{id=r.Number,name=r.Name,level=r.Level?.Name,area_sf=Math.Round(r.Area,2),status="room-bounded schematic only; no walls, doors, floors or stair solids authored"}).ToArray();
+            var areaMismatches=rows.Where(expected=>{
+                var actual=actualRooms.FirstOrDefault(room=>room.id==expected.id);
+                return actual is null||Math.Abs(actual.area_sf-Math.Round(expected.area,2))>0.1;
+            }).ToArray();
+            if(actualRooms.Length!=rows.Count||areaMismatches.Length>0)
+                throw new InvalidOperationException($"Revit room enclosure/area comparison failed: expected {rows.Count} positive-area rooms, got {actualRooms.Length}; mismatches: {string.Join(",",areaMismatches.Select(r=>r.id))}");
+            string rvt=Path.Combine(output,"FH_Selected_D_Space_Study.rvt"); doc.SaveAs(rvt,new SaveAsOptions());
+            using(var stream=File.Create(Path.Combine(output,"study-manifest.json")))
+                JsonSerializer.Serialize(stream,new{status="native Revit D room-boundary study; not a coordinated building model",source="study.json",source_sha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(sourceBytes)).ToLowerInvariant(),levels=study.GetProperty("selection").GetProperty("levels").EnumerateArray().Select(l=>new{id=Text(l,"id"),elevation_ft=Number(l,"elevation_ft")}).ToArray(),rooms=actualRooms,wall_count=0,door_count=0,floor_count=0,stair_count=0,unmodeled=new[]{"walls and wall heights","doors/openings","floor solids and assemblies","native stairs and guards","roof","structure","MEP","lift product"}},new JsonSerializerOptions{WriteIndented=true});
+            using(var writer=new StreamWriter(Path.Combine(output,"room-inventory.csv"),false,new System.Text.UTF8Encoding(true)))
+            { writer.WriteLine("id,name,level,kind,expected_area_sf,revit_area_sf"); foreach(var row in rows.OrderBy(r=>r.id,StringComparer.Ordinal)){var actual=actualRooms.FirstOrDefault(r=>r.id==row.id); writer.WriteLine(string.Join(",",new[]{row.id,row.name,row.level,row.kind,row.area.ToString("0.##",CultureInfo.InvariantCulture),actual?.area_sf.ToString(CultureInfo.InvariantCulture)??""}.Select(v=>"\""+v.Replace("\"","\"\"")+"\"")));} }
+            var activeDocument=data.Application.OpenAndActivateDocument(rvt).Document;
+            using var ifcOptions=new IFCExportOptions{FileVersion=IFCVersion.IFC2x3CV2,ExportBaseQuantities=true};
+            bool ifcOk=activeDocument.Export(output,"FH_Selected_D_Space_Study",ifcOptions);
+            string ifcPath=Path.Combine(output,"FH_Selected_D_Space_Study.ifc");
+            File.WriteAllText(Path.Combine(output,"export-result.json"),JsonSerializer.Serialize(new{ifc2x3_api_result=ifcOk,ifc_file=Path.GetFileName(ifcPath),ifc_bytes=File.Exists(ifcPath)?new FileInfo(ifcPath).Length:0,ifc_sha256=File.Exists(ifcPath)?Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant():null},new JsonSerializerOptions{WriteIndented=true}));
+            TaskDialog.Show("Forever Home direction D",$"Saved separate room-boundary study (no construction geometry implied):\n{output}\n\nIFC2x3 export API: {ifcOk}");
+            return ifcOk?Result.Succeeded:Result.Failed;
+        }
+        catch(Exception ex) { message=ex.ToString(); try{if(doc?.IsValidObject==true)doc.Close(false);}catch{} return Result.Failed; }
+    }
 }
 
 [Transaction(TransactionMode.Manual)]

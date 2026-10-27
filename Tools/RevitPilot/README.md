@@ -16,6 +16,20 @@ The compact-core command is a separate study entry point. It writes `study-manif
 
 The validator checks the three C levels, 17 stable program IDs and room boundary/placement points, five nominal door hosts, stair runs, three floor markers and polygon-computed profile areas, the 40 x 40 ft main target, the 36 x 32 ft rear wing and 8 x 8 ft lift reservation, and unresolved roof/stair review flags. It does not certify geometry, code, accessibility or product fit. A successful command run is not a substitute for reviewing the native RVT, floor edges, openings and vertical connections.
 
+## Selected direction D space study
+
+The **Build selected D space study** command consumes the generated [direction D study](../../Architecture/Selected_Design_Iteration_2026-10-27/study.json) and writes a new timestamped run under `.local/revit-pilot/selected-d/`. It creates separate Lower/Main/Upper levels, room-separation boundaries for all 18 room blocks and 3 circulation blocks, tagged 2D test-shell/core outlines, a room-area CSV, the retained source JSON and an IFC2x3 export. The command fails if Revit does not create all 21 enclosed spaces or if its room areas differ from the source room blocks by more than 0.1 sf.
+
+This is a native Revit **space study**, not a complete house model. It creates no walls, doors, floor solids/assemblies, native stairs, lift product or roof. The test-shell/core outlines are plan curves only. The upper connector, stair runs, main-floor voids and aligned rear-edge datum remain schematic coordination inputs; no structural or code claim follows from their presence.
+
+To run it, close Revit 2027 so the loaded add-in assembly can be replaced, then run:
+
+```powershell
+./Tools/RevitPilot/build.ps1 -Dotnet './.local/dotnet/dotnet.exe'
+```
+
+Reopen Revit and choose **Add-Ins → Forever Home Pilot → Build selected D space study**. C is untouched: D creates a separate timestamped folder and RVT. Inspect `study-manifest.json`, `room-inventory.csv`, `export-result.json` and the IFC in that folder. The command validates D's 21 space IDs and calculated room areas. Run **Audit active document** for a generic inventory; the current Geometry QA command requires Compact-Core C markers and is not valid evidence for D. The source/build has compiled, but host execution and D IFC validation are still pending; do not treat C's audit/QA/export reports as D evidence.
+
 Run the no-Revit preflight before a batch reload:
 
 ```powershell
