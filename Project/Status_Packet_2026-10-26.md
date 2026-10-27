@@ -24,7 +24,7 @@ This packet is the short path through the current project documentation. It pres
 - A and B remain comparison alternatives. C is the next native-Revit test, not a selected plan.
 - The latest C study executed in Revit 2027 with 0 errors and 0 recorded Revit warnings; the read-only API audit recorded 17 enclosed rooms, 78 walls, 5 openings and 0 warnings.
 - The floor-aware read-only Geometry QA was subsequently host-run on 2026-10-27: 17 rooms, 78 walls, 2 stairs, 5 doors and 3 floors; 0 native warnings, 0 heuristic issues and 0 errors. The updated offline review packet passes all four recorded checks. The floors still use an unselected 1 ft template type.
-- The manifest-driven export command completed in Revit 2027.3 at `.local/revit-pilot/exports/20261027T011547441Z/`: IFC2x3, three plan DWGs, combined PDF and direct Room inventory CSV all reported success. The CSV has 17 unique rows and no blank areas. The earlier empty native room-schedule export remains documented. DWG/PDF visual review, IFC semantic review and Revit 2018 import remain open.
+- The manifest-driven export command completed in Revit 2027.3 at `.local/revit-pilot/exports/20261027T011547441Z/`: IFC2x3, three plan DWGs, combined PDF and direct Room inventory CSV all reported success. The CSV has 17 unique rows and no blank areas. Independent IfcOpenShell inspection found zero IFC validation issues, 17 spaces across the three C levels, and decoded geometry for 120/121 represented products; a model-line annotation was the one decode exception. DWGs have valid AC1024 headers but no binary content review; the PDF header is valid but page rendering could not be completed. The earlier empty native room-schedule export remains documented. DWG/PDF visual review and Revit 2018 import remain open.
 - Native levels, the 40 x 40 ft main shell target, an 8 x 8 ft lift reservation, 17 stable room IDs, five nominal door IDs and study markers were evidenced across the verification runs.
 - Stairs are native study objects, but riser/tread documentation, headroom, guards, finish buildup and code review are not complete.
 - The kitchen island, hearth, television, bath fixtures, lift and furniture markers are spatial studies, not selected products or approved clearances.
@@ -47,7 +47,7 @@ This packet is the short path through the current project documentation. It pres
 
 ## Next bounded work
 
-Continue the C review with the unresolved physical geometry: floor profile/opening fit and support, the upper stair landing/headroom, lift-route geometry, wet-stack/technology separation, and furnished kitchen/bath clearances. Record observed results and keep failed targets visible; if C fails a target clearance, return to B/A rather than silently shrinking the program. For RevitPilot, independently inspect the generated IFC/DWG/PDF outputs before extending the exporter.
+Continue the C review with the unresolved physical geometry: floor profile/opening fit and support, the upper stair landing/headroom, lift-route geometry, wet-stack/technology separation, and furnished kitchen/bath clearances. Record observed results and keep failed targets visible; if C fails a target clearance, return to B/A rather than silently shrinking the program. For RevitPilot, inspect the IFC annotation exception and review DWG/PDF visually in a suitable viewer, then test Revit 2018 import before extending the exporter.
 
 ## Authority and limitations
 
