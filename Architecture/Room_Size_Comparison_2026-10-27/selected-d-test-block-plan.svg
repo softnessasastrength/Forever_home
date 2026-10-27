@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1180' height='650' viewBox='0 0 1180 650'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:23px;font-weight:bold}.label{font-size:15px}.small{font-size:13px}.room{fill:#fffdf7;stroke:#423a31;stroke-width:3}.island{fill:#dbe4cf;stroke:#58654e;stroke-width:2}.min{fill:#edbda2;fill-opacity:.45;stroke:#a75c37;stroke-width:2;stroke-dasharray:7 5}.pref{fill:none;stroke:#45758a;stroke-width:2;stroke-dasharray:5 5}.warn{fill:#8e4f31;font-weight:bold}</style>
+<text x='40' y='42' class='h'>Current selected-D test-block sizes â€” schematic envelope study</text>
+<text x='40' y='70' class='label'>Rooms drawn as independent test rectangles; their relationship to each other and the porch is deliberately not positioned.</text>
+<text x='80' y='105' class='h'>Kitchen 17.333 Ã— 16 ft</text>
+<rect x='80' y='135' width='485.324' height='448' class='room'/>
+<rect x='266.662' y='247' width='112' height='224' class='island'/>
+<text x='274.662' y='359' class='small'>8 Ã— 4 ft island</text>
+<text x='80' y='608' class='label'>Island shown as an illustrative placement. Main check: 13 ft 6 in chain = 17.33 ft long-axis remainder 46 in.</text>
+<text x='80' y='631' class='small'>Preferred 14 ft 6 in chain remainder: 34 in. 8-ft half wall + 6-ft clear opening needs a 14-ft shared edge.</text>
+<text x='715.324' y='105' class='h'>Dining 11.333 Ã— 14 ft</text>
+<rect x='715.324' y='135' width='392' height='317.324' class='room'/>
+<rect x='757.324' y='167.662' width='308' height='252' class='min'/>
+<rect x='743.324' y='153.662' width='336' height='280' class='pref'/>
+<rect x='841.324' y='251.662' width='140' height='84' class='island'/>
+<text x='723.324' y='477.324' class='label'>36 Ã— 60 in table; orange = min 9 Ã— 11 ft envelope (minimum fits); blue dash = preferred 10 Ã— 12 ft (preferred fits).</text>
+<text x='723.324' y='500.324' class='small'>Centered furniture is a test position, not a selection. Independent 36-in porch route is unverified.</text>
+<text x='40' y='610' class='warn'>COMPARISON ONLY â€” no room-size decision, adjacency, porch-door location, walls, openings, floors or buildable layout is implied.</text>
+</svg>

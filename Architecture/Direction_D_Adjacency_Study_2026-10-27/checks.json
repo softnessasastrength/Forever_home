@@ -1,0 +1,336 @@
+﻿{
+    "status":  "unapproved adjacency candidate; geometry checks only; owner selection required before replacement",
+    "layout_variant":  "AdjacencyCandidate",
+    "checks":  {
+                   "main_room_blocks_inside_shell":  true,
+                   "main_positive_room_dimensions":  true,
+                   "main_no_room_block_overlap":  true,
+                   "upper_room_blocks_inside_shell":  true,
+                   "upper_positive_room_dimensions":  true,
+                   "upper_no_room_block_overlap":  true,
+                   "lower_room_blocks_inside_shell":  true,
+                   "lower_positive_room_dimensions":  true,
+                   "lower_no_room_block_overlap":  true,
+                   "upper_jack_jill_and_lower_technology_do_not_overlap":  true,
+                   "upper_jack_jill_and_lower_flex_do_not_overlap":  true,
+                   "guest_room_remains_within_documented_100_to_120_sf_allowance":  true,
+                   "main_full_bath_and_main_flex_removed_from_selected_levels":  true,
+                   "selected_lower_flex_room_present":  true,
+                   "main_half_bath_not_given_invented_footprint":  true,
+                   "selected_m06_test_zone_is_arrival_hall_edge":  true,
+                   "owner_selected_m06_first_fit_candidate_is_pantry_side_window":  true,
+                   "m06_location_footprint_and_service_route_remain_tbd":  true,
+                   "documented_kitchen_fit_reference_checks_pass":  true,
+                   "placed_rooms_have_program_allowance_review_record":  true,
+                   "m06_search_windows_inside_main_shell":  true,
+                   "m06_available_search_window_clear_of_placed_rooms":  true,
+                   "m06_search_windows_clear_of_stair_and_lift_comparison_blocks":  true,
+                   "m06_search_windows_are_not_placed_as_bath_geometry":  true,
+                   "m06_first_fit_candidate_is_defined_search_window":  true,
+                   "m06_first_fit_candidate_is_not_placed_room_geometry":  true,
+                   "m06_selected_window_vertical_projection_matches_derived_layout":  true,
+                   "m06_b_candidate_conflict_is_explicit":  true,
+                   "candidate_halfwall_and_six_foot_clear_opening_fit_shared_edge":  true,
+                   "candidate_kitchen_and_dining_are_directly_adjacent":  true,
+                   "candidate_pantry_edge_can_host_documented_door_reservation":  true,
+                   "candidate_entry_hall_and_living_share_edge":  true,
+                   "candidate_keeps_original_room_areas":  true,
+                   "proposed_main_stair_and_lift_blocks_clear_placed_main_rooms":  true,
+                   "upper_landing_reaches_rear_wing_edge":  true,
+                   "upper_connector_aligns_with_upper_hall":  true,
+                   "lift_west_face_aligns_with_upper_core_hall":  true,
+                   "lower_stair_landing_and_run_are_edge_adjacent":  true,
+                   "lower_plan_landing_maps_to_rear_aligned_wing_edge":  true,
+                   "upper_wing_frame_meets_upper_connector":  true,
+                   "lower_wing_frame_meets_main_landing":  true,
+                   "main_stair_landings_and_run_are_edge_adjacent":  true,
+                   "main_floor_profile_matches_two_stair_runs_and_lift_void":  true,
+                   "main_stair_openings_match_flight_reservations":  true,
+                   "rear_edge_opening_intervals_have_two_ordered_endpoints":  true,
+                   "upper_floor_profile_includes_only_4x4_connector_extension":  true
+               },
+    "measurements":  {
+                         "lower_L02_vs_upper_U06_overlap_sf":  0,
+                         "lower_L06_vs_upper_U06_overlap_sf":  0,
+                         "selected_M06_vs_U06_projected_overlap_sf":  0,
+                         "placed_main_room_count":  5,
+                         "lower_L02_net_sf":  110,
+                         "selected_bath_area_sf":  null,
+                         "comparison_stair_run_ft":  6.416666666666667,
+                         "lift_shift_from_B_origin_in":  4,
+                         "main_floor_profile_sf":  1564.667,
+                         "upper_floor_with_connector_sf":  1168
+                     },
+    "adjacency_review":  {
+                             "status":  "Unapproved room-placement option; same room areas and documented test dimensions retained.",
+                             "kitchen_to_living":  {
+                                                       "nominal_wall_gap_ft":  0.5,
+                                                       "shared_edge_ft":  15,
+                                                       "documented_half_wall_ft":  8,
+                                                       "remaining_opening_ft":  7,
+                                                       "minimum_opening_ft":  6,
+                                                       "wall_segment_location":  "TBD"
+                                                   },
+                             "kitchen_to_dining":  {
+                                                       "nominal_wall_gap_ft":  0.5,
+                                                       "shared_edge_ft":  11.333,
+                                                       "status":  "Direct plan adjacency candidate; actual opening/floor/porch interface not modeled."
+                                                   },
+                             "kitchen_to_pantry":  {
+                                                       "nominal_wall_gap_ft":  0.5,
+                                                       "shared_edge_ft":  5,
+                                                       "documented_door_width_ft":  2.5,
+                                                       "door_swing":  "TBD"
+                                                   },
+                             "entry_to_living":  {
+                                                     "nominal_wall_gap_ft":  0.5,
+                                                     "shared_edge_ft":  12,
+                                                     "entry_side":  "Front / hall edge; exterior approach unverified.",
+                                                     "entry_door":  "Not modeled."
+                                                 },
+                             "m06_owner_selected_B_conflict_sf":  79.33,
+                             "m06_alternate_A_conflict_sf":  0,
+                             "m06_B_vs_upper_U06_projection_sf":  59.5,
+                             "m06_A_status":  "Search gap is clear of candidate room/core rectangles; no bath fit, door or fixture clearance established.",
+                             "m06_B_status":  "Blocked by candidate room rectangles (79.33 sf overlap); no bath fit tested.",
+                             "owner_approval":  "Not selected; compare with the owner-selected D placement before replacing it."
+                         },
+    "m06_fixture_clearance_study":  null,
+    "room_block_overlaps":  [
+
+                            ],
+    "stair_core_room_block_overlaps":  [
+
+                                       ],
+    "program_area_review":  [
+                                {
+                                    "level":  "main",
+                                    "id":  "M-01",
+                                    "name":  "Living room",
+                                    "area_sf":  240,
+                                    "minimum_sf":  180,
+                                    "maximum_sf":  220,
+                                    "status":  "above study reference",
+                                    "reference_text":  "180–220 sf, retest"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-02",
+                                    "name":  "Kitchen",
+                                    "area_sf":  277.33,
+                                    "minimum_sf":  150,
+                                    "maximum_sf":  185,
+                                    "status":  "above study reference",
+                                    "reference_text":  "150–185 sf; 14 x 12 ft study"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-03",
+                                    "name":  "Dining",
+                                    "area_sf":  158.67,
+                                    "minimum_sf":  90,
+                                    "maximum_sf":  120,
+                                    "status":  "above study reference",
+                                    "reference_text":  "90–120 sf; 11 x 10 ft study"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-04",
+                                    "name":  "Pantry",
+                                    "area_sf":  35,
+                                    "minimum_sf":  25,
+                                    "maximum_sf":  45,
+                                    "status":  "within study reference",
+                                    "reference_text":  "25–45 sf"
+                                },
+                                {
+                                    "level":  "main",
+                                    "id":  "M-05",
+                                    "name":  "Front arrival / hall",
+                                    "area_sf":  52,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-01",
+                                    "name":  "Primary bedroom",
+                                    "area_sf":  160,
+                                    "minimum_sf":  150,
+                                    "maximum_sf":  170,
+                                    "status":  "within study reference",
+                                    "reference_text":  "150–170 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-05",
+                                    "name":  "Primary bath",
+                                    "area_sf":  90,
+                                    "minimum_sf":  90,
+                                    "maximum_sf":  90,
+                                    "status":  "within study reference",
+                                    "reference_text":  "90 sf; 9 x 10 ft"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-02",
+                                    "name":  "Boutique",
+                                    "area_sf":  154.67,
+                                    "minimum_sf":  110,
+                                    "maximum_sf":  160,
+                                    "status":  "within study reference",
+                                    "reference_text":  "110–160 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-04",
+                                    "name":  "Guest bedroom",
+                                    "area_sf":  109.33,
+                                    "minimum_sf":  100,
+                                    "maximum_sf":  120,
+                                    "status":  "within study reference",
+                                    "reference_text":  "100–120 sf"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-06",
+                                    "name":  "Jack and Jill bath",
+                                    "area_sf":  120,
+                                    "minimum_sf":  120,
+                                    "maximum_sf":  120,
+                                    "status":  "within study reference",
+                                    "reference_text":  "120 sf; 10 x 12 ft"
+                                },
+                                {
+                                    "level":  "upper",
+                                    "id":  "U-03",
+                                    "name":  "Hybrid bedroom / office",
+                                    "area_sf":  125.28,
+                                    "minimum_sf":  120,
+                                    "maximum_sf":  150,
+                                    "status":  "within study reference",
+                                    "reference_text":  "120–150 sf"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-03",
+                                    "name":  "Lower full bath",
+                                    "area_sf":  90,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-04",
+                                    "name":  "Enclosed laundry",
+                                    "area_sf":  72,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-05",
+                                    "name":  "MEP equipment reservation",
+                                    "area_sf":  105,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-07",
+                                    "name":  "Arrival + dry storage",
+                                    "area_sf":  103.5,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-06",
+                                    "name":  "Ventilated technology room",
+                                    "area_sf":  64,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-01",
+                                    "name":  "Lower flexible living",
+                                    "area_sf":  250.56,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                },
+                                {
+                                    "level":  "lower",
+                                    "id":  "L-02",
+                                    "name":  "Bedroom-capable flex",
+                                    "area_sf":  110,
+                                    "minimum_sf":  null,
+                                    "maximum_sf":  null,
+                                    "status":  "no numeric area reference",
+                                    "reference_text":  "TBD"
+                                }
+                            ],
+    "findings":  [
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-01",
+                         "issue":  "D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-02",
+                         "issue":  "M-06 is a half bath by owner direction and the arrival/hall edge is selected as its test zone; exact position, footprint, fixtures and service route remain unresolved. Keep the room out of geometry and area totals until fit is supported."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-03",
+                         "issue":  "Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved."
+                     },
+                     {
+                         "priority":  "P2",
+                         "status":  "open",
+                         "id":  "D-OPEN-04",
+                         "issue":  "Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation."
+                     },
+                     {
+                         "priority":  "P2",
+                         "status":  "open",
+                         "id":  "D-OPEN-05",
+                         "issue":  "Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified."
+                     },
+                     {
+                         "priority":  "P1",
+                         "status":  "open",
+                         "id":  "D-OPEN-06",
+                         "issue":  "The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified."
+                     }
+                 ],
+    "exclusions":  [
+                       "Door swings and clear openings",
+                       "Furniture-complete route checks",
+                       "Stair/landing/headroom/guard/floor-edge coordination",
+                       "Lift product fit",
+                       "Structure, foundation, roof, site and code",
+                       "Detailed MEP and kitchen appliance-open tests",
+                       "Native Revit house model and IFC export for this design iteration"
+                   ],
+    "all_geometry_checks_pass":  true,
+    "all_svg_files_parse_as_xml":  true
+}

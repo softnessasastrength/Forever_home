@@ -1,0 +1,40 @@
+﻿{
+    "status":  "pass",
+    "passed":  8,
+    "total":  8,
+    "checks":  [
+                   {
+                       "id":  "source_room_dims",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "legacy_room_dims",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "documented_inputs_present",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "chain_math",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "half_wall_span",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_envelopes",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "porch_route_not_overclaimed",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "no_baseline_write",
+                       "pass":  true
+                   }
+               ],
+    "scope":  "Source/provenance and documented arithmetic screens only; no architectural fit approval."
+}

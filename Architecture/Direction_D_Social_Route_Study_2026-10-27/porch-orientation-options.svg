@@ -1,0 +1,23 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1120' height='610' viewBox='0 0 1120 610'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.h{font-size:21px;font-weight:bold}.lbl{font-size:15px}.note{font-size:13px;fill:#87472f}.room{fill:#eee5d5;stroke:#5a4d3e;stroke-width:2}.porch{fill:#e6f0ed;stroke:#47776b;stroke-width:2}.shell{stroke:#9b4a32;stroke-width:3;stroke-dasharray:9 5}.door{stroke:#326877;stroke-width:7}</style>
+<rect width='1120' height='610' fill='#fbf9f3'/>
+<text x='36' y='40' class='h'>Porch orientation versus the 40 x 42 ft shell test outline</text>
+<text x='76' y='78' class='lbl'>Option A - 12 ft wide x 10 ft deep</text>
+<text x='620' y='78' class='lbl'>Option B - rotate: 10 ft wide x 12 ft deep</text>
+<rect x='76' y='108' width='181.333333333333' height='224' class='room'/>
+<text x='84' y='132' class='lbl'>M-03 Dining 11 ft 4 in x 14 ft</text>
+<rect x='70.6666666666667' y='340' width='192' height='160' class='porch'/>
+<text x='78.6666666666667' y='364' class='lbl'>X-01 Porch 12 x 10 ft</text>
+<line x1='46' y1='505.333333333333' x2='287.333333333333' y2='505.333333333333' class='shell'/>
+<line x1='126.666666666667' y1='332' x2='206.666666666667' y2='332' class='door'/>
+<text x='76' y='535' class='note'>4 in to the outline edge. Numeric containment only; no credible exterior wall allowance.</text>
+<rect x='620' y='108' width='181.333333333333' height='224' class='room'/>
+<text x='628' y='132' class='lbl'>M-03 Dining 11 ft 4 in x 14 ft</text>
+<rect x='630.666666666667' y='340' width='160' height='192' class='porch'/>
+<text x='638.666666666667' y='364' class='lbl'>X-01 Porch 10 x 12 ft; same 120 sf</text>
+<line x1='590' y1='505.333333333333' x2='831.333333333333' y2='505.333333333333' class='shell'/>
+<line x1='670.666666666667' y1='332' x2='750.666666666667' y2='332' class='door'/>
+<text x='620' y='535' class='note'>Extends 20 in beyond the outline. Porch side is 8 in inside each dining edge.</text>
+<text x='36' y='580' class='note'>Blue line: centered nominal 5 ft door-pair reservation. Red dashed line: rear edge of test outline. Neither drawing defines walls or site placement.</text>
+</svg>

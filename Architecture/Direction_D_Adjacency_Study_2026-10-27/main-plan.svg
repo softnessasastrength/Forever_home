@@ -1,0 +1,61 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="764" height="937" viewBox="0 0 764 937">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.bath-search-blocked{fill:#d9665e;fill-opacity:.28;stroke:#a83732;stroke-width:2.4;stroke-dasharray:5 3}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>
+<text class="title" x="54" y="28">D - main plan - schematic room blocks</text>
+<text class="header" x="54" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>
+<rect class="shell" x="54" y="64" width="400" height="420" />
+<rect class="room" x="109" y="327.33" width="160" height="150" />
+<text class="label" x="113" y="392.33">M-01</text>
+<text class="label" x="113" y="405.33">Living room</text>
+<text class="label" x="113" y="418.33">16 x 15 ft</text>
+<rect class="room" x="274" y="317.33" width="173.33" height="160" />
+<text class="label" x="278" y="387.33">M-02</text>
+<text class="label" x="278" y="400.33">Kitchen</text>
+<text class="label" x="278" y="413.33">17.33 x 16 ft</text>
+<rect class="room" x="274" y="172.33" width="113.33" height="140" />
+<text class="label" x="278" y="232.33">M-03</text>
+<text class="label" x="278" y="245.33">Dining</text>
+<text class="label" x="278" y="258.33">11.33 x 14 ft</text>
+<rect class="room" x="392.33" y="242.33" width="50" height="70" />
+<text class="label" x="396.33" y="267.33">M-04</text>
+<text class="label" x="396.33" y="280.33">Pantry</text>
+<text class="label" x="396.33" y="293.33">5 x 7 ft</text>
+<rect class="room" x="60.67" y="357.33" width="43.33" height="120" />
+<text class="label" x="64.67" y="407.33">M-05</text>
+<text class="label" x="64.67" y="420.33">Front arrival / hall</text>
+<text class="label" x="64.67" y="433.33">4.33 x 12 ft</text>
+<rect class="bath-search-selected" x="174" y="208.17" width="51.67" height="114.17" />
+<text class="label" x="178" y="224.17">M-06 A</text>
+<rect class="bath-search-blocked" x="265.67" y="242.33" width="126.67" height="70" />
+<text class="label" x="269.67" y="258.33">M-06 B blocked</text>
+<rect class="island" x="320.67" y="377.33" width="80" height="40" />
+<text class="label" x="324.67" y="400.33">8 x 4 ft island test</text>
+<rect class="core" x="179" y="168.17" width="40" height="40" />
+<text class="small" x="182" y="181.17">S1 lower-to-main main landing</text>
+<rect class="core" x="179" y="104" width="40" height="64.1666666666667" />
+<text class="small" x="182" y="117">S1 lower-to-main run</text>
+<rect class="core" x="225.67" y="168.17" width="40" height="40" />
+<text class="small" x="228.67" y="181.17">S2 main-to-upper landing</text>
+<rect class="core" x="225.67" y="104" width="40" height="64.1666666666667" />
+<text class="small" x="228.67" y="117">S2 upper flight and opening</text>
+<rect class="core" x="265.67" y="64" width="80" height="80" />
+<text class="small" x="268.67" y="77">8 x 8 ft lift reservation</text>
+<text class="small" x="476" y="76">Main shell test: 40 x 42 ft.</text>
+<text class="small" x="476" y="98">S1/S2 and lift are comparison blocks; wall</text>
+<text class="small" x="476" y="112"> openings and native landings TBD.</text>
+<text class="small" x="476" y="134">M-06 test zone: arrival / hall edge select</text>
+<text class="small" x="476" y="148">ed; no footprint or service route assigned</text>
+<text class="small" x="476" y="162">.</text>
+<text class="small" x="476" y="184">Owner-selected B conflicts in this unappro</text>
+<text class="small" x="476" y="198">ved layout; A is shown as a fallback searc</text>
+<text class="small" x="476" y="212">h gap only.</text>
+<text class="small" x="476" y="234">Dashed M-06 A/B windows are unassigned sea</text>
+<text class="small" x="476" y="248">rch extents, not bath footprints.</text>
+<text class="small" x="476" y="270">Kitchen block retains the prior fit-study </text>
+<text class="small" x="476" y="284">size; not approved.</text>
+<text class="small" x="476" y="306">ADJACENCY CANDIDATE ONLY; M-06 B conflicts</text>
+<text class="small" x="476" y="320"> with relocated dining; A fallback is unas</text>
+<text class="small" x="476" y="334">signed.</text>
+<text class="small" x="476" y="356">Kitchen/living edge fits 8 ft half-wall pl</text>
+<text class="small" x="476" y="370">us 7 ft open span by plan arithmetic; wall</text>
+<text class="small" x="476" y="384"> not placed.</text>
+</svg>

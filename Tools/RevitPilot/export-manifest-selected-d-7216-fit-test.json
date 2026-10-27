@@ -1,0 +1,30 @@
+{
+  "schema": "forever-home.revit-export-manifest.v1",
+  "expected_document_title": "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3",
+  "ifc": {
+    "enabled": true,
+    "file_name": "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3",
+    "export_base_quantities": true,
+    "export_internal_property_sets": true,
+    "filter_view_name": null
+  },
+  "dwg": {
+    "enabled": false,
+    "file_name": "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3_Plans",
+    "view_names": [],
+    "merged_views": true
+  },
+  "pdf": {
+    "enabled": false,
+    "file_name": "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3_Review",
+    "view_names": [],
+    "combine": true
+  },
+  "csv": {
+    "enabled": false,
+    "category": "rooms",
+    "file_name": "FH_Selected_D_Furnishing_Study_7216_Fit_Test_3_Room_Inventory",
+    "fields": ["number", "name", "area_sqft", "level", "element_id", "unique_id"],
+    "minimum_data_rows": 1
+  }
+}

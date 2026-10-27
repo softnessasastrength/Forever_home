@@ -1,0 +1,47 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="724" height="653" viewBox="0 0 724 653">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.bath-search-blocked{fill:#d9665e;fill-opacity:.28;stroke:#a83732;stroke-width:2.4;stroke-dasharray:5 3}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>
+<text class="title" x="54" y="28">D - upper plan - schematic room blocks</text>
+<text class="header" x="54" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>
+<rect class="shell" x="54" y="104" width="360" height="320" />
+<rect class="room" x="60.67" y="317.33" width="160" height="100" />
+<text class="label" x="64.67" y="357.33">U-01</text>
+<text class="label" x="64.67" y="370.33">Primary bedroom</text>
+<text class="label" x="64.67" y="383.33">16 x 10 ft</text>
+<rect class="room" x="60.67" y="212.33" width="90" height="100" />
+<text class="label" x="64.67" y="252.33">U-05</text>
+<text class="label" x="64.67" y="265.33">Primary bath</text>
+<text class="label" x="64.67" y="278.33">9 x 10 ft</text>
+<rect class="circulation" x="155.67" y="212.33" width="65" height="100" />
+<text class="label" x="159.67" y="252.33">C-PRIVATE</text>
+<text class="label" x="159.67" y="265.33">Private connector</text>
+<text class="label" x="159.67" y="278.33">6.5 x 10 ft</text>
+<rect class="room" x="60.67" y="110.67" width="160" height="96.67" />
+<text class="label" x="64.67" y="148.67">U-02</text>
+<text class="label" x="64.67" y="161.67">Boutique</text>
+<text class="label" x="64.67" y="174.67">16 x 9.67 ft</text>
+<rect class="circulation" x="225.67" y="110.67" width="40" height="306.67" />
+<text class="label" x="229.67" y="253.67">C-UPPER</text>
+<text class="label" x="229.67" y="266.67">4 ft suite / public hall</text>
+<text class="label" x="229.67" y="279.67">4 x 30.67 ft</text>
+<rect class="room" x="270.67" y="337.33" width="136.67" height="80" />
+<text class="label" x="274.67" y="367.33">U-04</text>
+<text class="label" x="274.67" y="380.33">Guest bedroom</text>
+<text class="label" x="274.67" y="393.33">13.67 x 8 ft</text>
+<rect class="room" x="307.33" y="212.33" width="100" height="120" />
+<text class="label" x="311.33" y="262.33">U-06</text>
+<text class="label" x="311.33" y="275.33">Jack and Jill bath</text>
+<text class="label" x="311.33" y="288.33">10 x 12 ft</text>
+<rect class="room" x="270.67" y="110.67" width="136.67" height="91.67" />
+<text class="label" x="274.67" y="146.67">U-03</text>
+<text class="label" x="274.67" y="159.67">Hybrid bedroom / office</text>
+<text class="label" x="274.67" y="172.67">13.67 x 9.17 ft</text>
+<rect class="core" x="225.67" y="424" width="40" height="40" />
+<text class="small" x="228.67" y="437">S2 upper landing bridge</text>
+<text class="small" x="436" y="76">Rear upper plate: 36 x 32 ft.</text>
+<text class="small" x="436" y="98">Dashed 4 x 4 ft connector joins S2 landing</text>
+<text class="small" x="436" y="112"> to shell edge.</text>
+<text class="small" x="436" y="134">Primary bath private to U-01; J&amp;J serves U</text>
+<text class="small" x="436" y="148">-03/U-04.</text>
+<text class="small" x="436" y="170">Native stair, wall opening, headroom and s</text>
+<text class="small" x="436" y="184">tructure remain open.</text>
+</svg>

@@ -22,7 +22,7 @@ Existing dimensions below are schematic study inputs, not demonstrated fits. TBD
 | M-03 | Dining | Main | 90–120 sf; 11 x 10 ft study | Direct porch access; seated chairs must not block through-route |
 | M-04 | Pantry | Main | 25–45 sf | Short kitchen connection; usable shelving and appliance storage |
 | M-05 | Entry / coat storage / mudroom | Main / garage route | TBD | Protected arrival; separate from lower laundry; resolve vertical transition |
-| M-06 | Powder room | Main | TBD, optional | Study public bathroom access without entering private bedrooms |
+| M-06 | Half bath / powder room | Main | Area TBD; owner-selected for Direction D | First fit-study zone is arrival / hall edge; pantry-side search window B selected first. Exact position, footprint, fixtures, clearances and service route remain unresolved. See [selected Direction D](../Decisions/2026-10-27_Selected_Architectural_Direction_D.md). |
 | L-01 | Flexible living / future in-law space | Lower | TBD | Finished initially; independent use and exterior entry where feasible |
 | L-02 | Bedroom-capable flex room | Lower | TBD | Additional adaptability; egress and bedroom qualification pending |
 | L-03 | Full bathroom | Lower | TBD | Shower; coordinate accessible daily-living route |

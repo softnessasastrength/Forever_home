@@ -1,0 +1,49 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="724" height="641" viewBox="0 0 724 641">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.bath-search-blocked{fill:#d9665e;fill-opacity:.28;stroke:#a83732;stroke-width:2.4;stroke-dasharray:5 3}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>
+<text class="title" x="54" y="28">D - lower plan - schematic room blocks</text>
+<text class="header" x="54" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>
+<rect class="shell" x="54" y="64" width="360" height="320" />
+<rect class="room" x="60.67" y="277.33" width="90" height="100" />
+<text class="label" x="64.67" y="317.33">L-03</text>
+<text class="label" x="64.67" y="330.33">Lower full bath</text>
+<text class="label" x="64.67" y="343.33">9 x 10 ft</text>
+<rect class="room" x="60.67" y="192.33" width="90" height="80" />
+<text class="label" x="64.67" y="222.33">L-04</text>
+<text class="label" x="64.67" y="235.33">Enclosed laundry</text>
+<text class="label" x="64.67" y="248.33">9 x 8 ft</text>
+<rect class="room" x="60.67" y="70.67" width="90" height="116.67" />
+<text class="label" x="64.67" y="118.67">L-05</text>
+<text class="label" x="64.67" y="131.67">MEP equipment reservation</text>
+<text class="label" x="64.67" y="144.67">9 x 11.67 ft</text>
+<rect class="room" x="317.33" y="262.33" width="90" height="115" />
+<text class="label" x="321.33" y="310.33">L-07</text>
+<text class="label" x="321.33" y="323.33">Arrival + dry storage</text>
+<text class="label" x="321.33" y="336.33">9 x 11.5 ft</text>
+<rect class="room" x="227.33" y="297.33" width="80" height="80" />
+<text class="label" x="231.33" y="327.33">L-06</text>
+<text class="label" x="231.33" y="340.33">Ventilated technology room</text>
+<text class="label" x="231.33" y="353.33">8 x 8 ft</text>
+<rect class="room" x="155.67" y="70.67" width="136.67" height="183.33" />
+<text class="label" x="159.67" y="152.67">L-01</text>
+<text class="label" x="159.67" y="165.67">Lower flexible living</text>
+<text class="label" x="159.67" y="178.67">13.67 x 18.33 ft</text>
+<rect class="circulation" x="155.67" y="259" width="66.67" height="118.33" />
+<text class="label" x="159.67" y="308">C-LOWER</text>
+<text class="label" x="159.67" y="321">Lower arrival / circulation</text>
+<text class="label" x="159.67" y="334">6.67 x 11.83 ft</text>
+<rect class="room" x="297.33" y="72.33" width="110" height="100" />
+<text class="label" x="301.33" y="112.33">L-02</text>
+<text class="label" x="301.33" y="125.33">Bedroom-capable flex</text>
+<text class="label" x="301.33" y="138.33">11 x 10 ft</text>
+<rect class="core" x="179" y="64" width="40" height="40" />
+<text class="small" x="182" y="77">S1 lower landing</text>
+<text class="small" x="436" y="76">Rear lower plate: 36 x 32 ft. Lower L-02 i</text>
+<text class="small" x="436" y="90">s the A-strategy block.</text>
+<text class="small" x="436" y="112">S1 lower landing touches the shared shell </text>
+<text class="small" x="436" y="126">edge; opening offset is a native review it</text>
+<text class="small" x="436" y="140">em.</text>
+<text class="small" x="436" y="162">L-06 moved outside upper U-06 projection; </text>
+<text class="small" x="436" y="176">overlap = 0 sf.</text>
+<text class="small" x="436" y="198">Secure storage is not located in this stud</text>
+<text class="small" x="436" y="212">y.</text>
+</svg>
