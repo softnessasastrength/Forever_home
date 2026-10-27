@@ -20,11 +20,15 @@ These are room-boundary blocks, not clear interior dimensions: no wall thickness
 
 The selected kitchen direction is perimeter induction range, sink and dishwasher, with an appliance-free 8 × 4 ft island and approximately 6 ft quartz plus 2 ft butcher-block worktop. The older kitchen specification lists 24 in deep base cabinets, 42 in minimum island clearances to perimeter counters and the half wall, and a 6 in half wall. Those inputs remain schematic and require confirmation against the selected room layout.
 
-For a simple section across the island depth, those listed dimensions require:
+For a simple section across one island-to-perimeter-counter / island-to-half-wall axis, those listed dimensions require:
 
 `24 in base cabinet + 42 in aisle + 48 in island + 42 in aisle + 6 in half wall = 162 in (13 ft 6 in)`
 
-That is 18 in more than the older 12 ft clear-room depth note. Therefore that historical 14 × 12 ft kitchen rectangle does not pass this simple opposing-counter/half-wall clearance screen with the currently selected island assumptions. The D 16 ft block has 30 in of gross-envelope remainder after the same arithmetic, before wall finishes, layout-specific offsets, seating, appliance doors, openings or route checks. This is only a sizing screen; it is not proof that the larger block fits a furnished kitchen. No dimension has been changed.
+That is 18 in more than the older 12 ft clear-room depth note. Therefore a 12 ft axis cannot contain that particular opposing-counter/half-wall chain. A 16 ft axis leaves 30 in beyond that chain, but this remainder is not a verified route or seating allowance.
+
+The inherited D island coordinates provide a separate, more specific depth check: the 2 ft deep perimeter-counter test strip ends at local y=2 ft; the 8 × 4 ft island starts at y=6 ft and ends at y=10 ft; the room block ends at y=16 ft. This yields a 4 ft counter-to-island work aisle, followed by exactly 2 ft for the documented seat allowance and 4 ft for the separate route. That chain consumes all 16 ft. It does not include half-wall thickness, finish build-up, appliance-open projections or tolerance. The location and orientation of the half wall have not been fixed in D, so the inherited coordinates do not prove the half-wall condition. The older 14 × 12 ft rectangle also misses the 13 ft 6 in opposing-counter/half-wall chain on its 12 ft axis, while its 14 ft axis would leave only 6 in beyond that chain.
+
+Conclusion: keep the 17 ft 4 in × 16 ft M-02 block as a fit-test envelope, not an approved room size. Before freezing a kitchen layout, place the half wall relative to both axes and test cabinet runs, appliance doors, stool occupation and the independent dining route in the same plan. No dimension has been changed.
 
 ## M-06 public half-bath zone options
 
