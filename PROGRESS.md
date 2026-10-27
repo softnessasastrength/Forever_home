@@ -316,3 +316,12 @@ Run generation, audit, Geometry QA and manifest exports in Revit 2027. The offli
 
 - Recorded the owner's already-selected Adirondack chair model as a required furnishing for the future poolside, patio, or outdoor-fireplace gathering area in `Architecture/Building_Program.md`.
 - The exact product reference/asset path is not currently present in the repository. Preserve the existing selection and retrieve it before modeling; chair count, placement and site relationship remain deferred. No exterior geometry was changed.
+
+## RevitCity family cleanup and forward roadmap proposals (2026-10-27)
+
+- Rechecked Git safety before work: current branch `design/vr-tech-bom-roadmap`, no missing local commits observed, 18 commits ahead of origin, and no remote mutation performed. User-downloaded files and local evidence were kept separate from the staged change.
+- Removed the failed island families from the active intake queue. RevitCity 19967 was moved to `Revit/Family_Intake/Rejected/`; its byte-identical `.0001` duplicate was removed after SHA256 confirmation. The ignored 21015 test source was moved to `.local/revit-pilot/family-intake/rejected/21015/`. Failed Revit/IFC reports and hashes remain intact.
+- Retained RevitCity 7216 in the ignored intake as the only current island base-module candidate. Its original geometry is 34.5 in high; the separate generic 1.25 in top creates the 35.75 in actual assembly that the owner accepted as nominally 36 in. The assembly passes its documented 13/13 IFC fit checks. License/reuse and finish/fabrication details remain open.
+- Reopened RevitCity and reviewed object 7216: its listing describes an adjustable Revit Architecture 2008 generic base block without door/detail geometry. Reviewed queued object 22366: its listing describes a parameterized surface vanity and faucet, Revit Architecture 2020, with no casework below. Neither listing supersedes independent Revit 2027 family inspection; no new RFA was downloaded.
+- Added proposed M19–M23 milestones to `PLAN.md`: integrated M-02 kitchen fit, owner-selected M-06 B half-bath test, public-route/porch coordination, M-01 pellet-stove/hearth resolution, and deferred exterior gathering furnishings with the owner's already-selected Adirondack model. Proposals are explicitly not new design approvals.
+- Reworked the family-intake manifest and validator to distinguish incoming, rejected and retained-for-study assets; detailed reasons and RevitCity links are in `Revit/Family_Intake/`.

@@ -156,3 +156,59 @@ Acceptance criteria:
 - Document the trade-off and explicitly retain unverified clear leaf width, door swing, code/accessibility and construction coordination.
 
 Status: **complete as an unapproved schematic comparison; no layout adopted.** The corrected generator passes 16/16 checks and reports 10 in minimum route-to-chair-proxy clearance for the centered opening versus 15 in at an 18 in east offset. The nominal east return is 20 in. These are geometric proxy measurements, not prescribed clearances or product verification. Reproducibility evidence and limitations are recorded in `Architecture/Direction_D_Social_Route_Study_2026-10-27/README.md` and the dated progress entry. This does not authorize a Revit/IFC house update.
+
+## Proposed forward-design sequence (M19–M23)
+
+These are **proposals for momentum**, not new owner-approved layout decisions. Keep the owner-selected D room-space/Revit/IFC study as the comparison baseline. Promote geometry only into disposable derivatives until the gates below pass.
+
+### M19 — Integrate the accepted M-02 island assembly into a kitchen fit plan
+
+Acceptance criteria:
+
+- Retire RevitCity 19967 and 21015 from the active island candidate pool; preserve their source bytes and failed evidence under `Revit/Family_Intake/Rejected/` or the ignored local rejection archive.
+- Retain RevitCity 7216 as the base-module source for the current isolated fit assembly. Four 4 × 2 ft bases plus a separate 8 × 4 ft generic top pass the documented fit checks; the actual total is 35.75 in, owner-accepted as nominally 36 in. Do not describe the RFA alone as a completed 36 in island or approved product.
+- Add only source-documented perimeter counter/appliance placeholders to a separate schematic or Revit derivative; test documented island aisles, stool occupation, room edges, table and porch route in one plan. Do not change the selected-D room block to conceal its variance against older 14 × 12 ft kitchen guidance.
+- Record family source, parameters, measured solid extents, exact saved-RVT identity and IFC result if the derivative is exported.
+
+RevitCity research: [object 7216](https://www.revitcity.com/downloads.php?action=view&object_id=7216) is described as a simple adjustable Revit Architecture 2008 base block with no door/detail geometry. It is useful for blocking and dimension tests, not finish/fabrication documentation. The separate generic top is essential to the passing assembly.
+
+### M20 — Test the owner-selected M-06 half-bath zone B
+
+Acceptance criteria:
+
+- Keep the arrival/hall edge as the owner-selected public zone and test pantry-side search window B first; preserve B as unassigned until its fit is demonstrated.
+- Establish a cited half-bath fixture/clearance basis and service-path assumptions before assigning a room footprint. The current bathroom specification excludes powder rooms; do not borrow full-bath references as though they define a half bath.
+- Inspect queued RevitCity 22366 only as a vanity/counter candidate after the required fit envelope is documented. Its [listing](https://www.revitcity.com/downloads.php?action=view&object_id=22366) describes parameterized basin/counter/faucet geometry, Revit Architecture 2020, and no casework below; dimensions, clearances, host behavior and Revit 2027 geometry remain unverified.
+- Check the entry-to-core approach, door/swing, fixture clearances and potential upper U-06 stack relationship without implying a drain/vent/service route exists.
+
+### M21 — Coordinate the main-floor public route and porch envelope
+
+Acceptance criteria:
+
+- Carry the 36 in plan-route proxy, balanced dining seats and both nominal door positions into one main-floor comparison; keep the M18 10 in/15 in proxy gaps and the 20 in east return labeled as schematic measurements.
+- Resolve how the B-first east-side M-05 entry approaches the public hall before assigning exterior orientation.
+- Compare the 12 × 10 ft porch orientation's 4 in test-outline reserve with the 10 × 12 ft orientation's 20 in projection beyond the 40 × 42 ft outline. Do not call either result a wall/foundation/site fit.
+- Keep walls, door swings, floor transitions and accessible route claims gated on documented assemblies, site and product dimensions.
+
+### M22 — Resolve the M-01 hearth and viewing wall before family placement
+
+Acceptance criteria:
+
+- Locate a pellet-stove-compatible source and manufacturer clearance envelope matching the approved appliance direction; the RevitCity open-fireplace object 18782 is not the stove.
+- Define a documented hearth wall/orientation and room relationship before placing either stove or surround in a Revit derivative.
+- Test the queued TV visual placeholder only against an owner-approved viewing wall and size; preserve the selected legacy CRT requirement if it remains current.
+- Keep all appliance, hearth and egress clearances explicitly unverified until the product, wall assembly and qualified review are available.
+
+### M23 — Develop the exterior gathering area and furnishings
+
+Acceptance criteria:
+
+- Carry forward the owner's **already-selected Adirondack chair model** recorded in `Architecture/Building_Program.md`; retrieve that exact source/asset before modeling and do not substitute a RevitCity result.
+- Coordinate chairs with the eventual pool, patio and outdoor-fireplace choices only after site, grade, circulation and fire-feature locations are defined.
+- Keep count, spacing, paving, guard/edge conditions and exterior fireplace/pool geometry unassigned until supported by owner/site information.
+
+## RevitCity research and candidate disposition (2026-10-27)
+
+- Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.
+- Kept the 7216 source as the current island base-block candidate, with the separate generic-top assembly as the dimensionally passing study. Source reuse permission remains unreviewed, so no public-model or product approval is implied.
+- Reopened the authenticated RevitCity session and reviewed the 7216 island listing plus the queued 22366 vanity listing. No additional family was downloaded. Details and limitations are in `Revit/Family_Intake/RevitCity_Family_Intake.md`.
