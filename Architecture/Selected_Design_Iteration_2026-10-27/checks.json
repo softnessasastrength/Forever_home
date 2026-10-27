@@ -16,8 +16,18 @@
                    "main_full_bath_and_main_flex_removed_from_selected_levels":  true,
                    "selected_lower_flex_room_present":  true,
                    "main_half_bath_not_given_invented_footprint":  true,
+                   "selected_m06_test_zone_is_arrival_hall_edge":  true,
+                   "selected_m06_first_fit_candidate_is_pantry_side_window":  true,
+                   "m06_location_footprint_and_service_route_remain_tbd":  true,
                    "documented_kitchen_fit_reference_checks_pass":  true,
                    "placed_rooms_have_program_allowance_review_record":  true,
+                   "m06_search_windows_inside_main_shell":  true,
+                   "m06_search_windows_clear_of_placed_rooms":  true,
+                   "m06_search_windows_clear_of_stair_and_lift_comparison_blocks":  true,
+                   "m06_search_windows_are_not_placed_as_bath_geometry":  true,
+                   "m06_first_fit_candidate_is_defined_search_window":  true,
+                   "m06_first_fit_candidate_is_not_placed_room_geometry":  true,
+                   "m06_pantry_window_has_documented_u06_vertical_projection":  true,
                    "proposed_main_stair_and_lift_blocks_clear_placed_main_rooms":  true,
                    "upper_landing_reaches_rear_wing_edge":  true,
                    "upper_connector_aligns_with_upper_hall":  true,
@@ -35,6 +45,7 @@
     "measurements":  {
                          "lower_L02_vs_upper_U06_overlap_sf":  0,
                          "lower_L06_vs_upper_U06_overlap_sf":  0,
+                         "m06_B_vs_upper_U06_projected_overlap_sf":  63,
                          "placed_main_room_count":  5,
                          "lower_L02_net_sf":  110,
                          "selected_bath_area_sf":  null,
@@ -242,7 +253,7 @@
                          "priority":  "P1",
                          "status":  "open",
                          "id":  "D-OPEN-02",
-                         "issue":  "M-06 is now a half bath by owner direction, but no footprint or position is specified; keep out of geometry and area totals pending fit study."
+                         "issue":  "M-06 is a half bath by owner direction and the arrival/hall edge is selected as its test zone; exact position, footprint, fixtures and service route remain unresolved. Keep the room out of geometry and area totals until fit is supported."
                      },
                      {
                          "priority":  "P1",

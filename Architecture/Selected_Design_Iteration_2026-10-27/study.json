@@ -6,9 +6,9 @@
     "source_fingerprints_sha256":  {
                                        "Architecture/Schematic_Study_2026-10-25/study.json":  "b99fdb8ab4a1e3440ff6ee8f17c8e81bfce0a1360ff03213d060b998ab2d319b",
                                        "Architecture/Schematic_Study_2026-10-25/checks.json":  "f2b713aaed861c8bea951e82b9e0298ff41aaf0a13420e0fb5432ea02e9b1779",
-                                       "Requirements/Room_Program.md":  "0187171c7f7c448fbe60807504f050cdfe5ef484e087b5dcb8dba524e62a2e27",
+                                       "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
                                        "Decisions/Kitchen_Island_Finish.md":  "5165aea0df46c28f22ec87ccae658e6164cde52939510d0e9af82f3d771a8b95",
-                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "1d76cad39d6000be1f746f931c02cff321d4a318589ac903196b11e3b2ae834e"
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "b059b8d6c28f55d380074d7512d2bed9bda761d1d5fd738da26f24d226d4d099"
                                    },
     "units":  "feet; local x right, local y toward rear; no site orientation or georeference",
     "plan_frame_offsets_ft":  {
@@ -56,9 +56,46 @@
                       "main_public_bath":  {
                                                "type":  "half bath",
                                                "id":  "M-06",
+                                               "test_zone":  "arrival / hall edge",
+                                               "first_fit_candidate":  "east_of_core",
                                                "footprint":  "TBD",
                                                "position":  "TBD",
-                                               "status":  "owner-selected room type; size and exact location not yet specified"
+                                               "service_route":  "TBD",
+                                               "status":  "owner-selected room type and test zone; pantry-side search window selected for first fit study; exact location, footprint and service route remain unresolved",
+                                               "cross_level_comparison":  {
+                                                                              "candidate_window_id":  "east_of_core",
+                                                                              "upper_room_id":  "U-06",
+                                                                              "projected_overlap_sf":  63,
+                                                                              "projected_bounds_ft":  [
+                                                                                                          25.333333333333332,
+                                                                                                          17.166666666666668,
+                                                                                                          9.0000000000000036,
+                                                                                                          7
+                                                                                                      ],
+                                                                              "status":  "Plan projection only; no fixture wet wall, drain, vent or service route is established."
+                                                                          },
+                                               "search_windows":  [
+                                                                      {
+                                                                          "id":  "west_of_core",
+                                                                          "label":  "Dining-side search window",
+                                                                          "x":  12,
+                                                                          "y":  16.166666666666668,
+                                                                          "w":  5.1666666666666679,
+                                                                          "d":  11.416666666666664,
+                                                                          "gross_area_sf":  58.99,
+                                                                          "status":  "Unassigned room-block gap only; not a bath footprint."
+                                                                      },
+                                                                      {
+                                                                          "id":  "east_of_core",
+                                                                          "label":  "Pantry-side search window",
+                                                                          "x":  21.166666666666668,
+                                                                          "y":  17.166666666666668,
+                                                                          "w":  13.166666666666668,
+                                                                          "d":  7,
+                                                                          "gross_area_sf":  92.17,
+                                                                          "status":  "Unassigned room-block gap only; not a bath footprint."
+                                                                      }
+                                                                  ]
                                            },
                       "suite_strategy":  "Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.",
                       "kitchen":  {
@@ -483,7 +520,7 @@
                           ],
     "unplaced_program":  [
                              {
-                                 "reason":  "Owner selected room type; footprint and location TBD.",
+                                 "reason":  "Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD.",
                                  "name":  "Main half bath",
                                  "id":  "M-06"
                              },

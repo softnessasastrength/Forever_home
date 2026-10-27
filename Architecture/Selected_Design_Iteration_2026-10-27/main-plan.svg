@@ -1,5 +1,5 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="764" height="559" viewBox="0 0 764 559">
-<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.header{font-size:12px;fill:#6b6257}</style>
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:11px}.small{font-size:10px}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.room{fill:#eadfce;stroke:#716456;stroke-width:1.4}.circulation{fill:#f3eee5;stroke:#9a8d7d;stroke-width:1;stroke-dasharray:4 3}.island{fill:#dce7db;stroke:#667963;stroke-width:1.6;stroke-dasharray:6 3}.core{fill:#f4ddc9;fill-opacity:.75;stroke:#a65f2b;stroke-width:1.6;stroke-dasharray:5 3}.bath-search{fill:#e7e0f2;fill-opacity:.48;stroke:#74519a;stroke-width:2;stroke-dasharray:4 4}.bath-search-selected{fill:#f3e5bd;fill-opacity:.65;stroke:#9c6f1c;stroke-width:2.4;stroke-dasharray:4 4}.crosslevel{fill:#8998c4;fill-opacity:.2;stroke:#44598d;stroke-width:2;stroke-dasharray:3 2}.header{font-size:12px;fill:#6b6257}</style>
 <text class="title" x="54" y="28">D - main plan - schematic room blocks</text>
 <text class="header" x="54" y="47">Local x right; rear at top - shell reservation only - no site orientation</text>
 <rect class="shell" x="54" y="64" width="400" height="420" />
@@ -23,6 +23,12 @@
 <text class="label" x="229.67" y="407.33">M-05</text>
 <text class="label" x="229.67" y="420.33">Front arrival / hall</text>
 <text class="label" x="229.67" y="433.33">4.33 x 12 ft</text>
+<rect class="bath-search" x="174" y="208.17" width="51.67" height="114.17" />
+<text class="label" x="178" y="224.17">M-06 A</text>
+<rect class="bath-search-selected" x="265.67" y="242.33" width="131.67" height="70" />
+<text class="label" x="269.67" y="258.33">M-06 B</text>
+<rect class="crosslevel" x="307.33" y="242.33" width="90" height="70" />
+<text class="small" x="311.33" y="277.33">U-06 above: 63 sf</text>
 <rect class="island" x="320.67" y="377.33" width="80" height="40" />
 <text class="label" x="324.67" y="400.33">8 x 4 ft island test</text>
 <rect class="core" x="179" y="168.17" width="40" height="40" />
@@ -144,109 +150,327 @@
 <text class="small" x="476" y="1576">0</text>
 <text class="small" x="476" y="1590">6</text>
 <text class="small" x="476" y="1604"> </text>
-<text class="small" x="476" y="1618">h</text>
-<text class="small" x="476" y="1632">a</text>
-<text class="small" x="476" y="1646">l</text>
-<text class="small" x="476" y="1660">f</text>
+<text class="small" x="476" y="1618">t</text>
+<text class="small" x="476" y="1632">e</text>
+<text class="small" x="476" y="1646">s</text>
+<text class="small" x="476" y="1660">t</text>
 <text class="small" x="476" y="1674"> </text>
-<text class="small" x="476" y="1688">b</text>
-<text class="small" x="476" y="1702">a</text>
-<text class="small" x="476" y="1716">t</text>
-<text class="small" x="476" y="1730">h</text>
+<text class="small" x="476" y="1688">z</text>
+<text class="small" x="476" y="1702">o</text>
+<text class="small" x="476" y="1716">n</text>
+<text class="small" x="476" y="1730">e</text>
 <text class="small" x="476" y="1744">:</text>
 <text class="small" x="476" y="1758"> </text>
-<text class="small" x="476" y="1772">s</text>
-<text class="small" x="476" y="1786">i</text>
-<text class="small" x="476" y="1800">z</text>
-<text class="small" x="476" y="1814">e</text>
-<text class="small" x="476" y="1828"> </text>
+<text class="small" x="476" y="1772">a</text>
+<text class="small" x="476" y="1786">r</text>
+<text class="small" x="476" y="1800">r</text>
+<text class="small" x="476" y="1814">i</text>
+<text class="small" x="476" y="1828">v</text>
 <text class="small" x="476" y="1842">a</text>
-<text class="small" x="476" y="1856">n</text>
-<text class="small" x="476" y="1870">d</text>
-<text class="small" x="476" y="1884"> </text>
-<text class="small" x="476" y="1898">l</text>
-<text class="small" x="476" y="1912">o</text>
-<text class="small" x="476" y="1926">c</text>
-<text class="small" x="476" y="1940">a</text>
-<text class="small" x="476" y="1954">t</text>
-<text class="small" x="476" y="1968">i</text>
-<text class="small" x="476" y="1982">o</text>
-<text class="small" x="476" y="1996">n</text>
-<text class="small" x="476" y="2010"> </text>
-<text class="small" x="476" y="2024">T</text>
-<text class="small" x="476" y="2038">B</text>
-<text class="small" x="476" y="2052">D</text>
-<text class="small" x="476" y="2066">;</text>
-<text class="small" x="476" y="2080"> </text>
-<text class="small" x="476" y="2094">n</text>
-<text class="small" x="476" y="2108">o</text>
+<text class="small" x="476" y="1856">l</text>
+<text class="small" x="476" y="1870"> </text>
+<text class="small" x="476" y="1884">/</text>
+<text class="small" x="476" y="1898"> </text>
+<text class="small" x="476" y="1912">h</text>
+<text class="small" x="476" y="1926">a</text>
+<text class="small" x="476" y="1940">l</text>
+<text class="small" x="476" y="1954">l</text>
+<text class="small" x="476" y="1968"> </text>
+<text class="small" x="476" y="1982">e</text>
+<text class="small" x="476" y="1996">d</text>
+<text class="small" x="476" y="2010">g</text>
+<text class="small" x="476" y="2024">e</text>
+<text class="small" x="476" y="2038"> </text>
+<text class="small" x="476" y="2052">s</text>
+<text class="small" x="476" y="2066">e</text>
+<text class="small" x="476" y="2080">l</text>
+<text class="small" x="476" y="2094">e</text>
+<text class="small" x="476" y="2108">c</text>
 <text class="small" x="476" y="2122">t</text>
-<text class="small" x="476" y="2136"> </text>
+<text class="small" x="476" y="2136">e</text>
 <text class="small" x="476" y="2150">d</text>
-<text class="small" x="476" y="2164">r</text>
-<text class="small" x="476" y="2178">a</text>
-<text class="small" x="476" y="2192">w</text>
-<text class="small" x="476" y="2206">n</text>
-<text class="small" x="476" y="2220">.</text>
-<text class="small" x="476" y="2242">K</text>
-<text class="small" x="476" y="2256">i</text>
-<text class="small" x="476" y="2270">t</text>
-<text class="small" x="476" y="2284">c</text>
-<text class="small" x="476" y="2298">h</text>
-<text class="small" x="476" y="2312">e</text>
-<text class="small" x="476" y="2326">n</text>
-<text class="small" x="476" y="2340"> </text>
-<text class="small" x="476" y="2354">b</text>
-<text class="small" x="476" y="2368">l</text>
-<text class="small" x="476" y="2382">o</text>
-<text class="small" x="476" y="2396">c</text>
-<text class="small" x="476" y="2410">k</text>
-<text class="small" x="476" y="2424"> </text>
-<text class="small" x="476" y="2438">r</text>
-<text class="small" x="476" y="2452">e</text>
-<text class="small" x="476" y="2466">t</text>
-<text class="small" x="476" y="2480">a</text>
-<text class="small" x="476" y="2494">i</text>
-<text class="small" x="476" y="2508">n</text>
-<text class="small" x="476" y="2522">s</text>
-<text class="small" x="476" y="2536"> </text>
-<text class="small" x="476" y="2550">t</text>
-<text class="small" x="476" y="2564">h</text>
-<text class="small" x="476" y="2578">e</text>
-<text class="small" x="476" y="2592"> </text>
-<text class="small" x="476" y="2606">p</text>
-<text class="small" x="476" y="2620">r</text>
-<text class="small" x="476" y="2634">i</text>
-<text class="small" x="476" y="2648">o</text>
-<text class="small" x="476" y="2662">r</text>
-<text class="small" x="476" y="2676"> </text>
-<text class="small" x="476" y="2690">f</text>
-<text class="small" x="476" y="2704">i</text>
-<text class="small" x="476" y="2718">t</text>
-<text class="small" x="476" y="2732">-</text>
-<text class="small" x="476" y="2746">s</text>
-<text class="small" x="476" y="2760">t</text>
-<text class="small" x="476" y="2774">u</text>
-<text class="small" x="476" y="2788">d</text>
-<text class="small" x="476" y="2802">y</text>
-<text class="small" x="476" y="2816"> </text>
-<text class="small" x="476" y="2830">s</text>
-<text class="small" x="476" y="2844">i</text>
-<text class="small" x="476" y="2858">z</text>
-<text class="small" x="476" y="2872">e</text>
-<text class="small" x="476" y="2886">;</text>
-<text class="small" x="476" y="2900"> </text>
-<text class="small" x="476" y="2914">n</text>
-<text class="small" x="476" y="2928">o</text>
-<text class="small" x="476" y="2942">t</text>
-<text class="small" x="476" y="2956"> </text>
-<text class="small" x="476" y="2970">a</text>
-<text class="small" x="476" y="2984">p</text>
-<text class="small" x="476" y="2998">p</text>
-<text class="small" x="476" y="3012">r</text>
-<text class="small" x="476" y="3026">o</text>
-<text class="small" x="476" y="3040">v</text>
-<text class="small" x="476" y="3054">e</text>
-<text class="small" x="476" y="3068">d</text>
-<text class="small" x="476" y="3082">.</text>
+<text class="small" x="476" y="2164">;</text>
+<text class="small" x="476" y="2178"> </text>
+<text class="small" x="476" y="2192">n</text>
+<text class="small" x="476" y="2206">o</text>
+<text class="small" x="476" y="2220"> </text>
+<text class="small" x="476" y="2234">f</text>
+<text class="small" x="476" y="2248">o</text>
+<text class="small" x="476" y="2262">o</text>
+<text class="small" x="476" y="2276">t</text>
+<text class="small" x="476" y="2290">p</text>
+<text class="small" x="476" y="2304">r</text>
+<text class="small" x="476" y="2318">i</text>
+<text class="small" x="476" y="2332">n</text>
+<text class="small" x="476" y="2346">t</text>
+<text class="small" x="476" y="2360"> </text>
+<text class="small" x="476" y="2374">o</text>
+<text class="small" x="476" y="2388">r</text>
+<text class="small" x="476" y="2402"> </text>
+<text class="small" x="476" y="2416">s</text>
+<text class="small" x="476" y="2430">e</text>
+<text class="small" x="476" y="2444">r</text>
+<text class="small" x="476" y="2458">v</text>
+<text class="small" x="476" y="2472">i</text>
+<text class="small" x="476" y="2486">c</text>
+<text class="small" x="476" y="2500">e</text>
+<text class="small" x="476" y="2514"> </text>
+<text class="small" x="476" y="2528">r</text>
+<text class="small" x="476" y="2542">o</text>
+<text class="small" x="476" y="2556">u</text>
+<text class="small" x="476" y="2570">t</text>
+<text class="small" x="476" y="2584">e</text>
+<text class="small" x="476" y="2598"> </text>
+<text class="small" x="476" y="2612">a</text>
+<text class="small" x="476" y="2626">s</text>
+<text class="small" x="476" y="2640">s</text>
+<text class="small" x="476" y="2654">i</text>
+<text class="small" x="476" y="2668">g</text>
+<text class="small" x="476" y="2682">n</text>
+<text class="small" x="476" y="2696">e</text>
+<text class="small" x="476" y="2710">d</text>
+<text class="small" x="476" y="2724">.</text>
+<text class="small" x="476" y="2746">M</text>
+<text class="small" x="476" y="2760">-</text>
+<text class="small" x="476" y="2774">0</text>
+<text class="small" x="476" y="2788">6</text>
+<text class="small" x="476" y="2802"> </text>
+<text class="small" x="476" y="2816">B</text>
+<text class="small" x="476" y="2830"> </text>
+<text class="small" x="476" y="2844">p</text>
+<text class="small" x="476" y="2858">a</text>
+<text class="small" x="476" y="2872">n</text>
+<text class="small" x="476" y="2886">t</text>
+<text class="small" x="476" y="2900">r</text>
+<text class="small" x="476" y="2914">y</text>
+<text class="small" x="476" y="2928">-</text>
+<text class="small" x="476" y="2942">s</text>
+<text class="small" x="476" y="2956">i</text>
+<text class="small" x="476" y="2970">d</text>
+<text class="small" x="476" y="2984">e</text>
+<text class="small" x="476" y="2998"> </text>
+<text class="small" x="476" y="3012">s</text>
+<text class="small" x="476" y="3026">e</text>
+<text class="small" x="476" y="3040">a</text>
+<text class="small" x="476" y="3054">r</text>
+<text class="small" x="476" y="3068">c</text>
+<text class="small" x="476" y="3082">h</text>
+<text class="small" x="476" y="3096"> </text>
+<text class="small" x="476" y="3110">w</text>
+<text class="small" x="476" y="3124">i</text>
+<text class="small" x="476" y="3138">n</text>
+<text class="small" x="476" y="3152">d</text>
+<text class="small" x="476" y="3166">o</text>
+<text class="small" x="476" y="3180">w</text>
+<text class="small" x="476" y="3194"> </text>
+<text class="small" x="476" y="3208">i</text>
+<text class="small" x="476" y="3222">s</text>
+<text class="small" x="476" y="3236"> </text>
+<text class="small" x="476" y="3250">s</text>
+<text class="small" x="476" y="3264">e</text>
+<text class="small" x="476" y="3278">l</text>
+<text class="small" x="476" y="3292">e</text>
+<text class="small" x="476" y="3306">c</text>
+<text class="small" x="476" y="3320">t</text>
+<text class="small" x="476" y="3334">e</text>
+<text class="small" x="476" y="3348">d</text>
+<text class="small" x="476" y="3362"> </text>
+<text class="small" x="476" y="3376">f</text>
+<text class="small" x="476" y="3390">o</text>
+<text class="small" x="476" y="3404">r</text>
+<text class="small" x="476" y="3418"> </text>
+<text class="small" x="476" y="3432">t</text>
+<text class="small" x="476" y="3446">h</text>
+<text class="small" x="476" y="3460">e</text>
+<text class="small" x="476" y="3474"> </text>
+<text class="small" x="476" y="3488">f</text>
+<text class="small" x="476" y="3502">i</text>
+<text class="small" x="476" y="3516">r</text>
+<text class="small" x="476" y="3530">s</text>
+<text class="small" x="476" y="3544">t</text>
+<text class="small" x="476" y="3558"> </text>
+<text class="small" x="476" y="3572">f</text>
+<text class="small" x="476" y="3586">i</text>
+<text class="small" x="476" y="3600">t</text>
+<text class="small" x="476" y="3614"> </text>
+<text class="small" x="476" y="3628">t</text>
+<text class="small" x="476" y="3642">e</text>
+<text class="small" x="476" y="3656">s</text>
+<text class="small" x="476" y="3670">t</text>
+<text class="small" x="476" y="3684">;</text>
+<text class="small" x="476" y="3698"> </text>
+<text class="small" x="476" y="3712">A</text>
+<text class="small" x="476" y="3726"> </text>
+<text class="small" x="476" y="3740">r</text>
+<text class="small" x="476" y="3754">e</text>
+<text class="small" x="476" y="3768">m</text>
+<text class="small" x="476" y="3782">a</text>
+<text class="small" x="476" y="3796">i</text>
+<text class="small" x="476" y="3810">n</text>
+<text class="small" x="476" y="3824">s</text>
+<text class="small" x="476" y="3838"> </text>
+<text class="small" x="476" y="3852">t</text>
+<text class="small" x="476" y="3866">h</text>
+<text class="small" x="476" y="3880">e</text>
+<text class="small" x="476" y="3894"> </text>
+<text class="small" x="476" y="3908">d</text>
+<text class="small" x="476" y="3922">i</text>
+<text class="small" x="476" y="3936">n</text>
+<text class="small" x="476" y="3950">i</text>
+<text class="small" x="476" y="3964">n</text>
+<text class="small" x="476" y="3978">g</text>
+<text class="small" x="476" y="3992">-</text>
+<text class="small" x="476" y="4006">s</text>
+<text class="small" x="476" y="4020">i</text>
+<text class="small" x="476" y="4034">d</text>
+<text class="small" x="476" y="4048">e</text>
+<text class="small" x="476" y="4062"> </text>
+<text class="small" x="476" y="4076">a</text>
+<text class="small" x="476" y="4090">l</text>
+<text class="small" x="476" y="4104">t</text>
+<text class="small" x="476" y="4118">e</text>
+<text class="small" x="476" y="4132">r</text>
+<text class="small" x="476" y="4146">n</text>
+<text class="small" x="476" y="4160">a</text>
+<text class="small" x="476" y="4174">t</text>
+<text class="small" x="476" y="4188">i</text>
+<text class="small" x="476" y="4202">v</text>
+<text class="small" x="476" y="4216">e</text>
+<text class="small" x="476" y="4230">.</text>
+<text class="small" x="476" y="4252">D</text>
+<text class="small" x="476" y="4266">a</text>
+<text class="small" x="476" y="4280">s</text>
+<text class="small" x="476" y="4294">h</text>
+<text class="small" x="476" y="4308">e</text>
+<text class="small" x="476" y="4322">d</text>
+<text class="small" x="476" y="4336"> </text>
+<text class="small" x="476" y="4350">M</text>
+<text class="small" x="476" y="4364">-</text>
+<text class="small" x="476" y="4378">0</text>
+<text class="small" x="476" y="4392">6</text>
+<text class="small" x="476" y="4406"> </text>
+<text class="small" x="476" y="4420">A</text>
+<text class="small" x="476" y="4434">/</text>
+<text class="small" x="476" y="4448">B</text>
+<text class="small" x="476" y="4462"> </text>
+<text class="small" x="476" y="4476">w</text>
+<text class="small" x="476" y="4490">i</text>
+<text class="small" x="476" y="4504">n</text>
+<text class="small" x="476" y="4518">d</text>
+<text class="small" x="476" y="4532">o</text>
+<text class="small" x="476" y="4546">w</text>
+<text class="small" x="476" y="4560">s</text>
+<text class="small" x="476" y="4574"> </text>
+<text class="small" x="476" y="4588">a</text>
+<text class="small" x="476" y="4602">r</text>
+<text class="small" x="476" y="4616">e</text>
+<text class="small" x="476" y="4630"> </text>
+<text class="small" x="476" y="4644">u</text>
+<text class="small" x="476" y="4658">n</text>
+<text class="small" x="476" y="4672">a</text>
+<text class="small" x="476" y="4686">s</text>
+<text class="small" x="476" y="4700">s</text>
+<text class="small" x="476" y="4714">i</text>
+<text class="small" x="476" y="4728">g</text>
+<text class="small" x="476" y="4742">n</text>
+<text class="small" x="476" y="4756">e</text>
+<text class="small" x="476" y="4770">d</text>
+<text class="small" x="476" y="4784"> </text>
+<text class="small" x="476" y="4798">s</text>
+<text class="small" x="476" y="4812">e</text>
+<text class="small" x="476" y="4826">a</text>
+<text class="small" x="476" y="4840">r</text>
+<text class="small" x="476" y="4854">c</text>
+<text class="small" x="476" y="4868">h</text>
+<text class="small" x="476" y="4882"> </text>
+<text class="small" x="476" y="4896">e</text>
+<text class="small" x="476" y="4910">x</text>
+<text class="small" x="476" y="4924">t</text>
+<text class="small" x="476" y="4938">e</text>
+<text class="small" x="476" y="4952">n</text>
+<text class="small" x="476" y="4966">t</text>
+<text class="small" x="476" y="4980">s</text>
+<text class="small" x="476" y="4994">,</text>
+<text class="small" x="476" y="5008"> </text>
+<text class="small" x="476" y="5022">n</text>
+<text class="small" x="476" y="5036">o</text>
+<text class="small" x="476" y="5050">t</text>
+<text class="small" x="476" y="5064"> </text>
+<text class="small" x="476" y="5078">b</text>
+<text class="small" x="476" y="5092">a</text>
+<text class="small" x="476" y="5106">t</text>
+<text class="small" x="476" y="5120">h</text>
+<text class="small" x="476" y="5134"> </text>
+<text class="small" x="476" y="5148">f</text>
+<text class="small" x="476" y="5162">o</text>
+<text class="small" x="476" y="5176">o</text>
+<text class="small" x="476" y="5190">t</text>
+<text class="small" x="476" y="5204">p</text>
+<text class="small" x="476" y="5218">r</text>
+<text class="small" x="476" y="5232">i</text>
+<text class="small" x="476" y="5246">n</text>
+<text class="small" x="476" y="5260">t</text>
+<text class="small" x="476" y="5274">s</text>
+<text class="small" x="476" y="5288">.</text>
+<text class="small" x="476" y="5310">K</text>
+<text class="small" x="476" y="5324">i</text>
+<text class="small" x="476" y="5338">t</text>
+<text class="small" x="476" y="5352">c</text>
+<text class="small" x="476" y="5366">h</text>
+<text class="small" x="476" y="5380">e</text>
+<text class="small" x="476" y="5394">n</text>
+<text class="small" x="476" y="5408"> </text>
+<text class="small" x="476" y="5422">b</text>
+<text class="small" x="476" y="5436">l</text>
+<text class="small" x="476" y="5450">o</text>
+<text class="small" x="476" y="5464">c</text>
+<text class="small" x="476" y="5478">k</text>
+<text class="small" x="476" y="5492"> </text>
+<text class="small" x="476" y="5506">r</text>
+<text class="small" x="476" y="5520">e</text>
+<text class="small" x="476" y="5534">t</text>
+<text class="small" x="476" y="5548">a</text>
+<text class="small" x="476" y="5562">i</text>
+<text class="small" x="476" y="5576">n</text>
+<text class="small" x="476" y="5590">s</text>
+<text class="small" x="476" y="5604"> </text>
+<text class="small" x="476" y="5618">t</text>
+<text class="small" x="476" y="5632">h</text>
+<text class="small" x="476" y="5646">e</text>
+<text class="small" x="476" y="5660"> </text>
+<text class="small" x="476" y="5674">p</text>
+<text class="small" x="476" y="5688">r</text>
+<text class="small" x="476" y="5702">i</text>
+<text class="small" x="476" y="5716">o</text>
+<text class="small" x="476" y="5730">r</text>
+<text class="small" x="476" y="5744"> </text>
+<text class="small" x="476" y="5758">f</text>
+<text class="small" x="476" y="5772">i</text>
+<text class="small" x="476" y="5786">t</text>
+<text class="small" x="476" y="5800">-</text>
+<text class="small" x="476" y="5814">s</text>
+<text class="small" x="476" y="5828">t</text>
+<text class="small" x="476" y="5842">u</text>
+<text class="small" x="476" y="5856">d</text>
+<text class="small" x="476" y="5870">y</text>
+<text class="small" x="476" y="5884"> </text>
+<text class="small" x="476" y="5898">s</text>
+<text class="small" x="476" y="5912">i</text>
+<text class="small" x="476" y="5926">z</text>
+<text class="small" x="476" y="5940">e</text>
+<text class="small" x="476" y="5954">;</text>
+<text class="small" x="476" y="5968"> </text>
+<text class="small" x="476" y="5982">n</text>
+<text class="small" x="476" y="5996">o</text>
+<text class="small" x="476" y="6010">t</text>
+<text class="small" x="476" y="6024"> </text>
+<text class="small" x="476" y="6038">a</text>
+<text class="small" x="476" y="6052">p</text>
+<text class="small" x="476" y="6066">p</text>
+<text class="small" x="476" y="6080">r</text>
+<text class="small" x="476" y="6094">o</text>
+<text class="small" x="476" y="6108">v</text>
+<text class="small" x="476" y="6122">e</text>
+<text class="small" x="476" y="6136">d</text>
+<text class="small" x="476" y="6150">.</text>
 </svg>

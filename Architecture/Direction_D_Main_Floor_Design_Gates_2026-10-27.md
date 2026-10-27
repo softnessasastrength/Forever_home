@@ -32,19 +32,28 @@ Conclusion: keep the 17 ft 4 in × 16 ft M-02 block as a fit-test envelope, not 
 
 ## M-06 public half-bath zone options
 
-The owner selected a main-floor half bath, but its size, exact location and service route remain unassigned. Choose a public zone to test before drawing a footprint:
+The owner selected the arrival / hall edge as the first public zone to test for M-06. Its exact position, footprint and service route remain unassigned. Options B and C are deferred unless the arrival/hall test proves unworkable:
 
 | Option | Zone to test | Advantages | Main tradeoff / check |
 |---|---|---|---|
-| A — Arrival / hall edge | Off the public arrival route near M-05 | Guests can reach it without crossing private rooms; makes the public/private boundary legible | M-05 is already a narrow test block; prove that entry, core and circulation remain usable before locating a room |
+| A — Arrival / hall edge | Off the public arrival route near M-05 | Guests can reach it without crossing private rooms; makes the public/private boundary legible | **Owner-selected test zone.** Preserve the approach to the stair core and resolve door maneuvering before locating a room |
 | B — Pantry / kitchen edge | Near M-04 and M-02 | Convenient from the social area and could reduce travel through the house | May consume pantry or kitchen test area; no plumbing stack or service path is established |
 | C — Living / dining perimeter | At the edge of the main social rooms | Can avoid placing the door directly in the arrival hall | Risks interrupting the open social axis and may put the door in a prominent sightline; service route still unknown |
 
-**Recommended first test:** Option A, arrival/hall edge, because it preserves guest access outside the bedroom suite. This is a location preference for a fit study only; it does not assign a footprint, fixture clearances or plumbing route. Reject it if the core, door maneuvering or public circulation cannot be maintained from documented geometry.
+The selected zone has two dimensionless-with-respect-to-the-bath, but coordinate-bounded, search windows in the existing D block study. Coordinates are local feet from the study frame; these are empty room-block gaps, not proposed rooms or clear interior dimensions:
+
+| Search window | Bounds from existing blocks | Gross envelope | Tradeoff to test |
+|---|---|---:|---|
+| A — West of the core approach | x = 12 ft to 17 ft 2 in; y = 16 ft 2 in to 27 ft 7 in | 5 ft 2 in × 11 ft 5 in; 58.99 sf | Dining-side alternate. It terminates at the lower-to-main landing; protects the kitchen/pantry side but may compromise dining-side openness |
+| B — East of the core approach | x = 21 ft 2 in to 34 ft 4 in; y = 17 ft 2 in to 24 ft 2 in | 13 ft 2 in × 7 ft; 92.17 sf | **Owner-selected first fit-study candidate.** Beside the pantry and public core approach; larger search window, but changes kitchen/pantry organization and has no established service connection |
+
+The generator checks each window against the placed room blocks and the stair/lift comparison rectangles. Passing those checks only confirms that the search windows occupy currently unassigned schematic space. Neither is a bath fit: circulation width, door swing, fixture clearances, wall thickness, plumbing, ventilation and actual entry are not included. The main-plan SVG highlights B as the selected first search area and shows A as the alternate; both remain search extents only.
+
+In the shared plan frame, pantry-side B has a 9 ft × 7 ft (63 sf) horizontal projection overlap with upper U-06. This is a derived stacking opportunity worth testing against actual fixture and wet-wall locations; it does not establish a drain, vent, wet-wall alignment, or service route. No bathroom fixture geometry is modeled in either room block.
 
 ## Next design sequence
 
-1. Select which public zone to test for M-06; keep its footprint and service connection TBD until fit and plumbing coordination support them.
+1. Test M-06 in search window B using documented half-bath fixture/clearance requirements; if those inputs are absent, keep the footprint TBD and request only the missing design choice or reference. Retain A as fallback if B conflicts with the plan.
 2. Retain the current 17 ft 4 in × 16 ft M-02 block as the working test envelope for one kitchen layout iteration; compare the resulting area honestly with the room-program range and revisit the block if the owner prefers a smaller kitchen.
 3. Place only the documented kitchen components as schematic layout geometry, testing the 8 × 4 ft island, perimeter work zone, 42 in minimum clearances, stool side and dining path. Sink orientation, exact appliance models and window/hood routing remain choices or product/site checks.
 4. Keep walls, doors/openings, floor assemblies and native stairs out of the model until their dimensions and interfaces are documented. The D Revit room-space model and IFC remain the stable comparison base.

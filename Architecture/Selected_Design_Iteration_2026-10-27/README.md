@@ -10,7 +10,7 @@ Status: **owner-selected direction; schematic room blocks with a separately vali
 | Daily sleeping arrangement | A strategy: bedroom-capable L-02 remains on the lower level | Preserves the main floor's social rooms; step-free access to lower sleeping/bath remains unresolved. |
 | Main shell | B test envelope: 40 x 42 ft | The tested main plate is 1,680 sf before walls, stair/lift voids and area-convention reconciliation. This is not approved gross or conditioned area. |
 | Vertical circulation | Keep the future-lift reservation and use B's eight-riser arithmetic as a comparison baseline | 7.5 in nominal riser, 11 in tread and 15 in floor-assembly arithmetic placeholder are study values; final stair count, landing, openings, headroom, guards, structure and lift product remain open. |
-| Main public bathroom | M-06 is a half bath | Footprint and position are **TBD**; it is intentionally omitted from geometry and area totals. |
+| Main public bathroom | M-06 is a half bath; arrival / hall edge selected as the zone; pantry-side search window B selected for the first fit test | Exact position, footprint and service route remain **TBD**; it is intentionally omitted from geometry and area totals. B is an unassigned search envelope, not a bathroom dimension. See the design-gate brief for both windows and comparison limits. |
 | Upper suite | Retain the proposed private primary bath, private connector, independent guest hall access, and hybrid/guest Jack-and-Jill | Door swings, privacy boundary, furniture and bedroom qualification remain to be reviewed. |
 | Kitchen | Perimeter induction, sink and dishwasher; appliance-free 8 x 4 ft island; approximately 6 ft quartz + 2 ft butcher block | The inherited 17 ft 4 in x 16 ft kitchen test block has arithmetic fit checks, but is not an approved room size or appliance-open layout. |
 
@@ -24,6 +24,8 @@ Status: **owner-selected direction; schematic room blocks with a separately vali
 - [Room-program comparison](program-area-review.csv)
 - [Geometry checks and open findings](checks.json)
 
+The main-plan SVG shows the owner-selected M-06 arrival/hall test zone as two dashed, coordinate-derived search windows. A translucent overlay marks the 63 sf shared-frame projection with upper U-06. The search extents remain unassigned empty space, not a bathroom footprint or circulation validation; see the [design-gate brief](../Direction_D_Main_Floor_Design_Gates_2026-10-27.md).
+
 Regenerate the package from the unchanged A/B study source with Windows PowerShell:
 
 ```powershell
@@ -34,7 +36,7 @@ The generator derives its initial room blocks from A/B and the existing kitchen 
 
 ## Plan organization
 
-The main plan uses the B test arrangement for living, kitchen, dining, pantry and entry/hall. The SVG shows the 8 x 4 ft appliance-free island at the location from the documented kitchen fit test; perimeter appliance locations still need development. L-02 is removed from the main level and retained in the lower plan using the existing A 11 x 10 ft study block. M-06 is removed from the former full-bath block; the selected half bath has no invented rectangle. The shell and rear wings use the existing A/B test envelopes.
+The main plan uses the B test arrangement for living, kitchen, dining, pantry and entry/hall. The SVG shows the 8 x 4 ft appliance-free island at the location from the documented kitchen fit test; perimeter appliance locations still need development. L-02 is removed from the main level and retained in the lower plan using the existing A 11 x 10 ft study block. M-06 is removed from the former full-bath block; the arrival/hall edge is the selected test zone, but no bath rectangle is drawn. The shell and rear wings use the existing A/B test envelopes.
 
 This choice leaves the lower bedroom and lower full bath dependent on stairs unless a selected lift or site-designed route provides access. The main half bath has no shower and does not solve that accessibility need on its own.
 
@@ -66,9 +68,9 @@ The generator parses numeric allowances from `Requirements/Room_Program.md` and 
 
 ## Verification
 
-`checks.json` records 30 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; floor-profile arithmetic; and lower/upper frame-to-landing/connector alignment. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
+`checks.json` records 40 passing geometry/provenance checks: room-block containment in the test shells; positive dimensions; no same-floor room-block overlaps; no projected overlap of lower L-02 or L-06 with upper U-06; U-04 inside its documented study range; no fabricated half-bath footprint; kitchen fit-reference checks; every placed room joined to the published room schedule; stair landing/run adjacency and hall/wing alignment; lift/hall alignment; two-endpoint wall-opening intervals; floor-profile arithmetic; lower/upper frame-to-landing/connector alignment; and containment/non-overlap of the two unassigned M-06 search windows. Pantry-side B is the first test candidate; dining-side A remains the alternate. Neither window is bath geometry. Pantry-side B overlaps the upper U-06 block in plan projection by 63 sf; a plumbing route or fixture alignment is not established. The program comparison separately reports area variances rather than disguising them as passing geometry. All three SVG plans parse as XML.
 
-These checks validate rectangles, level-frame relationships, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. A separate Revit 2027.3 space-boundary study for D was subsequently generated at `.local/revit-pilot/selected-d/20261027T154924018Z/` and its IFC2X3 export passed all 23 checks in `validate_selected_d_ifc.py` with zero schema issues. That native file contains rooms and 2D comparison outlines only; it is not coordinated building geometry. Compact-Core C remains a separate test model.
+These checks validate rectangles, level-frame relationships, plan-level landing/run adjacency and arithmetic only. They do not validate doors, continuous furnished routes, actual stair geometry or section, an accessible path, floor/roof assemblies, structure, MEP, site, code, or construction readiness. A separate Revit 2027.3 space-boundary study for D was subsequently generated at `.local/revit-pilot/selected-d/20261027T162833498Z/` and its IFC2X3 export passed all 23 checks in `validate_selected_d_ifc.py` with zero schema issues. That native file contains rooms and 2D comparison outlines only; it is not coordinated building geometry. Compact-Core C remains a separate test model.
 
 ## Open design work
 
