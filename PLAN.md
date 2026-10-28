@@ -669,3 +669,15 @@ Acceptance criteria:
 - Reproduce the JSON under Windows PowerShell 5.1. Keep all locations and furniture unselected; do not imply human, accessibility, code, or door-clearance verification.
 
 Current status: Complete as one porch-furniture candidate. Tools/screen_m59_porch_furniture_route.ps1 passes 9/9 on two runs with identical JSON SHA256 FA29D73EAA7274B524D3CA4AED7AA7EB499E1644646B10A363F3AA4AA927BD27. The 30 in path comprises a west doorway connector, a north-side cross-porch lane, and an east exterior-door connector; it is clear of the 30 × 48 in table and two stationary 18 × 20 in chair-body rectangles. It fits the nominal 5 ft / 6 ft French-door intervals and nominal 3 ft exterior door. The proposal uses two right-angle turns and omits seated people, moving chairs, actual door swing/clear width, thresholds, site, grade and maneuvering. East porch still puts 50 sf outside the unapproved shell. No Revit, IFC, selected-D or M-06 change was made. See Architecture/M59_Porch_Furniture_Route_2026-10-28/README.md.
+
+### M60 — Reproduce selected-D generator and revalidate preserved IFC evidence
+
+Acceptance criteria:
+
+- Verify the current branch and preserve the three known untracked Incoming RFAs; make no changes to selected-D source or Revit files.
+- Run the documented selected-D PowerShell generator twice into ignored scratch directories; require 43/43 geometry checks, valid SVG XML, and byte-identical output artifacts.
+- Independently rerun the selected-D IFC2X3 validator only against the preserved isolated copy whose named RVT matches the export fingerprint; require all checks to pass.
+- Run the offline RevitPilot regression suite and record exact commands, evidence hashes, and remaining host/UI limitations.
+- Record the owner's U-02/U-03 access clarification without implying that door geometry, code, egress, or privacy performance has been verified.
+
+Current status: Complete for deterministic room-block generation and the preserved IFC/RVT pair. Both PowerShell runs pass 43/43 and produce identical hashes for all seven artifacts; all three SVGs parse. The isolated exact-backup copy passes 26/26 IFC checks, and the offline suite passes 37/37. The primary retained run's RVT mismatch remains documented and untouched. No Revit geometry or selected-D source changed. This evidence does not close native architectural geometry, door/egress coordination, M-06 fit/service routing, or manual Revit review.

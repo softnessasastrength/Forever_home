@@ -30,3 +30,13 @@ The owner confirmed that pantry-side B remains the working M-06 priority while a
 The unapproved [B-first adjacency candidate](../Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/README.md) keeps B clear and reconnects the social-room blocks, but moves M-05 to the east exterior wall and blocks search window A. Review that entry/approach tradeoff before considering adoption. B's envelope and source-referenced fixture-clearance comparison remain schematic only; the main half-bath fit and service routing are unresolved.
 
 No structural, code, accessibility, professional approval, permit, or construction-readiness claim follows from this decision.
+
+## Upper-suite access clarification (2026-10-28)
+
+The owner clarified the upper-suite circulation after the initial selections:
+
+- U-02 must have direct arrival from the shared hall and retain its private links.
+- U-03 is private-route-only through U-02; do not retain an additional U-03 shared-hall door.
+- The previously selected Jack-and-Jill links remain in scope.
+
+This supersedes any earlier assumption that U-03 keeps a shared-hall door alongside its private route. It records access intent only. No door location, width, swing, privacy performance, egress, room geometry, code applicability, or construction detail is established. Update the test topology and door schedule before changing the selected-D geometry.
