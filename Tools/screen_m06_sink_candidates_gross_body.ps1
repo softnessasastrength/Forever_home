@@ -123,6 +123,20 @@ $candidates = @(
         height_in = 34.0
         candidate_rfa_geometry_measured = $false
         rfa_type_to_sku_mapping_verified = $false
+    },
+    [ordered]@{
+        id = 'toto-supreme-lpt241g'
+        name = 'TOTO Supreme LPT241G pedestal lavatory'
+        status = 'research-only; complete assembly dimensions are manufacturer-documented; reseller lists Revit link but linked manufacturer RFA returned 403 and was not downloaded'
+        source = 'https://www.totousa.com/filemanager_uploads/product_assets/SpecSheet/SS-00319_LPT241_LPT241G.pdf'
+        design_file_source = 'https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00370_LPT241.rfa'
+        design_file_sha256 = $null
+        dimensions_source = 'TOTO spec SS-00319 v.02; overall 22-7/8 x 19-5/8 in and 34-1/2 in floor-to-rim; feature text separately states 34 in universal height'
+        width_in = 22.875
+        depth_in = 19.625
+        height_in = 34.5
+        candidate_rfa_geometry_measured = $false
+        rfa_type_to_sku_mapping_verified = $false
     }
 )
 
@@ -155,7 +169,7 @@ foreach ($candidate in $candidates) {
     }
 }
 
-Assert-Check ($results.Count -eq 7 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-estate-0900800.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-cadet-0236411.020').Count -eq 1 -and @($results | Where-Object id -eq 'toto-dartmouth-lpt642').Count -eq 1 -and @($results | Where-Object id -eq 'toto-clayton-lpt780').Count -eq 1) 'Expected the complete Evolution combo, Tresham, Edgemere, Estate, Cadet, TOTO Dartmouth and TOTO Clayton in the comparison.'
+Assert-Check ($results.Count -eq 8 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-estate-0900800.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-cadet-0236411.020').Count -eq 1 -and @($results | Where-Object id -eq 'toto-dartmouth-lpt642').Count -eq 1 -and @($results | Where-Object id -eq 'toto-clayton-lpt780').Count -eq 1 -and @($results | Where-Object id -eq 'toto-supreme-lpt241g').Count -eq 1) 'Expected the complete Evolution combo, Tresham, Edgemere, Estate, Cadet, TOTO Dartmouth, Clayton and Supreme in the comparison.'
 
 $report = [ordered]@{
     schema = 'forever-home-m06-sink-gross-body-screen-v1'
@@ -199,6 +213,7 @@ $report = [ordered]@{
         'Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.',
         'TOTO Dartmouth bounds use the manufacturer LPT642 specification dated 2013-01. The product page lists limited inventory and the linked public RFA was downloaded and hash-pinned, but its family/type geometry and current availability are not verified.',
         'TOTO Clayton bounds use manufacturer specification SS-00275 v.01 dated 2009-06, which identifies the traditional 27 x 19-5/8 x 34 in vitreous-china lavatory/pedestal combination. The product page lists limited inventory and the public RFA is hash-pinned but uninspected; current availability and family/type mapping remain unverified.',
+        'TOTO Supreme bounds use manufacturer specification SS-00319 v.02; it gives 22-7/8 x 19-5/8 in plan and 34-1/2 in floor-to-rim, while feature text says 34 in universal height. A reseller lists a TOTO Revit link, but its direct manufacturer URL returned 403; no alternate access was attempted, so no RFA hash or family geometry is available.',
         'No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established.'
     )
 }
