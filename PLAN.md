@@ -736,3 +736,14 @@ Acceptance criteria:
 - Keep current-product geometry, door/approach, lavatory, service routing and M-06 assignment unresolved.
 
 Current status: Complete as a preliminary source and arithmetic screen. Connecticut DAS identifies the 2022 CSBC as current for applications filed from 2022-10-01 and lists the 2021 IRC/IPC among adopted model codes; the planned 2026 code cycle is delayed pending Legislative Regulation Review Committee approval. The M-06 screen now records that dated status and its assumed detached one-family scope alongside the 2021 IRC R307.1 / P2705.1 references. Two PowerShell 5.1 runs match byte-for-byte (report SHA256 `9F03691DA0825E9AE0702D824460108A73AE6B89B7774CEB837350B29233423E`). B remains a gross unassigned search window; the fixture proxy is the 211AA predecessor, exact 610AA001.020 geometry is unverified, and door, route, lavatory, wall build-up and service checks remain open. This is not a compliance determination.
+
+### M66 — Recheck toilet/lavatory research pairs in owner-follow-up B window
+
+Acceptance criteria:
+
+- Recalculate all existing source-screened predecessor-toilet and lavatory combinations against the smaller owner-follow-up pantry-side B rectangle.
+- Carry the dated Connecticut code edition, detached one-family assumption and preliminary IRC sections into the generated evidence.
+- Verify deterministic PowerShell output and report gross containment only; preserve B as unassigned.
+- Keep exact current toilet geometry, lavatory selection, doors/approach, walls and plumbing route as open fit gates.
+
+Current status: Complete as a gross-envelope recheck. The 124 × 84 in pantry-side B search rectangle contains all 16 inherited 211AA-predecessor / lavatory rectangular pairs under the report's hypothetical same-wall centerline and front-strip assumptions. Two PowerShell 5.1 runs match byte-for-byte (SHA256 `B3B813DBC80448E36279BF675970F87C61C139F73175C4237DE281D0BB181640`). The report carries the 2022 CSBC / 2021 IRC source basis and identifies the 2026 code cycle as delayed. It does not establish room interior clear dimensions, current 610AA geometry, product selection, door swing, user approach, service route or code compliance. B remains unassigned; see `Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json`.

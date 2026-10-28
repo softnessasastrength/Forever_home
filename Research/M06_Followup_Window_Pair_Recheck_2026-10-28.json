@@ -26,6 +26,18 @@
                                                                ],
                                    "followup_window_is_smaller":  true
                                },
+    "code_screen_basis":  {
+                              "status_as_of":  "2026-10-28",
+                              "jurisdiction":  "Connecticut; project municipality, permit date and occupancy classification are unknown.",
+                              "adopted_code_basis":  "2022 Connecticut State Building Code adopts the 2021 IRC; 2026 code cycle was delayed pending approval.",
+                              "assumed_scope":  "Detached one-family dwelling within 2021 IRC scope; confirm with the project municipality.",
+                              "preliminary_sections":  "IRC R307.1 / Figure R307.1 and P2705.1; 15 in WC center to side obstruction, 30 in adjacent-fixture centerlines, 21 in clear in front; fixtures must not interfere with door/window operation.",
+                              "source_ct_current_code":  "https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations",
+                              "source_ct_2026_adoption_status":  "https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process",
+                              "source_irc_2021_chapter_3":  "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+                              "source_irc_2021_chapter_27":  "https://codes.iccsafe.org/content/IRC2021P2/chapter-27-plumbing-fixtures",
+                              "is_compliance_determination":  false
+                          },
     "evaluated":  {
                       "predecessor_toilet_and_research_sink_rectangles_only":  true,
                       "pair_containment_count":  16,
