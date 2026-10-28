@@ -984,6 +984,11 @@ public class FamilyIntakeCommand : IExternalCommand
         };
     }
 
+    static double[] AxisComponents(XYZ axis) => new[]
+    {
+        Math.Round(axis.X, 6), Math.Round(axis.Y, 6), Math.Round(axis.Z, 6)
+    };
+
     static object PlaceEvolutionOnVerticalWall(Document target, FamilySymbol symbol)
     {
         var wallType = new FilteredElementCollector(target).OfClass(typeof(WallType)).Cast<WallType>()
@@ -1035,6 +1040,14 @@ public class FamilyIntakeCommand : IExternalCommand
         }
         // The committed placement transaction regenerates the instance geometry.
 
+        var instanceHost = instance.Host;
+        var instanceHostFace = instance.HostFace;
+        if (instanceHost?.Id.Value != wall.Id.Value)
+            throw new InvalidOperationException("The Evolution instance is not hosted by the disposable wall.");
+        if (instanceHostFace is null || instanceHostFace.ElementId.Value != wall.Id.Value)
+            throw new InvalidOperationException("The Evolution instance does not retain a reference to the disposable wall face.");
+        var instanceTransform = instance.GetTransform();
+
         var measured = AnalyzePhysicalSolids(instance.get_Geometry(new Options
         {
             DetailLevel = ViewDetailLevel.Fine,
@@ -1051,7 +1064,15 @@ public class FamilyIntakeCommand : IExternalCommand
             reference_direction = "global +Y; intended family width axis",
             host_face_normal = new[] { Math.Round(hostFace.FaceNormal.X, 6), Math.Round(hostFace.FaceNormal.Y, 6), Math.Round(hostFace.FaceNormal.Z, 6) },
             host_element_id = wall.Id.Value,
+            instance_host_element_id = instanceHost.Id.Value,
+            host_face_element_id = instanceHostFace.ElementId.Value,
             instance_element_id = instance.Id.Value,
+            local_axes_in_project = new
+            {
+                x = AxisComponents(instanceTransform.BasisX),
+                y = AxisComponents(instanceTransform.BasisY),
+                z = AxisComponents(instanceTransform.BasisZ)
+            },
             positive_volume_solid_count = measured.Count,
             total_volume_ft3 = Math.Round(measured.VolumeFt3, 6),
             global_bounds_in = new

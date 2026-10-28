@@ -69,9 +69,26 @@ foreach ($result in $manifest.results) {
             $normal = @($probe.host_face_normal)
             $normalIsX = $normal.Count -eq 3 -and [Math]::Abs([double]$normal[0]) -gt 0.999 -and
                 [Math]::Abs([double]$normal[1]) -lt 0.001 -and [Math]::Abs([double]$normal[2]) -lt 0.001
+            $sameHost = $null -ne $probe.host_element_id -and
+                [long]$probe.instance_host_element_id -eq [long]$probe.host_element_id -and
+                [long]$probe.host_face_element_id -eq [long]$probe.host_element_id
+            $axes = $probe.local_axes_in_project
+            $xAxisIsWidth = @($axes.x).Count -eq 3 -and [Math]::Abs([double]$axes.x[1]) -gt 0.999 -and
+                [Math]::Abs([double]$axes.x[0]) -lt 0.001 -and [Math]::Abs([double]$axes.x[2]) -lt 0.001
+            $yAxisIsVertical = @($axes.y).Count -eq 3 -and [Math]::Abs([double]$axes.y[2]) -gt 0.999 -and
+                [Math]::Abs([double]$axes.y[0]) -lt 0.001 -and [Math]::Abs([double]$axes.y[1]) -lt 0.001
+            $zAxisIsProjection = @($axes.z).Count -eq 3 -and [Math]::Abs([double]$axes.z[0]) -gt 0.999 -and
+                [Math]::Abs([double]$axes.z[1]) -lt 0.001 -and [Math]::Abs([double]$axes.z[2]) -lt 0.001
+            $axesMatchIntent = $xAxisIsWidth -and $yAxisIsVertical -and $zAxisIsProjection
+            $sourceGeometryDimensionsMatch = [Math]::Abs([double]$hostBounds.width - 22.0) -le 0.05 -and
+                [Math]::Abs([double]$hostBounds.height - 34.25) -le 0.05 -and
+                [Math]::Abs([double]$hostBounds.projection - 17.5052) -le 0.05
             Assert-Intake ($hostFinite -and $probe.positive_volume_solid_count -gt 0 -and $probe.total_volume_ft3 -gt 0) `
                 "$($result.file): hosted-instance geometry metrics are missing, non-finite or non-positive."
             Assert-Intake $normalIsX "$($result.file): tested host face normal is not parallel to project X."
+            Assert-Intake $sameHost "$($result.file): hosted instance or host-face reference does not resolve to the disposable wall."
+            Assert-Intake $axesMatchIntent "$($result.file): local family axes do not map width/height/projection to project Y/Z/X."
+            Assert-Intake $sourceGeometryDimensionsMatch "$($result.file): host extents do not match measured family geometry (22 x 34.25 x 17.5052 in) under the tested orientation."
             Write-Output ("HOSTED {0} | type {1} | {2:F4} in projection x {3:F4} in width x {4:F4} in height; {5} positive-volume solids" -f `
                 $result.file, $probe.family_type, $hostBounds.projection, $hostBounds.width, $hostBounds.height, $probe.positive_volume_solid_count)
         }
