@@ -1,0 +1,68 @@
+﻿{
+    "count":  12,
+    "passed":  [
+                   "selected_D_source_matches_owner_followup",
+                   "all_six_upper_rooms_and_private_connector_come_from_selected_D",
+                   "all_room_dimensions_match_selected_D",
+                   "door_reservation_is_source_derived_3_5ft",
+                   "owner_private_sequence_is_in_search_graph",
+                   "hybrid_guest_JJ_is_in_search_graph",
+                   "upper_frame_offset_and_lift_projection_are_source_derived",
+                   "stair_landing_start_is_source_derived",
+                   "search_is_deterministic_and_bounded",
+                   "owner_confirmed_U03_shared_hall_access_is_required",
+                   "route_summary_matches_tested_records",
+                   "selected_D_file_unchanged_during_run"
+               ],
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "selected_D_source_matches_owner_followup":  true,
+                   "all_six_upper_rooms_and_private_connector_come_from_selected_D":  true,
+                   "all_room_dimensions_match_selected_D":  true,
+                   "door_reservation_is_source_derived_3_5ft":  true,
+                   "owner_private_sequence_is_in_search_graph":  true,
+                   "hybrid_guest_JJ_is_in_search_graph":  true,
+                   "upper_frame_offset_and_lift_projection_are_source_derived":  true,
+                   "stair_landing_start_is_source_derived":  true,
+                   "search_is_deterministic_and_bounded":  true,
+                   "owner_confirmed_U03_shared_hall_access_is_required":  true,
+                   "route_summary_matches_tested_records":  true,
+                   "selected_D_file_unchanged_during_run":  true
+               },
+    "search_summary":  {
+                           "algorithm":  "deterministic tree-attached rectangle search with equal node budgets for both U-01 orientations, five alignment anchors, 0.5ft wall bands and 3.5ft nominal contact reservations; followed by configuration-space BFS for a 4ft public hall",
+                           "node_limit":  1500,
+                           "per_orientation_node_budget":  750,
+                           "nodes_expanded":  1500,
+                           "node_limit_reached":  true,
+                           "root_orientation_runs":  [
+                                                         {
+                                                             "anchor_width_ft":  16,
+                                                             "anchor_depth_ft":  10,
+                                                             "nodes_expanded":  750
+                                                         },
+                                                         {
+                                                             "anchor_width_ft":  10,
+                                                             "anchor_depth_ft":  16,
+                                                             "nodes_expanded":  750
+                                                         }
+                                                     ],
+                           "layout_limit":  5000,
+                           "layouts_recorded":  332,
+                           "raw_complete_layouts":  377,
+                           "translations_tested":  191,
+                           "hall_route_searches":  191,
+                           "routes_with_clear_stair_approach":  147,
+                           "coordinate_grid_ft":  6,
+                           "source_door_reservation_ft":  3.5,
+                           "search_complete":  false
+                       },
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "941f7ae0f48b47995896bad15424c1b617c1211633060a7204031f10929c1832",
+                                       "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478"
+                                   },
+    "interpretation":  "A passing integrity check validates search setup and evidence. A viable layout is claimed only when its recorded hall reachability checks pass."
+}

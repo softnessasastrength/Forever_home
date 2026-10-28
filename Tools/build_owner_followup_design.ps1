@@ -81,7 +81,7 @@ $retainedEdges=@(
     [ordered]@{a='U-01';b='U-05';status='retain primary-only bath access; door geometry TBD'},
     [ordered]@{a='U-01';b='C-UPPER';status='retain nominal hall access'},
     [ordered]@{a='U-02';b='C-UPPER';status='existing nominal access retained for comparison; privacy boundary to review'},
-    [ordered]@{a='U-03';b='C-UPPER';status='existing nominal hybrid hall edge carried forward provisionally; final privacy access policy TBD'},
+    [ordered]@{a='U-03';b='C-UPPER';status='owner-confirmed hybrid shared-hall access retained alongside private-suite link; door and route geometry TBD'},
     [ordered]@{a='U-04';b='C-UPPER';status='retain guest independent shared-hall access'},
     [ordered]@{a='U-03';b='U-06';status='retain hybrid Jack-and-Jill access'},
     [ordered]@{a='U-04';b='U-06';status='retain guest Jack-and-Jill access'}

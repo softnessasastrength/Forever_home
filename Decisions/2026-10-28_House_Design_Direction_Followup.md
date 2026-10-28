@@ -4,7 +4,7 @@ Status: **owner-directed inputs for a separate schematic proposal**. This record
 
 ## Owner direction
 
-1. Make the hybrid room part of the private primary/boutique/hybrid sequence. Retain guest hall access and the hybrid/guest Jack-and-Jill relationship for the next topology test; retain primary-only access to the primary bath. Carry the current hybrid shared-hall edge forward provisionally, because the owner did not say whether it should remain alongside private access. The new private link's location, width, wall and door are not yet designed.
+1. Make the hybrid room part of the private primary/boutique/hybrid sequence. Retain guest hall access and the hybrid/guest Jack-and-Jill relationship; retain primary-only access to the primary bath. On 2026-10-28 the owner confirmed that U-03 keeps shared-hall access alongside the new private-suite link. The route, location, wall and doors are not yet designed.
 2. Return the kitchen and dining study targets to the earlier documented **14 × 12 ft** and **11 × 10 ft**, respectively. These are area-program study targets (168 sf and 110 sf), not approved finished dimensions.
 3. Explore a steep traditional gable roof concept. Roof pitch, ridge orientation/elevation, spans, assemblies, openings and structure remain unassigned.
 4. Use Connecticut as the code-research jurisdiction. The municipality, parcel, permit schedule and reviewing authority remain unknown.

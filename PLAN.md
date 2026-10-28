@@ -417,3 +417,27 @@ Current status: `Tools/build_m36_roof_orientation_study.ps1` passes **11/11** ch
 ## Selected-D fingerprint checkpoint — 2026-10-28
 
 The current-source export run `.local/revit-pilot/selected-d/20261028T021345099Z/` still contains the documented 21-space IFC2X3 geometry and clean schema, but its named RVT no longer matches the export fingerprint after the owner-saved file update recorded in `PROGRESS.md`. Manifest fingerprint: `7a03f704329e840c938361d06c31329823e3d939c993bbc4e11de67e991af7ff`; current named RVT fingerprint: `7427ffa0eeeb5a2a5a4d46bf3d6876c8f906d3c723a74e2bfac2af644d610299`. Automatic backup `.0001.rvt` retains the manifest-matching bytes; a new isolated scratch revalidation at `.local/revalidation/selected-d-baseline-20261028/recheck-exact-backup/` passes 23/23. Validation of the current named RVT fails only the saved-model fingerprint check. Keep both backup files and the current named RVT unchanged; regenerate a separate current-source study only after the Revit add-in is available and the owner-approved workflow can be resumed.
+
+### M37 — Pack the owner-directed upper suite around the stair, lift and public route
+
+Acceptance criteria:
+
+- Preserve selected-D room dimensions/source and the +6 ft upper-frame transform; keep the selected-D baseline unchanged.
+- Carry the owner's confirmed U-01 → C-PRIVATE → U-02 → U-03 private sequence, U-03 shared-hall access, guest hall access, primary-only bath access and U-03/U-04 Jack-and-Jill relation through U-06.
+- Test the source lift projection and a continuous 4 ft public route from the source upper landing; label nominal door reservations and wall gaps as schematic.
+- Produce source-fingerprinted PowerShell JSON/check/SVG/manifest output; verify parser, path guard, deterministic replay and route evidence.
+- Treat bounded no-candidate results as inconclusive, and keep any candidate outside selected D pending later Revit/IFC validation.
+
+Current status: `Tools/test_m37_upper_suite_pack_and_route.ps1` passes **12/12** source/setup checks with the unchanged selected-D study fingerprint. Its default 1,500-node bounded search splits 750 nodes per U-01 orientation, records 332 unique layouts from 377 complete packings and evaluates 191 lift-clear route placements; 147 have a clear initial stair approach. Of those 147 route cases, none reaches U-01 or U-02, 21 reach U-03 and 63 reach U-04. No case reaches U-01, U-02 and U-04 together, let alone the owner-confirmed U-03 shared-hall access. The node cap was reached; this is a search failure, not proof that a viable layout is impossible. See `Architecture/M37_Upper_Suite_Pack_Route_2026-10-28/README.md`. Next improve search ordering by reserving the public hall and landing connection before placing room blocks. Separately, the owner confirmed U-03 retains hall access alongside its private link; that decision is captured in `Decisions/2026-10-28_House_Design_Direction_Followup.md` and the regenerated proposal. The 14×12 / 11×10 ft kitchen/dining targets and Connecticut steep-gable research remain unchanged; no pitch or roof assembly is selected.
+
+### M38 — Compare illustrative steep-gable pitch options
+
+Acceptance criteria:
+
+- Use only the existing 40×42 ft owner-follow-up **test envelope** and source-derived half-runs for the two ridge directions.
+- Compare labelled pitch-ratio proposals without selecting a pitch, eave datum, roof orientation, assembly or structural dimensions.
+- Verify rise/roof-plane arithmetic and preserve all options as proposals; do not infer code compliance from roof steepness.
+- Reference the current Connecticut roof-code research and keep municipality/site/permit/loads open.
+- Produce a source-fingerprinted PowerShell report, checks, SVG and manifest; verify deterministic replay and parsable outputs.
+
+Current status: `Tools/build_m38_steep_roof_pitch_options.ps1` compares illustrative 8:12, 10:12 and 12:12 ratios against both 20 ft and 21 ft half-runs. It passes **12/12** checks and produces identical artifacts in two scratch runs. Rise above a future eave ranges from 13.33 to 20 ft for the 40 ft span and 14 to 21 ft for the 42 ft span. Those are explicit hypothetical massing cases; no pitch, eave or ridge datum is selected. See `Architecture/M38_Steep_Roof_Pitch_Options_2026-10-28/README.md` and the official-source context in `Research/Connecticut_Roof_Code_Research_2026-10-28.md`. No roof solid, load/design calculation, code-compliance or permit conclusion is produced.

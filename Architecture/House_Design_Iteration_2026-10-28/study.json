@@ -7,7 +7,7 @@
     "source_fingerprints_sha256":  {
                                        "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
                                        "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
-                                       "owner_followup_decision.md":  "542a43de13e65722fc43a0d11307204033062c2b78b516ac98bc49c63b28f090"
+                                       "owner_followup_decision.md":  "ec426e391506190c1e07d26a6c63a108db3ebe0aec9aa4c092a7d22a88355574"
                                    },
     "coordinate_frame":  "Selected-D schematic frame: feet, x right and y toward rear; no site orientation or georeference.",
     "shell":  {
@@ -140,7 +140,7 @@
                                                              {
                                                                  "a":  "U-03",
                                                                  "b":  "C-UPPER",
-                                                                 "status":  "existing nominal hybrid hall edge carried forward provisionally; final privacy access policy TBD"
+                                                                 "status":  "owner-confirmed hybrid shared-hall access retained alongside private-suite link; door and route geometry TBD"
                                                              },
                                                              {
                                                                  "a":  "U-04",

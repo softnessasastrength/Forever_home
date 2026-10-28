@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:21px;font-weight:bold}.label{font-size:13px}.note{font-size:12px;fill:#5b554d}.axis{stroke:#74695d;stroke-width:2}.a{fill:#7f9d84}.b{fill:#b78f66}</style>
+<text class="title" x="40" y="32">M38 - steep-gable rise options</text><text class="note" x="40" y="54">Illustrative pitch cases on the 40 x 42 ft test envelope; eave datum and pitch unselected</text>
+<text class="label" x="40" y="124">A / Illustrative 8:12: rise 13.33 ft</text><rect class="a" x="330" y="102" width="160" height="24"/>
+<text class="label" x="40" y="166">A / Illustrative 10:12: rise 16.67 ft</text><rect class="a" x="330" y="144" width="200" height="24"/>
+<text class="label" x="40" y="208">A / Illustrative 12:12: rise 20.00 ft</text><rect class="a" x="330" y="186" width="240" height="24"/>
+<text class="label" x="40" y="304">B / Illustrative 8:12: rise 14.00 ft</text><rect class="b" x="330" y="282" width="168" height="24"/>
+<text class="label" x="40" y="346">B / Illustrative 10:12: rise 17.50 ft</text><rect class="b" x="330" y="324" width="210" height="24"/>
+<text class="label" x="40" y="388">B / Illustrative 12:12: rise 21.00 ft</text><rect class="b" x="330" y="366" width="252" height="24"/>
+<line class="axis" x1="330" y1="455" x2="582" y2="455"/>
+<text class="note" x="40" y="520">A: ridge along 42 ft side, 20 ft half-run. B: ridge along 40 ft side, 21 ft half-run.</text><text class="note" x="40" y="540">Rise is above an undefined eave. No roof solid, code check, snow/wind design or structure.</text>
+</svg>

@@ -1,0 +1,40 @@
+﻿{
+    "count":  12,
+    "passed":  [
+                   "owner_selected_steep_gable_concept_is_present",
+                   "jurisdiction_is_connecticut",
+                   "selected_D_provenance_matches_proposal",
+                   "test_envelope_is_source_followup_40_by_42",
+                   "both_ridge_orientations_preserve_projected_plan_area",
+                   "pitch_options_are_explicitly_unselected",
+                   "rise_follows_half_run_times_pitch_ratio",
+                   "steeper_options_raise_ridge_monotonically",
+                   "same_pitch_rise_increases_by_five_percent_for_42ft_span",
+                   "absolute_ridge_and_eave_datums_remain_unassigned",
+                   "no_code_compliance_or_structural_claim",
+                   "selected_D_file_unchanged_during_run"
+               ],
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "owner_selected_steep_gable_concept_is_present":  true,
+                   "jurisdiction_is_connecticut":  true,
+                   "selected_D_provenance_matches_proposal":  true,
+                   "test_envelope_is_source_followup_40_by_42":  true,
+                   "both_ridge_orientations_preserve_projected_plan_area":  true,
+                   "pitch_options_are_explicitly_unselected":  true,
+                   "rise_follows_half_run_times_pitch_ratio":  true,
+                   "steeper_options_raise_ridge_monotonically":  true,
+                   "same_pitch_rise_increases_by_five_percent_for_42ft_span":  true,
+                   "absolute_ridge_and_eave_datums_remain_unassigned":  true,
+                   "no_code_compliance_or_structural_claim":  true,
+                   "selected_D_file_unchanged_during_run":  true
+               },
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study_json":  "941f7ae0f48b47995896bad15424c1b617c1211633060a7204031f10929c1832",
+                                       "owner_decision":  "ec426e391506190c1e07d26a6c63a108db3ebe0aec9aa4c092a7d22a88355574",
+                                       "Connecticut_code_research":  "34cebc2467a6c729b2404656d0302053c2c917558e38ede50012b03ba952f38d"
+                                   }
+}
