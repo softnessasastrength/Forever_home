@@ -36,7 +36,7 @@ Regenerate the package from the unchanged A/B study source with Windows PowerShe
 powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1
 ```
 
-The generator derives its initial room blocks from A/B and the existing kitchen test. `study.json` records SHA256 fingerprints of the source study, source checks, room program, kitchen decision and selected direction decision. It preserves the old studies and writes only this iteration package. Re-running it overwrites this iteration's derived files; do not edit generated files by hand.
+The generator derives its initial room blocks from A/B and the existing kitchen test. `study.json` records SHA256 fingerprints of the source study, source checks, room program, kitchen decision and selected direction decision. It preserves the old studies and writes only this iteration package. Re-running it overwrites this iteration's derived files; do not edit generated files by hand. `checks.json` includes explicit upper-flight/landing, wing/bridge and bridge/shell-edge continuity checks plus their measured plan gaps; these certify only the comparison rectangles.
 
 ## Plan organization
 
@@ -50,7 +50,7 @@ The 8 x 8 ft lower technology-room test block moves to the front/middle service 
 
 ## Proposed stair and lift plan coordination
 
-The latest D iteration lays out two comparison flights using B's inherited 8-riser arithmetic, 7 treads at 11 in and 4 ft landings. In plan, the lower-to-main route uses a lower landing at local y=28–32 ft, a 6 ft 5 in run and a main landing at y=27 ft 7 in–31 ft 7 in. For this comparison, rear edges of the 32 ft rear wing and 42 ft main shell are aligned; this maps the lower landing to main-plan y=38–42 ft. The main-to-upper run uses the same run length, with its upper landing extended 4 x 4 ft beyond the 36 x 32 ft upper wing to meet the main-shell rear edge and hall. These are schematic placements, not selected stair specifications or a verified section. Shared-wall openings, clearances, floor-edge support, headroom, guards, egress and structure remain unresolved.
+The latest D iteration lays out two comparison flights using B's inherited 8-riser arithmetic, 7 treads at 11 in and 4 ft landings. In plan, the lower-to-main route uses a lower landing at local y=28–32 ft, a 6 ft 5 in run and a main landing at y=27 ft 7 in–31 ft 7 in. For this comparison, rear edges of the 32 ft rear wing and 42 ft main shell are aligned; this maps the lower landing to main-plan y=38–42 ft. The main-to-upper run uses the same run length, with its upper landing extended 4 x 4 ft beyond the 36 x 32 ft upper wing to meet the main-shell rear edge and hall. The reproducible generator now checks that the upper flight meets the landing and the bridge meets both the rear wing and main-shell edge; all three plan gaps report 0.000000 ft. This closes the historical C-IFC plan-gap finding for the selected-D schematic only. These are schematic placements, not selected stair specifications or a verified section. Shared-wall openings, clearances, floor-edge support, headroom, guards, egress and structure remain unresolved under CO-021.
 
 The 8 x 8 ft lift reservation is shifted 4 in west to align its west face with the upper core hall. Its door side, product dimensions, maneuvering clearances, pit, overrun and lower-level connection are unresolved. The shift and stair blocks are comparison geometry only.
 

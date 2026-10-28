@@ -114,7 +114,7 @@ $coreXUpper = 103.0 / 6.0
 $coreXLower = 12.5
 $runLength = 7.0 * 11.0 / 12.0
 $mainDepth = 42.0
-$upperWingStartY = 42.0
+$mainShellRearY = $mainDepth
 $upperRunStartY = [double]$source.alternatives.B.core.stair_run_y
 $upperRunEndY = $upperRunStartY + $runLength
 # Align the rear edges of the 32 ft lower wing and 42 ft main shell for this
@@ -155,7 +155,7 @@ $stairCore = [ordered]@{
         run_ft=@($coreXUpper,$upperRunStartY,4,$runLength)
         upper_landing_ft=@($coreXUpper,$upperRunEndY,4,4)
         main_floor_opening_ft=@($coreXUpper,$upperRunStartY,4,$runLength)
-        upper_floor_extension_ft=@($coreXUpper,$upperRunEndY,4,($upperWingStartY-$upperRunEndY))
+        upper_floor_extension_ft=@($coreXUpper,$upperRunEndY,4,($mainShellRearY-$upperRunEndY))
     }
     lift=[ordered]@{origin_ft=@($liftX,34);width_ft=8;depth_ft=8;status='reservation only; product, pit, overrun and door side unselected'}
     main_shell_rear_edge_openings=@(
@@ -163,7 +163,7 @@ $stairCore = [ordered]@{
         @{use='upper stair bridge';x_interval_ft=@($coreXUpper,($coreXUpper+4));elevation_scope='main/upper; wall opening size and fire separation TBD'}
     )
     main_floor_profile_sf=[Math]::Round(40*42 - 8*$runLength - 64,3)
-    upper_floor_profile_sf=1152+4*($upperWingStartY-$upperRunEndY)
+    upper_floor_profile_sf=1152+4*($mainShellRearY-$upperRunEndY)
 }
 
 $layoutTitle = if ($isAdjacencyCandidate) { 'Direction D adjacency candidate - main social sequence study' } elseif ($isBathFirstAdjacencyCandidate) { 'Direction D bath-first adjacency candidate' } else { 'Selected direction D - lower flex room / B-sized main shell' }
@@ -407,8 +407,27 @@ if ($isAdjacencyCandidate -or $isBathFirstAdjacencyCandidate) {
     }
 }
 $upperHall = $upper | Where-Object id -eq 'C-UPPER'
+$upperFlight = $stairCore.main_to_upper.run_ft
+$upperLanding = $stairCore.main_to_upper.upper_landing_ft
+$upperBridge = $stairCore.main_to_upper.upper_floor_extension_ft
+$upperFlightEndY = [double]$upperFlight[1] + [double]$upperFlight[3]
+$upperLandingGap = [double]$upperLanding[1] - $upperFlightEndY
+$upperWingRearEdgeY = [double]$planFrameOffsets.upper[1] + 32.0
+$upperBridgeStartY = [double]$upperBridge[1]
+$upperBridgeEndY = $upperBridgeStartY + [double]$upperBridge[3]
+$upperWingBridgeGap = $upperBridgeStartY - $upperWingRearEdgeY
+$bridgeShellEdgeGap = $mainShellRearY - $upperBridgeEndY
+$upperLandingMatchesBridge = (
+    [Math]::Abs([double]$upperLanding[0]-[double]$upperBridge[0]) -lt 0.000001 -and
+    [Math]::Abs([double]$upperLanding[1]-[double]$upperBridge[1]) -lt 0.000001 -and
+    [Math]::Abs([double]$upperLanding[2]-[double]$upperBridge[2]) -lt 0.000001 -and
+    [Math]::Abs([double]$upperLanding[3]-[double]$upperBridge[3]) -lt 0.000001
+)
 $planChecks['proposed_main_stair_and_lift_blocks_clear_placed_main_rooms'] = ($coreRoomHits.Count -eq 0)
-$planChecks['upper_landing_reaches_rear_wing_edge'] = ([Math]::Abs(($stairCore.main_to_upper.upper_landing_ft[1]+$stairCore.main_to_upper.upper_landing_ft[3])-$upperWingStartY) -lt 0.000001)
+$planChecks['upper_landing_reaches_main_shell_rear_edge'] = ([Math]::Abs(($upperLanding[1]+$upperLanding[3])-$mainShellRearY) -lt 0.000001)
+$planChecks['upper_stair_run_meets_upper_landing_without_plan_gap'] = ([Math]::Abs($upperLandingGap) -lt 0.000001)
+$planChecks['upper_floor_bridge_meets_upper_wing_and_main_shell_edges'] = ([Math]::Abs($upperWingBridgeGap) -lt 0.000001 -and [Math]::Abs($bridgeShellEdgeGap) -lt 0.000001)
+$planChecks['upper_landing_matches_upper_floor_bridge_footprint'] = $upperLandingMatchesBridge
 $planChecks['upper_connector_aligns_with_upper_hall'] = ([Math]::Abs($stairCore.main_to_upper.upper_floor_extension_ft[0]-$upperHall.x) -lt 0.000001 -and [Math]::Abs($stairCore.main_to_upper.upper_floor_extension_ft[2]-$upperHall.w) -lt 0.000001)
 $planChecks['lift_west_face_aligns_with_upper_core_hall'] = ([Math]::Abs($stairCore.lift.origin_ft[0]-($upperHall.x+$upperHall.w)) -lt 0.000001)
 $planChecks['lower_stair_landing_and_run_are_edge_adjacent'] = ([Math]::Abs($stairCore.lower_to_main.lower_landing_ft[1]-($stairCore.lower_to_main.run_ft[1]+$stairCore.lower_to_main.run_ft[3])) -lt 0.000001)
@@ -433,7 +452,7 @@ $checks = [ordered]@{
     status = if($isAdjacencyCandidate){'unapproved adjacency candidate; geometry checks only; owner selection required before replacement'}else{'schematic geometry checks only; unresolved design items remain'}
     layout_variant = $LayoutVariant
     checks = $planChecks
-    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; selected_M06_vs_U06_projected_overlap_sf=$m06UpperBathProjection.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
+    measurements = [ordered]@{ lower_L02_vs_upper_U06_overlap_sf=$wetStack.area_sf; lower_L06_vs_upper_U06_overlap_sf=$techStack.area_sf; selected_M06_vs_U06_projected_overlap_sf=$m06UpperBathProjection.area_sf; placed_main_room_count=$mainCounts; lower_L02_net_sf=[Math]::Round($lowerFlex.w*$lowerFlex.d,2); selected_bath_area_sf=$null; comparison_stair_run_ft=$runLength; upper_stair_to_landing_plan_gap_ft=[Math]::Round($upperLandingGap,6); upper_wing_to_bridge_plan_gap_ft=[Math]::Round($upperWingBridgeGap,6); bridge_to_main_shell_rear_edge_gap_ft=[Math]::Round($bridgeShellEdgeGap,6); lift_shift_from_B_origin_in=4; main_floor_profile_sf=$stairCore.main_floor_profile_sf; upper_floor_with_connector_sf=$stairCore.upper_floor_profile_sf }
     adjacency_review = $adjacencyReview
     m06_fixture_clearance_study = $m06FixtureFitTest
     room_block_overlaps = @($overlaps)
