@@ -725,3 +725,14 @@ Acceptance criteria:
 - Do not change family bytes, selected-D source, or Revit model state; do not claim Revit runtime success until a fresh report passes.
 
 Current status: Complete for diagnosis and documentation; Revit runtime retest remains open. The retained report `.local/revit-pilot/family-intake/20261028T210959251Z/intake-manifest.json` failed at `No referenceable vertical planar face was found`, identifying the older raw-wall-geometry probe. Current `Pilot.cs` obtains a stable face reference using `HostObjectUtils.GetSideFaces`. The per-user manifest uses the authorized AddInId and repository-local `build-evolution-host-v4` DLL, SHA256 `0278CF2EABF981367DF679538DEDE1D3CB412E960AA1537F80046FC7A3ADC0E4`. Revit remains visually blocked by its trial welcome WebView; the close control belongs to a child window that CUA does not expose. The exact prompt cannot be checked, so the fresh intake and any permitted Load Once choice are pending. No registration, model, or RFA was changed.
+
+### M65 — Refresh Connecticut code basis for the M-06 clearance screen
+
+Acceptance criteria:
+
+- Check the current Connecticut code edition and pending code-cycle status on official state sources.
+- Keep any code-derived clearance values conditional on a detached one-family/IRC assumption, site and permit applicability.
+- Bind the preliminary predecessor-only clearance report to the dated code-status source and reproduce it deterministically.
+- Keep current-product geometry, door/approach, lavatory, service routing and M-06 assignment unresolved.
+
+Current status: Complete as a preliminary source and arithmetic screen. Connecticut DAS identifies the 2022 CSBC as current for applications filed from 2022-10-01 and lists the 2021 IRC/IPC among adopted model codes; the planned 2026 code cycle is delayed pending Legislative Regulation Review Committee approval. The M-06 screen now records that dated status and its assumed detached one-family scope alongside the 2021 IRC R307.1 / P2705.1 references. Two PowerShell 5.1 runs match byte-for-byte (report SHA256 `9F03691DA0825E9AE0702D824460108A73AE6B89B7774CEB837350B29233423E`). B remains a gross unassigned search window; the fixture proxy is the 211AA predecessor, exact 610AA001.020 geometry is unverified, and door, route, lavatory, wall build-up and service checks remain open. This is not a compliance determination.

@@ -16,7 +16,13 @@
                           "remains_unassigned":  true
                       },
     "preliminary_clearance_screen":  {
-                                         "jurisdiction_research_basis":  "Connecticut 2022 CSBC; assumed detached one-family dwelling and preliminary 2021 IRC screen only; local applicability unconfirmed.",
+                                         "jurisdiction_research_basis":  "Connecticut 2022 CSBC adopts the 2021 IRC; assumed detached one-family dwelling and preliminary IRC screen only; occupancy, municipality and local applicability unconfirmed.",
+                                         "code_status_as_of":  "2026-10-28",
+                                         "current_connecticut_code":  "2022 Connecticut State Building Code; official DAS regulations page says it applies to permit applications filed from 2022-10-01.",
+                                         "next_code_cycle":  "2026 Connecticut codes were not yet effective; official DAS adoption-process page says approval was delayed pending Legislative Regulation Review Committee review.",
+                                         "source_ct_current_code":  "https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations",
+                                         "source_ct_2026_adoption_status":  "https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process",
+                                         "assumed_irc_clearance_basis":  "2021 IRC R307.1 space-required fixture spacing and P2705.1 fixture installation; confirm applicable edition and interpretation with the project municipality.",
                                          "side_centerline_to_obstruction_in":  15,
                                          "front_clearance_in":  21,
                                          "source_15in":  "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
