@@ -53,10 +53,33 @@ foreach ($result in $manifest.results) {
         Write-Output ("MEASURED {0} | {1} | {2:F4} x {3:F4} x {4:F4} in; {5} positive-volume solids" -f `
             $result.file, $type.type, $bounds.width_x, $bounds.depth_y, $bounds.height_z, $type.solid_metrics.positive_volume_solid_count)
     }
+
+    if ($result.source_sha256 -eq '39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea') {
+        $probe = $result.host_orientation_test
+        $probePassed = $null -ne $probe -and [string]$probe.status -like 'measured on a disposable vertical wall host*'
+        Assert-Intake $probePassed "$($result.file): hash-matched Evolution host-orientation probe did not complete successfully."
+        if ($probePassed) {
+            $hostBounds = $probe.global_bounds_in
+            $hostMetrics = @($hostBounds.width, $hostBounds.projection, $hostBounds.height,
+                $probe.total_volume_ft3, $probe.positive_volume_solid_count)
+            $hostFinite = $true
+            foreach ($value in $hostMetrics) {
+                if ($null -eq $value -or [double]::IsNaN([double]$value) -or [double]::IsInfinity([double]$value)) { $hostFinite = $false }
+            }
+            $normal = @($probe.host_face_normal)
+            $normalIsX = $normal.Count -eq 3 -and [Math]::Abs([double]$normal[0]) -gt 0.999 -and
+                [Math]::Abs([double]$normal[1]) -lt 0.001 -and [Math]::Abs([double]$normal[2]) -lt 0.001
+            Assert-Intake ($hostFinite -and $probe.positive_volume_solid_count -gt 0 -and $probe.total_volume_ft3 -gt 0) `
+                "$($result.file): hosted-instance geometry metrics are missing, non-finite or non-positive."
+            Assert-Intake $normalIsX "$($result.file): tested host face normal is not parallel to project X."
+            Write-Output ("HOSTED {0} | type {1} | {2:F4} in projection x {3:F4} in width x {4:F4} in height; {5} positive-volume solids" -f `
+                $result.file, $probe.family_type, $hostBounds.projection, $hostBounds.width, $hostBounds.height, $probe.positive_volume_solid_count)
+        }
+    }
 }
 
 if ($errors.Count -gt 0) {
-    foreach ($error in $errors) { Write-Error "FAIL: $error" -ErrorAction Continue }
+    foreach ($intakeError in $errors) { Write-Error "FAIL: $intakeError" -ErrorAction Continue }
     Write-Output ("FAILED: {0} of {1} checks failed." -f $errors.Count, $checks)
     exit 1
 }

@@ -66,3 +66,6 @@ Schematic milestone: [two measured room-block/volume proposals](../Architecture/
 - No direct merge to `main`, destructive operations, spending or private-data disclosure.
 - No unverified claims of Revit execution, legal compliance, engineering approval or successful export.
 - Provide a clear handback: what changed, tests, risks, blockers, and next steps.
+
+## Overnight M20 checkpoint (2026-10-28)
+The Champion PRO predecessor RFA from public LIXIL Pro is a toilet-seat-only family, not selected toilet 610AA001.020 bowl/tank geometry; Revit intake measured type `5325.010` at 14.2591 × 17.0527 × 1.4658 in. The disposable Evolution host probe in `.local/revit-pilot/family-intake/20261028T060040906Z/` failed due to two post-commit `Document.Regenerate()` calls. Source and validator are corrected; the old report now properly fails 1/77 rather than being misreported as passing. Corrected isolated DLL SHA256 `25C89E269F4BE7EFFDABC3FAA1E140F020C352D420CFD84B526E8FCC122FB534`; verified per-user manifest backup is in ignored `.local/revit-pilot/registration-backups/20261028T060506983Z/`. Revit restart is presently blocked by an Autodesk trial webview overlay; host verification must be rerun once that is dismissed. Keep selected D unchanged and M-06 B unassigned. Details in latest `PROGRESS.md`, M20 in `PLAN.md`, and `Revit/Family_Intake/RevitCity_Family_Intake.md`.

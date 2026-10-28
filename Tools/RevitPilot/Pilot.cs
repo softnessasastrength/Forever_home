@@ -1001,7 +1001,8 @@ public class FamilyIntakeCommand : IExternalCommand
             wall = Wall.Create(target, axis, wallType.Id, level.Id, 10.0, 0.0, false, false);
             createWall.Commit();
         }
-        target.Regenerate();
+        // Committing the wall transaction regenerates the document; Revit forbids
+        // Document.Regenerate() outside an open transaction.
 
         var geometryOptions = new Options { ComputeReferences = true, DetailLevel = ViewDetailLevel.Fine };
         PlanarFace? hostFace = null;
@@ -1032,7 +1033,7 @@ public class FamilyIntakeCommand : IExternalCommand
             instance = target.Create.NewFamilyInstance(hostFace.Reference, point, XYZ.BasisY, symbol);
             place.Commit();
         }
-        target.Regenerate();
+        // The committed placement transaction regenerates the instance geometry.
 
         var measured = AnalyzePhysicalSolids(instance.get_Geometry(new Options
         {
