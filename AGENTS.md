@@ -19,6 +19,11 @@ GitHub repository `softnessasastrength/Forever_home`, working branch `design/vr-
 ## Revit
 Revit 2027 is authoritative; a working licensed Revit 2018 installation is a limited fallback. Revit cannot backward-save. Preserve RVT/RFA, IFC2x3, compatible DWG, PDF, schedules/CSV and tested backups. Do not assume IFC imports are native parametric elements.
 
+### Owner-authorized local RevitPilot use
+The owner has explicitly authorized coding agents working in this repository to manage its **per-user Revit 2027 RevitPilot add-in** for approved local project work. This authorization is limited to the Forever Home add-in registration with AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and a DLL built in the current checked-out repository's ignored `.local/revit-pilot/` directory. Before replacing the matching per-user manifest, verify its AddInId, verify the new manifest's assembly path resolves inside the current repository, compute and record that DLL's SHA256, and preserve the existing manifest under ignored `.local/revit-pilot/registration-backups/<timestamp>/`.
+
+After restarting Revit, an agent may choose **Load Once** only when the trust prompt identifies that exact, hash-checked project-local DLL. Never choose **Always Load**, change Revit/Windows-wide trust or security settings, bypass anti-malware, load an unrelated or unknown add-in, or overwrite a manifest with a different AddInId. If the prompt's product, path, or hash does not match the verified manifest/build, stop and ask the owner. This authorization does not permit installing unrelated software or modifying remote state.
+
 ## Task execution
 Before modifying files, inspect the relevant source documents and repository state. Define scope and acceptance criteria. Make minimal, reviewable changes; validate them; commit to the working branch; summarize results, verification, assumptions, and blockers.
 
