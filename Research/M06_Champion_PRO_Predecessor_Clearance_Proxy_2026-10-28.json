@@ -1,0 +1,76 @@
+{
+    "schema":  "forever-home-m06-predecessor-clearance-proxy-v1",
+    "result":  "PASS: both predecessor-only toilet-plus-minimum-screening envelopes are contained in the gross unassigned B window.",
+    "study_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "predecessor_product_report":  "M06_Champion_PRO_Predecessor_Envelope_Screen_2026-10-28.json",
+    "predecessor_product_report_sha256":  "fc64e326bd9b9155e1bce7ee3831bed8399ca730f01dc657808ff394c0a3abbd",
+    "owner_selected_target_sku":  "610AA001.020",
+    "proxy_predecessor_sku":  "211AA104.020",
+    "exact_target_sku_geometry_verified":  false,
+    "search_window":  {
+                          "id":  "east_of_core",
+                          "label":  "Pantry-side B",
+                          "gross_width_in":  158,
+                          "gross_depth_in":  84,
+                          "gross_area_sf":  92.17,
+                          "remains_unassigned":  true
+                      },
+    "preliminary_clearance_screen":  {
+                                         "jurisdiction_research_basis":  "Connecticut 2022 CSBC; assumed detached one-family dwelling and preliminary 2021 IRC screen only; local applicability unconfirmed.",
+                                         "side_centerline_to_obstruction_in":  15,
+                                         "front_clearance_in":  21,
+                                         "source_15in":  "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+                                         "source_21in_and_fixture_installation":  "https://codes.iccsafe.org/content/IRC2021P1/chapter-27-plumbing-fixtures",
+                                         "clearance_30in_center_to_center_applied":  false,
+                                         "reason_30in_not_applied":  "No selected lavatory or adjacent fixture geometry is included."
+                                     },
+    "orientations":  [
+                         {
+                             "rotation_deg":  0,
+                             "predecessor_body_width_in":  19,
+                             "predecessor_body_depth_in":  30.25,
+                             "assumed_two_sided_screen_width_in":  30,
+                             "screen_depth_in_including_front_clearance":  51.25,
+                             "assumed_centerline_to_each_side_boundary_in":  15,
+                             "front_clearance_in":  21,
+                             "contained_in_gross_B":  true,
+                             "remaining_gross_width_in":  128,
+                             "remaining_gross_depth_in":  32.75,
+                             "assumption":  "Rectangular toilet body centered between hypothetical opposing side boundaries; minimum 21-in front strip measured from nominal predecessor body envelope."
+                         },
+                         {
+                             "rotation_deg":  90,
+                             "predecessor_body_width_in":  30.25,
+                             "predecessor_body_depth_in":  19,
+                             "assumed_two_sided_screen_width_in":  30.25,
+                             "screen_depth_in_including_front_clearance":  40,
+                             "assumed_centerline_to_each_side_boundary_in":  15.125,
+                             "front_clearance_in":  21,
+                             "contained_in_gross_B":  true,
+                             "remaining_gross_width_in":  127.75,
+                             "remaining_gross_depth_in":  44,
+                             "assumption":  "Rectangular toilet body centered between hypothetical opposing side boundaries; minimum 21-in front strip measured from nominal predecessor body envelope."
+                         }
+                     ],
+    "evaluated":  {
+                      "predecessor_body_plus_side_and_front_screen_only":  true,
+                      "complete_room_fit":  false,
+                      "sink_or_lavatory":  false,
+                      "door_or_swing":  false,
+                      "entry_approach_or_access_route":  false,
+                      "wall_build_up_or_rough_in_location":  false,
+                      "water_drain_vent_or_service_route":  false,
+                      "adopted_code_applicability":  false,
+                      "current_610aa001_020_product_geometry":  false,
+                      "m06_assignment":  false,
+                      "ifc_or_revit_placement":  false
+                  },
+    "limitations":  [
+                        "B is a 158 x 84 in gross room-block gap, not verified clear interior dimensions or a room with walls.",
+                        "The body envelope is nominal predecessor product data and is not verified for current SKU 610AA001.020.",
+                        "The side-clearance bounding width assumes opposing side boundaries and centered placement; the actual wall and fixture topology is unknown.",
+                        "The 21-in front strip checks only a simple rectangle from the predecessor body; it is not door maneuvering, a user approach, or a lavatory clearance.",
+                        "No 30-in adjacent-fixture centerline test can be made without a selected sink or lavatory.",
+                        "This screen does not establish code compliance, accessibility, usability, plumbing feasibility, a room footprint, or assignment of B."
+                    ]
+}

@@ -580,3 +580,14 @@ Acceptance criteria:
 - State that clearances, lavatory, walls, door/approach, services and fit inside usable clear dimensions are not tested; B remains unassigned.
 
 Current status: Complete. `Tools/screen_m06_predecessor_product_envelope.ps1` writes `Research/M06_Champion_PRO_Predecessor_Envelope_Screen_2026-10-28.json`. Windows PowerShell 5.1 generation and a separate JSON contract check pass: selected-D hash matches, B is 158 × 84 in gross, and the 19 × 30-1/4 in predecessor body rectangle is contained in both orientations. The report explicitly says exact 610AA geometry is unverified and makes no room assignment. The 2026-10-27 screen remains preserved as historical evidence. Next: obtain an exact current product dimension drawing or an owner-approved proxy, then combine fixture, lavatory, clearance, entry and service-route geometry in an isolated model before considering B.
+
+### M52 — Combine preliminary WC side/front spacing with predecessor body envelope
+
+Acceptance criteria:
+
+- Derive the pantry-side B gross bounds from the unchanged selected-D study and use only predecessor dimensions in the M51 report; do not state they represent current 610AA001.020.
+- Screen both orientations with 15 in from a centered WC centerline to hypothetical opposing side boundaries and 21 in in front, citing the provisional 2021 IRC basis documented in M47.
+- Reproduce the JSON report byte-for-byte under Windows PowerShell 5.1 and assert that B, exact-current-product verification, and fixture assignment remain unchanged.
+- Explicitly leave the 30-in adjacent-fixture spacing, lavatory, walls, door/swing, user approach and plumbing route unresolved.
+
+Current status: Complete as a predecessor-only gross bounding exercise. `Tools/screen_m06_predecessor_clearance_proxy.ps1` passes its source/assignment preconditions and produces byte-identical scratch outputs (`.local/revalidation/M52-run-a.json` and `M52-run-b.json`, SHA256 `6CBC6EE2ADCC56C066B1B294850260E3FE41CA73BF278D4DA2DA52215B195071`). Both tested screen envelopes fit the 158 × 84 in gross B rectangle: 30 × 51-1/4 in and 30-1/4 × 40 in. The report says current 610AA geometry is unverified and M-06 remains unassigned. The side result assumes opposing boundaries and centered placement; no door, sink, wall build-up, rough-in or service route is shown. See `Research/M06_Champion_PRO_Predecessor_Clearance_Proxy_2026-10-28.json`; not a code, accessibility or room-fit determination.
