@@ -239,12 +239,16 @@ Evidence: `Tools/test_m21_main_floor_access_study.ps1` regenerates the combined 
 
 ### M22 — Resolve the M-01 hearth and viewing wall before family placement
 
+Status: **in progress**. Manufacturer source research and two unselected wall-relationship options are documented. Exact stove, TV size/viewing wall, hearth construction, and vent/site route remain unresolved; no Revit derivative placement is authorized by this study.
+
 Acceptance criteria:
 
 - Locate a pellet-stove-compatible source and manufacturer clearance envelope matching the approved appliance direction; the RevitCity open-fireplace object 18782 is not the stove.
 - Define a documented hearth wall/orientation and room relationship before placing either stove or surround in a Revit derivative.
 - Test the queued TV visual placeholder only against an owner-approved viewing wall and size; preserve the selected legacy CRT requirement if it remains current.
 - Keep all appliance, hearth and egress clearances explicitly unverified until the product, wall assembly and qualified review are available.
+
+Current evidence: `Research/M22_Pellet_Stove_Envelope_2026-10-28.md` records the manufacturer-source P43-C candidate and open recess/mantel gate; `Architecture/M22_Living_Room_Hearth_Study_2026-10-28/` contains the reproducible two-option plan comparison and 20/20 arithmetic/provenance/non-claim checks. The candidate is not a product selection.
 
 ### M23 — Develop the exterior gathering area and furnishings
 

@@ -1,0 +1,50 @@
+{
+  "schema": "forever-home-m22-pellet-source-v1",
+  "status": "unselected product comparison; values transcribed from public manufacturer manuals",
+  "candidate": {
+    "manufacturer": "Hearth & Home Technologies / Harman",
+    "model": "P43-C",
+    "type": "freestanding wood-pellet stove",
+    "dimensions_in": {
+      "width": 22.0,
+      "depth": 28.3125,
+      "height": 33.5
+    },
+    "vent_diameter_in": 3.0,
+    "hopper_capacity_lb": 50,
+    "fuel": "wood pellets"
+  },
+  "clearances_in": {
+    "rear_to_combustible": 2.0,
+    "side_with_shields": 10.0,
+    "side_without_shields": 16.0,
+    "corner_wall_to_appliance": 9.0,
+    "front_combustible_separation_diagram": 36.0,
+    "floor_protection_minimum_rectangular_width": 25.4375,
+    "floor_protection_minimum_rectangular_depth": 26.75,
+    "floor_protection_extension_sides_front_rear": 6.0
+  },
+  "manuals": [
+    {
+      "title": "Harman P-Series Installation Manual R12, June 2025",
+      "url": "https://downloads.hearthnhome.com/installManuals/8390-044I_PSeries_Install.pdf",
+      "relevant_pages": [8, 9, 10, 11, 18, 20]
+    },
+    {
+      "title": "Harman P-Series Owner's Manual R26, November 2025",
+      "url": "https://downloads.hearthnhome.com/installManuals/8390-044C_PSeries_Consumer.pdf",
+      "relevant_pages": [2, 3]
+    }
+  ],
+  "model_family_file": {
+    "exact_p43c_revit_rfa_located": false,
+    "search_scope": "public indexed source search only; no account or sign-in",
+    "result": "No exact P43-C RFA was identified; this does not establish that none exists."
+  },
+  "unresolved": [
+    "No pellet stove is owner-selected.",
+    "Local product availability and exact finish are not verified.",
+    "No P43-C-specific alcove/recess or mantel clearance was located in the current manufacturer installation manual.",
+    "Vent path, termination, room air, service access, floor system and site are not coordinated."
+  ]
+}

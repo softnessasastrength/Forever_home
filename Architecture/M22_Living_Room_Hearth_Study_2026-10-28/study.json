@@ -1,0 +1,97 @@
+{
+    "schema":  "forever-home-m22-hearth-wall-study-v1",
+    "status":  "Unapproved wall relationship comparison; no stove, TV, wall, or hearth selected or placed.",
+    "source_fingerprints_sha256":  {
+                                       "Research/M22_Pellet_Stove_Envelope_2026-10-28.json":  "f1248e59837b514814d1ac81f32110965cbc7b1ee44978b012fef7a17a4dbd0b",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
+                                       "Decisions/Living_Room_Rear_Projection_TV.md":  "8b7a965e88d0d37bd8e144ef19c12a3d69addcd65db8eae9e6926902d3076f0c"
+                                   },
+    "room":  {
+                 "id":  "M-01",
+                 "block_ft":  [
+                                  0.66666666666666663,
+                                  0.66666666666666663,
+                                  16,
+                                  15
+                              ],
+                 "area_sf":  240,
+                 "program_range_sf":  [
+                                          180,
+                                          220
+                                      ],
+                 "over_program_max_sf":  20,
+                 "edges":  {
+                               "dining_facing_long_edge_ft":  16,
+                               "opposite_long_edge_ft":  16,
+                               "long_edge_separation_ft":  15,
+                               "entry_facing_short_edge_ft":  15,
+                               "entry_nominal_gap_in":  6,
+                               "entry_shared_edge_span_ft":  12,
+                               "dining_nominal_gap_in":  6.0000000000000213,
+                               "dining_shared_edge_span_ft":  11.333
+                           }
+             },
+    "pellet_stove_candidate":  {
+                                   "model":  "P43-C",
+                                   "owner_selected":  false,
+                                   "source_dimensions_in":  {
+                                                                "width":  22.0,
+                                                                "depth":  28.3125,
+                                                                "height":  33.5
+                                                            },
+                                   "manufacturer_minimum_clearance_screen_envelopes":  [
+                                                                                           {
+                                                                                               "id":  "side_shields",
+                                                                                               "side_clearance_in":  10,
+                                                                                               "width_in":  42,
+                                                                                               "depth_in":  66.3125,
+                                                                                               "fits_inside_gross_m01_rectangle_by_arithmetic":  true
+                                                                                           },
+                                                                                           {
+                                                                                               "id":  "no_side_shields",
+                                                                                               "side_clearance_in":  16,
+                                                                                               "width_in":  54,
+                                                                                               "depth_in":  66.3125,
+                                                                                               "fits_inside_gross_m01_rectangle_by_arithmetic":  true
+                                                                                           }
+                                                                                       ],
+                                   "gross_block_screen_only":  true,
+                                   "floor_protection_minimum_in":  {
+                                                                       "width":  25.4375,
+                                                                       "depth":  26.75
+                                                                   },
+                                   "revit_family_located":  false
+                               },
+    "wall_options":  [
+                         {
+                             "id":  "A",
+                             "hearth_wall":  "opposite 16 ft edge from dining-facing edge",
+                             "tv_wall":  "dining-facing 16 ft edge",
+                             "separation_ft":  15,
+                             "selected":  false
+                         },
+                         {
+                             "id":  "B",
+                             "hearth_wall":  "dining-facing 16 ft edge",
+                             "tv_wall":  "opposite 16 ft edge from dining-facing edge",
+                             "separation_ft":  15,
+                             "selected":  false
+                         }
+                     ],
+    "television":  {
+                       "reference":  "Mitsubishi WS-65815",
+                       "status":  "Owner-selected visual reference only; exact unit, dimensions and viewing wall unselected.",
+                       "placeholder_dimensioned_or_placed":  false
+                   },
+    "gates":  [
+                  "Gross rectangular clearance arithmetic is not a placement, site fit or safe installation.",
+                  "The manufacturer minimum clearances do not include extra service/cleaning room, furniture, vent routes, outside air or egress.",
+                  "No P43-C mantel or architectural recess clearance was located in the manufacturer manual.",
+                  "No wall assembly, door/window, hearth material/support, product family, TV model dimensions or site orientation is defined.",
+                  "M-01 remains a 240 sf schematic block, 20 sf over its preliminary 220 sf program ceiling; no area is approved by this study.",
+                  "No Revit or IFC file was modified or generated."
+              ],
+    "no_physical_products_placed":  true,
+    "no_walls_or_hearth_geometry_authored":  true
+}

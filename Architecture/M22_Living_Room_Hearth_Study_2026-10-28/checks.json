@@ -1,0 +1,27 @@
+{
+    "schema":  "forever-home-m22-checks-v1",
+    "passed":  20,
+    "failed":  0,
+    "checks":  {
+                   "exact_expected_source_files_present":  true,
+                   "selected_d_m01_block_is_16_by_15_ft":  true,
+                   "selected_d_m01_block_area_is_240_sf":  true,
+                   "m01_area_is_20_sf_above_preliminary_program_max":  true,
+                   "preliminary_program_range_is_180_to_220_sf":  true,
+                   "dining_facing_long_edge_is_16_ft":  true,
+                   "dining_block_is_separated_by_nominal_6_in":  true,
+                   "dining_shares_11ft4in_of_m01_edge":  true,
+                   "opposite_long_edge_is_16_ft":  true,
+                   "opposing_long_edges_are_15_ft_apart":  true,
+                   "entry_facing_short_edge_has_nominal_6_in_gap":  true,
+                   "entry_shares_12_ft_of_m01_edge":  true,
+                   "p43c_body_is_22_by_28_3125_by_33_5_in":  true,
+                   "manufacturer_clearance_screen_with_shields_fits_gross_room":  true,
+                   "manufacturer_clearance_screen_without_shields_fits_gross_room":  true,
+                   "side_shield_envelope_is_wider_by_12_in":  true,
+                   "both_options_keep_stove_and_tv_on_separate_opposing_edges":  true,
+                   "neither_option_claims_geographic_orientation":  true,
+                   "tv_remains_unselected_and_undimensioned":  true,
+                   "report_preserves_open_wall_assembly_and_alcove_gates":  true
+               }
+}

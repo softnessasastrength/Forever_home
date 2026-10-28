@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='480' viewBox='0 0 1000 480'>
+<style>text{font-family:Arial,sans-serif;fill:#243140}.title{font-size:22px;font-weight:bold}.subtitle{font-size:15px;font-weight:bold}.label{font-size:11px}.note{font-size:10px}.living{fill:#efe7dc;stroke:#4c443d;stroke-width:2}.adjacent{fill:#e1e9e6;stroke:#586a61;stroke-width:1.5}.entry{fill:#f3dfb7;stroke:#86632b;stroke-width:1.5}.kitchen{fill:#e4ead7;stroke:#65734d;stroke-width:1.5}.stove{stroke:#984c32;stroke-width:8}.tv{stroke:#466d9b;stroke-width:8}.shell{fill:none;stroke:#293b4d;stroke-width:2}</style>
+<text x='30' y='31' class='title'>M22 | living-room focal-wall relationships</text>
+<text x='30' y='50' class='note'>Two 16 ft opposing edges; 15 ft apart. Product envelopes are documented separately, not placed here.</text>
+<text x='55' y='67' class='subtitle'>Option A: stove and TV swap opposing edges</text>
+<rect x='55' y='73' width='272' height='255' class='living'/>
+<rect x='55' y='337' width='192.666666666667' height='28' class='adjacent'/>
+<text x='59' y='355' class='label'>M-03 Dining test block</text>
+<rect x='336' y='73' width='54' height='204' class='entry'/>
+<text x='339' y='93' class='note'>M-05</text>
+<rect x='399' y='73' width='63' height='204' class='kitchen'/>
+<text x='402' y='93' class='note'>M-02</text>
+<text x='61' y='96' class='label'>M-01 16 x 15 ft</text>
+<line x1='55' y1='73' x2='327' y2='73' class='stove'/>
+<line x1='55' y1='328' x2='327' y2='328' class='tv'/>
+<text x='55' y='382' class='note'>Red: proposed pellet-hearth wall | Blue: proposed rear-projection-TV wall</text>
+<text x='55' y='397' class='note'>No products, openings, finishes, compass direction or wall assembly assigned.</text>
+<text x='520' y='67' class='subtitle'>Option B: stove and TV swap opposing edges</text>
+<rect x='520' y='73' width='272' height='255' class='living'/>
+<rect x='520' y='337' width='192.666666666667' height='28' class='adjacent'/>
+<text x='524' y='355' class='label'>M-03 Dining test block</text>
+<rect x='801' y='73' width='54' height='204' class='entry'/>
+<text x='804' y='93' class='note'>M-05</text>
+<rect x='864' y='73' width='63' height='204' class='kitchen'/>
+<text x='867' y='93' class='note'>M-02</text>
+<text x='526' y='96' class='label'>M-01 16 x 15 ft</text>
+<line x1='520' y1='73' x2='792' y2='73' class='tv'/>
+<line x1='520' y1='328' x2='792' y2='328' class='stove'/>
+<text x='520' y='382' class='note'>Red: proposed pellet-hearth wall | Blue: proposed rear-projection-TV wall</text>
+<text x='520' y='397' class='note'>No products, openings, finishes, compass direction or wall assembly assigned.</text>
+</svg>
