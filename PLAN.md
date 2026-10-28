@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 04:36 EDT, the selected-D PowerShell generator passed 43/43 in two fresh runs with all seven artifacts byte-identical, family provenance passed, and the offline unittest suite passed 37/37. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 04:51 EDT, the selected-D PowerShell generator passed 43/43 in two fresh scratch runs with all seven outputs byte-identical; the M25 area comparison passes 11/11 and is independently reproducible. The offline unittest suite passed 37/37 at the last documented run. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
 
 ## Repository safety baseline
 
@@ -291,6 +291,16 @@ Acceptance criteria:
 - Do not assign B unless the selected product geometry, applicable clearance basis, door/approach and plausible service route are all supported.
 
 Current status: TOTO's official page exposes a public Nexus MS442124CEFG Revit file; an unauthenticated byte-identical source is quarantined with SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. The manufacturer marks the product limited inventory. Family inspection remains pending while Revit's trial overlay prevents reliable UI interaction. This is a research alternative only; Champion remains the owner-selected first candidate and M-06 remains unassigned. See `Research/M06_Toilet_Options_2026-10-27.md`.
+
+### M27 — Revalidate owner-selected D schematic regeneration
+
+Acceptance criteria:
+
+- Regenerate the owner-selected D schematic twice into fresh ignored scratch directories, leaving checked-in source outputs untouched.
+- Require all documented geometry/provenance checks to pass and all generated artifacts to match byte-for-byte.
+- Keep the output explicitly classified as schematic room-block geometry, not coordinated building geometry.
+
+Current status: Windows PowerShell 5.1 regeneration passed **43/43** checks twice; all seven artifacts (study, checks, CSV schedules and three plan SVGs) are byte-identical across runs. Both generated SVG sets parse as XML. The tracked selected-D output and Revit/IFC baseline were not modified. This verifies repeatable schematic regeneration only.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

@@ -44,6 +44,11 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - Fetched the public RFA without authentication into ignored quarantine, preserving the exact 1,400,832-byte file and sidecar source metadata; SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. The file's OLE compound-document signature is present. No Revit family inspection or source modification occurred.
 - The source is a proposed alternate only. The owner-selected American Standard Champion PRO 610AA001.020 remains the first investigation target; no product is selected, no M-06/B geometry is assigned, and no model/IFC changes were made. Family/type mapping, assembled envelope, actual availability, terms, clearance basis, approach and service path remain open. See `Research/M06_Toilet_Options_2026-10-27.md`.
 
+## M27 owner-selected D schematic regeneration — 2026-10-28 04:51 EDT
+
+- Ran `Tools/build_selected_house_schematic.ps1 -LayoutVariant OwnerSelectedD` into two new ignored scratch directories. Both runs pass **43/43** geometry/provenance checks; all three SVG plan sheets parse as XML.
+- Compared the seven emitted artifacts (study JSON, checks JSON, two schedules, and three SVGs) by SHA256: all match between runs. The tracked selected-D output, source geometry and Revit/IFC baseline were not modified. This confirms repeatable schematic room-block generation only; walls, doors, floors, stairs, structure, MEP and code review remain outside this result.
+
 ## M23 Adirondack carry-forward source check — 2026-10-28
 
 - Confirmed `Architecture/Building_Program.md` requires the owner's existing Adirondack model and explicitly says its exact product reference or asset path has not been recorded. Searched the repository, current Downloads folder, and accessible project-thread context; no brand/model, URL, image or family asset was present.
