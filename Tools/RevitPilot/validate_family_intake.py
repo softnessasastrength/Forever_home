@@ -1,5 +1,6 @@
 """Validate known family-intake candidates before a Revit run."""
 import csv
+import json
 import sys
 from hashlib import sha256
 from pathlib import Path
@@ -24,6 +25,22 @@ MANUFACTURER_INCOMING = [
         "status": "research-candidate",
         "test_run": ".local/revit-pilot/family-intake/20261028T023252013Z/",
         "source_url": "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
+    },
+]
+QUARANTINED_RESEARCH = [
+    {
+        "sku": "American Standard Estate 0900800.020",
+        "filename": "american-standard-estate-0900800.020.rfa",
+        "sha256": "130B63661471753DD373DB322E723BA61E7EE70BC4C90D3DF6351030E954910B",
+        "product_page_url": "https://lixilpro.com/products/bathroom-sinks/pedestal-sinks/Estate-8-Inch-Widespread-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0900800020/",
+        "source_url": "https://lixil.cdn.celum.cloud/253508_Basin-Pedestal-American_Standard-Estate-0900_Series_original.rfa",
+    },
+    {
+        "sku": "American Standard Cadet 0236411.020",
+        "filename": "american-standard-cadet-0236411.020.rfa",
+        "sha256": "AAB1320BD60E410919EED5A9DA8018D9883A409EE636C2A64D4FE8BED8A4B5D9",
+        "product_page_url": "https://lixilpro.com/products/bathroom-sinks/pedestal-tops/Cadet-4-in-Centerset-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0236411020/?s=0236411.020",
+        "source_url": "https://lixil.cdn.celum.cloud/173914_as_us_bath_cad_RFA__0236%20%283651%29_original.rfa",
     },
 ]
 REJECTED = {
@@ -89,6 +106,32 @@ def main() -> int:
                 errors.append(f"manifest source hash mismatch for manufacturer family: {filename}")
             if row.get("source_url") != candidate["source_url"]:
                 errors.append(f"manufacturer family source URL mismatch: {filename}")
+    quarantine_dir = root / ".local" / "revit-pilot" / "family-intake" / "candidates"
+    provenance_path = quarantine_dir / "m06-sink-candidate-provenance-20261028.json"
+    try:
+        provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        provenance = []
+        errors.append(f"cannot read M-06 public-family provenance record: {error}")
+    if not isinstance(provenance, list):
+        provenance = []
+        errors.append("M-06 public-family provenance record must be a JSON array")
+    for candidate in QUARANTINED_RESEARCH:
+        filename = candidate["filename"]
+        path = quarantine_dir / filename
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"missing or empty quarantined research family: {filename}")
+            continue
+        digest = sha256(path.read_bytes()).hexdigest().upper()
+        if digest != candidate["sha256"]:
+            errors.append(f"quarantined research family hash mismatch: {filename}")
+        matches = [row for row in provenance if isinstance(row, dict) and row.get("filename") == filename]
+        if len(matches) != 1:
+            errors.append(f"provenance record linkage mismatch: {filename}")
+        elif any(matches[0].get(key) != candidate[key] for key in ("sku", "sha256", "product_page_url", "source_url")):
+            errors.append(f"pinned source URL/hash metadata mismatch: {filename}")
+        elif matches[0].get("inspection_status") != "quarantined research candidate; not inspected or approved":
+            errors.append(f"unexpected research candidate disposition: {filename}")
     for room_id, filename in REJECTED.items():
         path = rejected / filename
         if not path.is_file() or path.stat().st_size == 0:
@@ -108,6 +151,7 @@ def main() -> int:
     print(
         f"PASS: {len(INCOMING)} RevitCity candidates, "
         f"{len(MANUFACTURER_INCOMING)} manufacturer families with exact SHA256/provenance, "
+        f"{len(QUARANTINED_RESEARCH)} quarantined public research families with exact SHA256/provenance, "
         f"{len(REJECTED)} archived rejection, and 21015 disposition validated"
     )
     return 0

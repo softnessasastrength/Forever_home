@@ -1,97 +1,146 @@
 {
-  "schema": "forever-home-m06-sink-gross-body-screen-v1",
-  "result": "PASS",
-  "check_count": 12,
-  "failed_checks": [],
-  "study": {
-    "layout_variant": "OwnerSelectedD",
-    "file": "study.json",
-    "sha256": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
-    "room_id": "M-06",
-    "assignment_status": "unassigned; no room footprint or position",
-    "search_window": {
-      "id": "east_of_core (pantry-side B)",
-      "status": "gross unassigned room-block gap only",
-      "width_ft": 13.166666666666668,
-      "depth_ft": 7.0,
-      "width_in": 158.0,
-      "depth_in": 84.0
-    }
-  },
-  "candidates": [
-    {
-      "id": "american-standard-evolution-0467400.020",
-      "name": "American Standard Evolution 22-in 4-in-centerset pedestal sink top and leg combination",
-      "status": "research-only; LIXIL Pro lists the combo discontinued; measured family is linked from the exact combo page, but its basin-only type description conflicts with its pedestal option",
-      "source": "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
-      "dimensions_source": "Manufacturer combo product page; nominal overall 22 x 17.5 x 34.25 in; LIXIL Pro identifies 0467004.020 as the separate top component",
-      "nominal_overall_body_in": {
-        "width": 22.0,
-        "depth": 17.5,
-        "height": 34.25
-      },
-      "candidate_rfa_geometry_measured": true,
-      "rfa_type_to_sku_mapping_verified": true,
-      "body_rectangle_containment": {
-        "width_by_depth": true,
-        "rotated_90_degrees": true
-      }
-    },
-    {
-      "id": "kohler-tresham-k-2844-4-0",
-      "name": "KOHLER Tresham K-2844-4-0 24-in square pedestal sink",
-      "status": "research-only; exact Revit family is behind Studio KOHLER sign-in and has not been inspected",
-      "source": "https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/tresham-24-pedestal-bathroom-sink-with-4-centerset-faucet-holes-2844-4",
-      "dimensions_source": "KOHLER specification dated 2024-03-16; nominal overall 24 x 19.5 x 34.625 in",
-      "nominal_overall_body_in": {
-        "width": 24.0,
-        "depth": 19.5,
-        "height": 34.625
-      },
-      "candidate_rfa_geometry_measured": false,
-      "rfa_type_to_sku_mapping_verified": false,
-      "body_rectangle_containment": {
-        "width_by_depth": true,
-        "rotated_90_degrees": true
-      }
-    },
-    {
-      "id": "american-standard-edgemere-0445400.020",
-      "name": "American Standard Edgemere 4-in-centerset pedestal sink top and leg combination",
-      "status": "research-only; consumer page displays purchase price while LIXIL Pro marks the combination discontinued; no complete-combination design file is listed",
-      "source": "https://www.americanstandard-us.com/products/edgemere-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
-      "dimensions_source": "American Standard specification dated 2017-04; nominal overall 25 x 19.5 x 35.625 in",
-      "nominal_overall_body_in": {
-        "width": 25.0,
-        "depth": 19.5,
-        "height": 35.625
-      },
-      "candidate_rfa_geometry_measured": false,
-      "rfa_type_to_sku_mapping_verified": false,
-      "body_rectangle_containment": {
-        "width_by_depth": true,
-        "rotated_90_degrees": true
-      }
-    }
-  ],
-  "evaluated": {
-    "nominal_product_body_rectangle_only": true,
-    "product_selected": false,
-    "exact_KOHLER_RFA_measured": false,
-    "toilet_lavatory_combination": false,
-    "interior_clearances_or_approach": false,
-    "entry_door_or_swing": false,
-    "wall_build_up_or_room_footprint": false,
-    "plumbing_service_route": false,
-    "code_or_accessibility": false,
-    "room_assignment_or_IFC": false
-  },
-  "limitations": [
-    "B is a gross unassigned room-block gap, not usable clear interior dimensions or an approved bathroom footprint.",
-    "Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.",
-    "American Standard bounds use official nominal dimensions for combo SKU 0467400.020. Its 4-in family type is linked from the combo page and has matching product metadata; the type description “Basin only” conflicts with its pedestal option, and no hosted instance verifies the assembly.",
-    "KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.",
-    "Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.",
-    "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
-  ]
+    "schema":  "forever-home-m06-sink-gross-body-screen-v1",
+    "result":  "PASS",
+    "check_count":  16,
+    "failed_checks":  [
+
+                      ],
+    "study":  {
+                  "layout_variant":  "OwnerSelectedD",
+                  "file":  "study.json",
+                  "sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                  "room_id":  "M-06",
+                  "assignment_status":  "unassigned; no room footprint or position",
+                  "search_window":  {
+                                        "id":  "east_of_core (pantry-side B)",
+                                        "status":  "gross unassigned room-block gap only",
+                                        "width_ft":  13.166666666666668,
+                                        "depth_ft":  7,
+                                        "width_in":  158,
+                                        "depth_in":  84
+                                    }
+              },
+    "candidates":  [
+                       {
+                           "id":  "american-standard-evolution-0467400.020",
+                           "name":  "American Standard Evolution 22-in 4-in-centerset pedestal sink top and leg combination",
+                           "status":  "research-only; LIXIL Pro lists the combo discontinued; measured family is linked from the exact combo page, but its basin-only type description conflicts with its pedestal option",
+                           "source":  "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
+                           "design_file_source":  null,
+                           "design_file_sha256":  null,
+                           "dimensions_source":  "Manufacturer combo product page; nominal overall 22 x 17.5 x 34.25 in; LIXIL Pro identifies 0467004.020 as the separate top component",
+                           "nominal_overall_body_in":  {
+                                                           "width":  22,
+                                                           "depth":  17.5,
+                                                           "height":  34.25
+                                                       },
+                           "candidate_rfa_geometry_measured":  true,
+                           "rfa_type_to_sku_mapping_verified":  true,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       },
+                       {
+                           "id":  "kohler-tresham-k-2844-4-0",
+                           "name":  "KOHLER Tresham K-2844-4-0 24-in square pedestal sink",
+                           "status":  "research-only; exact Revit family is behind Studio KOHLER sign-in and has not been inspected",
+                           "source":  "https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/tresham-24-pedestal-bathroom-sink-with-4-centerset-faucet-holes-2844-4",
+                           "design_file_source":  null,
+                           "design_file_sha256":  null,
+                           "dimensions_source":  "KOHLER specification dated 2024-03-16; nominal overall 24 x 19.5 x 34.625 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  24,
+                                                           "depth":  19.5,
+                                                           "height":  34.625
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       },
+                       {
+                           "id":  "american-standard-edgemere-0445400.020",
+                           "name":  "American Standard Edgemere 4-in-centerset pedestal sink top and leg combination",
+                           "status":  "research-only; consumer page displays purchase price while LIXIL Pro marks the combination discontinued; no complete-combination design file is listed",
+                           "source":  "https://www.americanstandard-us.com/products/edgemere-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
+                           "design_file_source":  null,
+                           "design_file_sha256":  null,
+                           "dimensions_source":  "American Standard specification dated 2017-04; nominal overall 25 x 19.5 x 35.625 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  25,
+                                                           "depth":  19.5,
+                                                           "height":  35.625
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       },
+                       {
+                           "id":  "american-standard-estate-0900800.020",
+                           "name":  "American Standard Estate 8-in widespread pedestal sink top and leg combination",
+                           "status":  "research-only; manufacturer describes a classic rectangular fireclay pedestal combo and links a public Revit family; product is discontinued and family has not been inspected",
+                           "source":  "https://lixilpro.com/products/bathroom-sinks/pedestal-sinks/Estate-8-Inch-Widespread-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0900800020/",
+                           "design_file_source":  "https://lixil.cdn.celum.cloud/253508_Basin-Pedestal-American_Standard-Estate-0900_Series_original.rfa",
+                           "design_file_sha256":  "130B63661471753DD373DB322E723BA61E7EE70BC4C90D3DF6351030E954910B",
+                           "dimensions_source":  "LIXIL Pro product page; nominal overall 24 x 20 x 36.625 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  24,
+                                                           "depth":  20,
+                                                           "height":  36.625
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       },
+                       {
+                           "id":  "american-standard-cadet-0236411.020",
+                           "name":  "American Standard Cadet 4-in-centerset pedestal sink top and leg combination",
+                           "status":  "research-only; manufacturer describes a Euro-styled vitreous-china combo and links a public Revit family; product is discontinued and family has not been inspected",
+                           "source":  "https://lixilpro.com/products/bathroom-sinks/pedestal-tops/Cadet-4-in-Centerset-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0236411020/?s=0236411.020",
+                           "design_file_source":  "https://lixil.cdn.celum.cloud/173914_as_us_bath_cad_RFA__0236%20%283651%29_original.rfa",
+                           "design_file_sha256":  "AAB1320BD60E410919EED5A9DA8018D9883A409EE636C2A64D4FE8BED8A4B5D9",
+                           "dimensions_source":  "LIXIL Pro product page; nominal overall 24.5 x 20 x 35 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  24.5,
+                                                           "depth":  20,
+                                                           "height":  35
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       }
+                   ],
+    "evaluated":  {
+                      "nominal_product_body_rectangle_only":  true,
+                      "product_selected":  false,
+                      "exact_KOHLER_RFA_measured":  false,
+                      "toilet_lavatory_combination":  false,
+                      "interior_clearances_or_approach":  false,
+                      "entry_door_or_swing":  false,
+                      "wall_build_up_or_room_footprint":  false,
+                      "plumbing_service_route":  false,
+                      "code_or_accessibility":  false,
+                      "room_assignment_or_IFC":  false
+                  },
+    "limitations":  [
+                        "B is a gross unassigned room-block gap, not usable clear interior dimensions or an approved bathroom footprint.",
+                        "Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.",
+                        "American Standard bounds use official nominal dimensions for combo SKU 0467400.020. Its 4-in family type is linked from the combo page and has matching product metadata; the type description â€œBasin onlyâ€ conflicts with its pedestal option, and no hosted instance verifies the assembly.",
+                        "KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.",
+                        "Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.",
+                        "Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.",
+                        "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
+                    ]
 }

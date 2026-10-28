@@ -67,6 +67,34 @@ $candidates = @(
         height_in = 35.625
         candidate_rfa_geometry_measured = $false
         rfa_type_to_sku_mapping_verified = $false
+    },
+    [ordered]@{
+        id = 'american-standard-estate-0900800.020'
+        name = 'American Standard Estate 8-in widespread pedestal sink top and leg combination'
+        status = 'research-only; manufacturer describes a classic rectangular fireclay pedestal combo and links a public Revit family; product is discontinued and family has not been inspected'
+        source = 'https://lixilpro.com/products/bathroom-sinks/pedestal-sinks/Estate-8-Inch-Widespread-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0900800020/'
+        design_file_source = 'https://lixil.cdn.celum.cloud/253508_Basin-Pedestal-American_Standard-Estate-0900_Series_original.rfa'
+        design_file_sha256 = '130B63661471753DD373DB322E723BA61E7EE70BC4C90D3DF6351030E954910B'
+        dimensions_source = 'LIXIL Pro product page; nominal overall 24 x 20 x 36.625 in'
+        width_in = 24.0
+        depth_in = 20.0
+        height_in = 36.625
+        candidate_rfa_geometry_measured = $false
+        rfa_type_to_sku_mapping_verified = $false
+    },
+    [ordered]@{
+        id = 'american-standard-cadet-0236411.020'
+        name = 'American Standard Cadet 4-in-centerset pedestal sink top and leg combination'
+        status = 'research-only; manufacturer describes a Euro-styled vitreous-china combo and links a public Revit family; product is discontinued and family has not been inspected'
+        source = 'https://lixilpro.com/products/bathroom-sinks/pedestal-tops/Cadet-4-in-Centerset-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0236411020/?s=0236411.020'
+        design_file_source = 'https://lixil.cdn.celum.cloud/173914_as_us_bath_cad_RFA__0236%20%283651%29_original.rfa'
+        design_file_sha256 = 'AAB1320BD60E410919EED5A9DA8018D9883A409EE636C2A64D4FE8BED8A4B5D9'
+        dimensions_source = 'LIXIL Pro product page; nominal overall 24.5 x 20 x 35 in'
+        width_in = 24.5
+        depth_in = 20.0
+        height_in = 35.0
+        candidate_rfa_geometry_measured = $false
+        rfa_type_to_sku_mapping_verified = $false
     }
 )
 
@@ -82,6 +110,8 @@ foreach ($candidate in $candidates) {
         name = $candidate.name
         status = $candidate.status
         source = $candidate.source
+        design_file_source = $candidate.design_file_source
+        design_file_sha256 = $candidate.design_file_sha256
         dimensions_source = $candidate.dimensions_source
         nominal_overall_body_in = [ordered]@{
             width = $candidate.width_in
@@ -97,7 +127,7 @@ foreach ($candidate in $candidates) {
     }
 }
 
-Assert-Check ($results.Count -eq 3 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1) 'Expected the complete Evolution combo, Tresham and Edgemere in the comparison.'
+Assert-Check ($results.Count -eq 5 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-estate-0900800.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-cadet-0236411.020').Count -eq 1) 'Expected the complete Evolution combo, Tresham, Edgemere, Estate and Cadet in the comparison.'
 
 $report = [ordered]@{
     schema = 'forever-home-m06-sink-gross-body-screen-v1'
@@ -138,6 +168,7 @@ $report = [ordered]@{
         'American Standard bounds use official nominal dimensions for combo SKU 0467400.020. Its 4-in family type is linked from the combo page and has matching product metadata; the type description “Basin only” conflicts with its pedestal option, and no hosted instance verifies the assembly.',
         'KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.',
         'Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.',
+        'Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.',
         'No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established.'
     )
 }
