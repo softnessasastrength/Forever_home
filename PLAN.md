@@ -294,7 +294,7 @@ Acceptance criteria:
 - Inspect candidate family category, type metadata, host behavior and geometry in Revit 2027 without saving the source; measure only in a disposable derivative.
 - Do not assign B unless the selected product geometry, applicable clearance basis, door/approach and plausible service route are all supported.
 
-Current status: TOTO's official page exposes a public Nexus MS442124CEFG Revit file; an unauthenticated byte-identical source is quarantined with SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. The manufacturer marks the product limited inventory. Family inspection remains pending while Revit's trial overlay prevents reliable UI interaction. This is a research alternative only; Champion remains the owner-selected first candidate and M-06 remains unassigned. See `Research/M06_Toilet_Options_2026-10-27.md`.
+Current status: Revit 2027.3 read-only inspection is complete for the quarantined, hash-verified TOTO Nexus MS442124CEFG family. The visible model is tank-and-bowl form, face-hosted, category Plumbing Fixtures, with one type (`CST442CUFG`) and authored bounds 18 1/2 × 28 5/8 × 28 177/256 in. Its displayed 1.00 GPF conflicts with the official product's 1.28 GPF; treat type mapping/product metadata as unresolved, and do not use this alternate to assign M-06. Source bytes were unchanged after close without saving. Champion PRO 610AA001.020 remains the owner-selected first investigation target; M-06 B remains unassigned pending exact selected-product geometry, applicable clearance basis, door/approach and service route. See `Research/M06_Toilet_Options_2026-10-27.md` and `Revit/Family_Intake/RevitCity_Family_Intake.md`.
 
 ### M27 — Revalidate owner-selected D schematic regeneration
 
