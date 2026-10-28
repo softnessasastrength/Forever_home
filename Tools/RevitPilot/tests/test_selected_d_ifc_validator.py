@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import ifcopenshell.util.element
 
-from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, _space_plan_bounds_ft, validate
+from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, _space_body_profile_area, _space_plan_bounds_ft, validate
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -77,6 +77,26 @@ class SelectedDIfcValidatorTests(unittest.TestCase):
         space = SimpleNamespace(Representation=shape)
         with patch.object(ifcopenshell.util.element, "get_psets", return_value={}):
             self.assertAlmostEqual(_space_area(space, unit_scale=0.3048), 240.0)
+
+    def test_body_profile_area_is_checked_independently_of_ifc_quantities(self):
+        profile = SimpleNamespace(
+            XDim=16.0,
+            YDim=15.0,
+            is_a=lambda entity=None: entity == "IfcRectangleProfileDef",
+        )
+        solid = SimpleNamespace(
+            SweptArea=profile,
+            is_a=lambda entity=None: entity == "IfcExtrudedAreaSolid",
+        )
+        body = SimpleNamespace(RepresentationIdentifier="Body", RepresentationType="SweptSolid", Items=[solid])
+        space = SimpleNamespace(Representation=SimpleNamespace(Representations=[body]))
+
+        with patch.object(ifcopenshell.util.element, "get_psets", return_value={"Dimensions": {"Area": 240.0}}):
+            self.assertEqual(_space_area(space, unit_scale=0.3048), 240.0)
+        self.assertAlmostEqual(_space_body_profile_area(space, unit_scale=0.3048), 240.0)
+        # A valid-looking IFC quantity must not make a compound body acceptable.
+        body.Items.append(solid)
+        self.assertIsNone(_space_body_profile_area(space, unit_scale=0.3048))
 
     def test_space_plan_bounds_convert_ifc_vertices_to_feet(self):
         shape = SimpleNamespace(geometry=SimpleNamespace(verts=[0.3048, 0.6096, 0.0, 4.8768, 4.572, 2.4384]))

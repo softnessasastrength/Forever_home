@@ -89,6 +89,45 @@ def _space_area(space: Any, unit_scale: float = 1.0) -> float | None:
     return profile_areas[0]
 
 
+def _space_body_profile_area(space: Any, unit_scale: float) -> float | None:
+    """Return the area of the single rectangular Body profile, in square feet.
+
+    The selected-D source defines each room as one rectangular block. Inspect
+    the IFC body independently of quantity properties so a plausible
+    Dimensions.Area cannot conceal an unrelated or compound body profile.
+    """
+    shape = getattr(space, "Representation", None)
+    if shape is None:
+        return None
+    body_representations = [
+        representation
+        for representation in getattr(shape, "Representations", None) or []
+        if getattr(representation, "RepresentationIdentifier", None) == "Body"
+    ]
+    if len(body_representations) != 1:
+        return None
+    body = body_representations[0]
+    items = getattr(body, "Items", None) or []
+    if getattr(body, "RepresentationType", None) != "SweptSolid" or len(items) != 1:
+        return None
+    solid = items[0]
+    if not solid.is_a("IfcExtrudedAreaSolid"):
+        return None
+    profile = solid.SweptArea
+    if not profile.is_a("IfcRectangleProfileDef"):
+        return None
+    try:
+        scale = float(unit_scale) * FT_PER_METRE
+        width_ft = float(profile.XDim) * scale
+        depth_ft = float(profile.YDim) * scale
+        area_sf = width_ft * depth_ft
+    except (AttributeError, TypeError, ValueError):
+        return None
+    if not all(math.isfinite(value) and value > 0 for value in (scale, width_ft, depth_ft, area_sf)):
+        return None
+    return area_sf
+
+
 def _space_level_names(model: Any) -> dict[str, str]:
     result: dict[str, str] = {}
 
@@ -320,6 +359,7 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
         area_errors: list[dict[str, Any]] = []
         level_errors: list[str] = []
         plan_bounds_errors: list[dict[str, Any]] = []
+        body_profile_errors: list[dict[str, Any]] = []
         area_observations: list[dict[str, Any]] = []
         geometry_settings = ifcopenshell.geom.settings()
         geometry_settings.set(geometry_settings.USE_WORLD_COORDS, True)
@@ -327,6 +367,7 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
             identifier = _space_id(space)
             expected = blocks.get(identifier)
             area = _space_area(space, unit_scale)
+            body_profile_area = _space_body_profile_area(space, unit_scale)
             bounds = _space_plan_bounds_ft(space, geometry_settings)
             observed_level = containment.get(identifier)
             if observed_level is None:
@@ -335,6 +376,8 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
             expected_level = "D " + PLAN_LEVEL_NAMES.get(expected["level_key"], "") if expected else ""
             if expected is None or area is None or abs(area - expected["area_sf"]) > AREA_TOLERANCE_SQFT:
                 area_errors.append({"id": identifier, "expected_area_sf": expected["area_sf"] if expected else None, "ifc_area": area})
+            if expected is None or body_profile_area is None or abs(body_profile_area - expected["area_sf"]) > AREA_TOLERANCE_SQFT:
+                body_profile_errors.append({"id": identifier, "expected_area_sf": expected["area_sf"] if expected else None, "body_profile_area_sf": body_profile_area})
             if observed_level != expected_level:
                 level_errors.append(identifier or "<unnumbered>")
             expected_bounds = expected.get("plan_bounds_ft") if expected else None
@@ -343,10 +386,11 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
                 for key in ("min_x", "min_y", "max_x", "max_y")
             ):
                 plan_bounds_errors.append({"id": identifier, "expected_ft": expected_bounds, "observed_ft": bounds})
-            area_observations.append({"id": identifier, "expected_area_sf": expected["area_sf"] if expected else None, "ifc_area": area, "level": observed_level, "expected_plan_bounds_ft": expected_bounds, "ifc_plan_bounds_ft": bounds})
+            area_observations.append({"id": identifier, "expected_area_sf": expected["area_sf"] if expected else None, "ifc_area": area, "ifc_body_profile_area_sf": body_profile_area, "level": observed_level, "expected_plan_bounds_ft": expected_bounds, "ifc_plan_bounds_ft": bounds})
         checks["ifc_space_areas_match_source"] = not area_errors
         checks["ifc_space_levels_match_source"] = not level_errors
         checks["ifc_space_plan_bounds_match_source"] = not plan_bounds_errors
+        checks["ifc_space_body_profile_areas_match_source"] = not body_profile_errors
         observations["spaces"] = {"count": len(spaces), "areas_and_levels": sorted(area_observations, key=lambda item: item["id"])}
         if area_errors:
             errors.append(f"{len(area_errors)} IFC space area(s) differ from source by more than {AREA_TOLERANCE_SQFT:g} sf or are missing")
@@ -356,6 +400,9 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
         if plan_bounds_errors:
             errors.append(f"{len(plan_bounds_errors)} IFC space plan footprint(s) differ from selected-D coordinates by more than {PLAN_BOUNDS_TOLERANCE_FT:g} ft or have undecodable geometry")
             observations["space_plan_bounds_errors"] = plan_bounds_errors
+        if body_profile_errors:
+            errors.append(f"{len(body_profile_errors)} IFC space body profile area(s) differ from selected-D source by more than {AREA_TOLERANCE_SQFT:g} sf or use unsupported geometry")
+            observations["space_body_profile_area_errors"] = body_profile_errors
 
         physical_counts = {name: len(model.by_type(name)) for name in EXPECTED_EMPTY_CLASSES}
         checks["construction_categories_remain_empty"] = all(count == 0 for count in physical_counts.values())
