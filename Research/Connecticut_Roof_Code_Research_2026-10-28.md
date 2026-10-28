@@ -1,6 +1,6 @@
 # Connecticut roof-code context for the steep-gable study
 
-Checked: **2026-10-28**  
+Checked: **2026-10-28**
 Status: **primary-source research for schematic design; not a code review or engineering design**
 
 ## Current adoption status
