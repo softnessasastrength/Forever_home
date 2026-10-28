@@ -1,0 +1,80 @@
+{
+    "schema":  "forever-home-m06-sink-gross-body-screen-v1",
+    "result":  "PASS",
+    "check_count":  10,
+    "failed_checks":  [
+
+                      ],
+    "study":  {
+                  "layout_variant":  "OwnerSelectedD",
+                  "file":  "study.json",
+                  "sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                  "room_id":  "M-06",
+                  "assignment_status":  "unassigned; no room footprint or position",
+                  "search_window":  {
+                                        "id":  "east_of_core (pantry-side B)",
+                                        "status":  "gross unassigned room-block gap only",
+                                        "width_ft":  13.166666666666668,
+                                        "depth_ft":  7,
+                                        "width_in":  158,
+                                        "depth_in":  84
+                                    }
+              },
+    "candidates":  [
+                       {
+                           "id":  "american-standard-evolution-0467004.020",
+                           "name":  "American Standard Evolution 22-in 4-in-centerset pedestal lavatory",
+                           "status":  "research-only; discontinued; exact family type-to-SKU and assembly mapping unresolved",
+                           "source":  "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top",
+                           "dimensions_source":  "Manufacturer product page; nominal overall 22 x 17.5 x 34.25 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  22,
+                                                           "depth":  17.5,
+                                                           "height":  34.25
+                                                       },
+                           "candidate_rfa_geometry_measured":  true,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       },
+                       {
+                           "id":  "kohler-tresham-k-2844-4-0",
+                           "name":  "KOHLER Tresham K-2844-4-0 24-in square pedestal sink",
+                           "status":  "research-only; exact Revit family is behind Studio KOHLER sign-in and has not been inspected",
+                           "source":  "https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/tresham-24-pedestal-bathroom-sink-with-4-centerset-faucet-holes-2844-4",
+                           "dimensions_source":  "KOHLER specification dated 2024-03-16; nominal overall 24 x 19.5 x 34.625 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  24,
+                                                           "depth":  19.5,
+                                                           "height":  34.625
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
+                       }
+                   ],
+    "evaluated":  {
+                      "nominal_product_body_rectangle_only":  true,
+                      "product_selected":  false,
+                      "exact_KOHLER_RFA_measured":  false,
+                      "toilet_lavatory_combination":  false,
+                      "interior_clearances_or_approach":  false,
+                      "entry_door_or_swing":  false,
+                      "wall_build_up_or_room_footprint":  false,
+                      "plumbing_service_route":  false,
+                      "code_or_accessibility":  false,
+                      "room_assignment_or_IFC":  false
+                  },
+    "limitations":  [
+                        "B is a gross unassigned room-block gap, not usable clear interior dimensions or an approved bathroom footprint.",
+                        "Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.",
+                        "American Standard bounds use official nominal product dimensions; its separate Revit family screen records measured solids and unresolved hosting/type mapping.",
+                        "KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.",
+                        "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
+                    ]
+}
