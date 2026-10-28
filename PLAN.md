@@ -713,3 +713,15 @@ Acceptance criteria:
 - Rerun the validator and offline regression suite; preserve the untracked Incoming RFAs and all Revit files.
 
 Current status: Complete. The validator's hard-coded Champion bowl disposition was stale (`received`/`queued`) while the manifest records the completed read-only inspection as `inspected-unapproved` with the corresponding intake evidence. The validator now expects the current state and passes for both manufacturer sources, four quarantined research candidates, the two RevitCity candidates, and the archived rejection. Offline RevitPilot suite passes 37/37. No family bytes, manifest data, Revit project, or selected-D source changed.
+
+### M64 — Reconcile stale Evolution host-probe failure with current registered build
+
+Acceptance criteria:
+
+- Verify the current sandbox branch and preserve the three known untracked Incoming RFAs.
+- Compare the failing intake report's diagnostic to the checked-out C# source and identify whether the report tests the current implementation.
+- Verify the exact registered AddInId, repository-contained assembly path and SHA256 before any host-run attempt.
+- Update operator documentation so stale evidence and the current host-validation blocker are unmistakable.
+- Do not change family bytes, selected-D source, or Revit model state; do not claim Revit runtime success until a fresh report passes.
+
+Current status: Complete for diagnosis and documentation; Revit runtime retest remains open. The retained report `.local/revit-pilot/family-intake/20261028T210959251Z/intake-manifest.json` failed at `No referenceable vertical planar face was found`, identifying the older raw-wall-geometry probe. Current `Pilot.cs` obtains a stable face reference using `HostObjectUtils.GetSideFaces`. The per-user manifest uses the authorized AddInId and repository-local `build-evolution-host-v4` DLL, SHA256 `0278CF2EABF981367DF679538DEDE1D3CB412E960AA1537F80046FC7A3ADC0E4`. Revit remains visually blocked by its trial welcome WebView; the close control belongs to a child window that CUA does not expose. The exact prompt cannot be checked, so the fresh intake and any permitted Load Once choice are pending. No registration, model, or RFA was changed.
