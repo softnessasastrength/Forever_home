@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 05:56 EDT, the selected-D PowerShell generator passed 43/43 in two fresh runs with all seven artifacts byte-identical, family provenance passed, and the offline unittest suite passed 37/37. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 04:36 EDT, the selected-D PowerShell generator passed 43/43 in two fresh runs with all seven artifacts byte-identical, family provenance passed, and the offline unittest suite passed 37/37. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
 
 ## Repository safety baseline
 
@@ -270,6 +270,16 @@ Acceptance criteria:
 - Keep absent or inaccessible host-side settings marked unverified; do not infer them from an IFC file alone.
 
 Current status: static source/configuration audit passes 16/16 checks (`Research/M24_Revit_2027_IFC_Settings_Audit.json`). The retained exact-backup IFC validator passes 26/26, including source-matching `IfcSpace.LongName` values. Its report observes zero property-set or quantity-set relationships on all 21 spaces; this absence is a documented data-coverage gap, not a schema failure. Host parameter-template capture remains pending a trustworthy local .NET SDK build and a controllable Revit session.
+
+### M25 — Reconcile selected-D social-room areas before coordinated layout
+
+Acceptance criteria:
+
+- Read the selected-D room blocks and compare M-01/M-02/M-03 areas with ranges in the checked-in room program.
+- Verify the review CSV matches the study block arithmetic and the room-program source ranges.
+- Present bounded retain-or-retarget proposals without changing selected D or inventing replacement dimensions.
+
+Current status: `Tools/audit_m25_social_room_area_reconciliation.ps1` passes 11/11 checks. Two fresh PowerShell 5.1 runs produced byte-identical JSON (SHA256 `4A828984CC93FE7B793DBD122CBE49B5A0A018788BEBA285CD3B02A0BECE82A7`). The report compares 676 sf of selected-D living/kitchen/dining room blocks with a combined preliminary range of 420–525 sf. Retaining the current blocks or retargeting within those ranges is an owner design choice; neither is selected. See `Architecture/M25_Social_Room_Area_Reconciliation_2026-10-28/README.md`.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

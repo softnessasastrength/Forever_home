@@ -1,0 +1,137 @@
+﻿{
+    "schema":  "forever-home.m25-social-room-area-reconciliation.v1",
+    "status":  "pass",
+    "checks_passed":  11,
+    "checks_total":  11,
+    "checks":  [
+                   {
+                       "name":  "study_is_owner_selected_d",
+                       "passed":  true,
+                       "detail":  "layout_variant=OwnerSelectedD"
+                   },
+                   {
+                       "name":  "area_review_has_exactly_three_social_rooms",
+                       "passed":  true,
+                       "detail":  "rows=3"
+                   },
+                   {
+                       "name":  "area_review_has_expected_room_ids_once_each",
+                       "passed":  true,
+                       "detail":  "ids=M-01,M-02,M-03"
+                   },
+                   {
+                       "name":  "study_areas_match_generated_program_review",
+                       "passed":  true,
+                       "detail":  "Area arithmetic uses source block width multiplied by depth and compares it with the generated review CSV."
+                   },
+                   {
+                       "name":  "program_ranges_are_present_and_ordered",
+                       "passed":  true,
+                       "detail":  "Ranges are read from the generated review of the checked-in room program."
+                   },
+                   {
+                       "name":  "generated_area_review_ranges_match_room_program_source",
+                       "passed":  true,
+                       "detail":  "The three min/max ranges are cross-checked against the Requirements/Room_Program.md table."
+                   },
+                   {
+                       "name":  "current_social_area_matches_derived_total",
+                       "passed":  true,
+                       "detail":  "current_total_sf=676"
+                   },
+                   {
+                       "name":  "program_range_total_matches_documented_bounds",
+                       "passed":  true,
+                       "detail":  "range_total_sf=420..525"
+                   },
+                   {
+                       "name":  "aggregate_maximum_variance_is_151_sf",
+                       "passed":  true,
+                       "detail":  "above_combined_max_sf=151"
+                   },
+                   {
+                       "name":  "combined_minimum_reduction_is_256_sf",
+                       "passed":  true,
+                       "detail":  "reduction_to_combined_minimum_sf=256"
+                   },
+                   {
+                       "name":  "no_layout_or_baseline_mutation_requested",
+                       "passed":  true,
+                       "detail":  "This report is an area comparison; it emits no room coordinates or replacement study."
+                   }
+               ],
+    "source_fingerprints_sha256":  {
+                                       "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "generated_program_area_review":  "08ec32c10435966a6bdc52bf9f391b030f9bddf5dcc1f4757024c1c4472816c2",
+                                       "room_program":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
+                                       "selected_direction_decision":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e",
+                                       "main_floor_design_gates":  "cb790b7205f566b7d8810631a53fcd3503d2c8804b5303dd93428c836bb48ac1"
+                                   },
+    "comparison":  {
+                       "rooms":  [
+                                     {
+                                         "id":  "M-01",
+                                         "name":  "Living room",
+                                         "selected_d_study_area_sf":  240,
+                                         "program_range_sf":  {
+                                                                  "minimum":  180,
+                                                                  "maximum":  220
+                                                              },
+                                         "above_program_max_sf":  20,
+                                         "above_max_percent":  9.1,
+                                         "disposition":  "study variance only; no room-size revision or layout adopted"
+                                     },
+                                     {
+                                         "id":  "M-02",
+                                         "name":  "Kitchen",
+                                         "selected_d_study_area_sf":  277.33,
+                                         "program_range_sf":  {
+                                                                  "minimum":  150,
+                                                                  "maximum":  185
+                                                              },
+                                         "above_program_max_sf":  92.33,
+                                         "above_max_percent":  49.9,
+                                         "disposition":  "study variance only; no room-size revision or layout adopted"
+                                     },
+                                     {
+                                         "id":  "M-03",
+                                         "name":  "Dining",
+                                         "selected_d_study_area_sf":  158.67,
+                                         "program_range_sf":  {
+                                                                  "minimum":  90,
+                                                                  "maximum":  120
+                                                              },
+                                         "above_program_max_sf":  38.67,
+                                         "above_max_percent":  32.2,
+                                         "disposition":  "study variance only; no room-size revision or layout adopted"
+                                     }
+                                 ],
+                       "selected_d_social_room_area_sf":  676,
+                       "program_combined_range_sf":  {
+                                                         "minimum":  420,
+                                                         "maximum":  525
+                                                     },
+                       "above_combined_program_max_sf":  151,
+                       "reduction_to_combined_program_minimum_sf":  256,
+                       "reduction_percent_of_current_area_to_reach_combined_max":  22.3,
+                       "reduction_percent_of_current_area_to_reach_combined_minimum":  37.9
+                   },
+    "decision_options":  [
+                             {
+                                 "id":  "retain_current_study_areas_for_one_furnished_fit_test",
+                                 "status":  "proposal; not selected",
+                                 "effect":  "Keeps the selected-D room-block areas while testing furniture, hearth, kitchen equipment, routes and storage; records that all three social rooms exceed preliminary program ceilings."
+                             },
+                             {
+                                 "id":  "retarget_within_documented_program_ranges",
+                                 "status":  "proposal; not selected",
+                                 "effect":  "Brings the three-room total to no more than 525 sf, a derived reduction of 151 sf from current blocks; new dimensions and positions require a separately authorized study."
+                             }
+                         ],
+    "limitations":  [
+                        "The documented program ranges are preliminary study references, not code or professional standards.",
+                        "The 40 x 42 ft shell is an owner-selected test envelope; this comparison does not calculate gross area, circulation, wall thickness or a finished building footprint.",
+                        "The study is room-block geometry. No wall, opening, furniture, appliance, structural or MEP geometry is created.",
+                        "M-06 remains unassigned and is not counted in this social-room subtotal."
+                    ]
+}
