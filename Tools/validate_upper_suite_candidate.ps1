@@ -183,11 +183,14 @@ foreach ($obstacle in $obstacles) {
     }
 }
 $routeReachable = [bool[,]]::new($maxIx + 1, $maxIy + 1)
+$routeDistance = [int[,]]::new($maxIx + 1, $maxIy + 1)
+for ($ix = 0; $ix -le $maxIx; $ix++) { for ($iy = 0; $iy -le $maxIy; $iy++) { $routeDistance[$ix,$iy] = -1 } }
 $independentRouteValid = $startIx -ge 12 -and $startIx -le $maxIx -and $startIy -ge 12 -and $startIy -le $maxIy
 $routeQueue = [System.Collections.Generic.Queue[int]]::new()
 if ($independentRouteValid -and -not $blocked[$startIx,$startIy]) {
     $stride = $maxIy + 1
     $routeReachable[$startIx,$startIy] = $true
+    $routeDistance[$startIx,$startIy] = 0
     $routeQueue.Enqueue(($startIx * $stride) + $startIy)
     $directions = @(@(1,0),@(-1,0),@(0,1),@(0,-1))
     while ($routeQueue.Count -gt 0) {
@@ -200,12 +203,14 @@ if ($independentRouteValid -and -not $blocked[$startIx,$startIy]) {
             if ($nx -lt 12 -or $nx -gt $maxIx -or $ny -lt 12 -or $ny -gt $maxIy) { continue }
             if ($routeReachable[$nx,$ny] -or $blocked[$nx,$ny]) { continue }
             $routeReachable[$nx,$ny] = $true
+            $routeDistance[$nx,$ny] = $routeDistance[$cx,$cy] + 1
             $routeQueue.Enqueue(($nx * $stride) + $ny)
         }
     }
 } else { $independentRouteValid = $false }
 $doorSamples = [int]$report.search.public_door_edge_samples
 $independentSides = [ordered]@{}
+$bestGoals = [ordered]@{}
 foreach ($id in @('U-01','U-02','U-04')) {
     $room = $rectangles.$id
     $minXTick = [int][Math]::Ceiling((([double]$room.x_ft + $doorReservation / 2.0) / $step))
@@ -213,6 +218,7 @@ foreach ($id in @('U-01','U-02','U-04')) {
     $minYTick = [int][Math]::Ceiling((([double]$room.y_ft + $doorReservation / 2.0) / $step))
     $maxYTick = [int][Math]::Floor((([double]$room.y_ft + [double]$room.depth_ft - $doorReservation / 2.0) / $step))
     $reachableSides = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $bestGoal = $null
     for ($sample = 0; $sample -lt $doorSamples; $sample++) {
         $t = if ($doorSamples -eq 1) { 0.5 } else { $sample / [double]($doorSamples - 1) }
         $xTick = [int][Math]::Round($minXTick + ($maxXTick - $minXTick) * $t)
@@ -228,10 +234,19 @@ foreach ($id in @('U-01','U-02','U-04')) {
             $gx = [int][Math]::Round([double]$goal.x * $grid)
             $gy = [int][Math]::Round([double]$goal.y * $grid)
             if ([Math]::Abs($gx / $grid - [double]$goal.x) -gt 0.000001 -or [Math]::Abs($gy / $grid - [double]$goal.y) -gt 0.000001) { continue }
-            if ($gx -ge 12 -and $gx -le $maxIx -and $gy -ge 12 -and $gy -le $maxIy -and $routeReachable[$gx,$gy] -and -not $blocked[$gx,$gy]) { [void]$reachableSides.Add([string]$goal.side) }
+            if ($gx -ge 12 -and $gx -le $maxIx -and $gy -ge 12 -and $gy -le $maxIy -and $routeReachable[$gx,$gy] -and -not $blocked[$gx,$gy]) {
+                [void]$reachableSides.Add([string]$goal.side)
+                $distance = $routeDistance[$gx,$gy]
+                if ($null -eq $bestGoal -or $distance -lt $bestGoal.route_steps) {
+                    $edgeX = if ($goal.side -in @('north','south')) { $x } elseif ($goal.side -eq 'west') { [double]$room.x_ft } else { [double]$room.x_ft + [double]$room.width_ft }
+                    $edgeY = if ($goal.side -in @('west','east')) { $y } elseif ($goal.side -eq 'south') { [double]$room.y_ft } else { [double]$room.y_ft + [double]$room.depth_ft }
+                    $bestGoal = [pscustomobject]@{side=[string]$goal.side;edge_center_x_ft=[Math]::Round($edgeX,4);edge_center_y_ft=[Math]::Round($edgeY,4);outside_goal_x_ft=[Math]::Round([double]$goal.x,4);outside_goal_y_ft=[Math]::Round([double]$goal.y,4);route_steps=$distance;route_length_ft=[Math]::Round($distance * $step,3)}
+                }
+            }
         }
     }
     $independentSides[$id] = @($reachableSides | Sort-Object)
+    $bestGoals[$id] = $bestGoal
     $reportedSides = @($candidate.hall_reachability.reachable_room_sides.$id | Sort-Object -Unique)
     Assert-Check ((Compare-Object @($independentSides[$id]) $reportedSides).Count -eq 0) "Independent route replay disagrees with reported reachable sides for $id."
 }
@@ -245,4 +260,4 @@ if ($errors.Count -gt 0) {
     exit 1
 }
 
-Write-Output ("PASS: {0} independent checks. Candidate {1}; shell {2} x {3} ft is explicitly exploratory/unapproved; sampled public hall route reaches U-01, U-02 ({4}) and U-04. No actual doors, code compliance or room approval are established." -f $checksRun, $candidate.layout_key, $shellWidth, $shellDepth, (@($independentSides['U-02']) -join ','))
+Write-Output ("PASS: {0} independent checks. Candidate {1}; shell {2} x {3} ft is explicitly exploratory/unapproved; sampled public hall route reaches U-01, U-02 ({4}) and U-04. Nearest U-02 wall-edge sample is {5} at ({6},{7}) ft; outside hall goal is ({8},{9}) ft, {10} ft from the landing-approach grid start. These are not door or compliance findings." -f $checksRun, $candidate.layout_key, $shellWidth, $shellDepth, (@($independentSides['U-02']) -join ','), $bestGoals['U-02'].side, $bestGoals['U-02'].edge_center_x_ft, $bestGoals['U-02'].edge_center_y_ft, $bestGoals['U-02'].outside_goal_x_ft, $bestGoals['U-02'].outside_goal_y_ft, $bestGoals['U-02'].route_length_ft)
