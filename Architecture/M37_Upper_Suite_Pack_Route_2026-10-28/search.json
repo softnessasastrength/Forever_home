@@ -1,283 +1,185 @@
-﻿{
-    "schema":  "forever-home.m37-upper-suite-pack-route.v1",
-    "title":  "M37 - upper-suite room packing and public-hall route search",
-    "status":  "bounded search found no candidate satisfying room contacts, lift keepout and the 4ft stair-to-room route including owner-confirmed U-03 hall access",
-    "source_fingerprints_sha256":  {
-                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
-                                       "owner_followup_study.json":  "941f7ae0f48b47995896bad15424c1b617c1211633060a7204031f10929c1832",
-                                       "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478"
-                                   },
-    "search":  {
-                   "algorithm":  "deterministic tree-attached rectangle search with equal node budgets for both U-01 orientations, five alignment anchors, 0.5ft wall bands and 3.5ft nominal contact reservations; followed by configuration-space BFS for a 4ft public hall",
-                   "node_limit":  1500,
-                   "per_orientation_node_budget":  750,
-                   "nodes_expanded":  1500,
-                   "node_limit_reached":  true,
-                   "root_orientation_runs":  [
-                                                 {
-                                                     "anchor_width_ft":  16,
-                                                     "anchor_depth_ft":  10,
-                                                     "nodes_expanded":  750
-                                                 },
-                                                 {
-                                                     "anchor_width_ft":  10,
-                                                     "anchor_depth_ft":  16,
-                                                     "nodes_expanded":  750
-                                                 }
-                                             ],
-                   "layout_limit":  5000,
-                   "layouts_recorded":  332,
-                   "raw_complete_layouts":  377,
-                   "translations_tested":  191,
-                   "hall_route_searches":  191,
-                   "routes_with_clear_stair_approach":  147,
-                   "coordinate_grid_ft":  6,
-                   "source_door_reservation_ft":  3.5,
-                   "search_complete":  false
-               },
-    "source_dimensions_ft":  {
-                                 "U-01":  {
-                                              "id":  "U-01",
-                                              "width_ft":  16,
-                                              "depth_ft":  10
-                                          },
-                                 "U-02":  {
-                                              "id":  "U-02",
-                                              "width_ft":  16,
-                                              "depth_ft":  9.6666666666666661
-                                          },
-                                 "U-03":  {
-                                              "id":  "U-03",
-                                              "width_ft":  13.666666666666666,
-                                              "depth_ft":  9.1666666666666661
-                                          },
-                                 "U-04":  {
-                                              "id":  "U-04",
-                                              "width_ft":  13.666666666666666,
-                                              "depth_ft":  8
-                                          },
-                                 "U-05":  {
-                                              "id":  "U-05",
-                                              "width_ft":  9,
-                                              "depth_ft":  10
-                                          },
-                                 "U-06":  {
-                                              "id":  "U-06",
-                                              "width_ft":  10,
-                                              "depth_ft":  12
-                                          },
-                                 "C-PRIVATE":  {
-                                                   "id":  "C-PRIVATE",
-                                                   "width_ft":  6.5,
-                                                   "depth_ft":  10
-                                               }
-                             },
-    "coordinate_basis":  "Upper room coordinates normalized into the 36x32ft rear-upper wing. The lift projection subtracts the source +6ft upper frame offset; only the part intersecting the upper wing is tested as an obstruction.",
-    "preserved_constraints":  [
-                                  "U-01 to primary-only U-05 through a nominal 3.5ft contact reservation",
-                                  "U-01 to C-PRIVATE to U-02",
-                                  "owner-directed U-02 to U-03 private link",
-                                  "owner-confirmed U-03 shared-hall access alongside the private link",
-                                  "U-03 and U-04 each contact U-06 for Jack-and-Jill access",
-                                  "source 8x8ft lift reservation, clipped to its upper-wing projection",
-                                  "4ft-wide hall route from source upper landing to U-01, U-02, U-03 and U-04"
-                              ],
-    "local_lift_keepout":  {
-                               "id":  "lift projected keepout (inside upper shell)",
-                               "x_ft":  21.166666666666668,
-                               "y_ft":  28,
-                               "width_ft":  8,
-                               "depth_ft":  4
-                           },
-    "upper_landing_local":  {
-                                "id":  "upper stair landing",
-                                "x_ft":  17.166666666666668,
-                                "y_ft":  32,
-                                "width_ft":  4,
-                                "depth_ft":  4
-                            },
-    "route_access_counts_by_room":  {
-                                        "U-01":  0,
-                                        "U-02":  0,
-                                        "U-03":  21,
-                                        "U-04":  63
-                                    },
-    "route_cases_reaching_U01_U02_U04":  0,
-    "candidate_private_only":  null,
-    "candidate_with_U03_hall":  null,
-    "best_candidate":  null,
-    "tested_route_samples":  [
-                                 {
-                                     "layout_key":  "C-PRIVATE:27.0000,0.0000,6.5000,10.0000|U-01:10.5000,0.0000,16.0000,10.0000|U-02:23.8333,10.5000,9.6667,16.0000|U-03:14.1667,10.5000,9.1667,13.6667|U-04:0.0000,21.0000,13.6667,8.0000|U-05:1.0000,0.0000,9.0000,10.0000|U-06:1.6667,10.5000,12.0000,10.0000",
-                                     "translation_ft":  {
-                                                            "x":  2.5,
-                                                            "y":  1.5
-                                                        },
-                                     "visited_cells":  105,
-                                     "reachable_room_sides":  {
-                                                                  "U-01":  [
-
-                                                                           ],
-                                                                  "U-02":  [
-
-                                                                           ],
-                                                                  "U-03":  [
-
-                                                                           ],
-                                                                  "U-04":  [
-
-                                                                           ]
-                                                              },
-                                     "required_with_U03_hall":  false
-                                 },
-                                 {
-                                     "layout_key":  "C-PRIVATE:27.0000,0.0000,6.5000,10.0000|U-01:10.5000,0.0000,16.0000,10.0000|U-02:23.8333,10.5000,9.6667,16.0000|U-03:14.1667,10.5000,9.1667,13.6667|U-04:0.0000,21.0000,13.6667,8.0000|U-05:1.0000,0.0000,9.0000,10.0000|U-06:1.6667,10.5000,12.0000,10.0000",
-                                     "translation_ft":  {
-                                                            "x":  2.1666666666666679,
-                                                            "y":  1.5
-                                                        },
-                                     "visited_cells":  135,
-                                     "reachable_room_sides":  {
-                                                                  "U-01":  [
-
-                                                                           ],
-                                                                  "U-02":  [
-
-                                                                           ],
-                                                                  "U-03":  [
-
-                                                                           ],
-                                                                  "U-04":  [
-
-                                                                           ]
-                                                              },
-                                     "required_with_U03_hall":  false
-                                 },
-                                 {
-                                     "layout_key":  "C-PRIVATE:27.0000,0.0000,6.5000,10.0000|U-01:10.5000,0.0000,16.0000,10.0000|U-02:23.8333,10.5000,9.6667,16.0000|U-03:14.1667,10.5000,9.1667,13.6667|U-04:0.0000,21.0000,13.6667,8.0000|U-05:1.0000,0.0000,9.0000,10.0000|U-06:1.6667,10.5000,12.0000,10.0000",
-                                     "translation_ft":  {
-                                                            "x":  2.5,
-                                                            "y":  0
-                                                        },
-                                     "visited_cells":  168,
-                                     "reachable_room_sides":  {
-                                                                  "U-01":  [
-
-                                                                           ],
-                                                                  "U-02":  [
-
-                                                                           ],
-                                                                  "U-03":  [
-
-                                                                           ],
-                                                                  "U-04":  [
-
-                                                                           ]
-                                                              },
-                                     "required_with_U03_hall":  false
-                                 },
-                                 {
-                                     "layout_key":  "C-PRIVATE:27.0000,0.0000,6.5000,10.0000|U-01:10.5000,0.0000,16.0000,10.0000|U-02:23.8333,10.5000,9.6667,16.0000|U-03:14.1667,10.5000,9.1667,13.6667|U-04:0.0000,21.0000,13.6667,8.0000|U-05:1.0000,0.0000,9.0000,10.0000|U-06:1.6667,10.5000,12.0000,10.0000",
-                                     "translation_ft":  {
-                                                            "x":  2.1666666666666679,
-                                                            "y":  0
-                                                        },
-                                     "visited_cells":  216,
-                                     "reachable_room_sides":  {
-                                                                  "U-01":  [
-
-                                                                           ],
-                                                                  "U-02":  [
-
-                                                                           ],
-                                                                  "U-03":  [
-
-                                                                           ],
-                                                                  "U-04":  [
-
-                                                                           ]
-                                                              },
-                                     "required_with_U03_hall":  false
-                                 },
-                                 {
-                                     "layout_key":  "C-PRIVATE:27.0000,0.0000,6.5000,10.0000|U-01:10.5000,0.0000,16.0000,10.0000|U-02:23.8333,10.5000,9.6667,16.0000|U-03:14.1667,10.5000,9.1667,13.6667|U-04:0.0000,21.0000,13.6667,8.0000|U-05:1.0000,0.0000,9.0000,10.0000|U-06:1.6667,10.5000,12.0000,10.0000",
-                                     "translation_ft":  {
-                                                            "x":  0,
-                                                            "y":  1.5
-                                                        },
-                                     "visited_cells":  330,
-                                     "reachable_room_sides":  {
-                                                                  "U-01":  [
-
-                                                                           ],
-                                                                  "U-02":  [
-
-                                                                           ],
-                                                                  "U-03":  [
-
-                                                                           ],
-                                                                  "U-04":  [
-
-                                                                           ]
-                                                              },
-                                     "required_with_U03_hall":  false
-                                 }
-                             ],
-    "first_translation_diagnostics":  [
-                                          {
-                                              "bounds_width":  34.333333333333329,
-                                              "bounds_depth":  28.166666666666664,
-                                              "max_x_translation":  1.6666666666666714,
-                                              "max_y_translation":  3.8333333333333357,
-                                              "rectangles":  7,
-                                              "x_offsets":  3,
-                                              "y_offsets":  2,
-                                              "clear_positions":  0
-                                          },
-                                          {
-                                              "bounds_width":  34.333333333333329,
-                                              "bounds_depth":  28.166666666666664,
-                                              "max_x_translation":  1.6666666666666714,
-                                              "max_y_translation":  3.8333333333333357,
-                                              "rectangles":  7,
-                                              "x_offsets":  3,
-                                              "y_offsets":  2,
-                                              "clear_positions":  0
-                                          },
-                                          {
-                                              "bounds_width":  34.333333333333329,
-                                              "bounds_depth":  28.166666666666664,
-                                              "max_x_translation":  1.6666666666666714,
-                                              "max_y_translation":  3.8333333333333357,
-                                              "rectangles":  7,
-                                              "x_offsets":  3,
-                                              "y_offsets":  3,
-                                              "clear_positions":  0
-                                          }
-                                      ],
-    "checks":  {
-                   "selected_D_source_matches_owner_followup":  true,
-                   "all_six_upper_rooms_and_private_connector_come_from_selected_D":  true,
-                   "all_room_dimensions_match_selected_D":  true,
-                   "door_reservation_is_source_derived_3_5ft":  true,
-                   "owner_private_sequence_is_in_search_graph":  true,
-                   "hybrid_guest_JJ_is_in_search_graph":  true,
-                   "upper_frame_offset_and_lift_projection_are_source_derived":  true,
-                   "stair_landing_start_is_source_derived":  true,
-                   "search_is_deterministic_and_bounded":  true,
-                   "owner_confirmed_U03_shared_hall_access_is_required":  true,
-                   "route_summary_matches_tested_records":  true,
-                   "selected_D_file_unchanged_during_run":  true
-               },
-    "failures":  [
-
-                 ],
-    "limitations":  [
-                        "The tree search is deterministic but bounded by NodeLimit/LayoutLimit and samples five contact-alignment anchors; it is not an exhaustive proof that no layout exists.",
-                        "A 0.5ft gap represents a nominal wall allowance, and a 3.5ft edge reservation is inherited from selected-D door-matrix data, not clear opening or door-swing geometry.",
-                        "The hall search checks a 4ft swept square on a 2in translation grid. It does not model walls, doors, swings, landings beyond the source connector, headroom, floor openings, stairs, structure, services, furniture or fire/life-safety.",
-                        "The lift keepout is a plan projection from the source reservation; verify actual shaft and floor opening in Revit.",
-                        "No Revit, IFC, code, accessibility, structural or construction validation is made. A search candidate is a room-block concept only.",
-                        "U-03 shared-hall retention is owner-confirmed, but its door and route geometry remain schematic. No room sizes or selected-D baseline are edited."
-                    ]
+{
+  "schema": "forever-home.m37-upper-suite-pack-route.v2",
+  "title": "M37 - upper-suite room packing and public-hall route search",
+  "status": "bounded search found no candidate satisfying room contacts, lift keepout and required 4ft public routes to U-01, U-02 and U-04",
+  "source_fingerprints_sha256": {
+    "selected_D_study.json": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "owner_followup_study.json": "5f8ce1abc25a32c7096e17e4a7ad0814fd9a1c0f975a2352f6f0fa51401bc7b3",
+    "Requirements/Room_Program.md": "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478"
+  },
+  "search": {
+    "algorithm": "deterministic tree-attached rectangle search; prioritize private suite and Jack-and-Jill before primary bath; split node budget equally between U-01 orientations; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach; test each remaining 4ft hall on an exact-parity precomputed 2in occupancy grid",
+    "node_limit": 1500,
+    "per_orientation_node_budget": 750,
+    "nodes_expanded": 1500,
+    "node_limit_reached": true,
+    "root_orientation_runs": [
+      {
+        "anchor_width_ft": 16.0,
+        "anchor_depth_ft": 10.0,
+        "nodes_expanded": 750
+      },
+      {
+        "anchor_width_ft": 10.0,
+        "anchor_depth_ft": 16.0,
+        "nodes_expanded": 750
+      }
+    ],
+    "layout_limit": 5000,
+    "layouts_recorded": 388,
+    "raw_complete_layouts": 560,
+    "start_approach_translation_rejects": 2604,
+    "translations_tested": 0,
+    "hall_route_searches": 0,
+    "routes_with_clear_stair_approach": 0,
+    "coordinate_grid_ft": 6.0,
+    "source_door_reservation_ft": 3.5,
+    "search_complete": false
+  },
+  "source_dimensions_ft": {
+    "U-01": {
+      "id": "U-01",
+      "width_ft": 16.0,
+      "depth_ft": 10.0
+    },
+    "U-02": {
+      "id": "U-02",
+      "width_ft": 16.0,
+      "depth_ft": 9.666666666666666
+    },
+    "U-03": {
+      "id": "U-03",
+      "width_ft": 13.666666666666666,
+      "depth_ft": 9.166666666666666
+    },
+    "U-04": {
+      "id": "U-04",
+      "width_ft": 13.666666666666666,
+      "depth_ft": 8.0
+    },
+    "U-05": {
+      "id": "U-05",
+      "width_ft": 9.0,
+      "depth_ft": 10.0
+    },
+    "U-06": {
+      "id": "U-06",
+      "width_ft": 10.0,
+      "depth_ft": 12.0
+    },
+    "C-PRIVATE": {
+      "id": "C-PRIVATE",
+      "width_ft": 6.5,
+      "depth_ft": 10.0
+    }
+  },
+  "coordinate_basis": {
+    "shell_case": "selected-D-derived 36 x 32 ft rear-upper wing test envelope",
+    "width_ft": 36.0,
+    "depth_ft": 32.0,
+    "selected_D_upper_frame_offset_ft": 6.0,
+    "note": "The full-plate case reuses the owner-follow-up 40 x 42 ft main-floor test envelope as an unapproved upper-shell expansion comparison."
+  },
+  "preserved_constraints": [
+    "U-01 to primary-only U-05 through a nominal 3.5ft contact reservation",
+    "U-01 to C-PRIVATE to U-02",
+    "owner-directed U-02 to U-03 private route only; no direct U-03 to C-UPPER door",
+    "U-04 retains independent guest shared-hall access",
+    "U-03 and U-04 each contact U-06 for Jack-and-Jill access",
+    "source 8x8ft lift reservation, clipped to its upper-wing projection",
+    "4ft-wide hall route from source upper landing to U-01, U-02 and U-04; no U-03 hall door is modeled"
+  ],
+  "local_lift_keepout": {
+    "id": "lift projected keepout (inside upper shell)",
+    "x_ft": 21.166666666666668,
+    "y_ft": 28.0,
+    "width_ft": 8.0,
+    "depth_ft": 4.0
+  },
+  "reserved_stair_approach": {
+    "id": "reserved 4ft stair approach",
+    "x_ft": 17.166666666666668,
+    "y_ft": 28.0,
+    "width_ft": 4.0,
+    "depth_ft": 4.0
+  },
+  "upper_landing_local": {
+    "id": "upper stair landing",
+    "x_ft": 17.166666666666668,
+    "y_ft": 32.0,
+    "width_ft": 4.0,
+    "depth_ft": 4.0
+  },
+  "route_access_counts_by_room": {
+    "U-01": 0,
+    "U-02": 0,
+    "U-03": 0,
+    "U-04": 0
+  },
+  "route_cases_reaching_U01_U02_U04": 0,
+  "candidate_private_only": null,
+  "first_route_with_U03_hall_side_reachable": null,
+  "best_candidate": null,
+  "tested_route_samples": [],
+  "first_translation_diagnostics": [
+    {
+      "bounds_width": 32.5,
+      "bounds_depth": 29.83333333333333,
+      "max_x_translation": 3.5,
+      "max_y_translation": 2.1666666666666714,
+      "rectangles": 7,
+      "x_offsets": 4,
+      "y_offsets": 2,
+      "clear_positions": 0
+    },
+    {
+      "bounds_width": 33.5,
+      "bounds_depth": 29.0,
+      "max_x_translation": 2.5,
+      "max_y_translation": 3.0,
+      "rectangles": 7,
+      "x_offsets": 3,
+      "y_offsets": 3,
+      "clear_positions": 0
+    },
+    {
+      "bounds_width": 33.5,
+      "bounds_depth": 29.0,
+      "max_x_translation": 2.5,
+      "max_y_translation": 3.0,
+      "rectangles": 7,
+      "x_offsets": 3,
+      "y_offsets": 3,
+      "clear_positions": 0
+    }
+  ],
+  "checks": {
+    "selected_D_source_matches_owner_followup": true,
+    "all_six_upper_rooms_and_private_connector_come_from_selected_D": true,
+    "all_room_dimensions_match_selected_D": true,
+    "door_reservation_is_source_derived_3_5ft": true,
+    "owner_private_sequence_is_in_search_graph": true,
+    "hybrid_guest_JJ_is_in_search_graph": true,
+    "search_prioritizes_private_chain_and_JJ_before_primary_bath": true,
+    "blocked_grid_matches_exact_clearance_predicate": true,
+    "upper_frame_offset_and_lift_projection_are_source_derived": true,
+    "upper_shell_dimensions_match_documented_case": true,
+    "stair_landing_start_is_source_derived": true,
+    "final_translations_reserve_source_stair_approach": true,
+    "search_is_deterministic_and_bounded": true,
+    "owner_revised_U03_private_route_only_matches_proposal": true,
+    "any_winner_reaches_all_required_public_rooms": true,
+    "route_summary_matches_tested_records": true,
+    "selected_D_file_unchanged_during_run": true
+  },
+  "failures": [],
+  "limitations": [
+    "The tree search is deterministic but bounded by NodeLimit/LayoutLimit and samples five contact-alignment anchors; it is not an exhaustive proof that no layout exists.",
+    "A 0.5ft gap represents a nominal wall allowance, and a 3.5ft edge reservation is inherited from selected-D door-matrix data, not clear opening or door-swing geometry.",
+    "Room connection goals are sample points 2.5ft beyond each room-block side, a schematic reachability proxy rather than a door or specified clearance.",
+    "The hall search checks a 4ft swept square on a 2in translation grid. It does not model walls, doors, swings, landings beyond the source connector, headroom, floor openings, stairs, structure, services, furniture or fire/life-safety.",
+    "The lift keepout is a plan projection from the source reservation; verify actual shaft and floor opening in Revit.",
+    "No Revit, IFC, code, accessibility, structural or construction validation is made. A search candidate is a room-block concept only.",
+    "The revised private-route-only direction excludes a direct U-03 shared-hall door; actual private and public openings remain unmodeled. Corridor proximity to U-03 is not evidence of a doorway. No room sizes or selected-D baseline are edited."
+  ]
 }

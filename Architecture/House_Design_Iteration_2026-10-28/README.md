@@ -2,7 +2,7 @@
 
 Status: **separate schematic proposal; selected-D baseline preserved**.
 
-The owner directed a private primary → boutique → hybrid suite sequence, returned the social-room study targets to kitchen 14 × 12 ft and dining 11 × 10 ft, requested a steep-roof exploration, and identified Connecticut for code research. The exact recorded direction and tradeoffs are in [the follow-up decision](../../Decisions/2026-10-28_House_Design_Direction_Followup.md).
+The owner directed a private primary → boutique → hybrid suite sequence, returned the social-room study targets to kitchen 14 × 12 ft and dining 11 × 10 ft, requested a steep-roof exploration, and identified Connecticut for code research. The owner later superseded the earlier U-03 shared-hall choice: the current proposal gives U-03 the private route only, with no direct shared-hall door. Guest hall access and both Jack-and-Jill links remain. The exact decision history and tradeoffs are in [the follow-up decision](../../Decisions/2026-10-28_House_Design_Direction_Followup.md).
 
 ## Files and reproduction
 
@@ -11,7 +11,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_owner_follow
 ```
 
 - `study.json`: source fingerprint, room blocks, upper-suite topology target, roof inputs and limitations.
-- `checks.json`: 16 named room-block, adjacency, unassigned-M-06, topology and fit-screen checks.
+- `checks.json`: 17 named room-block, adjacency, unassigned-M-06, topology and fit-screen checks.
 - `main-plan.svg`: proposed local-coordinate room blocks, comparison core and unassigned M-06 B search window.
 - `roof-concept.svg`: qualitative, not-to-scale steep-gable section prompt.
 - `manifest.json`: input and generated-output hashes.
@@ -38,7 +38,7 @@ Within M-02's 14 × 12 ft room block, the inherited 8 × 4 ft island plus 42 in 
 
 ## Upper-suite intent
 
-The topology target adds U-02 → U-03 to the existing private path U-01 → C-PRIVATE → U-02 and retains the U-03/U-04 Jack-and-Jill links plus guest C-UPPER access. The current hybrid-to-hall edge is carried forward provisionally; the owner did not specify whether it should remain in addition to private access. `study.json` marks the private link as owner-directed but its corridor, room-block rearrangement, wall, opening, door, swing and privacy/acoustic performance as unresolved. The first direct-adjacency fit screen is in [M34](../M34_Upper_Suite_Private_Link_2026-10-28/README.md): one westward U-03 shift overlaps the current hall and lift reservation, so the private route remains an intent rather than demonstrated geometry.
+The current topology target adds U-02 → U-03 to U-01 → C-PRIVATE → U-02, excludes a direct U-03 → C-UPPER edge, and retains guest C-UPPER access plus U-03 ↔ U-06 ↔ U-04 Jack-and-Jill access. This is a revision of the earlier same-day owner confirmation. `study.json` records the access graph; corridor, room-block rearrangement, walls, openings, door swings and privacy/acoustic performance remain unresolved. The first direct-adjacency fit screen is in [M34](../M34_Upper_Suite_Private_Link_2026-10-28/README.md): one westward U-03 shift overlaps the current hall and lift reservation, so the private route remains an intent rather than demonstrated geometry.
 
 ## Roof concept and code context
 
@@ -46,4 +46,4 @@ The topology target adds U-02 → U-03 to the existing private path U-01 → C-P
 
 ## Validation boundary
 
-Re-running the script twice into fresh scratch directories should produce identical four study artifacts and pass 16/16 explicit checks. Passing checks cover only rectangle containment/overlap/adjacency, clearance from comparison-core rectangles, target room arithmetic, the unassigned search gap, the intended relationship graph and the recorded kitchen-fit shortfall. The generator refuses output paths outside the repository root. No Revit host action or IFC export was performed for this proposal. The saved selected-D Revit/IFC evidence remains a separate space-study baseline with no walls, slabs, stairs, doors or windows.
+Re-running the script twice into fresh scratch directories should produce identical four study artifacts and pass 17/17 explicit checks. Passing checks cover only rectangle containment/overlap/adjacency, clearance from comparison-core rectangles, target room arithmetic, the unassigned search gap, the revised access graph and the recorded kitchen-fit shortfall. The generator refuses output paths outside the repository root. No Revit host action or IFC export was performed for this proposal. The saved selected-D Revit/IFC evidence remains a separate space-study baseline with no walls, slabs, stairs, doors or windows.

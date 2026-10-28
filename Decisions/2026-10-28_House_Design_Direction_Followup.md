@@ -4,10 +4,14 @@ Status: **owner-directed inputs for a separate schematic proposal**. This record
 
 ## Owner direction
 
-1. Make the hybrid room part of the private primary/boutique/hybrid sequence. Retain guest hall access and the hybrid/guest Jack-and-Jill relationship; retain primary-only access to the primary bath. On 2026-10-28 the owner confirmed that U-03 keeps shared-hall access alongside the new private-suite link. The route, location, wall and doors are not yet designed.
+1. Make the hybrid room part of the private primary/boutique/hybrid sequence. Retain guest hall access and both hybrid/guest Jack-and-Jill links; retain primary-only access to the primary bath. The owner initially confirmed U-03 shared-hall access alongside the new private-suite link, then revised that choice later on 2026-10-28 to **private route only**: U-03 is to connect through U-02 and has no direct shared-hall door in the current proposal. The earlier confirmation is superseded. The route, location, walls and doors are not yet designed.
 2. Return the kitchen and dining study targets to the earlier documented **14 × 12 ft** and **11 × 10 ft**, respectively. These are area-program study targets (168 sf and 110 sf), not approved finished dimensions.
 3. Explore a steep traditional gable roof concept. Roof pitch, ridge orientation/elevation, spans, assemblies, openings and structure remain unassigned.
 4. Use Connecticut as the code-research jurisdiction. The municipality, parcel, permit schedule and reviewing authority remain unknown.
+
+## Owner revision — U-03 access (2026-10-28)
+
+The latest owner direction supersedes the earlier same-day shared-hall choice: keep the U-01 → C-PRIVATE → U-02 → U-03 private sequence and omit a direct U-03 → C-UPPER door. Preserve the guest's independent shared-hall access and both Jack-and-Jill links (U-03 ↔ U-06 and U-06 ↔ U-04). This revises the schematic access graph only; selected D and its existing room/door data remain unchanged. Door placement, privacy, egress, walls and circulation still require design and Revit review.
 
 ## First schematic test
 

@@ -81,10 +81,12 @@ $retainedEdges=@(
     [ordered]@{a='U-01';b='U-05';status='retain primary-only bath access; door geometry TBD'},
     [ordered]@{a='U-01';b='C-UPPER';status='retain nominal hall access'},
     [ordered]@{a='U-02';b='C-UPPER';status='existing nominal access retained for comparison; privacy boundary to review'},
-    [ordered]@{a='U-03';b='C-UPPER';status='owner-confirmed hybrid shared-hall access retained alongside private-suite link; door and route geometry TBD'},
     [ordered]@{a='U-04';b='C-UPPER';status='retain guest independent shared-hall access'},
     [ordered]@{a='U-03';b='U-06';status='retain hybrid Jack-and-Jill access'},
     [ordered]@{a='U-04';b='U-06';status='retain guest Jack-and-Jill access'}
+)
+$excludedEdges=@(
+    [ordered]@{a='U-03';b='C-UPPER';status='owner-revised private-route-only direction; no direct shared-hall door in this proposal'}
 )
 
 $checks=[ordered]@{}
@@ -102,7 +104,8 @@ $checks['M06_B_search_window_inside_test_envelope']=($windowB.x_ft -ge 0 -and $w
 $checks['M06_B_remains_unassigned_and_clear_of_room_blocks']=($m06RoomHits.Count -eq 0)
 $checks['M06_B_clear_of_stair_lift_comparison_blocks']=($m06CoreHits.Count -eq 0)
 $checks['private_chain_has_owner_directed_U02_to_U03_link']=@($privateEdges|Where-Object{$_.a -eq 'U-02' -and $_.b -eq 'U-03'}).Count -eq 1
-$checks['hybrid_and_guest_keep_hall_and_JandJ_links']=(@($retainedEdges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'C-UPPER'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-04' -and $_.b -eq 'C-UPPER'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'U-06'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-04' -and $_.b -eq 'U-06'}).Count -eq 1)
+$checks['U03_private_only_direction_excludes_hall_edge']=(@($excludedEdges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'C-UPPER'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'C-UPPER'}).Count -eq 0)
+$checks['guest_hall_and_both_JandJ_links_remain']=(@($retainedEdges|Where-Object{$_.a -eq 'U-04' -and $_.b -eq 'C-UPPER'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'U-06'}).Count -eq 1 -and @($retainedEdges|Where-Object{$_.a -eq 'U-04' -and $_.b -eq 'U-06'}).Count -eq 1)
 
 $fitWidthAisles=8.0+(2.0*42.0/12.0)
 $fitDepthAisles=8.0+(2.0*42.0/12.0)
@@ -127,11 +130,11 @@ $study=[ordered]@{
     source_fingerprints_sha256=[ordered]@{'selected_D_study.json'=$sourceHash;'Requirements/Room_Program.md'=$programHash;'owner_followup_decision.md'=$decisionHash}
     coordinate_frame='Selected-D schematic frame: feet, x right and y toward rear; no site orientation or georeference.'
     shell=$shell
-    owner_inputs=[ordered]@{private_primary_boutique_hybrid_sequence=$true;kitchen_target_ft=@(14,12);dining_target_ft=@(11,10);roof_concept='steep traditional gable, pitch and ridge orientation TBD';jurisdiction='Connecticut; municipality and parcel TBD'}
+    owner_inputs=[ordered]@{private_primary_boutique_hybrid_sequence=$true;u03_shared_hall_access=$false;u03_access_direction='private route only; no direct shared-hall door';kitchen_target_ft=@(14,12);dining_target_ft=@(11,10);roof_concept='steep traditional gable, pitch and ridge orientation TBD';jurisdiction='Connecticut; municipality and parcel TBD'}
     main_rooms=$rooms
     room_areas=[ordered]@{M02_kitchen_sf=168;M03_dining_sf=110;source='Requirements/Room_Program.md and owner follow-up; study targets, not wall-face areas'}
     M06=[ordered]@{status='unassigned; no footprint, position, fixture or service route';first_fit_window=$windowB;room_conflicts=@($m06RoomHits.ToArray());core_conflicts=@($m06CoreHits.ToArray())}
-    upper_suite=[ordered]@{private_route_edges=$privateEdges;retained_shared_access_edges=$retainedEdges;geometry_status='topology direction only; upper room-block rearrangement, connector width, wall, doors and swings not yet tested'}
+    upper_suite=[ordered]@{private_route_edges=$privateEdges;retained_shared_access_edges=$retainedEdges;excluded_access_edges=$excludedEdges;geometry_status='owner-directed topology only; upper room-block rearrangement, connector width, wall, doors and swings not yet tested'}
     roof=[ordered]@{type='steep traditional gable concept';pitch='TBD';ridge_orientation='TBD';'ridge/eave elevations'='TBD';assemblies='TBD';status='massing idea only; no dimensions, loads or construction geometry'}
     kitchen_fit_screen=$kitchenFit
     checks=$checks
