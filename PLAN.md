@@ -703,3 +703,13 @@ Acceptance criteria:
 - Record the retrieval blocker and the source/hash steps required if an owner-supplied current family becomes available.
 
 Current status: Complete as public-source research. American Standard material identifies ATS as its Revit/BIM partner; ATS documents that Revit downloads require an account and configured Spec or Project. No public evidence found that ATS currently offers 610AA001.020, so exact family availability remains unverified. No RFA or account action occurred. M-06 B remains unassigned pending verified current-product geometry and coordinated clearances/route.
+
+### M63 — Restore M-06 family-intake validator agreement with manifest
+
+Acceptance criteria:
+
+- Run the family-intake validator against current Incoming files, quarantined sources, source URLs/hashes, and manifest dispositions.
+- Diagnose any disagreement against the actual family intake record and latest Revit evidence; update the validator without changing family or manifest state.
+- Rerun the validator and offline regression suite; preserve the untracked Incoming RFAs and all Revit files.
+
+Current status: Complete. The validator's hard-coded Champion bowl disposition was stale (`received`/`queued`) while the manifest records the completed read-only inspection as `inspected-unapproved` with the corresponding intake evidence. The validator now expects the current state and passes for both manufacturer sources, four quarantined research candidates, the two RevitCity candidates, and the archived rejection. Offline RevitPilot suite passes 37/37. No family bytes, manifest data, Revit project, or selected-D source changed.

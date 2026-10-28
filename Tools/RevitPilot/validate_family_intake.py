@@ -14,8 +14,8 @@ MANUFACTURER_INCOMING = [
         "room_id": "M-06",
         "filename": "american-standard-champion-pro-3195A101020-bowl.rfa",
         "sha256": "F301D2CB77F13269E21DC44FD6953946158034122BB3C10889FCBA9470846393",
-        "status": "received",
-        "test_run": "queued",
+        "status": "inspected-unapproved",
+        "test_run": "read-only inspection and disposable intake 2026-10-28",
         "source_url": "https://lixilpro.com/products/toilets/Floor-Standing-Toilets/Champion-PRO-Chair-Height-Elongated-Bowl/White-%28020%29-3195A101020/?s=3195A101.020",
     },
     {
