@@ -260,9 +260,14 @@ Acceptance criteria:
 
 ### M24 — Audit the Revit 2027 IFC export and property-mapping setup
 
-- Record the host-verified named IFC export setup and parameter-mapping template used by the Revit 2027 workflow; capture versioned source/configuration fingerprints where available.
-- Preserve IFC2x3 output compatibility already used by the project and verify exported inventory/schema independently after any setup change.
+Acceptance criteria:
+
+- Record the API-level IFC options explicitly supplied by each RevitPilot export path, and fingerprint the source, manifests, and matching export evidence.
+- Preserve IFC2x3 output compatibility already used by the project and independently verify exported inventory/schema after any settings change.
+- On a controllable Revit 2027 host, record the active saved or in-session parameter-mapping template and export a local, hashed copy when the API permits. Do not alter the selected-D model to obtain this evidence.
 - Keep absent or inaccessible host-side settings marked unverified; do not infer them from an IFC file alone.
+
+Current status: static source/configuration audit passes 11/11 checks (`Research/M24_Revit_2027_IFC_Settings_Audit.json`). Host parameter-template capture remains pending a trustworthy local .NET SDK build and a matching Revit session.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 
