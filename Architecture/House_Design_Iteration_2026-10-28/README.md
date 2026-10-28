@@ -47,3 +47,11 @@ The current topology target adds U-02 → U-03 to U-01 → C-PRIVATE → U-02, r
 ## Validation boundary
 
 Re-running the script twice into fresh scratch directories should produce identical four study artifacts and pass 17/17 explicit checks. Passing checks cover only rectangle containment/overlap/adjacency, clearance from comparison-core rectangles, target room arithmetic, the unassigned search gap, the revised access graph and the recorded kitchen-fit shortfall. The generator refuses output paths outside the repository root. No Revit host action or IFC export was performed for this proposal. The saved selected-D Revit/IFC evidence remains a separate space-study baseline with no walls, slabs, stairs, doors or windows.
+
+## Proposed gable proportions
+
+`Tools/build_roof_pitch_massing_study.ps1` generates `roof-pitch-options.json` and `roof-pitch-options.svg` from this iteration's documented 40 × 42 ft test envelope. It compares unselected 10:12, 12:12 and 14:12 pitch proposals with the ridge parallel to either shell axis. For this full-span rectangular abstraction, the rise above a hypothetical eave datum ranges from 16 ft 8 in to 24 ft 6 in. These values compare proportions only; they are not selected roof dimensions or elevations for the house.
+
+The very tall rises expose a tradeoff: a steep gable spanning the full test envelope creates a high ridge, while a real house may require different roof segments over its room wings. No roof intersections, overhangs, finished floor datums, attic use, openings, framing, assemblies, snow/wind loads or drainage are modeled. Connecticut's roof-code note explicitly cautions that steep pitch does not by itself justify a reduced snow load. Pitch, ridge direction, site response and roof system remain unselected.
+
+Reproduce with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_roof_pitch_massing_study.ps1`. Its report includes the selected-D source fingerprint and six formula-derived options; the script does not edit `study.json`, selected D, Revit or IFC.

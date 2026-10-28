@@ -612,3 +612,14 @@ Acceptance criteria:
 - Keep all products research-only, exact 610AA geometry unverified, and M-06 unassigned. State actual walls, door/swing, approach, privacy, installation/rough-in and services are not represented.
 
 Current status: Complete as a same-wall lower-bound screen. `Tools/screen_m06_toilet_sink_gross_pair.ps1` checks 16 combinations from the existing source reports. Two Windows PowerShell 5.1 replays are byte-identical (SHA256 `DC8792ECA14CFFEB2FE4589EF6F7A303CCFCA15BE53602FCC70C68AF7E193ADB`). Modeled body-plus-front-strip extents are 53-3/4–58-1/2 in along the wall by 51-1/4 in deep, contained in B's 158 × 84 in gross bounds; minimum WC-centerline-to-sink-body-edge is 16-1/2 in and the smallest body-to-body gap is 7 in. This only shows that the nominal rectangles are not excluded by this assumed arrangement. Current toilet geometry, selected sink, walls, door, approach and service route remain unresolved. See `Research/M06_Sink_Candidates_2026-10-28.md` and the versioned JSON output.
+
+### M55 — Compare steep-gable proportions on the unapproved test envelope
+
+Acceptance criteria:
+
+- Read the owner-follow-up proposal and require its existing 40 × 42 ft test envelope and roof inputs to remain unapproved/TBD.
+- Calculate 10:12, 12:12 and 14:12 pitch proposals in both full-span ridge directions from the test-envelope dimensions; label every result unselected and measure rise only above a hypothetical eave datum.
+- Emit a source-hashed JSON and common-scale SVG comparison deterministically under Windows PowerShell 5.1.
+- State the roof footprint simplification, omitted wing/intersection geometry, loads, assemblies and structure; do not claim code compliance or reduce snow load based on pitch.
+
+Current status: Complete as a conceptual massing comparison. `Tools/build_roof_pitch_massing_study.ps1` writes `roof-pitch-options.json` and `roof-pitch-options.svg` inside the separate owner-follow-up proposal. Two Windows PowerShell 5.1 runs produce byte-identical JSON (SHA256 `1670AD59CF293EB738DBFD275BC01728EF754D76B873B5DD34B6EB6075560A33`) and SVG (`2A780B8144341B39434B89B3C0CCF85C173DC09C2A52EFBDC9EDB1A8398A6C43`); the six rise calculations and SVG XML validate. Across the 40–42 ft full-span options, proposed rise above the hypothetical eave ranges 16 ft 8 in–24 ft 6 in. The source pitch/ridge remain TBD, selected D is unchanged, and no Revit roof or IFC was produced. These options illustrate massing only and do not establish roof dimensions, framing, snow/wind resistance, code compliance or construction readiness. See `Architecture/House_Design_Iteration_2026-10-28/README.md`.

@@ -1,0 +1,115 @@
+{
+    "schema":  "forever-home-proposed-gable-pitch-massing-v1",
+    "result":  "PASS: six formula-derived, unselected gable massing comparisons generated from the existing unapproved test envelope.",
+    "source":  {
+                   "study_file":  "study.json",
+                   "study_sha256":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                   "shell_width_ft":  40,
+                   "shell_depth_ft":  42,
+                   "shell_status":  "existing selected-D test envelope; not approved house footprint",
+                   "owner_roof_request":  "steep traditional gable, pitch and ridge orientation TBD",
+                   "source_pitch_remains_tbd":  true,
+                   "source_ridge_orientation_remains_tbd":  true
+               },
+    "design_proposal_inputs":  {
+                                   "illustrative_pitch_ratios":  [
+                                                                     "10:12",
+                                                                     "12:12",
+                                                                     "14:12"
+                                                                 ],
+                                   "ridge_directions":  [
+                                                            "parallel to 42-ft shell depth",
+                                                            "parallel to 40-ft shell width"
+                                                        ],
+                                   "selected_pitch":  null,
+                                   "selected_ridge_direction":  null
+                               },
+    "options":  [
+                    {
+                        "pitch_rise_in_12_run_in":  10,
+                        "ridge_parallel_axis":  "42-ft shell depth",
+                        "ridge_length_ft":  42,
+                        "span_axis":  "40-ft shell width",
+                        "full_span_ft":  40,
+                        "half_run_ft":  20,
+                        "rise_above_eave_ft":  16.667,
+                        "schematic_rafter_line_length_ft":  26.034,
+                        "unselected_proposal":  true
+                    },
+                    {
+                        "pitch_rise_in_12_run_in":  10,
+                        "ridge_parallel_axis":  "40-ft shell width",
+                        "ridge_length_ft":  40,
+                        "span_axis":  "42-ft shell depth",
+                        "full_span_ft":  42,
+                        "half_run_ft":  21,
+                        "rise_above_eave_ft":  17.5,
+                        "schematic_rafter_line_length_ft":  27.336,
+                        "unselected_proposal":  true
+                    },
+                    {
+                        "pitch_rise_in_12_run_in":  12,
+                        "ridge_parallel_axis":  "42-ft shell depth",
+                        "ridge_length_ft":  42,
+                        "span_axis":  "40-ft shell width",
+                        "full_span_ft":  40,
+                        "half_run_ft":  20,
+                        "rise_above_eave_ft":  20,
+                        "schematic_rafter_line_length_ft":  28.284,
+                        "unselected_proposal":  true
+                    },
+                    {
+                        "pitch_rise_in_12_run_in":  12,
+                        "ridge_parallel_axis":  "40-ft shell width",
+                        "ridge_length_ft":  40,
+                        "span_axis":  "42-ft shell depth",
+                        "full_span_ft":  42,
+                        "half_run_ft":  21,
+                        "rise_above_eave_ft":  21,
+                        "schematic_rafter_line_length_ft":  29.698,
+                        "unselected_proposal":  true
+                    },
+                    {
+                        "pitch_rise_in_12_run_in":  14,
+                        "ridge_parallel_axis":  "42-ft shell depth",
+                        "ridge_length_ft":  42,
+                        "span_axis":  "40-ft shell width",
+                        "full_span_ft":  40,
+                        "half_run_ft":  20,
+                        "rise_above_eave_ft":  23.333,
+                        "schematic_rafter_line_length_ft":  30.732,
+                        "unselected_proposal":  true
+                    },
+                    {
+                        "pitch_rise_in_12_run_in":  14,
+                        "ridge_parallel_axis":  "40-ft shell width",
+                        "ridge_length_ft":  40,
+                        "span_axis":  "42-ft shell depth",
+                        "full_span_ft":  42,
+                        "half_run_ft":  21,
+                        "rise_above_eave_ft":  24.5,
+                        "schematic_rafter_line_length_ft":  32.268,
+                        "unselected_proposal":  true
+                    }
+                ],
+    "evaluated":  {
+                      "formula_based_massing_only":  true,
+                      "shell_is_an_approved_house_footprint":  false,
+                      "overhangs_or_gable_projections":  false,
+                      "roof_plan_shape_or_wing_intersections":  false,
+                      "finished_eave_or_ridge_elevations":  false,
+                      "roof_assemblies_or_openings":  false,
+                      "snow_wind_or_drainage_design":  false,
+                      "structural_members_or_connections":  false,
+                      "revit_roof_or_ifc_geometry":  false,
+                      "code_compliance_or_construction_readiness":  false
+                  },
+    "limitations":  [
+                        "Pitch values and ridge directions are illustrative proposals for comparing steep-gable proportions; none is owner-selected.",
+                        "The 40 x 42 ft outline is an unapproved selected-D test envelope, not an approved house footprint or roof plan.",
+                        "Rise is calculated from half the rectangular test-shell span and is measured above a hypothetical eave datum; floor/storey elevations are not included.",
+                        "A single full-span rectangle ignores the actual room-wing profile, intersections, overhangs, gable projections, dormers, openings, drainage and site orientation.",
+                        "The schematic line length is geometric only and does not size, specify or validate a rafter, truss, connection, roof assembly, snow/wind resistance, or construction method.",
+                        "Connecticut code research warns that a steep profile does not itself establish a reduced snow load; site and permit inputs remain unknown."
+                    ]
+}
