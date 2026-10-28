@@ -36,7 +36,13 @@ Reopen Revit and choose **Add-Ins → Forever Home Pilot → Build selected D sp
 
 The report is `ifc-validation.json` in that run directory. This is verified room-boundary geometry only: IFC walls, slabs, stairs, stair flights, doors and windows are intentionally absent. The separate D host evidence must not be inferred from Compact-Core C audit/QA/export reports.
 
-The exact retained D RVT was reopened and independently audited read-only at `.local/revit-pilot/audits/20261027T155514458Z/`. That report matches the saved-model SHA256 and records 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 Revit warnings. Do not run the existing Compact-Core Geometry QA command on D: its marker rules are C-specific and would produce misleading findings.
+The latest current-source D run is `.local/revit-pilot/selected-d/20261028T021345099Z/`. Its `study.json` matches current generated source SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`; the saved RVT SHA256 is `7a03f704329e840c938361d06c31329823e3d939c993bbc4e11de67e991af7ff`, and IFC2X3 SHA256 is `05a529999c08bde5695af87ec6e62e9cab86a8686a85d04d739e163861dac849`. The independent gate passes 23/23. The matching read-only native audit is `.local/revit-pilot/audits/20261028T021504360Z/` and records 3 levels, 21 enclosed rooms, 0 walls, 0 openings and 0 warnings. Revalidate the exact current run with:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py '.local/revit-pilot/selected-d/20261028T021345099Z' --report '.local/revit-pilot/selected-d/20261028T021345099Z/ifc-validation.json'
+```
+
+This supersedes the earlier exact-source D evidence for current-source lineage. The earlier runs remain preserved as history. Do not run the existing Compact-Core Geometry QA command on D: its marker rules are C-specific and would produce misleading findings. This remains a room-space study; its empty physical construction categories are intentional, not evidence of a complete house.
 
 After a D run, independently validate its exact RVT/IFC/source chain, IFC2X3 schema, three storeys, 21 spaces, IDs, levels, areas and intentionally empty construction categories:
 
