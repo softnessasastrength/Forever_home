@@ -1,6 +1,6 @@
 # Revit 2027 IFC exporter and selected-D geometry validation
 
-Updated: 2026-10-28 02:42 EDT
+Updated: 2026-10-28 02:45 EDT
 Scope: identify the IFC exporter recorded by the selected-D IFC and tighten the independent check of exported room footprints. This is project-validation research, not a Revit update or an architectural design change.
 
 ## Verified local exporter identity
@@ -18,7 +18,8 @@ The validator now independently decodes every `IfcSpace` body and compares its w
 ### Evidence
 
 - Added unit coverage for source-frame offsets and metre-to-foot bound conversion.
-- On an isolated copy of Revit run `20261028T021345099Z`, replaced only the copied named RVT with the byte-identical `.0001.rvt` backup whose SHA matches the run manifest. The enhanced selected-D IFC validator passes **24/24** checks, including all 21 IFC room XY footprints, source areas/IDs/levels, three storeys, IFC2X3 schema, export hash, exact copied-RVT lineage, and empty physical-construction categories. Machine report: `.local/revalidation/selected-d-ifc-coordinate-20261028T024106625/ifc-validation-coordinate.json`.
+- The first exploratory recheck exposed a double unit conversion in the new checker, producing 21 false mismatches in `.local/revalidation/selected-d-ifc-coordinate-20261028T024106625/ifc-validation-coordinate.json`. The checker was corrected to use IfcOpenShell's documented SI-metre geometry vertices directly; the initial diagnostic report is preserved and superseded by the passing report below. This was a validator defect, not a changed IFC or model.
+- On an isolated copy of Revit run `20261028T021345099Z`, replaced only the copied named RVT with the byte-identical `.0001.rvt` backup whose SHA matches the run manifest. The enhanced selected-D IFC validator passes **24/24** checks, including all 21 IFC room XY footprints, source areas/IDs/levels, three storeys, IFC2X3 schema, export hash, exact copied-RVT lineage, and empty physical-construction categories. Maximum absolute difference among all checked XY bounds is approximately `7.2e-15 ft` (floating-point serialization noise). Machine report: `.local/revalidation/selected-d-ifc-coordinate-20261028T024129523/ifc-validation-coordinate.json`.
 - The preserved IFC itself is unchanged (SHA256 `05a529999c08bde5695af87ec6e62e9cab86a8686a85d04d739e163861dac849`). The currently named RVT in the original run remains a different hash from its manifest, so the original run must still fail exact lineage until a fresh Revit export is generated from a verified saved model.
 
 ## Interpretation and next action
