@@ -38,6 +38,16 @@ $typeNames = @($types | ForEach-Object type | Sort-Object)
 $expectedTypeNames = @('0467.100','0467.400','0467.800')
 Assert-Check ($sink[0].category -eq 'Plumbing Fixtures' -and $sink[0].placement_type -eq 'WorkPlaneBased') 'Candidate category or placement type differs from the inspected family.'
 Assert-Check ($types.Count -eq 3 -and (Compare-Object $expectedTypeNames $typeNames).Count -eq 0) 'Candidate type set differs from the three measured Evolution variants.'
+$fourInType = @($types | Where-Object type -eq '0467.400')
+$familyDescription = @($fourInType[0].parameters | Where-Object name -eq 'Description')[0].value
+$familyModel = @($fourInType[0].parameters | Where-Object name -eq 'Model')[0].value
+$pedestalOption = @($fourInType[0].parameters | Where-Object name -eq 'Pedestal Option')[0].value
+$installationType = @($fourInType[0].parameters | Where-Object name -eq 'Installation Type')[0].value
+$holePunchLocation = @($fourInType[0].parameters | Where-Object name -eq 'Hole Punch Location')[0].value
+$productDocumentationLink = @($fourInType[0].parameters | Where-Object name -eq 'Product Documentation Link')[0].value
+Assert-Check ($fourInType.Count -eq 1 -and $familyModel -eq '0467.400' -and $familyDescription -like '*4" centers*' -and $holePunchLocation -like '*4"*') 'Four-inch centerset family type metadata does not match the measured Evolution option.'
+Assert-Check ($pedestalOption -eq 'Yes' -and $installationType -eq 'Pedestal') 'The measured type does not expose the documented pedestal option and installation type.'
+Assert-Check ($productDocumentationLink -like '*specsheet0467400.pdf*') 'The measured type documentation link does not identify the official 0467400 combo specification.'
 
 $measuredTypes = @()
 foreach ($type in $types) {
@@ -78,13 +88,14 @@ $report = [ordered]@{
     check_count = $checks
     failed_checks = @($failures)
     target_product = [ordered]@{
-        name = 'American Standard Evolution 22-Inch 4-Inch Centerset Pedestal Sink Top'
-        sku = '0467004.020'
-        current_status = 'manufacturer lists unavailable; LIXIL Pro lists discontinued'
-        product_page = 'https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top'
+        name = 'American Standard Evolution 22-Inch 4-Inch Centerset Pedestal Sink Top and Leg Combination'
+        sku = '0467400.020'
+        current_status = 'LIXIL Pro lists the combo discontinued; consumer page says unavailable for online sale'
+        product_page = 'https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination'
         official_nominal_dimensions_in = [ordered]@{ width = 22.0; depth = 17.5; overall_height = 34.25 }
         rfa_source = 'https://lixil.cdn.celum.cloud/253890_Basin-Pedestal-American_Standard-Evolution-0467_Series_original.rfa'
         rfa_sha256 = $familyHash
+        measured_file_name_retained_from_separate_top_listing = 'american-standard-evolution-0467004.020.rfa'
     }
     study = [ordered]@{ file = [System.IO.Path]::GetFileName($studyFile); sha256 = $studyHash }
     intake = [ordered]@{ file = [System.IO.Path]::GetFileName($intakeFile); revit_version = $intake.revit_version; revit_build = $intake.revit_build }
@@ -93,7 +104,10 @@ $report = [ordered]@{
         placement_type = $sink[0].placement_type
         types = $measuredTypes
         axis_interpretation = 'For this work-plane-based family, local X/Y are interpreted as width/height when hosted on a vertical face; local Z is interpreted as projection from that face. This mapping is not validated by a placed instance.'
-        type_sku_mapping_verified = $false
+        type_sku_association_supported = $true
+        type_description = $familyDescription
+        pedestal_option = $pedestalOption
+        installation_type = $installationType
         type_description_pedestal_assembly_resolved = $false
     }
     gross_body_screen = [ordered]@{
@@ -105,7 +119,8 @@ $report = [ordered]@{
     evaluated = [ordered]@{
         nominal_body_bounds_only = $true
         selected_fixture = $false
-        exact_RFA_type_to_SKU_mapping = $false
+        exact_RFA_type_to_SKU_source_association = $true
+        hosted_assembly_geometry_verified = $false
         placed_host_orientation = $false
         toilet_sink_clearance_or_user_approach = $false
         door_or_swing = $false
@@ -118,7 +133,7 @@ $report = [ordered]@{
     limitations = @(
         'The 22 x 17.5 in body rectangle is compared with the gross unassigned B room-block gap, not usable clear interior dimensions.',
         'Gross body containment does not include the toilet, required clearances, user approach, door, wall assembly, plumbing route or service access.',
-        'Product SKU is discontinued and the family type labels/model numbers and basin-only description do not establish the exact SKU-to-pedestal assembly mapping.',
+        'The official combo page links the same RFA; type 0467.400, its 4-in faucet metadata, pedestal option, spec-sheet link and measured overall envelope support association with SKU 0467400.020. Its type description still says “Basin only,” so family assembly geometry is not treated as conclusively verified.',
         'The family was measured in a disposable intake project only; no instance was placed, saved in the house model or exported to IFC.'
     )
 }

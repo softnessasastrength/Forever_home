@@ -33,16 +33,16 @@ Assert-Check ([Math]::Abs($widthIn - 158.0) -lt 0.000001 -and [Math]::Abs($depth
 # They are not Revit measurements, interior clear dimensions, fixture clearances, or layout instructions.
 $candidates = @(
     [ordered]@{
-        id = 'american-standard-evolution-0467004.020'
-        name = 'American Standard Evolution 22-in 4-in-centerset pedestal lavatory'
-        status = 'research-only; discontinued; exact family type-to-SKU and assembly mapping unresolved'
-        source = 'https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top'
-        dimensions_source = 'Manufacturer product page; nominal overall 22 x 17.5 x 34.25 in'
+        id = 'american-standard-evolution-0467400.020'
+        name = 'American Standard Evolution 22-in 4-in-centerset pedestal sink top and leg combination'
+        status = 'research-only; LIXIL Pro lists the combo discontinued; measured family is linked from the exact combo page, but its basin-only type description conflicts with its pedestal option'
+        source = 'https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination'
+        dimensions_source = 'Manufacturer combo product page; nominal overall 22 x 17.5 x 34.25 in; LIXIL Pro identifies 0467004.020 as the separate top component'
         width_in = 22.0
         depth_in = 17.5
         height_in = 34.25
         candidate_rfa_geometry_measured = $true
-        rfa_type_to_sku_mapping_verified = $false
+        rfa_type_to_sku_mapping_verified = $true
     },
     [ordered]@{
         id = 'kohler-tresham-k-2844-4-0'
@@ -97,7 +97,7 @@ foreach ($candidate in $candidates) {
     }
 }
 
-Assert-Check ($results.Count -eq 3 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1) 'Expected Evolution, Tresham and Edgemere in the comparison.'
+Assert-Check ($results.Count -eq 3 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1) 'Expected the complete Evolution combo, Tresham and Edgemere in the comparison.'
 
 $report = [ordered]@{
     schema = 'forever-home-m06-sink-gross-body-screen-v1'
@@ -135,7 +135,7 @@ $report = [ordered]@{
     limitations = @(
         'B is a gross unassigned room-block gap, not usable clear interior dimensions or an approved bathroom footprint.',
         'Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.',
-        'American Standard bounds use official nominal product dimensions; its separate Revit family screen records measured solids and unresolved hosting/type mapping.',
+        'American Standard bounds use official nominal dimensions for combo SKU 0467400.020. Its 4-in family type is linked from the combo page and has matching product metadata; the type description “Basin only” conflicts with its pedestal option, and no hosted instance verifies the assembly.',
         'KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.',
         'Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.',
         'No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established.'

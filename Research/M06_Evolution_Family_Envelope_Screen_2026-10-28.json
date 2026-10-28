@@ -1,112 +1,115 @@
 {
-    "schema":  "forever-home-m06-sink-family-envelope-screen-v1",
-    "result":  "PASS",
-    "check_count":  14,
-    "failed_checks":  [
-
-                      ],
-    "target_product":  {
-                           "name":  "American Standard Evolution 22-Inch 4-Inch Centerset Pedestal Sink Top",
-                           "sku":  "0467004.020",
-                           "current_status":  "manufacturer lists unavailable; LIXIL Pro lists discontinued",
-                           "product_page":  "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top",
-                           "official_nominal_dimensions_in":  {
-                                                                  "width":  22,
-                                                                  "depth":  17.5,
-                                                                  "overall_height":  34.25
-                                                              },
-                           "rfa_source":  "https://lixil.cdn.celum.cloud/253890_Basin-Pedestal-American_Standard-Evolution-0467_Series_original.rfa",
-                           "rfa_sha256":  "39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea"
-                       },
-    "study":  {
-                  "file":  "study.json",
-                  "sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
-              },
-    "intake":  {
-                   "file":  "intake-manifest.json",
-                   "revit_version":  "2027",
-                   "revit_build":  "27.3.0.28"
-               },
-    "family":  {
-                   "category":  "Plumbing Fixtures",
-                   "placement_type":  "WorkPlaneBased",
-                   "types":  [
-                                 {
-                                     "type":  "0467.400",
-                                     "positive_volume_solids":  3,
-                                     "volume_ft3":  0.621372,
-                                     "family_local_xyz_in":  {
-                                                                 "x_width":  22,
-                                                                 "y_nominal_overall_height":  34.25,
-                                                                 "z_nominal_projection":  17.5052
-                                                             },
-                                     "differences_from_nominal_in":  {
-                                                                         "width":  0,
-                                                                         "overall_height":  0,
-                                                                         "projection":  0.0052
-                                                                     },
-                                     "local_y_is_project_vertical_only_after_vertical_face_hosting":  true
-                                 },
-                                 {
-                                     "type":  "0467.800",
-                                     "positive_volume_solids":  3,
-                                     "volume_ft3":  0.621567,
-                                     "family_local_xyz_in":  {
-                                                                 "x_width":  22,
-                                                                 "y_nominal_overall_height":  34.25,
-                                                                 "z_nominal_projection":  17.5052
-                                                             },
-                                     "differences_from_nominal_in":  {
-                                                                         "width":  0,
-                                                                         "overall_height":  0,
-                                                                         "projection":  0.0052
-                                                                     },
-                                     "local_y_is_project_vertical_only_after_vertical_face_hosting":  true
-                                 },
-                                 {
-                                     "type":  "0467.100",
-                                     "positive_volume_solids":  3,
-                                     "volume_ft3":  0.63332,
-                                     "family_local_xyz_in":  {
-                                                                 "x_width":  22,
-                                                                 "y_nominal_overall_height":  34.25,
-                                                                 "z_nominal_projection":  17.5052
-                                                             },
-                                     "differences_from_nominal_in":  {
-                                                                         "width":  0,
-                                                                         "overall_height":  0,
-                                                                         "projection":  0.0052
-                                                                     },
-                                     "local_y_is_project_vertical_only_after_vertical_face_hosting":  true
-                                 }
-                             ],
-                   "axis_interpretation":  "For this work-plane-based family, local X/Y are interpreted as width/height when hosted on a vertical face; local Z is interpreted as projection from that face. This mapping is not validated by a placed instance.",
-                   "type_sku_mapping_verified":  false,
-                   "type_description_pedestal_assembly_resolved":  false
-               },
-    "gross_body_screen":  {
-                              "selected_search_window":  "east_of_core (pantry side B)",
-                              "window_width_ft":  13.166666666666668,
-                              "window_depth_ft":  7,
-                              "body_22x17_5_contained_both_orientations":  true
-                          },
-    "evaluated":  {
-                      "nominal_body_bounds_only":  true,
-                      "selected_fixture":  false,
-                      "exact_RFA_type_to_SKU_mapping":  false,
-                      "placed_host_orientation":  false,
-                      "toilet_sink_clearance_or_user_approach":  false,
-                      "door_or_swing":  false,
-                      "interior_finish_or_wall_build_up":  false,
-                      "plumbing_route_or_connector_compatibility":  false,
-                      "code_or_accessibility_compliance":  false,
-                      "room_assignment":  false,
-                      "IFC":  false
-                  },
-    "limitations":  [
-                        "The 22 x 17.5 in body rectangle is compared with the gross unassigned B room-block gap, not usable clear interior dimensions.",
-                        "Gross body containment does not include the toilet, required clearances, user approach, door, wall assembly, plumbing route or service access.",
-                        "Product SKU is discontinued and the family type labels/model numbers and basin-only description do not establish the exact SKU-to-pedestal assembly mapping.",
-                        "The family was measured in a disposable intake project only; no instance was placed, saved in the house model or exported to IFC."
-                    ]
+  "schema": "forever-home-m06-sink-family-envelope-screen-v1",
+  "result": "PASS",
+  "check_count": 17,
+  "failed_checks": [],
+  "target_product": {
+    "name": "American Standard Evolution 22-Inch 4-Inch Centerset Pedestal Sink Top and Leg Combination",
+    "sku": "0467400.020",
+    "current_status": "LIXIL Pro lists the combo discontinued; consumer page says unavailable for online sale",
+    "product_page": "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
+    "official_nominal_dimensions_in": {
+      "width": 22.0,
+      "depth": 17.5,
+      "overall_height": 34.25
+    },
+    "rfa_source": "https://lixil.cdn.celum.cloud/253890_Basin-Pedestal-American_Standard-Evolution-0467_Series_original.rfa",
+    "rfa_sha256": "39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea",
+    "measured_file_name_retained_from_separate_top_listing": "american-standard-evolution-0467004.020.rfa"
+  },
+  "study": {
+    "file": "study.json",
+    "sha256": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+  },
+  "intake": {
+    "file": "intake-manifest.json",
+    "revit_version": "2027",
+    "revit_build": "27.3.0.28"
+  },
+  "family": {
+    "category": "Plumbing Fixtures",
+    "placement_type": "WorkPlaneBased",
+    "types": [
+      {
+        "type": "0467.400",
+        "positive_volume_solids": 3,
+        "volume_ft3": 0.621372,
+        "family_local_xyz_in": {
+          "x_width": 22,
+          "y_nominal_overall_height": 34.25,
+          "z_nominal_projection": 17.5052
+        },
+        "differences_from_nominal_in": {
+          "width": 0.0,
+          "overall_height": 0.0,
+          "projection": 0.0052
+        },
+        "local_y_is_project_vertical_only_after_vertical_face_hosting": true
+      },
+      {
+        "type": "0467.800",
+        "positive_volume_solids": 3,
+        "volume_ft3": 0.621567,
+        "family_local_xyz_in": {
+          "x_width": 22,
+          "y_nominal_overall_height": 34.25,
+          "z_nominal_projection": 17.5052
+        },
+        "differences_from_nominal_in": {
+          "width": 0.0,
+          "overall_height": 0.0,
+          "projection": 0.0052
+        },
+        "local_y_is_project_vertical_only_after_vertical_face_hosting": true
+      },
+      {
+        "type": "0467.100",
+        "positive_volume_solids": 3,
+        "volume_ft3": 0.63332,
+        "family_local_xyz_in": {
+          "x_width": 22,
+          "y_nominal_overall_height": 34.25,
+          "z_nominal_projection": 17.5052
+        },
+        "differences_from_nominal_in": {
+          "width": 0.0,
+          "overall_height": 0.0,
+          "projection": 0.0052
+        },
+        "local_y_is_project_vertical_only_after_vertical_face_hosting": true
+      }
+    ],
+    "axis_interpretation": "For this work-plane-based family, local X/Y are interpreted as width/height when hosted on a vertical face; local Z is interpreted as projection from that face. This mapping is not validated by a placed instance.",
+    "type_sku_association_supported": true,
+    "type_description": "Evolution 22\" pedestal sink. Basin only. 4\" centers.",
+    "pedestal_option": "Yes",
+    "installation_type": "Pedestal",
+    "type_description_pedestal_assembly_resolved": false
+  },
+  "gross_body_screen": {
+    "selected_search_window": "east_of_core (pantry side B)",
+    "window_width_ft": 13.166666666666668,
+    "window_depth_ft": 7.0,
+    "body_22x17_5_contained_both_orientations": true
+  },
+  "evaluated": {
+    "nominal_body_bounds_only": true,
+    "selected_fixture": false,
+    "exact_RFA_type_to_SKU_source_association": true,
+    "hosted_assembly_geometry_verified": false,
+    "placed_host_orientation": false,
+    "toilet_sink_clearance_or_user_approach": false,
+    "door_or_swing": false,
+    "interior_finish_or_wall_build_up": false,
+    "plumbing_route_or_connector_compatibility": false,
+    "code_or_accessibility_compliance": false,
+    "room_assignment": false,
+    "IFC": false
+  },
+  "limitations": [
+    "The 22 x 17.5 in body rectangle is compared with the gross unassigned B room-block gap, not usable clear interior dimensions.",
+    "Gross body containment does not include the toilet, required clearances, user approach, door, wall assembly, plumbing route or service access.",
+    "The official combo page links the same RFA; type 0467.400, its 4-in faucet metadata, pedestal option, spec-sheet link and measured overall envelope support association with SKU 0467400.020. Its type description still says “Basin only,” so family assembly geometry is not treated as conclusively verified.",
+    "The family was measured in a disposable intake project only; no instance was placed, saved in the house model or exported to IFC."
+  ]
 }
