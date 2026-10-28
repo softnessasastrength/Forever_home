@@ -192,6 +192,8 @@ Acceptance criteria:
 
 **Evolution host-orientation subtask (in progress):** before any room-fit comparison, verify the quarantined family’s hypothesized vertical-wall orientation in a disposable Revit intake project. The probe is pinned to the exact incoming RFA SHA256 `39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea`; it places only type `0467.400` on a temporary vertical wall face and reports positive-volume extents in project coordinates. Acceptance requires actual Revit execution, a saved intake report, independent PowerShell report validation, and visual inspection. This single orientation check cannot resolve the family’s “Basin only” versus pedestal discrepancy, product suitability, M-06 assignment, or fixture-pair fit. The code is compiled, but the host probe is waiting at the verified local add-in’s **Load Once** prompt.
 
+The owner also asked for a commercial-duty toilet comparison. The latest KOHLER K-96057 sheet (2026-10-27) lists a 26-1/8 × 14-5/8 in bowl body, 10/12 in rough-in, and 25 psi flowing pressure at 25 gpm; the matching flushometer is a separate product. This is research only. Current bowl height conflicts by 1/4 in between sheet and product page, and no project water-service capacity, product selection, or M-06 fit has been established. See `Research/M06_Toilet_Options_2026-10-27.md`.
+
 ### M21 — Coordinate the main-floor public route and porch envelope
 
 Acceptance criteria:
