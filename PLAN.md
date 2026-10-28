@@ -252,6 +252,8 @@ Current evidence: `Research/M22_Pellet_Stove_Envelope_2026-10-28.md` records the
 
 ### M23 — Develop the exterior gathering area and furnishings
 
+Status: **waiting on the owner to identify the existing chair selection**. The repository records the carry-forward requirement but no brand, model, URL or asset path. Do not substitute or restart the product choice.
+
 Acceptance criteria:
 
 - Carry forward the owner's **already-selected Adirondack chair model** recorded in `Architecture/Building_Program.md`; retrieve that exact source/asset before modeling and do not substitute a RevitCity result.

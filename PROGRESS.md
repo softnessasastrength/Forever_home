@@ -24,6 +24,18 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - RevitPilot compilation was attempted using the project build script. The machine-wide `dotnet` has no installed SDK. The available portable 10.0.403 SDK archive SHA512 (`24B033418A3969EFFD49B4651EF7EBBFFEB284773B99545D78DCE61A82E57F38DB7FACDB013C609BA15573C072F0E093363AE470824A6847F3C6111078C1FB64`) did not match Microsoft's official 10.0.403 Windows x64 archive hash (`7a114c318fa7f1d9822991b534b2814d0e78386ceda816b371f5141acefe741d87ccb606ede06cadac8f9ac5070e32b708a67bbd1619ff5e5a7858a27874ef48`). Accordingly, no DLL was built or loaded and no manifest or Revit document was changed.
 - M24 remains open for read-only, in-host capture of current mapping-template names/state and matching export settings once a verified SDK is available. Even then, current state will not be presented as proof of the historical selected-D export setup.
 
+## M23 Adirondack carry-forward source check — 2026-10-28
+
+- Confirmed `Architecture/Building_Program.md` requires the owner's existing Adirondack model and explicitly says its exact product reference or asset path has not been recorded. Searched the repository, current Downloads folder, and accessible project-thread context; no brand/model, URL, image or family asset was present.
+- No substitute was selected, downloaded, placed or modeled. Count, orientation, spacing, site layout, pool, paving and outdoor fireplace remain deferred per the program.
+- M23 is waiting on the owner to identify the previously selected chair by model/source (a product link or screenshot suffices). Once identified, retrieve that exact asset and verify source identity before placing it in any future exterior study.
+
+## Revit host access check — 2026-10-28
+
+- Revit 2027 is running, and its unsigned-add-in prompt identifies the registered project-local `build-evolution-host-test-v2/Release/net10.0-windows/RevitPilot.dll`. Its SHA256 `25c89e269f4be7effdabc3faa1e140f020c352d420cfd84b526e8fcc122fb534` matches the registration evidence; the per-user manifest retains AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, and its previous manifest backup remains recorded. No manifest was replaced in this checkpoint.
+- The Revit trial welcome WebView visibly covers the workspace and owns the UI click surface. The guarded Load Once click was not accepted by the UI controller because the target resolved to the WebView child window; no load, model edit, or save occurred. Dismissing that overlay through Revit's current window surface is still required before another host attempt.
+- This is separate from the M24 build issue: the existing v2 DLL is exact-hash verified, but it predates the read-only IFC-settings audit command. A new command still requires a verified .NET SDK build, and the existing session remains UI-blocked.
+
 ## M22 hearth and viewing-wall study — 2026-10-28
 
 - Read the approved aesthetic decisions and current selected-D main-floor room blocks before proposing any focal-wall relationship. M-01 remains 16 × 15 ft (240 sf), which is 20 sf over its preliminary 220 sf program maximum. The proposed arrangements do not approve that area.

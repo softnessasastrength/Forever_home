@@ -36,7 +36,7 @@ Autodesk references:
 
 ## Build and host limitations
 
-The host audit command was not added because the available portable .NET SDK archive failed the required SHA-512 match against Microsoft’s release metadata. The installed machine-wide `dotnet` reports no SDK. No software was downloaded or installed, no add-in manifest was replaced, and no Revit document was changed. The unverified SDK must not be used to build or load a new DLL.
+The host audit command was not added because the available portable .NET SDK archive failed the required SHA-512 match against Microsoft’s release metadata. The installed machine-wide `dotnet` reports no SDK. The Revit 2027 window is running and its unsigned-add-in prompt identifies the registered project-local v2 DLL with SHA256 `25c89e269f4be7effdabc3faa1e140f020c352d420cfd84b526e8fcc122fb534`; the per-user manifest has the authorized AddInId and is backed up. The trial welcome WebView covers the workspace and owns the UI input surface, so the Load Once click could not be delivered to the trust dialog. No add-in was loaded, no software was downloaded or installed, no manifest was replaced, and no Revit document was changed. The unverified SDK must not be used to build or load a new DLL.
 
 Next M24 action, when a verified SDK is available: build a read-only RevitPilot command, confirm the exact project-local DLL hash and per-user AddInId under `AGENTS.md`, then inspect the intended saved study in Revit 2027 without saving it. Export and hash the active named mapping template if one exists; report in-session use as such. A separate verified export is required to claim the export has adopted any changed settings.
 
