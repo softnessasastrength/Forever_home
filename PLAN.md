@@ -220,6 +220,8 @@ The owner also asked for a commercial-duty toilet comparison. The latest KOHLER 
 
 **M-06 public-source update (2026-10-28):** added TOTO Clayton LPT780 as a traditional-style research candidate. Its 2009 manufacturer sheet lists 27 × 19-5/8 × 34 in overall dimensions and a complete vitreous-china pedestal/lavatory assembly; TOTO currently flags limited inventory. Its public Revit file is hash-pinned in the ignored quarantine but has not been inspected. The seven-candidate gross-body script remains only an individual envelope screen; the exact toilet, clearance basis, door/approach, services and B assignment are still open.
 
+**Selected toilet family access check (2026-10-28):** the exact American Standard 610AA001.020 page still exposes only predecessor 211AA specification/installation resources in its visible download section. Manufacturer literature points Revit distribution to ATS; ATS's FAQ requires a login plus a Project or Spec to download. No account was created. A public Revit link for the distinct 211CA standard-height predecessor is not a match for the owner's chair-height 610AA SKU. Exact current dimensions and family remain an evidence gate before toilet-and-sink layout or room assignment.
+
 ### M21 — Coordinate the main-floor public route and porch envelope
 
 Acceptance criteria:
