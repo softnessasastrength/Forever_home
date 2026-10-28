@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1050" viewBox="0 0 1000 1050">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1050" viewBox="0 0 1000 1050">
 <style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:22px;font-weight:bold}.room{fill:#eadfce;stroke:#716456;stroke-width:2}.search{fill:#f3e5bd;fill-opacity:.8;stroke:#9c6f1c;stroke-width:2;stroke-dasharray:8 5}.core{fill:#f4ddc9;fill-opacity:.65;stroke:#a65f2b;stroke-width:2;stroke-dasharray:8 5}.label{font-size:14px}.note{font-size:13px;fill:#5b554d}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}</style>
 <text class="title" x="50" y="32">Owner follow-up — main-floor room-block proposal</text>
 <text class="note" x="50" y="54">40 × 42 ft test envelope; schematic local axes; not site-oriented or wall geometry</text>
 <rect class="shell" x="20" y="90" width="800" height="840"/>
-<rect class="room" x="130" y="103.33333333333333" width="320" height="300"/><text class="label" x="138" y="126.33333333333333">M-01</text><text class="label" x="138" y="145.33333333333331">16 × 15 ft / 240 sf</text>
-<rect class="room" x="460" y="103.33333333333333" width="280" height="240"/><text class="label" x="468" y="126.33333333333333">M-02</text><text class="label" x="468" y="145.33333333333331">14 × 12 ft / 168 sf</text>
-<rect class="room" x="460" y="353.3333333333333" width="220" height="200"/><text class="label" x="468" y="376.3333333333333">M-03</text><text class="label" x="468" y="395.3333333333333">11 × 10 ft / 110 sf</text>
-<rect class="room" x="650" y="563.3333333333334" width="100" height="140"/><text class="label" x="658" y="586.3333333333334">M-04</text><text class="label" x="658" y="605.3333333333334">5 × 7 ft / 35 sf</text>
-<rect class="room" x="33.33333333333333" y="303.3333333333333" width="86.66666666666666" height="240"/><text class="label" x="41.33333333333333" y="326.3333333333333">M-05</text><text class="label" x="41.33333333333333" y="345.3333333333333">4.333333333333333 × 12 ft / 52 sf</text>
-<rect class="search" x="443.33333333333337" y="563.3333333333334" width="206.66666666666663" height="140"/><text class="label" x="451.33333333333337" y="585.3333333333334">M-06 B — unassigned search window</text><text class="label" x="451.33333333333337" y="603.3333333333334">10.33 × 7 ft / 72.33 sf gross</text>
-<rect class="core" x="270" y="721.6666666666666" width="80" height="128.33333333333334"/><text class="note" x="274" y="735.6666666666666">lower_to_main_run</text>
-<rect class="core" x="270" y="641.6666666666666" width="80" height="80"/><text class="note" x="274" y="655.6666666666666">lower_to_main_landing</text>
-<rect class="core" x="363.33333333333337" y="721.6666666666666" width="80" height="128.33333333333334"/><text class="note" x="367.33333333333337" y="735.6666666666666">main_to_upper_run</text>
-<rect class="core" x="363.33333333333337" y="641.6666666666666" width="80" height="80"/><text class="note" x="367.33333333333337" y="655.6666666666666">main_to_upper_landing</text>
-<rect class="core" x="443.33333333333337" y="770" width="160" height="160"/><text class="note" x="447.33333333333337" y="784">lift_reservation</text>
+<rect class="room" x="130" y="103.333333333333" width="320" height="300"/><text class="label" x="138" y="126.333333333333">M-01</text><text class="label" x="138" y="145.333333333333">16 × 15 ft / 240 sf</text>
+<rect class="room" x="460" y="103.333333333333" width="280" height="240"/><text class="label" x="468" y="126.333333333333">M-02</text><text class="label" x="468" y="145.333333333333">14 × 12 ft / 168 sf</text>
+<rect class="room" x="460" y="353.333333333333" width="220" height="200"/><text class="label" x="468" y="376.333333333333">M-03</text><text class="label" x="468" y="395.333333333333">11 × 10 ft / 110 sf</text>
+<rect class="room" x="650" y="563.333333333333" width="100" height="140"/><text class="label" x="658" y="586.333333333333">M-04</text><text class="label" x="658" y="605.333333333333">5 × 7 ft / 35 sf</text>
+<rect class="room" x="33.3333333333333" y="303.333333333333" width="86.6666666666667" height="240"/><text class="label" x="41.3333333333333" y="326.333333333333">M-05</text><text class="label" x="41.3333333333333" y="345.333333333333">4.33333333333333 × 12 ft / 52 sf</text>
+<rect class="search" x="443.333333333333" y="563.333333333333" width="206.666666666667" height="140"/><text class="label" x="451.333333333333" y="585.333333333333">M-06 B — unassigned search window</text><text class="label" x="451.333333333333" y="603.333333333333">10.33 × 7 ft / 72.33 sf gross</text>
+<rect class="core" x="270" y="721.666666666667" width="80" height="128.333333333333"/><text class="note" x="274" y="735.666666666667">lower_to_main_run</text>
+<rect class="core" x="270" y="641.666666666667" width="80" height="80"/><text class="note" x="274" y="655.666666666667">lower_to_main_landing</text>
+<rect class="core" x="363.333333333333" y="721.666666666667" width="80" height="128.333333333333"/><text class="note" x="367.333333333333" y="735.666666666667">main_to_upper_run</text>
+<rect class="core" x="363.333333333333" y="641.666666666667" width="80" height="80"/><text class="note" x="367.333333333333" y="655.666666666667">main_to_upper_landing</text>
+<rect class="core" x="443.333333333333" y="770" width="160" height="160"/><text class="note" x="447.333333333333" y="784">lift_reservation</text>
 <text class="note" x="20" y="925">Kitchen 14×12 and 8×4 island retained as inputs; 42 in two-sided island clearances fail both orientations.</text>
 <text class="note" x="20" y="948">Roof, doors, walls, porch and M-06 are unplaced.</text>
 </svg>

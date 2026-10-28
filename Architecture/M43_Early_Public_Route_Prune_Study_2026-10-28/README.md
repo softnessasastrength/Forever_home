@@ -22,6 +22,8 @@ The run passes **30/30** integrity checks. It expands 4,500 nodes across valid s
 
 With `-EarlyPublicRoutePrune` omitted, the same M42 U-02-first invocation produced byte-identical `search.json`, `checks.json`, SVG and manifest to the checked-in M42 artifacts. The default path therefore retains its previous output schema and behavior for this baseline.
 
+That compatibility replay used the then-current owner proposal fingerprint `7e223293dfa3720b3580badd5894f2dacb4330d0b8e3323c284de0d1d8045d9b`. M44 later records the owner's explicit direct U-02 hall-arrival requirement and regenerates the proposal with fingerprint `0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537`; current-input route checks are documented in the M44 study. Historical M42/M43 artifacts are retained with their original source fingerprints.
+
 Two clean 1,000-node capped runs of the opt-in mode each pass **30/30** integrity checks and reproduce byte-for-byte. Their common SHA256 values are:
 
 | File | SHA256 |

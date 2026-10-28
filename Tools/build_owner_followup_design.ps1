@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$OutputDirectory = 'Architecture/House_Design_Iteration_2026-10-28'
 )
 
@@ -18,6 +18,9 @@ $source = Get-Content -Raw -LiteralPath $sourcePath | ConvertFrom-Json
 $sourceHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $sourcePath).Hash.ToLowerInvariant()
 $programHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $programPath).Hash.ToLowerInvariant()
 $decisionHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $decisionPath).Hash.ToLowerInvariant()
+$scriptBytes=[System.IO.File]::ReadAllBytes($MyInvocation.MyCommand.Path)
+$hasUtf8Bom=($scriptBytes.Length -ge 3 -and $scriptBytes[0] -eq 0xEF -and $scriptBytes[1] -eq 0xBB -and $scriptBytes[2] -eq 0xBF)
+if(-not $hasUtf8Bom){throw 'This Windows PowerShell 5.1 generator contains Unicode literals and must remain UTF-8 BOM encoded.'}
 
 function New-Block($id,$name,$x,$y,$w,$d) {
     [ordered]@{id=$id;name=$name;x_ft=[double]$x;y_ft=[double]$y;width_ft=[double]$w;depth_ft=[double]$d;area_sf=[Math]::Round(([double]$w*[double]$d),2);status='proposed room-block placement; not wall geometry'}
@@ -80,7 +83,7 @@ $privateEdges=@(
 $retainedEdges=@(
     [ordered]@{a='U-01';b='U-05';status='retain primary-only bath access; door geometry TBD'},
     [ordered]@{a='U-01';b='C-UPPER';status='retain nominal hall access'},
-    [ordered]@{a='U-02';b='C-UPPER';status='existing nominal access retained for comparison; privacy boundary to review'},
+    [ordered]@{a='U-02';b='C-UPPER';status='owner-required direct shared-hall arrival; door location, width, swing and privacy treatment unresolved'},
     [ordered]@{a='U-04';b='C-UPPER';status='retain guest independent shared-hall access'},
     [ordered]@{a='U-03';b='U-06';status='retain hybrid Jack-and-Jill access'},
     [ordered]@{a='U-04';b='U-06';status='retain guest Jack-and-Jill access'}
@@ -100,6 +103,7 @@ $checks['kitchen_adjoins_dining_across_nominal_6in_gap']=Test-AdjacentGap ($room
 $checks['dining_adjoins_pantry_across_nominal_6in_gap']=Test-AdjacentGap ($rooms|Where-Object id -eq 'M-03') ($rooms|Where-Object id -eq 'M-04')
 $checks['entry_adjoins_living_across_nominal_6in_gap']=Test-AdjacentGap ($rooms|Where-Object id -eq 'M-05') ($rooms|Where-Object id -eq 'M-01')
 $checks['pantry_side_M06_window_is_positive']=($windowB.width_ft -gt 0 -and $windowB.depth_ft -gt 0)
+$checks['owner_requires_direct_U02_shared_hall_arrival']=(@($retainedEdges|Where-Object{$_.a -eq 'U-02' -and $_.b -eq 'C-UPPER' -and $_.status -like 'owner-required direct shared-hall arrival*'}).Count -eq 1)
 $checks['M06_B_search_window_inside_test_envelope']=($windowB.x_ft -ge 0 -and $windowB.y_ft -ge 0 -and ($windowB.x_ft+$windowB.width_ft) -le $shell.width_ft -and ($windowB.y_ft+$windowB.depth_ft) -le $shell.depth_ft)
 $checks['M06_B_remains_unassigned_and_clear_of_room_blocks']=($m06RoomHits.Count -eq 0)
 $checks['M06_B_clear_of_stair_lift_comparison_blocks']=($m06CoreHits.Count -eq 0)
@@ -130,7 +134,7 @@ $study=[ordered]@{
     source_fingerprints_sha256=[ordered]@{'selected_D_study.json'=$sourceHash;'Requirements/Room_Program.md'=$programHash;'owner_followup_decision.md'=$decisionHash}
     coordinate_frame='Selected-D schematic frame: feet, x right and y toward rear; no site orientation or georeference.'
     shell=$shell
-    owner_inputs=[ordered]@{private_primary_boutique_hybrid_sequence=$true;u03_shared_hall_access=$false;u03_access_direction='private route only; no direct shared-hall door';kitchen_target_ft=@(14,12);dining_target_ft=@(11,10);roof_concept='steep traditional gable, pitch and ridge orientation TBD';jurisdiction='Connecticut; municipality and parcel TBD'}
+    owner_inputs=[ordered]@{private_primary_boutique_hybrid_sequence=$true;u02_direct_shared_hall_arrival_required=$true;u02_access_direction='direct shared-hall arrival plus retained private links to C-PRIVATE and U-03';u03_shared_hall_access=$false;u03_access_direction='private route only; no direct shared-hall door';kitchen_target_ft=@(14,12);dining_target_ft=@(11,10);roof_concept='steep traditional gable, pitch and ridge orientation TBD';jurisdiction='Connecticut; municipality and parcel TBD'}
     main_rooms=$rooms
     room_areas=[ordered]@{M02_kitchen_sf=168;M03_dining_sf=110;source='Requirements/Room_Program.md and owner follow-up; study targets, not wall-face areas'}
     M06=[ordered]@{status='unassigned; no footprint, position, fixture or service route';first_fit_window=$windowB;room_conflicts=@($m06RoomHits.ToArray());core_conflicts=@($m06CoreHits.ToArray())}

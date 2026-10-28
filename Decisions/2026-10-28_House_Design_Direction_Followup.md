@@ -13,6 +13,10 @@ Status: **owner-directed inputs for a separate schematic proposal**. This record
 
 The latest owner direction supersedes the earlier same-day shared-hall choice: keep the U-01 → C-PRIVATE → U-02 → U-03 private sequence and omit a direct U-03 → C-UPPER door. Preserve the guest's independent shared-hall access and both Jack-and-Jill links (U-03 ↔ U-06 and U-06 ↔ U-04). This revises the schematic access graph only; selected D and its existing room/door data remain unchanged. Door placement, privacy, egress, walls and circulation still require design and Revit review.
 
+## Owner revision — direct U-02 hall arrival (2026-10-28)
+
+The owner now requires a direct arrival from the upper shared hall to U-02. Keep the existing private connector between U-02 and C-PRIVATE, and the owner-directed private link from U-02 to U-03; U-03 remains private-route-only with no direct shared-hall door. The direct U-02 opening, its side, width, swing, privacy treatment and relationship to the landing remain unresolved and must be tested in a disposable Revit derivative. This updates the separate schematic proposal only; it does not edit selected-D room or door data.
+
 ## First schematic test
 
 `Architecture/House_Design_Iteration_2026-10-28/` is a derivative room-block proposal generated from the selected-D 40 × 42 ft **test** envelope. It preserves the selected-D source files, Revit model and IFC evidence. Its five main-floor blocks pass shell containment, non-overlap, comparison-core clearance and adjacency arithmetic; M-06 B remains a gross unassigned search window. A private U-01 → C-PRIVATE → U-02 → U-03 route is captured as a topology requirement only. The upper room-block layout has not yet been rearranged to realize it.

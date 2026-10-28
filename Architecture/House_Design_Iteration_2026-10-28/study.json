@@ -1,224 +1,233 @@
-{
-  "schema": "forever-home.owner-followup-design-study.v1",
-  "title": "Owner follow-up: target social rooms, private hybrid connection, steep gable concept",
-  "status": "proposal for design development; selected-D baseline preserved; not coordinated house geometry",
-  "source_selected_D_sha256": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
-  "input_decision_path": "Decisions/2026-10-28_House_Design_Direction_Followup.md",
-  "source_fingerprints_sha256": {
-    "selected_D_study.json": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
-    "Requirements/Room_Program.md": "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
-    "owner_followup_decision.md": "d38dbbb8ff9a233dc1b199ab01cbf54a4871335d0d0538db59079717a4fef752"
-  },
-  "coordinate_frame": "Selected-D schematic frame: feet, x right and y toward rear; no site orientation or georeference.",
-  "shell": {
-    "width_ft": 40.0,
-    "depth_ft": 42.0,
-    "status": "existing selected-D test envelope; not approved house footprint"
-  },
-  "owner_inputs": {
-    "private_primary_boutique_hybrid_sequence": true,
-    "u03_shared_hall_access": false,
-    "u03_access_direction": "private route only; no direct shared-hall door",
-    "kitchen_target_ft": [
-      14,
-      12
-    ],
-    "dining_target_ft": [
-      11,
-      10
-    ],
-    "roof_concept": "steep traditional gable, pitch and ridge orientation TBD",
-    "jurisdiction": "Connecticut; municipality and parcel TBD"
-  },
-  "main_rooms": [
-    {
-      "id": "M-01",
-      "name": "Living room",
-      "x_ft": 5.5,
-      "y_ft": 0.6666666666666666,
-      "width_ft": 16.0,
-      "depth_ft": 15.0,
-      "area_sf": 240.0,
-      "status": "proposed room-block placement; not wall geometry"
-    },
-    {
-      "id": "M-02",
-      "name": "Kitchen",
-      "x_ft": 22.0,
-      "y_ft": 0.6666666666666666,
-      "width_ft": 14.0,
-      "depth_ft": 12.0,
-      "area_sf": 168.0,
-      "status": "proposed room-block placement; not wall geometry"
-    },
-    {
-      "id": "M-03",
-      "name": "Dining",
-      "x_ft": 22.0,
-      "y_ft": 13.166666666666666,
-      "width_ft": 11.0,
-      "depth_ft": 10.0,
-      "area_sf": 110.0,
-      "status": "proposed room-block placement; not wall geometry"
-    },
-    {
-      "id": "M-04",
-      "name": "Pantry",
-      "x_ft": 31.5,
-      "y_ft": 23.666666666666668,
-      "width_ft": 5.0,
-      "depth_ft": 7.0,
-      "area_sf": 35.0,
-      "status": "proposed room-block placement; not wall geometry"
-    },
-    {
-      "id": "M-05",
-      "name": "Entry / hall",
-      "x_ft": 0.6666666666666666,
-      "y_ft": 10.666666666666666,
-      "width_ft": 4.333333333333333,
-      "depth_ft": 12.0,
-      "area_sf": 52.0,
-      "status": "proposed room-block placement; not wall geometry"
-    }
-  ],
-  "room_areas": {
-    "M02_kitchen_sf": 168,
-    "M03_dining_sf": 110,
-    "source": "Requirements/Room_Program.md and owner follow-up; study targets, not wall-face areas"
-  },
-  "M06": {
-    "status": "unassigned; no footprint, position, fixture or service route",
-    "first_fit_window": {
-      "id": "M06-B",
-      "x_ft": 21.166666666666668,
-      "y_ft": 23.666666666666668,
-      "width_ft": 10.333333333333332,
-      "depth_ft": 7.0,
-      "area_sf": 72.33,
-      "status": "unassigned search window only; not M-06 geometry"
-    },
-    "room_conflicts": [],
-    "core_conflicts": []
-  },
-  "upper_suite": {
-    "private_route_edges": [
-      {
-        "a": "U-01",
-        "b": "C-PRIVATE",
-        "status": "existing nominal edge; actual door unresolved"
-      },
-      {
-        "a": "C-PRIVATE",
-        "b": "U-02",
-        "status": "existing nominal edge; actual door unresolved"
-      },
-      {
-        "a": "U-02",
-        "b": "U-03",
-        "status": "owner-directed new private-suite link; route, corridor and door geometry TBD"
-      }
-    ],
-    "retained_shared_access_edges": [
-      {
-        "a": "U-01",
-        "b": "U-05",
-        "status": "retain primary-only bath access; door geometry TBD"
-      },
-      {
-        "a": "U-01",
-        "b": "C-UPPER",
-        "status": "retain nominal hall access"
-      },
-      {
-        "a": "U-02",
-        "b": "C-UPPER",
-        "status": "existing nominal access retained for comparison; privacy boundary to review"
-      },
-      {
-        "a": "U-04",
-        "b": "C-UPPER",
-        "status": "retain guest independent shared-hall access"
-      },
-      {
-        "a": "U-03",
-        "b": "U-06",
-        "status": "retain hybrid Jack-and-Jill access"
-      },
-      {
-        "a": "U-04",
-        "b": "U-06",
-        "status": "retain guest Jack-and-Jill access"
-      }
-    ],
-    "excluded_access_edges": [
-      {
-        "a": "U-03",
-        "b": "C-UPPER",
-        "status": "owner-revised private-route-only direction; no direct shared-hall door in this proposal"
-      }
-    ],
-    "geometry_status": "owner-directed topology only; upper room-block rearrangement, connector width, wall, doors and swings not yet tested"
-  },
-  "roof": {
-    "type": "steep traditional gable concept",
-    "pitch": "TBD",
-    "ridge_orientation": "TBD",
-    "ridge/eave elevations": "TBD",
-    "assemblies": "TBD",
-    "status": "massing idea only; no dimensions, loads or construction geometry"
-  },
-  "kitchen_fit_screen": {
-    "room_ft": [
-      14,
-      12
-    ],
-    "island_ft": [
-      8,
-      4
-    ],
-    "modeled_clearance_test_each_side_in": 42,
-    "eight_foot_island_axis_required_ft": 15.0,
-    "orientations": {
-      "island_8ft_axis_across_14ft_room": {
-        "required_ft": 15.0,
-        "available_ft": 14,
-        "fits": false
-      },
-      "island_8ft_axis_across_12ft_room": {
-        "required_ft": 15.0,
-        "available_ft": 12,
-        "fits": false
-      }
-    },
-    "conclusion": "Within the M-02 14 x 12 ft block, neither orientation fits the full 8 ft island axis with 42 in clearance at both ends (15 ft required), before cabinet depth, half wall, seating, appliances or tolerance. Extension into adjacent open dining/living areas has not been tested. This is a room-block screen, not a code ruling."
-  },
-  "checks": {
-    "all_main_blocks_inside_40x42_test_envelope": true,
-    "no_main_room_block_overlaps": true,
-    "main_room_blocks_clear_comparison_stair_lift": true,
-    "kitchen_target_is_exactly_14x12": true,
-    "dining_target_is_exactly_11x10": true,
-    "kitchen_adjoins_living_across_nominal_6in_gap": true,
-    "kitchen_adjoins_dining_across_nominal_6in_gap": true,
-    "dining_adjoins_pantry_across_nominal_6in_gap": true,
-    "entry_adjoins_living_across_nominal_6in_gap": true,
-    "pantry_side_M06_window_is_positive": true,
-    "M06_B_search_window_inside_test_envelope": true,
-    "M06_B_remains_unassigned_and_clear_of_room_blocks": true,
-    "M06_B_clear_of_stair_lift_comparison_blocks": true,
-    "private_chain_has_owner_directed_U02_to_U03_link": true,
-    "U03_private_only_direction_excludes_hall_edge": true,
-    "guest_hall_and_both_JandJ_links_remain": true,
-    "14x12_room_cannot_fit_8ft_island_with_42in_both_end_clearances": true
-  },
-  "failures": [],
-  "limitations": [
-    "Room blocks use existing test-shell dimensions and a nominal 6 in separation; they are not walls or usable-room surveys.",
-    "Kitchen island and 42 in aisle requirements conflict with the owner-selected 14 x 12 ft target; no island size or aisle requirement was changed.",
-    "Upper-suite route is an adjacency requirement, not a geometrically placed route.",
-    "Roof type is conceptual; pitch, ridge, site orientation, snow/wind exposure, structure, assemblies, dormers and drainage are unresolved.",
-    "M-06 B is only a search window; keep it unassigned.",
-    "No permit, code-compliance, structural-safety, professional-review or construction-readiness claim."
-  ]
+﻿{
+    "schema":  "forever-home.owner-followup-design-study.v1",
+    "title":  "Owner follow-up: target social rooms, private hybrid connection, steep gable concept",
+    "status":  "proposal for design development; selected-D baseline preserved; not coordinated house geometry",
+    "source_selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "input_decision_path":  "Decisions/2026-10-28_House_Design_Direction_Followup.md",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                       "owner_followup_decision.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648"
+                                   },
+    "coordinate_frame":  "Selected-D schematic frame: feet, x right and y toward rear; no site orientation or georeference.",
+    "shell":  {
+                  "width_ft":  40,
+                  "depth_ft":  42,
+                  "status":  "existing selected-D test envelope; not approved house footprint"
+              },
+    "owner_inputs":  {
+                         "private_primary_boutique_hybrid_sequence":  true,
+                         "u02_direct_shared_hall_arrival_required":  true,
+                         "u02_access_direction":  "direct shared-hall arrival plus retained private links to C-PRIVATE and U-03",
+                         "u03_shared_hall_access":  false,
+                         "u03_access_direction":  "private route only; no direct shared-hall door",
+                         "kitchen_target_ft":  [
+                                                   14,
+                                                   12
+                                               ],
+                         "dining_target_ft":  [
+                                                  11,
+                                                  10
+                                              ],
+                         "roof_concept":  "steep traditional gable, pitch and ridge orientation TBD",
+                         "jurisdiction":  "Connecticut; municipality and parcel TBD"
+                     },
+    "main_rooms":  [
+                       {
+                           "id":  "M-01",
+                           "name":  "Living room",
+                           "x_ft":  5.5,
+                           "y_ft":  0.66666666666666663,
+                           "width_ft":  16,
+                           "depth_ft":  15,
+                           "area_sf":  240,
+                           "status":  "proposed room-block placement; not wall geometry"
+                       },
+                       {
+                           "id":  "M-02",
+                           "name":  "Kitchen",
+                           "x_ft":  22,
+                           "y_ft":  0.66666666666666663,
+                           "width_ft":  14,
+                           "depth_ft":  12,
+                           "area_sf":  168,
+                           "status":  "proposed room-block placement; not wall geometry"
+                       },
+                       {
+                           "id":  "M-03",
+                           "name":  "Dining",
+                           "x_ft":  22,
+                           "y_ft":  13.166666666666666,
+                           "width_ft":  11,
+                           "depth_ft":  10,
+                           "area_sf":  110,
+                           "status":  "proposed room-block placement; not wall geometry"
+                       },
+                       {
+                           "id":  "M-04",
+                           "name":  "Pantry",
+                           "x_ft":  31.5,
+                           "y_ft":  23.666666666666668,
+                           "width_ft":  5,
+                           "depth_ft":  7,
+                           "area_sf":  35,
+                           "status":  "proposed room-block placement; not wall geometry"
+                       },
+                       {
+                           "id":  "M-05",
+                           "name":  "Entry / hall",
+                           "x_ft":  0.66666666666666663,
+                           "y_ft":  10.666666666666666,
+                           "width_ft":  4.333333333333333,
+                           "depth_ft":  12,
+                           "area_sf":  52,
+                           "status":  "proposed room-block placement; not wall geometry"
+                       }
+                   ],
+    "room_areas":  {
+                       "M02_kitchen_sf":  168,
+                       "M03_dining_sf":  110,
+                       "source":  "Requirements/Room_Program.md and owner follow-up; study targets, not wall-face areas"
+                   },
+    "M06":  {
+                "status":  "unassigned; no footprint, position, fixture or service route",
+                "first_fit_window":  {
+                                         "id":  "M06-B",
+                                         "x_ft":  21.166666666666668,
+                                         "y_ft":  23.666666666666668,
+                                         "width_ft":  10.333333333333332,
+                                         "depth_ft":  7,
+                                         "area_sf":  72.33,
+                                         "status":  "unassigned search window only; not M-06 geometry"
+                                     },
+                "room_conflicts":  [
+
+                                   ],
+                "core_conflicts":  [
+
+                                   ]
+            },
+    "upper_suite":  {
+                        "private_route_edges":  [
+                                                    {
+                                                        "a":  "U-01",
+                                                        "b":  "C-PRIVATE",
+                                                        "status":  "existing nominal edge; actual door unresolved"
+                                                    },
+                                                    {
+                                                        "a":  "C-PRIVATE",
+                                                        "b":  "U-02",
+                                                        "status":  "existing nominal edge; actual door unresolved"
+                                                    },
+                                                    {
+                                                        "a":  "U-02",
+                                                        "b":  "U-03",
+                                                        "status":  "owner-directed new private-suite link; route, corridor and door geometry TBD"
+                                                    }
+                                                ],
+                        "retained_shared_access_edges":  [
+                                                             {
+                                                                 "a":  "U-01",
+                                                                 "b":  "U-05",
+                                                                 "status":  "retain primary-only bath access; door geometry TBD"
+                                                             },
+                                                             {
+                                                                 "a":  "U-01",
+                                                                 "b":  "C-UPPER",
+                                                                 "status":  "retain nominal hall access"
+                                                             },
+                                                             {
+                                                                 "a":  "U-02",
+                                                                 "b":  "C-UPPER",
+                                                                 "status":  "owner-required direct shared-hall arrival; door location, width, swing and privacy treatment unresolved"
+                                                             },
+                                                             {
+                                                                 "a":  "U-04",
+                                                                 "b":  "C-UPPER",
+                                                                 "status":  "retain guest independent shared-hall access"
+                                                             },
+                                                             {
+                                                                 "a":  "U-03",
+                                                                 "b":  "U-06",
+                                                                 "status":  "retain hybrid Jack-and-Jill access"
+                                                             },
+                                                             {
+                                                                 "a":  "U-04",
+                                                                 "b":  "U-06",
+                                                                 "status":  "retain guest Jack-and-Jill access"
+                                                             }
+                                                         ],
+                        "excluded_access_edges":  [
+                                                      {
+                                                          "a":  "U-03",
+                                                          "b":  "C-UPPER",
+                                                          "status":  "owner-revised private-route-only direction; no direct shared-hall door in this proposal"
+                                                      }
+                                                  ],
+                        "geometry_status":  "owner-directed topology only; upper room-block rearrangement, connector width, wall, doors and swings not yet tested"
+                    },
+    "roof":  {
+                 "type":  "steep traditional gable concept",
+                 "pitch":  "TBD",
+                 "ridge_orientation":  "TBD",
+                 "ridge/eave elevations":  "TBD",
+                 "assemblies":  "TBD",
+                 "status":  "massing idea only; no dimensions, loads or construction geometry"
+             },
+    "kitchen_fit_screen":  {
+                               "room_ft":  [
+                                               14,
+                                               12
+                                           ],
+                               "island_ft":  [
+                                                 8,
+                                                 4
+                                             ],
+                               "modeled_clearance_test_each_side_in":  42,
+                               "eight_foot_island_axis_required_ft":  15,
+                               "orientations":  {
+                                                    "island_8ft_axis_across_14ft_room":  {
+                                                                                             "required_ft":  15,
+                                                                                             "available_ft":  14,
+                                                                                             "fits":  false
+                                                                                         },
+                                                    "island_8ft_axis_across_12ft_room":  {
+                                                                                             "required_ft":  15,
+                                                                                             "available_ft":  12,
+                                                                                             "fits":  false
+                                                                                         }
+                                                },
+                               "conclusion":  "Within the M-02 14 x 12 ft block, neither orientation fits the full 8 ft island axis with 42 in clearance at both ends (15 ft required), before cabinet depth, half wall, seating, appliances or tolerance. Extension into adjacent open dining/living areas has not been tested. This is a room-block screen, not a code ruling."
+                           },
+    "checks":  {
+                   "all_main_blocks_inside_40x42_test_envelope":  true,
+                   "no_main_room_block_overlaps":  true,
+                   "main_room_blocks_clear_comparison_stair_lift":  true,
+                   "kitchen_target_is_exactly_14x12":  true,
+                   "dining_target_is_exactly_11x10":  true,
+                   "kitchen_adjoins_living_across_nominal_6in_gap":  true,
+                   "kitchen_adjoins_dining_across_nominal_6in_gap":  true,
+                   "dining_adjoins_pantry_across_nominal_6in_gap":  true,
+                   "entry_adjoins_living_across_nominal_6in_gap":  true,
+                   "pantry_side_M06_window_is_positive":  true,
+                   "owner_requires_direct_U02_shared_hall_arrival":  true,
+                   "M06_B_search_window_inside_test_envelope":  true,
+                   "M06_B_remains_unassigned_and_clear_of_room_blocks":  true,
+                   "M06_B_clear_of_stair_lift_comparison_blocks":  true,
+                   "private_chain_has_owner_directed_U02_to_U03_link":  true,
+                   "U03_private_only_direction_excludes_hall_edge":  true,
+                   "guest_hall_and_both_JandJ_links_remain":  true,
+                   "14x12_room_cannot_fit_8ft_island_with_42in_both_end_clearances":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "Room blocks use existing test-shell dimensions and a nominal 6 in separation; they are not walls or usable-room surveys.",
+                        "Kitchen island and 42 in aisle requirements conflict with the owner-selected 14 x 12 ft target; no island size or aisle requirement was changed.",
+                        "Upper-suite route is an adjacency requirement, not a geometrically placed route.",
+                        "Roof type is conceptual; pitch, ridge, site orientation, snow/wind exposure, structure, assemblies, dormers and drainage are unresolved.",
+                        "M-06 B is only a search window; keep it unassigned.",
+                        "No permit, code-compliance, structural-safety, professional-review or construction-readiness claim."
+                    ]
 }
