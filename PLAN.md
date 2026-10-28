@@ -334,6 +334,17 @@ Acceptance criteria:
 
 Current status: `Tools/audit_m30_upper_suite_adjacency.ps1` passes **11/11** source-contract and graph checks in two independent Windows PowerShell 5.1 runs; JSON is byte-identical (SHA256 `A966DBBE086DF29B2B1F8909715A5566CD4C7E38AF245E758A93560E8ECB3B67`). The upper primary bedroom reaches the boutique through C-PRIVATE, while U-03 has only nominal links to the shared hall and U-06; no U-01-to-U-03 path exists when the shared hall and J&J bath are excluded. The boutique also has a nominal shared-hall edge. Whether this violates the intended suite boundary is unresolved; see `Architecture/M30_Upper_Suite_Adjacency_Audit_2026-10-28/README.md`. No door is verified as a clear opening, leaf or swing.
 
+### M31 — Reassess pyRevit and Python.NET for the Revit 2027 toolchain
+
+Acceptance criteria:
+
+- Compare Autodesk's Revit 2027 .NET/API requirements with current pyRevit release claims, its agent-runtime validation status and Python.NET's documented role.
+- Record interpreter lifecycle, security/data-flow limitations and the distinction between model-read-only behavior and process sandboxing.
+- Recommend a compatible division of labor without replacing the currently reproducible PowerShell/C#/IFC-validation pipeline.
+- Do not install software, register an MCP server, change Revit attachments or transmit model data.
+
+Current status: research is recorded in `Research/Revit_Python_Tooling_2026-10-27.md`. Autodesk and pyRevit project sources both point Revit 2027 toward .NET 10; pyRevit v7.0 advertises the agent runtime, but its live documentation still calls it experimental and only names Revit 2024/2025 as host-validated. Its documented model-provider data flow and plaintext run retention are material for this home model; its `readonly` mode does not sandbox file/network/process side effects. Keep PowerShell/JSON + C# RevitPilot as the production path and Python offline for IFC inspection. Any pyRevit agent-runtime test requires a separately approved install/MCP registration, a sanitized disposable model and review of data retention first. No software or registration was changed.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.
