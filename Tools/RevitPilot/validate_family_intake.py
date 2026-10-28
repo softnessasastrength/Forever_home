@@ -49,6 +49,13 @@ QUARANTINED_RESEARCH = [
         "product_page_url": "https://www.totousa.com/dartmouth-pedestal-lavatory",
         "source_url": "https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00070_LPT642.rfa",
     },
+    {
+        "sku": "TOTO Clayton LPT780",
+        "filename": "toto-clayton-lpt780.rfa",
+        "sha256": "16FEAB5E69583EE27533B7A12EC5A114DE632CA4CE139F70F582423FBF84B664",
+        "product_page_url": "https://www.totousa.com/clayton-pedestal-lavatory",
+        "source_url": "https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00195_LPT780.rfa",
+    },
 ]
 REJECTED = {
     "M-02": "Island_Cabinet_or_Countertop_19967.rfa",

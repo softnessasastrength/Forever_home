@@ -1,7 +1,7 @@
 {
     "schema":  "forever-home-m06-sink-gross-body-screen-v1",
     "result":  "PASS",
-    "check_count":  18,
+    "check_count":  20,
     "failed_checks":  [
 
                       ],
@@ -140,6 +140,26 @@
                                                               "width_by_depth":  true,
                                                               "rotated_90_degrees":  true
                                                           }
+                       },
+                       {
+                           "id":  "toto-clayton-lpt780",
+                           "name":  "TOTO Clayton traditional pedestal lavatory",
+                           "status":  "research-only; TOTO page lists limited inventory; direct public manufacturer RFA downloaded and hash-pinned but not inspected",
+                           "source":  "https://www.totousa.com/clayton-pedestal-lavatory",
+                           "design_file_source":  "https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00195_LPT780.rfa",
+                           "design_file_sha256":  "16FEAB5E69583EE27533B7A12EC5A114DE632CA4CE139F70F582423FBF84B664",
+                           "dimensions_source":  "TOTO LPT780 specification, SS-00275 v.01 (2009-06); 27 x 19-5/8 x 34 in; states vitreous-china pedestal and lavatory combination",
+                           "nominal_overall_body_in":  {
+                                                           "width":  27,
+                                                           "depth":  19.625,
+                                                           "height":  34
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
                        }
                    ],
     "evaluated":  {
@@ -162,6 +182,7 @@
                         "Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.",
                         "Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.",
                         "TOTO Dartmouth bounds use the manufacturer LPT642 specification dated 2013-01. The product page lists limited inventory and the linked public RFA was downloaded and hash-pinned, but its family/type geometry and current availability are not verified.",
+                        "TOTO Clayton bounds use manufacturer specification SS-00275 v.01 dated 2009-06, which identifies the traditional 27 x 19-5/8 x 34 in vitreous-china lavatory/pedestal combination. The product page lists limited inventory and the public RFA is hash-pinned but uninspected; current availability and family/type mapping remain unverified.",
                         "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
                     ]
 }

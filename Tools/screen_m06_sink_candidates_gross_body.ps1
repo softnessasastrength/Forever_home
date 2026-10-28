@@ -109,6 +109,20 @@ $candidates = @(
         height_in = 34.0
         candidate_rfa_geometry_measured = $false
         rfa_type_to_sku_mapping_verified = $false
+    },
+    [ordered]@{
+        id = 'toto-clayton-lpt780'
+        name = 'TOTO Clayton traditional pedestal lavatory'
+        status = 'research-only; TOTO page lists limited inventory; direct public manufacturer RFA downloaded and hash-pinned but not inspected'
+        source = 'https://www.totousa.com/clayton-pedestal-lavatory'
+        design_file_source = 'https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00195_LPT780.rfa'
+        design_file_sha256 = '16FEAB5E69583EE27533B7A12EC5A114DE632CA4CE139F70F582423FBF84B664'
+        dimensions_source = 'TOTO LPT780 specification, SS-00275 v.01 (2009-06); 27 x 19-5/8 x 34 in; states vitreous-china pedestal and lavatory combination'
+        width_in = 27.0
+        depth_in = 19.625
+        height_in = 34.0
+        candidate_rfa_geometry_measured = $false
+        rfa_type_to_sku_mapping_verified = $false
     }
 )
 
@@ -141,7 +155,7 @@ foreach ($candidate in $candidates) {
     }
 }
 
-Assert-Check ($results.Count -eq 6 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-estate-0900800.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-cadet-0236411.020').Count -eq 1 -and @($results | Where-Object id -eq 'toto-dartmouth-lpt642').Count -eq 1) 'Expected the complete Evolution combo, Tresham, Edgemere, Estate, Cadet and TOTO Dartmouth in the comparison.'
+Assert-Check ($results.Count -eq 7 -and @($results | Where-Object id -eq 'american-standard-evolution-0467400.020').Count -eq 1 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-estate-0900800.020').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-cadet-0236411.020').Count -eq 1 -and @($results | Where-Object id -eq 'toto-dartmouth-lpt642').Count -eq 1 -and @($results | Where-Object id -eq 'toto-clayton-lpt780').Count -eq 1) 'Expected the complete Evolution combo, Tresham, Edgemere, Estate, Cadet, TOTO Dartmouth and TOTO Clayton in the comparison.'
 
 $report = [ordered]@{
     schema = 'forever-home-m06-sink-gross-body-screen-v1'
@@ -184,6 +198,7 @@ $report = [ordered]@{
         'Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.',
         'Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.',
         'TOTO Dartmouth bounds use the manufacturer LPT642 specification dated 2013-01. The product page lists limited inventory and the linked public RFA was downloaded and hash-pinned, but its family/type geometry and current availability are not verified.',
+        'TOTO Clayton bounds use manufacturer specification SS-00275 v.01 dated 2009-06, which identifies the traditional 27 x 19-5/8 x 34 in vitreous-china lavatory/pedestal combination. The product page lists limited inventory and the public RFA is hash-pinned but uninspected; current availability and family/type mapping remain unverified.',
         'No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established.'
     )
 }
