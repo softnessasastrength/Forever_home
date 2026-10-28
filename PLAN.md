@@ -476,10 +476,21 @@ Current status: **complete** for Revit 2027.3 run `.local/revit-pilot/selected-d
 
 Acceptance criteria:
 
-- Preserve selected-D room dimensions/source, the current 36×32 ft upper-wing test envelope, +6 ft frame convention, lift reservation, and source stair approach unless the owner explicitly changes those inputs.
+- Preserve selected-D room dimensions/source, the current 36×32 ft upper-wing test envelope, +6 ft frame convention and lift reservation unless the owner explicitly changes those inputs. Record the source landing coordinate, but assess a continuous route and landing clearance only in the broader co-placement study.
 - Represent the latest topology: U-01 → C-PRIVATE → U-02 → U-03; U-03 has no direct shared-hall door; U-04 keeps independent guest-hall access; U-03 ↔ U-06 ↔ U-04 Jack-and-Jill access; U-05 remains primary-only.
 - Check actual room-block contact and corridor continuity, rather than treating edge samples as doors. Measure clearances only against documented project inputs and label schematic nominal wall gaps.
 - Produce deterministic PowerShell JSON/check/SVG outputs in an isolated proposal, and independently replay/validate them before any disposable Revit test.
 - If the fixed lift/core/approach constraints prevent a candidate, document the smallest evidence-backed design choice needed from the owner; do not infer infeasibility from a bounded search or alter selected D.
 
-Current status: **in progress**. M34 shows that a single westward shift of U-03 collides with the existing hall and projected lift reservation. M37/M39 searches show no complete public-room route candidate within their bounded search modes; those searches do not directly encode the newest U-02–U-03 private contact and cannot settle the route. The next study must co-place the private adjacency and stair/lift/public route, while keeping the owner's kitchen/dining targets and the roof study independent.
+Current status: **first contact envelope completed; directed public-route screens remain incomplete**. New PowerShell screen Tools/test_m41_upper_suite_private_contact.ps1 enumerates 486 1/6 ft placements of source-sized U-03 against four U-02 sides in two orientations. It preserves the nominal 0.5 ft wall gap, source 3.5 ft shared-edge reservation, 36×32 ft test shell, other source blocks and projected lift. The source landing is only recorded as a boundary marker; no public route or landing clearance is tested. The 12/12 integrity checks pass; two clean replays match. No single-U-03 placement is clear of all fixed room/circulation blocks and the lift reservation. The minimum contained intersection is 49.5 sf east of U-02 (36.6667 sf C-UPPER plus 12.8333 sf U-06), while avoiding the lift projection. This is a trade-off measurement, not a viable layout. M37 already co-places the full private/J&J room topology and tests a 4 ft public-route proxy; earlier balanced M37/M39 searches found only partial room reach. M42's U-02-first guest-branch search reached U-02 in 12/12 layouts but U-01 or U-04 in none. Its U-04-first stress search reached U-02/U-04 in two layouts but U-01 in neither. See the M41 and M42 study READMEs. Next improve route-aware placement pruning. No room dimensions or selected-D geometry changed.
+
+### M42 — Directed upper-suite public-route search
+
+Acceptance criteria:
+
+- Reuse the M37 source-derived rooms, owner-approved private-only U-03 topology, U-04 guest access, both U-06 links, primary-only U-05, 36×32 ft test envelope, lift reservation and 4 ft route proxy.
+- Compare directed room-packing orders without adopting geometry or changing selected D.
+- Record exact search budget, route tests, per-room sampled access, deterministic outputs and bounded-search limits.
+- A successful layout must reach U-01, U-02 and U-04 from the stair approach in the same room arrangement, with no U-03 public door.
+
+Current status: **directed branch searches reproduced; no complete public route**. The U-02-first M37 search with 6,000-node limit expands 4,500 nodes, evaluates 12 completed layouts and runs 12 corridor tests. Sampled reach is U-02 12/12, U-01 0/12, U-04 0/12; U-03 corridor-side proximity is diagnostic only. Two independent runs are byte-identical and pass 27/27 checks. The complementary U-04-first 6,000-node screen produces no complete packings; the 12,000-node stress run expands 9,000 nodes and yields two layouts/routes, reaching U-02 and U-04 in both but U-01 in neither. It is a single, unreplayed stress run. Both search families remain incomplete; no infeasibility conclusion follows. Reports and limitations are in Architecture/M42_U02_Anchored_Upper_Suite_Route_Study_2026-10-28/README.md. Next improve route-aware pruning before escalating any room/core trade-off.

@@ -1,0 +1,558 @@
+﻿{
+    "schema":  "forever-home.m41-upper-suite-private-contact.v1",
+    "title":  "M41 â€” source-sized U-02/U-03 private contact placement screen",
+    "status":  "bounded single-room contact screen; no placement adopted",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_decision.md":  "d38dbbb8ff9a233dc1b199ab01cbf54a4871335d0d0538db59079717a4fef752"
+                                   },
+    "shell":  {
+                  "width_ft":  36,
+                  "depth_ft":  32
+              },
+    "grid_ft":  0.16666666666666666,
+    "nominal_wall_gap_ft":  0.5,
+    "contact_reservation_ft":  3.5,
+    "contact_basis":  "Inherited 3.5 ft selected-D door reservation used as a schematic minimum shared-edge length; not a clear opening, selected door, swing, code clearance or approved door location.",
+    "U02":  {
+                "x_ft":  0.66666666666666663,
+                "y_ft":  21.666666666666668,
+                "width_ft":  16,
+                "depth_ft":  9.6666666666666661,
+                "area_sf":  154.666667
+            },
+    "U03_source":  {
+                       "width_ft":  13.666666666666666,
+                       "depth_ft":  9.1666666666666661,
+                       "area_sf":  125.277778,
+                       "orientations":  [
+                                            {
+                                                "name":  "source",
+                                                "width_ft":  13.666666666666666,
+                                                "depth_ft":  9.1666666666666661
+                                            },
+                                            {
+                                                "name":  "rotated_90_degrees",
+                                                "width_ft":  9.1666666666666661,
+                                                "depth_ft":  13.666666666666666
+                                            }
+                                        ]
+                   },
+    "fixed_blocks":  [
+                         {
+                             "id":  "U-01",
+                             "x_ft":  0.66666666666666663,
+                             "y_ft":  0.66666666666666663,
+                             "width_ft":  16,
+                             "depth_ft":  10
+                         },
+                         {
+                             "id":  "U-05",
+                             "x_ft":  0.66666666666666663,
+                             "y_ft":  11.166666666666666,
+                             "width_ft":  9,
+                             "depth_ft":  10
+                         },
+                         {
+                             "id":  "C-PRIVATE",
+                             "x_ft":  10.166666666666666,
+                             "y_ft":  11.166666666666666,
+                             "width_ft":  6.5,
+                             "depth_ft":  10
+                         },
+                         {
+                             "id":  "C-UPPER",
+                             "x_ft":  17.166666666666668,
+                             "y_ft":  0.66666666666666663,
+                             "width_ft":  4,
+                             "depth_ft":  30.666666666666668
+                         },
+                         {
+                             "id":  "U-04",
+                             "x_ft":  21.666666666666668,
+                             "y_ft":  0.66666666666666663,
+                             "width_ft":  13.666666666666666,
+                             "depth_ft":  8
+                         },
+                         {
+                             "id":  "U-06",
+                             "x_ft":  25.333333333333332,
+                             "y_ft":  9.1666666666666661,
+                             "width_ft":  10,
+                             "depth_ft":  12
+                         }
+                     ],
+    "lift_projection":  {
+                            "id":  "projected_lift_reservation",
+                            "x_ft":  21.166666666666668,
+                            "y_ft":  28,
+                            "width_ft":  8,
+                            "depth_ft":  4,
+                            "status":  "source lift reservation projected into upper local frame; comparison keepout only"
+                        },
+    "upper_landing_boundary_anchor":  {
+                                          "id":  "source_upper_landing_approach",
+                                          "x_ft":  17.166666666666668,
+                                          "y_ft":  32,
+                                          "width_ft":  4,
+                                          "depth_ft":  0,
+                                          "status":  "boundary marker only at rear edge of upper test envelope; no route or landing-clearance geometry tested"
+                                      },
+    "search":  {
+                   "placements_tested":  486,
+                   "coordinate_grid_ft":  0.16666666666666666,
+                   "contact_gap_ft":  0.5,
+                   "minimum_shared_edge_ft":  3.5,
+                   "rotations_tested":  [
+                                            "source",
+                                            "rotated_90_degrees"
+                                        ],
+                   "placements_by_side":  [
+                                              {
+                                                  "side":  "east",
+                                                  "placements":  83,
+                                                  "inside_shell":  83,
+                                                  "clear_single_shift":  0,
+                                                  "minimum_clash_area_sf_inside_shell":  49.5
+                                              },
+                                              {
+                                                  "side":  "west",
+                                                  "placements":  83,
+                                                  "inside_shell":  0,
+                                                  "clear_single_shift":  0,
+                                                  "minimum_clash_area_sf_inside_shell":  null
+                                              },
+                                              {
+                                                  "side":  "north",
+                                                  "placements":  160,
+                                                  "inside_shell":  0,
+                                                  "clear_single_shift":  0,
+                                                  "minimum_clash_area_sf_inside_shell":  null
+                                              },
+                                              {
+                                                  "side":  "south",
+                                                  "placements":  160,
+                                                  "inside_shell":  160,
+                                                  "clear_single_shift":  0,
+                                                  "minimum_clash_area_sf_inside_shell":  82.5
+                                              }
+                                          ],
+                   "single_shift_candidates":  0
+               },
+    "best_contact_placements":  [
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  18.833333,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6.333333,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  12.833336,
+                                                            "kind":  "existing source room/circulation block"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  49.5,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  true,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6.5,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  11.916667,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  1.333333,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  49.916664,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19.166667,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6.666667,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  10.999999,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  2.666669,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  50.333332,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  18.666667,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6.166667,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  13.749999,
+                                                            "kind":  "existing source room/circulation block"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  50.416663,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  true,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19.333333,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6.833333,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  10.083336,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  3.999997,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  50.749997,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19.5,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  7,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  9.166667,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  5.333333,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  51.166664,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  18.5,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  6,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  14.666668,
+                                                            "kind":  "existing source room/circulation block"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  51.333332,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  true,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19.666667,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  7.166667,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  8.249999,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  6.666669,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  51.583332,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  19.833333,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  7.333333,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  7.333336,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  7.999997,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  51.999997,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  18.333333,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  5.833333,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  15.583336,
+                                                            "kind":  "existing source room/circulation block"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  52.25,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  true,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  20,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  7.5,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  6.416667,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  9.333333,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  52.416664,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    },
+                                    {
+                                        "side":  "east",
+                                        "orientation":  "source",
+                                        "x_ft":  17.166667,
+                                        "y_ft":  20.166667,
+                                        "width_ft":  13.666666666666666,
+                                        "depth_ft":  9.1666666666666661,
+                                        "inside_shell":  true,
+                                        "contact_length_ft":  7.666667,
+                                        "contact_gap_ft":  0.5,
+                                        "contact_valid":  true,
+                                        "clashes":  [
+                                                        {
+                                                            "id":  "C-UPPER",
+                                                            "area_sf":  36.666664,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "U-06",
+                                                            "area_sf":  5.499998,
+                                                            "kind":  "existing source room/circulation block"
+                                                        },
+                                                        {
+                                                            "id":  "projected_lift_reservation",
+                                                            "area_sf":  10.666669,
+                                                            "kind":  "projected comparison reservation"
+                                                        }
+                                                    ],
+                                        "total_clash_area_sf":  52.833331,
+                                        "clear_of_fixed_rooms":  false,
+                                        "clear_of_lift":  false,
+                                        "no_overlap_with_landing_marker":  true,
+                                        "single_shift_candidate":  false
+                                    }
+                                ],
+    "interpretation":  "This tests U-03 contact with fixed source U-02 while all other source room/circulation rectangles and the projected lift reservation remain fixed. The source upper landing is recorded only as a boundary coordinate; no route is computed. A zero surviving placement would reject only this single-room-shift strategy, not prove the upper-suite arrangement infeasible.",
+    "checks":  {
+                   "selected_D_and_decision_fingerprints_are_valid":  true,
+                   "U02_and_U03_source_blocks_exist":  true,
+                   "source_block_areas_preserved_in_both_orientations":  true,
+                   "all_candidates_use_source_derived_half_ft_nominal_gap":  true,
+                   "all_candidates_respect_one_sixth_ft_grid":  true,
+                   "all_candidates_meet_source_3_5ft_contact_reservation":  true,
+                   "all_candidates_keep_nominal_wall_gap_from_U02":  true,
+                   "all_candidates_preserve_source_U03_area":  true,
+                   "no_candidate_overlaps_U02":  true,
+                   "candidate_sides_cover_four_orthogonal_contacts":  true,
+                   "at_least_one_contained_contact_candidate_tested":  true,
+                   "no_candidate_claimed_as_final_geometry":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "Room coordinates and areas are source room-block values, not survey or finished wall-face dimensions.",
+                        "The 0.5 ft gap is an inherited nominal wall allowance, not verified construction thickness.",
+                        "The 3.5 ft contact interval comes from source door-reservation data; no door, clear opening, swing or applicable code clearance is modeled.",
+                        "The lift is a projected comparison reservation, not verified shaft/floor-opening geometry. The upper landing is a boundary marker only; no continuous public route or landing clearance is checked.",
+                        "Only U-03 is moved or rotated; no broader re-layout, private-corridor route, furniture, walls, floors, stairs, structure, services, Revit or IFC is tested.",
+                        "No code-compliance, accessibility, structural-safety, professional-certification or construction-readiness claim is made."
+                    ]
+}

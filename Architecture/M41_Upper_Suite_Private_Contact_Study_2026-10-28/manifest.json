@@ -1,0 +1,23 @@
+﻿{
+    "generator":  "Tools/test_m41_upper_suite_private_contact.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_decision.md":  "d38dbbb8ff9a233dc1b199ab01cbf54a4871335d0d0538db59079717a4fef752"
+                                   },
+    "search_parameters":  {
+                              "grid_ft":  0.16666666666666666,
+                              "nominal_wall_gap_ft":  0.5,
+                              "minimum_contact_ft":  3.5,
+                              "room":  "U-03",
+                              "target":  "U-02",
+                              "orientations_tested":  [
+                                                          "source",
+                                                          "rotated_90_degrees"
+                                                      ]
+                          },
+    "output_hashes_sha256":  {
+                                 "contact_screen":  "e28b62f163da91c0feff9177b6e9ea419d9095e32d16250521931cc92d0227f1",
+                                 "checks":  "5ea873ceb82e523123ae868c6b6cb44aa18531d3a6b1f6e7da48fe0aae392981",
+                                 "svg":  "72bee02f9af5b5a0a29702d453e0858ef0ab8a7ce0d9f026c77dcf2d7423e5d9"
+                             }
+}
