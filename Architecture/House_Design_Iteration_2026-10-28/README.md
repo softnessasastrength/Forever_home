@@ -55,3 +55,9 @@ Re-running the script twice into fresh scratch directories should produce identi
 The very tall rises expose a tradeoff: a steep gable spanning the full test envelope creates a high ridge, while a real house may require different roof segments over its room wings. No roof intersections, overhangs, finished floor datums, attic use, openings, framing, assemblies, snow/wind loads or drainage are modeled. Connecticut's roof-code note explicitly cautions that steep pitch does not by itself justify a reduced snow load. Pitch, ridge direction, site response and roof system remain unselected.
 
 Reproduce with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_roof_pitch_massing_study.ps1`. Its report includes the selected-D source fingerprint and six formula-derived options; the script does not edit `study.json`, selected D, Revit or IFC.
+
+## M-06 pair screen in the current proposal window
+
+`Tools/screen_m06_pairs_against_followup_window.ps1` rechecks the 16 same-wall toilet/lavatory envelopes against this iteration's smaller, 72.33 sf gross M-06-B search gap. The proposal window measures 124 × 84 in gross; all 16 predecessor-toilet/research-lavatory rectangles remain contained. The tightest remaining gross margins are 65-1/2 in along the wall and 32-3/4 in beyond the front-strip depth. Reproduce with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/screen_m06_pairs_against_followup_window.ps1`; see the [versioned report](../../Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json).
+
+This compares the fixture proxy with the room-block proposal, not actual wall-face or clear dimensions. M-06 remains unassigned and every sink remains research-only; exact current 610AA001.020 plan geometry is still unverified. The output does not include a door or swing, hall approach, privacy, installation/rough-in, service route, or site-specific code determination.

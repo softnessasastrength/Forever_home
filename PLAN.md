@@ -623,3 +623,14 @@ Acceptance criteria:
 - State the roof footprint simplification, omitted wing/intersection geometry, loads, assemblies and structure; do not claim code compliance or reduce snow load based on pitch.
 
 Current status: Complete as a conceptual massing comparison. `Tools/build_roof_pitch_massing_study.ps1` writes `roof-pitch-options.json` and `roof-pitch-options.svg` inside the separate owner-follow-up proposal. Two Windows PowerShell 5.1 runs produce byte-identical JSON (SHA256 `1670AD59CF293EB738DBFD275BC01728EF754D76B873B5DD34B6EB6075560A33`) and SVG (`2A780B8144341B39434B89B3C0CCF85C173DC09C2A52EFBDC9EDB1A8398A6C43`); the six rise calculations and SVG XML validate. Across the 40–42 ft full-span options, proposed rise above the hypothetical eave ranges 16 ft 8 in–24 ft 6 in. The source pitch/ridge remain TBD, selected D is unchanged, and no Revit roof or IFC was produced. These options illustrate massing only and do not establish roof dimensions, framing, snow/wind resistance, code compliance or construction readiness. See `Architecture/House_Design_Iteration_2026-10-28/README.md`.
+
+### M56 — Recheck toilet/lavatory pairs in the owner-follow-up M-06 window
+
+Acceptance criteria:
+
+- Reuse the M54 16-pair predecessor-only screen without altering its source; verify the follow-up proposal, selected-D study and pair-report fingerprints agree.
+- Read the smaller M-06-B window from the separate owner-follow-up proposal, independently convert its documented 10-1/3 × 7 ft gap to inches, and retest all 16 gross envelopes.
+- Reproduce deterministic JSON under Windows PowerShell 5.1; keep current 610AA dimensions unverified, every lavatory unselected, and M-06 unassigned.
+- State that room walls, door/swing, hall approach/privacy, installation, and services remain absent.
+
+Current status: Complete as a cross-check of the separate schematic proposal. `Tools/screen_m06_pairs_against_followup_window.ps1` confirms the selected-D source hash matches both the follow-up proposal and M54 input, then tests all 16 inherited rectangles against the proposal's 124 × 84 in gross B. Two Windows PowerShell 5.1 runs are byte-identical (SHA256 `49CBB3B77C7FB8AF8D75230F48F77D00ED8D16E7BD6C5B62FEC039C3D756E53B`); all 16 fit with at least 65-1/2 in gross wall-direction margin and 32-3/4 in gross depth margin. Exact current toilet geometry is still unverified, the geometry is a bounding proxy, and M-06 B remains unassigned. See `Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json` and the owner-follow-up README.
