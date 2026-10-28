@@ -22,6 +22,12 @@ if ($selectedStart -lt 0 -or $selectedEnd -le $selectedStart) {
     throw 'Could not isolate SelectedDCommand in Pilot.cs.'
 }
 $selectedCommand = $pilot.Substring($selectedStart, $selectedEnd - $selectedStart)
+$manifestStart = $pilot.IndexOf('public class ManifestExportCommand', [StringComparison]::Ordinal)
+$manifestEnd = $pilot.IndexOf('public class GeometryQaCommand', $manifestStart, [StringComparison]::Ordinal)
+if ($manifestStart -lt 0 -or $manifestEnd -le $manifestStart) {
+    throw 'Could not isolate ManifestExportCommand in Pilot.cs.'
+}
+$manifestCommand = $pilot.Substring($manifestStart, $manifestEnd - $manifestStart)
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 $selectedManifest = Get-Content -LiteralPath $selectedManifestPath -Raw | ConvertFrom-Json
 $validation = Get-Content -LiteralPath $validationPath -Raw | ConvertFrom-Json
@@ -39,6 +45,11 @@ $selectedSetsFilter = $selectedCommand -match '\.FilterViewId\s*='
 $selectedSetsInternalProperties = $selectedCommand -match 'ExportInternalRevitPropertySets'
 $selectedSetsFamilyMap = $selectedCommand -match 'FamilyMappingFile'
 $selectedSetsMappingTemplate = $selectedCommand -match 'IFCParameterTemplate'
+$selectedRollsBackExportTransaction = $selectedCommand -match 'exportTransaction\.RollBack\(\)'
+$manifestSetsIfcVersion = $manifestCommand -match 'FileVersion\s*=\s*IFCVersion\.IFC2x3CV2'
+$manifestSetsBaseQuantities = $manifestCommand -match 'ExportBaseQuantities\s*=\s*ifc\.GetProperty\("export_base_quantities"\)\.GetBoolean\(\)'
+$manifestSetsInternalProperties = $manifestCommand -match 'ExportInternalRevitPropertySets' -and $manifestCommand -match 'GetProperty\("export_internal_property_sets"\)\.GetBoolean\(\)'
+$manifestSetsViewFilter = $manifestCommand -match 'options\.FilterViewId\s*='
 $manifestConfigurationExplicit =
     $manifest.ifc.export_base_quantities -eq $true -and
     $manifest.ifc.export_internal_property_sets -eq $true -and
@@ -58,6 +69,9 @@ $checks = @(
     [ordered]@{ name = 'selected_d_no_explicit_internal_property_set_option'; passed = -not $selectedSetsInternalProperties },
     [ordered]@{ name = 'selected_d_no_explicit_family_mapping_file'; passed = -not $selectedSetsFamilyMap },
     [ordered]@{ name = 'selected_d_no_explicit_parameter_mapping_template'; passed = -not $selectedSetsMappingTemplate },
+    [ordered]@{ name = 'selected_d_export_transaction_rolls_back'; passed = $selectedRollsBackExportTransaction },
+    [ordered]@{ name = 'manifest_exporter_sets_version_quantities_and_internal_property_sets_in_source'; passed = $manifestSetsIfcVersion -and $manifestSetsBaseQuantities -and $manifestSetsInternalProperties },
+    [ordered]@{ name = 'manifest_exporter_supports_optional_view_filter_in_source'; passed = $manifestSetsViewFilter },
     [ordered]@{ name = 'manifest_export_controls_are_explicit'; passed = $manifestConfigurationExplicit },
     [ordered]@{ name = 'selected_d_exact_backup_ifc_validation_passes_25_of_25'; passed = $allValidationChecksPass },
     [ordered]@{ name = 'selected_d_ifc_hash_matches_export_record_and_file'; passed = $ifcPresentAndMatched },
@@ -94,6 +108,10 @@ $report = [ordered]@{
         export_base_quantities = $manifest.ifc.export_base_quantities
         export_internal_revit_property_sets = $manifest.ifc.export_internal_property_sets
         filter_view_name = $manifest.ifc.filter_view_name
+        source_explicitly_sets_file_version = $manifestSetsIfcVersion
+        source_maps_base_quantities_from_manifest = $manifestSetsBaseQuantities
+        source_maps_internal_property_sets_from_manifest = $manifestSetsInternalProperties
+        source_supports_filter_view = $manifestSetsViewFilter
         selected_d_m02_manifest_has_same_values = $selectedManifest.ifc.export_base_quantities -eq $manifest.ifc.export_base_quantities -and $selectedManifest.ifc.export_internal_property_sets -eq $manifest.ifc.export_internal_property_sets -and $selectedManifest.ifc.filter_view_name -eq $manifest.ifc.filter_view_name
     }
     validated_export = [ordered]@{

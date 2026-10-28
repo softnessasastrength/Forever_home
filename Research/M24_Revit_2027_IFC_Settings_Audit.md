@@ -12,7 +12,7 @@ From the repository root, run:
 powershell -NoProfile -ExecutionPolicy Bypass -File Tools/audit_ifc_export_configuration.ps1
 ```
 
-The script reads the checked-in RevitPilot source and export manifests plus the retained selected-D source/export/IFC validation evidence. It writes `Research/M24_Revit_2027_IFC_Settings_Audit.json`. The audit passes **11/11** checks. Two consecutive runs produced the same JSON SHA256: `ba2b62bf316772420bc142147db3eed247aaf491565f1ada29e020faf8f47a1a`.
+The script reads the checked-in RevitPilot source and export manifests plus the retained selected-D source/export/IFC validation evidence. It writes `Research/M24_Revit_2027_IFC_Settings_Audit.json`. The audit passes **14/14** checks, including explicit source checks for the selected-D rollback and manifest exporter option assignments. Two consecutive runs produced byte-identical JSON with SHA256 `80ac1cb94dab01778572eff12bfe0c58b7724efe19d6437fe41cf9bd724ae9b5`.
 
 ## Verified source configuration
 

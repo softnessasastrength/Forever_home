@@ -1,8 +1,8 @@
 ﻿{
     "schema":  "forever-home.revit-ifc-export-configuration-audit.v1",
     "status":  "pass",
-    "checks_passed":  11,
-    "checks_total":  11,
+    "checks_passed":  14,
+    "checks_total":  14,
     "checks":  [
                    {
                        "name":  "selected_d_ifc_version_explicit_ifc2x3cv2",
@@ -29,6 +29,18 @@
                        "passed":  true
                    },
                    {
+                       "name":  "selected_d_export_transaction_rolls_back",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "manifest_exporter_sets_version_quantities_and_internal_property_sets_in_source",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "manifest_exporter_supports_optional_view_filter_in_source",
+                       "passed":  true
+                   },
+                   {
                        "name":  "manifest_export_controls_are_explicit",
                        "passed":  true
                    },
@@ -51,7 +63,7 @@
                ],
     "source_fingerprints":  {
                                 "revit_pilot_source_sha256":  "30233321c893bbcb66e7a5cf290dc9f6ceb1ee152ee270c41605985f08a258be",
-                                "audit_script_sha256":  "f7eab65b351a78571002116538b4f14ad90d35668cabb45931051d5e2eefa6c4",
+                                "audit_script_sha256":  "2bb7cc0d8c328c6a78a578751d8275269214fa93d3d62e57e2e61f723e961dd6",
                                 "compact_core_manifest_sha256":  "1bddfde41e7d848aafaad3699a605c04bdc8279dac4f59b6a138378978ac34a2",
                                 "selected_d_m02_manifest_sha256":  "67f998e38ad3c248a0c41acb8c5377cd88afd599e872f30068c4dad8f9b52a8d",
                                 "selected_d_source_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
@@ -72,6 +84,10 @@
                                 "export_base_quantities":  true,
                                 "export_internal_revit_property_sets":  true,
                                 "filter_view_name":  null,
+                                "source_explicitly_sets_file_version":  true,
+                                "source_maps_base_quantities_from_manifest":  true,
+                                "source_maps_internal_property_sets_from_manifest":  true,
+                                "source_supports_filter_view":  true,
                                 "selected_d_m02_manifest_has_same_values":  true
                             },
     "validated_export":  {
