@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 04:51 EDT, the selected-D PowerShell generator passed 43/43 in two fresh scratch runs with all seven outputs byte-identical; the M25 area comparison passes 11/11 and is independently reproducible. The offline unittest suite passed 37/37 at the last documented run. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in a new isolated validation run, while the original named RVT remains stale. On 2026-10-28 at 04:51 EDT, the selected-D PowerShell generator passed 43/43 in two fresh scratch runs with all seven outputs byte-identical; the M25 area comparison passes 11/11 and is independently reproducible. The offline unittest suite passed 37/37 at the last documented run. IFC room names match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
 
 ## Repository safety baseline
 
@@ -301,6 +301,16 @@ Acceptance criteria:
 - Keep the output explicitly classified as schematic room-block geometry, not coordinated building geometry.
 
 Current status: Windows PowerShell 5.1 regeneration passed **43/43** checks twice; all seven artifacts (study, checks, CSV schedules and three plan SVGs) are byte-identical across runs. Both generated SVG sets parse as XML. The tracked selected-D output and Revit/IFC baseline were not modified. This verifies repeatable schematic regeneration only.
+
+### M28 — Revalidate the preserved selected-D IFC package
+
+Acceptance criteria:
+
+- Run the independent IFC validator against the exact-backup derivative whose RVT bytes match the export manifest; do not replace the stale named source RVT or historical IFC.
+- Require IFC2X3 schema validation, source-matching names/areas/levels/bounds and expected absence of physical construction categories.
+- Regenerate the JSON report twice from unchanged inputs and compare the reports byte-for-byte.
+
+Current status: `Tools/RevitPilot/validate_selected_d_ifc.py` passes **26/26** twice against `.local/revit-pilot/selected-d/exact-backup-validation-m22-20261028/`; both reports match byte-for-byte (SHA256 `F3DE33E36318B0C050218B2D73056B046338DB130EE991A3FEA91E2B05A28389`). IFC2X3 has zero schema issues, 21 named spaces on three storeys match source, and the intended physical construction categories are empty. It reports zero property-set and quantity-set relationships for all 21 spaces. These are results from the preserved derivative; the currently named RVT remains stale versus the export record.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

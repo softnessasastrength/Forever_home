@@ -49,6 +49,12 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - Ran `Tools/build_selected_house_schematic.ps1 -LayoutVariant OwnerSelectedD` into two new ignored scratch directories. Both runs pass **43/43** geometry/provenance checks; all three SVG plan sheets parse as XML.
 - Compared the seven emitted artifacts (study JSON, checks JSON, two schedules, and three SVGs) by SHA256: all match between runs. The tracked selected-D output, source geometry and Revit/IFC baseline were not modified. This confirms repeatable schematic room-block generation only; walls, doors, floors, stairs, structure, MEP and code review remain outside this result.
 
+## M28 preserved selected-D IFC validation — 2026-10-28 04:53 EDT
+
+- Reran `Tools/RevitPilot/validate_selected_d_ifc.py` against `.local/revit-pilot/selected-d/exact-backup-validation-m22-20261028/`, the isolated copy paired with the manifest-matching saved RVT. Two reports pass **26/26** and are byte-identical, SHA256 `F3DE33E36318B0C050218B2D73056B046338DB130EE991A3FEA91E2B05A28389`.
+- IFC2X3 schema issue count is zero; 21 space IDs, LongName labels, areas, levels, plan bounds and body-profile areas match source across three storeys. The intended walls/slabs/stairs/doors/windows categories remain empty. The report records **0 property-set** and **0 quantity-set** relationships on all 21 spaces; this is a data coverage gap, not a schema failure.
+- The original named RVT remains hash-stale against that export. Only the preserved isolated derivative was validated; no RVT or IFC was changed or regenerated in this pass.
+
 ## M23 Adirondack carry-forward source check — 2026-10-28
 
 - Confirmed `Architecture/Building_Program.md` requires the owner's existing Adirondack model and explicitly says its exact product reference or asset path has not been recorded. Searched the repository, current Downloads folder, and accessible project-thread context; no brand/model, URL, image or family asset was present.
