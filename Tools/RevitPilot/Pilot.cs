@@ -877,6 +877,8 @@ public class GeometryQaCommand : IExternalCommand
 [Transaction(TransactionMode.Manual)]
 public class FamilyIntakeCommand : IExternalCommand
 {
+    const string EvolutionFamilySha256 = "39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea";
+
     static string? ParameterValue(Parameter parameter) => parameter.StorageType switch
     {
         StorageType.Double => parameter.AsValueString() ?? parameter.AsDouble().ToString("G17", CultureInfo.InvariantCulture),
@@ -982,6 +984,92 @@ public class FamilyIntakeCommand : IExternalCommand
         };
     }
 
+    static object PlaceEvolutionOnVerticalWall(Document target, FamilySymbol symbol)
+    {
+        var wallType = new FilteredElementCollector(target).OfClass(typeof(WallType)).Cast<WallType>()
+            .OrderBy(type => type.Name, StringComparer.OrdinalIgnoreCase).FirstOrDefault()
+            ?? throw new InvalidOperationException("The disposable intake template has no wall type for the vertical host probe.");
+        var level = new FilteredElementCollector(target).OfClass(typeof(Level)).Cast<Level>()
+            .OrderBy(item => item.Elevation).FirstOrDefault()
+            ?? throw new InvalidOperationException("The disposable intake template has no level for the vertical host probe.");
+
+        Wall wall;
+        using (var createWall = new Transaction(target, "Create disposable Evolution vertical host"))
+        {
+            createWall.Start();
+            var axis = Line.CreateBound(new XYZ(0, 0, 0), new XYZ(0, 10, 0));
+            wall = Wall.Create(target, axis, wallType.Id, level.Id, 10.0, 0.0, false, false);
+            createWall.Commit();
+        }
+        target.Regenerate();
+
+        var geometryOptions = new Options { ComputeReferences = true, DetailLevel = ViewDetailLevel.Fine };
+        PlanarFace? hostFace = null;
+        var wallGeometry = wall.get_Geometry(geometryOptions)
+            ?? throw new InvalidOperationException("The disposable host wall returned no geometry.");
+        foreach (GeometryObject item in wallGeometry)
+        {
+            if (item is not Solid solid || solid.Volume <= 1e-9) continue;
+            foreach (Face face in solid.Faces)
+            {
+                if (face is PlanarFace planar && planar.Reference is not null && Math.Abs(planar.FaceNormal.X) > 0.999)
+                {
+                    hostFace = planar;
+                    break;
+                }
+            }
+            if (hostFace is not null) break;
+        }
+        if (hostFace?.Reference is null)
+            throw new InvalidOperationException("No referenceable vertical planar face was found on the disposable host wall.");
+
+        var uv = hostFace.GetBoundingBox();
+        var point = hostFace.Evaluate(new UV((uv.Min.U + uv.Max.U) / 2.0, (uv.Min.V + uv.Max.V) / 2.0));
+        FamilyInstance instance;
+        using (var place = new Transaction(target, "Place Evolution four-inch type on vertical host"))
+        {
+            place.Start();
+            instance = target.Create.NewFamilyInstance(hostFace.Reference, point, XYZ.BasisY, symbol);
+            place.Commit();
+        }
+        target.Regenerate();
+
+        var measured = AnalyzePhysicalSolids(instance.get_Geometry(new Options
+        {
+            DetailLevel = ViewDetailLevel.Fine,
+            IncludeNonVisibleObjects = false
+        }));
+        if (measured.Min is null || measured.Max is null)
+            throw new InvalidOperationException("The hosted instance produced no measurable positive-volume solid geometry.");
+
+        return new
+        {
+            status = "measured on a disposable vertical wall host; not placed in the selected-D house",
+            family_type = symbol.Name,
+            wall_type = wallType.Name,
+            reference_direction = "global +Y; intended family width axis",
+            host_face_normal = new[] { Math.Round(hostFace.FaceNormal.X, 6), Math.Round(hostFace.FaceNormal.Y, 6), Math.Round(hostFace.FaceNormal.Z, 6) },
+            host_element_id = wall.Id.Value,
+            instance_element_id = instance.Id.Value,
+            positive_volume_solid_count = measured.Count,
+            total_volume_ft3 = Math.Round(measured.VolumeFt3, 6),
+            global_bounds_in = new
+            {
+                x_projection = new[] { Math.Round(measured.Min.X * 12, 4), Math.Round(measured.Max.X * 12, 4) },
+                y_width = new[] { Math.Round(measured.Min.Y * 12, 4), Math.Round(measured.Max.Y * 12, 4) },
+                z_height = new[] { Math.Round(measured.Min.Z * 12, 4), Math.Round(measured.Max.Z * 12, 4) },
+                width = Math.Round((measured.Max.Y - measured.Min.Y) * 12, 4),
+                projection = Math.Round((measured.Max.X - measured.Min.X) * 12, 4),
+                height = Math.Round((measured.Max.Z - measured.Min.Z) * 12, 4)
+            },
+            limitations = new[]
+            {
+                "The probe verifies one disposable wall-host orientation only; it does not confirm installed connections, clearance, door or room fit.",
+                "The family type description says 'Basin only' while Pedestal Option is Yes; visual review of the hosted solid assembly remains necessary."
+            }
+        };
+    }
+
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
         Document? target = null;
@@ -1000,6 +1088,9 @@ public class FamilyIntakeCommand : IExternalCommand
                 string stage = "open_family";
                 try
                 {
+                    string sourceSha256;
+                    using (var sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                        sourceSha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(sourceStream)).ToLowerInvariant();
                     string familyName;
                     string? familyCategory;
                     string placementType;
@@ -1048,15 +1139,32 @@ public class FamilyIntakeCommand : IExternalCommand
                             inspected.Add(new { type = symbol.Name, geometry_status = "inspection_failed", geometry_error = ex.Message });
                         }
                     }
+                    object? hostOrientationTest = null;
+                    if (sourceSha256 == EvolutionFamilySha256)
+                    {
+                        try
+                        {
+                            var fourInSymbol = symbols.SingleOrDefault(symbol => symbol.Name == "0467.400")
+                                ?? throw new InvalidOperationException("Hash-matched Evolution family has no 0467.400 symbol.");
+                            stage = "place_evolution_vertical_host_probe";
+                            hostOrientationTest = PlaceEvolutionOnVerticalWall(target, fourInSymbol);
+                        }
+                        catch (Exception ex)
+                        {
+                            hostOrientationTest = new { status = "failed", error = ex.ToString() };
+                        }
+                    }
                     results.Add(new
                     {
                         file = Path.GetFileName(path),
+                        source_sha256 = sourceSha256,
                         status = anyLoaded ? "loaded" : "already_present",
                         family = family.Name,
                         category = familyCategory,
                         placement_type = placementType,
                         type_count = inspected.Count,
-                        types = inspected
+                        types = inspected,
+                        host_orientation_test = hostOrientationTest
                     });
                 }
                 catch (Exception ex)
