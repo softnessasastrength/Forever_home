@@ -165,7 +165,7 @@ These are **proposals for momentum**, not new owner-approved layout decisions. K
 
 ### M19 — Integrate the accepted M-02 island assembly into a kitchen fit plan
 
-**Sandbox progress (2026-10-27):** the 2D social-route derivative now includes a reproducible source-sized perimeter-run fit option. Its Windows PowerShell generator passes 22/22 checks, including a source-dimension fingerprint check, 48 in island-to-counter clearance and the documented range landing minima. Fixture positions/order are explicitly provisional assumptions; appliance-open envelopes and service routes remain unmodeled. This does not promote the candidate to Revit/IFC or select it as the design.
+**Sandbox progress (2026-10-27/28):** the 2D social-route derivative includes a reproducible source-sized perimeter-run fit option; its Windows PowerShell generator passes 22/22 checks. A separate PowerShell stress test now reads that output and compares the placeholder refrigerator slot with two manufacturer-documented, discontinued GE refrigerator envelopes; it passes 16/16 source/arithmetic/non-claim checks. In the current north-run position, both examples reduce the nominal 48 in counter-face aisle to less than the documented 42 in minimum even when closed, and to 28 in / 23.5 in at 90 degrees open. The respective door-open widths also project 4.5 in / 6.25 in beyond the nominal 36 in slot. These are discontinued product comparisons, not current product selections or code findings. Appliance positions/order remain provisional; range/DW operating envelopes and service routes remain unmodeled. Do not promote the candidate to Revit/IFC or select it as the design until a current refrigerator SKU, location and clearances are coordinated.
 
 Acceptance criteria:
 
@@ -173,6 +173,7 @@ Acceptance criteria:
 - Retain RevitCity 7216 as the base-module source for the current isolated fit assembly. Four 4 × 2 ft bases plus a separate 8 × 4 ft generic top pass the documented fit checks; the actual total is 35.75 in, owner-accepted as nominally 36 in. Do not describe the RFA alone as a completed 36 in island or approved product.
 - Add only source-documented perimeter counter/appliance placeholders to a separate schematic or Revit derivative; test documented island aisles, stool occupation, room edges, table and porch route in one plan. Do not change the selected-D room block to conceal its variance against older 14 × 12 ft kitchen guidance.
 - Record family source, parameters, measured solid extents, exact saved-RVT identity and IFC result if the derivative is exported.
+- Before product-sized Revit placement, test a current selected refrigerator's exact installation dimensions, rear/side clearances, closed depth, door-open depth/width and hinge-side swing against the island aisle and adjacent returns. The 2026-10-28 discontinued reference-model screen is a hold signal, not a substitute for that product choice or a reason to silently move the room blocks.
 
 RevitCity research: [object 7216](https://www.revitcity.com/downloads.php?action=view&object_id=7216) is described as a simple adjustable Revit Architecture 2008 base block with no door/detail geometry. It is useful for blocking and dimension tests, not finish/fabrication documentation. The separate generic top is essential to the passing assembly.
 

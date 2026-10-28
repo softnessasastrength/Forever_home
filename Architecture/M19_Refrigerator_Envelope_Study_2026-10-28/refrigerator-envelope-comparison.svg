@@ -1,0 +1,32 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='1120' height='760' viewBox='0 0 1120 760'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.title{font-size:23px;font-weight:bold}.head{font-size:16px;font-weight:bold}.label{font-size:12px}.note{font-size:11px;fill:#5b5145}.wall{stroke:#4b4037;stroke-width:4}.counter{fill:#d4c6ad;stroke:#71634e;stroke-width:2}.fridge{fill:#dbe5e8;stroke:#486d78;stroke-width:2}.open{fill:#e7b6a0;fill-opacity:.62;stroke:#a34c32;stroke-width:2;stroke-dasharray:7 4}.island{fill:#e5e4da;stroke:#6c6b5d;stroke-width:2}.fail{fill:#a53527;font-weight:bold}</style>
+<rect width='1120' height='760' fill='#fbf9f3'/>
+<text x='32' y='36' class='title'>M19 refrigerator envelope screen - dimensional comparison, not product selection</text>
+<text x='32' y='60' class='note'>Plan depth from wall: counter 24 in; nominal aisle 48 in; island front at 72 in. Manufacturer rear clearance added as a screening assumption.</text>
+<text x='40' y='116' class='head'>GWE19JMLES - closed: 39 in aisle</text>
+<text x='575' y='116' class='head'>GWE19JMLES - open at 90 degrees: 28 in aisle</text>
+<line x1='36' y1='134' x2='152' y2='134' class='wall'/><text x='40' y='127' class='label'>back-of-appliance datum</text>
+<rect x='40' y='134' width='108' height='72' class='counter'/><text x='44' y='170' class='label'>24 in counter-depth zone</text>
+<rect x='44.875' y='134' width='98.25' height='99' class='fridge'/><text x='42' y='249' class='label'>closed appliance + 2 in rear clearance</text>
+<line x1='36' y1='350' x2='152' y2='350' class='island'/><text x='40' y='367' class='label'>island front / 72 in from datum</text>
+<text x='46' y='390.5' class='fail'>remaining: 39 in</text>
+<line x1='571' y1='134' x2='687' y2='134' class='wall'/><text x='575' y='127' class='label'>back-of-appliance datum</text>
+<rect x='575' y='134' width='108' height='72' class='counter'/><text x='579' y='170' class='label'>24 in counter-depth zone</text>
+<rect x='579.875' y='134' width='98.25' height='99' class='fridge'/><rect x='579.875' y='134' width='98.25' height='132' class='open'/><text x='577' y='282' class='label'>90 degree open depth + 2 in rear clearance</text>
+<line x1='571' y1='350' x2='687' y2='350' class='island'/><text x='575' y='367' class='label'>island front / 72 in from datum</text>
+<text x='581' y='440' class='fail'>remaining: 28 in</text>
+<text x='40' y='366' class='head'>GZS22IMNES - closed: 39.25 in aisle</text>
+<text x='575' y='366' class='head'>GZS22IMNES - open at 90 degrees: 23.5 in aisle</text>
+<line x1='36' y1='384' x2='152' y2='384' class='wall'/><text x='40' y='377' class='label'>back-of-appliance datum</text>
+<rect x='40' y='384' width='108' height='72' class='counter'/><text x='44' y='420' class='label'>24 in counter-depth zone</text>
+<rect x='40.375' y='384' width='107.25' height='98.25' class='fridge'/><text x='42' y='498.25' class='label'>closed appliance + 2 in rear clearance</text>
+<line x1='36' y1='600' x2='152' y2='600' class='island'/><text x='40' y='617' class='label'>island front / 72 in from datum</text>
+<text x='46' y='639.375' class='fail'>remaining: 39.25 in</text>
+<line x1='571' y1='384' x2='687' y2='384' class='wall'/><text x='575' y='377' class='label'>back-of-appliance datum</text>
+<rect x='575' y='384' width='108' height='72' class='counter'/><text x='579' y='420' class='label'>24 in counter-depth zone</text>
+<rect x='575.375' y='384' width='107.25' height='98.25' class='fridge'/><rect x='575.375' y='384' width='107.25' height='145.5' class='open'/><text x='577' y='545.5' class='label'>90 degree open depth + 2 in rear clearance</text>
+<line x1='571' y1='600' x2='687' y2='600' class='island'/><text x='575' y='617' class='label'>island front / 72 in from datum</text>
+<text x='581' y='710.25' class='fail'>remaining: 23.5 in</text>
+<text x='32' y='708' class='note'>Muted blue = appliance body; dashed terracotta = manufacturer 90 degree depth envelope. This is a side projection, not the true door-swing footprint.</text>
+<text x='32' y='731' class='note'>Neither candidate passes the documented 42 in closed aisle in this north-run position. Exact current model, alcove and door-swing geometry remain an owner/design gate.</text>
+</svg>

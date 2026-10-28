@@ -1,0 +1,72 @@
+﻿{
+    "status":  "pass",
+    "passed":  16,
+    "total":  16,
+    "checks":  [
+                   {
+                       "id":  "input_is_m19_schematic",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "source_refrigerator_module_matches_36_in_spec",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "source_counter_depth_matches_24_in_spec",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "source_island_aisle_is_48_in",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "two_reference_models_present",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "all_reference_models_marked_discontinued",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "manufacturer_dimensions_recorded",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "gwe19jmles_values_match_reviewed_ge_data",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "gzs22imnes_values_match_reviewed_ge_data",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "door_open_width_excess_calculates_fractional_inches",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "open_gap_shortfall_preserves_fractional_inches",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "closed_state_reduces_documented_aisle_below_42_in",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "open_state_reduces_available_gap",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "refrigerator_model_not_promoted_to_selected_product",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "no_code_or_accessibility_claim",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "source_fingerprint_recorded",
+                       "pass":  true
+                   }
+               ],
+    "interpretation":  "Passing checks validate source identity, arithmetic, product provenance and non-claims. They do not indicate that any refrigerator fits the selected architectural design."
+}

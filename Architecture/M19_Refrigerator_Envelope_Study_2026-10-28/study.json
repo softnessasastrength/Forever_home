@@ -1,0 +1,163 @@
+﻿{
+    "schema":  "forever-home-m19-refrigerator-envelope-v1",
+    "status":  "unapproved dimensional stress test; hold product-specific Revit placement pending a current selected refrigerator and coordinated alcove/aisle",
+    "source":  {
+                   "m19_study":  "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                   "m19_study_sha256":  "51a2a8f87fcc2ba5ed3ab755b56ae15a69555d438ca41ec6cb6c352aa6a971fc",
+                   "counter_depth_in":  24,
+                   "nominal_counter_face_to_island_clearance_in":  48,
+                   "documented_island_counter_minimum_in":  42,
+                   "documented_island_counter_preferred_in":  48,
+                   "refrigerator_module_width_in":  36,
+                   "island_world_rect_ft":  [
+                                                5.333,
+                                                6.667,
+                                                8,
+                                                4
+                                            ],
+                   "interpretation":  "The M19 48-in measurement is to the 24-in counter-front line. The product screens extend the appliance from the back of that 24-in counter depth and add the GE-listed 2-in rear clearance as a screening assumption; confirm the installation drawing and measurement datums for any selected live SKU."
+               },
+    "candidates":  [
+                       {
+                           "model":  {
+                                         "id":  "GWE19JMLES",
+                                         "family":  "33-in counter-depth French-door refrigerator",
+                                         "discontinued":  true,
+                                         "width_in":  32.75,
+                                         "overall_depth_in":  31,
+                                         "depth_with_door_open_90_in":  42,
+                                         "side_air_clearance_in":  0.125,
+                                         "rear_air_clearance_in":  2,
+                                         "open_width_including_handles_90_in":  40.5,
+                                         "source_url":  "https://www.geappliances.com/appliance/GE-ENERGY-STAR-18-6-Cu-Ft-Counter-Depth-French-Door-Refrigerator-GWE19JMLES"
+                                     },
+                           "refrigerator_module_world_rect_ft":  [
+                                                                     12.583,
+                                                                     14.667,
+                                                                     3,
+                                                                     2
+                                                                 ],
+                           "nominal_case_width_fit":  true,
+                           "slot_width_with_listed_side_air_clearance_in":  33,
+                           "nominal_module_width_in":  36,
+                           "residual_width_after_side_air_clearance_in":  3,
+                           "aisle_closed_including_listed_rear_clearance_in":  39,
+                           "closed_state_meets_documented_42_in_minimum":  false,
+                           "closed_state_meets_documented_48_in_preference":  false,
+                           "aisle_door_open_90_including_listed_rear_clearance_in":  28,
+                           "open_state_below_36_in_plan_route_target_by_in":  8,
+                           "open_width_exceeds_refrigerator_module_in":  4.5,
+                           "assessment":  "Dimensional comparison only; model is discontinued and the door-open envelope is not an accessible-route, code, ergonomic, hinge-sweep, or installation approval."
+                       },
+                       {
+                           "model":  {
+                                         "id":  "GZS22IMNES",
+                                         "family":  "36-in counter-depth side-by-side refrigerator",
+                                         "discontinued":  true,
+                                         "width_in":  35.75,
+                                         "overall_depth_in":  30.75,
+                                         "depth_with_door_open_90_in":  46.5,
+                                         "side_air_clearance_in":  0.125,
+                                         "rear_air_clearance_in":  2,
+                                         "open_width_including_handles_90_in":  42.25,
+                                         "source_url":  "https://www.geappliances.com/appliance/GE-21-8-Cu-Ft-Counter-Depth-Side-By-Side-Refrigerator-GZS22IMNES"
+                                     },
+                           "refrigerator_module_world_rect_ft":  [
+                                                                     12.583,
+                                                                     14.667,
+                                                                     3,
+                                                                     2
+                                                                 ],
+                           "nominal_case_width_fit":  true,
+                           "slot_width_with_listed_side_air_clearance_in":  36,
+                           "nominal_module_width_in":  36,
+                           "residual_width_after_side_air_clearance_in":  0,
+                           "aisle_closed_including_listed_rear_clearance_in":  39.25,
+                           "closed_state_meets_documented_42_in_minimum":  false,
+                           "closed_state_meets_documented_48_in_preference":  false,
+                           "aisle_door_open_90_including_listed_rear_clearance_in":  23.5,
+                           "open_state_below_36_in_plan_route_target_by_in":  12.5,
+                           "open_width_exceeds_refrigerator_module_in":  6.25,
+                           "assessment":  "Dimensional comparison only; model is discontinued and the door-open envelope is not an accessible-route, code, ergonomic, hinge-sweep, or installation approval."
+                       }
+                   ],
+    "limitations":  [
+                        "Both manufacturer reference SKUs are discontinued; dimensions are historical reference envelopes and are not purchase recommendations.",
+                        "No refrigerator family was imported, no Revit document was edited, and no IFC was produced.",
+                        "The door-open depth is represented as a forward projection only; exact hinge-side swing, adjacent return collision, user standing space, drawers, shelves, and loading use are not modeled.",
+                        "Dishwasher and range doors remain untested because the repository has no selected live product models with verified plan operating envelopes.",
+                        "The 42-in room specification is a schematic kitchen-planning metric, not a code or accessibility determination."
+                    ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  16,
+                   "total":  16,
+                   "checks":  [
+                                  {
+                                      "id":  "input_is_m19_schematic",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "source_refrigerator_module_matches_36_in_spec",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "source_counter_depth_matches_24_in_spec",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "source_island_aisle_is_48_in",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "two_reference_models_present",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "all_reference_models_marked_discontinued",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "manufacturer_dimensions_recorded",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "gwe19jmles_values_match_reviewed_ge_data",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "gzs22imnes_values_match_reviewed_ge_data",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "door_open_width_excess_calculates_fractional_inches",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "open_gap_shortfall_preserves_fractional_inches",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "closed_state_reduces_documented_aisle_below_42_in",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "open_state_reduces_available_gap",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "refrigerator_model_not_promoted_to_selected_product",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "no_code_or_accessibility_claim",
+                                      "pass":  true
+                                  },
+                                  {
+                                      "id":  "source_fingerprint_recorded",
+                                      "pass":  true
+                                  }
+                              ],
+                   "interpretation":  "Passing checks validate source identity, arithmetic, product provenance and non-claims. They do not indicate that any refrigerator fits the selected architectural design."
+               }
+}
