@@ -34,7 +34,7 @@ The pantry's proposed placement defines a smaller **72.33 sf gross** pantry-side
 
 ## Kitchen fit gate
 
-Within M-02's 14 × 12 ft room block, the inherited 8 × 4 ft island plus 42 in clearance at each end of its 8 ft axis requires 15 ft, which exceeds either block axis. This is before perimeter cabinets, half wall, seating, appliance-open envelopes and tolerance. The separate older 24 in counter + 42 in aisle + 48 in island + 42 in aisle + 6 in half-wall chain totals 13 ft 6 in; the 14 ft axis leaves only 6 in and the 12 ft axis is 18 in short. The kitchen is intended to open to dining and living, so adjacent space could extend the fit envelope; the combined furnished plan has not yet been tested. The study reports this block-fit conflict rather than shrinking a requirement by arithmetic magic.
+Within M-02's 14 × 12 ft room block, the inherited 8 × 4 ft island plus 42 in clearance at each end of its 8 ft axis requires 15 ft, which exceeds either block axis. This is before perimeter cabinets, half wall, seating, appliance-open envelopes and tolerance. The separate older 24 in counter + 42 in aisle + 48 in island + 42 in aisle + 6 in half-wall chain totals 13 ft 6 in; the 14 ft axis leaves only 6 in and the 12 ft axis is 18 in short. A first combined island/table screen is now recorded in [M33](../M33_Open_Social_Zone_Fit_2026-10-28/README.md). It demonstrates one open-zone furniture-body candidate and specified rectangular clearances across the nominal kitchen/dining blocks. It does not place counters or prove the continuous dining-to-porch route. The study reports the original block-fit conflict rather than shrinking a requirement by arithmetic magic.
 
 ## Upper-suite intent
 

@@ -1,0 +1,42 @@
+{
+  "passed": [
+    "selected_D_source_fingerprint_matches_owner_proposal",
+    "kitchen_and_dining_targets_are_14x12_and_11x10",
+    "island_body_inside_M02",
+    "table_body_inside_M03",
+    "36in_table_clearance_inside_M03",
+    "island_42in_envelope_inside_main_shell",
+    "table_42in_preferred_envelope_inside_main_shell",
+    "island_and_table_bodies_do_not_overlap",
+    "island_and_table_minimum_clear_envelopes_do_not_overlap",
+    "island_42in_envelope_clear_of_comparison_core",
+    "table_42in_envelope_clear_of_comparison_core",
+    "island_42in_envelope_clear_of_unassigned_M06_B",
+    "table_42in_preferred_envelope_clear_of_unassigned_M06_B",
+    "table_minimum_clearance_is_source_derived"
+  ],
+  "failed": [],
+  "count": 14,
+  "source_fingerprints_sha256": {
+    "owner_followup_study.json": "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
+    "selected_D_study.json": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "Architecture/Kitchen_Dining_Porch_Specs.md": "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+  },
+  "checks": {
+    "selected_D_source_fingerprint_matches_owner_proposal": true,
+    "kitchen_and_dining_targets_are_14x12_and_11x10": true,
+    "island_body_inside_M02": true,
+    "table_body_inside_M03": true,
+    "36in_table_clearance_inside_M03": true,
+    "island_42in_envelope_inside_main_shell": true,
+    "table_42in_preferred_envelope_inside_main_shell": true,
+    "island_and_table_bodies_do_not_overlap": true,
+    "island_and_table_minimum_clear_envelopes_do_not_overlap": true,
+    "island_42in_envelope_clear_of_comparison_core": true,
+    "table_42in_envelope_clear_of_comparison_core": true,
+    "island_42in_envelope_clear_of_unassigned_M06_B": true,
+    "table_42in_preferred_envelope_clear_of_unassigned_M06_B": true,
+    "table_minimum_clearance_is_source_derived": true
+  },
+  "interpretation": "Passing checks validate this one schematic body/clearance candidate. They do not validate continuous circulation or cabinetry/appliance operation."
+}

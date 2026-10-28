@@ -359,6 +359,18 @@ Acceptance criteria:
 
 Current status: `Tools/build_owner_followup_design.ps1` produces `Architecture/House_Design_Iteration_2026-10-28/`. It passes **16/16** named checks in two fresh Windows PowerShell runs with byte-identical `study.json`, `checks.json`, both SVGs and `manifest.json`; it rejects output paths outside the repository. M-02/M-03 are 168/110 sf; proposed main room blocks fit the 40×42 ft test envelope without mutual or comparison-core overlap and retain pantry-side B as an unassigned 72.33 sf gross gap. The 8×4 ft island's 8 ft axis needs 15 ft with two 42 in clearances, so neither target-room axis accommodates it. Upper private-suite intent is represented as a graph target only; geometry remains untested. The steep gable is a not-to-scale concept. Connecticut DAS lists the 2022 code; its adoption page reports the planned 2026 update delayed pending legislative approval. See the proposal README and follow-up decision for sources and remaining gates. This does not validate code compliance, structure, site fit or a complete house.
 
+### M33 — Screen open kitchen/dining furniture fit
+
+Acceptance criteria:
+
+- Reuse the selected-D 8×4 ft island source and documented 36×60 in dining table/clearances; do not change owner-selected room targets or source geometry.
+- Test the island and table together across the proposed 14×12 ft kitchen and 11×10 ft dining blocks, including the 42 in island test envelope, 36 in minimum table pull-back and 42 in preferred table wall/door clearance.
+- Check the candidate against the comparison core and keep M-06 B unassigned.
+- Emit a source-fingerprinted PowerShell report and drawing; require deterministic outputs, parseable JSON/SVG, and repository-contained output paths.
+- State clearly whether an independent dining-to-porch route, cabinets, appliances, walls and actual openings have been verified.
+
+Current status: `Tools/test_m33_open_social_zone_fit.ps1` passes **14/14** checks. In two fresh Windows PowerShell 5.1 runs, `fit.json`, `checks.json`, `open-social-zone.svg` and `manifest.json` are byte-identical; both JSON reports and the SVG parse, and the output-path traversal guard rejects an outside path. One candidate places the source-derived island across M-02/M-03 and a source-derived table within M-03. The 36 in table envelope fits the dining block exactly; the 42 in preferred envelope spills 0.5 ft beyond it. The island's 42 in envelope extends 2.167 ft east and 1.5 ft north beyond M-02 into unassigned test-shell area. These rectangles do not establish clear circulation: their unlike envelopes meet at a boundary, and the dining-to-porch route, cabinets, half wall, appliances, doors, wall faces and occupied-chair extents remain unmodeled. No Revit or IFC work was performed. See `Architecture/M33_Open_Social_Zone_Fit_2026-10-28/README.md`; resolve a full furnished route before calling the social zone coordinated.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.

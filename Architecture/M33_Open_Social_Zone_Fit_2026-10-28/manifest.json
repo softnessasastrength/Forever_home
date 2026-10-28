@@ -1,0 +1,13 @@
+{
+  "generator": "Tools/test_m33_open_social_zone_fit.ps1",
+  "source_hashes": {
+    "owner_followup_study.json": "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
+    "selected_D_study.json": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "Architecture/Kitchen_Dining_Porch_Specs.md": "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+  },
+  "output_hashes": {
+    "fit_json": "a66f9c194720d43e9f18ef83ede52530e5ce1fec4a1992e6d164a741e9d0fc72",
+    "checks_json": "e3cd5a56b5a7d9729355147621bee571d1a99a6ced46c52208598bf915428b8c",
+    "svg": "bf0edc261c8c3df3110bd399469f0196ccd9b489be6b63c46513d2fa90adb328"
+  }
+}
