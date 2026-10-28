@@ -26,6 +26,17 @@ The older `revit-mcp-python` Routes-based extension is not the preferred route: 
 
 No installer, extension, CLI registration or MCP server was installed or enabled during this assessment.
 
+## Autodesk API confirmation — 2026-10-28
+
+Autodesk's Revit 2027 developer guide and API references reinforce the existing split rather than making an embedded Python runtime more attractive:
+
+- Revit API add-ins run in-process as DLLs, and API calls are single-threaded on Revit's main thread. The documented `ExternalEvent` pattern is the supported bridge for work initiated outside the normal command callback; arbitrary Python background threads are not an alternative Revit execution context.
+- `TransactionMode.ReadOnly` prohibits transactions and document changes. A `Manual` command must manage its transaction lifecycle. The Autodesk Revit API 26.4 reference states `Document.Regenerate()` normally requires an open transaction, commit already triggers regeneration, and a regeneration failure puts the document into a failure state that callers must abort/clean up rather than suppress.
+- A work-plane-based family is hosted by the active work plane. Its local axes cannot be treated as project-world height/projection until a disposable hosted-instance test confirms the orientation.
+- Autodesk's APS Revit API page currently lists the Revit 2027.3 SDK. This is reference material only; no SDK, pyRevit package or extension was downloaded or installed for this note.
+
+These points match RevitPilot's current architecture: deterministic source and envelope checks remain in PowerShell/JSON; Revit document access and transactions stay in the C#/.NET add-in; Python remains outside Revit for independent IFC inspection. The past intake failure caused by calling `Document.Regenerate()` outside a transaction was repaired and host-verified in run `20261028T015956023Z`; the official transaction guidance supports that repair. It does **not** validate family hosting or a placed fit. The Evolution sink's work-plane axes still require an isolated placed-instance check before interpreting them as installation dimensions.
+
 ## Sources reviewed
 
 - [pyRevit 7.0 release notes](https://github.com/pyrevitlabs/pyRevit/releases): Revit support, agent-runtime feature list, guarded runs and default in-Revit approval policy.
@@ -34,3 +45,9 @@ No installer, extension, CLI registration or MCP server was installed or enabled
 - [pyRevit CPython command guide](https://pyrevitlabs.notion.site/Create-Your-First-CPython-Command-b8a7718c554645d1a18454c0b363e3c9): CPython engine and native-package purpose.
 - [Python.NET documentation](https://pythonnet.github.io/pythonnet/): CLR/CPython integration scope and GIL/threading requirements.
 - [revit-mcp-python repository](https://github.com/mcp-servers-for-revit/mcp-server-for-revit-python): Routes-based MCP implementation and its stated authentication limitation.
+- [Autodesk Revit 2027 deployment options](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-API/files/Revit_API_Developers_Guide/Introduction/Getting_Started/Using_the_Autodesk_Revit_API/Revit_API_Revit_API_Developers_Guide_Introduction_Getting_Started_Using_the_Autodesk_Revit_API_Deployment_Options_html.html): in-process DLL and single-thread API execution model.
+- [Autodesk Revit 2027 transaction attributes](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-API/files/Revit_API_Developers_Guide/Introduction/Add_In_Integration/Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Attributes_html.html): `Manual` and `ReadOnly` command behavior.
+- [Autodesk `ExternalEvent`](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-API-MainReference/files/html/05089477-4612-35b2-81a2-89c4f44370ea.htm): Revit-queued callback mechanism for supported work initiated outside an active API callback.
+- [Autodesk `Document.Regenerate`](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-API-MainReference/files/html/22468e2c-9772-8478-0816-c9759aa43428.htm): transaction requirement and regeneration-failure handling.
+- [Autodesk work-plane-based families](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-Customize/files/GUID-70F24230-D596-4AA3-A425-91B1E560BC53.htm): host-plane behavior and `Always Vertical` distinction.
+- [Autodesk Revit API SDK page](https://aps.autodesk.com/developer/overview/revit-api): current Revit 2027.3 SDK listing.

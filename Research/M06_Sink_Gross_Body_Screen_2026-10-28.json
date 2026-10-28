@@ -1,7 +1,7 @@
 {
     "schema":  "forever-home-m06-sink-gross-body-screen-v1",
     "result":  "PASS",
-    "check_count":  10,
+    "check_count":  12,
     "failed_checks":  [
 
                       ],
@@ -56,6 +56,24 @@
                                                               "width_by_depth":  true,
                                                               "rotated_90_degrees":  true
                                                           }
+                       },
+                       {
+                           "id":  "american-standard-edgemere-0445400.020",
+                           "name":  "American Standard Edgemere 4-in-centerset pedestal sink top and leg combination",
+                           "status":  "research-only; consumer page displays purchase price while LIXIL Pro marks the combination discontinued; no complete-combination design file is listed",
+                           "source":  "https://www.americanstandard-us.com/products/edgemere-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
+                           "dimensions_source":  "American Standard specification dated 2017-04; nominal overall 25 x 19.5 x 35.625 in",
+                           "nominal_overall_body_in":  {
+                                                           "width":  25,
+                                                           "depth":  19.5,
+                                                           "height":  35.625
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
                        }
                    ],
     "evaluated":  {
@@ -75,6 +93,7 @@
                         "Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.",
                         "American Standard bounds use official nominal product dimensions; its separate Revit family screen records measured solids and unresolved hosting/type mapping.",
                         "KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.",
+                        "Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.",
                         "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
                     ]
 }

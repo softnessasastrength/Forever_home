@@ -55,6 +55,18 @@ $candidates = @(
         height_in = 34.625
         candidate_rfa_geometry_measured = $false
         rfa_type_to_sku_mapping_verified = $false
+    },
+    [ordered]@{
+        id = 'american-standard-edgemere-0445400.020'
+        name = 'American Standard Edgemere 4-in-centerset pedestal sink top and leg combination'
+        status = 'research-only; consumer page displays purchase price while LIXIL Pro marks the combination discontinued; no complete-combination design file is listed'
+        source = 'https://www.americanstandard-us.com/products/edgemere-r-4-inch-centerset-pedestal-sink-top-and-leg-combination'
+        dimensions_source = 'American Standard specification dated 2017-04; nominal overall 25 x 19.5 x 35.625 in'
+        width_in = 25.0
+        depth_in = 19.5
+        height_in = 35.625
+        candidate_rfa_geometry_measured = $false
+        rfa_type_to_sku_mapping_verified = $false
     }
 )
 
@@ -85,7 +97,7 @@ foreach ($candidate in $candidates) {
     }
 }
 
-Assert-Check ($results.Count -eq 2 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1) 'Expected both documented candidates, including Tresham, in the comparison.'
+Assert-Check ($results.Count -eq 3 -and @($results | Where-Object id -eq 'kohler-tresham-k-2844-4-0').Count -eq 1 -and @($results | Where-Object id -eq 'american-standard-edgemere-0445400.020').Count -eq 1) 'Expected Evolution, Tresham and Edgemere in the comparison.'
 
 $report = [ordered]@{
     schema = 'forever-home-m06-sink-gross-body-screen-v1'
@@ -125,6 +137,7 @@ $report = [ordered]@{
         'Containment checks compare each sink body rectangle independently and do not combine it with a toilet or people/circulation envelopes.',
         'American Standard bounds use official nominal product dimensions; its separate Revit family screen records measured solids and unresolved hosting/type mapping.',
         'KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.',
+        'Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.',
         'No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established.'
     )
 }
