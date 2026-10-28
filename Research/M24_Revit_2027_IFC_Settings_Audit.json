@@ -1,8 +1,8 @@
 ﻿{
     "schema":  "forever-home.revit-ifc-export-configuration-audit.v1",
     "status":  "pass",
-    "checks_passed":  14,
-    "checks_total":  14,
+    "checks_passed":  16,
+    "checks_total":  16,
     "checks":  [
                    {
                        "name":  "selected_d_ifc_version_explicit_ifc2x3cv2",
@@ -45,7 +45,15 @@
                        "passed":  true
                    },
                    {
-                       "name":  "selected_d_exact_backup_ifc_validation_passes_25_of_25",
+                       "name":  "selected_d_exact_backup_ifc_validation_passes_26_of_26",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "selected_d_ifc_space_long_names_match_source",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "selected_d_ifc_space_property_and_quantity_coverage_is_reported",
                        "passed":  true
                    },
                    {
@@ -63,13 +71,13 @@
                ],
     "source_fingerprints":  {
                                 "revit_pilot_source_sha256":  "30233321c893bbcb66e7a5cf290dc9f6ceb1ee152ee270c41605985f08a258be",
-                                "audit_script_sha256":  "2bb7cc0d8c328c6a78a578751d8275269214fa93d3d62e57e2e61f723e961dd6",
+                                "audit_script_sha256":  "919070d7a94fbae90742c0e90c94addbf39549cd670569a9ff5c41b2bf30f3c8",
                                 "compact_core_manifest_sha256":  "1bddfde41e7d848aafaad3699a605c04bdc8279dac4f59b6a138378978ac34a2",
                                 "selected_d_m02_manifest_sha256":  "67f998e38ad3c248a0c41acb8c5377cd88afd599e872f30068c4dad8f9b52a8d",
                                 "selected_d_source_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
                                 "selected_d_saved_rvt_sha256":  "7a03f704329e840c938361d06c31329823e3d939c993bbc4e11de67e991af7ff",
                                 "selected_d_ifc_sha256":  "05a529999c08bde5695af87ec6e62e9cab86a8686a85d04d739e163861dac849",
-                                "ifc_validation_report_sha256":  "94bd9214cd0443df6a87140261a6d6bf8a0c378aba03558b37f62044d22c99ce"
+                                "ifc_validation_report_sha256":  "f3de33e36318b0c050218b2d73056b046338db130ee991a3fea91e2b05a28389"
                             },
     "selected_d_api_export":  {
                                   "revit_ifc_schema":  "IFC2X3 Coordination View 2.0 (IFC2x3CV2)",
@@ -93,19 +101,29 @@
     "validated_export":  {
                              "revit_originating_system":  "Autodesk - Revit 27.3.0.28 (ENU) - 27.3.0.28",
                              "ifc_schema":  "IFC2X3",
-                             "validation_checks_passed":  25,
-                             "validation_checks_total":  25,
+                             "validation_checks_passed":  26,
+                             "validation_checks_total":  26,
                              "schema_issue_count":  0,
                              "storey_count":  3,
                              "space_count":  21,
                              "has_physical_construction_categories":  false,
+                             "spaces_with_property_or_quantity_definitions":  0,
+                             "property_set_relationship_count":  0,
+                             "quantity_set_relationship_count":  0,
+                             "property_set_names":  [
+
+                                                    ],
+                             "quantity_set_names":  [
+
+                                                    ],
                              "validation_working_copy":  "exact RVT backup copied into an ignored disposable folder; original run outputs preserved"
                          },
     "interpretation":  [
                            "The selected-D command passes IFC2x3CV2 and ExportBaseQuantities=true directly to IFCExportOptions, then rolls back its export transaction.",
                            "It does not explicitly select a view, set internal Revit property-set export, provide a family mapping file, or select an IFC parameter-mapping template in source.",
                            "The separate manifest exporter does explicitly configure base quantities, internal Revit property sets, and an optional filter view; both checked-in manifests request quantities and internal property sets and use no filter view.",
-                           "The exact current-source IFC independently passes its 25-check gate; this verifies IFC lineage, schema, levels, spaces and empty physical construction categories, not every exported property mapping.",
+                           "The exact current-source IFC independently passes its 26-check gate; this verifies IFC lineage, schema, source-matching space names, levels, footprints and empty physical construction categories, not every exported property mapping.",
+                           "IfcSpace property and quantity relationship coverage is explicitly observed. An absence of sets is reported as data coverage evidence; the source-model IFC contains none on its 21 spaces.",
                            "The active named or in-session mapping setup used at the original host export is not recorded. Autodesk documents a Revit 2027 API for querying and exporting mapping templates, so this can be captured during a future matching Revit host run."
                        ],
     "limitations":  [

@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 25/25 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 03:35 EDT, the selected-D PowerShell generator passed 43/43 in two fresh runs with all seven artifacts byte-identical, the family provenance gate passed, and the offline unittest suite passed 36/36. The six-source M-06 sink screen passed 18 checks as individual gross-body containment only. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in an isolated copy, while the original named RVT remains stale. On 2026-10-28 at 05:56 EDT, the selected-D PowerShell generator passed 43/43 in two fresh runs with all seven artifacts byte-identical, family provenance passed, and the offline unittest suite passed 37/37. IFC space labels match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
 
 ## Repository safety baseline
 
@@ -269,7 +269,7 @@ Acceptance criteria:
 - On a controllable Revit 2027 host, record the active saved or in-session parameter-mapping template and export a local, hashed copy when the API permits. Do not alter the selected-D model to obtain this evidence.
 - Keep absent or inaccessible host-side settings marked unverified; do not infer them from an IFC file alone.
 
-Current status: static source/configuration audit passes 14/14 checks (`Research/M24_Revit_2027_IFC_Settings_Audit.json`). Host parameter-template capture remains pending a trustworthy local .NET SDK build and a controllable Revit session.
+Current status: static source/configuration audit passes 16/16 checks (`Research/M24_Revit_2027_IFC_Settings_Audit.json`). The retained exact-backup IFC validator passes 26/26, including source-matching `IfcSpace.LongName` values. Its report observes zero property-set or quantity-set relationships on all 21 spaces; this absence is a documented data-coverage gap, not a schema failure. Host parameter-template capture remains pending a trustworthy local .NET SDK build and a controllable Revit session.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

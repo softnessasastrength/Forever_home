@@ -46,6 +46,11 @@ def _space_id(space: Any) -> str:
     return str(identity.get("Number") or space.Name or "").strip()
 
 
+def _space_long_name(space: Any) -> str:
+    """Return the IFC2X3 IfcSpace.LongName used for the source room label."""
+    return str(getattr(space, "LongName", None) or "").strip()
+
+
 def _space_area(space: Any, unit_scale: float = 1.0) -> float | None:
     """Read the exported area quantity, falling back to the room's IFC footprint.
 
@@ -355,6 +360,23 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
         if not checks["ifc_spaces_match_source_ids"]:
             errors.append("IFC IfcSpace IDs are missing, duplicated or differ from the 21 source block IDs")
 
+        long_name_errors: list[dict[str, Any]] = []
+        for space in spaces:
+            identifier = _space_id(space)
+            expected = blocks.get(identifier)
+            observed_long_name = _space_long_name(space)
+            expected_long_name = expected["name"] if expected else None
+            if expected is None or observed_long_name != expected_long_name:
+                long_name_errors.append({
+                    "id": identifier,
+                    "expected_long_name": expected_long_name,
+                    "ifc_long_name": observed_long_name,
+                })
+        checks["ifc_space_long_names_match_source"] = not long_name_errors
+        if long_name_errors:
+            errors.append(f"{len(long_name_errors)} IFC IfcSpace.LongName value(s) differ from selected-D source")
+            observations["space_long_name_errors"] = long_name_errors
+
         containment = _space_level_names(model)
         area_errors: list[dict[str, Any]] = []
         level_errors: list[str] = []
@@ -392,6 +414,32 @@ def validate(run_dir: Path, source_study: Path, report_path: Path | None = None)
         checks["ifc_space_plan_bounds_match_source"] = not plan_bounds_errors
         checks["ifc_space_body_profile_areas_match_source"] = not body_profile_errors
         observations["spaces"] = {"count": len(spaces), "areas_and_levels": sorted(area_observations, key=lambda item: item["id"])}
+        space_property_sets: set[str] = set()
+        space_quantity_sets: set[str] = set()
+        spaces_with_data_sets: set[str] = set()
+        property_set_count = 0
+        quantity_set_count = 0
+        for space in spaces:
+            for relation in getattr(space, "IsDefinedBy", None) or []:
+                if not relation.is_a("IfcRelDefinesByProperties"):
+                    continue
+                definition = relation.RelatingPropertyDefinition
+                if definition.is_a("IfcPropertySet"):
+                    property_set_count += 1
+                    space_property_sets.add(str(definition.Name or ""))
+                    spaces_with_data_sets.add(_space_id(space))
+                elif definition.is_a("IfcElementQuantity"):
+                    quantity_set_count += 1
+                    space_quantity_sets.add(str(definition.Name or ""))
+                    spaces_with_data_sets.add(_space_id(space))
+        observations["space_property_coverage"] = {
+            "spaces_with_property_or_quantity_definitions": len(spaces_with_data_sets),
+            "property_set_relationship_count": property_set_count,
+            "quantity_set_relationship_count": quantity_set_count,
+            "property_set_names": sorted(space_property_sets),
+            "quantity_set_names": sorted(space_quantity_sets),
+            "note": "Absence is reported as export coverage evidence, not a schema failure; source IDs and areas are validated via IFC entity attributes and rectangular body geometry."
+        }
         if area_errors:
             errors.append(f"{len(area_errors)} IFC space area(s) differ from source by more than {AREA_TOLERANCE_SQFT:g} sf or are missing")
             observations["space_area_errors"] = area_errors

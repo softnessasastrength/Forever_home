@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import ifcopenshell.util.element
 
-from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, _space_body_profile_area, _space_plan_bounds_ft, validate
+from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, _space_body_profile_area, _space_long_name, _space_plan_bounds_ft, validate
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -15,6 +15,11 @@ STUDY_PATH = ROOT / "Architecture" / "Selected_Design_Iteration_2026-10-27" / "s
 
 
 class SelectedDIfcValidatorTests(unittest.TestCase):
+    def test_space_long_name_is_trimmed_and_missing_values_are_empty(self):
+        self.assertEqual(_space_long_name(SimpleNamespace(LongName="  Living room  ")), "Living room")
+        self.assertEqual(_space_long_name(SimpleNamespace(LongName=None)), "")
+        self.assertEqual(_space_long_name(SimpleNamespace()), "")
+
     def test_expected_block_inventory_and_areas_come_from_source(self):
         study = json.loads(STUDY_PATH.read_text(encoding="utf-8-sig"))
         blocks = _expected_blocks(study)

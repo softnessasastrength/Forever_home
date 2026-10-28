@@ -2,7 +2,7 @@
 
 Updated: 2026-10-28
 
-Status: source/configuration audit complete; active-host mapping capture pending.
+Status: source/configuration and retained IFC data-coverage audit complete; active-host mapping capture pending.
 
 ## Reproduction
 
@@ -12,7 +12,7 @@ From the repository root, run:
 powershell -NoProfile -ExecutionPolicy Bypass -File Tools/audit_ifc_export_configuration.ps1
 ```
 
-The script reads the checked-in RevitPilot source and export manifests plus the retained selected-D source/export/IFC validation evidence. It writes `Research/M24_Revit_2027_IFC_Settings_Audit.json`. The audit passes **14/14** checks, including explicit source checks for the selected-D rollback and manifest exporter option assignments. Two consecutive runs produced byte-identical JSON with SHA256 `80ac1cb94dab01778572eff12bfe0c58b7724efe19d6437fe41cf9bd724ae9b5`.
+The script reads the checked-in RevitPilot source and export manifests plus the retained selected-D source/export/IFC validation evidence. It writes `Research/M24_Revit_2027_IFC_Settings_Audit.json`. The audit passes **16/16** checks, including explicit source checks for the selected-D rollback and manifest exporter option assignments, source-matching space names, and recorded property/quantity coverage. Two consecutive runs produced byte-identical JSON, SHA256 `ca4080ffa6a91f1e6d9ed81ddee3da7338e4a44b8696aec02f3c4e80ac37e1e5`.
 
 ## Verified source configuration
 
@@ -20,7 +20,7 @@ The selected-D command in `Tools/RevitPilot/Pilot.cs` directly supplies `IFCVers
 
 The separate manifest exporter explicitly sets IFC2x3CV2, base quantities, internal Revit property sets, and an optional named view filter. Both checked-in manifests set quantities and internal property sets to `true` and set no filter view. Neither path selects a named parameter-mapping template or carries a project mapping file in its manifest.
 
-The retained current-source selected-D export was produced by Revit 27.3.0.28. Its exact backup validation passes **25/25**: IFC2X3 parses with zero schema issues, all 21 room-space records match the source across three storeys, and physical construction categories remain empty. This validates IFC identity and the room-space export contract; it does not establish the complete property mapping applied by Revit.
+The retained current-source selected-D export was produced by Revit 27.3.0.28. A new report at `.local/revit-pilot/selected-d/exact-backup-validation-m22-20261028/M24-validation-v2.json`, generated from the disposable copy paired with the exact manifest-matching `.0001.rvt`, passes **26/26** checks. IFC2X3 parses with zero schema issues; the 21 `IfcSpace.Name` identifiers and `IfcSpace.LongName` room labels match the source across three storeys; and physical construction categories remain empty. The added coverage observation found zero `IfcPropertySet` and zero `IfcElementQuantity` relationships attached to those spaces. Space areas therefore validate through the exported rectangular Body profiles, not IFC quantity sets. This is a data-coverage finding, not a schema failure, and does not establish the complete property mapping applied by Revit. The original IFC, named RVT and prior reports were preserved.
 
 ## Mapping-template evidence gap
 
@@ -40,4 +40,4 @@ The host audit command was not added because the available portable .NET SDK arc
 
 Next M24 action, when a verified SDK is available: build a read-only RevitPilot command, confirm the exact project-local DLL hash and per-user AddInId under `AGENTS.md`, then inspect the intended saved study in Revit 2027 without saving it. Export and hash the active named mapping template if one exists; report in-session use as such. A separate verified export is required to claim the export has adopted any changed settings.
 
-This milestone does not imply architectural coordination, code compliance, accessibility, structural safety, certification, or construction readiness. The selected-D IFC remains a room-boundary study without walls, openings, floors, stairs, structure, or MEP.
+This milestone does not imply architectural coordination, code compliance, accessibility, structural safety, certification, or construction readiness. The selected-D IFC remains a room-boundary study without walls, openings, floors, stairs, structure, or MEP. Its spaces currently carry no IFC property or quantity sets; any future mapping change requires a separate verified Revit export and validation.
