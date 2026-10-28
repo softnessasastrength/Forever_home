@@ -38,7 +38,8 @@ if($ShellWidthOverrideFt -gt 0){
 }
 $script:Grid=1.0/6.0
 $script:NodeLimit=[Math]::Max(100,$NodeLimit)
-$script:PerOrientationNodeBudget=[Math]::Max(1,[Math]::Floor($script:NodeLimit/2.0))
+$script:SearchRoots=@('U-01','U-02','U-04')
+$script:PerRootOrientationNodeBudget=[Math]::Max(1,[Math]::Floor($script:NodeLimit/($script:SearchRoots.Count*2.0)))
 $script:RootNodeStart=0
 $script:RootSearchStats=[System.Collections.Generic.List[object]]::new()
 $script:LayoutLimit=[Math]::Max(1,$LayoutLimit)
@@ -66,15 +67,41 @@ $grid=6.0
 $startIx=[int][Math]::Round($startX*$grid);$startIy=[int][Math]::Round($startY*$grid)
 $script:StartApproach=New-Box 'reserved 4ft stair approach' ($startX-2.0) ($startY-2.0) 4.0 4.0
 $script:StartApproachTranslationRejected=0
-$script:Adjacency=@(
-    [ordered]@{id='U01_PRIVATE';child='C-PRIVATE';parent='U-01'},
-    [ordered]@{id='BOUTIQUE_PRIVATE';child='U-02';parent='C-PRIVATE'},
-    [ordered]@{id='PRIVATE_HYBRID';child='U-03';parent='U-02'},
-    [ordered]@{id='HYBRID_JJ';child='U-06';parent='U-03'},
-    [ordered]@{id='GUEST_JJ';child='U-04';parent='U-06'},
-    [ordered]@{id='PRIMARY_BATH';child='U-05';parent='U-01'}
+$script:Topology=@(
+    [ordered]@{id='U01_PRIVATE';a='U-01';b='C-PRIVATE'},
+    [ordered]@{id='BOUTIQUE_PRIVATE';a='C-PRIVATE';b='U-02'},
+    [ordered]@{id='PRIVATE_HYBRID';a='U-02';b='U-03'},
+    [ordered]@{id='HYBRID_JJ';a='U-03';b='U-06'},
+    [ordered]@{id='GUEST_JJ';a='U-06';b='U-04'},
+    [ordered]@{id='PRIMARY_BATH';a='U-01';b='U-05'}
 )
-$script:Order=@($script:Adjacency)
+$script:RootPlans=[ordered]@{
+    'U-01'=@(
+        [ordered]@{id='U01_PRIVATE';child='C-PRIVATE';parent='U-01'},
+        [ordered]@{id='BOUTIQUE_PRIVATE';child='U-02';parent='C-PRIVATE'},
+        [ordered]@{id='PRIVATE_HYBRID';child='U-03';parent='U-02'},
+        [ordered]@{id='HYBRID_JJ';child='U-06';parent='U-03'},
+        [ordered]@{id='GUEST_JJ';child='U-04';parent='U-06'},
+        [ordered]@{id='PRIMARY_BATH';child='U-05';parent='U-01'}
+    )
+    'U-02'=@(
+        [ordered]@{id='BOUTIQUE_PRIVATE';child='C-PRIVATE';parent='U-02'},
+        [ordered]@{id='U01_PRIVATE';child='U-01';parent='C-PRIVATE'},
+        [ordered]@{id='PRIVATE_HYBRID';child='U-03';parent='U-02'},
+        [ordered]@{id='HYBRID_JJ';child='U-06';parent='U-03'},
+        [ordered]@{id='GUEST_JJ';child='U-04';parent='U-06'},
+        [ordered]@{id='PRIMARY_BATH';child='U-05';parent='U-01'}
+    )
+    'U-04'=@(
+        [ordered]@{id='GUEST_JJ';child='U-06';parent='U-04'},
+        [ordered]@{id='HYBRID_JJ';child='U-03';parent='U-06'},
+        [ordered]@{id='PRIVATE_HYBRID';child='U-02';parent='U-03'},
+        [ordered]@{id='BOUTIQUE_PRIVATE';child='C-PRIVATE';parent='U-02'},
+        [ordered]@{id='U01_PRIVATE';child='U-01';parent='C-PRIVATE'},
+        [ordered]@{id='PRIMARY_BATH';child='U-05';parent='U-01'}
+    )
+}
+$script:Order=@($script:RootPlans['U-01'])
 
 function Get-AxisGap([double]$a0,[double]$a1,[double]$b0,[double]$b1){if($a1 -le $b0){return ($b0-$a1)};if($b1 -le $a0){return ($a0-$b1)};return 0.0}
 function Get-OverlapLength([double]$a0,[double]$a1,[double]$b0,[double]$b1){[Math]::Max(0.0,[Math]::Min($a1,$b1)-[Math]::Max($a0,$b0))}
@@ -122,7 +149,7 @@ function Add-CompletedLayout($state){
     if($script:UniqueKeys.Add($key)){$script:Layouts.Add([ordered]@{bounds=$bounds;rects=$normalized;key=$key})}
 }
 function Search-Layout([int]$index,$state){
-    if(($script:Nodes-$script:RootNodeStart) -ge $script:PerOrientationNodeBudget -or $script:Layouts.Count -ge $script:LayoutLimit){return}
+    if(($script:Nodes-$script:RootNodeStart) -ge $script:PerRootOrientationNodeBudget -or $script:Layouts.Count -ge $script:LayoutLimit){return}
     $script:Nodes++
     if($index -ge $script:Order.Count){Add-CompletedLayout $state;return}
     $edge=$script:Order[$index];$parent=$state[$edge.parent];$spec=$script:Rooms[$edge.child]
@@ -135,17 +162,21 @@ function Search-Layout([int]$index,$state){
         $bounds=Get-CurrentBounds $state
         if($bounds.width -le ($script:ShellW+0.000001) -and $bounds.depth -le ($script:ShellD+0.000001)){Search-Layout ($index+1) $state}
         $state.Remove($edge.child)
-        if(($script:Nodes-$script:RootNodeStart) -ge $script:PerOrientationNodeBudget -or $script:Layouts.Count -ge $script:LayoutLimit){return}
+        if(($script:Nodes-$script:RootNodeStart) -ge $script:PerRootOrientationNodeBudget -or $script:Layouts.Count -ge $script:LayoutLimit){return}
     }
 }
 
 $script:DoorReservation=3.5
-$anchorSpec=$script:Rooms['U-01']
-foreach($anchor in @([ordered]@{w=$anchorSpec.width_ft;d=$anchorSpec.depth_ft},[ordered]@{w=$anchorSpec.depth_ft;d=$anchorSpec.width_ft})){
-    $script:RootNodeStart=$script:Nodes
-    $state=[ordered]@{'U-01'=(New-Box 'U-01' 0 0 $anchor.w $anchor.d)}
-    Search-Layout 0 $state
-    $script:RootSearchStats.Add([ordered]@{anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;nodes_expanded=($script:Nodes-$script:RootNodeStart)})
+foreach($rootId in $script:SearchRoots){
+    $script:Order=@($script:RootPlans[$rootId])
+    $anchorSpec=$script:Rooms[$rootId]
+    foreach($anchor in @([ordered]@{w=$anchorSpec.width_ft;d=$anchorSpec.depth_ft},[ordered]@{w=$anchorSpec.depth_ft;d=$anchorSpec.width_ft})){
+        $script:RootNodeStart=$script:Nodes
+        $state=[ordered]@{$rootId=(New-Box $rootId 0 0 $anchor.w $anchor.d)}
+        Search-Layout 0 $state
+        $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;nodes_expanded=($script:Nodes-$script:RootNodeStart)})
+        if($script:Layouts.Count -ge $script:LayoutLimit){break}
+    }
     if($script:Layouts.Count -ge $script:LayoutLimit){break}
 }
 
@@ -234,7 +265,6 @@ $doorValues=@($selected.upper_door_matrix|ForEach-Object{[double]$_.nominal_rese
 $sourceDoorWidth=$doorValues|Where-Object{[Math]::Abs($_-3.5) -lt 0.000001}|Select-Object -First 1
 if($null -eq $sourceDoorWidth){throw 'No source 3.5ft upper door reservation found.'}
 $script:DoorReservation=$sourceDoorWidth
-$script:Order=$script:Adjacency
 $layouts=@($script:Layouts|Sort-Object @{Expression={ $_.bounds.width*$_.bounds.depth }},@{Expression={ $_.bounds.width+$_.bounds.depth }})
 $tested=[System.Collections.Generic.List[object]]::new();$bestPrivate=$null;$bestU03Side=$null;$translationsTested=0;$routeRuns=0
 foreach($layout in $layouts){
@@ -255,23 +285,34 @@ foreach($id in @('U-01','U-02','U-03','U-04')){$routeAccessCounts[$id]=@($tested
 $routesToPrimaryPrivateGuest=0
 foreach($routeRecord in $tested){$reach=$routeRecord.hall_reachability.reachable_room_sides;if(@($reach['U-01']).Count -gt 0 -and @($reach['U-02']).Count -gt 0 -and @($reach['U-04']).Count -gt 0){$routesToPrimaryPrivateGuest++}}
 $routeSamples=@($tested|Select-Object -First 5|ForEach-Object{[ordered]@{layout_key=$_.layout_key;translation_ft=$_.translation_ft;visited_cells=$_.hall_reachability.visited_cells;reachable_room_sides=$_.hall_reachability.reachable_room_sides;required_public_rooms_reached=$_.hall_reachability.required_public_rooms_reached;u03_hall_side_reachable=$_.hall_reachability.u03_hall_side_reachable}})
-$searchBudgetReached=@($script:RootSearchStats|Where-Object{$_.nodes_expanded -ge $script:PerOrientationNodeBudget}).Count -gt 0
+$searchBudgetReached=@($script:RootSearchStats|Where-Object{$_.nodes_expanded -ge $script:PerRootOrientationNodeBudget}).Count -gt 0
 $searchComplete=(-not $searchBudgetReached -and $script:Layouts.Count -lt $script:LayoutLimit)
 $winner=$bestPrivate
+$rootPlanIntegrity=($script:RootPlans.Count -eq $script:SearchRoots.Count)
+foreach($rootId in $script:SearchRoots){
+    $plan=@($script:RootPlans[$rootId])
+    $visited=[System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $visited.Add($rootId)|Out-Null
+    if($plan.Count -ne 6 -or $plan[-1].child -ne 'U-05'){$rootPlanIntegrity=$false}
+    foreach($edge in $plan){if(-not $visited.Contains([string]$edge.parent) -or -not $visited.Add([string]$edge.child)){$rootPlanIntegrity=$false}}
+    if($visited.Count -ne 7){$rootPlanIntegrity=$false}
+}
+$rootRoomsObserved=@($script:RootSearchStats|ForEach-Object{if($_.PSObject.Properties['root_room']){[string]$_.root_room}}|Sort-Object -Unique)
 $checks=[ordered]@{
     selected_D_source_matches_owner_followup=($proposal.source_selected_D_sha256 -eq $selectedHash)
     all_six_upper_rooms_and_private_connector_come_from_selected_D=($script:Rooms.Count -eq 7)
     all_room_dimensions_match_selected_D=(@($script:Rooms.Keys|Where-Object{$id=$_;$sourceRoom=$selected.plans.upper|Where-Object id -eq $id;(-not $sourceRoom) -or ([Math]::Abs($script:Rooms[$id].width_ft-[double]$sourceRoom.w) -gt 0.000001) -or ([Math]::Abs($script:Rooms[$id].depth_ft-[double]$sourceRoom.d) -gt 0.000001)}).Count -eq 0)
     door_reservation_is_source_derived_3_5ft=([Math]::Abs($script:DoorReservation-3.5) -lt 0.000001)
-    owner_private_sequence_is_in_search_graph=($script:Order.child -contains 'U-03' -and @($script:Order|Where-Object{($_.parent -eq 'U-02') -and ($_.child -eq 'U-03')}).Count -eq 1)
-    hybrid_guest_JJ_is_in_search_graph=(@($script:Order|Where-Object{($_.parent -eq 'U-03') -and ($_.child -eq 'U-06')}).Count -eq 1 -and @($script:Order|Where-Object{($_.parent -eq 'U-06') -and ($_.child -eq 'U-04')}).Count -eq 1)
-    search_prioritizes_private_chain_and_JJ_before_primary_bath=($script:Order[0].child -eq 'C-PRIVATE' -and $script:Order[-1].child -eq 'U-05')
+    owner_private_sequence_is_in_search_graph=(@($script:Topology|Where-Object{$_.id -eq 'U01_PRIVATE' -and $_.a -eq 'U-01' -and $_.b -eq 'C-PRIVATE'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'BOUTIQUE_PRIVATE' -and $_.a -eq 'C-PRIVATE' -and $_.b -eq 'U-02'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'PRIVATE_HYBRID' -and $_.a -eq 'U-02' -and $_.b -eq 'U-03'}).Count -eq 1)
+    hybrid_guest_JJ_is_in_search_graph=(@($script:Topology|Where-Object{$_.id -eq 'HYBRID_JJ' -and $_.a -eq 'U-03' -and $_.b -eq 'U-06'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'GUEST_JJ' -and $_.a -eq 'U-06' -and $_.b -eq 'U-04'}).Count -eq 1)
+    search_balances_all_three_root_rooms=(($rootRoomsObserved -join ',') -eq 'U-01,U-02,U-04' -and @($script:RootSearchStats).Count -eq 6)
+    each_root_plan_preserves_all_links_and_places_primary_bath_last=$rootPlanIntegrity
     blocked_grid_matches_exact_clearance_predicate=$script:BlockedGridParityCheck
     upper_frame_offset_and_lift_projection_are_source_derived=([Math]::Abs($upperOffset-6.0) -lt 0.000001 -and [Math]::Abs($liftKeepout.y_ft-28.0) -lt 0.000001 -and [Math]::Abs($liftKeepout.depth_ft-[Math]::Min(8.0,($script:ShellD-28.0))) -lt 0.000001)
     upper_shell_dimensions_match_documented_case=(($script:ShellCase -match '^selected-D-derived') -and [Math]::Abs($script:ShellW-[double]$selected.shells.rear_upper[0]) -lt 0.000001 -and [Math]::Abs($script:ShellD-[double]$selected.shells.rear_upper[1]) -lt 0.000001) -or (($script:ShellCase -match '^exploratory') -and [Math]::Abs($script:ShellW-[double]$proposal.shell.width_ft) -lt 0.000001 -and [Math]::Abs($script:ShellD-[double]$proposal.shell.depth_ft) -lt 0.000001)
     stair_landing_start_is_source_derived=([Math]::Abs($startX-19.1666666667) -lt 0.000001 -and [Math]::Abs($startY-30.0) -lt 0.000001)
     final_translations_reserve_source_stair_approach=([Math]::Abs($script:StartApproach.x_ft-17.1666666667) -lt 0.000001 -and [Math]::Abs($script:StartApproach.y_ft-28.0) -lt 0.000001 -and $script:StartApproach.width_ft -eq 4.0 -and $script:StartApproach.depth_ft -eq 4.0)
-    search_is_deterministic_and_bounded=($script:Nodes -le $script:NodeLimit -and $script:Layouts.Count -le $script:LayoutLimit)
+    search_is_deterministic_and_bounded=($script:Nodes -le $script:NodeLimit -and $script:Layouts.Count -le $script:LayoutLimit -and @($script:RootSearchStats|Where-Object{$_.nodes_expanded -gt $script:PerRootOrientationNodeBudget}).Count -eq 0)
     owner_revised_U03_private_route_only_matches_proposal=($proposal.owner_inputs.u03_shared_hall_access -eq $false -and @($proposal.upper_suite.excluded_access_edges|Where-Object{$_.a -eq 'U-03' -and $_.b -eq 'C-UPPER'}).Count -eq 1)
     any_winner_reaches_all_required_public_rooms=($null -eq $winner -or $winner.hall_reachability.required_public_rooms_reached)
     route_summary_matches_tested_records=($tested.Count -le $routeRuns -and $routeAccessCounts['U-01'] -le $tested.Count -and $routeAccessCounts['U-02'] -le $tested.Count -and $routeAccessCounts['U-03'] -le $tested.Count -and $routeAccessCounts['U-04'] -le $tested.Count -and $routesToPrimaryPrivateGuest -le $tested.Count)
@@ -287,7 +328,7 @@ $report=[ordered]@{
     title='M37 - upper-suite room packing and public-hall route search'
     status=$status
     source_fingerprints_sha256=[ordered]@{'selected_D_study.json'=$selectedHash;'owner_followup_study.json'=$proposalHash;'Requirements/Room_Program.md'=$programHash}
-    search=[ordered]@{algorithm='deterministic tree-attached rectangle search; prioritize private suite and Jack-and-Jill before primary bath; split node budget equally between U-01 orientations; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach; test each remaining 4ft hall on an exact-parity precomputed 2in occupancy grid';node_limit=$script:NodeLimit;per_orientation_node_budget=$script:PerOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:Grid;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
+    search=[ordered]@{algorithm='deterministic tree-attached rectangle search; rotate the rooting room among U-01, U-02 and U-04, split budget equally across each root orientation, and place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach; test each remaining 4ft hall on an exact-parity precomputed 2in occupancy grid';node_limit=$script:NodeLimit;search_root_rooms=$script:SearchRoots;per_root_orientation_node_budget=$script:PerRootOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:Grid;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
     source_dimensions_ft=$script:Rooms
     coordinate_basis=[ordered]@{shell_case=$script:ShellCase;width_ft=$script:ShellW;depth_ft=$script:ShellD;selected_D_upper_frame_offset_ft=$upperOffset;note='The full-plate case reuses the owner-follow-up 40 x 42 ft main-floor test envelope as an unapproved upper-shell expansion comparison.'}
     preserved_constraints=@('U-01 to primary-only U-05 through a nominal 3.5ft contact reservation','U-01 to C-PRIVATE to U-02','owner-directed U-02 to U-03 private route only; no direct U-03 to C-UPPER door','U-04 retains independent guest shared-hall access','U-03 and U-04 each contact U-06 for Jack-and-Jill access','source 8x8ft lift reservation, clipped to its upper-wing projection','4ft-wide hall route from source upper landing to U-01, U-02 and U-04; no U-03 hall door is modeled')
