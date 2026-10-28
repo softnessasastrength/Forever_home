@@ -517,3 +517,14 @@ Acceptance criteria:
 - Compare bounded search counts and deterministic capped outputs; preserve all owner requirements and selected-D inputs.
 
 Current status: The deferred mode passes 32/32 integrity checks against the updated owner proposal and is deterministic across two clean 1,000-node runs. The 6,000-node U-02-first run performs 2,226 route checks, defers 2,274, prunes 1,900 states, and finds no complete layouts; the search remains incomplete. It reduces route checks versus M43's 4,500 at equal node budget, but still produces no route-tested candidate. The owner decision and room program now explicitly require direct U-02 arrival from the upper shared hall while retaining U-02's private links to C-PRIVATE and U-03; U-03 remains private-only. The proposal generator passes 18/18 checks and replays byte-for-byte. M-06 B remains unassigned. See `Architecture/M44_Deferred_Public_Route_Check_Study_2026-10-28/README.md`; actual door placement and clearance remain for disposable Revit review.
+
+### M45 — Stress-test the direct-U-02 search at twice M44's node budget
+
+Acceptance criteria:
+
+- Preserve all current upper-suite access decisions, source room dimensions, landing-aligned seeds, lift reservation and bounded route-proxy limitations.
+- Double M44's 6,000-node cap to test whether additional tree exploration yields any complete room packing or route-tested candidate.
+- Require the full search-integrity checks, unchanged selected-D fingerprint, parseable JSON/SVG, and retained hashes.
+- Keep an incomplete search explicitly incomplete; do not infer infeasibility or change selected-D.
+
+Current status: The PowerShell 5.1 run in `Architecture/M45_U02_Upper_Suite_Search_Budget_2026-10-28/` passes **32/32** integrity checks and confirms the selected-D source was unchanged. At a 12,000-node cap it expands 9,000 nodes, checks 3,916 route checkpoints, defers 5,084 and prunes 3,094 states. It yields zero complete room packings and zero final route tests, and hits the cap; the search remains incomplete. The run required approximately 18 minutes and increasing the budget did not improve candidate yield. The M44 1,000-node deterministic replay still provides the reproducibility check; this 12k stress run is retained once, not independently repeated. JSON/SVG validation passes. Next compare an explicitly unapproved full-plate upper-shell expansion already identified in M41, or reduce route-check cost before further larger runs. No owner room sizes, selected-D geometry or M-06 B assignment changed.
