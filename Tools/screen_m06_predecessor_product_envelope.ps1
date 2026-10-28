@@ -1,6 +1,6 @@
 param(
     [string]$StudyPath = (Join-Path $PSScriptRoot '../Architecture/Selected_Design_Iteration_2026-10-27/study.json'),
-    [string]$OutputPath = (Join-Path $PSScriptRoot '../Research/M06_Champion_PRO_Family_Envelope_Screen_2026-10-27.json')
+    [string]$OutputPath = (Join-Path $PSScriptRoot '../Research/M06_Champion_PRO_Predecessor_Envelope_Screen_2026-10-28.json')
 )
 
 $ErrorActionPreference = 'Stop'
@@ -21,16 +21,17 @@ if ($m06.footprint -ne 'TBD' -or $m06.position -ne 'TBD') {
     throw 'M-06 is no longer unassigned. Review the study before running this proxy-only screen.'
 }
 
-# Nominal envelope from American Standard's 211AA.104 manufacturer sheet.
-# This is a predecessor-family proxy, not verified geometry for 610AA001.020.
+# Nominal envelope from LIXIL Pro's 211AA104.020 predecessor product record.
+# This is predecessor product data, not family-measured or verified geometry for 610AA001.020.
 $proxy = [ordered]@{
     target_sku = '610AA001.020'
-    proxy_series = '211AA.104'
+    proxy_series = '211AA104.020'
     proxy_width_in = 19.0
     proxy_projection_in = 30.25
-    proxy_height_in = 30.875
+    proxy_height_in = 31.0
+    nominal_dimension_order = 'length x width x height'
     exact_target_sku_geometry_verified = $false
-    source = 'https://lixil.cdn.celum.cloud/167631_as_us_bath_spec__211A%20(7076)_0_original.pdf'
+    source = 'https://lixilpro.com/products/toilets/Floor-Standing-Toilets/Champion-PRO-Two-Piece-128-gpf-48-Lpf-Chair-Height-Elongated-Toilet-Less-Seat/White-%28020%29-211AA104020/'
 }
 
 $windowResults = @()
@@ -80,8 +81,8 @@ if ($b.Count -ne 1 -or @($b[0].orientations | Where-Object { -not $_.contained_i
 }
 
 $report = [ordered]@{
-    schema = 'forever-home-m06-family-envelope-screen-v1'
-    result = 'PASS: predecessor-family rectangular body envelope is contained in B in both tested plan orientations.'
+    schema = 'forever-home-m06-predecessor-product-envelope-screen-v1'
+    result = 'PASS: predecessor-product rectangular body envelope is contained in B in both tested plan orientations.'
     study = [System.IO.Path]::GetFileName($studyFile)
     study_sha256 = (Get-FileHash -LiteralPath $studyFile -Algorithm SHA256).Hash.ToLowerInvariant()
     study_layout_variant = $study.layout_variant
@@ -102,7 +103,7 @@ $report = [ordered]@{
     }
     limitations = @(
         'B is an unassigned 13 ft 2 in by 7 ft room-block gap, not a bathroom or clear interior dimension.',
-        'The measured plan envelope is from predecessor series 211AA.104 and is not verified for target SKU 610AA001.020.',
+        'The nominal plan envelope comes from predecessor product record 211AA104.020; it is not measured RFA geometry and is not verified for target SKU 610AA001.020.',
         'This rectangular containment screen does not establish a usable fixture layout, required clearances, a room footprint, plumbing feasibility, code compliance, or accessibility.'
     )
 }
@@ -117,4 +118,4 @@ $outputDir = Split-Path -Parent $resolvedOutput
 if (-not (Test-Path -LiteralPath $outputDir)) { New-Item -ItemType Directory -Path $outputDir -Force | Out-Null }
 $json = ConvertTo-Json -InputObject $report -Depth 12
 [System.IO.File]::WriteAllText($resolvedOutput, $json + "`r`n", [System.Text.UTF8Encoding]::new($false))
-Write-Output "PASS: M-06 family-envelope screen saved to $resolvedOutput"
+Write-Output "PASS: M-06 predecessor-product envelope screen saved to $resolvedOutput"

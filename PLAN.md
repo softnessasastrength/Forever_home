@@ -570,3 +570,13 @@ Acceptance criteria:
 - Distinguish predecessor dimensions/components from current selected 610AA001.020; retain M-06 B as unassigned.
 
 Current status: Complete. LIXIL Pro's discontinued 211AA104.020 record lists a 30-1/4 × 19 × 31 in nominal predecessor assembly and components 3195A101.020 / 4225A104.020. Its public Revit link resolves to the exact hash of the existing Incoming predecessor RFA (`37D3E569…B0B75F63`), whose prior read-only Revit inspection shows only seat type 5325.010, not the assembly. Current 610AA001.020 still has no verified full-product family or confirmed assembled envelope; its retail page points to predecessor documentation. Evidence and URLs are in `Research/M06_Toilet_Options_2026-10-27.md` and `Revit/Family_Intake/RevitCity_Family_Intake.md`. Do not combine separate predecessor components into a presumed current-product assembly. Next: if the exact current family cannot be obtained publicly, keep the measured alternatives as explicitly identified proxies until a product crosswalk or owner-approved fixture is available, then test one in a disposable derivative with clearance, door/approach and service route together.
+
+### M51 — Regenerate the predecessor-only gross-window screen from the current manufacturer record
+
+Acceptance criteria:
+
+- Preserve the earlier M-06 screen output and selected-D study; use a new versioned report for the LIXIL Pro 211AA104.020 page's 30-1/4 × 19 × 31 in nominal predecessor dimensions.
+- Check both plan orientations against source-derived M-06 A/B gross gaps and verify the selected 610AA001.020 geometry flag stays false.
+- State that clearances, lavatory, walls, door/approach, services and fit inside usable clear dimensions are not tested; B remains unassigned.
+
+Current status: Complete. `Tools/screen_m06_predecessor_product_envelope.ps1` writes `Research/M06_Champion_PRO_Predecessor_Envelope_Screen_2026-10-28.json`. Windows PowerShell 5.1 generation and a separate JSON contract check pass: selected-D hash matches, B is 158 × 84 in gross, and the 19 × 30-1/4 in predecessor body rectangle is contained in both orientations. The report explicitly says exact 610AA geometry is unverified and makes no room assignment. The 2026-10-27 screen remains preserved as historical evidence. Next: obtain an exact current product dimension drawing or an owner-approved proxy, then combine fixture, lavatory, clearance, entry and service-route geometry in an isolated model before considering B.

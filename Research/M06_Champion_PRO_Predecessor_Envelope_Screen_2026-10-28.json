@@ -1,0 +1,121 @@
+{
+    "schema":  "forever-home-m06-predecessor-product-envelope-screen-v1",
+    "result":  "PASS: predecessor-product rectangular body envelope is contained in B in both tested plan orientations.",
+    "study":  "study.json",
+    "study_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "study_layout_variant":  "OwnerSelectedD",
+    "owner_selected_candidate":  "east_of_core",
+    "target_candidate":  {
+                             "target_sku":  "610AA001.020",
+                             "proxy_series":  "211AA104.020",
+                             "proxy_width_in":  19,
+                             "proxy_projection_in":  30.25,
+                             "proxy_height_in":  31,
+                             "nominal_dimension_order":  "length x width x height",
+                             "exact_target_sku_geometry_verified":  false,
+                             "source":  "https://lixilpro.com/products/toilets/Floor-Standing-Toilets/Champion-PRO-Two-Piece-128-gpf-48-Lpf-Chair-Height-Elongated-Toilet-Less-Seat/White-%28020%29-211AA104020/"
+                         },
+    "search_windows":  [
+                           {
+                               "id":  "west_of_core",
+                               "label":  "Dining-side search window",
+                               "gross_width_ft":  5.1666666666666679,
+                               "gross_depth_ft":  11.416666666666664,
+                               "gross_area_sf":  58.99,
+                               "remains_unassigned_room_block_gap":  true,
+                               "orientations":  [
+                                                    {
+                                                        "rotation_deg":  0,
+                                                        "body_width_in":  19,
+                                                        "body_depth_in":  30.25,
+                                                        "contained_in_gross_search_window":  true,
+                                                        "remaining_width_in":  43,
+                                                        "remaining_depth_in":  106.75,
+                                                        "allowable_origin_x_ft":  [
+                                                                                      12,
+                                                                                      15.583333
+                                                                                  ],
+                                                        "allowable_origin_y_ft":  [
+                                                                                      16.166667,
+                                                                                      25.0625
+                                                                                  ]
+                                                    },
+                                                    {
+                                                        "rotation_deg":  90,
+                                                        "body_width_in":  30.25,
+                                                        "body_depth_in":  19,
+                                                        "contained_in_gross_search_window":  true,
+                                                        "remaining_width_in":  31.75,
+                                                        "remaining_depth_in":  118,
+                                                        "allowable_origin_x_ft":  [
+                                                                                      12,
+                                                                                      14.645833
+                                                                                  ],
+                                                        "allowable_origin_y_ft":  [
+                                                                                      16.166667,
+                                                                                      26
+                                                                                  ]
+                                                    }
+                                                ]
+                           },
+                           {
+                               "id":  "east_of_core",
+                               "label":  "Pantry-side search window",
+                               "gross_width_ft":  13.166666666666668,
+                               "gross_depth_ft":  7,
+                               "gross_area_sf":  92.17,
+                               "remains_unassigned_room_block_gap":  true,
+                               "orientations":  [
+                                                    {
+                                                        "rotation_deg":  0,
+                                                        "body_width_in":  19,
+                                                        "body_depth_in":  30.25,
+                                                        "contained_in_gross_search_window":  true,
+                                                        "remaining_width_in":  139,
+                                                        "remaining_depth_in":  53.75,
+                                                        "allowable_origin_x_ft":  [
+                                                                                      21.166667,
+                                                                                      32.75
+                                                                                  ],
+                                                        "allowable_origin_y_ft":  [
+                                                                                      17.166667,
+                                                                                      21.645833
+                                                                                  ]
+                                                    },
+                                                    {
+                                                        "rotation_deg":  90,
+                                                        "body_width_in":  30.25,
+                                                        "body_depth_in":  19,
+                                                        "contained_in_gross_search_window":  true,
+                                                        "remaining_width_in":  127.75,
+                                                        "remaining_depth_in":  65,
+                                                        "allowable_origin_x_ft":  [
+                                                                                      21.166667,
+                                                                                      31.8125
+                                                                                  ],
+                                                        "allowable_origin_y_ft":  [
+                                                                                      17.166667,
+                                                                                      22.583333
+                                                                                  ]
+                                                    }
+                                                ]
+                           }
+                       ],
+    "evaluated":  {
+                      "body_envelope_containment_only":  true,
+                      "exact_610aa_geometry":  false,
+                      "half_bath_clearances":  false,
+                      "vanity_or_lavatory":  false,
+                      "door_or_swing":  false,
+                      "user_approach_or_hall_route":  false,
+                      "wall_location_or_rough_in":  false,
+                      "drain_vent_or_service_path":  false,
+                      "m06_room_assignment":  false,
+                      "ifc_export":  false
+                  },
+    "limitations":  [
+                        "B is an unassigned 13 ft 2 in by 7 ft room-block gap, not a bathroom or clear interior dimension.",
+                        "The nominal plan envelope comes from predecessor product record 211AA104.020; it is not measured RFA geometry and is not verified for target SKU 610AA001.020.",
+                        "This rectangular containment screen does not establish a usable fixture layout, required clearances, a room footprint, plumbing feasibility, code compliance, or accessibility."
+                    ]
+}
