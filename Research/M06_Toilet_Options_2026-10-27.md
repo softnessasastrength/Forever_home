@@ -47,3 +47,9 @@ Run `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/screen_m06_toilet
 When the chosen fixture and vanity are documented, derive their envelopes from the selected product sheets, place them only in pantry-side search window B for the first test, and check door swing, user approach, clearances, hall/core route, and whether a real service path can be drawn through documented floors/walls. Keep B unassigned if any required inputs are still absent. Preserve dining-side A as the fallback comparison. Do not export an IFC from a rectangle-only fit study.
 
 Research checked 2026-10-28; manufacturer pages and PDFs may change. Confirm current product configuration, dimensions, compatible parts and installation sheet before any Revit family or project schedule is treated as authoritative.
+
+### Public KOHLER model-file listing check (2026-10-28)
+
+The [Studio KOHLER listing for K-96057-SS-0](https://www.studiokohler.com/products/commercial/commercial-toilets/96057-ss) publicly advertises both a 3D RFA file and a BIM/Revit design-file category. This is the antimicrobial white **-SS-0 variant**, not the standard white K-96057-0 under consideration; it must not be substituted silently. The page's public server-rendered picker exposes the file categories and checkbox controls, but no direct RFA URL. No download was initiated, and no account or sign-in flow was entered; actual model availability, direct-file access, and usage terms remain unverified.
+
+The Studio page reports 14-7/8 in width and 26-3/8 in length, while the current 2026-10-27 specification PDF above gives 14-5/8 in and 26-1/8 in. Both show 16-5/8 in overall height, although the page description separately claims 16-7/8 in to rim. Treat these as unresolved manufacturer-source discrepancies. Do not use the Studio page dimensions to fit B or treat its advertised RFA as verified product geometry.
