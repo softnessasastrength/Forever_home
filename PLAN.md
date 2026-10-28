@@ -528,3 +528,24 @@ Acceptance criteria:
 - Keep an incomplete search explicitly incomplete; do not infer infeasibility or change selected-D.
 
 Current status: The PowerShell 5.1 run in `Architecture/M45_U02_Upper_Suite_Search_Budget_2026-10-28/` passes **32/32** integrity checks and confirms the selected-D source was unchanged. At a 12,000-node cap it expands 9,000 nodes, checks 3,916 route checkpoints, defers 5,084 and prunes 3,094 states. It yields zero complete room packings and zero final route tests, and hits the cap; the search remains incomplete. The run required approximately 18 minutes and increasing the budget did not improve candidate yield. The M44 1,000-node deterministic replay still provides the reproducibility check; this 12k stress run is retained once, not independently repeated. JSON/SVG validation passes. Next compare an explicitly unapproved full-plate upper-shell expansion already identified in M41, or reduce route-check cost before further larger runs. No owner room sizes, selected-D geometry or M-06 B assignment changed.
+
+### M46 — Compare the documented full-plate upper-shell proposal
+
+Acceptance criteria:
+
+- Use only the existing 40 × 42 ft owner-follow-up test envelope as a clearly unapproved upper-shell comparison; do not change selected-D or claim the larger shell is selected.
+- Retain the current source room dimensions, direct U-02 hall-arrival proxy, private-only U-03 topology, guest hall access, both Jack-and-Jill links, lift reservation and stair approach.
+- Test complete room packings with final corridor reachability; check generator integrity, independent candidate geometry/topology, source/output hashes and deterministic replay.
+- Record actual door, stair, clearance, code, structure, services and Revit/IFC validation as outstanding.
+
+Current status: A 4,000-node no-prune run against the 40 × 42 ft exploratory shell records 180 complete room packings and tests all 180 routes; **10/180** reach sampled goals for U-01/U-02/U-04. The retained route-valid room-block proposal preserves all six nominal contact links and avoids the projected lift and stair approach; the independent PowerShell validator passes **105 checks**, the generator passes **28/28**, and two full runs produce byte-identical JSON, checks, SVG and manifest. A third Windows PowerShell 5.1 replay independently reproduces all four artifact hashes and again passes the **105-check** validator. The search reaches its budget and remains incomplete. This is an exploratory comparison only; it neither selects the larger shell nor edits direction D. Its coordinates and limitations are in `Architecture/M46_Full_Plate_Upper_Suite_Comparison_2026-10-28/README.md`. The larger-shell deferred-prune variant was stopped after 20 minutes without a report and is not treated as evidence. Next verify the candidate in a disposable Revit study when a controllable Revit session is available; actual doors/openings, privacy, stair/headroom, code, roof, structure, services and IFC remain open.
+
+### M47 — Establish a Connecticut residential fixture-clearance screening basis
+
+Acceptance criteria:
+
+- Research current Connecticut code-adoption status from official state sources and the adopted 2021 IRC provisions relevant to the owner-requested one-family-house study.
+- State only a preliminary M-06 fixture-clearance screen; distinguish it from accessibility, door/approach checks, product installation requirements and a compliance review.
+- Preserve the unresolved site, municipality, permit timing and occupancy classification, and keep M-06 B unassigned.
+
+Current status: Official Connecticut DAS sources identify the 2022 CSBC (including the 2021 IRC) as current and report the 2026 cycle's effective date delayed pending legislative review. The 2021 IRC § R307.1 points to Figure R307.1 and § P2705.1; the baseline screen recorded for a dwelling-scope study is 15 in center-to-side obstruction, 30 in between adjacent fixture centerlines, and 21 in front of WC/lavatory/bidet. See `Research/2026-10-28_Connecticut_M06_Clearance_Screen.md`. Recheck the adopted text and local applicability when the site/permit path is known; this is not a code determination or accessibility finding. Next apply the screening geometry to measured product extents, a door/approach layout and service-route candidate in an isolated study only.
