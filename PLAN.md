@@ -494,3 +494,15 @@ Acceptance criteria:
 - A successful layout must reach U-01, U-02 and U-04 from the stair approach in the same room arrangement, with no U-03 public door.
 
 Current status: **directed branch searches reproduced; no complete public route**. The U-02-first M37 search with 6,000-node limit expands 4,500 nodes, evaluates 12 completed layouts and runs 12 corridor tests. Sampled reach is U-02 12/12, U-01 0/12, U-04 0/12; U-03 corridor-side proximity is diagnostic only. Two independent runs are byte-identical and pass 27/27 checks. The complementary U-04-first 6,000-node screen produces no complete packings; the 12,000-node stress run expands 9,000 nodes and yields two layouts/routes, reaching U-02 and U-04 in both but U-01 in neither. It is a single, unreplayed stress run. Both search families remain incomplete; no infeasibility conclusion follows. Reports and limitations are in Architecture/M42_U02_Anchored_Upper_Suite_Route_Study_2026-10-28/README.md. Next improve route-aware pruning before escalating any room/core trade-off.
+
+### M43 — Prune upper-suite layouts with unreachable public rooms early
+
+Acceptance criteria:
+
+- Add an opt-in route-pruning mode to the existing PowerShell 5.1 M37 search; require the fixed landing-aligned frame and preserve default-mode behavior.
+- Prune a partial arrangement only when an already-placed required public room has no reachable sampled corridor goal; explain why adding room obstacles cannot restore such a route.
+- Keep final full-route checks, source-derived dimensions, owner-selected private-only U-03 topology and all existing fit limitations.
+- Validate bounded outputs and deterministic replay; compare the opt-in run with the byte-identical legacy M42 baseline.
+- Do not treat an incomplete pruned search or absent room-block candidates as proof of infeasibility, and do not modify selected D.
+
+Current status: Opt-in pruning is implemented in `Tools/test_m37_upper_suite_pack_and_route.ps1`; the default M42 replay matches the checked-in search, checks, SVG and manifest byte-for-byte. The 6,000-node U-02-first run passes 30/30 integrity checks, checks route reachability at all 4,500 expanded nodes, rejects 2,432 partial states, records no complete packings and remains incomplete. A separate 1,000-node capped run passes 30/30 and reproduces identical JSON/check/SVG/manifest across two clean runs. The 6,000-node artifacts and hashes are retained in `Architecture/M43_Early_Public_Route_Prune_Study_2026-10-28/`. This demonstrates a functioning early-prune path, not a faster or more productive search at this budget: the run yields no corridor tests and cannot be compared as a complete candidate search to M42’s 12 packings/routes. Next improve ordering or reduce the cost of reachability checks, then compare equal-budget route-tested outcomes. Connecticut remains the requested jurisdiction for code research; the town/site and adopted project code path are not established, and no compliance conclusion follows. The owner’s steep traditional gable direction remains conceptual with pitch, eaves, roof assembly and structure unassigned. M-06 B remains unassigned.

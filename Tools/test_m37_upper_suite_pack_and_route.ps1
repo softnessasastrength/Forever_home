@@ -5,6 +5,7 @@ param(
     [double]$ShellWidthOverrideFt = 0,
     [double]$ShellDepthOverrideFt = 0,
     [switch]$LandingAlignedRootSeeds,
+    [switch]$EarlyPublicRoutePrune,
     [ValidateSet('balanced','U-01-only','U-02-only','U-04-only')]
     [string]$RootSearchScope = 'balanced',
     [ValidateSet('baseline','guest-branch-first')]
@@ -48,6 +49,10 @@ if($ShellWidthOverrideFt -gt 0){
 $script:GridStepFt=1.0/6.0
 $script:NodeLimit=[Math]::Max(100,$NodeLimit)
 $script:UseLandingAlignedRootSeeds=($LandingAlignedRootSeeds.IsPresent -eq $true)
+$script:UseEarlyPublicRoutePrune=($EarlyPublicRoutePrune.IsPresent -eq $true)
+if($script:UseEarlyPublicRoutePrune -and -not $script:UseLandingAlignedRootSeeds){throw 'Early public-route pruning requires -LandingAlignedRootSeeds so checked room goals remain in a fixed frame.'}
+$script:EarlyRouteCheckCount=0
+$script:EarlyRoutePruneRejects=0
 $script:AllSearchRoots=@('U-01','U-02','U-04')
 $script:SearchRoots=if($RootSearchScope -eq 'balanced'){@($script:AllSearchRoots)}else{@($RootSearchScope.Replace('-only',''))}
 $script:LandingSeedSides=@('north','east_south_edge')
@@ -188,6 +193,7 @@ function Add-CompletedLayout($state){
 function Search-Layout([int]$index,$state){
     if(($script:Nodes-$script:RootNodeStart) -ge $script:PerRootOrientationNodeBudget -or $script:Layouts.Count -ge $script:LayoutLimit){return}
     $script:Nodes++
+    if($script:UseEarlyPublicRoutePrune -and -not (Test-PartialPublicAccess $state $liftKeepout)){$script:EarlyRoutePruneRejects++;return}
     if($index -ge $script:Order.Count){Add-CompletedLayout $state;return}
     $edge=$script:Order[$index];$parent=$state[$edge.parent];$spec=$script:Rooms[$edge.child]
     foreach($candidate in (Get-CandidateChildren $parent $spec)){
@@ -209,38 +215,6 @@ function Search-Layout([int]$index,$state){
 }
 
 $script:DoorReservation=3.5
-foreach($rootId in $script:SearchRoots){
-    $script:Order=@($script:RootPlans[$rootId])
-    $anchorSpec=$script:Rooms[$rootId]
-    foreach($anchor in @([ordered]@{w=$anchorSpec.width_ft;d=$anchorSpec.depth_ft},[ordered]@{w=$anchorSpec.depth_ft;d=$anchorSpec.width_ft})){
-        $seedSides=@('origin')
-        if($script:UseLandingAlignedRootSeeds){$seedSides=$script:LandingSeedSides}
-        foreach($seedSide in $seedSides){
-            $script:RootNodeStart=$script:Nodes
-            if($seedSide -eq 'north'){
-                # Align the root's north-side goal sample with the source landing approach centre.
-                $rootX=$startX-$anchor.w/2.0;$rootY=$startY-2.5-$anchor.d
-            }elseif($seedSide -eq 'east_south_edge'){
-                # Align the root's east-side goal sample one 4ft corridor width below the approach centre.
-                # Its corridor square then abuts the south edge of the reserved landing approach.
-                $rootX=$startX-2.5-$anchor.w;$rootY=($startY-4.0)-$anchor.d/2.0
-            }else{$rootX=0.0;$rootY=0.0}
-            $rootBox=New-Box $rootId $rootX $rootY $anchor.w $anchor.d
-            $seedInvalid=($rootX -lt -0.000001 -or $rootY -lt -0.000001 -or ($rootX+$anchor.w) -gt ($script:ShellW+0.000001) -or ($rootY+$anchor.d) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $rootBox $liftKeepout) -or ($seedSide -ne 'origin' -and (Test-BoxesOverlap $rootBox $script:StartApproach)))
-            if($seedInvalid){
-                $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootX;root_y_ft=$rootY;nodes_expanded=0;seed=$seedSide;seed_rejected=$true})
-                continue
-            }
-            $state=[ordered]@{$rootId=$rootBox}
-            Search-Layout 0 $state
-            $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootBox.x_ft;root_y_ft=$rootBox.y_ft;nodes_expanded=($script:Nodes-$script:RootNodeStart);seed=$seedSide;seed_rejected=$false})
-            if($script:Layouts.Count -ge $script:LayoutLimit){break}
-        }
-        if($script:Layouts.Count -ge $script:LayoutLimit){break}
-    }
-    if($script:Layouts.Count -ge $script:LayoutLimit){break}
-}
-
 function Test-CorridorSquare([double]$cx,[double]$cy,$rects,$keepout){
     if($cx -lt 2.0-0.000001 -or $cx -gt ($script:ShellW-2.0+0.000001) -or $cy -lt 2.0-0.000001 -or $cy -gt ($script:ShellD-2.0+0.000001)){return $false}
     $corr=New-Box '4ft corridor test square' ($cx-2.0) ($cy-2.0) 4.0 4.0
@@ -312,12 +286,57 @@ function Get-HallReachability($rects,$keepout){
     }
     $reachable=[ordered]@{}
     foreach($id in @('U-01','U-02','U-03','U-04')){
+        if(-not $rects.Contains($id)){continue}
         $goals=Get-AccessibleGoals $rects[$id];$sides=[System.Collections.Generic.List[string]]::new()
         foreach($g in $goals){$ix=[int][Math]::Round([double]$g.x*$grid);$iy=[int][Math]::Round([double]$g.y*$grid);if([Math]::Abs($ix/$grid-[double]$g.x) -gt 0.000001 -or [Math]::Abs($iy/$grid-[double]$g.y) -gt 0.000001){continue};if($ix -ge 0 -and $ix -le $maxIx -and $iy -ge 0 -and $iy -le $maxIy -and $visited[$ix,$iy] -and -not $blocked[$ix,$iy]){$sides.Add($g.side)}}
         $reachable[$id]=@($sides)
     }
     [ordered]@{visited_cells=$visitedCount;reachable_room_sides=$reachable;required_public_rooms_reached=(@($reachable['U-01']).Count -gt 0 -and @($reachable['U-02']).Count -gt 0 -and @($reachable['U-04']).Count -gt 0);u03_hall_side_reachable=(@($reachable['U-03']).Count -gt 0)}
 }
+function Test-PartialPublicAccess($rects,$keepout){
+    $placedRequired=@(@('U-01','U-02','U-04')|Where-Object{$rects.Contains($_)})
+    if($placedRequired.Count -eq 0){return $true}
+    $script:EarlyRouteCheckCount++
+    # In the fixed landing-aligned frame, adding room rectangles only removes
+    # walkable cells. It cannot restore access to an already-placed public room.
+    $route=Get-HallReachability $rects $keepout
+    if($null -eq $route){return $false}
+    foreach($id in $placedRequired){if(@($route.reachable_room_sides[$id]).Count -eq 0){return $false}}
+    return $true
+}
+
+foreach($rootId in $script:SearchRoots){
+    $script:Order=@($script:RootPlans[$rootId])
+    $anchorSpec=$script:Rooms[$rootId]
+    foreach($anchor in @([ordered]@{w=$anchorSpec.width_ft;d=$anchorSpec.depth_ft},[ordered]@{w=$anchorSpec.depth_ft;d=$anchorSpec.width_ft})){
+        $seedSides=@('origin')
+        if($script:UseLandingAlignedRootSeeds){$seedSides=$script:LandingSeedSides}
+        foreach($seedSide in $seedSides){
+            $script:RootNodeStart=$script:Nodes
+            if($seedSide -eq 'north'){
+                # Align the root's north-side goal sample with the source landing approach centre.
+                $rootX=$startX-$anchor.w/2.0;$rootY=$startY-2.5-$anchor.d
+            }elseif($seedSide -eq 'east_south_edge'){
+                # Align the root's east-side goal sample one 4ft corridor width below the approach centre.
+                # Its corridor square then abuts the south edge of the reserved landing approach.
+                $rootX=$startX-2.5-$anchor.w;$rootY=($startY-4.0)-$anchor.d/2.0
+            }else{$rootX=0.0;$rootY=0.0}
+            $rootBox=New-Box $rootId $rootX $rootY $anchor.w $anchor.d
+            $seedInvalid=($rootX -lt -0.000001 -or $rootY -lt -0.000001 -or ($rootX+$anchor.w) -gt ($script:ShellW+0.000001) -or ($rootY+$anchor.d) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $rootBox $liftKeepout) -or ($seedSide -ne 'origin' -and (Test-BoxesOverlap $rootBox $script:StartApproach)))
+            if($seedInvalid){
+                $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootX;root_y_ft=$rootY;nodes_expanded=0;seed=$seedSide;seed_rejected=$true})
+                continue
+            }
+            $state=[ordered]@{$rootId=$rootBox}
+            Search-Layout 0 $state
+            $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootBox.x_ft;root_y_ft=$rootBox.y_ft;nodes_expanded=($script:Nodes-$script:RootNodeStart);seed=$seedSide;seed_rejected=$false})
+            if($script:Layouts.Count -ge $script:LayoutLimit){break}
+        }
+        if($script:Layouts.Count -ge $script:LayoutLimit){break}
+    }
+    if($script:Layouts.Count -ge $script:LayoutLimit){break}
+}
+
 function Find-LiftClearTranslations($layout,$keepout){
     $maxX=[double]$script:ShellW-[double]$layout.bounds.width;$maxY=[double]$script:ShellD-[double]$layout.bounds.depth
     $xs=[System.Collections.Generic.SortedSet[double]]::new();$ys=[System.Collections.Generic.SortedSet[double]]::new()
@@ -418,6 +437,11 @@ $checks=[ordered]@{
     route_summary_matches_tested_records=($tested.Count -le $routeRuns -and $routeAccessCounts['U-01'] -le $tested.Count -and $routeAccessCounts['U-02'] -le $tested.Count -and $routeAccessCounts['U-03'] -le $tested.Count -and $routeAccessCounts['U-04'] -le $tested.Count -and $routesToPrimaryPrivateGuest -le $tested.Count)
     selected_D_file_unchanged_during_run=((Get-FileHash -Algorithm SHA256 -LiteralPath $selectedPath).Hash.ToLowerInvariant() -eq $selectedHash)
 }
+if($script:UseEarlyPublicRoutePrune){
+    $checks['early_public_route_pruning_requires_fixed_landing_aligned_frame']=$script:UseLandingAlignedRootSeeds
+    $checks['early_route_checks_do_not_exceed_expanded_nodes']=($script:EarlyRouteCheckCount -le $script:Nodes)
+    $checks['early_route_rejections_do_not_exceed_route_checks']=($script:EarlyRoutePruneRejects -le $script:EarlyRouteCheckCount)
+}
 $failed=@($checks.Keys|Where-Object{-not $checks[$_]})
 if($failed.Count -gt 0){throw "M37 source/search checks failed: $($failed -join ', ')"}
 
@@ -428,7 +452,7 @@ $report=[ordered]@{
     title='M37 - upper-suite room packing and public-hall route search'
     status=$status
     source_fingerprints_sha256=[ordered]@{'selected_D_study.json'=$selectedHash;'owner_followup_study.json'=$proposalHash;'Requirements/Room_Program.md'=$programHash}
-    search=[ordered]@{algorithm=$(if($script:UseLandingAlignedRootSeeds){'deterministic landing-aligned root seeding; align north-side room goal to the landing approach centre or east-side goal one source 4ft corridor width south of centre; reject room candidates outside shell or overlapping lift/approach during placement; evaluate hall route only after a complete packing'}else{'deterministic tree-attached rectangle search; place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach'});contact_sampling='Preserve the five legacy anchors; append the requested number of evenly spaced positions on each axis within the source 3.5ft door-reservation interval, snapped to the 1/6ft search grid.';public_door_edge_samples=$script:PublicDoorEdgeSamples;public_door_edge_sample_basis='Hall reachability is tested at evenly spaced goal points along each room side, with each point kept at least half the source door-reservation interval from side corners. These are route samples only, not door locations or openings.';root_search_scope=$RootSearchScope;u02_root_plan_variant=$U02RootPlanVariant;additional_contact_samples=$script:AdditionalContactSamples;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;landing_root_seed_sides=$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides}else{@('origin')});node_limit=$script:NodeLimit;search_root_rooms=$script:SearchRoots;per_root_orientation_node_budget=$script:PerRootOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:GridStepFt;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
+    search=[ordered]@{algorithm=$(if($script:UseEarlyPublicRoutePrune){'deterministic landing-aligned tree search with monotone early pruning: once a placed required-public room has no corridor goal reachable, later room obstacles cannot restore that route; final layouts are still checked by the full route test'}elseif($script:UseLandingAlignedRootSeeds){'deterministic landing-aligned root seeding; align north-side room goal to the landing approach centre or east-side goal one source 4ft corridor width south of centre; reject room candidates outside shell or overlapping lift/approach during placement; evaluate hall route only after a complete packing'}else{'deterministic tree-attached rectangle search; place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach'});contact_sampling='Preserve the five legacy anchors; append the requested number of evenly spaced positions on each axis within the source 3.5ft door-reservation interval, snapped to the 1/6ft search grid.';public_door_edge_samples=$script:PublicDoorEdgeSamples;public_door_edge_sample_basis='Hall reachability is tested at evenly spaced goal points along each room side, with each point kept at least half the source door-reservation interval from side corners. These are route samples only, not door locations or openings.';root_search_scope=$RootSearchScope;u02_root_plan_variant=$U02RootPlanVariant;additional_contact_samples=$script:AdditionalContactSamples;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;landing_root_seed_sides=$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides}else{@('origin')});node_limit=$script:NodeLimit;search_root_rooms=$script:SearchRoots;per_root_orientation_node_budget=$script:PerRootOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:GridStepFt;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
     source_dimensions_ft=$script:Rooms
     coordinate_basis=[ordered]@{shell_case=$script:ShellCase;width_ft=$script:ShellW;depth_ft=$script:ShellD;selected_D_upper_frame_offset_ft=$upperOffset;note='The full-plate case reuses the owner-follow-up 40 x 42 ft main-floor test envelope as an unapproved upper-shell expansion comparison.'}
     preserved_constraints=@('U-01 to primary-only U-05 through a nominal 3.5ft contact reservation','U-01 to C-PRIVATE to U-02','owner-directed U-02 to U-03 private route only; no direct U-03 to C-UPPER door','U-04 retains independent guest shared-hall access','U-03 and U-04 each contact U-06 for Jack-and-Jill access','source 8x8ft lift reservation, clipped to its upper-wing projection','4ft-wide hall route from source upper landing to U-01, U-02 and U-04; no U-03 hall door is modeled')
@@ -446,6 +470,12 @@ $report=[ordered]@{
     checks=$checks
     failures=$failed
     limitations=@('The tree search is deterministic but bounded by NodeLimit/LayoutLimit and samples five contact-alignment anchors; it is not an exhaustive proof that no layout exists.','A 0.5ft gap represents a nominal wall allowance, and a 3.5ft edge reservation is inherited from selected-D door-matrix data, not clear opening or door-swing geometry.','Room connection goals are sample points 2.5ft beyond each room-block side, a schematic reachability proxy rather than a door or specified clearance.','The hall search checks a 4ft swept square on a 2in translation grid. It does not model walls, doors, swings, landings beyond the source connector, headroom, floor openings, stairs, structure, services, furniture or fire/life-safety.','The lift keepout is a plan projection from the source reservation; verify actual shaft and floor opening in Revit.','No Revit, IFC, code, accessibility, structural or construction validation is made. A search candidate is a room-block concept only.','The revised private-route-only direction excludes a direct U-03 shared-hall door; actual private and public openings remain unmodeled. Corridor proximity to U-03 is not evidence of a doorway. No room sizes or selected-D baseline are edited.')
+}
+if($script:UseEarlyPublicRoutePrune){
+    $report.search['early_public_route_pruning']= $true
+    $report.search['early_route_check_count']=$script:EarlyRouteCheckCount
+    $report.search['early_route_prune_rejections']=$script:EarlyRoutePruneRejects
+    $report.limitations+= 'Early route pruning is valid only in the fixed landing-aligned frame: adding room rectangles can remove walkable cells but cannot restore a route to an already placed required-public room. It validates only the sampled corridor proxy.'
 }
 
 if(-not(Test-Path -LiteralPath $target)){New-Item -ItemType Directory -Path $target|Out-Null}
@@ -474,6 +504,7 @@ $svg.Add('<text class="note" x="40" y="752">Not Revit walls, door swings, floor 
 $svg.Add('</svg>')
 $svg -join "`n"|Set-Content -LiteralPath $svgPath -Encoding utf8
 $manifest=[ordered]@{generator='Tools/test_m37_upper_suite_pack_and_route.ps1';source_fingerprints_sha256=$report.source_fingerprints_sha256;search_parameters=[ordered]@{node_limit=$script:NodeLimit;layout_limit=$script:LayoutLimit;root_search_scope=$RootSearchScope;u02_root_plan_variant=$U02RootPlanVariant;additional_contact_samples=$script:AdditionalContactSamples;public_door_edge_samples=$script:PublicDoorEdgeSamples;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;shell_width_override_ft=$ShellWidthOverrideFt;shell_depth_override_ft=$ShellDepthOverrideFt};output_hashes_sha256=[ordered]@{search=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
+if($script:UseEarlyPublicRoutePrune){$manifest.search_parameters['early_public_route_pruning']=$true}
 $manifest|ConvertTo-Json -Depth 12|Set-Content -LiteralPath (Join-Path $target 'manifest.json') -Encoding utf8
 Write-Output("M37 search-integrity checks passed: {0}/{1}" -f $checks.Count,$checks.Count)
 Write-Output("Search nodes: {0}/{1}; bounded layouts: {2}; lift-clear route placements: {3}; route runs: {4}." -f $script:Nodes,$script:NodeLimit,$script:Layouts.Count,$translationsTested,$routeRuns)
