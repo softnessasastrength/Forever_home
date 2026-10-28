@@ -24,6 +24,9 @@ The owner has explicitly authorized coding agents working in this repository to 
 
 After restarting Revit, an agent may choose **Load Once** only when the trust prompt identifies that exact, hash-checked project-local DLL. Never choose **Always Load**, change Revit/Windows-wide trust or security settings, bypass anti-malware, load an unrelated or unknown add-in, or overwrite a manifest with a different AddInId. If the prompt's product, path, or hash does not match the verified manifest/build, stop and ask the owner. This authorization does not permit installing unrelated software or modifying remote state.
 
+### Owner-authorized read-only family inspection
+For RFAs already present in `Revit/Family_Intake/Incoming`, agents may open the exact source file in Revit 2027 and inspect its views, family category/hosting, type names, displayed parameter values, formulas and geometry in Family Editor. Close without saving; never upgrade-overwrite or otherwise alter the source RFA. This authority permits inspection only: it does not approve the family, assign it to a room, place it in the owner-selected D model, or establish fit/clearance. A disposable derivative placement or test is permitted only when the task expressly calls for that test, with the source and selected-D baseline preserved.
+
 ## Task execution
 Before modifying files, inspect the relevant source documents and repository state. Define scope and acceptance criteria. Make minimal, reviewable changes; validate them; commit to the working branch; summarize results, verification, assumptions, and blockers.
 
