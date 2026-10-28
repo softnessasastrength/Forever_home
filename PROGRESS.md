@@ -1,7 +1,13 @@
 # Implementation progress
 
-Updated: 2026-10-27
+Updated: 2026-10-28
 Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fixture. Owner-selected direction D has a reproducible Revit 2027.3 room-space study and independently validated IFC2X3 export. Latest base run `20261027T170840989Z` passes all 23 selected-D IFC checks. M-02's isolated 7216 casework study now passes its complete geometry/IFC fit gate: the Revit-pilot command added a generic unassigned-finish countertop, the fresh Revit audit and IFC2X3 export identify the same saved model, and the independent kitchen validator passes 13/13 checks. The 8 x 4 ft footprint, four 4 x 2 ft modules, 34.5 in physical cabinet height, 1.25 in top and 35.75 in combined height are verified against repository sources. The 7216 family remains a trial, not an approved product; material split, seam, supports, finish, fabrication and 42 in circulation clearances remain open. The authoritative D study remains unchanged. D is still not coordinated architectural building geometry: room-area decisions, walls/floors/assemblies, openings, M-06 fit and native stair coordination remain open. No structural or construction-readiness claim is made.
+
+## Repository safety recheck — 2026-10-28
+
+- Before tracked edits, the active sandbox was clean on `codex/house-design-sandbox` at `c741285`. Its ten commits beyond `origin/design/vr-tech-bom-roadmap` (`0e6f4b9`) are existing local work; `git rev-list --left-right --count HEAD...origin/design/vr-tech-bom-roadmap` returned `10 0`. They remain intact and unpushed.
+- The separate main checkout was clean at `1e2c5bb`, equal to `origin/main`; `main...origin/main` returned `0 0`. Its recent reflog records the merge of the design branch, with no subsequent history edits. The only remote is `origin`; no remote operation was performed.
+- No reset, rebase, force-push, prune, garbage collection, or history rewrite was run. Revit evidence remains ignored local output, not committed model content.
 
 ## M-06 toilet research checkpoint — 2026-10-27
 
@@ -25,13 +31,21 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - Made the PowerShell SVG generators emit explicit CRLF between embedded SVG elements, matching the checked-in Windows encoding and avoiding line-ending-only dirty files on repeat generation. Re-ran both generators and verified unchanged generated plan/check hashes.
 - Remaining M19 work: inspect/resolve the fit assumptions with owner/design review, measure the retained RevitCity family in context, and only then decide whether a disposable Revit derivative merits host-side export and IFC validation. This is not code, accessibility, structural, architectural certification or construction-readiness evidence.
 
-## Latest M-02 live checkpoint (2026-10-27)
+## Latest M-02 live checkpoint (2026-10-28)
 
 - The first physical-solid run exposed that `XYZ` rejects the infinity values used to initialize its bounds. The fix uses scalar bounds, filters non-finite tessellation vertices, and fails closed if a casework instance has no measurable positive-volume solid. No dimensions or tolerances changed.
 - Isolated Revit 2027 build `.local/revit-pilot/build-m02-solid-bounds-v2/Release/net10.0-windows/RevitPilot.dll` compiled with 0 errors and 2 existing Microsoft.VisualBasic reference warnings (SHA-256 `081437DFBBB125115C2F9D15E960D83D26A9B2DAF78C240A370C0BD30BF6DAE2`). Revit loaded it once after the owner authorized the unsigned-add-in prompt. Unit tests pass (33/33); `git diff --check` passes.
 - Successful Revit command report `.local/revit-pilot/kitchen-island-countertop-tests/20261027T204422938Z/countertop-test.json` records before/after saved-model SHA256 `d7efbdb96d06b1fdfe220782e9f2fda9939cd5b3007f83e67ddc08b3686c0e57` → `01a38eb274b5170d75834d0fce29e2da31e0e45f764d9ed2fac71670a4f0ef1f`, four base modules each 4 x 2 ft and 34.5 in physical height, plus one 8 x 4 ft generic countertop with 1.25 in thickness. Its top is 35.75 in above D Main FF, accepted as nominally 36 in. A repeat invocation safely refused to make a duplicate.
 - Fresh read-only Revit 2027.3 audit `.local/revit-pilot/audits/20261027T204528345Z/audit.json` matches the saved model's after-fingerprint; it records 3 levels (-5/0/+5 ft), 21 rooms, 4 Casework instances, 1 Generic Model, 0 walls/openings and 0 warnings. Configured export `.local/revit-pilot/exports/20261027T204553821Z/` records IFC2X3 SHA-256 `5f6ab5f8bd0fa3a2c52604e246ba84a7be71bb6efa94b3f72d5165a7729cda07`. Independent `validate_kitchen_island_ifc.py` passes **13/13 checks**, including exact audit/export identity, IFC hash/schema, all 21 rooms and three storeys, physical-geometry decoding, each module, countertop footprint/thickness and full assembly bounds.
 - The repeated run is an explicit idempotency safeguard: the tagged top already exists, and no duplicate was added. Verified M-02 means the geometry/IFC fit test is complete, not that the downloaded family is approved for purchase, reuse, fabrication or construction. Material split, seam, support, overhang, finish and perimeter-counter 42 in clearance checks remain unresolved. The model still has no native walls, openings or floors; stair/section, code, engineering and manual Revit review remain outstanding.
+- Fresh patched-host confirmation used Revit 2027.3 with the isolated `build-m02-solid-bounds-v2` DLL loaded (SHA-256 `081437DFBBB125115C2F9D15E960D83D26A9B2DAF78C240A370C0BD30BF6DAE2`). To avoid changing the existing study, a separate test copy was made from the preserved pre-top backup whose SHA-256 matches the prior command's before-fingerprint `d7efbdb96d06b1fdfe220782e9f2fda9939cd5b3007f83e67ddc08b3686c0e57`. The host command report `.local/revit-pilot/kitchen-island-countertop-tests/20261028T002706119Z/countertop-test.json` records the new saved-copy fingerprint `9a196455548286ecffcfa0f851c425654efc4c316c9b40e2f9dd5b5bb7cd1bd1` (2,781,184 bytes), four measured 4 x 2 ft positive-volume cabinet solids, and one 8 x 4 ft top from z=2.875 to 2.979167 ft (1.25 in thick). Audit `20261028T003043114Z` and export `20261028T003116629Z` match that exact RVT fingerprint. IFC2X3 hash is `d2ccbad29003b0fcd77f0d6fcb8d22c47c9e63a565066074b9364217ae3b3c56`; independent validation passes **13/13**, with zero schema issues, 21 spaces on 3 storeys, zero non-annotation product geometry decode failures, and six model-line annotation decode exceptions kept separate. The owner-selected D source and its baseline RVT were not edited.
+
+  Exact independent validation command (run from the main checkout using its existing repository-local IfcOpenShell environment; no software was installed):
+
+  ```powershell
+  ./.venv/Scripts/python.exe Tools/RevitPilot/validate_kitchen_island_ifc.py .local/revit-pilot/exports/20261028T003116629Z .local/revit-pilot/audits/20261028T003043114Z Architecture/Selected_Design_Iteration_2026-10-27/study.json --report .local/revit-pilot/exports/20261028T003116629Z/kitchen-island-validation.json
+  ```
+- While navigating Revit's collapsed add-in ribbon, the adjacent **Build selected D space study** command was also triggered. It produced a separate room-boundary-only run at `.local/revit-pilot/selected-d/20261028T002745959Z/`; that output is not M-02 evidence and contains no claimed construction geometry. It is retained locally. A subsequent call against the pre-existing tagged M-02 model safely refused to create a duplicate.
 
 ## M8 D building-geometry input gate (2026-10-27)
 
