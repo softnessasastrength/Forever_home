@@ -1,6 +1,6 @@
 # Revit 2027 IFC exporter and selected-D geometry validation
 
-Updated: 2026-10-28 02:45 EDT
+Updated: 2026-10-28 02:56 EDT
 Scope: identify the IFC exporter recorded by the selected-D IFC and tighten the independent check of exported room footprints. This is project-validation research, not a Revit update or an architectural design change.
 
 ## Verified local exporter identity
@@ -15,11 +15,16 @@ The previous selected-D IFC validator checked IFC parse/schema, room IDs, areas,
 
 The validator now independently decodes every `IfcSpace` body and compares its world-coordinate XY bounds, converted from IfcOpenShell's SI-metre vertices to feet, with the corresponding room rectangle in the checked-in source. It applies the source's documented main/upper/lower plan-frame offsets and a **0.02 ft numeric export tolerance**. It records per-space expected and observed bounds and records the exporter identity from the IFC header. This checks only 2D room footprints; it does not verify room heights, walls, doors, stairs, services, site coordinates, or building coordination.
 
+The IFC body-profile gate now also requires each source room to have exactly one `Body` swept-solid representation containing one rectangular extrusion whose profile area matches that room's source rectangle within **0.1 sf**. This is checked independently of `Dimensions.Area`, which could otherwise report a plausible quantity while the body profile differs. This profile-area check does not validate extrusion height or other vertical geometry.
+
+Autodesk's Revit 2027 [IFC Export Setup Options](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm) describe IFC2x3's default as Revit-calculated room geometry; the optional “Use 2D room boundaries for room volume” setting uses simplified extruded boundaries. The inspected IFC's actual body is therefore checked from its serialized geometry rather than inferred from an export setting that this run's manifest does not record. Autodesk's [Revit 2027 IFC API guide](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-API/files/Revit_API_Developers_Guide/Advanced_Topics/Export/Revit_API_Revit_API_Developers_Guide_Advanced_Topics_Export_IFC_Export_html.html) documents API export options and exporter extension behavior. The official [Revit API SDK/tools page](https://aps.autodesk.com/developer/overview/revit-api) currently lists SDKs and API samples through Revit 2027.3.
+
 ### Evidence
 
-- Added unit coverage for source-frame offsets and metre-to-foot bound conversion.
+- Added unit coverage for source-frame offsets, metre-to-foot conversion, and rejection of a compound room Body profile.
 - The first exploratory recheck exposed a double unit conversion in the new checker, producing 21 false mismatches in `.local/revalidation/selected-d-ifc-coordinate-20261028T024106625/ifc-validation-coordinate.json`. The checker was corrected to use IfcOpenShell's documented SI-metre geometry vertices directly; the initial diagnostic report is preserved and superseded by the passing report below. This was a validator defect, not a changed IFC or model.
 - On an isolated copy of Revit run `20261028T021345099Z`, replaced only the copied named RVT with the byte-identical `.0001.rvt` backup whose SHA matches the run manifest. The enhanced selected-D IFC validator passes **24/24** checks, including all 21 IFC room XY footprints, source areas/IDs/levels, three storeys, IFC2X3 schema, export hash, exact copied-RVT lineage, and empty physical-construction categories. Maximum absolute difference among all checked XY bounds is approximately `7.2e-15 ft` (floating-point serialization noise). Machine report: `.local/revalidation/selected-d-ifc-coordinate-20261028T024129523/ifc-validation-coordinate.json`.
+- After adding the independent Body-profile-area gate, the same IFC and exact backup pass **25/25** in disposable copy `.local/revalidation/ifc-body-profile-20261028T025642/exact-backup-rvt/validation.json`; the original named-RVT copy fails only the expected stale fingerprint (**24/25**). All 21 profile areas match the source. The IFC hash remains unchanged.
 - The preserved IFC itself is unchanged (SHA256 `05a529999c08bde5695af87ec6e62e9cab86a8686a85d04d739e163861dac849`). The currently named RVT in the original run remains a different hash from its manifest, so the original run must still fail exact lineage until a fresh Revit export is generated from a verified saved model.
 
 ## Interpretation and next action
@@ -31,4 +36,7 @@ This independent geometry gate materially strengthens the room-space export chec
 - [Autodesk Support: identify the IFC exporter version](https://help.autodesk.com/view/RVT/2026/ENU/?caas=caas%2Fsfdcarticles%2Fsfdcarticles%2FHow-to-view-the-IFC-exporter-version-in-Revit.html)
 - [Autodesk Revit IFC exporter releases](https://github.com/Autodesk/revit-ifc/releases) — Revit 2027 package 27.3.0.12 release notes, including room-geometry placement fixes.
 - [Autodesk Revit 2027 IFC export documentation](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-6EB68CEC-6C17-4B16-A509-30537F666C1F.htm)
+- [Autodesk Revit 2027 IFC Export Setup Options](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-DocumentPresent/files/GUID-E029E3AD-1639-4446-A935-C9796BC34C95.htm)
+- [Autodesk Revit 2027 IFC API guide](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-API/files/Revit_API_Developers_Guide/Advanced_Topics/Export/Revit_API_Revit_API_Developers_Guide_Advanced_Topics_Export_IFC_Export_html.html)
+- [Autodesk Revit API SDK and tools](https://aps.autodesk.com/developer/overview/revit-api)
 - [Autodesk Revit 2027 IFC parameter mapping](https://help.autodesk.com/view/rvt/2027/enu//?guid=GUID-C057D715-1571-4D11-8F02-417F3B385577)

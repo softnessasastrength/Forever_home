@@ -1,11 +1,18 @@
-"""Validate the quarantined RevitCity family intake before a Revit run."""
+"""Validate known family-intake candidates before a Revit run."""
 import csv
 import sys
+from hashlib import sha256
 from pathlib import Path
 
 INCOMING = {
     "M-06": "Solid_Surface_Vanity_Counter_w_Faucet_22366.rfa",
     "M-01": "Sony_Flat_LED_TV_face_based_17584.rfa",
+}
+MANUFACTURER_INCOMING = {
+    "M-06": {
+        "filename": "american-standard-champion-pro-3195A101020-bowl.rfa",
+        "sha256": "F301D2CB77F13269E21DC44FD6953946158034122BB3C10889FCBA9470846393",
+    },
 }
 REJECTED = {
     "M-02": "Island_Cabinet_or_Countertop_19967.rfa",
@@ -18,15 +25,16 @@ def main() -> int:
     rejected = root / "Revit" / "Family_Intake" / "Rejected"
     manifest = root / "Revit" / "Family_Intake" / "intake_manifest.csv"
     errors: list[str] = []
+    with manifest.open(newline="", encoding="utf-8") as stream:
+        rows = list(csv.DictReader(stream))
     for filename in INCOMING.values():
         path = incoming / filename
         if not path.is_file() or path.stat().st_size == 0:
             errors.append(f"missing or empty family: {filename}")
-    rows = list(csv.DictReader(manifest.open(newline="", encoding="utf-8")))
     for room_id, filename in INCOMING.items():
         # Multiple alternatives may be logged for one room (e.g. the kitchen
-        # island). Link each quarantined source by its own filename rather
-        # than assuming one row per room ID.
+        # island). Link each source by its own filename rather than assuming
+        # one manifest row per room ID.
         matches = [row for row in rows if row.get("room_id") == room_id and filename in (row.get("notes") or "")]
         if len(matches) != 1:
             errors.append(f"manifest linkage mismatch for {room_id}: {filename}")
@@ -39,6 +47,24 @@ def main() -> int:
                 errors.append(f"tested family has no evidence path for {room_id}: {filename}")
             elif status not in {"received", "tested-unapproved"}:
                 errors.append(f"incoming manifest state is not received or tested-unapproved for {room_id}: {filename}")
+    for room_id, candidate in MANUFACTURER_INCOMING.items():
+        filename = candidate["filename"]
+        path = incoming / filename
+        if not path.is_file() or path.stat().st_size == 0:
+            errors.append(f"missing or empty manufacturer family: {filename}")
+            continue
+        digest = sha256(path.read_bytes()).hexdigest().upper()
+        if digest != candidate["sha256"]:
+            errors.append(f"source hash mismatch for manufacturer family: {filename}")
+        matches = [row for row in rows if row.get("room_id") == room_id and filename in (row.get("notes") or "")]
+        if len(matches) != 1:
+            errors.append(f"manifest linkage mismatch for {room_id}: {filename}")
+        else:
+            row = matches[0]
+            if row.get("status") != "received" or row.get("test_run") != "queued":
+                errors.append(f"manufacturer family is not queued for isolated intake: {filename}")
+            if candidate["sha256"] not in (row.get("notes") or ""):
+                errors.append(f"manifest source hash mismatch for manufacturer family: {filename}")
     for room_id, filename in REJECTED.items():
         path = rejected / filename
         if not path.is_file() or path.stat().st_size == 0:
@@ -55,7 +81,11 @@ def main() -> int:
         for error in errors:
             print(f"FAIL: {error}")
         return 1
-    print(f"PASS: {len(INCOMING)} incoming family files, {len(REJECTED)} archived rejection, and 21015 disposition validated")
+    print(
+        f"PASS: {len(INCOMING)} RevitCity candidates, "
+        f"{len(MANUFACTURER_INCOMING)} manufacturer family with exact SHA256/provenance, "
+        f"{len(REJECTED)} archived rejection, and 21015 disposition validated"
+    )
     return 0
 
 
