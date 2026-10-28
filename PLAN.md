@@ -591,3 +591,13 @@ Acceptance criteria:
 - Explicitly leave the 30-in adjacent-fixture spacing, lavatory, walls, door/swing, user approach and plumbing route unresolved.
 
 Current status: Complete as a predecessor-only gross bounding exercise. `Tools/screen_m06_predecessor_clearance_proxy.ps1` passes its source/assignment preconditions and produces byte-identical scratch outputs (`.local/revalidation/M52-run-a.json` and `M52-run-b.json`, SHA256 `6CBC6EE2ADCC56C066B1B294850260E3FE41CA73BF278D4DA2DA52215B195071`). Both tested screen envelopes fit the 158 × 84 in gross B rectangle: 30 × 51-1/4 in and 30-1/4 × 40 in. The report says current 610AA geometry is unverified and M-06 remains unassigned. The side result assumes opposing boundaries and centered placement; no door, sink, wall build-up, rough-in or service route is shown. See `Research/M06_Champion_PRO_Predecessor_Clearance_Proxy_2026-10-28.json`; not a code, accessibility or room-fit determination.
+
+### M53 — Audit the selected 610AA manufacturer's linked documents
+
+Acceptance criteria:
+
+- Open the selected SKU's public manufacturer page and inspect the linked specification and installation documents.
+- Record document identifiers, dates, predecessor/current SKU status and dimension datums with direct source URLs.
+- Keep predecessor dimensions out of current-SKU geometry, preserve B as unassigned, and do not use seller listings as the dimensional source of truth.
+
+Current status: Complete. The current 610AA001.020 product page states 17-in height with seat and 12-in rough-in, but its “Spec Sheet” links a 2013 drawing for predecessor 211AA.104 (16-1/2-in rim, seat sold separately; 30-1/4 × 19 × 30-7/8 in nominal), and its installation guide is for the 211AA series. The selected SKU's plan dimensions remain unverified. See `Research/M06_Toilet_Options_2026-10-27.md`. Next: seek a current-SKU dimension drawing or complete model from a public manufacturer source; until then use only an explicitly labelled proxy in a disposable fit study and leave B unassigned.
