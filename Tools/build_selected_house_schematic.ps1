@@ -134,6 +134,7 @@ $lowerRunStartY = [double]$source.alternatives.B.core.stair_run_y
 $lowerRunEndY = $lowerRunStartY + $runLength
 $lowerTopLandingY = [double]$source.alternatives.B.core.stair_front_y
 $liftX = $coreXUpper + 4.0
+# Ordered maps keep serialized JSON byte-stable under Windows PowerShell 5.1.
 $stairCore = [ordered]@{
     status='proposed plan coordination using inherited B comparison dimensions; stair count and lift product remain unselected'
     comparison_risers_per_flight=8
@@ -159,8 +160,8 @@ $stairCore = [ordered]@{
     }
     lift=[ordered]@{origin_ft=@($liftX,34);width_ft=8;depth_ft=8;status='reservation only; product, pit, overrun and door side unselected'}
     main_shell_rear_edge_openings=@(
-        @{use='lower-to-main stair passage';x_interval_ft=@($coreXLower,($coreXLower+4));elevation_scope='lower/main; wall opening size and fire separation TBD'},
-        @{use='upper stair bridge';x_interval_ft=@($coreXUpper,($coreXUpper+4));elevation_scope='main/upper; wall opening size and fire separation TBD'}
+        [ordered]@{use='lower-to-main stair passage';x_interval_ft=@($coreXLower,($coreXLower+4));elevation_scope='lower/main; wall opening size and fire separation TBD'},
+        [ordered]@{use='upper stair bridge';x_interval_ft=@($coreXUpper,($coreXUpper+4));elevation_scope='main/upper; wall opening size and fire separation TBD'}
     )
     main_floor_profile_sf=[Math]::Round(40*42 - 8*$runLength - 64,3)
     upper_floor_profile_sf=1152+4*($mainShellRearY-$upperRunEndY)
@@ -169,7 +170,7 @@ $stairCore = [ordered]@{
 $layoutTitle = if ($isAdjacencyCandidate) { 'Direction D adjacency candidate - main social sequence study' } elseif ($isBathFirstAdjacencyCandidate) { 'Direction D bath-first adjacency candidate' } else { 'Selected direction D - lower flex room / B-sized main shell' }
 $layoutStatus = if ($isAdjacencyCandidate) { 'Unapproved adjacency alternative; room areas preserved; schematic blocks only' } elseif ($isBathFirstAdjacencyCandidate) { 'Unapproved bath-first adjacency alternative; room areas preserved; schematic blocks only' } else { 'owner-selected design direction; schematic blocks only; not a coordinated or approved house plan' }
 $m06FirstFitCandidate = if ($isAdjacencyCandidate) { 'west_of_core' } else { 'east_of_core' }
-$m06BlockedCandidateIds = if ($isAdjacencyCandidate) { @('east_of_core') } elseif ($isBathFirstAdjacencyCandidate) { @('west_of_core') } else { @() }
+$m06BlockedCandidateIds = if ($isAdjacencyCandidate) { @('east_of_core') } elseif ($isBathFirstAdjacencyCandidate) { @('west_of_core') } else { [ordered]@{} }
 $m06Status = if ($isAdjacencyCandidate) { 'Unapproved adjacency layout test: pantry-side B conflicts with relocated dining/pantry; dining-side A is shown as fallback. Exact position, footprint and service route remain unresolved.' } elseif ($isBathFirstAdjacencyCandidate) { 'Unapproved bath-first comparison: pantry-side B remains clear in the room-block plan; dining-side A is blocked by relocated kitchen/pantry blocks. B is still only a search window, not a bath fit; exact position, footprint and service route remain unresolved.' } else { 'owner-selected room type and test zone; pantry-side search window selected for first fit study; exact location, footprint and service route remain unresolved' }
 $study = [ordered]@{
     schema = 'forever-home.selected-house-schematic.v1'
@@ -183,7 +184,7 @@ $study = [ordered]@{
     selection = [ordered]@{
         bedroom_flex_level = 'lower (A strategy)'
         main_shell = '40 x 42 ft (B test envelope)'
-        levels = @(@{id='Lower FF'; elevation_ft=-5},@{id='Main FF'; elevation_ft=0},@{id='Upper FF'; elevation_ft=5})
+        levels = @([ordered]@{id='Lower FF'; elevation_ft=-5},[ordered]@{id='Main FF'; elevation_ft=0},[ordered]@{id='Upper FF'; elevation_ft=5})
         vertical_core = [ordered]@{ comparison_risers_per_half_flight=8; comparison_riser_in=7.5; comparison_tread_in=11; floor_assembly_placeholder_in=15; lift_reservation_ft=@(8,8); status='B stair arithmetic is a comparison baseline, not a selected stair specification; see proposed connected D core plan; final riser count, wall openings, headroom, structure and product fit remain unresolved' }
         main_public_bath = [ordered]@{ type='half bath'; id='M-06'; test_zone='arrival / hall edge'; owner_selected_first_fit_candidate='east_of_core'; first_fit_candidate=$m06FirstFitCandidate; blocked_candidate_ids=$m06BlockedCandidateIds; footprint='TBD'; position='TBD'; service_route='TBD'; status=$m06Status }
         suite_strategy = 'Retain the proposed private primary suite, primary-only primary bath, independent guest hall access, and hybrid/guest Jack-and-Jill pair.'
@@ -198,10 +199,10 @@ $study = [ordered]@{
     stair_core_test = $stairCore
     upper_door_matrix = $upperDoors
     unplaced_program = @(
-        @{id='M-06'; name='Main half bath'; reason='Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD.'},
-        @{id='M-05'; name='Coat storage / mudroom fit'; reason='Current source block is an entry/hall reservation; storage and garage arrival are not resolved.'},
-        @{id='S-01'; name='Secure storage'; reason='Discreet conditioned location remains TBD; omitted from geometric blocks.'},
-        @{id='C-01'; name='Stair, landings and lift route'; reason='D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.'}
+        [ordered]@{id='M-06'; name='Main half bath'; reason='Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD.'},
+        [ordered]@{id='M-05'; name='Coat storage / mudroom fit'; reason='Current source block is an entry/hall reservation; storage and garage arrival are not resolved.'},
+        [ordered]@{id='S-01'; name='Secure storage'; reason='Discreet conditioned location remains TBD; omitted from geometric blocks.'},
+        [ordered]@{id='C-01'; name='Stair, landings and lift route'; reason='D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.'}
     )
 }
 
@@ -441,12 +442,12 @@ $planChecks['rear_edge_opening_intervals_have_two_ordered_endpoints'] = (@($stai
 $planChecks['upper_floor_profile_includes_only_4x4_connector_extension'] = ([Math]::Abs($stairCore.upper_floor_profile_sf-1168) -lt 0.000001)
 
 $findings = @(
-    @{id='D-OPEN-01'; priority='P1'; status='open'; issue='D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure.'},
-    @{id='D-OPEN-02'; priority='P1'; status='open'; issue='M-06 is a half bath by owner direction and the arrival/hall edge is selected as its test zone; exact position, footprint, fixtures and service route remain unresolved. Keep the room out of geometry and area totals until fit is supported.'},
-    @{id='D-OPEN-03'; priority='P1'; status='open'; issue='Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved.'},
-    @{id='D-OPEN-04'; priority='P2'; status='open'; issue='Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation.'},
-    @{id='D-OPEN-05'; priority='P2'; status='open'; issue='Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified.'},
-    @{id='D-OPEN-06'; priority='P1'; status='open'; issue='The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified.'}
+    [ordered]@{id='D-OPEN-01'; priority='P1'; status='open'; issue='D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure.'},
+    [ordered]@{id='D-OPEN-02'; priority='P1'; status='open'; issue='M-06 is a half bath by owner direction and the arrival/hall edge is selected as its test zone; exact position, footprint, fixtures and service route remain unresolved. Keep the room out of geometry and area totals until fit is supported.'},
+    [ordered]@{id='D-OPEN-03'; priority='P1'; status='open'; issue='Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved.'},
+    [ordered]@{id='D-OPEN-04'; priority='P2'; status='open'; issue='Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation.'},
+    [ordered]@{id='D-OPEN-05'; priority='P2'; status='open'; issue='Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified.'},
+    [ordered]@{id='D-OPEN-06'; priority='P1'; status='open'; issue='The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified.'}
 )
 $checks = [ordered]@{
     status = if($isAdjacencyCandidate){'unapproved adjacency candidate; geometry checks only; owner selection required before replacement'}else{'schematic geometry checks only; unresolved design items remain'}
