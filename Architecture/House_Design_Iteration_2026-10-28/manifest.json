@@ -1,0 +1,12 @@
+﻿{
+    "generator":  "Tools/build_owner_followup_design.ps1",
+    "source_selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "room_program_sha256":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
+    "decision_sha256":  "542a43de13e65722fc43a0d11307204033062c2b78b516ac98bc49c63b28f090",
+    "output_hashes":  {
+                          "study_json":  "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
+                          "checks_json":  "44a8707be4b0a82c3afb50106c9ca797f12f36e121cc3836a7eac9664124f82d",
+                          "main_plan_svg":  "656e2f31e2eef7b743af2a2d061ea8d56e0220090291c7bafdc964b0adaaac47",
+                          "roof_concept_svg":  "1529caf2b72ee073db9da0e41847ae0961e98d87dc4a79897959611f5d6571fa"
+                      }
+}
