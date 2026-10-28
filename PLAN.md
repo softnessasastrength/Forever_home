@@ -383,6 +383,19 @@ Acceptance criteria:
 
 Current status: `Tools/test_m34_upper_suite_private_link.ps1` passes **7/7** source/arithmetic checks. It confirms a 5 ft current gap between U-02 and U-03, comprising the 4 ft shared corridor plus nominal side allowances. A single westward U-03 move preserves its source size and creates a 0.5 ft wall allowance to U-02, but it overlaps 36.667 sf of C-UPPER and 26.667 sf of the lift reservation after applying the documented +6 ft upper-frame translation. The current U-03 itself has a 25 sf projected lift-reservation overlap, an existing coordination issue not covered by the selected-D room-overlap checks. These are plan-screen findings; verify shaft/floor geometry in Revit before treating the reservation as definitive. No alternate full-suite packing, door, corridor-to-stair connection, Revit model or IFC is asserted. Two fresh PowerShell runs produce byte-identical outputs; JSON/SVG parsing, intersection arithmetic and path guard pass. See `Architecture/M34_Upper_Suite_Private_Link_2026-10-28/README.md` for the owner design gate.
 
+### M35 — Coordinate kitchen casework, occupied dining chairs and a porch route
+
+Acceptance criteria:
+
+- Preserve the owner-confirmed 14×12 ft kitchen and 11×10 ft dining targets and source 8×4 ft island; do not edit selected-D.
+- Test the specified perimeter cabinet depth, refrigerator/sink/dishwasher/range width reservations, range landing widths and 6 in half-wall against an explicit island move and its 42 in envelope.
+- Place four source-sized dining chair bodies and preserve an independent 36 in route from table to a nominal 5 ft French-door opening and through a candidate porch to a nominal 3 ft exterior opening.
+- Compare porch positions against pantry-side M-06 B and the selected-D comparison core without assigning B.
+- Emit ordered, source-fingerprinted PowerShell JSON/checks/SVG/manifest; test reproducibility, parseability and the repository-contained output path guard.
+- Label product operation, thresholds, doors, site orientation, Revit/IFC and code limitations.
+
+Current status: `Tools/test_m35_social_zone_casework_porch.ps1` passes **29/29** checks. The M33 baseline's island-42/table-preferred-42 clearance envelopes overlap **5.166667 sf**; a proposed 0.5 ft south shift preserves the island body inside M-02, clears both 42 in envelopes and leaves 42 in between the island and proposed south-wall casework. A source-width appliance lineup occupies 150 of 168 in, with 18 in unallocated. Four 18×20 in chairs leave a 36 in east-side route from the dining table to the proposed porch door. The east-side 12×10 ft porch candidate clears B, the island envelope and core reservations, but extends 5.5 ft beyond the main-shell test boundary; the north-side alternative overlaps 70 sf of unassigned B. M-06 B is unchanged and unassigned. No Revit/IFC geometry, product-specific operating envelopes, site orientation, or compliance conclusion is verified. See `Architecture/M35_Social_Zone_Casework_Porch_2026-10-28/README.md`.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.
