@@ -601,3 +601,14 @@ Acceptance criteria:
 - Keep predecessor dimensions out of current-SKU geometry, preserve B as unassigned, and do not use seller listings as the dimensional source of truth.
 
 Current status: Complete. The current 610AA001.020 product page states 17-in height with seat and 12-in rough-in, but its “Spec Sheet” links a 2013 drawing for predecessor 211AA.104 (16-1/2-in rim, seat sold separately; 30-1/4 × 19 × 30-7/8 in nominal), and its installation guide is for the 211AA series. The selected SKU's plan dimensions remain unverified. See `Research/M06_Toilet_Options_2026-10-27.md`. Next: seek a current-SKU dimension drawing or complete model from a public manufacturer source; until then use only an explicitly labelled proxy in a disposable fit study and leave B unassigned.
+
+### M54 — Pair predecessor toilet and lavatory research bodies in B
+
+Acceptance criteria:
+
+- Read the 8 source-documented lavatory body rectangles and M51 predecessor toilet envelope; preserve selected-D and report hashes.
+- Screen both lavatory orientations in one explicitly hypothetical shared-wall arrangement: WC centerline 15 in from a side boundary, WC-to-lavatory centerline spacing 30 in, 15 in from WC centerline to nearest lavatory body edge, and 21 in front of each fixture.
+- Check body non-overlap and gross containment for all combinations in pantry-side B; repeat deterministically in Windows PowerShell 5.1.
+- Keep all products research-only, exact 610AA geometry unverified, and M-06 unassigned. State actual walls, door/swing, approach, privacy, installation/rough-in and services are not represented.
+
+Current status: Complete as a same-wall lower-bound screen. `Tools/screen_m06_toilet_sink_gross_pair.ps1` checks 16 combinations from the existing source reports. Two Windows PowerShell 5.1 replays are byte-identical (SHA256 `DC8792ECA14CFFEB2FE4589EF6F7A303CCFCA15BE53602FCC70C68AF7E193ADB`). Modeled body-plus-front-strip extents are 53-3/4–58-1/2 in along the wall by 51-1/4 in deep, contained in B's 158 × 84 in gross bounds; minimum WC-centerline-to-sink-body-edge is 16-1/2 in and the smallest body-to-body gap is 7 in. This only shows that the nominal rectangles are not excluded by this assumed arrangement. Current toilet geometry, selected sink, walls, door, approach and service route remain unresolved. See `Research/M06_Sink_Candidates_2026-10-28.md` and the versioned JSON output.
