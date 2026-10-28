@@ -323,6 +323,17 @@ Acceptance criteria:
 
 Current status: the M25 PowerShell audit now includes a third documented option and passes 16/16 checks. Reusing the historical kitchen/dining sizes yields 168 sf + 110 sf while keeping current 240 sf living = **518 sf**; M-02 and M-03 are within their current program ranges, M-01 remains 20 sf over its range maximum, and the subtotal is seven sf below the combined maximum. The separate existing `Tools/compare_direction_d_social_room_sizes.ps1` fit-arithmetic audit passes 8/8 and records that this kitchen misses the preferred chain by 6 in on the long axis and 30 in on the short axis, while dining fails the preferred table envelope. No revised layout has been generated or selected.
 
+### M30 — Reconcile upper-suite privacy and door adjacency
+
+Acceptance criteria:
+
+- Derive the nominal room-to-room connectivity graph only from selected-D `upper_door_matrix`; fingerprint the study, current room program and selected-direction decision.
+- Check the documented primary/boutique/hybrid relationship, private-bath access, guest hall access and hybrid/guest Jack-and-Jill links.
+- Distinguish an open topology question from a failed software/data-integrity check; state the interpretation used for “suite connection.”
+- Do not change selected-D room blocks, door reservations or Revit/IFC baseline; present only bounded next-step choices.
+
+Current status: `Tools/audit_m30_upper_suite_adjacency.ps1` passes **11/11** source-contract and graph checks in two independent Windows PowerShell 5.1 runs; JSON is byte-identical (SHA256 `A966DBBE086DF29B2B1F8909715A5566CD4C7E38AF245E758A93560E8ECB3B67`). The upper primary bedroom reaches the boutique through C-PRIVATE, while U-03 has only nominal links to the shared hall and U-06; no U-01-to-U-03 path exists when the shared hall and J&J bath are excluded. The boutique also has a nominal shared-hall edge. Whether this violates the intended suite boundary is unresolved; see `Architecture/M30_Upper_Suite_Adjacency_Audit_2026-10-28/README.md`. No door is verified as a clear opening, leaf or swing.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.

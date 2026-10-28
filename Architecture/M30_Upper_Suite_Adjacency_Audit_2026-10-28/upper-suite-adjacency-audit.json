@@ -1,0 +1,214 @@
+﻿{
+    "schema":  "forever-home.m30-upper-suite-adjacency-audit.v1",
+    "status":  "pass",
+    "checks_passed":  11,
+    "checks_total":  11,
+    "checks":  [
+                   {
+                       "name":  "study_is_owner_selected_d",
+                       "passed":  true,
+                       "detail":  "layout_variant=OwnerSelectedD"
+                   },
+                   {
+                       "name":  "upper_rooms_have_unique_ids",
+                       "passed":  true,
+                       "detail":  "room_ids=U-01,U-05,C-PRIVATE,U-02,C-UPPER,U-04,U-06,U-03"
+                   },
+                   {
+                       "name":  "upper_door_reservations_have_unique_ids",
+                       "passed":  true,
+                       "detail":  "door_ids=D-U01,D-U02,D-U03,D-U04,D-U05,D-U06,D-U07,D-U08,D-U09"
+                   },
+                   {
+                       "name":  "every_door_endpoint_names_an_upper_room_or_circulation_block",
+                       "passed":  true,
+                       "detail":  "Door reservations are checked against the upper-level plan IDs."
+                   },
+                   {
+                       "name":  "room_program_adjacency_requirements_are_present",
+                       "passed":  true,
+                       "detail":  "Source text includes the primary/boutique/hybrid, primary-bath, J\u0026J, and guest-circulation requirements."
+                   },
+                   {
+                       "name":  "selected_direction_privacy_requirements_are_present",
+                       "passed":  true,
+                       "detail":  "Source text includes the private connector, hall-accessible guest, and hybrid/guest J\u0026J arrangement."
+                   },
+                   {
+                       "name":  "guest_has_nominal_direct_shared_hall_access",
+                       "passed":  true,
+                       "detail":  "This checks a door-matrix edge, not a usable opening or clear route."
+                   },
+                   {
+                       "name":  "primary_bath_is_nominally_accessed_only_from_primary",
+                       "passed":  true,
+                       "detail":  "primary_bath_door_edges=1"
+                   },
+                   {
+                       "name":  "j_and_j_has_nominal_hybrid_and_guest_connections",
+                       "passed":  true,
+                       "detail":  "hybrid_edge=True; guest_edge=True"
+                   },
+                   {
+                       "name":  "upper_suite_topology_gap_is_detected",
+                       "passed":  true,
+                       "detail":  "The shared C-UPPER hall and U-06 J\u0026J bath are excluded when checking a private U-01-to-U-03 route; current reservations provide no such route."
+                   },
+                   {
+                       "name":  "boutique_shared_hall_exposure_is_detected",
+                       "passed":  true,
+                       "detail":  "Current door matrix includes U-02 to C-UPPER as well as U-02 to C-PRIVATE."
+                   }
+               ],
+    "source_fingerprints_sha256":  {
+                                       "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "room_program":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
+                                       "selected_direction_decision":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                   },
+    "upper_level":  {
+                        "room_and_circulation_blocks":  [
+                                                            {
+                                                                "id":  "U-01",
+                                                                "name":  "Primary bedroom",
+                                                                "kind":  "room"
+                                                            },
+                                                            {
+                                                                "id":  "U-05",
+                                                                "name":  "Primary bath",
+                                                                "kind":  "room"
+                                                            },
+                                                            {
+                                                                "id":  "C-PRIVATE",
+                                                                "name":  "Private connector",
+                                                                "kind":  "circulation"
+                                                            },
+                                                            {
+                                                                "id":  "U-02",
+                                                                "name":  "Boutique",
+                                                                "kind":  "room"
+                                                            },
+                                                            {
+                                                                "id":  "C-UPPER",
+                                                                "name":  "4 ft suite / public hall",
+                                                                "kind":  "circulation"
+                                                            },
+                                                            {
+                                                                "id":  "U-04",
+                                                                "name":  "Guest bedroom",
+                                                                "kind":  "room"
+                                                            },
+                                                            {
+                                                                "id":  "U-06",
+                                                                "name":  "Jack and Jill bath",
+                                                                "kind":  "room"
+                                                            },
+                                                            {
+                                                                "id":  "U-03",
+                                                                "name":  "Hybrid bedroom / office",
+                                                                "kind":  "room"
+                                                            }
+                                                        ],
+                        "nominal_door_edges":  [
+                                                   {
+                                                       "door_id":  "D-U01",
+                                                       "from":  "C-UPPER",
+                                                       "to":  "U-01",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U02",
+                                                       "from":  "U-01",
+                                                       "to":  "U-05",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U03",
+                                                       "from":  "U-01",
+                                                       "to":  "C-PRIVATE",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U04",
+                                                       "from":  "C-PRIVATE",
+                                                       "to":  "U-02",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U05",
+                                                       "from":  "U-02",
+                                                       "to":  "C-UPPER",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U06",
+                                                       "from":  "U-03",
+                                                       "to":  "C-UPPER",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U07",
+                                                       "from":  "U-04",
+                                                       "to":  "C-UPPER",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U08",
+                                                       "from":  "U-04",
+                                                       "to":  "U-06",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   },
+                                                   {
+                                                       "door_id":  "D-U09",
+                                                       "from":  "U-03",
+                                                       "to":  "U-06",
+                                                       "nominal_reservation_ft":  3.5,
+                                                       "status":  "schematic reservation only; not a clear opening or verified door"
+                                                   }
+                                               ],
+                        "private_primary_boutique_hybrid_path_present":  false,
+                        "boutique_has_shared_hall_edge":  true,
+                        "guest_has_shared_hall_edge":  true,
+                        "j_and_j_connects_hybrid_and_guest":  true,
+                        "primary_bath_neighbor_is_primary_only":  true
+                    },
+    "finding":  {
+                    "status":  "open design conflict",
+                    "interpretation":  "For this audit, Primary/boutique/hybrid and U-03 suite connection mean a nominal path among U-01/U-02/U-03 that does not pass through shared C-UPPER circulation or the shared U-06 bath. This is a deliberately strict interpretation of the checked-in adjacency language; owner intent may instead allow a shared-hall connection.",
+                    "observed":  {
+                                     "primary_to_boutique_private_path":  true,
+                                     "primary_to_hybrid_private_path":  false,
+                                     "hybrid_nominal_shared_hall_door":  true,
+                                     "boutique_nominal_shared_hall_door":  true,
+                                     "guest_nominal_shared_hall_door":  true,
+                                     "j_and_j_connects_hybrid_and_guest":  true,
+                                     "primary_bath_nominal_neighbor":  "U-01 only"
+                                 },
+                    "design_gate":  "Decide whether the hybrid must connect privately into the primary/boutique sequence, or whether hall access plus Jack-and-Jill is the intended separation. If private continuity is required, develop and compare room/door alternatives in a derivative; preserve the selected-D baseline until the owner accepts one.",
+                    "proposals":  [
+                                      {
+                                          "id":  "retain_current_topology",
+                                          "status":  "proposal; not selected",
+                                          "consequence":  "Preserves direct guest hall access and J\u0026J sharing, while leaving the hybrid outside the private primary/boutique path."
+                                      },
+                                      {
+                                          "id":  "test_private_hybrid_suite_connection",
+                                          "status":  "proposal; requires a plan derivative",
+                                          "consequence":  "Would need a revised adjacency/door arrangement; current blocks provide no private U-01-to-U-03 route without using the shared hall or U-06."
+                                      }
+                                  ]
+                },
+    "limitations":  [
+                        "Door-matrix reservations are schematic lines only; nominal 3.5 ft reservation length is not a measured clear opening, door leaf, swing or code value.",
+                        "This graph audit does not test wall construction, physical door locations, furniture, privacy acoustics, egress, accessibility or Revit/IFC geometry.",
+                        "The selected-D study remains unchanged; neither proposal is adopted.",
+                        "No professional, legal, code-compliance, structural-safety or construction-readiness claim is made."
+                    ]
+}
