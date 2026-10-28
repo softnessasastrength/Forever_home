@@ -226,12 +226,16 @@ Follow-up comparison adds TOTO Supreme LPT241G, a 22-7/8 × 19-5/8 in manufactur
 
 ### M21 — Coordinate the main-floor public route and porch envelope
 
+Status: **completed as a reproducible, unapproved plan-coordinate comparison**; entry and porch choices remain open.
+
 Acceptance criteria:
 
 - Carry the 36 in plan-route proxy, balanced dining seats and both nominal door positions into one main-floor comparison; keep the M18 10 in/15 in proxy gaps and the 20 in east return labeled as schematic measurements.
-- Resolve how the B-first east-side M-05 entry approaches the public hall before assigning exterior orientation.
+- Test a plan-coordinate arrival path from the east test-shell edge through M-05 toward M-01; keep geographic orientation, actual entry opening and hall connection unselected until documented.
 - Compare the 12 × 10 ft porch orientation's 4 in test-outline reserve with the 10 × 12 ft orientation's 20 in projection beyond the 40 × 42 ft outline. Do not call either result a wall/foundation/site fit.
 - Keep walls, door swings, floor transitions and accessible route claims gated on documented assemblies, site and product dimensions.
+
+Evidence: `Tools/test_m21_main_floor_access_study.ps1` regenerates the combined entry/route/porch sketch, source-fingerprinted JSON and checks. Its 18 arithmetic/data-guard checks pass; the M-05 approach remains explicitly a proposal because the block data contain no modeled walls, openings, door or site approach.
 
 ### M22 — Resolve the M-01 hearth and viewing wall before family placement
 
@@ -249,6 +253,12 @@ Acceptance criteria:
 - Carry forward the owner's **already-selected Adirondack chair model** recorded in `Architecture/Building_Program.md`; retrieve that exact source/asset before modeling and do not substitute a RevitCity result.
 - Coordinate chairs with the eventual pool, patio and outdoor-fireplace choices only after site, grade, circulation and fire-feature locations are defined.
 - Keep count, spacing, paving, guard/edge conditions and exterior fireplace/pool geometry unassigned until supported by owner/site information.
+
+### M24 — Audit the Revit 2027 IFC export and property-mapping setup
+
+- Record the host-verified named IFC export setup and parameter-mapping template used by the Revit 2027 workflow; capture versioned source/configuration fingerprints where available.
+- Preserve IFC2x3 output compatibility already used by the project and verify exported inventory/schema independently after any setup change.
+- Keep absent or inaccessible host-side settings marked unverified; do not infer them from an IFC file alone.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

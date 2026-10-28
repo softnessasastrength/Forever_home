@@ -42,6 +42,18 @@ Neither nominal door option verifies a 36 in clear leaf. The source specificatio
 
 Reproduce and review [the centered-door plan](social-route-plan.svg), [the offset-door plan](social-route-plan-offset-door.svg), [porch-orientation options](porch-orientation-options.svg), and the machine-readable [study report](study.json). No IFC was generated: this is an unapproved 2D comparison, not a Revit authoring update. The validated selected-D and M-02 IFC evidence remains unchanged.
 
+## M21 east-side arrival path test
+
+The companion [M21 plan-coordinate access comparison](m21-main-floor-access-study.svg) carries the east-side M-05 entry block and the existing M18 dining/porch alternatives onto one schematic. Reproduce it after the B-first candidate and M18 chain with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File Tools/test_m21_main_floor_access_study.ps1
+```
+
+The input fingerprints and **18/18** arithmetic/data-guard checks are recorded in [the M21 report](m21-main-floor-access-study.json) and [check results](m21-main-floor-access-checks.json). The B-first source places M-05 8 in inside the east edge of the 40 × 42 ft test shell; its 4 ft 4 in room-block width contains a centered 36 in route proxy in plan. M-05 sits 6 in from M-01 over a 12 ft shared-edge span. The dashed line therefore tests a plausible east-to-west arrival path through M-05 toward the public living space.
+
+That is a route proposal, not a resolved entrance design: the 6 in gap is a room-block datum, no wall/opening/door is modeled, and the actual entry location, swing, garage route, grade, front orientation and site remain unknown. The inherited M18 route and porch arithmetic is carried forward unchanged: 10 in and 15 in chair-proxy gaps for the two nominal 5 ft dining-door positions; 4 in test-outline reserve for the 12 × 10 ft porch; 20 in projection for the rotated 10 × 12 ft option. Both porch options remain 120 sf. No M-06, wall, door or IFC geometry is assigned or generated.
+
 ## Owner decision still needed
 
 The current evidence favours retaining the larger D room blocks for a detailed schematic, but it does not select the B-first room arrangement or porch position. The most consequential choices are whether to treat the porch as a separate 10 × 12 ft projection beyond the test shell or revise the room arrangement, whether the dining door should stay centered despite the cramped seating option, and whether the east-side entry trade-off is acceptable. These are surfaced for review before any wall/floor modeling.

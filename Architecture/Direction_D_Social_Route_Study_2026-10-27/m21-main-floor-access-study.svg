@@ -1,0 +1,27 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='840' height='800' viewBox='0 0 840 800'>
+<style>text{font-family:Arial,sans-serif;fill:#202a35}.title{font-size:23px;font-weight:bold}.label{font-size:12px}.small{font-size:10px}.room{fill:#e9e2d6;stroke:#574d43;stroke-width:1.5}.entry{fill:#f4dba6;stroke:#8b5e19;stroke-width:2}.shell{fill:none;stroke:#233d55;stroke-width:3}.route{fill:#74a8c9;fill-opacity:.32;stroke:#17628a;stroke-width:2;stroke-dasharray:8 5}.porchA{fill:#66aa7e;fill-opacity:.22;stroke:#227044;stroke-width:2;stroke-dasharray:8 4}.porchB{fill:#bd7aaa;fill-opacity:.18;stroke:#78385f;stroke-width:2;stroke-dasharray:4 4}.arrow{stroke:#17628a;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#17628a"/></marker></defs>
+<text x='30' y='27' class='title'>M21 | plan-coordinate access and porch comparison</text>
+<rect x='55' y='42' width='640' height='672' class='shell'/>
+<rect x='351' y='52.67' width='256' height='240' class='room'/>
+<text x='353.4' y='63.07' class='label'>M-01 Living room</text>
+<rect x='65.67' y='52.67' width='277.33' height='256' class='room'/>
+<text x='68.07' y='63.07' class='label'>M-02 Kitchen</text>
+<rect x='65.67' y='316.67' width='181.33' height='224' class='room'/>
+<text x='68.07' y='327.07' class='label'>M-03 Dining</text>
+<rect x='255' y='316.67' width='80' height='112' class='room'/>
+<text x='257.4' y='327.07' class='label'>M-04 Pantry</text>
+<rect x='615' y='52.67' width='69.33' height='192' class='entry'/>
+<text x='617.4' y='63.07' class='label'>M-05 Front arrival / hall</text>
+<rect x='65.67' y='548.67' width='192' height='160' class='porchA'/>
+<rect x='76.33' y='548.67' width='160' height='192' class='porchB'/>
+<text x='68.87' y='596.67' class='small'>12 x 10: 4 in reserve</text>
+<text x='79.53' y='628.67' class='small'>10 x 12: 20 in beyond test outline</text>
+<rect x='607' y='124.67' width='88' height='48' class='route'/>
+<path d='M 697.4 148.67 L 607 148.67' class='arrow'/>
+<text x='570.2' y='116.67' class='small'>DASHED 36 in route proxy</text>
+<text x='570.2' y='127.07' class='small'>east plan edge; front TBD</text>
+<text x='55' y='746' class='small'>Dining door and 36 in social route options are in the M18 source report (10 in / 15 in proxy gaps).</text>
+<text x='55' y='762' class='small'>Porch overlays: 12 x 10 reserve 4 in; 10 x 12 projects 20 in beyond the test outline.</text>
+<text x='55' y='778' class='small'>No openings, walls, site orientation, finished clearances or accessibility claims are represented.</text>
+</svg>
