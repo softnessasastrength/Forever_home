@@ -1,5 +1,5 @@
 ﻿{
-    "count":  18,
+    "count":  20,
     "passed":  [
                    "selected_D_source_matches_owner_followup",
                    "all_six_upper_rooms_and_private_connector_come_from_selected_D",
@@ -9,6 +9,8 @@
                    "hybrid_guest_JJ_is_in_search_graph",
                    "search_balances_all_three_root_rooms",
                    "each_root_plan_preserves_all_links_and_places_primary_bath_last",
+                   "landing_aligned_root_seeds_follow_source_approach_sample",
+                   "landing_seeded_room_boxes_remain_inside_shell_and_clear_of_obstacles",
                    "blocked_grid_matches_exact_clearance_predicate",
                    "upper_frame_offset_and_lift_projection_are_source_derived",
                    "upper_shell_dimensions_match_documented_case",
@@ -32,6 +34,8 @@
                    "hybrid_guest_JJ_is_in_search_graph":  true,
                    "search_balances_all_three_root_rooms":  true,
                    "each_root_plan_preserves_all_links_and_places_primary_bath_last":  true,
+                   "landing_aligned_root_seeds_follow_source_approach_sample":  true,
+                   "landing_seeded_room_boxes_remain_inside_shell_and_clear_of_obstacles":  true,
                    "blocked_grid_matches_exact_clearance_predicate":  true,
                    "upper_frame_offset_and_lift_projection_are_source_derived":  true,
                    "upper_shell_dimensions_match_documented_case":  true,
@@ -44,7 +48,9 @@
                    "selected_D_file_unchanged_during_run":  true
                },
     "search_summary":  {
-                           "algorithm":  "deterministic tree-attached rectangle search; rotate the rooting room among U-01, U-02 and U-04, split budget equally across each root orientation, and place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach; test each remaining 4ft hall on an exact-parity precomputed 2in occupancy grid",
+                           "algorithm":  "deterministic tree-attached rectangle search; rotate the rooting room among U-01, U-02 and U-04, split budget equally across each root orientation, and place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach",
+                           "landing_aligned_root_seed_search":  false,
+                           "landing_root_seed_sides":  "origin",
                            "node_limit":  1500,
                            "search_root_rooms":  [
                                                      "U-01",
@@ -59,37 +65,61 @@
                                                              "root_room":  "U-01",
                                                              "anchor_width_ft":  16,
                                                              "anchor_depth_ft":  10,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          },
                                                          {
                                                              "root_room":  "U-01",
                                                              "anchor_width_ft":  10,
                                                              "anchor_depth_ft":  16,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          },
                                                          {
                                                              "root_room":  "U-02",
                                                              "anchor_width_ft":  16,
                                                              "anchor_depth_ft":  9.6666666666666661,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          },
                                                          {
                                                              "root_room":  "U-02",
                                                              "anchor_width_ft":  9.6666666666666661,
                                                              "anchor_depth_ft":  16,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          },
                                                          {
                                                              "root_room":  "U-04",
                                                              "anchor_width_ft":  13.666666666666666,
                                                              "anchor_depth_ft":  8,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          },
                                                          {
                                                              "root_room":  "U-04",
                                                              "anchor_width_ft":  8,
                                                              "anchor_depth_ft":  13.666666666666666,
-                                                             "nodes_expanded":  250
+                                                             "root_x_ft":  0,
+                                                             "root_y_ft":  0,
+                                                             "nodes_expanded":  250,
+                                                             "seed":  "origin",
+                                                             "seed_rejected":  false
                                                          }
                                                      ],
                            "layout_limit":  5000,

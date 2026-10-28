@@ -3,7 +3,8 @@ param(
     [int]$NodeLimit = 1500,
     [int]$LayoutLimit = 5000,
     [double]$ShellWidthOverrideFt = 0,
-    [double]$ShellDepthOverrideFt = 0
+    [double]$ShellDepthOverrideFt = 0,
+    [switch]$LandingAlignedRootSeeds
 )
 
 $ErrorActionPreference='Stop'
@@ -38,8 +39,10 @@ if($ShellWidthOverrideFt -gt 0){
 }
 $script:Grid=1.0/6.0
 $script:NodeLimit=[Math]::Max(100,$NodeLimit)
+$script:UseLandingAlignedRootSeeds=($LandingAlignedRootSeeds.IsPresent -eq $true)
 $script:SearchRoots=@('U-01','U-02','U-04')
-$script:PerRootOrientationNodeBudget=[Math]::Max(1,[Math]::Floor($script:NodeLimit/($script:SearchRoots.Count*2.0)))
+$script:LandingSeedSides=@('north','east_south_edge')
+$script:PerRootOrientationNodeBudget=[Math]::Max(1,[Math]::Floor($script:NodeLimit/($script:SearchRoots.Count*2.0*$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides.Count}else{1}))))
 $script:RootNodeStart=0
 $script:RootSearchStats=[System.Collections.Generic.List[object]]::new()
 $script:LayoutLimit=[Math]::Max(1,$LayoutLimit)
@@ -144,7 +147,7 @@ function Add-CompletedLayout($state){
     $bounds=Get-CurrentBounds $state
     if($bounds.width -gt ($script:ShellW+0.000001) -or $bounds.depth -gt ($script:ShellD+0.000001)){return}
     $normalized=[ordered]@{}
-    foreach($id in @('U-01','C-PRIVATE','U-02','U-03','U-05','U-06','U-04')){$r=$state[$id];$normalized[$id]=New-Box $id ($r.x_ft-$bounds.min_x) ($r.y_ft-$bounds.min_y) $r.width_ft $r.depth_ft}
+    foreach($id in @('U-01','C-PRIVATE','U-02','U-03','U-05','U-06','U-04')){$r=$state[$id];if($script:UseLandingAlignedRootSeeds){$normalized[$id]=New-Box $id $r.x_ft $r.y_ft $r.width_ft $r.depth_ft}else{$normalized[$id]=New-Box $id ($r.x_ft-$bounds.min_x) ($r.y_ft-$bounds.min_y) $r.width_ft $r.depth_ft}}
     $key=(@($normalized.Keys|Sort-Object|ForEach-Object{$r=$normalized[$_];'{0}:{1:F4},{2:F4},{3:F4},{4:F4}' -f $_,$r.x_ft,$r.y_ft,$r.width_ft,$r.depth_ft}) -join '|')
     if($script:UniqueKeys.Add($key)){$script:Layouts.Add([ordered]@{bounds=$bounds;rects=$normalized;key=$key})}
 }
@@ -156,6 +159,11 @@ function Search-Layout([int]$index,$state){
     foreach($candidate in (Get-CandidateChildren $parent $spec)){
         $valid=$true
         if(-not(Test-ParentContact $candidate $parent)){$valid=$false}
+        if($valid -and $script:UseLandingAlignedRootSeeds){
+            if($candidate.x_ft -lt -0.000001 -or $candidate.y_ft -lt -0.000001 -or ($candidate.x_ft+$candidate.width_ft) -gt ($script:ShellW+0.000001) -or ($candidate.y_ft+$candidate.depth_ft) -gt ($script:ShellD+0.000001)){$valid=$false}
+            if($valid -and (Test-BoxesOverlap $candidate $liftKeepout)){$valid=$false}
+            if($valid -and (Test-BoxesOverlap $candidate $script:StartApproach)){$valid=$false}
+        }
         if($valid){foreach($existingId in $state.Keys){if($existingId -eq $edge.parent){continue};if(-not(Test-Separated $candidate $state[$existingId])){$valid=$false;break}}}
         if(-not $valid){continue}
         $state.Add($edge.child,$candidate)
@@ -171,10 +179,29 @@ foreach($rootId in $script:SearchRoots){
     $script:Order=@($script:RootPlans[$rootId])
     $anchorSpec=$script:Rooms[$rootId]
     foreach($anchor in @([ordered]@{w=$anchorSpec.width_ft;d=$anchorSpec.depth_ft},[ordered]@{w=$anchorSpec.depth_ft;d=$anchorSpec.width_ft})){
-        $script:RootNodeStart=$script:Nodes
-        $state=[ordered]@{$rootId=(New-Box $rootId 0 0 $anchor.w $anchor.d)}
-        Search-Layout 0 $state
-        $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;nodes_expanded=($script:Nodes-$script:RootNodeStart)})
+        $seedSides=@('origin')
+        if($script:UseLandingAlignedRootSeeds){$seedSides=$script:LandingSeedSides}
+        foreach($seedSide in $seedSides){
+            $script:RootNodeStart=$script:Nodes
+            if($seedSide -eq 'north'){
+                # Align the root's north-side goal sample with the source landing approach centre.
+                $rootX=$startX-$anchor.w/2.0;$rootY=$startY-2.5-$anchor.d
+            }elseif($seedSide -eq 'east_south_edge'){
+                # Align the root's east-side goal sample one 4ft corridor width below the approach centre.
+                # Its corridor square then abuts the south edge of the reserved landing approach.
+                $rootX=$startX-2.5-$anchor.w;$rootY=($startY-4.0)-$anchor.d/2.0
+            }else{$rootX=0.0;$rootY=0.0}
+            $rootBox=New-Box $rootId $rootX $rootY $anchor.w $anchor.d
+            $seedInvalid=($rootX -lt -0.000001 -or $rootY -lt -0.000001 -or ($rootX+$anchor.w) -gt ($script:ShellW+0.000001) -or ($rootY+$anchor.d) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $rootBox $liftKeepout) -or ($seedSide -ne 'origin' -and (Test-BoxesOverlap $rootBox $script:StartApproach)))
+            if($seedInvalid){
+                $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootX;root_y_ft=$rootY;nodes_expanded=0;seed=$seedSide;seed_rejected=$true})
+                continue
+            }
+            $state=[ordered]@{$rootId=$rootBox}
+            Search-Layout 0 $state
+            $script:RootSearchStats.Add([pscustomobject]@{root_room=[string]$rootId;anchor_width_ft=$anchor.w;anchor_depth_ft=$anchor.d;root_x_ft=$rootBox.x_ft;root_y_ft=$rootBox.y_ft;nodes_expanded=($script:Nodes-$script:RootNodeStart);seed=$seedSide;seed_rejected=$false})
+            if($script:Layouts.Count -ge $script:LayoutLimit){break}
+        }
         if($script:Layouts.Count -ge $script:LayoutLimit){break}
     }
     if($script:Layouts.Count -ge $script:LayoutLimit){break}
@@ -268,7 +295,7 @@ $script:DoorReservation=$sourceDoorWidth
 $layouts=@($script:Layouts|Sort-Object @{Expression={ $_.bounds.width*$_.bounds.depth }},@{Expression={ $_.bounds.width+$_.bounds.depth }})
 $tested=[System.Collections.Generic.List[object]]::new();$bestPrivate=$null;$bestU03Side=$null;$translationsTested=0;$routeRuns=0
 foreach($layout in $layouts){
-    $translations=Find-LiftClearTranslations $layout $liftKeepout
+    if($script:UseLandingAlignedRootSeeds){$translations=@([ordered]@{offset_x_ft=0.0;offset_y_ft=0.0;rects=$layout.rects})}else{$translations=Find-LiftClearTranslations $layout $liftKeepout}
     foreach($placement in $translations){
         $translationsTested++
         $route=Get-HallReachability $placement.rects $liftKeepout;$routeRuns++
@@ -298,6 +325,20 @@ foreach($rootId in $script:SearchRoots){
     if($visited.Count -ne 7){$rootPlanIntegrity=$false}
 }
 $rootRoomsObserved=@($script:RootSearchStats|ForEach-Object{if($_.PSObject.Properties['root_room']){[string]$_.root_room}}|Sort-Object -Unique)
+$expectedRootSeedRuns=$script:SearchRoots.Count*2*$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides.Count}else{1})
+$alignedRootSeeds=($script:RootSearchStats.Count -eq $expectedRootSeedRuns)
+if($script:UseLandingAlignedRootSeeds){
+    foreach($seedRecord in $script:RootSearchStats){
+        if($seedRecord.seed -eq 'north'){$expectedX=$startX-$seedRecord.anchor_width_ft/2.0;$expectedY=$startY-2.5-$seedRecord.anchor_depth_ft}
+        elseif($seedRecord.seed -eq 'east_south_edge'){$expectedX=$startX-2.5-$seedRecord.anchor_width_ft;$expectedY=($startY-4.0)-$seedRecord.anchor_depth_ft/2.0}
+        else{$alignedRootSeeds=$false;continue}
+        $expectedBox=New-Box $seedRecord.root_room $expectedX $expectedY $seedRecord.anchor_width_ft $seedRecord.anchor_depth_ft
+        $seedShouldReject=($expectedX -lt -0.000001 -or $expectedY -lt -0.000001 -or ($expectedX+$seedRecord.anchor_width_ft) -gt ($script:ShellW+0.000001) -or ($expectedY+$seedRecord.anchor_depth_ft) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $expectedBox $liftKeepout) -or (Test-BoxesOverlap $expectedBox $script:StartApproach))
+        if([Math]::Abs($seedRecord.root_x_ft-$expectedX) -gt 0.000001 -or [Math]::Abs($seedRecord.root_y_ft-$expectedY) -gt 0.000001 -or ([bool]$seedRecord.seed_rejected -ne [bool]$seedShouldReject)){$alignedRootSeeds=$false}
+    }
+}
+$landingSeedLayoutIntegrity=$true
+if($script:UseLandingAlignedRootSeeds){foreach($layout in $script:Layouts){foreach($r in $layout.rects.Values){if($r.x_ft -lt -0.000001 -or $r.y_ft -lt -0.000001 -or ($r.x_ft+$r.width_ft) -gt ($script:ShellW+0.000001) -or ($r.y_ft+$r.depth_ft) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $r $liftKeepout) -or (Test-BoxesOverlap $r $script:StartApproach)){$landingSeedLayoutIntegrity=$false;break}};if(-not $landingSeedLayoutIntegrity){break}}}
 $checks=[ordered]@{
     selected_D_source_matches_owner_followup=($proposal.source_selected_D_sha256 -eq $selectedHash)
     all_six_upper_rooms_and_private_connector_come_from_selected_D=($script:Rooms.Count -eq 7)
@@ -305,8 +346,10 @@ $checks=[ordered]@{
     door_reservation_is_source_derived_3_5ft=([Math]::Abs($script:DoorReservation-3.5) -lt 0.000001)
     owner_private_sequence_is_in_search_graph=(@($script:Topology|Where-Object{$_.id -eq 'U01_PRIVATE' -and $_.a -eq 'U-01' -and $_.b -eq 'C-PRIVATE'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'BOUTIQUE_PRIVATE' -and $_.a -eq 'C-PRIVATE' -and $_.b -eq 'U-02'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'PRIVATE_HYBRID' -and $_.a -eq 'U-02' -and $_.b -eq 'U-03'}).Count -eq 1)
     hybrid_guest_JJ_is_in_search_graph=(@($script:Topology|Where-Object{$_.id -eq 'HYBRID_JJ' -and $_.a -eq 'U-03' -and $_.b -eq 'U-06'}).Count -eq 1 -and @($script:Topology|Where-Object{$_.id -eq 'GUEST_JJ' -and $_.a -eq 'U-06' -and $_.b -eq 'U-04'}).Count -eq 1)
-    search_balances_all_three_root_rooms=(($rootRoomsObserved -join ',') -eq 'U-01,U-02,U-04' -and @($script:RootSearchStats).Count -eq 6)
+    search_balances_all_three_root_rooms=(($rootRoomsObserved -join ',') -eq 'U-01,U-02,U-04' -and @($script:RootSearchStats).Count -eq $expectedRootSeedRuns)
     each_root_plan_preserves_all_links_and_places_primary_bath_last=$rootPlanIntegrity
+    landing_aligned_root_seeds_follow_source_approach_sample=((-not $script:UseLandingAlignedRootSeeds) -or $alignedRootSeeds)
+    landing_seeded_room_boxes_remain_inside_shell_and_clear_of_obstacles=((-not $script:UseLandingAlignedRootSeeds) -or $landingSeedLayoutIntegrity)
     blocked_grid_matches_exact_clearance_predicate=$script:BlockedGridParityCheck
     upper_frame_offset_and_lift_projection_are_source_derived=([Math]::Abs($upperOffset-6.0) -lt 0.000001 -and [Math]::Abs($liftKeepout.y_ft-28.0) -lt 0.000001 -and [Math]::Abs($liftKeepout.depth_ft-[Math]::Min(8.0,($script:ShellD-28.0))) -lt 0.000001)
     upper_shell_dimensions_match_documented_case=(($script:ShellCase -match '^selected-D-derived') -and [Math]::Abs($script:ShellW-[double]$selected.shells.rear_upper[0]) -lt 0.000001 -and [Math]::Abs($script:ShellD-[double]$selected.shells.rear_upper[1]) -lt 0.000001) -or (($script:ShellCase -match '^exploratory') -and [Math]::Abs($script:ShellW-[double]$proposal.shell.width_ft) -lt 0.000001 -and [Math]::Abs($script:ShellD-[double]$proposal.shell.depth_ft) -lt 0.000001)
@@ -328,7 +371,7 @@ $report=[ordered]@{
     title='M37 - upper-suite room packing and public-hall route search'
     status=$status
     source_fingerprints_sha256=[ordered]@{'selected_D_study.json'=$selectedHash;'owner_followup_study.json'=$proposalHash;'Requirements/Room_Program.md'=$programHash}
-    search=[ordered]@{algorithm='deterministic tree-attached rectangle search; rotate the rooting room among U-01, U-02 and U-04, split budget equally across each root orientation, and place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach; test each remaining 4ft hall on an exact-parity precomputed 2in occupancy grid';node_limit=$script:NodeLimit;search_root_rooms=$script:SearchRoots;per_root_orientation_node_budget=$script:PerRootOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:Grid;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
+    search=[ordered]@{algorithm=$(if($script:UseLandingAlignedRootSeeds){'deterministic landing-aligned root seeding; align north-side room goal to the landing approach centre or east-side goal to one source 4ft corridor width south of centre; reject room candidates outside shell or overlapping lift/approach during placement; evaluate hall route only after a complete packing; rotate roots among U-01, U-02 and U-04'}else{'deterministic tree-attached rectangle search; rotate the rooting room among U-01, U-02 and U-04, split budget equally across each root orientation, and place the primary bath last; sample five contact alignments with 0.5ft wall bands and source 3.5ft contact reservations; enumerate translation boundaries from shell, lift and reserved stair approach'});landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;landing_root_seed_sides=$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides}else{@('origin')});node_limit=$script:NodeLimit;search_root_rooms=$script:SearchRoots;per_root_orientation_node_budget=$script:PerRootOrientationNodeBudget;nodes_expanded=$script:Nodes;node_limit_reached=$searchBudgetReached;root_orientation_runs=@($script:RootSearchStats);layout_limit=$script:LayoutLimit;layouts_recorded=$script:Layouts.Count;raw_complete_layouts=$script:RawLayouts;start_approach_translation_rejects=$script:StartApproachTranslationRejected;translations_tested=$translationsTested;hall_route_searches=$routeRuns;routes_with_clear_stair_approach=$tested.Count;coordinate_grid_ft=$script:Grid;source_door_reservation_ft=$script:DoorReservation;search_complete=$searchComplete}
     source_dimensions_ft=$script:Rooms
     coordinate_basis=[ordered]@{shell_case=$script:ShellCase;width_ft=$script:ShellW;depth_ft=$script:ShellD;selected_D_upper_frame_offset_ft=$upperOffset;note='The full-plate case reuses the owner-follow-up 40 x 42 ft main-floor test envelope as an unapproved upper-shell expansion comparison.'}
     preserved_constraints=@('U-01 to primary-only U-05 through a nominal 3.5ft contact reservation','U-01 to C-PRIVATE to U-02','owner-directed U-02 to U-03 private route only; no direct U-03 to C-UPPER door','U-04 retains independent guest shared-hall access','U-03 and U-04 each contact U-06 for Jack-and-Jill access','source 8x8ft lift reservation, clipped to its upper-wing projection','4ft-wide hall route from source upper landing to U-01, U-02 and U-04; no U-03 hall door is modeled')
@@ -368,7 +411,7 @@ $svg.Add(('<text class="note" x="40" y="730">Nodes {0}; layouts {1}; search comp
 $svg.Add('<text class="note" x="40" y="752">Not Revit walls, door swings, floor openings, code or engineering.</text>')
 $svg.Add('</svg>')
 $svg -join "`n"|Set-Content -LiteralPath $svgPath -Encoding utf8
-$manifest=[ordered]@{generator='Tools/test_m37_upper_suite_pack_and_route.ps1';source_fingerprints_sha256=$report.source_fingerprints_sha256;search_parameters=[ordered]@{node_limit=$script:NodeLimit;layout_limit=$script:LayoutLimit};output_hashes_sha256=[ordered]@{search=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
+$manifest=[ordered]@{generator='Tools/test_m37_upper_suite_pack_and_route.ps1';source_fingerprints_sha256=$report.source_fingerprints_sha256;search_parameters=[ordered]@{node_limit=$script:NodeLimit;layout_limit=$script:LayoutLimit;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;shell_width_override_ft=$ShellWidthOverrideFt;shell_depth_override_ft=$ShellDepthOverrideFt};output_hashes_sha256=[ordered]@{search=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
 $manifest|ConvertTo-Json -Depth 12|Set-Content -LiteralPath (Join-Path $target 'manifest.json') -Encoding utf8
 Write-Output("M37 search-integrity checks passed: {0}/{1}" -f $checks.Count,$checks.Count)
 Write-Output("Search nodes: {0}/{1}; bounded layouts: {2}; lift-clear route placements: {3}; route runs: {4}." -f $script:Nodes,$script:NodeLimit,$script:Layouts.Count,$translationsTested,$routeRuns)

@@ -7,11 +7,14 @@
                                    },
     "search_parameters":  {
                               "node_limit":  1500,
-                              "layout_limit":  5000
+                              "layout_limit":  5000,
+                              "landing_aligned_root_seed_search":  false,
+                              "shell_width_override_ft":  0,
+                              "shell_depth_override_ft":  0
                           },
     "output_hashes_sha256":  {
-                                 "search":  "91b637b9e94643c67de52e8989bc656d3b8530119036557a3b2c32e0d226ef05",
-                                 "checks":  "92e3f6bd96cca55ee632aab3da2c42a5af570ae56a6c36b6a44952066c94302c",
+                                 "search":  "8fccf8a4a56583d8e343ffb60eeaa85a2fcff2156615aa2078bc988efb9bf913",
+                                 "checks":  "c85632785de1c8579061e8862454997977db21eb022708939de7a469ae745b31",
                                  "svg":  "5d3e17656880b98d279850499ce9a6c4064e80f76f43f9c478bc77e4093fec02"
                              }
 }
