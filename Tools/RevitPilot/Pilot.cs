@@ -1009,25 +1009,17 @@ public class FamilyIntakeCommand : IExternalCommand
         // Committing the wall transaction regenerates the document; Revit forbids
         // Document.Regenerate() outside an open transaction.
 
-        var geometryOptions = new Options { ComputeReferences = true, DetailLevel = ViewDetailLevel.Fine };
-        PlanarFace? hostFace = null;
-        var wallGeometry = wall.get_Geometry(geometryOptions)
-            ?? throw new InvalidOperationException("The disposable host wall returned no geometry.");
-        foreach (GeometryObject item in wallGeometry)
-        {
-            if (item is not Solid solid || solid.Volume <= 1e-9) continue;
-            foreach (Face face in solid.Faces)
-            {
-                if (face is PlanarFace planar && planar.Reference is not null && Math.Abs(planar.FaceNormal.X) > 0.999)
-                {
-                    hostFace = planar;
-                    break;
-                }
-            }
-            if (hostFace is not null) break;
-        }
-        if (hostFace?.Reference is null)
-            throw new InvalidOperationException("No referenceable vertical planar face was found on the disposable host wall.");
+        // Obtain stable host-side references through Revit's host-object API.
+        // A PlanarFace discovered by traversing wall.get_Geometry() is not
+        // guaranteed to carry a usable Reference, even with ComputeReferences.
+        var hostFaceReference = HostObjectUtils.GetSideFaces(wall, ShellLayerType.Interior)
+            .Select(reference => (Reference: reference, Face: wall.GetGeometryObjectFromReference(reference) as PlanarFace))
+            .Where(candidate => candidate.Face is not null && Math.Abs(candidate.Face.FaceNormal.X) > 0.999)
+            .Select(candidate => (candidate.Reference, Face: candidate.Face!))
+            .FirstOrDefault();
+        if (hostFaceReference.Reference is null || hostFaceReference.Face is null)
+            throw new InvalidOperationException("HostObjectUtils returned no referenceable interior wall side parallel to project X for the disposable host probe.");
+        var hostFace = hostFaceReference.Face;
 
         var uv = hostFace.GetBoundingBox();
         var point = hostFace.Evaluate(new UV((uv.Min.U + uv.Max.U) / 2.0, (uv.Min.V + uv.Max.V) / 2.0));
@@ -1035,7 +1027,7 @@ public class FamilyIntakeCommand : IExternalCommand
         using (var place = new Transaction(target, "Place Evolution four-inch type on vertical host"))
         {
             place.Start();
-            instance = target.Create.NewFamilyInstance(hostFace.Reference, point, XYZ.BasisY, symbol);
+            instance = target.Create.NewFamilyInstance(hostFaceReference.Reference, point, XYZ.BasisY, symbol);
             place.Commit();
         }
         // The committed placement transaction regenerates the instance geometry.
