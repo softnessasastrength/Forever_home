@@ -24,7 +24,7 @@ M33 passed **14/14** checks on both refreshes. Its four outputs were byte-identi
 - manifest.json: EC083F316604D9934743BE3AD0B4BD724ECF04312C84375D69B487FFD7DC66E7
 - open-social-zone.svg: D1EDBFCF5FD8B038C6E905BC6075C26B0C15717A963AA42455719D576ECE2F8A
 
-M57 passed **5/5** source and contract checks on both runs. The corrected report SHA256 is 3B5E6B993B2A9C1A43282B76687D6A89AADA4A0709F991FD3F53DFD3B01BF6; its paired M33 input SHA256 is C0DDF94965A00ECFE609E31D753D1A03DFF3F38E391EE169EE2685205837E3F1.
+M57 passed **5/5** source and contract checks on both runs. The corrected report SHA256 is 436D558C28C1C1BA00F1FA06CADC989EFD3D79956FC4A9C689D8D326F21F7ECA; its paired M33 input SHA256 is C0DDF94965A00ECFE609E31D753D1A03DFF3F38E391EE169EE2685205837E3F1.
 
 | Attachment edge | Room-block overlap | Inside 40 × 42 ft comparison shell | Route proxy intersects M33 table pull-back envelope |
 |---|---|---:|---:|

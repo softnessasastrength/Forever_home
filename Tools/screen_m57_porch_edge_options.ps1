@@ -65,12 +65,20 @@ foreach($d in $directions){
   $doorFit=@(foreach($width in $doorWidths){[ordered]@{nominal_opening_width_ft=$width;path_width_fits_nominal_opening=($width -ge 3.0);centered_opening_interval_ft=@([Math]::Round($d.doorCenter-$width/2.0,4),[Math]::Round($d.doorCenter+$width/2.0,4))}})
   $diningRect=Rect 'M-03 dining block' $dining.x_ft $dining.y_ft $dining.width_ft $dining.depth_ft
   $contact=Overlap $porch $diningRect
-  $options+=,[ordered]@{edge=$d.name;porch=$porch;door_wall=$d.wall;shares_edge_with_dining=($d.name -eq 'north' -and [Math]::Abs($porch.y_ft-($dining.y_ft+$dining.depth_ft)) -lt 0.000001 -or $d.name -eq 'south' -and [Math]::Abs(($porch.y_ft+$porch.depth_ft)-$dining.y_ft) -lt 0.000001 -or $d.name -eq 'east' -and [Math]::Abs($porch.x_ft-($dining.x_ft+$dining.width_ft)) -lt 0.000001 -or $d.name -eq 'west' -and [Math]::Abs(($porch.x_ft+$porch.width_ft)-$dining.x_ft) -lt 0.000001);door_span_overlap_with_dining_wall_ft=if($d.name -in @('north','south')){[Math]::Min(($porch.x_ft+$porch.width_ft),($dining.x_ft+$dining.width_ft))-[Math]::Max($porch.x_ft,$dining.x_ft)}else{[Math]::Min(($porch.y_ft+$porch.depth_ft),($dining.y_ft+$dining.depth_ft))-[Math]::Max($porch.y_ft,$dining.y_ft)};porch_dining_body_overlap_area_sf=$contact.area_sf;nominal_door_options=$doorFit;route_proxy=$route;route_overlaps_M33_36in_chair_pullback_envelope=$routePullback.overlap;route_pullback_overlap_area_sf=$routePullback.area_sf;overlaps_room_blocks=$collisions;contained_in_unapproved_main_shell=(Inside $porch $shell);shell_overlap=(Overlap $porch $shell)}
+  $sharesEdge=$false
+  switch($d.name){
+    'north' {$sharesEdge=([Math]::Abs($porch.y_ft-($dining.y_ft+$dining.depth_ft)) -lt 0.000001)}
+    'south' {$sharesEdge=([Math]::Abs(($porch.y_ft+$porch.depth_ft)-$dining.y_ft) -lt 0.000001)}
+    'east' {$sharesEdge=([Math]::Abs($porch.x_ft-($dining.x_ft+$dining.width_ft)) -lt 0.000001)}
+    'west' {$sharesEdge=([Math]::Abs(($porch.x_ft+$porch.width_ft)-$dining.x_ft) -lt 0.000001)}
+  }
+  $wallSpan=if($d.name -in @('north','south')){[Math]::Min(($porch.x_ft+$porch.width_ft),($dining.x_ft+$dining.width_ft))-[Math]::Max($porch.x_ft,$dining.x_ft)}else{[Math]::Min(($porch.y_ft+$porch.depth_ft),($dining.y_ft+$dining.depth_ft))-[Math]::Max($porch.y_ft,$dining.y_ft)}
+  $options+=,[ordered]@{edge=$d.name;porch=$porch;door_wall=$d.wall;shares_edge_with_dining=$sharesEdge;door_span_overlap_with_dining_wall_ft=$wallSpan;porch_dining_body_overlap_area_sf=$contact.area_sf;nominal_door_options=$doorFit;route_proxy=$route;route_overlaps_M33_36in_chair_pullback_envelope=$routePullback.overlap;route_pullback_overlap_area_sf=$routePullback.area_sf;overlaps_room_blocks=$collisions;contained_in_unapproved_main_shell=(Inside $porch $shell);shell_overlap=(Overlap $porch $shell)}
 }
 $checks=[ordered]@{
   source_M33_fingerprints_match_current_studies=($m33.source_fingerprints_sha256.'owner_followup_study.json' -eq $hashes.owner_followup_study_json -and $m33.source_fingerprints_sha256.'selected_D_study.json' -eq $hashes.selected_D_study_json)
   source_porch_dimensions_are_12x10=($porchW -eq 12.0 -and $porchD -eq 10.0)
-  all_four_edge_attachments_share_a_dining_boundary=($options.Count -eq 4 -and @($options|Where-Object{-not $_.shares_edge_with_dining -or $_.door_span_overlap_with_dining_wall_ft -lt $dining.depth_ft -and $_.edge -in @('east','west') -or $_.door_span_overlap_with_dining_wall_ft -lt $dining.width_ft -and $_.edge -in @('north','south')}).Count -eq 0)
+  all_four_edge_attachments_share_a_dining_boundary=($options.Count -eq 4 -and @($options|Where-Object{-not $_.shares_edge_with_dining -or ($_.edge -in @('east','west') -and $_.door_span_overlap_with_dining_wall_ft -lt ($dining.depth_ft-0.000001)) -or ($_.edge -in @('north','south') -and $_.door_span_overlap_with_dining_wall_ft -lt ($dining.width_ft-0.000001))}).Count -eq 0)
   all_options_allow_a_nominal_5ft_or_6ft_door_for_36in_proxy=(@($options|Where-Object{-not($_.nominal_door_options|Where-Object{$_.path_width_fits_nominal_opening}).Count}).Count -eq 0)
   selected_D_and_followup_source_fingerprints_unchanged=($hashes.selected_D_study_json -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb' -and $proposal.source_selected_D_sha256 -eq $hashes.selected_D_study_json)
 }

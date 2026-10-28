@@ -1,0 +1,132 @@
+﻿{
+    "schema":  "forever-home.m58-east-porch-chair-route.v1",
+    "title":  "M58 â€” east porch route with a four-chair body arrangement",
+    "status":  "one unselected furniture-route candidate; owner/site coordination remains open",
+    "source_fingerprints_sha256":  {
+                                       "M57_report":  "436d558c28c1c1ba00f1fa06cadc989efd3d79956fc4a9c689d8d326f21f7eca",
+                                       "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "kitchen_dining_porch_specs":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+                                   },
+    "source_paths":  {
+                         "M57_report":  "Architecture/M57_Porch_Edge_Options_2026-10-28/porch-options.json",
+                         "owner_followup":  "Architecture/House_Design_Iteration_2026-10-28/study.json",
+                         "selected_D":  "Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                         "spec":  "Architecture/Kitchen_Dining_Porch_Specs.md"
+                     },
+    "geometry":  {
+                     "porch":  {
+                                   "name":  "east-attached 12x10 ft porch proposal",
+                                   "x_ft":  33,
+                                   "y_ft":  13.166666666666666,
+                                   "width_ft":  12,
+                                   "depth_ft":  10
+                               },
+                     "dining_table":  {
+                                          "name":  "36x60in dining table (long axis along x)",
+                                          "x_ft":  25,
+                                          "y_ft":  17.166666666666664,
+                                          "width_ft":  5,
+                                          "depth_ft":  3,
+                                          "area_sf":  15
+                                      },
+                     "chair_body_dimensions_in":  [
+                                                      18,
+                                                      20
+                                                  ],
+                     "chair_arrangement_assumption":  "Four 18x20 in chair bodies, two on each 60 in long side, equally spaced by centers at 1/4 and 3/4 table length; no chairs at table ends.",
+                     "chairs":  [
+                                    {
+                                        "name":  "north occupied chair body proxy at x=26.250ft",
+                                        "x_ft":  25.5,
+                                        "y_ft":  20.166666666666664,
+                                        "width_ft":  1.5,
+                                        "depth_ft":  1.6666666666666667
+                                    },
+                                    {
+                                        "name":  "south occupied chair body proxy at x=26.250ft",
+                                        "x_ft":  25.5,
+                                        "y_ft":  15.499999999999995,
+                                        "width_ft":  1.5,
+                                        "depth_ft":  1.6666666666666667
+                                    },
+                                    {
+                                        "name":  "north occupied chair body proxy at x=28.750ft",
+                                        "x_ft":  28,
+                                        "y_ft":  20.166666666666664,
+                                        "width_ft":  1.5,
+                                        "depth_ft":  1.6666666666666667
+                                    },
+                                    {
+                                        "name":  "south occupied chair body proxy at x=28.750ft",
+                                        "x_ft":  28,
+                                        "y_ft":  15.499999999999995,
+                                        "width_ft":  1.5,
+                                        "depth_ft":  1.6666666666666667
+                                    }
+                                ],
+                     "chair_table_overlaps":  [
+
+                                              ],
+                     "chair_pair_overlaps":  [
+
+                                             ],
+                     "chairs_overlapping_route":  [
+
+                                                  ],
+                     "route":  {
+                                   "name":  "36in path along table east end to east dining threshold",
+                                   "x_ft":  30,
+                                   "y_ft":  17.166666666666664,
+                                   "width_ft":  3,
+                                   "depth_ft":  3
+                               },
+                     "door_options":  [
+                                          {
+                                              "nominal_door_width_ft":  5,
+                                              "centered_opening_interval_ft":  [
+                                                                                   15.6667,
+                                                                                   20.6667
+                                                                               ],
+                                              "route_width_ft":  3,
+                                              "route_fits_nominal_interval":  true
+                                          },
+                                          {
+                                              "nominal_door_width_ft":  6,
+                                              "centered_opening_interval_ft":  [
+                                                                                   15.1667,
+                                                                                   21.1667
+                                                                               ],
+                                              "route_width_ft":  3,
+                                              "route_fits_nominal_interval":  true
+                                          }
+                                      ],
+                     "M57_clearance_note":  "The route is inside the broad 36 in table pull-back envelope, but does not overlap these four discrete chair-body proxies."
+                 },
+    "checks":  {
+                   "all_source_fingerprints_match":  true,
+                   "selected_table_matches_documented_60x36_orientation":  true,
+                   "four_chairs_created_from_18x20_spec":  true,
+                   "route_36in_is_continuous_from_table_body_to_east_dining_boundary":  true,
+                   "route_has_no_overlap_with_four_chair_body_proxies":  true,
+                   "chair_body_proxies_clear_table_and_each_other":  true,
+                   "route_is_contained_in_dining_block":  true,
+                   "route_fits_both_nominal_door_opening_intervals":  true,
+                   "east_porch_remains_unselected_and_outside_shell_area_is_50_sf":  true
+               },
+    "failures":  [
+
+                 ],
+    "assumptions":  [
+                        "The east porch option is only a room-block candidate; 50 sf projects beyond the unapproved 40x42 ft test shell and the site boundary/orientation are unknown.",
+                        "Chair count and 18x20 in body size come from the project specification; the two-per-long-side arrangement and exact positions are proposed solely for this screen.",
+                        "Occupied chair body is represented by its 18x20 in rectangular footprint. Human body reach, occupied-person envelope, chair pull-out motion, wall thickness, door leaf/stop clear width, maneuvering and porch furniture are not represented.",
+                        "The 5 ft and 6 ft door widths are nominal product-unit dimensions from the project specification, not measured clear openings.",
+                        "This is not a code, accessibility, ergonomics, or construction clearance determination."
+                    ],
+    "limitations":  [
+                        "The screen shows a 36 in geometric strip between the table end and the dining room-block boundary without overlap against the four assumed chair rectangles. It does not prove the path clear of seated people, moving chairs, a door leaf, wall build-up, threshold or porch furniture.",
+                        "The route overlaps the M33 uniform table pull-back envelope; this candidate relies on leaving the table end unoccupied by chairs.",
+                        "Porch, furniture and door locations remain proposals. No Revit or IFC geometry was changed or validated; M-06-B and selected D remain unchanged."
+                    ]
+}
