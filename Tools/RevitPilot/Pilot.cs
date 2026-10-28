@@ -997,26 +997,47 @@ public class FamilyIntakeCommand : IExternalCommand
             var results = new List<object>();
             foreach (var path in Directory.EnumerateFiles(incoming, "*.rfa").OrderBy(p => p, StringComparer.OrdinalIgnoreCase))
             {
+                string stage = "open_family";
                 try
                 {
-                    var familyName = Path.GetFileNameWithoutExtension(path);
-                    Family? family = null;
-                    bool loaded;
-                    using (var t = new Transaction(target, $"Load intake family {familyName}"))
+                    string familyName;
+                    string? familyCategory;
+                    string placementType;
+                    var symbols = new List<FamilySymbol>();
+                    bool anyLoaded = false;
+                    using (var familyDocument = app.OpenDocumentFile(path))
                     {
-                        t.Start();
-                        loaded = target.LoadFamily(path, out family);
-                        t.Commit();
+                        var sourceFamily = familyDocument.OwnerFamily
+                            ?? throw new InvalidOperationException("The opened RFA has no owner family.");
+                        familyName = string.IsNullOrWhiteSpace(sourceFamily.Name)
+                            ? Path.GetFileNameWithoutExtension(path)
+                            : sourceFamily.Name;
+                        familyCategory = sourceFamily.FamilyCategory?.Name;
+                        placementType = sourceFamily.FamilyPlacementType.ToString();
+                        // Revit's documented document-to-document overload is called on
+                        // the open family document. It avoids path-based symbol loading,
+                        // which returned false for these upgraded vendor RFAs without a
+                        // useful failure reason.
+                        stage = "load_family_document_to_target";
+                        Family loadedFamily = familyDocument.LoadFamily(target);
+                        anyLoaded = loadedFamily is not null;
+                        if (loadedFamily is null)
+                            throw new InvalidOperationException("FamilyDocument.LoadFamily(target) returned no family.");
+                        familyName = string.IsNullOrWhiteSpace(loadedFamily.Name) ? familyName : loadedFamily.Name;
+                        symbols.AddRange(loadedFamily.GetFamilySymbolIds()
+                            .Select(id => target.GetElement(id)).OfType<FamilySymbol>());
+                        if (symbols.Count == 0)
+                            throw new InvalidOperationException($"Loaded family '{familyName}' contains no symbols.");
                     }
-                    var symbols = family is null ? new List<FamilySymbol>() : family.GetFamilySymbolIds()
-                        .Select(id => target.GetElement(id)).OfType<FamilySymbol>().ToList();
+                    stage = "activate_family_symbols";
+                    Family family = symbols[0].Family;
                     if (symbols.Any(symbol => !symbol.IsActive))
                     {
                         using var activate = new Transaction(target, $"Activate intake symbols {familyName}");
                         activate.Start();
                         foreach (var symbol in symbols.Where(symbol => !symbol.IsActive)) symbol.Activate();
-                        activate.Commit();
                         target.Regenerate();
+                        activate.Commit();
                     }
                     var inspected = new List<object>();
                     foreach (var symbol in symbols)
@@ -1030,17 +1051,17 @@ public class FamilyIntakeCommand : IExternalCommand
                     results.Add(new
                     {
                         file = Path.GetFileName(path),
-                        status = loaded ? "loaded" : "already_present",
-                        family = family?.Name,
-                        category = family?.FamilyCategory?.Name,
-                        placement_type = family?.FamilyPlacementType.ToString(),
+                        status = anyLoaded ? "loaded" : "already_present",
+                        family = family.Name,
+                        category = familyCategory,
+                        placement_type = placementType,
                         type_count = inspected.Count,
                         types = inspected
                     });
                 }
                 catch (Exception ex)
                 {
-                    results.Add(new { file = Path.GetFileName(path), status = "failed", error = ex.Message });
+                    results.Add(new { file = Path.GetFileName(path), status = "failed", stage, error = ex.ToString() });
                 }
                 finally { }
             }
