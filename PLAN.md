@@ -396,6 +396,18 @@ Acceptance criteria:
 
 Current status: `Tools/test_m35_social_zone_casework_porch.ps1` passes **29/29** checks. The M33 baseline's island-42/table-preferred-42 clearance envelopes overlap **5.166667 sf**; a proposed 0.5 ft south shift preserves the island body inside M-02, clears both 42 in envelopes and leaves 42 in between the island and proposed south-wall casework. A source-width appliance lineup occupies 150 of 168 in, with 18 in unallocated. Four 18×20 in chairs leave a 36 in east-side route from the dining table to the proposed porch door. The east-side 12×10 ft porch candidate clears B, the island envelope and core reservations, but extends 5.5 ft beyond the main-shell test boundary; the north-side alternative overlaps 70 sf of unassigned B. M-06 B is unchanged and unassigned. No Revit/IFC geometry, product-specific operating envelopes, site orientation, or compliance conclusion is verified. See `Architecture/M35_Social_Zone_Casework_Porch_2026-10-28/README.md`.
 
+### M36 — Screen steep-gable ridge direction and Connecticut roof-code inputs
+
+Acceptance criteria:
+
+- Use only the source-derived 40×42 ft test envelope; compare ridge directions without assigning site northing, pitch, rise, eaves, overhangs or roof assemblies.
+- Express ridge rise as a function of half-run and an unassigned pitch ratio; quantify the relative span difference without inventing structural dimensions.
+- Refresh Connecticut code-status research from official DAS/CSBC sources, distinguish IRC from IBC provisions, and state municipality/permit/site dependencies.
+- Emit a source-fingerprinted PowerShell report, checks, SVG and manifest with repeatable outputs, parsable JSON/SVG and a repository-contained path guard.
+- Make no code, structural, certification, permit or construction-readiness claim.
+
+Current status: `Tools/build_m36_roof_orientation_study.ps1` passes **11/11** checks. The 40 ft transverse option has a 20 ft half-run; the 42 ft transverse option has a 21 ft half-run, so the latter would have 5% greater rise at any identical eventual pitch. No pitch or actual rise is assigned. Two fresh PowerShell runs produce byte-identical `roof-study.json` (`C2CC01A7F10CEAC813B49E5F3E745117893DA9F3793623B3D6EECF934D505BD4`), `checks.json` (`82E1EDF8568057AB1E8E0D82B14BD2FDB3D230429E5CBE4E22248C8DFC9FC6B7`), SVG (`A6F2106516C5779FB5E6A281B8BA2A74D27E7ADA0B710249455FF800C2B64889`) and manifest (`B96946C82B2C30E9B14B2215C31533596F1AF98895E1D20A934D6E2126A354F6`). The official Connecticut DAS pages report the 2022 CSBC currently adopted for permit applications from October 1, 2022, with the planned 2026 effective date delayed at the time checked. The research note separates the IRC roof snow-table amendment from the IBC sloped-roof calculation amendments and preserves site/municipality/permit limitations. See `Research/Connecticut_Roof_Code_Research_2026-10-28.md` and `Architecture/M36_Roof_Orientation_Study_2026-10-28/README.md`. This is a ridge-orientation screen, not a roof design or compliance check.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.

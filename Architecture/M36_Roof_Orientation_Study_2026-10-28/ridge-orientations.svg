@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="580" viewBox="0 0 1050 580">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:23px;font-weight:bold}.sub{font-size:14px;fill:#5b554d}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}.ridgeA{stroke:#a86632;stroke-width:5}.ridgeB{stroke:#557989;stroke-width:5}.dim{stroke:#8c847a;stroke-width:1.5;stroke-dasharray:5 4}.label{font-size:14px}.formula{font-size:13px;fill:#5b554d}.badge{font-weight:bold;font-size:16px}</style>
+<text class="title" x="30" y="34">M36 â€” gable ridge orientation on the test envelope</text>
+<text class="sub" x="30" y="58">Plan comparison only. Ridge direction is relative to x/y, not north or the site.</text>
+<text class="badge" x="60" y="102">A â€” ridge parallel to 42ft side</text>
+<rect class="shell" x="60" y="120" width="160" height="168"/>
+<line class="ridgeA" x1="140" y1="120" x2="140" y2="288"/>
+<text class="label" x="60" y="312">40ft span / 20ft half-run</text>
+<text class="formula" x="60" y="334">ridge rise = 20ft Ã— pitch ratio; pitch not selected</text>
+<text class="badge" x="550" y="102">B â€” ridge parallel to 40ft side</text>
+<rect class="shell" x="550" y="120" width="160" height="168"/>
+<line class="ridgeB" x1="550" y1="204" x2="710" y2="204"/>
+<text class="label" x="550" y="312">42ft span / 21ft half-run</text>
+<text class="formula" x="550" y="334">ridge rise = 21ft Ã— pitch ratio; pitch not selected</text>
+<text class="sub" x="30" y="520">At the same pitch, B has a 1ft greater half-run (5%). No pitch, roof height, snow load or framing is assigned.</text>
+</svg>
