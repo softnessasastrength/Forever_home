@@ -1,0 +1,27 @@
+# M-06 lavatory candidates
+
+**Status:** product research only. M-06 remains an unassigned, owner-selected half bath in pantry-side search window B. No basin, pedestal, vanity or toilet is selected by this record.
+
+## Owner's design context
+
+`Architecture/Bathrooms_Specs.md` calls for a warm, traditional fixture within the home's cozy, whimsical New England direction. The public-zone half bath has no selected interior dimensions, finish assembly, door or plumbing route. A pedestal and a vanity are different design choices: the pedestal preserves a lighter open floor appearance but offers no enclosed storage; a vanity may add storage but needs a specific product and a verified depth/door/approach arrangement. Do not assign either form from style alone.
+
+## Manufacturer-documented product comparison
+
+| Candidate | Product evidence | Project relevance / unresolved items |
+|---|---|---|
+| **American Standard Evolution 0467004.020** | Manufacturer lists nominal overall 22 × 17-1/2 × 34-1/4 in and labels the model unavailable; LIXIL Pro lists it discontinued. The official family downloaded for study is 2014 vintage. Revit 2027.3 measured three types at 22 × 34.25 × 17.5052 in local XYZ, with three positive-volume solids each; it is WorkPlaneBased. | Smallest measured pedestal candidate so far. The 34.25 in dimension lies on family-local Y and only maps to vertical height under the assumed vertical-face host orientation. RFA type names (`0467.400/.800/.100`) do not prove the selected sales SKU, and `.400` calls itself “basin only” despite the exposed pedestal option. Keep discontinued, exact-type/pedestal mapping, installation and host orientation unresolved. See [manufacturer product listing](https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top), [manufacturer RFA](https://lixil.cdn.celum.cloud/253890_Basin-Pedestal-American_Standard-Evolution-0467_Series_original.rfa), and the measured [family envelope report](M06_Evolution_Family_Envelope_Screen_2026-10-28.json). |
+| **KOHLER Tresham K-2844-4-0** | KOHLER's current US page identifies a 24 in square pedestal sink with 4 in centerset holes. Its specification dated 2024-03-16 identifies the K-2757-4 basin plus K-2767 pedestal, fireclay construction, and nominal overall 24 × 19-1/2 × 34-5/8 in dimensions. KOHLER describes Tresham as Shaker-inspired/classic American design. | Stronger documented product identity and closer traditional styling; 2 in wider, 2 in deeper and 3/8 in taller than Evolution. The basin-and-leg assembly is explicit. The product page offers an Add to Cart control in KOHLER's US store. A Home Depot search listing carried $638.40 when crawled roughly three months before this review; treat that as stale retail context, not a live quote or purchasing authorization. The Studio KOHLER library exposes Revit/RFA files for the single-hole sibling K-2844-1; an exact 4-in-centerset family file and its type mapping have not yet been obtained or inspected. See [KOHLER product page](https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/tresham-24-pedestal-bathroom-sink-with-4-centerset-faucet-holes-2844-4), [2024-03-16 specification PDF](https://resources.kohler.com/webassets/kpna/catalog/pdf/en/K-2844-4_spec_US-CA_Kohler_en.pdf), [Studio KOHLER design-file page for K-2844-1](https://dev.studiokohler.com/products/bathroom/bathroom-sinks/2844-1?sku=K-2844-1-0), and [retail listing](https://www.homedepot.com/p/203241904). |
+
+## Gross-envelope screen, and what it does not establish
+
+Selected-D search window B is documented as a 13 ft 2 in × 7 ft gross room-block gap (not clear interior dimensions). Both the Evolution 22 × 17-1/2 in body and Tresham 24 × 19-1/2 in body rectangles are smaller than B in either plan orientation. This is only a body-rectangle comparison: it does not add the toilet, user approach, sink use zone, wall finish/build-up, door/swing, rough-in or service route. The fact that either sink rectangle can be drawn somewhere inside B does **not** demonstrate a half-bath layout or assign a room.
+
+## Gate before any M-06 model placement
+
+1. Decide whether the design needs a pedestal sink's open/lighter appearance or a storage vanity, using the documented house style and owner's priorities.
+2. For the chosen live product, obtain the exact Revit family or author a visibly labelled schematic body envelope from the current manufacturer dimension sheet. Revit family dimensions must be measured from positive-volume solids; verify SKU, type, hosting/orientation and full basin/leg assembly.
+3. Resolve the selected toilet's exact overall model geometry and a cited half-bath-specific clearance basis for the known project jurisdiction/site. Then test toilet + lavatory, user approach, entry/door and a plausible service path in B without treating B's gross gap as an interior room.
+4. Keep M-06 unassigned and preserve the owner-selected D space/IFC baseline until those inputs pass. No M-06 IFC should be exported from rectangles alone.
+
+No code-compliance, accessibility, plumbing-feasibility, purchase or product-availability guarantee is made here. Confirm current price, stock, color and downloadable file at the point of selection.
