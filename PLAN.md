@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in a new isolated validation run, while the original named RVT remains stale. On 2026-10-28 at 04:51 EDT, the selected-D PowerShell generator passed 43/43 in two fresh scratch runs with all seven outputs byte-identical; the M25 area comparison passes 11/11 and is independently reproducible. The offline unittest suite passed 37/37 at the last documented run. IFC room names match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues. The current named RVT no longer matches the export fingerprint; the exact backup/RVT/IFC pair passes 26/26 in a new isolated validation run, while the original named RVT remains stale. On 2026-10-28 at 04:51 EDT, the selected-D PowerShell generator passed 43/43 in two fresh scratch runs with all seven outputs byte-identical; the M25 area comparison now passes 16/16 and is independently reproducible. The offline unittest suite passed 37/37 at the last documented run. IFC room names match source; the export has no property or quantity sets on its 21 spaces. Revit host interaction is still blocked by an Autodesk trial WebView intercepting input; no trust choice was made. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
 
 ## Repository safety baseline
 
@@ -279,7 +279,7 @@ Acceptance criteria:
 - Verify the review CSV matches the study block arithmetic and the room-program source ranges.
 - Present bounded retain-or-retarget proposals without changing selected D or inventing replacement dimensions.
 
-Current status: `Tools/audit_m25_social_room_area_reconciliation.ps1` passes 11/11 checks. Two fresh PowerShell 5.1 runs produced byte-identical JSON (SHA256 `4A828984CC93FE7B793DBD122CBE49B5A0A018788BEBA285CD3B02A0BECE82A7`). The report compares 676 sf of selected-D living/kitchen/dining room blocks with a combined preliminary range of 420–525 sf. Retaining the current blocks or retargeting within those ranges is an owner design choice; neither is selected. See `Architecture/M25_Social_Room_Area_Reconciliation_2026-10-28/README.md`.
+Current status: `Tools/audit_m25_social_room_area_reconciliation.ps1` passes 16/16 checks. Two fresh PowerShell 5.1 runs produced byte-identical JSON (SHA256 `72547E8C15C09C9476193DBCF045897B93EC93C036FA3A0DA336CCB1E1DE60C6`). The report compares 676 sf of selected-D living/kitchen/dining room blocks with a combined preliminary range of 420–525 sf, and adds the earlier documented 14 × 12 ft kitchen / 11 × 10 ft dining option (518 sf with current D living). That option has known preferred-fit shortfalls in the existing comparison. No room sizes or layouts have been selected. See `Architecture/M25_Social_Room_Area_Reconciliation_2026-10-28/README.md`.
 
 ### M26 — Inspect public exact-SKU M-06 toilet family alternative
 
@@ -311,6 +311,17 @@ Acceptance criteria:
 - Regenerate the JSON report twice from unchanged inputs and compare the reports byte-for-byte.
 
 Current status: `Tools/RevitPilot/validate_selected_d_ifc.py` passes **26/26** twice against `.local/revit-pilot/selected-d/exact-backup-validation-m22-20261028/`; both reports match byte-for-byte (SHA256 `F3DE33E36318B0C050218B2D73056B046338DB130EE991A3FEA91E2B05A28389`). IFC2X3 has zero schema issues, 21 named spaces on three storeys match source, and the intended physical construction categories are empty. It reports zero property-set and quantity-set relationships for all 21 spaces. These are results from the preserved derivative; the currently named RVT remains stale versus the export record.
+
+### M29 — Compare previously documented kitchen/dining dimensions against current area and fit checks
+
+Acceptance criteria:
+
+- Derive the earlier kitchen/dining option only from the checked-in room specifications, and test its areas against current room-program ranges.
+- Preserve the current selected-D living area in the comparison and label the resulting total as a partial social-room subtotal.
+- Carry forward the existing kitchen-chain and dining-table fit findings so an area reduction is not presented as a fit improvement.
+- Do not alter selected D, replace the source dimensions, or infer a new layout.
+
+Current status: the M25 PowerShell audit now includes a third documented option and passes 16/16 checks. Reusing the historical kitchen/dining sizes yields 168 sf + 110 sf while keeping current 240 sf living = **518 sf**; M-02 and M-03 are within their current program ranges, M-01 remains 20 sf over its range maximum, and the subtotal is seven sf below the combined maximum. The separate existing `Tools/compare_direction_d_social_room_sizes.ps1` fit-arithmetic audit passes 8/8 and records that this kitchen misses the preferred chain by 6 in on the long axis and 30 in on the short axis, while dining fails the preferred table envelope. No revised layout has been generated or selected.
 
 ## RevitCity research and candidate disposition (2026-10-27)
 

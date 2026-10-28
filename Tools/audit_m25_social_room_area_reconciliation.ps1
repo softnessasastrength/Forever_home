@@ -9,13 +9,18 @@ $reviewPath = Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27
 $programPath = Join-Path $root 'Requirements/Room_Program.md'
 $decisionPath = Join-Path $root 'Decisions/2026-10-27_Selected_Architectural_Direction_D.md'
 $gatePath = Join-Path $root 'Architecture/Direction_D_Main_Floor_Design_Gates_2026-10-27.md'
-foreach ($path in @($studyPath, $reviewPath, $programPath, $decisionPath, $gatePath)) {
+$legacySpecPath = Join-Path $root 'Architecture/Kitchen_Dining_Porch_Specs.md'
+foreach ($path in @($studyPath, $reviewPath, $programPath, $decisionPath, $gatePath, $legacySpecPath)) {
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Required M25 source is missing: $path" }
 }
 
 $study = Get-Content -LiteralPath $studyPath -Raw | ConvertFrom-Json
 $review = @(Import-Csv -LiteralPath $reviewPath | Where-Object { $_.id -in @('M-01', 'M-02', 'M-03') })
 $programText = Get-Content -LiteralPath $programPath -Raw -Encoding utf8
+$legacySpecText = Get-Content -LiteralPath $legacySpecPath -Raw -Encoding utf8
+$multiply = [char]0x00D7
+$legacyKitchenSizeText = "14'-0`" $multiply 12'-0`""
+$legacyDiningSizeText = "11'-0`" $multiply 10'-0`""
 $roomIds = @('M-01', 'M-02', 'M-03')
 $checks = [System.Collections.Generic.List[object]]::new()
 function Add-Check([string]$Name, [bool]$Passed, [string]$Detail) {
@@ -67,12 +72,31 @@ foreach ($identifier in $roomIds) {
 Add-Check 'study_areas_match_generated_program_review' $sourceAreasMatch 'Area arithmetic uses source block width multiplied by depth and compares it with the generated review CSV.'
 Add-Check 'program_ranges_are_present_and_ordered' $validRanges 'Ranges are read from the generated review of the checked-in room program.'
 Add-Check 'generated_area_review_ranges_match_room_program_source' $programRangesMatch 'The three min/max ranges are cross-checked against the Requirements/Room_Program.md table.'
+$legacyKitchenSizeDocumented = $legacySpecText.Contains($legacyKitchenSizeText)
+$legacyDiningSizeDocumented = $legacySpecText.Contains($legacyDiningSizeText)
+Add-Check 'historical_kitchen_size_is_documented' $legacyKitchenSizeDocumented "Earlier kitchen dimensions present: $legacyKitchenSizeDocumented"
+Add-Check 'historical_dining_size_is_documented' $legacyDiningSizeDocumented "Earlier dining dimensions present: $legacyDiningSizeDocumented"
 
 $currentTotal = [double](($rooms | ForEach-Object { [double]$_.selected_d_study_area_sf } | Measure-Object -Sum).Sum)
 $minimumTotal = [double](($rooms | ForEach-Object { $_.program_range_sf.minimum } | Measure-Object -Sum).Sum)
 $maximumTotal = [double](($rooms | ForEach-Object { $_.program_range_sf.maximum } | Measure-Object -Sum).Sum)
 $totalExcess = [math]::Round([math]::Max([double]0.0, [double]($currentTotal - $maximumTotal)), 2)
 $reductionToMinimum = [math]::Round([math]::Max([double]0.0, [double]($currentTotal - $minimumTotal)), 2)
+$historicalKitchenArea = 14.0 * 12.0
+$historicalDiningArea = 11.0 * 10.0
+$livingArea = [double](($rooms | Where-Object id -eq 'M-01' | Select-Object -First 1).selected_d_study_area_sf)
+$historicalSocialTotal = [math]::Round(($livingArea + $historicalKitchenArea + $historicalDiningArea), 2)
+$kitchenRange = @($review | Where-Object { $_.id -eq 'M-02' })[0]
+$diningRange = @($review | Where-Object { $_.id -eq 'M-03' })[0]
+$kitchenMinimum = [double]::Parse([string]$kitchenRange.minimum_sf, [Globalization.CultureInfo]::InvariantCulture)
+$kitchenMaximum = [double]::Parse([string]$kitchenRange.maximum_sf, [Globalization.CultureInfo]::InvariantCulture)
+$diningMinimum = [double]::Parse([string]$diningRange.minimum_sf, [Globalization.CultureInfo]::InvariantCulture)
+$diningMaximum = [double]::Parse([string]$diningRange.maximum_sf, [Globalization.CultureInfo]::InvariantCulture)
+$historicalKitchenWithinRange = [bool]($legacyKitchenSizeDocumented -and ($historicalKitchenArea -ge $kitchenMinimum) -and ($historicalKitchenArea -le $kitchenMaximum))
+$historicalDiningWithinRange = [bool]($legacyDiningSizeDocumented -and ($historicalDiningArea -ge $diningMinimum) -and ($historicalDiningArea -le $diningMaximum))
+Add-Check 'historical_kitchen_and_dining_sizes_within_room_program_bands' ($historicalKitchenWithinRange -and $historicalDiningWithinRange) "kitchen_sf=$historicalKitchenArea range=$kitchenMinimum..$kitchenMaximum; dining_sf=$historicalDiningArea range=$diningMinimum..$diningMaximum"
+Add-Check 'historical_sizes_plus_current_living_total_518_sf' ([math]::Abs($historicalSocialTotal - 518.0) -lt 0.01) "historical_option_total_sf=$historicalSocialTotal"
+Add-Check 'historical_option_within_combined_social_program_band' ($historicalSocialTotal -ge $minimumTotal -and $historicalSocialTotal -le $maximumTotal) "historical_option_total_sf=$historicalSocialTotal; combined_range_sf=$minimumTotal..$maximumTotal"
 Add-Check 'current_social_area_matches_derived_total' ([math]::Abs($currentTotal - 676.0) -lt 0.01) "current_total_sf=$currentTotal"
 Add-Check 'program_range_total_matches_documented_bounds' ($minimumTotal -eq 420 -and $maximumTotal -eq 525) "range_total_sf=$minimumTotal..$maximumTotal"
 Add-Check 'aggregate_maximum_variance_is_151_sf' ([math]::Abs($totalExcess - 151.0) -lt 0.01) "above_combined_max_sf=$totalExcess"
@@ -92,6 +116,7 @@ $report = [ordered]@{
         room_program = (Get-FileHash -LiteralPath $programPath -Algorithm SHA256).Hash.ToLowerInvariant()
         selected_direction_decision = (Get-FileHash -LiteralPath $decisionPath -Algorithm SHA256).Hash.ToLowerInvariant()
         main_floor_design_gates = (Get-FileHash -LiteralPath $gatePath -Algorithm SHA256).Hash.ToLowerInvariant()
+        legacy_kitchen_dining_specs = (Get-FileHash -LiteralPath $legacySpecPath -Algorithm SHA256).Hash.ToLowerInvariant()
     }
     comparison = [ordered]@{
         rooms = @($rooms)
@@ -101,6 +126,20 @@ $report = [ordered]@{
         reduction_to_combined_program_minimum_sf = $reductionToMinimum
         reduction_percent_of_current_area_to_reach_combined_max = [math]::Round(($totalExcess / $currentTotal) * 100, 1)
         reduction_percent_of_current_area_to_reach_combined_minimum = [math]::Round(($reductionToMinimum / $currentTotal) * 100, 1)
+        documented_legacy_kitchen_dining_option = [ordered]@{
+            kitchen_dimensions_ft = @(14, 12)
+            kitchen_area_sf = $historicalKitchenArea
+            dining_dimensions_ft = @(11, 10)
+            dining_area_sf = $historicalDiningArea
+            living_area_retained_from_selected_d_sf = $livingArea
+            social_area_total_sf = $historicalSocialTotal
+            kitchen_within_current_program_range = $historicalKitchenWithinRange
+            dining_within_current_program_range = $historicalDiningWithinRange
+            total_within_combined_program_range = ($historicalSocialTotal -ge $minimumTotal -and $historicalSocialTotal -le $maximumTotal)
+            kitchen_fit_tradeoff = 'Existing comparison records +6/-18 in remaining beyond the minimum chain on long/short axes and -6/-30 in beyond the preferred chain.'
+            dining_fit_tradeoff = 'Existing comparison says the 11 x 10 ft block fits the minimum 9 x 11 ft table envelope only in the matching orientation, and does not fit the preferred 10 x 12 ft envelope.'
+            status = 'historical documented dimensions; comparison only; not selected'
+        }
     }
     decision_options = @(
         [ordered]@{
@@ -112,6 +151,11 @@ $report = [ordered]@{
             id = 'retarget_within_documented_program_ranges'
             status = 'proposal; not selected'
             effect = "Brings the three-room total to no more than $maximumTotal sf, a derived reduction of $totalExcess sf from current blocks; new dimensions and positions require a separately authorized study."
+        },
+        [ordered]@{
+            id = 'retest_documented_legacy_kitchen_and_dining_dimensions'
+            status = 'historical dimension comparison; not selected'
+            effect = 'Uses earlier documented 14 x 12 ft kitchen and 11 x 10 ft dining dimensions while retaining the current 240 sf living block. The resulting 518 sf subtotal sits inside the combined preliminary range, but the documented fit comparison shows shortfalls against preferred kitchen aisles and preferred dining-table clearance; a new layout study is required.'
         }
     )
     limitations = @(
