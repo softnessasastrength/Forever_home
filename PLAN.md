@@ -634,3 +634,16 @@ Acceptance criteria:
 - State that room walls, door/swing, hall approach/privacy, installation, and services remain absent.
 
 Current status: Complete as a cross-check of the separate schematic proposal. `Tools/screen_m06_pairs_against_followup_window.ps1` confirms the selected-D source hash matches both the follow-up proposal and M54 input, then tests all 16 inherited rectangles against the proposal's 124 × 84 in gross B. Two Windows PowerShell 5.1 runs are byte-identical (SHA256 `49CBB3B77C7FB8AF8D75230F48F77D00ED8D16E7BD6C5B62FEC039C3D756E53B`); all 16 fit with at least 65-1/2 in gross wall-direction margin and 32-3/4 in gross depth margin. Exact current toilet geometry is still unverified, the geometry is a bounding proxy, and M-06 B remains unassigned. See `Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json` and the owner-follow-up README.
+
+### M57 — Screen porch attachment edges and dining route proxies
+
+Acceptance criteria:
+
+- Read current 12 × 10 ft porch dimensions from Architecture/Kitchen_Dining_Porch_Specs.md; reject stale M33 geometry unless its proposal and selected-D fingerprints match current inputs.
+- Compare all four porch attachments to the dining room-block edge against every owner-follow-up room and the separate unassigned M-06-B window; report overlap and shell containment without relocating any room.
+- Calculate a 36 in straight table-edge-to-porch threshold proxy for each edge and disclose any intersection with the table pull-back envelope; do not claim chair-independent circulation.
+- Reproduce source-bound JSON under Windows PowerShell 5.1, preserve the intermediate M33 input, and leave selected D, M-06 assignment, Revit and IFC unchanged.
+
+Current status: Complete as a schematic conflict screen. The first run correctly rejected the checked-in M33 report because its proposal fingerprint was stale. Two fresh M33 runs each pass 14/14 and match byte-for-byte across fit, checks, manifest and SVG. M57 passes 5/5 on two runs; report SHA256 A87B29F982082C1B9DA27008F96F97A9A053EC2FF40B5CA1993F9D29AF1C1D92. All four placements conflict with current room blocks: north overlaps pantry/M-06-B (14/70 sf), east overlaps kitchen/pantry (1.50/1.75 sf) and extends 36 sf beyond the shell, south overlaps kitchen (109.25 sf), and west overlaps living/M-06-B (33.25/0.4167 sf). Every 36 in route proxy intersects the M33 pull-back envelope by 9 sf. No location or route is selected. See Architecture/M57_Porch_Edge_Options_2026-10-28/README.md and the retained source snapshot/report. No Revit or IFC edit was made.
+
+M57 geometry correction (supersedes the preliminary M57 option results above): review found the initial east/west orientation incorrectly ran the 12 ft porch side along the dining edge. The corrected model matches the 10 ft porch side to the 10 ft east/west dining edge and projects 12 ft outward. Corrected report SHA256 is 3B5E6B993B2A9C1A43282B76687D6A89AADA4A0709F991FD3F53DFD3B01BF6. East clears the current room blocks but places 50 sf beyond the unapproved comparison shell; west overlaps living by 28.75 sf and clears M-06-B. North and south results are unchanged. All route proxies still intersect the dining table pull-back envelope by 9 sf. See the corrected M57 README and JSON; those files supersede the preliminary values above.

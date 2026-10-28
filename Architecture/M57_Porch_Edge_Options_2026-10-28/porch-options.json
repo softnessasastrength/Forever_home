@@ -1,0 +1,276 @@
+﻿{
+    "schema":  "forever-home.m57-porch-edge-options.v1",
+    "title":  "M57 â€” porch attachment and dining-to-porch route screen",
+    "status":  "schematic options only; porch placement and route are not selected",
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_study_json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "kitchen_dining_porch_specs":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "M33_fit_json":  "c0ddf94965a00ecfe609e31d753d1a03dff3f38e391ee169ee2685205837e3f1"
+                                   },
+    "source_paths":  {
+                         "owner_followup":  "Architecture/House_Design_Iteration_2026-10-28/study.json",
+                         "selected_D":  "Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                         "spec":  "Architecture/Kitchen_Dining_Porch_Specs.md",
+                         "M33_fit":  "m33-fit-input.json"
+                     },
+    "source_dimensions":  {
+                              "porch_ft":  [
+                                               12,
+                                               10
+                                           ],
+                              "nominal_door_widths_ft":  [
+                                                             5,
+                                                             6
+                                                         ],
+                              "route_width_ft":  3,
+                              "dining_block":  {
+                                                   "x_ft":  22,
+                                                   "y_ft":  13.166666666666666,
+                                                   "width_ft":  11,
+                                                   "depth_ft":  10
+                                               },
+                              "M06_search_window":  {
+                                                        "x_ft":  21.166666666666668,
+                                                        "y_ft":  23.666666666666668,
+                                                        "width_ft":  10.333333333333332,
+                                                        "depth_ft":  7,
+                                                        "status":  "unassigned search window"
+                                                    }
+                          },
+    "assumptions":  [
+                        "Each option attaches a 12x10 ft porch flush to one of the four dining room-block edges; this is a comparison proposal derived from the project specification, not selected design.",
+                        "At north/south edges, the porch 12 ft side is centered along the 11 ft dining edge; at east/west edges, its 10 ft side matches the 10 ft dining edge and its 12 ft side projects outward.",
+                        "A 36 in-wide straight route proxy runs from the corresponding edge of the M33 table body to the matching dining block boundary, centered on that edge.",
+                        "The path proxy does not represent chair locations/occupancy, door swing, wall thickness, threshold, approach maneuvering, porch furniture or exterior grade.",
+                        "Room-block overlaps are geometric conflicts within the owner-follow-up comparison plan only; no unmodeled rooms are inferred."
+                    ],
+    "options":  [
+                    {
+                        "edge":  "north",
+                        "porch":  {
+                                      "name":  "north-attached 12x10 ft porch proposal",
+                                      "x_ft":  21.5,
+                                      "y_ft":  23.166666666666664,
+                                      "width_ft":  12,
+                                      "depth_ft":  10
+                                  },
+                        "door_wall":  "north",
+                        "shares_edge_with_dining":  false,
+                        "door_span_overlap_with_dining_wall_ft":  11,
+                        "porch_dining_body_overlap_area_sf":  0,
+                        "nominal_door_options":  [
+                                                     {
+                                                         "nominal_opening_width_ft":  5,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              25,
+                                                                                              30
+                                                                                          ]
+                                                     },
+                                                     {
+                                                         "nominal_opening_width_ft":  6,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              24.5,
+                                                                                              30.5
+                                                                                          ]
+                                                     }
+                                                 ],
+                        "route_proxy":  {
+                                            "name":  "36in centered table-edge to north threshold path proxy",
+                                            "x_ft":  26,
+                                            "y_ft":  20.166666666666664,
+                                            "width_ft":  3,
+                                            "depth_ft":  3.0000000000000022
+                                        },
+                        "route_overlaps_M33_36in_chair_pullback_envelope":  true,
+                        "route_pullback_overlap_area_sf":  9,
+                        "overlaps_room_blocks":  [
+                                                     {
+                                                         "room":  "M-04 Pantry",
+                                                         "overlap_sf":  14
+                                                     },
+                                                     {
+                                                         "room":  "M06-B unassigned search window",
+                                                         "overlap_sf":  70
+                                                     }
+                                                 ],
+                        "contained_in_unapproved_main_shell":  true,
+                        "shell_overlap":  {
+                                              "overlap":  true,
+                                              "area_sf":  120
+                                          }
+                    },
+                    {
+                        "edge":  "east",
+                        "porch":  {
+                                      "name":  "east-attached 12x10 ft porch proposal",
+                                      "x_ft":  33,
+                                      "y_ft":  13.166666666666666,
+                                      "width_ft":  12,
+                                      "depth_ft":  10
+                                  },
+                        "door_wall":  "east",
+                        "shares_edge_with_dining":  false,
+                        "door_span_overlap_with_dining_wall_ft":  9.9999999999999982,
+                        "porch_dining_body_overlap_area_sf":  0,
+                        "nominal_door_options":  [
+                                                     {
+                                                         "nominal_opening_width_ft":  5,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              15.6667,
+                                                                                              20.6667
+                                                                                          ]
+                                                     },
+                                                     {
+                                                         "nominal_opening_width_ft":  6,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              15.1667,
+                                                                                              21.1667
+                                                                                          ]
+                                                     }
+                                                 ],
+                        "route_proxy":  {
+                                            "name":  "36in centered table-edge to east threshold path proxy",
+                                            "x_ft":  30,
+                                            "y_ft":  16.666666666666664,
+                                            "width_ft":  3,
+                                            "depth_ft":  3
+                                        },
+                        "route_overlaps_M33_36in_chair_pullback_envelope":  true,
+                        "route_pullback_overlap_area_sf":  9,
+                        "overlaps_room_blocks":  [
+
+                                                 ],
+                        "contained_in_unapproved_main_shell":  false,
+                        "shell_overlap":  {
+                                              "overlap":  true,
+                                              "area_sf":  70
+                                          }
+                    },
+                    {
+                        "edge":  "south",
+                        "porch":  {
+                                      "name":  "south-attached 12x10 ft porch proposal",
+                                      "x_ft":  21.5,
+                                      "y_ft":  3.1666666666666661,
+                                      "width_ft":  12,
+                                      "depth_ft":  10
+                                  },
+                        "door_wall":  "south",
+                        "shares_edge_with_dining":  false,
+                        "door_span_overlap_with_dining_wall_ft":  11,
+                        "porch_dining_body_overlap_area_sf":  0,
+                        "nominal_door_options":  [
+                                                     {
+                                                         "nominal_opening_width_ft":  5,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              25,
+                                                                                              30
+                                                                                          ]
+                                                     },
+                                                     {
+                                                         "nominal_opening_width_ft":  6,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              24.5,
+                                                                                              30.5
+                                                                                          ]
+                                                     }
+                                                 ],
+                        "route_proxy":  {
+                                            "name":  "36in centered table-edge to south threshold path proxy",
+                                            "x_ft":  26,
+                                            "y_ft":  13.166666666666666,
+                                            "width_ft":  3,
+                                            "depth_ft":  3.9999999999999978
+                                        },
+                        "route_overlaps_M33_36in_chair_pullback_envelope":  true,
+                        "route_pullback_overlap_area_sf":  9,
+                        "overlaps_room_blocks":  [
+                                                     {
+                                                         "room":  "M-02 Kitchen",
+                                                         "overlap_sf":  109.25
+                                                     }
+                                                 ],
+                        "contained_in_unapproved_main_shell":  true,
+                        "shell_overlap":  {
+                                              "overlap":  true,
+                                              "area_sf":  120
+                                          }
+                    },
+                    {
+                        "edge":  "west",
+                        "porch":  {
+                                      "name":  "west-attached 12x10 ft porch proposal",
+                                      "x_ft":  10,
+                                      "y_ft":  13.166666666666666,
+                                      "width_ft":  12,
+                                      "depth_ft":  10
+                                  },
+                        "door_wall":  "west",
+                        "shares_edge_with_dining":  true,
+                        "door_span_overlap_with_dining_wall_ft":  9.9999999999999982,
+                        "porch_dining_body_overlap_area_sf":  0,
+                        "nominal_door_options":  [
+                                                     {
+                                                         "nominal_opening_width_ft":  5,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              15.6667,
+                                                                                              20.6667
+                                                                                          ]
+                                                     },
+                                                     {
+                                                         "nominal_opening_width_ft":  6,
+                                                         "path_width_fits_nominal_opening":  true,
+                                                         "centered_opening_interval_ft":  [
+                                                                                              15.1667,
+                                                                                              21.1667
+                                                                                          ]
+                                                     }
+                                                 ],
+                        "route_proxy":  {
+                                            "name":  "36in centered table-edge to west threshold path proxy",
+                                            "x_ft":  22,
+                                            "y_ft":  16.666666666666664,
+                                            "width_ft":  3,
+                                            "depth_ft":  3
+                                        },
+                        "route_overlaps_M33_36in_chair_pullback_envelope":  true,
+                        "route_pullback_overlap_area_sf":  9,
+                        "overlaps_room_blocks":  [
+                                                     {
+                                                         "room":  "M-01 Living room",
+                                                         "overlap_sf":  28.75
+                                                     }
+                                                 ],
+                        "contained_in_unapproved_main_shell":  true,
+                        "shell_overlap":  {
+                                              "overlap":  true,
+                                              "area_sf":  120
+                                          }
+                    }
+                ],
+    "checks":  {
+                   "source_M33_fingerprints_match_current_studies":  true,
+                   "source_porch_dimensions_are_12x10":  true,
+                   "all_four_edge_attachments_share_a_dining_boundary":  true,
+                   "all_options_allow_a_nominal_5ft_or_6ft_door_for_36in_proxy":  true,
+                   "selected_D_and_followup_source_fingerprints_unchanged":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "Candidate porch locations are not owner-selected and the 40x42 ft shell is an unapproved comparison envelope.",
+                        "An overlap with M-06 B or another room block identifies a plan conflict; it does not authorize moving the room or expanding the shell.",
+                        "No route is proven clear with occupied chairs; the centered 36 in path proxy intersects the dining table pull-back envelope by construction.",
+                        "The proxy tests room-block rectangles, not native Revit walls, openings, doors, clear widths, code or accessibility requirements.",
+                        "No Revit or IFC geometry was changed or validated."
+                    ]
+}

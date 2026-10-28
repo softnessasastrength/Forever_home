@@ -1,0 +1,164 @@
+﻿{
+    "schema":  "forever-home.m33-open-social-zone-fit.v1",
+    "title":  "M33 â€” open kitchen/dining furniture and clearance screen",
+    "status":  "one schematic fit candidate; no cabinets, partitions, doors, porch route or construction geometry",
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+                                   },
+    "assumptions":  [
+                        "M-02 and M-03 are treated as one open social zone across their nominal 6 in room-block separator.",
+                        "The existing selected-D island origin is retained relative to the new M-02 target; no island position was newly approved.",
+                        "Dining table is a placement candidate centered in M-03, with its rear edge positioned to preserve the documented 36 in minimum chair pull-back to the rear room-block edge.",
+                        "The main shell test envelope remains a room-block boundary, not surveyed interior face geometry."
+                    ],
+    "room_blocks":  {
+                        "M02":  {
+                                    "id":  "M-02",
+                                    "name":  "Kitchen",
+                                    "x_ft":  22,
+                                    "y_ft":  0.66666666666666663,
+                                    "width_ft":  14,
+                                    "depth_ft":  12,
+                                    "area_sf":  168,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "M03":  {
+                                    "id":  "M-03",
+                                    "name":  "Dining",
+                                    "x_ft":  22,
+                                    "y_ft":  13.166666666666666,
+                                    "width_ft":  11,
+                                    "depth_ft":  10,
+                                    "area_sf":  110,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "shell":  {
+                                      "name":  "40x42 ft main-shell test envelope",
+                                      "x_ft":  0,
+                                      "y_ft":  0,
+                                      "width_ft":  40,
+                                      "depth_ft":  42,
+                                      "area_sf":  1680
+                                  }
+                    },
+    "furniture_inputs":  {
+                             "island_source_dimensions_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                             "island_local_origin_ft":  [
+                                                            4.666666666666667,
+                                                            6
+                                                        ],
+                             "island_absolute_rect":  {
+                                                          "name":  "appliance-free kitchen island",
+                                                          "x_ft":  26.666666666666668,
+                                                          "y_ft":  6.666666666666667,
+                                                          "width_ft":  8,
+                                                          "depth_ft":  4,
+                                                          "area_sf":  32
+                                                      },
+                             "dining_table_size_in":  {
+                                                          "width":  36,
+                                                          "length":  60,
+                                                          "height":  30
+                                                      },
+                             "dining_table_source":  "Architecture/Kitchen_Dining_Porch_Specs.md Â§4.2",
+                             "table_absolute_rect":  {
+                                                         "name":  "36x60in dining table (long axis along x)",
+                                                         "x_ft":  25,
+                                                         "y_ft":  17.166666666666664,
+                                                         "width_ft":  5,
+                                                         "depth_ft":  3,
+                                                         "area_sf":  15
+                                                     },
+                             "chair_pullback_minimum_in":  36,
+                             "wall_door_clearance_preferred_in":  42
+                         },
+    "clearance_envelopes":  {
+                                "island_42in":  {
+                                                    "name":  "island 42in clear-floor envelope",
+                                                    "x_ft":  23.166666666666668,
+                                                    "y_ft":  3.166666666666667,
+                                                    "width_ft":  15,
+                                                    "depth_ft":  11,
+                                                    "area_sf":  165
+                                                },
+                                "table_36in":  {
+                                                   "name":  "table 36in chair pull-back envelope",
+                                                   "x_ft":  22,
+                                                   "y_ft":  14.166666666666664,
+                                                   "width_ft":  11,
+                                                   "depth_ft":  9,
+                                                   "area_sf":  99
+                                               },
+                                "table_42in_preferred":  {
+                                                             "name":  "table 42in preferred wall/door clearance envelope",
+                                                             "x_ft":  21.5,
+                                                             "y_ft":  13.666666666666664,
+                                                             "width_ft":  12,
+                                                             "depth_ft":  10,
+                                                             "area_sf":  120
+                                                         }
+                            },
+    "open_zone_fit":  {
+                          "island_42in_extension_beyond_M02_ft":  {
+                                                                      "west_ft":  0,
+                                                                      "east_ft":  2.1666666666666714,
+                                                                      "south_ft":  0,
+                                                                      "north_ft":  1.5000000000000333
+                                                                  },
+                          "table_42in_preferred_extension_beyond_M03_ft":  {
+                                                                               "west_ft":  0.5,
+                                                                               "east_ft":  0.5,
+                                                                               "south_ft":  0,
+                                                                               "north_ft":  0.500000000000034
+                                                                           },
+                          "island_and_minimum_table_envelope_overlap":  false,
+                          "gap_between_envelopes_ft":  0,
+                          "separate_36in_path_to_porch":  "UNVERIFIED: porch, door location and non-overlapping route are not modeled",
+                          "counter_and_halfwall_clearances":  "UNVERIFIED: perimeter cabinets, half wall, sink, range, hood, refrigerator, dishwasher and appliance-open envelopes are not placed"
+                      },
+    "M06":  {
+                "status":  "unassigned; no fixture, footprint, door or service route",
+                "B":  {
+                          "id":  "M06-B",
+                          "x_ft":  21.166666666666668,
+                          "y_ft":  23.666666666666668,
+                          "width_ft":  10.333333333333332,
+                          "depth_ft":  7,
+                          "area_sf":  72.33,
+                          "status":  "unassigned search window only; not M-06 geometry"
+                      },
+                "island_envelope_overlap_sf":  0,
+                "table_preferred_envelope_overlap_sf":  0
+            },
+    "checks":  {
+                   "selected_D_source_fingerprint_matches_owner_proposal":  true,
+                   "kitchen_and_dining_targets_are_14x12_and_11x10":  true,
+                   "island_body_inside_M02":  true,
+                   "table_body_inside_M03":  true,
+                   "36in_table_clearance_inside_M03":  true,
+                   "island_42in_envelope_inside_main_shell":  true,
+                   "table_42in_preferred_envelope_inside_main_shell":  true,
+                   "island_and_table_bodies_do_not_overlap":  true,
+                   "island_and_table_minimum_clear_envelopes_do_not_overlap":  true,
+                   "island_42in_envelope_clear_of_comparison_core":  true,
+                   "table_42in_envelope_clear_of_comparison_core":  true,
+                   "island_42in_envelope_clear_of_unassigned_M06_B":  true,
+                   "table_42in_preferred_envelope_clear_of_unassigned_M06_B":  true,
+                   "table_minimum_clearance_is_source_derived":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "Passing rectangles screen only a proposed island body and dining-table body plus cited clear-floor envelopes.",
+                        "The island 42 in envelope extends outside M-02 into otherwise unassigned shell space; room blocks do not prove that space remains open after walls, cabinets, doors and circulation are designed.",
+                        "The 42 in table clearance is preferred by the project specification and extends beyond M-03; the 36 in minimum chair pull-back fits exactly within M-03.",
+                        "A separate continuous path from table to porch that remains clear with chairs occupied is not demonstrated.",
+                        "No Revit, IFC, wall, slab, porch, structure, code, accessibility or construction validation is made."
+                    ]
+}
