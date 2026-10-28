@@ -371,6 +371,18 @@ Acceptance criteria:
 
 Current status: `Tools/test_m33_open_social_zone_fit.ps1` passes **14/14** checks. In two fresh Windows PowerShell 5.1 runs, `fit.json`, `checks.json`, `open-social-zone.svg` and `manifest.json` are byte-identical; both JSON reports and the SVG parse, and the output-path traversal guard rejects an outside path. One candidate places the source-derived island across M-02/M-03 and a source-derived table within M-03. The 36 in table envelope fits the dining block exactly; the 42 in preferred envelope spills 0.5 ft beyond it. The island's 42 in envelope extends 2.167 ft east and 1.5 ft north beyond M-02 into unassigned test-shell area. These rectangles do not establish clear circulation: their unlike envelopes meet at a boundary, and the dining-to-porch route, cabinets, half wall, appliances, doors, wall faces and occupied-chair extents remain unmodeled. No Revit or IFC work was performed. See `Architecture/M33_Open_Social_Zone_Fit_2026-10-28/README.md`; resolve a full furnished route before calling the social zone coordinated.
 
+### M34 — Test upper-suite private-link geometry
+
+Acceptance criteria:
+
+- Preserve the selected-D source and owner-directed room sizes; use the documented upper-frame offset when comparing wing rooms with shared-frame core reservations.
+- Quantify the existing U-02/U-03 separation and screen a direct-adjacency move with the inherited nominal wall allowance.
+- Check candidate collisions with current public circulation and the lift reservation; report any existing projected room/core overlap without silently changing the D baseline.
+- Emit a reproducible PowerShell report and diagram; repeat into clean scratch directories, parse JSON/SVG and guard output paths.
+- Keep guest hall access and the U-03/U-04 Jack-and-Jill relationship as explicit design requirements; do not claim a viable full-suite route until circulation and core geometry connect.
+
+Current status: `Tools/test_m34_upper_suite_private_link.ps1` passes **7/7** source/arithmetic checks. It confirms a 5 ft current gap between U-02 and U-03, comprising the 4 ft shared corridor plus nominal side allowances. A single westward U-03 move preserves its source size and creates a 0.5 ft wall allowance to U-02, but it overlaps 36.667 sf of C-UPPER and 26.667 sf of the lift reservation after applying the documented +6 ft upper-frame translation. The current U-03 itself has a 25 sf projected lift-reservation overlap, an existing coordination issue not covered by the selected-D room-overlap checks. These are plan-screen findings; verify shaft/floor geometry in Revit before treating the reservation as definitive. No alternate full-suite packing, door, corridor-to-stair connection, Revit model or IFC is asserted. Two fresh PowerShell runs produce byte-identical outputs; JSON/SVG parsing, intersection arithmetic and path guard pass. See `Architecture/M34_Upper_Suite_Private_Link_2026-10-28/README.md` for the owner design gate.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.

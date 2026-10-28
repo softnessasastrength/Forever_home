@@ -38,7 +38,7 @@ Within M-02's 14 × 12 ft room block, the inherited 8 × 4 ft island plus 42 in 
 
 ## Upper-suite intent
 
-The topology target adds U-02 → U-03 to the existing private path U-01 → C-PRIVATE → U-02 and retains the U-03/U-04 Jack-and-Jill links plus guest C-UPPER access. The current hybrid-to-hall edge is carried forward provisionally; the owner did not specify whether it should remain in addition to private access. `study.json` marks the private link as owner-directed but its corridor, room-block rearrangement, wall, opening, door, swing and privacy/acoustic performance as unresolved. Thus the private route is approved as an intent, not yet geometrically demonstrated.
+The topology target adds U-02 → U-03 to the existing private path U-01 → C-PRIVATE → U-02 and retains the U-03/U-04 Jack-and-Jill links plus guest C-UPPER access. The current hybrid-to-hall edge is carried forward provisionally; the owner did not specify whether it should remain in addition to private access. `study.json` marks the private link as owner-directed but its corridor, room-block rearrangement, wall, opening, door, swing and privacy/acoustic performance as unresolved. The first direct-adjacency fit screen is in [M34](../M34_Upper_Suite_Private_Link_2026-10-28/README.md): one westward U-03 shift overlaps the current hall and lift reservation, so the private route remains an intent rather than demonstrated geometry.
 
 ## Roof concept and code context
 
