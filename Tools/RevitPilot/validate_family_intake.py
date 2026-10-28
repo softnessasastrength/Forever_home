@@ -42,6 +42,13 @@ QUARANTINED_RESEARCH = [
         "product_page_url": "https://lixilpro.com/products/bathroom-sinks/pedestal-tops/Cadet-4-in-Centerset-Pedestal-Sink-Top-and-Leg-Combination/White-%28020%29-0236411020/?s=0236411.020",
         "source_url": "https://lixil.cdn.celum.cloud/173914_as_us_bath_cad_RFA__0236%20%283651%29_original.rfa",
     },
+    {
+        "sku": "TOTO Dartmouth LPT642",
+        "filename": "toto-dartmouth-lpt642.rfa",
+        "sha256": "43BCB5EC2BD2BD45D2EC1C43509A0B518AEC71F723FAFF460CDFDDAF09586AB0",
+        "product_page_url": "https://www.totousa.com/dartmouth-pedestal-lavatory",
+        "source_url": "https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00070_LPT642.rfa",
+    },
 ]
 REJECTED = {
     "M-02": "Island_Cabinet_or_Countertop_19967.rfa",

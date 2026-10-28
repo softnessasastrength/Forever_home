@@ -1,7 +1,7 @@
 {
     "schema":  "forever-home-m06-sink-gross-body-screen-v1",
     "result":  "PASS",
-    "check_count":  16,
+    "check_count":  18,
     "failed_checks":  [
 
                       ],
@@ -120,6 +120,26 @@
                                                               "width_by_depth":  true,
                                                               "rotated_90_degrees":  true
                                                           }
+                       },
+                       {
+                           "id":  "toto-dartmouth-lpt642",
+                           "name":  "TOTO Dartmouth transitional pedestal lavatory",
+                           "status":  "research-only; manufacturer lists limited inventory and no online retailer, provides a 2013 spec sheet, and links a public Revit model that has not been inspected",
+                           "source":  "https://www.totousa.com/dartmouth-pedestal-lavatory",
+                           "design_file_source":  "https://www.totousa.com/filemanager_uploads/product_assets/REVITModels/BM-00070_LPT642.rfa",
+                           "design_file_sha256":  "43BCB5EC2BD2BD45D2EC1C43509A0B518AEC71F723FAFF460CDFDDAF09586AB0",
+                           "dimensions_source":  "TOTO LPT642 spec sheet; 24.25 x 18.25 x 34 in; sheet dated 2013-01",
+                           "nominal_overall_body_in":  {
+                                                           "width":  24.25,
+                                                           "depth":  18.25,
+                                                           "height":  34
+                                                       },
+                           "candidate_rfa_geometry_measured":  false,
+                           "rfa_type_to_sku_mapping_verified":  false,
+                           "body_rectangle_containment":  {
+                                                              "width_by_depth":  true,
+                                                              "rotated_90_degrees":  true
+                                                          }
                        }
                    ],
     "evaluated":  {
@@ -141,6 +161,7 @@
                         "KOHLER Tresham bounds use the manufacturer specification; its exact 4-in-centerset Revit family is not yet available for inspection.",
                         "Edgemere bounds use the manufacturer specification; product availability conflicts between the consumer storefront and LIXIL Pro, and no Revit family is listed for the full top-and-leg combination.",
                         "Estate and Cadet bounds use LIXIL Pro nominal dimensions. Their public official RFA URLs and SHA256 values are recorded in the comparison, and unchanged copies are preserved under ignored .local/revit-pilot/family-intake/candidates; neither family has been opened in Revit or measured, and both products are listed discontinued.",
+                        "TOTO Dartmouth bounds use the manufacturer LPT642 specification dated 2013-01. The product page lists limited inventory and the linked public RFA was downloaded and hash-pinned, but its family/type geometry and current availability are not verified.",
                         "No fixture is selected or placed, no M-06 geometry is assigned, and no clearance, service route, code, accessibility or IFC result is established."
                     ]
 }
