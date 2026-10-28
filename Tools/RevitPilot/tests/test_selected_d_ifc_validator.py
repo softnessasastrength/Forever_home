@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import ifcopenshell.util.element
 
-from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, validate
+from validate_selected_d_ifc import PLAN_LEVEL_NAMES, _expected_blocks, _space_area, _space_plan_bounds_ft, validate
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -23,6 +23,18 @@ class SelectedDIfcValidatorTests(unittest.TestCase):
         self.assertEqual(blocks["M-01"]["area_sf"], 240.0)
         self.assertEqual(blocks["U-01"]["area_sf"], 160.0)
         self.assertEqual(blocks["L-02"]["area_sf"], 110.0)
+        self.assertEqual(blocks["M-01"]["plan_bounds_ft"], {
+            "min_x": 2 / 3,
+            "min_y": 2 / 3,
+            "max_x": 50 / 3,
+            "max_y": 47 / 3,
+        })
+        for identifier, level in (("U-01", "upper"), ("L-01", "lower")):
+            room = next(room for room in study["plans"][level] if room["id"] == identifier)
+            self.assertAlmostEqual(
+                blocks[identifier]["plan_bounds_ft"]["min_y"],
+                room["y"] + study["plan_frame_offsets_ft"][level][1],
+            )
         self.assertEqual(
             {key: "D " + name for key, name in PLAN_LEVEL_NAMES.items()},
             {"main": "D Main FF", "upper": "D Upper FF", "lower": "D Lower FF"},
@@ -65,6 +77,13 @@ class SelectedDIfcValidatorTests(unittest.TestCase):
         space = SimpleNamespace(Representation=shape)
         with patch.object(ifcopenshell.util.element, "get_psets", return_value={}):
             self.assertAlmostEqual(_space_area(space, unit_scale=0.3048), 240.0)
+
+    def test_space_plan_bounds_convert_ifc_vertices_to_feet(self):
+        shape = SimpleNamespace(geometry=SimpleNamespace(verts=[0.3048, 0.6096, 0.0, 4.8768, 4.572, 2.4384]))
+        with patch("validate_selected_d_ifc.ifcopenshell.geom.create_shape", return_value=shape):
+            bounds = _space_plan_bounds_ft(object(), object())
+        for coordinate, expected in {"min_x": 1.0, "min_y": 2.0, "max_x": 16.0, "max_y": 15.0}.items():
+            self.assertAlmostEqual(bounds[coordinate], expected)
 
     def test_storey_aggregation_provides_space_levels(self):
         from validate_selected_d_ifc import _space_level_names
