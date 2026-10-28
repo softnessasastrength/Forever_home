@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-28
-Status: the reproducible Compact-Core C pipeline remains a verified compatibility fixture. Owner-selected D's current-source Revit run `.local/revit-pilot/selected-d/20261028T021345099Z/` contains a parseable IFC2X3 with 21 spaces on three storeys and no schema issues; its exact backup/RVT/IFC pair passes 26/26 in isolated validation, while the separately named RVT remains fingerprint-stale. The owner-follow-up proposal applies the 14×12 ft kitchen and 11×10 ft dining targets, records the private upper-suite route and steep-gable exploration without inventing pitch, and keeps M-06 B unassigned. The owner has now revised U-03 to **private route only**, removing its direct public-hall door while retaining guest access and both Jack-and-Jill links. Updated M-37 PowerShell checks pass 17/17 and two fresh default replays are byte-identical; the 1,500-node bounded search produces 388 packings but zero placements clearing the lift and reserved stair approach, so corridor routing remains untested. Revit 2027.3 has been used for read-only inspection of the quarantined Evolution sink family; its hash is unchanged and the visible views do not resolve the pedestal-leg/hosted-assembly question. D remains a room-boundary study, not coordinated building geometry; M-06 B remains unassigned.
+Status: selected-D source remains unchanged at SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`. A fresh Revit 2027.3 generation at `.local/revit-pilot/selected-d/20261028T182748169Z/`, its read-only native audit, and independent IFC2X3 validation now agree on the exact saved RVT fingerprint; all 26 IFC checks pass. The study contains three levels, 21 spaces, zero native walls/openings, and zero Revit warnings. The older separately named RVT/IFC pair remains preserved with its previously documented stale RVT fingerprint. The owner-follow-up proposal carries the 14×12 ft kitchen and 11×10 ft dining study targets, Connecticut code-research jurisdiction, and a steep traditional-gable exploration; pitch and roof geometry remain unselected. U-03 is private-route-only, with guest hall access and both Jack-and-Jill links retained. The private upper-suite route is still topology intent rather than fitted room geometry. M-06 B remains unassigned. No construction geometry, code compliance, structural safety, or construction-readiness is claimed.
 
 ## Repository safety baseline
 
@@ -459,3 +459,27 @@ Current status: `Tools/build_m38_steep_roof_pitch_options.ps1` compares illustra
 - **M12 — Documented physical-building geometry:** defer walls, floors, openings, stairs, roof and assembly-specific elements until project sources or explicit owner choices support their dimensions and construction inputs. Acceptance requires matched native QA and IFC checks, with accessibility, fire/life-safety, structure and code review explicitly open; no professional approval claim.
 
 M-37 expanded-envelope comparison note: the unselected 40×42 ft envelope permits 82 corridor searches, but none connects to the required public-room set U-01/U-02/U-04. The U-03 corridor-side diagnostic is not door access and is not part of the current owner requirement.
+
+### M40 — Regenerate and independently validate current-source selected D in Revit
+
+Acceptance criteria:
+
+- Preserve the selected-D source and create a new timestamped Revit study from the checked-in source using the authorized project-local RevitPilot add-in.
+- Run the matching read-only Revit API audit and confirm levels, spaces, wall/opening counts, warnings, and exact saved-RVT fingerprint.
+- Independently parse and validate IFC2X3 schema, source-matching storeys/spaces/areas/levels/plan bounds/body profiles, and matching source/RVT/IFC hashes.
+- Leave older mismatched RVT/IFC evidence and the three untracked Incoming RFAs untouched; do not push or modify remote state.
+- Document that the result is a room-boundary study, not a coordinated building model.
+
+Current status: **complete** for Revit 2027.3 run `.local/revit-pilot/selected-d/20261028T182748169Z/`. Source SHA256 is `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`, RVT SHA256 is `83675c7229087e1c8d812ddfe31c0a46c0f9229ac9f9240de28f12906afe2d9e`, and IFC2X3 SHA256 is `5b65faacbf596adaf6e7b2b00a47397b965e1f9507c67cefed13729bea520425`. Matching native audit `.local/revit-pilot/audits/20261028T182832781Z/` reports Revit 2027.3 build 27.3.0.28, three levels at -5/0/+5 ft, 21 enclosed rooms, zero walls, zero openings, and zero warnings; its saved-RVT fingerprint matches. `validate_selected_d_ifc.py` passes **26/26** checks with no errors, including parseability, IFC2X3 schema, source-linked room inventory and areas/bounds/body profiles. Full command and checksums are in `PROGRESS.md`. This closes current-source room-space regeneration only. Walls, floors, native stairs, doors, roof, structure, MEP, lift product, code review, and the owner-directed upper-suite redesign remain open.
+
+### M41 — Fit the owner-directed private upper-suite route in a bounded room layout
+
+Acceptance criteria:
+
+- Preserve selected-D room dimensions/source, the current 36×32 ft upper-wing test envelope, +6 ft frame convention, lift reservation, and source stair approach unless the owner explicitly changes those inputs.
+- Represent the latest topology: U-01 → C-PRIVATE → U-02 → U-03; U-03 has no direct shared-hall door; U-04 keeps independent guest-hall access; U-03 ↔ U-06 ↔ U-04 Jack-and-Jill access; U-05 remains primary-only.
+- Check actual room-block contact and corridor continuity, rather than treating edge samples as doors. Measure clearances only against documented project inputs and label schematic nominal wall gaps.
+- Produce deterministic PowerShell JSON/check/SVG outputs in an isolated proposal, and independently replay/validate them before any disposable Revit test.
+- If the fixed lift/core/approach constraints prevent a candidate, document the smallest evidence-backed design choice needed from the owner; do not infer infeasibility from a bounded search or alter selected D.
+
+Current status: **in progress**. M34 shows that a single westward shift of U-03 collides with the existing hall and projected lift reservation. M37/M39 searches show no complete public-room route candidate within their bounded search modes; those searches do not directly encode the newest U-02–U-03 private contact and cannot settle the route. The next study must co-place the private adjacency and stair/lift/public route, while keeping the owner's kitchen/dining targets and the roof study independent.
