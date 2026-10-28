@@ -692,3 +692,14 @@ Acceptance criteria:
 - Preserve selected D, Revit files, IFC exports, and Incoming RFAs.
 
 Current status: Complete as an independent recheck of an unapproved upper-suite comparison. The current source fingerprints match; the validator passes 111/111 checks and identifies a candidate with sampled shared-hall routes to U-01, U-02 and U-04 while retaining the owner-directed private link graph. The search candidate fits only within a 40 × 42 ft exploratory upper shell, larger than the selected-D 36 × 32 ft upper wing; the bounded search is not exhaustive. Door locations/swings, privacy, egress, structure, code and actual Revit geometry remain unresolved. No geometry was changed or adopted.
+
+### M62 — Verify manufacturer-supported M-06 RFA retrieval path
+
+Acceptance criteria:
+
+- Check public manufacturer/partner documentation for a supported source of the owner-selected Champion PRO model's Revit family.
+- Distinguish current 610AA001.020 evidence from predecessor 211AA documentation and RFAs.
+- Do not sign in, create an account, submit a support request, or substitute a predecessor model for the selected fixture.
+- Record the retrieval blocker and the source/hash steps required if an owner-supplied current family becomes available.
+
+Current status: Complete as public-source research. American Standard material identifies ATS as its Revit/BIM partner; ATS documents that Revit downloads require an account and configured Spec or Project. No public evidence found that ATS currently offers 610AA001.020, so exact family availability remains unverified. No RFA or account action occurred. M-06 B remains unassigned pending verified current-product geometry and coordinated clearances/route.
