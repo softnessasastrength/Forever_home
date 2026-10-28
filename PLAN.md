@@ -681,3 +681,14 @@ Acceptance criteria:
 - Record the owner's U-02/U-03 access clarification without implying that door geometry, code, egress, or privacy performance has been verified.
 
 Current status: Complete for deterministic room-block generation and the preserved IFC/RVT pair. Both PowerShell runs pass 43/43 and produce identical hashes for all seven artifacts; all three SVGs parse. The isolated exact-backup copy passes 26/26 IFC checks, and the offline suite passes 37/37. The primary retained run's RVT mismatch remains documented and untouched. No Revit geometry or selected-D source changed. This evidence does not close native architectural geometry, door/egress coordination, M-06 fit/service routing, or manual Revit review.
+
+### M61 — Recheck upper-suite comparison against latest owner access graph
+
+Acceptance criteria:
+
+- Confirm the retained M46 candidate is fingerprinted to the current selected-D study, owner-follow-up study, and room program.
+- Independently rerun `Tools/validate_upper_suite_candidate.ps1` and verify both the required direct U-02 public route and private U-02/U-03 sequence, guest hall route, and two Jack-and-Jill links.
+- Report the shell-size tradeoff and sampled route limits without promoting the proposal to selected geometry or a door/code finding.
+- Preserve selected D, Revit files, IFC exports, and Incoming RFAs.
+
+Current status: Complete as an independent recheck of an unapproved upper-suite comparison. The current source fingerprints match; the validator passes 111/111 checks and identifies a candidate with sampled shared-hall routes to U-01, U-02 and U-04 while retaining the owner-directed private link graph. The search candidate fits only within a 40 × 42 ft exploratory upper shell, larger than the selected-D 36 × 32 ft upper wing; the bounded search is not exhaustive. Door locations/swings, privacy, egress, structure, code and actual Revit geometry remain unresolved. No geometry was changed or adopted.
