@@ -55,6 +55,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 $selectedPath = Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27/study.json'
 $followupPath = Join-Path $root 'Architecture/House_Design_Iteration_2026-10-28/study.json'
 $programPath = Join-Path $root 'Requirements/Room_Program.md'
+$selectedStudy = Get-Content -LiteralPath $selectedPath -Raw | ConvertFrom-Json
 
 Assert-Check ($generatorChecks.failed.Count -eq 0 -and $generatorChecks.count -gt 0) 'Generator integrity checks include failures or no checks.'
 foreach ($property in $generatorChecks.checks.PSObject.Properties) {
@@ -152,10 +153,96 @@ Assert-Check ($report.preserved_constraints -contains 'owner-directed U-02 to U-
 Assert-Check ($report.preserved_constraints -contains 'owner-required direct U-02 shared-hall arrival; actual opening remains unmodeled') 'U-02 direct hall-arrival requirement is not recorded.'
 Assert-Check ($report.preserved_constraints -contains '4ft-wide hall route from source upper landing to U-01, U-02 and U-04; sampled side goals do not establish doors') 'Public route is not labelled as the 4-ft sampled proxy.'
 
+# Recompute the sampled 4-ft hall access from source landing coordinates and
+# candidate room blocks. Do not accept the generator's reachability booleans as
+# independent evidence. This remains a room-block grid proxy, not door geometry.
+$step = [double]$report.search.coordinate_grid_ft
+$grid = 1.0 / $step
+$maxIx = [int][Math]::Round(($shellWidth - 2.0) * $grid)
+$maxIy = [int][Math]::Round(($shellDepth - 2.0) * $grid)
+$upperOffset = [double]$selectedStudy.plan_frame_offsets_ft.upper[1]
+$landing = $selectedStudy.stair_core_test.main_to_upper.upper_landing_ft
+$startX = [double]$landing[0] + [double]$landing[2] / 2.0
+$startY = [double]$landing[1] - $upperOffset - 2.0
+$startIx = [int][Math]::Round($startX * $grid)
+$startIy = [int][Math]::Round($startY * $grid)
+$lift = $selectedStudy.stair_core_test.lift
+$liftOrigin = @($lift.origin_ft)
+$liftKeepout = [pscustomobject]@{x_ft=[double]$liftOrigin[0];y_ft=([double]$liftOrigin[1]-$upperOffset);width_ft=[double]$lift.width_ft;depth_ft=[Math]::Min([double]$lift.depth_ft,($shellDepth-([double]$liftOrigin[1]-$upperOffset)))}
+$blocked = [bool[,]]::new($maxIx + 1, $maxIy + 1)
+$obstacles = @($rectangles.PSObject.Properties | ForEach-Object { $_.Value }) + @($liftKeepout)
+foreach ($obstacle in $obstacles) {
+    # Grid centres strictly inside a rectangle expanded by the 2-ft half-width
+    # overlap a 4-ft corridor square; endpoint centres only touch and remain clear.
+    $minX = [Math]::Max(12,([int][Math]::Floor(([double]$obstacle.x_ft - 2.0) * $grid) + 1))
+    $maxX = [Math]::Min($maxIx,([int][Math]::Ceiling(([double]$obstacle.x_ft + [double]$obstacle.width_ft + 2.0) * $grid) - 1))
+    $minY = [Math]::Max(12,([int][Math]::Floor(([double]$obstacle.y_ft - 2.0) * $grid) + 1))
+    $maxY = [Math]::Min($maxIy,([int][Math]::Ceiling(([double]$obstacle.y_ft + [double]$obstacle.depth_ft + 2.0) * $grid) - 1))
+    for ($ix = $minX; $ix -le $maxX; $ix++) {
+        for ($iy = $minY; $iy -le $maxY; $iy++) { $blocked[$ix,$iy] = $true }
+    }
+}
+$routeReachable = [bool[,]]::new($maxIx + 1, $maxIy + 1)
+$independentRouteValid = $startIx -ge 12 -and $startIx -le $maxIx -and $startIy -ge 12 -and $startIy -le $maxIy
+$routeQueue = [System.Collections.Generic.Queue[int]]::new()
+if ($independentRouteValid -and -not $blocked[$startIx,$startIy]) {
+    $stride = $maxIy + 1
+    $routeReachable[$startIx,$startIy] = $true
+    $routeQueue.Enqueue(($startIx * $stride) + $startIy)
+    $directions = @(@(1,0),@(-1,0),@(0,1),@(0,-1))
+    while ($routeQueue.Count -gt 0) {
+        $cell = $routeQueue.Dequeue()
+        $cx = [int][Math]::Floor($cell / $stride)
+        $cy = $cell - ($cx * $stride)
+        foreach ($direction in $directions) {
+            $nx = $cx + [int]$direction[0]
+            $ny = $cy + [int]$direction[1]
+            if ($nx -lt 12 -or $nx -gt $maxIx -or $ny -lt 12 -or $ny -gt $maxIy) { continue }
+            if ($routeReachable[$nx,$ny] -or $blocked[$nx,$ny]) { continue }
+            $routeReachable[$nx,$ny] = $true
+            $routeQueue.Enqueue(($nx * $stride) + $ny)
+        }
+    }
+} else { $independentRouteValid = $false }
+$doorSamples = [int]$report.search.public_door_edge_samples
+$independentSides = [ordered]@{}
+foreach ($id in @('U-01','U-02','U-04')) {
+    $room = $rectangles.$id
+    $minXTick = [int][Math]::Ceiling((([double]$room.x_ft + $doorReservation / 2.0) / $step))
+    $maxXTick = [int][Math]::Floor((([double]$room.x_ft + [double]$room.width_ft - $doorReservation / 2.0) / $step))
+    $minYTick = [int][Math]::Ceiling((([double]$room.y_ft + $doorReservation / 2.0) / $step))
+    $maxYTick = [int][Math]::Floor((([double]$room.y_ft + [double]$room.depth_ft - $doorReservation / 2.0) / $step))
+    $reachableSides = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    for ($sample = 0; $sample -lt $doorSamples; $sample++) {
+        $t = if ($doorSamples -eq 1) { 0.5 } else { $sample / [double]($doorSamples - 1) }
+        $xTick = [int][Math]::Round($minXTick + ($maxXTick - $minXTick) * $t)
+        $yTick = [int][Math]::Round($minYTick + ($maxYTick - $minYTick) * $t)
+        $x = $xTick * $step; $y = $yTick * $step
+        $goals = @(
+            [pscustomobject]@{side='west';x=([double]$room.x_ft-2.5);y=$y},
+            [pscustomobject]@{side='east';x=([double]$room.x_ft+[double]$room.width_ft+2.5);y=$y},
+            [pscustomobject]@{side='south';x=$x;y=([double]$room.y_ft-2.5)},
+            [pscustomobject]@{side='north';x=$x;y=([double]$room.y_ft+[double]$room.depth_ft+2.5)}
+        )
+        foreach ($goal in $goals) {
+            $gx = [int][Math]::Round([double]$goal.x * $grid)
+            $gy = [int][Math]::Round([double]$goal.y * $grid)
+            if ([Math]::Abs($gx / $grid - [double]$goal.x) -gt 0.000001 -or [Math]::Abs($gy / $grid - [double]$goal.y) -gt 0.000001) { continue }
+            if ($gx -ge 12 -and $gx -le $maxIx -and $gy -ge 12 -and $gy -le $maxIy -and $routeReachable[$gx,$gy] -and -not $blocked[$gx,$gy]) { [void]$reachableSides.Add([string]$goal.side) }
+        }
+    }
+    $independentSides[$id] = @($reachableSides | Sort-Object)
+    $reportedSides = @($candidate.hall_reachability.reachable_room_sides.$id | Sort-Object -Unique)
+    Assert-Check ((Compare-Object @($independentSides[$id]) $reportedSides).Count -eq 0) "Independent route replay disagrees with reported reachable sides for $id."
+}
+Assert-Check $independentRouteValid 'Source upper-landing approach is blocked in the independent route replay.'
+Assert-Check ($independentSides['U-02'].Count -gt 0) 'The owner-required direct U-02 hall arrival is not independently reachable in the 4-ft grid proxy.'
+Assert-Check ($independentSides['U-01'].Count -gt 0 -and $independentSides['U-04'].Count -gt 0) 'A required public-room hall goal is not independently reachable in the 4-ft grid proxy.'
+
 if ($errors.Count -gt 0) {
     foreach ($item in $errors) { Write-Error "FAIL: $item" -ErrorAction Continue }
     Write-Output ("FAILED: {0} of {1} independent checks." -f $errors.Count, $checksRun)
     exit 1
 }
 
-Write-Output ("PASS: {0} independent checks. Candidate {1}; shell {2} x {3} ft is explicitly exploratory/unapproved; sampled public hall route reaches U-01, U-02 and U-04. No actual doors, code compliance or room approval are established." -f $checksRun, $candidate.layout_key, $shellWidth, $shellDepth)
+Write-Output ("PASS: {0} independent checks. Candidate {1}; shell {2} x {3} ft is explicitly exploratory/unapproved; sampled public hall route reaches U-01, U-02 ({4}) and U-04. No actual doors, code compliance or room approval are established." -f $checksRun, $candidate.layout_key, $shellWidth, $shellDepth, (@($independentSides['U-02']) -join ','))
