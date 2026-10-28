@@ -281,6 +281,17 @@ Acceptance criteria:
 
 Current status: `Tools/audit_m25_social_room_area_reconciliation.ps1` passes 11/11 checks. Two fresh PowerShell 5.1 runs produced byte-identical JSON (SHA256 `4A828984CC93FE7B793DBD122CBE49B5A0A018788BEBA285CD3B02A0BECE82A7`). The report compares 676 sf of selected-D living/kitchen/dining room blocks with a combined preliminary range of 420–525 sf. Retaining the current blocks or retargeting within those ranges is an owner design choice; neither is selected. See `Architecture/M25_Social_Room_Area_Reconciliation_2026-10-28/README.md`.
 
+### M26 — Inspect public exact-SKU M-06 toilet family alternative
+
+Acceptance criteria:
+
+- Preserve the owner-selected Champion PRO 610AA001.020 as the first investigation target; clearly label any alternate as a proposal.
+- Retain any public candidate only with its official product/model URL, exact source hash and an unmodified quarantined copy.
+- Inspect candidate family category, type metadata, host behavior and geometry in Revit 2027 without saving the source; measure only in a disposable derivative.
+- Do not assign B unless the selected product geometry, applicable clearance basis, door/approach and plausible service route are all supported.
+
+Current status: TOTO's official page exposes a public Nexus MS442124CEFG Revit file; an unauthenticated byte-identical source is quarantined with SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. The manufacturer marks the product limited inventory. Family inspection remains pending while Revit's trial overlay prevents reliable UI interaction. This is a research alternative only; Champion remains the owner-selected first candidate and M-06 remains unassigned. See `Research/M06_Toilet_Options_2026-10-27.md`.
+
 ## RevitCity research and candidate disposition (2026-10-27)
 
 - Retired the dimensionally failed 19967 and unsuitable 21015 island alternatives from the incoming/active candidate pool. Their sources and test evidence remain preserved; the duplicate 19967 download was removed after its SHA256 was confirmed identical to the archived original.

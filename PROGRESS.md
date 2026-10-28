@@ -38,6 +38,12 @@ Status: Compact-Core C's schema-v3 pipeline remains a verified compatibility fix
 - `Architecture/M25_Social_Room_Area_Reconciliation_2026-10-28/README.md` records two proposals for the next furnished plan test: retain current block areas and document the variances, or choose room targets inside existing ranges and create a separate placement study. Neither option is selected. D, the shell test envelope, M-06 and existing untracked families are unchanged.
 - Reproduced the PowerShell 5.1 report in two fresh scratch directories and at its documented output path: **11/11 checks passed** in each run, and the scratch JSON hashes matched (`4A828984CC93FE7B793DBD122CBE49B5A0A018788BEBA285CD3B02A0BECE82A7`). The check validates source identity, room IDs, individual area arithmetic, both program-range sources and aggregate bounds. `git diff --check` passes. No Revit or IFC model regeneration was attempted for this area-only decision docket.
 
+## M26 M-06 public Revit family source research — 2026-10-28
+
+- Found a manufacturer-linked Revit file for TOTO Nexus MS442124CEFG on the official product page. TOTO marks it limited inventory; its spec lists 1.28 GPF, Universal Height, a 12-in standard rough-in with optional 10/14-in Unifit parts, and separate bowl/tank/seat components. The spec's listed shipping dimensions are not treated as assembled geometry.
+- Fetched the public RFA without authentication into ignored quarantine, preserving the exact 1,400,832-byte file and sidecar source metadata; SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. The file's OLE compound-document signature is present. No Revit family inspection or source modification occurred.
+- The source is a proposed alternate only. The owner-selected American Standard Champion PRO 610AA001.020 remains the first investigation target; no product is selected, no M-06/B geometry is assigned, and no model/IFC changes were made. Family/type mapping, assembled envelope, actual availability, terms, clearance basis, approach and service path remain open. See `Research/M06_Toilet_Options_2026-10-27.md`.
+
 ## M23 Adirondack carry-forward source check — 2026-10-28
 
 - Confirmed `Architecture/Building_Program.md` requires the owner's existing Adirondack model and explicitly says its exact product reference or asset path has not been recorded. Searched the repository, current Downloads folder, and accessible project-thread context; no brand/model, URL, image or family asset was present.

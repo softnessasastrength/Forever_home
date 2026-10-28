@@ -4,6 +4,10 @@ Status: **The two unsuitable island alternatives are retired. RevitCity 7216 is 
 
 Use this intake for granular family selection against the stable selected-D space study, with all trials in disposable derivatives. Do not bulk-download or assume a RevitCity family is safe, parametric, licensed for reuse, or compatible with Revit 2027.
 
+## Public M-06 toilet family lead — TOTO Nexus (2026-10-28)
+
+TOTO's official [MS442124CEFG product page](https://www.totousa.com/nexus-two-piece-toilet-128-gpf-elongated-bowl) links a public Revit RFA and reports limited inventory. The model was downloaded without authentication to ignored `.local/revit-pilot/family-intake/candidates/toto-nexus-ms442124cefg.rfa`; its sidecar records source URL and SHA256 `ACA931BF657DB567B4A45DC47F6CB526C6F701969ABDCF99EEE29FAF38BE72A0`. It is a proposed research alternative to the owner-selected Champion PRO, not an approved product or an Incoming family. Revit inspection is pending; no geometry, type mapping, assembly fit, terms of use, clearance, door, approach, service path or M-06 assignment is established. See [M-06 toilet options](../../Research/M06_Toilet_Options_2026-10-27.md).
+
 ## Intake record
 
 | Field | Required evidence |
