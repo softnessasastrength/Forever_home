@@ -3,7 +3,7 @@
 <text class="title" x="40" y="30">M37 - upper-suite pack and route search</text><text class="note" x="40" y="50">bounded search found no candidate satisfying room contacts, lift keepout and required 4ft public routes to U-01, U-02 and U-04; room rectangles and stair/lift projection only</text>
 <rect class="shell" x="40" y="70" width="648" height="576"/>
 <rect class="lift" x="421" y="574" width="144" height="72"/><text class="label" x="425" y="590">lift projected keepout</text>
-<text class="warn" x="40" y="710">No candidate passed the bounded room/contact/lift/hall route search.</text>
+<text class="warn" x="40" y="710">No approach-clear layout was available for a route diagnostic.</text>
 <text class="note" x="40" y="730">Nodes 1500; layouts 285; search complete False. A capped search is not proof of impossibility.</text>
 <text class="note" x="40" y="752">Not Revit walls, door swings, floor openings, code or engineering.</text>
 </svg>

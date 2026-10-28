@@ -10,6 +10,12 @@ Status: **bounded search completed; no candidate satisfies the current room-link
 - **Owner revision, 2026-10-28:** U-03 has the private route only; remove the direct U-03-to-public-hall door. Preserve guest hall access and both Jack-and-Jill links.
 - Keep the 4 ft stair-to-upper public hall test and source lift reservation visible; neither is detailed construction geometry.
 
+## Current validator and refreshed default — 2026-10-28
+
+The M-37 PowerShell generator now passes **27/27** integrity checks. The checked-in 1,500-node default and two clean replays reproduce byte-for-byte. The default reaches its 1,500-node cap, records 285 room-block layouts, and has zero lift/approach-clear route placements, so it tests no corridor routes. Hashes: search `20B4A13EF50B41F6CDF456375A724D8CB2892FEA103718E94CFA73382AF479F1`, checks `79143C3E720DC16F8C98FBA41DFF5AB05E45A08EC2A3901AC7F06E50411A59B8`, SVG `F70BF29156763863A38F6322B7E9B5ACFDD677BC0BE9DA9C5195A5BE6E138EDC`, manifest `6638C4F9F9266DC2D7EF6459B6B66E7A3AC009DDACB2D4B44B480DCD6E401A2E`. Older hashes elsewhere in this report identify earlier implementation checkpoints and are not hashes of the current artifacts.
+
+The expanded balanced screen with eight added packing contacts and nine sampled public room-edge goals records reach counts U-01: 19, U-02: 6, U-03 corridor-side proximity: 6 and U-04: 12 across 25 layouts/routes. These counts overlap by layout; none reaches the required U-01/U-02/U-04 trio. The reproducible top partial visualization is documented separately in `Architecture/M39_Upper_Suite_Partial_Access_Study_2026-10-28/README.md`. No sample constitutes an actual door or opening.
+
 ## Reproduce
 
 From the repository root, Windows PowerShell 5.1:
@@ -49,10 +55,59 @@ An unselected **40 x 42 ft comparison envelope** (`-ShellWidthOverrideFt 40 -She
 
 An **earlier U-01-root-only** 10,000-node default-envelope stress run increased coverage to 1,930 bounded layouts, 598 approach/lift-clear translations and 598 route searches. Hall-side reach counts were U-01: 0, U-02: 0, U-04: 231; U-03 corridor-side reach: 57. No route reached U-01/U-02/U-04 together, the candidate remained absent, and both orientation budgets were exhausted. Greater search budget alone did not solve the private-suite-to-hall connection; the layout/route search strategy must change. The run is retained under ignored `.local/revalidation/m37-private-only-default-10000/` and remains bounded, not exhaustive.
 
-The current **20/20** checks validate source fingerprints, unchanged selected-D input, source-derived dimensions/offsets, private-only U-03 access, all six root plans, landing-aligned seed arithmetic and obstacle clearance, retained guest and Jack-and-Jill topology, exact clearance-grid parity, and bounded search accounting. The checked-in default and two independent default replays match byte-for-byte for `search.json` (`8FCF8F8A4A56583D8E343FFB60EEAA85A2FCFF2156615AA2078BC988EFB9BF913`), `checks.json` (`C85632785DE1C8579061E8862454997977DB21EB022708939DE7A469AE745B31`), SVG (`5D3E17656880B98D279850499CE9A6C4064E80F76F43F9C478BC77E4093FEC02`) and manifest (`391833694DAE146C2E6D3BEC2BE1DB7C117A0F0E3D6EE8D92393B5464D280DFA`). JSON parses and SVG parses as XML; the outside-repository output guard rejected its target without creating it; `git diff --check` passes. These checks do not turn a no-candidate result into an architectural rejection. A passing check count validates setup and report integrity, not a viable layout.
+At that implementation checkpoint, **20/20** checks validated source fingerprints, unchanged selected-D input, source-derived dimensions/offsets, private-only U-03 access, all six root plans, landing-aligned seed arithmetic and obstacle clearance, retained guest and Jack-and-Jill topology, exact clearance-grid parity, and bounded search accounting. The checked-in default and two independent default replays match byte-for-byte for `search.json` (`8FCF8F8A4A56583D8E343FFB60EEAA85A2FCFF2156615AA2078BC988EFB9BF913`), `checks.json` (`C85632785DE1C8579061E8862454997977DB21EB022708939DE7A469AE745B31`), SVG (`5D3E17656880B98D279850499CE9A6C4064E80F76F43F9C478BC77E4093FEC02`) and manifest (`391833694DAE146C2E6D3BEC2BE1DB7C117A0F0E3D6EE8D92393B5464D280DFA`). JSON parses and SVG parses as XML; the outside-repository output guard rejected its target without creating it; `git diff --check` passes. These checks do not turn a no-candidate result into an architectural rejection. A passing check count validates setup and report integrity, not a viable layout.
+
+### U-02-only contact-sampling experiment — 2026-10-28
+
+The search now accepts optional `-RootSearchScope`, `-U02RootPlanVariant`, and `-AdditionalContactSamples` controls. Defaults (`balanced`, `baseline`, `0`) preserve the established search. `guest-branch-first` changes only traversal order in the U-02-rooted tree; it changes no links, room dimensions or owner requirements. Extra samples preserve all five legacy anchors, then add evenly spaced positions within the source-derived 3.5 ft reservation interval, snapped to the existing 1/6 ft grid.
+
+Reproduce the expanded U-02-only contact search twice:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope U-02-only -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-u02-contact-samples-8-correct-grid-a'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope U-02-only -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-u02-contact-samples-8-correct-grid-b'
+```
+
+Review caught a PowerShell variable-name collision: `$grid` (six cells per foot) and `$script:Grid` (intended feet per step) referred to the same case-insensitive script variable. The first expanded-sampling trial used an incorrect step and is discarded; none of its results or hashes is accepted below. The corrected sampler uses `$script:GridStepFt`, and an integrity check confirms the intended 1/6 ft step. The zero-sample default search is unchanged geometrically.
+
+Both corrected-grid runs pass **23/23** integrity checks and match byte-for-byte: `search.json` SHA256 `5A5B5510694A6D5EC9FC1016976308472DE73B4BB41DBD732B65AF6A92F96AD1`, `checks.json` `2FF6A72DAF6C31364ABC0BC09A647CB392D168CC9E9F87960170263F2E067ECF`, SVG `EAD70F18E62616470281D560CE868B2B8CFC990E43F8E87FD697C8F1C4944255`, and manifest `C66945A7A731A15673823B17995CAE4C895BC4F930E8ECFE2AAC7834AF4042DC`. JSON and SVG/XML parse in both output directories. Each run expands 9,000 of 12,000 permitted nodes across three valid U-02 root/orientation/landing seeds; the fourth seed is outside the source shell. It records 200 complete packings and 200 lift/approach-clear route placements. U-02 has a hall-side reachable point in 179 cases; U-01 and U-04 remain unreachable, so the required three-room public route is absent. The search is incomplete because valid-seed budgets are exhausted. A 1,200-node smoke comparison records two layouts with legacy contacts and six with eight additional samples, showing broader contact coverage but no route success. An earlier 12,000-node U-02-only ordering test without extra samples recorded four layouts and no viable route; reordering the same room-link tree did not alter those packings.
+
+Refresh the checked-in default and its two clean replays with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -NodeLimit 1500 -LayoutLimit 5000 -OutputDirectory 'Architecture/M37_Upper_Suite_Pack_Route_2026-10-28'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -NodeLimit 1500 -LayoutLimit 5000 -OutputDirectory '.local/revalidation/m37-default-correct-grid-a'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -NodeLimit 1500 -LayoutLimit 5000 -OutputDirectory '.local/revalidation/m37-default-correct-grid-b'
+```
+
+The three corrected outputs match exactly: `search.json` SHA256 `89580F29792E788A0ED66C12B02E014A9AD57EAC308737398FFDD0BBAA4AF626`, `checks.json` `34EFEF6C7D184A2001C11D9C234976371CD32D2612D23819F471BC81203EF1E3`, SVG `59756FD4D9C50ABB282E4A273B82405103D8EB7F7037342B644FDB40D1E404EB`, and manifest `4ABF234E7C05360086E8AA53F12296E2A2293EB5E4512FB9B0DE984645361F4E`. Each passes **25/25** checks, reports the 1/6 ft route grid, and parses as JSON/XML. The default still caps at 1,500 nodes, records 285 bounded layouts and finds zero placements clear of the landing approach, so it runs zero corridor tests. This remains a search diagnostic, not a design rejection.
+
+### Balanced-root expanded-contact comparison — 2026-10-28
+
+To test whether denser contacts solve the target room connection when no root room is privileged, reproduce:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope balanced -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-balanced-contact-samples-8-a'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope balanced -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-balanced-contact-samples-8-b'
+```
+
+Both runs pass **23/23** checks and match byte-for-byte: `search.json` SHA256 `1F2BD093B83C969346803D9B25D2929EB6E0A8629FB8BA37B2AEFA0976456E38`, `checks.json` `AB4AF73A3B77AE12A15BE8F75B6BC0A700D76281CDC3B5D01F1DF9F204783460`, SVG `ED0055C7D887390C00B15BCD6AFB968D73F8BF4888236366F0A640C589FC829E`, and manifest `2EAEF2F7C510BA2B679C1116291B2DC6BB67F7D8F5EFC35BEE92B7B0597DED69`. Each expands 9,000 nodes, records 25 complete layouts and 25 route tests; U-01 is hall-reachable in 19, while U-02 and U-04 are reachable in zero. No layout reaches the required three public rooms. The bounded search is incomplete because per-seed budgets were exhausted. This balanced result and the U-02-only result trade which room connects; more contact samples alone have not solved the room-door graph. The next useful model should represent specified public doorway/contact edges during packing, or test owner-approved landing-contact alternatives, before treating any arrangement as a design candidate.
+
+### Off-centre public-edge goal samples — 2026-10-28
+
+The route checker now accepts `-PublicDoorEdgeSamples` (1–9; default 1 preserves the centred-goal case). Each sample adds one schematic goal point on each side of each tested room. Sample positions are evenly spaced along the side after reserving half the source 3.5 ft contact interval at both corners, then aligned to the 1/6 ft grid. These points test corridor reach near hypothetical edge contacts; they do not place doors, openings or swings, and U-03 remains private-route-only by owner direction.
+
+Reproduce the balanced-root test with five edge samples and eight additional room contacts:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope balanced -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -PublicDoorEdgeSamples 5 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-balanced-door-edge-samples-5-a'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 -RootSearchScope balanced -U02RootPlanVariant guest-branch-first -AdditionalContactSamples 8 -PublicDoorEdgeSamples 5 -LandingAlignedRootSeeds -NodeLimit 12000 -LayoutLimit 10000 -OutputDirectory '.local/revalidation/m37-balanced-door-edge-samples-5-b'
+```
+
+Both runs pass **25/25** checks and match byte-for-byte: `search.json` SHA256 `CED36039A1188BF7CC014E4B9B060D8D8A92580C91CDD34D36665CBF57D88E58`, `checks.json` `FCE02E92643071EF6061BEAFB804C24F6B0B4D48304FA89EFA61C3B79B7F19FA`, SVG `ED0055C7D887390C00B15BCD6AFB968D73F8BF4888236366F0A640C589FC829E`, and manifest `D78680FDFBBBFD65BAF5E05D497EF3981510AFA4E4B455E1314B221C8634D04A`. Each expands 9,000 nodes and tests 25 approach-clear layouts. Edge samples reach U-01 in 19 layouts, U-02 in 6, U-03 in 6, and U-04 in 8; zero layouts reach the required U-01/U-02/U-04 trio. U-03 corridor-side proximity is a diagnostic only and is not a public door. The bounded search is incomplete; these results do not prove infeasibility or establish actual door locations.
 
 ## Limits and next work
 
 This is a room-block and clearance-envelope screen, not Revit geometry. The nominal 3.5 ft reservations are source door-matrix values, not verified clear openings. The screen does not model partitions, actual door leaves/swings, corridor-door connections, landing shape beyond the source block, stairs, floor opening, headroom, furniture, finishes, structure, services, fire/life safety, code, accessibility, IFC or construction. The lift is an existing schematic reservation, not a selected product or shaft design.
 
-Next: vary contact anchors and route connections to U-02; the current seeds yield partial access to U-01 and U-04 but no U-02 hall-side reach. Keep the private U-01 → C-PRIVATE → U-02 → U-03 chain, guest access and Jack-and-Jill links. Current bounded searches have produced no supported three-room public route. If one emerges, inspect it in a disposable Revit derivative; do not change selected D. Separately test illustrative steep-gable pitch cases only as labelled proposals, with Connecticut code research remaining site-, municipality- and permit-date-dependent. No code-compliance, structural-safety, certification or construction-readiness claim is made.
+Next: model specified public doorway/contact edges during placement or test owner-approved landing-contact alternatives. The corrected U-02-only and balanced-root tests connect different individual public rooms but neither produces U-01/U-02/U-04 together. Keep the private U-01 → C-PRIVATE → U-02 → U-03 chain, guest access and Jack-and-Jill links; inspect any future candidate only in a disposable Revit derivative, never by changing selected D. Connecticut steep-gable and permit inputs remain site-, municipality- and date-dependent. No code-compliance, structural-safety, certification or construction-readiness claim is made.
