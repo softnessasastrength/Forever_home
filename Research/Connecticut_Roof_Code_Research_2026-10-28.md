@@ -26,3 +26,9 @@ These are prompts for the eventual site-specific professional design. They do no
 ## Still required before any project-specific code screen
 
 Town/municipality, site, permit-application timing, authority having jurisdiction, code path/building classification, roof orientation and geometry, adjacent building/roof context, terrain/exposure and site-derived design loads. No code-compliance, structural-safety, professional-certification, permit or construction-readiness claim is made.
+
+## Status recheck — 2026-10-29
+
+The official Connecticut DAS current-code and adoption-process pages were checked again on 2026-10-29. They continue to identify the 2022 CSBC as applying to permit applications filed from 2022-10-01, based on the 2021 International Codes; DAS continues to report that the planned 2026 code effective date is delayed pending Legislative Regulation Review Committee approval. This updates only statewide published status. Project classification, municipality, filing date, site loads and actual code path remain unknown.
+
+Sources rechecked: [Connecticut State Building Code regulations](https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations) and [Building and Fire Code Adoption Process](https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process).

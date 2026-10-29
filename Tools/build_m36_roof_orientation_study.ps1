@@ -16,6 +16,8 @@ foreach($path in @($proposalPath,$decisionPath,$researchPath)){if(-not(Test-Path
 $proposal=Get-Content -Raw -LiteralPath $proposalPath|ConvertFrom-Json
 $decision=Get-Content -Raw -LiteralPath $decisionPath
 $research=Get-Content -Raw -LiteralPath $researchPath
+$researchCheckedDate='2026-10-28'
+if($research -match 'Status recheck[^\r\n]*(\d{4}-\d{2}-\d{2})'){$researchCheckedDate=$Matches[1]}
 $proposalHash=(Get-FileHash -Algorithm SHA256 -LiteralPath $proposalPath).Hash.ToLowerInvariant()
 $decisionHash=(Get-FileHash -Algorithm SHA256 -LiteralPath $decisionPath).Hash.ToLowerInvariant()
 $researchHash=(Get-FileHash -Algorithm SHA256 -LiteralPath $researchPath).Hash.ToLowerInvariant()
@@ -56,7 +58,7 @@ $report=[ordered]@{
     pitch_ratio_vertical_per_horizontal=$pitchRatio
     options=@($ridgeAlongDepth,$ridgeAlongWidth)
     same_pitch_comparison=[ordered]@{half_run_difference_ft=($ridgeAlongWidth.half_run_ft-$ridgeAlongDepth.half_run_ft);relative_half_run_and_rise_increase=$relativeRiseIncrease;interpretation='At any identical selected pitch ratio, the 42ft transverse span creates a 1ft larger half-run and 5 percent greater rise than the 40ft transverse span. No actual rise can be computed until pitch is selected.'}
-    code_research=[ordered]@{jurisdiction='Connecticut statewide research only';checked_date='2026-10-28';code_path='unassigned; evaluate IRC/IBC path with municipality and design professional';code_2022_status='current adopted code per DAS as checked; 2026 effective date delayed pending legislative review';roof_load_implication='A steep gable still requires site- and code-path-specific roof snow/wind design; the IBC snow provisions and IRC amendment are distinguished in the cited research note.';research_note='Research/Connecticut_Roof_Code_Research_2026-10-28.md'}
+    code_research=[ordered]@{jurisdiction='Connecticut statewide research only';checked_date=$researchCheckedDate;code_path='unassigned; evaluate IRC/IBC path with municipality and design professional';code_2022_status='current adopted code per DAS as checked; 2026 effective date delayed pending legislative review';roof_load_implication='A steep gable still requires site- and code-path-specific roof snow/wind design; the IBC snow provisions and IRC amendment are distinguished in the cited research note.';research_note='Research/Connecticut_Roof_Code_Research_2026-10-28.md'}
     unassigned_inputs=@('pitch ratio','ridge direction relative to site','ridge/eave elevations','roof overhangs','main/rear-wing intersection','porch roof geometry','roof assembly and drainage','openings/chimneys/ducts','municipality and permit date','site snow/wind/terrain inputs','framing, connections, supports and engineering')
     checks=$checks
     failures=$failed

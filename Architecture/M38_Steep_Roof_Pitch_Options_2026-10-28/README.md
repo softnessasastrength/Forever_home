@@ -31,4 +31,6 @@ These are substantial ridge rises. The 12:12 case is 45 degrees. That does not e
 
 See [Connecticut roof-code research](../../Research/Connecticut_Roof_Code_Research_2026-10-28.md). The 2022 CSBC adoption and pending successor date are recorded from official DAS sources. Connecticut's roof-snow provisions do not allow this schematic to assume a steep slope removes the design snow load. Applicable code path, municipality, permit date, ground snow data, drifting, wind exposure and adjacent roofs remain unknown. Code applicability and project compliance cannot be established from a state name alone.
 
+The official DAS status was rechecked on 2026-10-29 and remains as recorded in the dated addendum to the research note. No project-specific code path or roof load follows from that statewide status.
+
 The run passes 12/12 arithmetic/provenance/non-claim checks; two scratch runs produce byte-identical JSON, checks, SVG and manifest (hashes are in `PROGRESS.md`). This is no roof solid, load calculation, framing design, code review, permit review or construction documentation. No structure or architectural dimension is adopted.

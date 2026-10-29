@@ -3,9 +3,9 @@
     "title":  "M36 â€” steep gable ridge orientation screen",
     "status":  "two parametric ridge orientations compared on the source test envelope; pitch, roof geometry and code path remain unassigned",
     "source_fingerprints_sha256":  {
-                                       "owner_followup_study.json":  "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
-                                       "house_design_decision.md":  "542a43de13e65722fc43a0d11307204033062c2b78b516ac98bc49c63b28f090",
-                                       "Connecticut_Roof_Code_Research_2026-10-28.md":  "3f056dca377f45c73f03d52596532457bd5cebba34eebed43daff8715d6bb1b2"
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "house_design_decision.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_Roof_Code_Research_2026-10-28.md":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
                                    },
     "coordinate_basis":  "Owner-follow-up schematic coordinates: x follows the 40ft envelope dimension; y follows the 42ft envelope dimension. This is not site orientation or surveyed footprint geometry.",
     "main_shell_test_envelope_ft":  {
@@ -42,7 +42,7 @@
                               },
     "code_research":  {
                           "jurisdiction":  "Connecticut statewide research only",
-                          "checked_date":  "2026-10-28",
+                          "checked_date":  "2026-10-29",
                           "code_path":  "unassigned; evaluate IRC/IBC path with municipality and design professional",
                           "code_2022_status":  "current adopted code per DAS as checked; 2026 effective date delayed pending legislative review",
                           "roof_load_implication":  "A steep gable still requires site- and code-path-specific roof snow/wind design; the IBC snow provisions and IRC amendment are distinguished in the cited research note.",

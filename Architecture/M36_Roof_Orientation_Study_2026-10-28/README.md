@@ -29,4 +29,6 @@ At an identical eventual pitch ratio, Option B has 1 ft more half-run and 5% mor
 
 The linked [preliminary Connecticut roof-code note](../../Research/Connecticut_Roof_Code_Research_2026-10-28.md) records official DAS adoption status as checked on 2026-10-28. DAS identifies the 2022 CSBC as current for permit filings from October 1, 2022; its adoption page says the planned 2026 effective date is delayed pending Legislative Regulation Review Committee approval. The adopted IRC amendment refers residential roof design to its tabled snow load. Separate IBC amendments address sloped-roof snow calculations and supporting snow/drift data; which path governs this future house must be confirmed for its classification, municipality and filing date.
 
+The DAS status was rechecked on 2026-10-29; the research note's dated addendum records the unchanged statewide status. The generated report now carries this latest checked date from the note.
+
 A steep roof does not by itself resolve snow, drifting, wind, roof intersections, drainage, overhang, framing or attachment. The town/municipality, site, permit timing, terrain/exposure, adjacent-roof conditions and professional roof design remain open. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.

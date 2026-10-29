@@ -4,9 +4,9 @@
     "status":  "parametric massing comparison only; pitches are illustrative proposals and none is selected",
     "source_fingerprints_sha256":  {
                                        "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
-                                       "owner_followup_study_json":  "941f7ae0f48b47995896bad15424c1b617c1211633060a7204031f10929c1832",
-                                       "owner_decision":  "ec426e391506190c1e07d26a6c63a108db3ebe0aec9aa4c092a7d22a88355574",
-                                       "Connecticut_code_research":  "34cebc2467a6c729b2404656d0302053c2c917558e38ede50012b03ba952f38d"
+                                       "owner_followup_study_json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "owner_decision":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_code_research":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
                                    },
     "coordinate_basis":  "40 x 42 ft selected-D-derived owner-follow-up test envelope; no site orientation, survey or approved house footprint",
     "geometry_assumptions":  [
