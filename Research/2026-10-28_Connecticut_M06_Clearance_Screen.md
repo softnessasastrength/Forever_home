@@ -24,3 +24,9 @@ For a detached one-family dwelling that falls within IRC scope, IRC § R307.1 di
 4. Connecticut DAS, [2022 Connecticut State Building Code with Errata #1 (PDF)](https://portal.ct.gov/das/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csbc-final.pdf), adopted state text (accessed 2026-10-28). The state document is the controlling starting point; use it with applicable base-code provisions and amendments.
 
 This note records a preliminary research lead. It is not a substitute for checking the official adopted code, municipal amendments and the actual permit path.
+
+## Status recheck — 2026-10-29
+
+The Connecticut DAS pages were rechecked on 2026-10-29. They continue to identify the 2022 CSBC as applicable to permit applications filed from 2022-10-01, based on the 2021 International Codes. DAS still states that the planned 2026 code effective date is delayed while approval by the Legislative Regulation Review Committee is pending. This confirms only the statewide published status on the check date; it does not identify this project's site, permit date, scope, local amendments, or applicable code path.
+
+Sources checked: Connecticut DAS [current code regulations](https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations) and [code-adoption status](https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process).

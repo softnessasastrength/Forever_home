@@ -769,3 +769,14 @@ Acceptance criteria:
 - Report Revit host/UI limitations without treating the space-planning package as a physically coordinated house.
 
 Current status: Complete for this offline verification pass. The selected-D PowerShell generator passed 43/43 in `.local/revalidation/M68-selected-d-a/` and `.../M68-selected-d-b/`; all seven outputs matched byte-for-byte and all three plan SVGs passed the generator's XML gate. The checked-in `study.json` remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The independent IFC validator passed 26/26 with zero errors against `.local/revalidation/M48-selected-d-exact-fingerprint/`; both the isolated named RVT and `.0001.rvt` hash to `83675C7229087E1C8D812DDFE31C0A46C0F9229AC9F9240DE28F12906AFE2D9E`, and the IFC hash is `5B65FAACBF596ADAF6E7B2B00A47397B965E1F9507C67CEFED13729BEA520425`. The offline RevitPilot suite passed 37/37. No RVT, IFC, source study or RFA was changed. Revit was not exposed as a targetable window on 2026-10-29; no host operation or Load Once choice was made. This verifies the preserved isolated export only; a separate retained run still has the previously documented named-RVT mismatch. The model remains a 21-space room-boundary study without walls, floors, stairs, doors, roof, structure or coordinated MEP.
+
+### M69 — Bound M-06 approach-depth sensitivity to current Connecticut code status
+
+Acceptance criteria:
+
+- Recheck the Connecticut published code edition and pending 2026 cycle on official DAS pages.
+- Compare the seller-reported selected-SKU projection against B's 84 in gross depth under a conditional 21 in front-clearance screen and a separate optional 48 in usability sensitivity.
+- Preserve the bathroom specification's explicit instruction not to borrow full-bath clearances as M-06 criteria; label the 48 in case optional and unadopted.
+- Hash every controlling local input, reproduce the report in two independent PowerShell 5.1 runs, and keep M-06 B unassigned with no fit conclusion.
+
+Current status: Complete as a sensitivity screen only. The official DAS status was rechecked on 2026-10-29 and recorded in `Research/2026-10-28_Connecticut_M06_Clearance_Screen.md`. For the 124 × 84 in gross search window, retailer-reported 30.25 in toilet projection plus the conditional 21 in preliminary IRC screen totals 51.25 in, leaving 32.75 in gross depth. The optional 48 in comparison totals 78.25 in, leaving 5.75 in gross; that comparison is not an M-06 requirement and is not adopted. Two independent PowerShell runs match byte-for-byte (report SHA256 `EAAB72E2D28ECCF0476FD582715FE628F0B3CA6444980993EC94556E9370F533`). This arithmetic excludes wall build-up, lavatory geometry, doors, approach, and service routes; current product geometry and site-specific code applicability remain unresolved. B remains unassigned. See `Research/M06_Approach_Depth_Sensitivity_2026-10-29.json`.
