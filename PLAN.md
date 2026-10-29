@@ -813,3 +813,14 @@ Acceptance criteria:
 - Produce source-fingerprinted PowerShell JSON/SVG, pass all named checks, reject external output paths, and reproduce outputs byte-for-byte twice.
 
 Current status: Complete as a source-bound design screen. Owner inputs specify a 96 in seating edge, two stools and 12 in seating-side overhang; the selected counter build-up is 35.75 in and accepted as nominal 36 in. NKBA Kitchen Planning Guideline 9 recommends 24 in frontage and 15 in knee-space depth per diner at a 36 in counter. Two frontage allowances total 48 in, leaving 48 in of the edge. The overhang is conditionally 3 in below the knee-space recommendation only if the overhang equals the unobstructed knee depth; the island section/support is not documented. Two PowerShell 5.1 runs reproduced the JSON byte-for-byte (SHA256 `79235A1455370DF3CCDC08387CE0FE0648FF0B61102FAB531A62F034E78C9E30`); all 9/9 checks pass and the SVG parses. The report changes no owner dimension and establishes no product fit, code compliance, accessibility or fabrication adequacy. See `Research/Kitchen_Island_Seating_Clearance_2026-10-29.md`.
+
+### M73-M76 - Upper-suite access search and shell sensitivity
+
+Acceptance criteria:
+
+- Apply the owner-directed access graph: U-02 has direct hall arrival; U-03 is private through U-02 only; U-04 retains guest hall access; both Jack-and-Jill links through U-06 remain.
+- Search the selected-D 36 x 32 ft upper test wing without changing that source, and distinguish incomplete search results from proof of infeasibility.
+- Test search-strategy variations and preserve their limits; independently validate the retained M46 room arrangement against explicitly hypothetical envelope variants.
+- Fingerprint the M46 candidate and selected-D sources, reproduce the sensitivity report twice, and keep selected dimensions unassigned/unmodified.
+
+Current status: Complete as bounded exploratory analysis, not as an upper-floor design. The selected-wing M37 search and balanced-root search both reach their 4,000-node limits without a complete candidate satisfying U-01, U-02 and U-04 public reachability. The deferred early-route-prune strategy produces zero layouts; this is a failed search heuristic, not evidence that the plan is impossible. The existing M46 candidate in an unapproved 40 x 42 ft shell passes the independent route validator in six of ten sampled shell tests. The smallest passing case sampled is 38.333333 x 40 ft (1,533.333 sf), 381.333 sf or 33.1% above the selected-D 36 x 32 ft upper test wing. The sample is not exhaustive and does not authorize a shell expansion or dimension change. No tested proxy represents actual doors, wall assemblies, privacy, egress, stair geometry, structure, MEP or code. See `Tools/screen_m76_upper_suite_candidate_envelope.ps1` and `Research/M76_Upper_Suite_Envelope_Sensitivity_2026-10-29.json`.

@@ -1,0 +1,193 @@
+﻿{
+    "schema":  "forever-home-m76-upper-suite-shell-sensitivity-v1",
+    "checked_on":  "2026-10-29",
+    "status":  "Selected-D room-block baseline unchanged; unapproved envelope sensitivity of one existing M46 candidate.",
+    "source":  {
+                   "M46_candidate_run":  "Architecture/M46_Full_Plate_Upper_Suite_Comparison_2026-10-28/search.json",
+                   "selected_D_study":  "Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                   "independent_validator":  "Tools/validate_upper_suite_candidate.ps1",
+                   "M46_source_shell_ft":  {
+                                               "width":  40,
+                                               "depth":  42,
+                                               "status":  "unapproved comparison"
+                                           }
+               },
+    "selected_D_upper_shell_ft":  {
+                                      "width":  36,
+                                      "depth":  32,
+                                      "gross_area_sf":  1152,
+                                      "status":  "source test envelope, not a verified finished interior"
+                                  },
+    "M46_candidate_room_block_bounds":  {
+                                            "maximum_x_ft":  38.333333,
+                                            "maximum_y_ft":  34.5,
+                                            "minimum_origin_anchored_shell_width_ft":  38.333333,
+                                            "minimum_origin_anchored_shell_depth_ft":  34.5
+                                        },
+    "selected_wing_shortfall_to_contain_room_blocks_ft":  {
+                                                              "width":  2.333,
+                                                              "depth":  2.5
+                                                          },
+    "cases":  [
+                  {
+                      "id":  "selected-D-upper-wing",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  36,
+                      "depth_ft":  32,
+                      "gross_area_sf":  1152,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  5,
+                      "sampled_public_route_pass":  false,
+                      "validator_exit_code":  1,
+                      "validator_summary":  "FAILED: 5 of 112 independent checks."
+                  },
+                  {
+                      "id":  "room-block-bounds-only",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  38.333333,
+                      "depth_ft":  34.5,
+                      "gross_area_sf":  1322.5,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  3,
+                      "sampled_public_route_pass":  false,
+                      "validator_exit_code":  1,
+                      "validator_summary":  "FAILED: 3 of 112 independent checks."
+                  },
+                  {
+                      "id":  "narrow-39-5",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  38.333333,
+                      "depth_ft":  39.5,
+                      "gross_area_sf":  1514.167,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  2,
+                      "sampled_public_route_pass":  false,
+                      "validator_exit_code":  1,
+                      "validator_summary":  "FAILED: 2 of 112 independent checks."
+                  },
+                  {
+                      "id":  "narrow-40",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  38.333333,
+                      "depth_ft":  40,
+                      "gross_area_sf":  1533.333,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 38.333333 x 40 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  },
+                  {
+                      "id":  "width-39-depth-40",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  39,
+                      "depth_ft":  40,
+                      "gross_area_sf":  1560,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 39 x 40 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  },
+                  {
+                      "id":  "width-40-depth-39-5",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  40,
+                      "depth_ft":  39.5,
+                      "gross_area_sf":  1580,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  2,
+                      "sampled_public_route_pass":  false,
+                      "validator_exit_code":  1,
+                      "validator_summary":  "FAILED: 2 of 112 independent checks."
+                  },
+                  {
+                      "id":  "square-40",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  40,
+                      "depth_ft":  40,
+                      "gross_area_sf":  1600,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 40 x 40 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  },
+                  {
+                      "id":  "width-39-depth-42",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  39,
+                      "depth_ft":  42,
+                      "gross_area_sf":  1638,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 39 x 42 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  },
+                  {
+                      "id":  "narrow-42",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  38.333333,
+                      "depth_ft":  42,
+                      "gross_area_sf":  1610,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 38.333333 x 42 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  },
+                  {
+                      "id":  "original-M46-shell",
+                      "status":  "hypothetical sensitivity case; not a selected design dimension",
+                      "width_ft":  40,
+                      "depth_ft":  42,
+                      "gross_area_sf":  1680,
+                      "independent_validator_check_count":  112,
+                      "failed_check_count":  0,
+                      "sampled_public_route_pass":  true,
+                      "validator_exit_code":  0,
+                      "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 40 x 42 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                  }
+              ],
+    "smallest_tested_passing_gross_envelope":  {
+                                                   "id":  "narrow-40",
+                                                   "status":  "hypothetical sensitivity case; not a selected design dimension",
+                                                   "width_ft":  38.333333,
+                                                   "depth_ft":  40,
+                                                   "gross_area_sf":  1533.333,
+                                                   "independent_validator_check_count":  112,
+                                                   "failed_check_count":  0,
+                                                   "sampled_public_route_pass":  true,
+                                                   "validator_exit_code":  0,
+                                                   "validator_summary":  "PASS: 112 independent checks. Candidate C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000; hypothetical test envelope 38.333333 x 40 ft; sampled public hall route reaches U-01, U-02 (north) and U-04. Nearest U-02 wall-edge sample is north at (19.1667,27.5) ft; outside hall goal is (19.1667,30) ft, 0 ft from the landing-approach grid start. These are not door or compliance findings."
+                                               },
+    "smallest_tested_passing_area_increase_sf":  381.333,
+    "smallest_tested_passing_area_increase_percent":  33.1,
+    "scope":  "The validator independently recomputes the existing 4 ft sampled hall-route proxy inside each stated shell. This is a small, selected-case sensitivity, not an exhaustive search for minimum building size.",
+    "limitations":  [
+                        "M46 room blocks, lift/stair reservations and route points remain the unapproved candidate; selected D is unchanged.",
+                        "Test shell boundaries are rectangles; wall thickness, doors, privacy, headroom, structure, code and construction details are not represented.",
+                        "Passing means only that this same M46 arrangement fits and its sampled 4 ft route still reaches U-01, U-02 and U-04 in the tested bounds.",
+                        "No route validates actual door openings or U-03 access; the owner-directed U-03 public edge remains excluded."
+                    ],
+    "checks":  {
+                   "M46_source_is_fingerprint_matched":  true,
+                   "M46_winner_reaches_required_public_rooms":  true,
+                   "candidate_room_boxes_fit_inside_block_bounds":  true,
+                   "selected_D_upper_dimensions_are_source_derived":  true,
+                   "all_ten_validator_cases_ran":  true,
+                   "selected_wing_case_fails":  true,
+                   "blocks_only_bounds_do_not_yet_pass_public_route":  true,
+                   "original_M46_shell_still_passes":  true,
+                   "every_test_is_labelled_as_hypothetical":  true
+               },
+    "failures":  [
+
+                 ],
+    "source_fingerprints_sha256":  {
+                                       "M46_search_json":  "8674de961d882d8fddf74d0b49a5852bcb9878a9c2369319dc8a0fe4f241e39e",
+                                       "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "independent_validator":  "b1d138954f278b7ef8665eec3aaf75de0c4d876bf45aea881ff63d7d6a98de0b"
+                                   }
+}

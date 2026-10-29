@@ -1,7 +1,9 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$RunDirectory,
-    [string]$CandidateField = 'best_candidate'
+    [string]$CandidateField = 'best_candidate',
+    [double]$TestShellWidthFt = 0,
+    [double]$TestShellDepthFt = 0
 )
 
 $ErrorActionPreference = 'Stop'
@@ -108,6 +110,11 @@ Assert-Check ($null -ne $doorReservation) 'Source 3.5-ft nominal contact reserva
 $wallGap = 0.5
 $shellWidth = [double]$report.coordinate_basis.width_ft
 $shellDepth = [double]$report.coordinate_basis.depth_ft
+Assert-Check ((($TestShellWidthFt -eq 0) -and ($TestShellDepthFt -eq 0)) -or (($TestShellWidthFt -gt 0) -and ($TestShellDepthFt -gt 0))) 'A test-shell override must specify both positive dimensions.'
+if ($TestShellWidthFt -gt 0 -and $TestShellDepthFt -gt 0) {
+    $shellWidth = $TestShellWidthFt
+    $shellDepth = $TestShellDepthFt
+}
 
 foreach ($id in $expectedIds) {
     $rect = $rectangles.$id
@@ -260,4 +267,5 @@ if ($errors.Count -gt 0) {
     exit 1
 }
 
-Write-Output ("PASS: {0} independent checks. Candidate {1}; shell {2} x {3} ft is explicitly exploratory/unapproved; sampled public hall route reaches U-01, U-02 ({4}) and U-04. Nearest U-02 wall-edge sample is {5} at ({6},{7}) ft; outside hall goal is ({8},{9}) ft, {10} ft from the landing-approach grid start. These are not door or compliance findings." -f $checksRun, $candidate.layout_key, $shellWidth, $shellDepth, (@($independentSides['U-02']) -join ','), $bestGoals['U-02'].side, $bestGoals['U-02'].edge_center_x_ft, $bestGoals['U-02'].edge_center_y_ft, $bestGoals['U-02'].outside_goal_x_ft, $bestGoals['U-02'].outside_goal_y_ft, $bestGoals['U-02'].route_length_ft)
+$shellLabel = if ($TestShellWidthFt -gt 0) { 'hypothetical test envelope' } else { 'exploratory/unapproved source shell' }
+Write-Output ("PASS: {0} independent checks. Candidate {1}; {2} {3} x {4} ft; sampled public hall route reaches U-01, U-02 ({5}) and U-04. Nearest U-02 wall-edge sample is {6} at ({7},{8}) ft; outside hall goal is ({9},{10}) ft, {11} ft from the landing-approach grid start. These are not door or compliance findings." -f $checksRun, $candidate.layout_key, $shellLabel, $shellWidth, $shellDepth, (@($independentSides['U-02']) -join ','), $bestGoals['U-02'].side, $bestGoals['U-02'].edge_center_x_ft, $bestGoals['U-02'].edge_center_y_ft, $bestGoals['U-02'].outside_goal_x_ft, $bestGoals['U-02'].outside_goal_y_ft, $bestGoals['U-02'].route_length_ft)
