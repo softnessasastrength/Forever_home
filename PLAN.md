@@ -791,3 +791,14 @@ Acceptance criteria:
 - Keep all pitch ratios illustrative, the 40 x 42 ft envelope a test envelope, and all roof/eave/ridge/site/load/assembly inputs unassigned.
 
 Current status: Complete for source refresh and reproducible massing comparisons. Connecticut DAS was rechecked on 2026-10-29: its pages still identify the 2022 CSBC for permit applications filed from 2022-10-01 and say the planned 2026 effective date is delayed pending Legislative Regulation Review Committee approval. M36 now reads the latest status-recheck date from its research note. Two independent PowerShell 5.1 runs regenerated eight M36/M38 artifacts byte-for-byte; M36 passed 11/11 checks and M38 passed 12/12. The M36 report records `checked_date` 2026-10-29. M38 still compares six illustrative combinations: 8:12, 10:12 and 12:12 across 20 ft and 21 ft half-runs. The 12:12 case implies 20 ft / 21 ft rise above hypothetical eaves; pitch, orientation, eave/ridge elevations and roof geometry remain unselected. No loads, structure, code compliance, permit or construction-readiness conclusion is made.
+
+### M71 - Show roof-area consequence alongside illustrative pitch rise
+
+Acceptance criteria:
+
+- Extend the M38 comparison drawing so each unselected pitch/orientation case shows both ridge rise above the hypothetical eave and the two-plane geometric surface area.
+- Keep the 40 x 42 ft source-derived envelope and 8:12, 10:12, and 12:12 ratios explicitly illustrative; preserve zero overhangs and omitted intersections/assemblies as limitations.
+- Regenerate the four M38 artifacts in two independent PowerShell 5.1 runs; require byte-identical outputs, 12/12 existing checks, parseable SVG, and visible limitation that area is not a takeoff or cost estimate.
+- Do not select pitch, roof orientation, roof geometry, material quantity, or cost.
+
+Current status: Complete as a design-comparison graphic. The M38 SVG now shows rise plus theoretical two-plane area and percent above projected footprint for all six comparisons. At 8:12 the plane-area proxy is about 2,019 sf (+20%); at 10:12 about 2,187 sf (+30%); at 12:12 about 2,376 sf (+41%), across a 1,680 sf test footprint. Two independent PowerShell 5.1 runs reproduce all four generated artifacts byte-for-byte; the generator passes 12/12, SVG parses, and the illustration labels area as a non-takeoff comparison. No pitch or orientation is selected. See `Architecture/M38_Steep_Roof_Pitch_Options_2026-10-28/README.md` and `steep-gable-options.svg`.

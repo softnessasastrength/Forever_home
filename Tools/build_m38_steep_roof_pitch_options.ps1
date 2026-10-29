@@ -104,15 +104,18 @@ if(-not(Test-Path -LiteralPath $target)){New-Item -ItemType Directory -Path $tar
 $jsonPath=Join-Path $target 'pitch-options.json';$checkPath=Join-Path $target 'checks.json';$svgPath=Join-Path $target 'steep-gable-options.svg'
 $report|ConvertTo-Json -Depth 16|Set-Content -LiteralPath $jsonPath -Encoding utf8
 [ordered]@{count=$checks.Count;passed=@($checks.Keys|Where-Object{$checks[$_]});failed=@();checks=$checks;source_fingerprints_sha256=$hashes}|ConvertTo-Json -Depth 10|Set-Content -LiteralPath $checkPath -Encoding utf8
-$svg=[System.Collections.Generic.List[string]]::new();$svg.Add('<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">')
+$svg=[System.Collections.Generic.List[string]]::new();$svg.Add('<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">')
 $svg.Add('<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:21px;font-weight:bold}.label{font-size:13px}.note{font-size:12px;fill:#5b554d}.axis{stroke:#74695d;stroke-width:2}.a{fill:#7f9d84}.b{fill:#b78f66}</style>')
-$svg.Add('<text class="title" x="40" y="32">M38 - steep-gable rise options</text><text class="note" x="40" y="54">Illustrative pitch cases on the 40 x 42 ft test envelope; eave datum and pitch unselected</text>')
-$barX=330.0;$barScale=12.0;$baseY=455.0
+$svg.Add('<text class="title" x="40" y="32">M38 - steep-gable rise options</text><text class="note" x="40" y="54">Illustrative pitch cases on the 40 x 42 ft test envelope; eave datum and pitch unselected</text><text class="note" x="40" y="74">Bars show rise; labels add two-plane geometric area versus the 1,680 sf projected test footprint.</text>')
+$barX=180.0;$barScale=10.0;$baseY=455.0
 foreach($case in $cases){$row=if($case.orientation_id -eq 'A'){0}else{1};$pitchRow=[int]($case.pitch_rise_units/2)-4;$y=120.0+($row*180.0)+($pitchRow*42.0);$w=[double]$case.rise_above_eave_ft*$barScale;$rectY=$y-18.0;$class=if($case.orientation_id -eq 'A'){'a'}else{'b'}
-    $svg.Add(('<text class="label" x="40" y="{0}">{1} / {2}: rise {3:N2} ft</text><rect class="{4}" x="{5}" y="{6}" width="{7}" height="24"/>' -f ($y+4),$case.orientation_id,$case.pitch_label,$case.rise_above_eave_ft,$class,$barX,$rectY,$w))
+    $shortPitch='{0}:12' -f [int]$case.pitch_rise_units
+    $roofArea=[Math]::Round([double]$case.two_plane_area_sf,0).ToString('N0',[Globalization.CultureInfo]::InvariantCulture)
+    $areaIncrease=([double]$case.roof_area_factor-1.0)*100.0
+    $svg.Add(('<text class="label" x="40" y="{0}">{1} / {2}</text><rect class="{3}" x="{4}" y="{5}" width="{6}" height="24"/><text class="label" x="400" y="{0}">{7:N2} ft rise; {8} sf planes (+{9:N1}%)</text>' -f ($y+4),$case.orientation_id,$shortPitch,$class,$barX,$rectY,$w,$case.rise_above_eave_ft,$roofArea,$areaIncrease))
 }
-$svg.Add(('<line class="axis" x1="{0}" y1="{1}" x2="{2}" y2="{1}"/>' -f $barX,$baseY,($barX+252)))
-$svg.Add('<text class="note" x="40" y="520">A: ridge along 42 ft side, 20 ft half-run. B: ridge along 40 ft side, 21 ft half-run.</text><text class="note" x="40" y="540">Rise is above an undefined eave. No roof solid, code check, snow/wind design or structure.</text>')
+$svg.Add(('<line class="axis" x1="{0}" y1="{1}" x2="{2}" y2="{1}"/>' -f $barX,$baseY,($barX+210)))
+$svg.Add('<text class="note" x="40" y="520">A: ridge along 42 ft side, 20 ft half-run. B: ridge along 40 ft side, 21 ft half-run.</text><text class="note" x="40" y="542">Plane area excludes overhangs, gables, dormers, intersections, openings, waste and assemblies.</text><text class="note" x="40" y="564">Geometric comparison only; it is not a roofing takeoff, cost estimate, roof solid or code/structural review.</text>')
 $svg.Add('</svg>');$svg -join "`n"|Set-Content -LiteralPath $svgPath -Encoding utf8
 $manifest=[ordered]@{generator='Tools/build_m38_steep_roof_pitch_options.ps1';source_fingerprints_sha256=$hashes;output_hashes_sha256=[ordered]@{pitch_options=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
 $manifest|ConvertTo-Json -Depth 10|Set-Content -LiteralPath (Join-Path $target 'manifest.json') -Encoding utf8

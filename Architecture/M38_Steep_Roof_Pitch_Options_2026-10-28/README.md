@@ -25,6 +25,8 @@ The script compares explicitly hypothetical 8:12, 10:12 and 12:12 ratios. Rise a
 | A, 20 ft half-run | 13.33 ft | 16.67 ft | 20 ft |
 | B, 21 ft half-run | 14 ft | 17.5 ft | 21 ft |
 
+The corresponding theoretical two-plane surface areas are about 2,019 sf, 2,187 sf and 2,376 sf for either ridge orientation, or roughly 20%, 30% and 41% above the 1,680 sf projected test footprint. The SVG now reports both rise and surface area beside each case. This is geometric area only, not a roofing takeoff, material order or cost estimate; the source footprint is still a test envelope.
+
 These are substantial ridge rises. The 12:12 case is 45 degrees. That does not establish how the house will look or fit: eave and floor datums, exterior elevations, site orientation, roof intersections, attic/ceiling geometry and the final building footprint are unknown. All three pitches remain **comparison proposals only**.
 
 ## Connecticut code context and limits
