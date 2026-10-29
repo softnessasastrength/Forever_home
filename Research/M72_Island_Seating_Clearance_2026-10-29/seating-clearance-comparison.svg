@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="920" height="340" viewBox="0 0 920 340">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.label{font-size:14px}.note{font-size:12px;fill:#5b554d}.owner{fill:#7f9d84}.ref{fill:#627e9c}</style>
+<text class="title" x="32" y="34">Island seating: owner target vs planning reference</text>
+<text class="label" x="32" y="82">Owner spec: 12 in seating overhang</text><rect class="owner" x="290" y="62" width="96" height="28"/><text class="label" x="396" y="82">12 in</text>
+<text class="label" x="32" y="132">NKBA ref: 15 in clear knee depth</text><rect class="ref" x="290" y="112" width="120" height="28"/><text class="label" x="420" y="132">15 in</text>
+<text class="label" x="32" y="188">Two seats: 192 in of 290 in frontage used</text><rect class="owner" x="290" y="168" width="192" height="28"/><rect fill="#d9d2c6" x="290" y="168" width="192" height="28"/>
+<text class="note" x="32" y="238">Conditional comparison: the overhang does not prove clear knee depth; supports/panels are unmodeled.</text>
+<text class="note" x="32" y="260">NKBA values are recommendations, not code. Two 24 in frontage zones fit arithmetically on the 96 in edge.</text>
+<text class="note" x="32" y="282">No stool product, seated-body clearance, route, fabrication detail or revised island dimension is selected.</text>
+</svg>

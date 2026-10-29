@@ -1,0 +1,68 @@
+﻿{
+    "schema":  "forever-home-m72-island-seating-reference-screen-v1",
+    "checked_on":  "2026-10-29",
+    "status":  "Owner-spec / published-planning-guideline comparison only; no island geometry or stool product selected.",
+    "owner_inputs":  {
+                         "island_length_in":  96,
+                         "overall_island_depth_in":  48,
+                         "seating_side_overhang_in":  12,
+                         "stools":  2,
+                         "documented_seat_height_range_in":  "24-26",
+                         "counter_build_up_in":  {
+                                                     "base_cabinet":  34.5,
+                                                     "counter":  1.25,
+                                                     "total":  35.75,
+                                                     "owner_accepted_nominal_height":  36
+                                                 }
+                     },
+    "reference_comparison":  {
+                                 "source":  "National Kitchen and Bath Association, Kitchen Planning Guideline 9, published 2022 guide.",
+                                 "url":  "https://media.nkba.org/uploads/2022/05/Kitchen-Planning-Guidelines.pdf",
+                                 "applies_as_design_reference":  "36 in high counter recommendation; the owner-accepted counter interpretation is nominal 36 in.",
+                                 "recommended_width_per_seated_diner_in":  24,
+                                 "recommended_knee_depth_per_seated_diner_in":  15,
+                                 "is_code_requirement":  false
+                             },
+    "arithmetic":  {
+                       "two_seats_frontage_required_in":  48,
+                       "frontage_remaining_in":  48,
+                       "nominal_overhang_minus_reference_knee_depth_in":  -3,
+                       "conditional_shortfall_if_overhang_equals_clear_knee_depth_in":  3
+                   },
+    "evaluation":  {
+                       "two_seats_fit_by_guideline_frontage_arithmetic":  true,
+                       "actual_stool_body_fit_established":  false,
+                       "actual_clear_knee_depth_established":  false,
+                       "support_panel_and_counter_section_modeled":  false,
+                       "seated_body_or_pullback_clearance_modeled":  false,
+                       "kitchen_route_or_combined_social_zone_fit_established":  false,
+                       "code_compliance_or_accessibility_determined":  false,
+                       "owner_overhang_requirement_changed":  false,
+                       "owner_island_size_changed":  false
+                   },
+    "design_gate":  "Confirm whether to retain the documented 12 in overhang or develop a section providing the NKBA-recommended 15 in clear knee depth; resolve support/panel geometry and preserve/recheck the 8 ft x 4 ft overall target before any revised layout.",
+    "sources_sha256":  {
+                           "kitchen_dining_spec":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                           "owner_island_decision":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290"
+                       },
+    "checks":  {
+                   "selected_island_target_is_8_by_4_ft":  true,
+                   "documented_stool_count_is_two":  true,
+                   "counter_build_up_matches_35_75_in":  true,
+                   "owner_accepts_nominal_36_in_interpretation":  true,
+                   "two_24_in_seating_frontages_fit_along_96_in_edge":  true,
+                   "source_overhang_is_12_in":  true,
+                   "nkba_comparison_is_recommendation_not_code":  true,
+                   "actual_clear_knee_depth_remains_unverified":  true,
+                   "island_geometry_and_m06_baseline_unchanged":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "The 12 in overhang is not proven to equal 12 in of unobstructed knee depth; panel, support, counter and actual clear geometry are unavailable.",
+                        "The 24 in per-person frontage and 15 in knee-space depth are NKBA planning recommendations, not legal requirements or owner-approved revisions.",
+                        "No stool body dimensions, leg/arm geometry, user posture, approach aisle, pull-back zone or dining/living route is modeled.",
+                        "This is not a fit, accessibility, code-compliance, structural, fabrication or construction-readiness determination."
+                    ]
+}

@@ -802,3 +802,14 @@ Acceptance criteria:
 - Do not select pitch, roof orientation, roof geometry, material quantity, or cost.
 
 Current status: Complete as a design-comparison graphic. The M38 SVG now shows rise plus theoretical two-plane area and percent above projected footprint for all six comparisons. At 8:12 the plane-area proxy is about 2,019 sf (+20%); at 10:12 about 2,187 sf (+30%); at 12:12 about 2,376 sf (+41%), across a 1,680 sf test footprint. Two independent PowerShell 5.1 runs reproduce all four generated artifacts byte-for-byte; the generator passes 12/12, SVG parses, and the illustration labels area as a non-takeoff comparison. No pitch or orientation is selected. See `Architecture/M38_Steep_Roof_Pitch_Options_2026-10-28/README.md` and `steep-gable-options.svg`.
+
+### M72 — Screen island seating depth against owner inputs and NKBA guidance
+
+Acceptance criteria:
+
+- Read stool count/seat-height range, seating overhang, island size, and accepted counter-height arithmetic from the repository's kitchen specification and island decision.
+- Compare those inputs with the published NKBA guideline for a nominal 36 in counter; identify it as a design recommendation, not code or an owner-approved change.
+- Compute two-seat frontage and conditional knee-depth difference; keep actual stool, support section, seating pull-back and room route explicitly unresolved.
+- Produce source-fingerprinted PowerShell JSON/SVG, pass all named checks, reject external output paths, and reproduce outputs byte-for-byte twice.
+
+Current status: Complete as a source-bound design screen. Owner inputs specify a 96 in seating edge, two stools and 12 in seating-side overhang; the selected counter build-up is 35.75 in and accepted as nominal 36 in. NKBA Kitchen Planning Guideline 9 recommends 24 in frontage and 15 in knee-space depth per diner at a 36 in counter. Two frontage allowances total 48 in, leaving 48 in of the edge. The overhang is conditionally 3 in below the knee-space recommendation only if the overhang equals the unobstructed knee depth; the island section/support is not documented. Two PowerShell 5.1 runs reproduced the JSON byte-for-byte (SHA256 `79235A1455370DF3CCDC08387CE0FE0648FF0B61102FAB531A62F034E78C9E30`); all 9/9 checks pass and the SVG parses. The report changes no owner dimension and establishes no product fit, code compliance, accessibility or fabrication adequacy. See `Research/Kitchen_Island_Seating_Clearance_2026-10-29.md`.
