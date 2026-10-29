@@ -747,3 +747,14 @@ Acceptance criteria:
 - Keep exact current toilet geometry, lavatory selection, doors/approach, walls and plumbing route as open fit gates.
 
 Current status: Complete as a gross-envelope recheck. The 124 × 84 in pantry-side B search rectangle contains all 16 inherited 211AA-predecessor / lavatory rectangular pairs under the report's hypothetical same-wall centerline and front-strip assumptions. Two PowerShell 5.1 runs match byte-for-byte (SHA256 `B3B813DBC80448E36279BF675970F87C61C139F73175C4237DE281D0BB181640`). The report carries the 2022 CSBC / 2021 IRC source basis and identifies the 2026 code cycle as delayed. It does not establish room interior clear dimensions, current 610AA geometry, product selection, door swing, user approach, service route or code compliance. B remains unassigned; see `Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json`.
+
+### M67 — Screen retailer-reported current-SKU plan envelope
+
+Acceptance criteria:
+
+- Record public dimensions tied to the selected 610AA001.020 SKU with source quality and discrepancies explicit.
+- Compare plan dimensions against the predecessor proxy; stop if the plan envelope differs rather than carrying forward stale pair results.
+- Recalculate existing toilet/lavatory rectangles against the follow-up B gross window from the current-SKU seller-reported plan envelope, preserving the dated Connecticut code-screen assumption.
+- Reproduce both reports byte-for-byte in independent Windows PowerShell 5.1 runs and keep B unassigned.
+
+Current status: Complete as a secondary-source plan-envelope screen. The Wayfair listing names 610AA001.020 and reports 19 × 30.25 in plan dimensions, which match the 211AA predecessor proxy; it reports 31 in overall height and 16.5 in seat height, while American Standard reports 17 in seat height and links only predecessor-series dimensional literature. The independent PowerShell runs match byte-for-byte: retail-envelope report SHA256 `B208A125F906C50345F9C7C2EE939C852D48941D402C39EF1F576EDFBD3ADB9F`; recalculated pair report SHA256 `3EA13EDB4DD75EECA3AD07057141F468D57B7FD91B39572BD2DCE55738399422`. All 16 inherited lavatory rectangles remain contained within the 124 × 84 in gross search window under hypothetical same-wall assumptions. Retailer dimensions are not manufacturer-verified product geometry; vertical conflict remains unresolved. No room walls, door/approach or service route are represented. B remains unassigned and no compliance or accessibility conclusion follows. See `Research/M06_Toilet_Options_2026-10-27.md` and `Research/M06_Followup_Window_Pair_Recheck_2026-10-28.json`.
