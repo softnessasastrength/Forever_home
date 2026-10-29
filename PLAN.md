@@ -824,3 +824,14 @@ Acceptance criteria:
 - Fingerprint the M46 candidate and selected-D sources, reproduce the sensitivity report twice, and keep selected dimensions unassigned/unmodified.
 
 Current status: Complete as bounded exploratory analysis, not as an upper-floor design. The selected-wing M37 search and balanced-root search both reach their 4,000-node limits without a complete candidate satisfying U-01, U-02 and U-04 public reachability. The deferred early-route-prune strategy produces zero layouts; this is a failed search heuristic, not evidence that the plan is impossible. The existing M46 candidate in an unapproved 40 x 42 ft shell passes the independent route validator in six of ten sampled shell tests. The smallest passing case sampled is 38.333333 x 40 ft (1,533.333 sf), 381.333 sf or 33.1% above the selected-D 36 x 32 ft upper test wing. The sample is not exhaustive and does not authorize a shell expansion or dimension change. No tested proxy represents actual doors, wall assemblies, privacy, egress, stair geometry, structure, MEP or code. See `Tools/screen_m76_upper_suite_candidate_envelope.ps1` and `Research/M76_Upper_Suite_Envelope_Sensitivity_2026-10-29.json`.
+
+### M77 - Preserve reproducibility across Revit IFC export sessions
+
+Acceptance criteria:
+
+- Record current Autodesk guidance on saved versus in-session IFC export setups and current Revit 2027 IFC4 Reference View availability.
+- Preserve the verified IFC2X3 lineage; do not change export setup, install/update an add-in, or replace the baseline without an isolated derivative and exact-lineage validation.
+- When Revit is controllable, inspect the installed exporter/add-in and available setup in a disposable project copy; use a named saved setup for any repeat export and keep optional IFC4 Reference View comparative.
+- Re-run the independent IFC validator against the exact saved RVT paired with each export; record export logs and hashes.
+
+Current status: Autodesk documentation recheck complete; host-dependent execution pending. The 2026 Revit help says custom named setups are saved with their project, whereas `<In-Session Setup>` changes are not saved between sessions. Autodesk support states that IFC4 Reference View Exchange Requirement selection is available in Revit 2025-2027 after the latest updates and IFC add-in. This workstation's availability has not been verified, and the project baseline remains IFC2X3. Revit 2027 is currently minimized and not targetable through this session's computer-use bridge. See `Research/Revit_IFC_2027_Exporter_Notes_2026-10-28.md`.

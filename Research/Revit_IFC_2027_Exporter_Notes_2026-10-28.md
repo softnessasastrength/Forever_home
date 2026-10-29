@@ -1,6 +1,6 @@
 # Revit 2027 IFC exporter and selected-D geometry validation
 
-Updated: 2026-10-28 02:56 EDT
+Updated: 2026-10-29 (dated recheck added below)
 Scope: identify the IFC exporter recorded by the selected-D IFC and tighten the independent check of exported room footprints. This is project-validation research, not a Revit update or an architectural design change.
 
 ## Verified local exporter identity
@@ -40,3 +40,15 @@ This independent geometry gate materially strengthens the room-space export chec
 - [Autodesk Revit 2027 IFC API guide](https://help.autodesk.com/cloudhelp/2027/ENU/Revit-API/files/Revit_API_Developers_Guide/Advanced_Topics/Export/Revit_API_Revit_API_Developers_Guide_Advanced_Topics_Export_IFC_Export_html.html)
 - [Autodesk Revit API SDK and tools](https://aps.autodesk.com/developer/overview/revit-api)
 - [Autodesk Revit 2027 IFC parameter mapping](https://help.autodesk.com/view/rvt/2027/enu//?guid=GUID-C057D715-1571-4D11-8F02-417F3B385577)
+
+## Reproducible export-setup recheck (2026-10-29)
+
+- Autodesk's Revit 2026 IFC instructions state that custom named export setups created or duplicated in the IFC dialog are saved with the project, while changes to `<In-Session Setup>` are not saved between sessions. Reproducible future exports should therefore record and use a named setup in a disposable RVT derivative, rather than relying on transient dialog state.
+- Autodesk support's 2026-05-19 compatibility note says Revit 2025, 2026 and 2027 can select Exchange Requirements for the certified IFC4 Reference View after the latest Revit updates and latest IFC add-in are installed. Autodesk lists Architectural, Structural and MEP Reference Exchange; this availability does not establish that this workstation has the required update/add-in or that IFC4 is the project's required exchange format.
+- The preserved selected-D export and current validator use IFC2X3. No IFC setup, add-in, Revit installation, source RVT, or export was changed. IFC4 is an optional future side-by-side compatibility test only; it does not replace the validated IFC2X3 baseline without an explicit project requirement and fresh exact-lineage validation.
+
+Sources for this recheck:
+
+- Autodesk [Customize the IFC Setup](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-587E3CB5-CA76-4F06-B8E6-08F0C71945F6.htm)
+- Autodesk [Export a Model to IFC](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-14037C31-EBAD-41A8-9099-E6DD65BB626E.htm)
+- Autodesk support [IFC Model View Definition compatibility for Revit](https://help.autodesk.com/view/RVT/2025/ENU/?caas=caas%2Fsfdcarticles%2Fsfdcarticles%2FCompatibility-and-availability-of-IFC-with-the-Revit-Model-View-Definition-MVD-for-MEP.html)
