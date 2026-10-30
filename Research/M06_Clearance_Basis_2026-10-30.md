@@ -1,6 +1,6 @@
 # M-06 preliminary fixture-clearance basis
 
-Checked: **2026-10-30**  
+Checked: **2026-10-30**
 Status: **planning screen only; not a determination of applicable code or code compliance**
 
 ## Statewide code status
