@@ -925,3 +925,13 @@ Acceptance criteria:
 - Record exact URLs, the evidence boundary and remaining retrieval needs in `Research/M06_Toilet_Options_2026-10-27.md` and `PROGRESS.md`.
 
 Current status: Complete as a manufacturer-document provenance check; the M-06 fit gate remains open. The current 610AA product page identifies the selected SKU but its live Spec Sheet link resolves to a 211AA.104 predecessor sheet (revised 9/13), which specifies predecessor components and nominal dimensions only. The linked drawing cannot establish exact 610AA geometry. No family, model, or room assignment was changed. See M85 in `PROGRESS.md` and the dated research entry.
+
+### M86 - Cross-check current M-06 manufacturer links and stock signal
+
+Acceptance criteria:
+
+- Inspect only public documents linked directly from the current 610AA product page; identify their model series, date/revision, and any component/supply statements.
+- Record page-displayed availability as a dated observation, not as proof of discontinuation or universal availability.
+- Preserve selected-D, owner-supplied Incoming RFAs and B's unassigned status; do not infer current geometry or services from predecessor instructions.
+
+Current status: Complete as a public-source cross-check. The linked installation manual is dated 2019 and covers 211AA/211BA/211CA series; the current 610AA page displayed “Out of stock” on 2026-10-30. Neither observation resolves exact current SKU geometry, verified purchasing availability, or a service route. See M86 in `PROGRESS.md` and the dated M-06 research entry.

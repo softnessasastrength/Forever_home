@@ -1232,3 +1232,11 @@ M57 geometry correction: a second orientation review caught an east/west rotatio
 - Next M-06 evidence needed: a manufacturer-confirmed current 610AA dimension drawing/family or owner-approved proxy; then a disposable family/room fit check with a documented clearance basis, door/approach and service routing. The Revit host remains blocked separately by the stale unsigned-add-in prompt: it identifies `.local/revit-pilot/build/.../RevitPilot.dll`, whereas the authorized manifest points to `build-m83`; no trust choice was made.
 
 Sources: [American Standard 610AA001.020 product page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring); [manufacturer-linked 211AA.104 specification PDF](https://lixil.cdn.celum.cloud/167631_as_us_bath_spec__211A%20%287076%29_0_original.pdf).
+
+## M86 — Cross-check M-06 installation link and dated stock signal — 2026-10-30
+
+- Followed the current 610AA product page's Installation Guide link. It resolves to a manufacturer 2019 manual (revision 5, August 2019) covering 211AA/211BA/211CA series. It identifies 4225A and 3195A tank/bowl series, lists seat and wax ring among included items, and says the water supply line is sold separately. This is predecessor series guidance, not exact 610AA assembly geometry or a project service route.
+- The current 610AA manufacturer page displayed “Out of stock” when checked on 2026-10-30. Record this only as a dated webpage availability signal; it does not establish discontinuation or availability across retailers. No purchase or inquiry was made.
+- Updated the M-06 research note and added M86 acceptance/status to `PLAN.md`. Selected-D source and the three owner-supplied Incoming RFAs remain untouched; B remains unassigned. The product identity/geometry, applicable clearance and room-specific door/approach/service path gates remain open.
+
+Sources: [American Standard 610AA001.020 page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring); [manufacturer-linked installation guide for predecessor 211-series](https://lixil.cdn.celum.cloud/173349_as_us_bath_install__211A__211B__211C%20%284513%29_0_original.pdf).
