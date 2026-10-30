@@ -988,3 +988,16 @@ Acceptance criteria:
 - Do not claim Revit-host or IFC completion until the exact matching DLL is loaded and the disposable export passes the M83 IFC validator.
 
 Current status: Source repair and isolated compilation complete. The host run remains pending because the last confirmed Revit prompt named a different DLL; no trust choice or per-user registration change was made. See M91 in `PROGRESS.md`.
+
+### M92 - Establish a current Connecticut residential fixture-clearance screen
+
+Acceptance criteria:
+
+- Recheck official Connecticut code-adoption status and the adopted residential model-code edition.
+- Identify the preliminary residential water-closet clearance references and values, clearly distinguishing minimum fixture spacing from accessibility, door/approach, and full-room compliance.
+- Preserve site/permit applicability as unresolved and keep M-06 B unassigned until product geometry, finished-face clearance, door/approach, and service route are evaluated together.
+- Record primary-source URLs and date the research.
+
+Current status: Complete for a preliminary planning screen. Connecticut DAS lists the 2022 CSBC, based on the 2021 IRC, as current and says the planned 2026 effective date is delayed. The cited IRC basis supports 15 in from the water-closet center to side obstruction and 21 in clear in front for early screening only. Municipality, permit path, accessibility scope, exact fixture geometry, door/approach and service routing remain open. See `Research/M06_Clearance_Basis_2026-10-30.md` and M92 in `PROGRESS.md`.
+
+The M78 room-packing search remains the current upper-suite candidate. Larger experimental budgets and pruning combinations did not yield reproducible output before the available run windows ended; no partial search result has been promoted. Any further search work should profile and optimize the generator before raising its limits.
