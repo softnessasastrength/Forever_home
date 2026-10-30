@@ -23,7 +23,7 @@ MANUFACTURER_INCOMING = [
         "filename": "american-standard-evolution-0467004.020.rfa",
         "sha256": "39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA",
         "status": "research-candidate",
-        "test_run": ".local/revit-pilot/family-intake/20261028T023252013Z/",
+        "test_run": ".local/revit-pilot/family-intake/20261030T195404237Z/",
         "source_url": "https://www.americanstandard-us.com/products/22-inch-evolution-r-4-inch-centerset-pedestal-sink-top-and-leg-combination",
     },
 ]
