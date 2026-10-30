@@ -846,3 +846,14 @@ Acceptance criteria:
 - Retain limitations for route sampling, doors, walls, privacy, egress, stairs, structure, services, code and Revit/IFC validation.
 
 Current status: Complete as an exploratory upper-suite room-block study. Two PowerShell 5.1 runs found the same candidate, passed 28/28 generator checks, and reproduced all four artifacts byte-for-byte. The candidate preserves selected-D room sizes and the owner-directed access graph, and the independent validator passes 112/112 checks against the 38.333333 x 40 ft hypothetical test rectangle. The search remains incomplete at its 4,000-node limit; this result is a candidate, not an exhaustive minimum or approved shell. See `Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/README.md`.
+
+### M79 - Review U-02 hall arrival against the source stair approach
+
+Acceptance criteria:
+
+- Fingerprint the M78 winner and selected-D source; derive a north-edge nominal reservation from the source 3.5 ft door-matrix value and the M78 route/landing-approach centerline.
+- Verify the test segment lies on the U-02 north edge and retains private-only U-03 access.
+- Generate deterministic JSON and SVG with exact limits; never describe the nominal interval as a real opening or door specification.
+- Record disposable Revit review, actual door/wall geometry, swing, privacy and code assessment as outstanding.
+
+Current status: Complete as a schematic alignment check. The 3.5 ft nominal test interval on U-02's north edge is x=17.416667..20.916667 ft at y=27.5 ft, centered over the selected-D 4 x 4 ft stair-approach proxy at (19.166667,30) ft. Ten checks pass; two PowerShell 5.1 runs reproduce JSON and SVG byte-for-byte. No wall or door is modeled, and M78's 38.333333 x 40 ft test envelope is still unselected. See `Tools/screen_m79_u02_hall_approach_slot.ps1` and `Architecture/M79_U02_Hall_Approach_Slot_2026-10-29/README.md`.
