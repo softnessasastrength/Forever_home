@@ -1071,3 +1071,14 @@ Acceptance criteria:
 - Do not choose a trust option or run a host command unless the visible prompt identifies the exact verified project-local RevitPilot build.
 
 Current status: Read-only audit complete. The RevitPilot registration still resolves inside the checkout to `build-m83-level-safe/.../RevitPilot.dll`, SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`. A separate `ForeverHome.SelectedD.addin` is 20 bytes and contains only `<RevitAddIns />`, with no AddInId or assembly. The journal warning about an empty add-in manifest is consistent with this stub, but it does not establish that the stub caused the unsigned trust prompt. The stub was not modified because it is outside the authorized RevitPilot registration. No trust choice or host command was made; see M99 in `PROGRESS.md`.
+
+### M100 - Harden selected-D generator output-path handling
+
+Acceptance criteria:
+
+- Accept either absolute or repository-relative `OutputDirectory` values for the selected-D generator.
+- Resolve and reject output paths outside the current checkout before creating directories or files.
+- Replay into separate absolute and relative disposable locations; require 43/43 checks per run, all seven generated files byte-identical, and three valid SVGs.
+- Confirm the checked-in selected-D source fingerprint remains unchanged and document the default overwrite behavior.
+
+Current status: Complete. Both invocation forms pass 43/43 and yield byte-identical seven-file output; all three SVGs parse. Absolute external and repository-relative traversal paths are rejected before creation. Selected-D source remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. See M100 in `PROGRESS.md` and the selected-D package README.

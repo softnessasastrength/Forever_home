@@ -5,13 +5,21 @@
 )
 
 $ErrorActionPreference = 'Stop'
-$root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+$root = [System.IO.Path]::GetFullPath((Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)))
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
     $OutputDirectory = if ($LayoutVariant -eq 'AdjacencyCandidate') { 'Architecture/Direction_D_Adjacency_Study_2026-10-27' } elseif ($LayoutVariant -eq 'BathFirstAdjacencyCandidate') { 'Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27' } else { 'Architecture/Selected_Design_Iteration_2026-10-27' }
 }
 $sourcePath = Join-Path $root 'Architecture/Schematic_Study_2026-10-25/study.json'
 $checksPath = Join-Path $root 'Architecture/Schematic_Study_2026-10-25/checks.json'
-$target = Join-Path $root $OutputDirectory
+if ([System.IO.Path]::IsPathRooted($OutputDirectory)) {
+    $target = [System.IO.Path]::GetFullPath($OutputDirectory)
+} else {
+    $target = [System.IO.Path]::GetFullPath((Join-Path $root $OutputDirectory))
+}
+$rootPrefix = $root.TrimEnd([char[]]@([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)) + [System.IO.Path]::DirectorySeparatorChar
+if (-not $target.StartsWith($rootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "OutputDirectory must resolve inside the current repository: $target"
+}
 $source = Get-Content -Raw -LiteralPath $sourcePath | ConvertFrom-Json
 $sourceChecks = Get-Content -Raw -LiteralPath $checksPath | ConvertFrom-Json
 $sourceFingerprints = [ordered]@{

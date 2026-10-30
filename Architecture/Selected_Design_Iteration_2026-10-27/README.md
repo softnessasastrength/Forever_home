@@ -38,6 +38,16 @@ powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_s
 
 The generator derives its initial room blocks from A/B and the existing kitchen test. `study.json` records SHA256 fingerprints of the source study, source checks, room program, kitchen decision and selected direction decision. It preserves the old studies and writes only this iteration package. Re-running it overwrites this iteration's derived files; do not edit generated files by hand. `checks.json` includes explicit upper-flight/landing, wing/bridge and bridge/shell-edge continuity checks plus their measured plan gaps; these certify only the comparison rectangles.
 
+For isolated verification, pass `-OutputDirectory` pointing to a disposable directory inside the current repository (absolute or repository-relative paths are accepted; paths outside the checkout are rejected). For example:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File Tools/build_selected_house_schematic.ps1 `
+  -LayoutVariant OwnerSelectedD `
+  -OutputDirectory '.local/revalidation/selected-d-replay-a'
+```
+
+Omitting `-OutputDirectory` retains the checked-in iteration package as the default target and overwrites its generated files.
+
 ## Plan organization
 
 The main plan uses the B test arrangement for living, kitchen, dining, pantry and entry/hall. The SVG shows the 8 x 4 ft appliance-free island at the location from the documented kitchen fit test; perimeter appliance locations still need development. L-02 is removed from the main level and retained in the lower plan using the existing A 11 x 10 ft study block. M-06 is removed from the former full-bath block; the arrival/hall edge is the selected test zone, but no bath rectangle is drawn. The shell and rear wings use the existing A/B test envelopes.
