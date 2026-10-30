@@ -1094,3 +1094,14 @@ Acceptance criteria:
 - Record the design implication and limits without editing selected-D or source M78/M83 artifacts.
 
 Current status: Complete. The source-bound screen passes **9/9 checks** and produces 42 room/case rows. Two replays match (JSON SHA256 `BC35C68B0903D3186A202A517672D8C336CE8C13840CA8028121DC3509775978`; CSV SHA256 `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`). On the M78 blocks, ridge-X options put U-05's minimum ideal plane 1.333/1.667/2.000 ft above relative eave for 8:12/10:12/12:12; ridge-Y options leave U-01/U-04/U-05 touching the eave plane. This is not interior headroom. The 38⅓ × 40 ft shell remains an exploration case; no pitch/ridge choice is made. See `Architecture/M101_Upper_Suite_Roof_Height_Ranges_2026-10-30/README.md`.
+
+### M102 - Record the current Connecticut sloped-ceiling screening basis
+
+Acceptance criteria:
+
+- Recheck Connecticut DAS's current code edition and delayed 2026 adoption status from official sources.
+- Record the official Connecticut 2022 CSBC amended IRC R305.1 sloped-ceiling and bathroom-fixture provisions, with direct citations and scope caveats.
+- Explicitly explain why M101's relative roof-to-eave values cannot establish finished-ceiling compliance; do not invent datums, room classifications or fixture positions.
+- Update the research note, project handoff and progress log; preserve all geometry sources and selected-D.
+
+Current status: Complete as statewide preliminary research. Connecticut DAS still lists 2022 CSBC/2021 IRC as current and reports the anticipated 2026 code effective date delayed pending legislative review. Amended IRC R305.1 provides baseline heights of 7 ft for habitable space/halls and 6 ft 8 in for baths/toilets/laundry, with a sloped-ceiling exception based on 5 ft and 7 ft bands and a separate showerhead-area provision. M101 cannot test this without the finished floor/eave relationship, wall/eave location, roof/ceiling build-down, classification and fixture location. No pass/fail code result is claimed. See `Research/Connecticut_Roof_Code_Research_2026-10-28.md`.
