@@ -44,11 +44,11 @@
                        {
                            "id":  "kohler-tresham-k-2844-4-0",
                            "name":  "KOHLER Tresham K-2844-4-0 24-in square pedestal sink",
-                           "status":  "research-only; exact Revit family is behind Studio KOHLER sign-in and has not been inspected",
+                           "status":  "research-only; public manufacturer-hosted RFA is quarantined with source/hash sidecar; read-only Revit inspection and type-to-SKU mapping remain pending",
                            "source":  "https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/tresham-24-pedestal-bathroom-sink-with-4-centerset-faucet-holes-2844-4",
-                           "design_file_source":  null,
-                           "design_file_sha256":  null,
-                           "dimensions_source":  "KOHLER specification dated 2024-03-16; nominal overall 24 x 19.5 x 34.625 in",
+                           "design_file_source":  "https://techcomm.kohler.com/techcomm/cad/Sink-Pedestal_Lavatory_4in_cc-Kohler-Tresham-2844-4.rfa",
+                           "design_file_sha256":  "3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949",
+                           "dimensions_source":  "KOHLER specification dated 2025-02-08; nominal overall 24 x 19.5 x 34.625 in",
                            "nominal_overall_body_in":  {
                                                            "width":  24,
                                                            "depth":  19.5,

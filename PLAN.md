@@ -1031,3 +1031,24 @@ Acceptance criteria:
 - Run the validator twice and require 8/8 checks and byte-identical output; do not claim toilet/lavatory fit, door/approach, service route, code applicability, or assignment.
 
 Current status: Complete for a hash-pinned product-page infographic screen. The current SKU image annotates 30-1/4 x 19 x 30-7/8 in overall dimensions, 12-in rough-in and 17-in seat height (with a seat-height variation note). Two replays pass 8/8 and match SHA256 `E42AA40EBD1E121532EFEE15DF0EAA8CDBF4B7333F1D0A0C2A4A9977C26ECFC8`. Detailed Revit family geometry and all whole-room gates remain open; B remains unassigned. See M95 in `PROGRESS.md` and the current-SKU note in `Research/M06_Toilet_Options_2026-10-27.md`.
+
+### M96 - Pair the current selected toilet envelope with documented lavatory candidates
+
+Acceptance criteria:
+
+- Screen the exact-SKU annotated toilet plan envelope with every dimensioned lavatory research candidate, in both sink plan orientations, against pantry-side B.
+- Apply only the documented preliminary 15-in WC centerline-to-side-obstruction and 21-in front-clearance depth screens; label the shared-wall arrangement and 30-in fixture centerline spacing as assumptions.
+- Pin upstream report/source hashes, require source D and B to remain unchanged/unassigned, and replay twice to byte-identical reports.
+- Preserve all products as research candidates; do not infer walls, doors, approach, service routing, permit applicability, or actual room fit from the rectangular screen.
+
+Current status: The script passes 13/13 checks and screens 16 combinations (eight sink candidates, two plan orientations each); both runs match SHA256 `7F133044E9F0B4BB78756A1267F4C9144B0064E76808F0D55BDB4D8077EE3DC8`. KOHLER Tresham's assumed pair envelope is 57 x 51.25 in at 0-degree sink rotation and 54.75 x 51.25 in at 90 degrees; the measured centerline-to-nearest-sink-body distances in the two screens are 18 and 20.25 in. This is a gross-body minimum-strip study only. M-06 B remains unassigned. See M96 in `PROGRESS.md`.
+
+### M97 - Reconfirm selected-D source reproducibility and retained IFC lineage
+
+Acceptance criteria:
+
+- Run the documented selected-D PowerShell generator twice into separate ignored scratch folders; require 43/43 checks per run, all three SVGs parse, and all seven generated files match byte-for-byte.
+- Independently revalidate the retained Revit 2027 IFC2X3 package; require source/RVT/IFC fingerprints, 3 storeys, all 21 spaces and documented geometry data to pass.
+- Confirm selected-D source and the three owner-supplied untracked RFAs retain their recorded hashes; do not change the baseline or host project files.
+
+Current status: Complete. Both fresh source generations pass 43/43, all three SVGs parse, and all seven outputs match. The retained IFC validator passes 26/26 with zero errors and reproduces the prior report hash `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. Selected-D source is unchanged. This validates its 21-space IFC study, not missing native building elements or host-side M-83 roof geometry. See M97 in `PROGRESS.md`.
