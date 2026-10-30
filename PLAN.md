@@ -835,3 +835,14 @@ Acceptance criteria:
 - Re-run the independent IFC validator against the exact saved RVT paired with each export; record export logs and hashes.
 
 Current status: Autodesk documentation recheck complete; host-dependent execution pending. The 2026 Revit help says custom named setups are saved with their project, whereas `<In-Session Setup>` changes are not saved between sessions. Autodesk support states that IFC4 Reference View Exchange Requirement selection is available in Revit 2025-2027 after the latest updates and IFC add-in. This workstation's availability has not been verified, and the project baseline remains IFC2X3. Revit 2027 is currently minimized and not targetable through this session's computer-use bridge. See `Research/Revit_IFC_2027_Exporter_Notes_2026-10-28.md`.
+
+### M78 - Search the owner-authorized 38.333333 x 40 ft upper-shell test
+
+Acceptance criteria:
+
+- Accept only the owner-authorized M76-derived test rectangle as an additional M37 shell override; keep other override values rejected and label this case hypothetical/unselected in the report and drawing.
+- Preserve all selected-D room dimensions, owner access links, lift/landing reservations and documented room-area ranges.
+- Run the bounded search twice in isolated directories; compare all four artifacts byte-for-byte; require generator integrity checks and independent candidate validation against the stated test envelope.
+- Retain limitations for route sampling, doors, walls, privacy, egress, stairs, structure, services, code and Revit/IFC validation.
+
+Current status: Complete as an exploratory upper-suite room-block study. Two PowerShell 5.1 runs found the same candidate, passed 28/28 generator checks, and reproduced all four artifacts byte-for-byte. The candidate preserves selected-D room sizes and the owner-directed access graph, and the independent validator passes 112/112 checks against the 38.333333 x 40 ft hypothetical test rectangle. The search remains incomplete at its 4,000-node limit; this result is a candidate, not an exhaustive minimum or approved shell. See `Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/README.md`.
