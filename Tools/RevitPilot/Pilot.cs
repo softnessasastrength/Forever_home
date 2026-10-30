@@ -52,6 +52,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
         panel.AddItem(new PushButtonData("FHSelectedDStudy", "Build selected D\nspace study",
             Assembly.GetExecutingAssembly().Location, typeof(SelectedDCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHUpperSuiteTest", "Build upper-suite\ntest study",
+            Assembly.GetExecutingAssembly().Location, typeof(UpperSuiteComparisonCommand).FullName!));
         panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
@@ -992,8 +994,9 @@ public class FamilyIntakeCommand : IExternalCommand
     static object PlaceEvolutionOnVerticalWall(Document target, FamilySymbol symbol)
     {
         var wallType = new FilteredElementCollector(target).OfClass(typeof(WallType)).Cast<WallType>()
+            .Where(type => type.Kind == WallKind.Basic)
             .OrderBy(type => type.Name, StringComparer.OrdinalIgnoreCase).FirstOrDefault()
-            ?? throw new InvalidOperationException("The disposable intake template has no wall type for the vertical host probe.");
+            ?? throw new InvalidOperationException("The disposable intake template has no basic wall type for the vertical host probe.");
         var level = new FilteredElementCollector(target).OfClass(typeof(Level)).Cast<Level>()
             .OrderBy(item => item.Elevation).FirstOrDefault()
             ?? throw new InvalidOperationException("The disposable intake template has no level for the vertical host probe.");
@@ -1012,13 +1015,20 @@ public class FamilyIntakeCommand : IExternalCommand
         // Obtain stable host-side references through Revit's host-object API.
         // A PlanarFace discovered by traversing wall.get_Geometry() is not
         // guaranteed to carry a usable Reference, even with ComputeReferences.
-        var hostFaceReference = HostObjectUtils.GetSideFaces(wall, ShellLayerType.Interior)
-            .Select(reference => (Reference: reference, Face: wall.GetGeometryObjectFromReference(reference) as PlanarFace))
-            .Where(candidate => candidate.Face is not null && Math.Abs(candidate.Face.FaceNormal.X) > 0.999)
-            .Select(candidate => (candidate.Reference, Face: candidate.Face!))
-            .FirstOrDefault();
+        var sideReferences = new List<(Reference Reference, PlanarFace Face)>();
+        var sideReferenceCounts = new Dictionary<ShellLayerType, int>();
+        foreach (var side in new[] { ShellLayerType.Interior, ShellLayerType.Exterior })
+        {
+            var references = HostObjectUtils.GetSideFaces(wall, side);
+            sideReferenceCounts[side] = references.Count;
+            sideReferences.AddRange(references
+                .Select(reference => (Reference: reference, Face: wall.GetGeometryObjectFromReference(reference) as PlanarFace))
+                .Where(candidate => candidate.Face is not null && Math.Abs(candidate.Face.FaceNormal.X) > 0.999)
+                .Select(candidate => (candidate.Reference, Face: candidate.Face!)));
+        }
+        var hostFaceReference = sideReferences.FirstOrDefault();
         if (hostFaceReference.Reference is null || hostFaceReference.Face is null)
-            throw new InvalidOperationException("HostObjectUtils returned no referenceable interior wall side parallel to project X for the disposable host probe.");
+            throw new InvalidOperationException($"HostObjectUtils returned no referenceable wall side parallel to project X for the disposable host probe. Wall type: '{wallType.Name}' ({wallType.Kind}); side reference counts: interior={sideReferenceCounts[ShellLayerType.Interior]}, exterior={sideReferenceCounts[ShellLayerType.Exterior]}.");
         var hostFace = hostFaceReference.Face;
 
         var uv = hostFace.GetBoundingBox();
@@ -1413,6 +1423,284 @@ public class SelectedDCommand : IExternalCommand
             return ifcOk?Result.Succeeded:Result.Failed;
         }
         catch(Exception ex) { message=ex.ToString(); try{if(doc?.IsValidObject==true)doc.Close(false);}catch{} return Result.Failed; }
+    }
+}
+
+[Transaction(TransactionMode.Manual)]
+public class UpperSuiteComparisonCommand : IExternalCommand
+{
+    const string StudyRelativePath = "Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/search.json";
+    const string ManifestRelativePath = "Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/manifest.json";
+    const string SelectionRelativePath = "Architecture/Selected_Design_Iteration_2026-10-27/study.json";
+    const string Marker = "FH-M78-HYPOTHETICAL-UPPER-SUITE";
+    const double Tol = 1e-6;
+
+    static string Sha256(byte[] bytes) => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant();
+    static JsonDocument ParseJson(byte[] bytes)
+    {
+        string json = System.Text.Encoding.UTF8.GetString(bytes).TrimStart('\uFEFF', '\r', '\n', ' ', '\t');
+        return JsonDocument.Parse(json);
+    }
+    static string Text(JsonElement item, string key) => item.GetProperty(key).GetString() ?? "";
+    static double Number(JsonElement item, string key) => item.GetProperty(key).GetDouble();
+    static void Tag(Element element, string value)
+    {
+        var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (parameter is not null && !parameter.IsReadOnly) parameter.Set(value);
+    }
+    static string PointKey(double x, double y) =>
+        $"{Math.Round(x, 6).ToString("0.000000", CultureInfo.InvariantCulture)},{Math.Round(y, 6).ToString("0.000000", CultureInfo.InvariantCulture)}";
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? doc = null;
+        try
+        {
+            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+            string studyPath = Path.Combine(root, StudyRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            string manifestPath = Path.Combine(root, ManifestRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            string selectionPath = Path.Combine(root, SelectionRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            byte[] studyBytes = File.ReadAllBytes(studyPath);
+            byte[] manifestBytes = File.ReadAllBytes(manifestPath);
+            byte[] selectionBytes = File.ReadAllBytes(selectionPath);
+            using var studyDoc = ParseJson(studyBytes);
+            using var manifestDoc = ParseJson(manifestBytes);
+            using var selectionDoc = ParseJson(selectionBytes);
+            var study = studyDoc.RootElement;
+            var manifest = manifestDoc.RootElement;
+            var selection = selectionDoc.RootElement;
+
+            if (Text(study, "schema") != "forever-home.m37-upper-suite-pack-route.v2")
+                throw new InvalidDataException("Unsupported M78 upper-suite study schema.");
+            string studyHash = Sha256(studyBytes);
+            string selectionHash = Sha256(selectionBytes);
+            string manifestStudyHash = Text(manifest.GetProperty("output_hashes_sha256"), "search");
+            string manifestSelectionHash = Text(manifest.GetProperty("source_fingerprints_sha256"), "selected_D_study.json");
+            if (!string.Equals(studyHash, manifestStudyHash, StringComparison.OrdinalIgnoreCase) ||
+                !string.Equals(selectionHash, manifestSelectionHash, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("M78 study or selected-D source fingerprint does not match its archived manifest.");
+
+            var coordinateBasis = study.GetProperty("coordinate_basis");
+            double shellWidth = Number(coordinateBasis, "width_ft"), shellDepth = Number(coordinateBasis, "depth_ft");
+            if (Math.Abs(shellWidth - 38.333333) > Tol || Math.Abs(shellDepth - 40.0) > Tol ||
+                !Text(coordinateBasis, "shell_case").Contains("hypothetical", StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("This command is restricted to the documented hypothetical 38.333333 x 40 ft M78 case.");
+
+            var candidate = study.GetProperty("best_candidate");
+            if (!candidate.GetProperty("hall_reachability").GetProperty("required_public_rooms_reached").GetBoolean())
+                throw new InvalidDataException("M78 candidate does not pass its retained sampled public-room route check.");
+            var reached = candidate.GetProperty("public_rooms_reached").EnumerateArray().Select(v => v.GetString()).ToHashSet(StringComparer.Ordinal);
+            if (!new[] { "U-01", "U-02", "U-04" }.All(reached.Contains) || reached.Contains("U-03"))
+                throw new InvalidDataException("M78 access graph does not preserve the owner-directed public/private room routes.");
+
+            var roomsById = selection.GetProperty("plans").GetProperty("upper").EnumerateArray()
+                .ToDictionary(room => Text(room, "id"), room => new
+                {
+                    Name = Text(room, "name"),
+                    Kind = Text(room, "kind"),
+                    Width = Number(room, "w"),
+                    Depth = Number(room, "d")
+                }, StringComparer.Ordinal);
+            var frame = selection.GetProperty("plan_frame_offsets_ft").GetProperty("upper").EnumerateArray().Select(v => v.GetDouble()).ToArray();
+            if (frame.Length != 2) throw new InvalidDataException("Selected-D upper frame offset must have two coordinates.");
+            var rectangles = new List<(string Id, string Name, string Kind, double X, double Y, double W, double D)>();
+            foreach (var property in candidate.GetProperty("rectangles").EnumerateObject())
+            {
+                string id = property.Name;
+                if (!roomsById.TryGetValue(id, out var source)) throw new InvalidDataException($"M78 room '{id}' is absent from the source upper-room program.");
+                var rectangle = property.Value;
+                double x = Number(rectangle, "x_ft"), y = Number(rectangle, "y_ft");
+                double width = Number(rectangle, "width_ft"), depth = Number(rectangle, "depth_ft");
+                var sourceDimensions = study.GetProperty("source_dimensions_ft").GetProperty(id);
+                double sourceWidth = Number(sourceDimensions, "width_ft"), sourceDepth = Number(sourceDimensions, "depth_ft");
+                bool sourceOrientation = Math.Abs(width - sourceWidth) <= Tol && Math.Abs(depth - sourceDepth) <= Tol;
+                bool rotatedSourceOrientation = Math.Abs(width - sourceDepth) <= Tol && Math.Abs(depth - sourceWidth) <= Tol;
+                bool roomProgramOrientation =
+                    (Math.Abs(width - source.Width) <= Tol && Math.Abs(depth - source.Depth) <= Tol) ||
+                    (Math.Abs(width - source.Depth) <= Tol && Math.Abs(depth - source.Width) <= Tol);
+                if ((!sourceOrientation && !rotatedSourceOrientation) || !roomProgramOrientation)
+                    throw new InvalidDataException($"M78 room '{id}' dimensions differ from the documented source room program.");
+                if (width <= 0 || depth <= 0 || x < -Tol || y < -Tol || x + width > shellWidth + Tol || y + depth > shellDepth + Tol)
+                    throw new InvalidDataException($"M78 room '{id}' is outside the hypothetical shell or has invalid dimensions.");
+                rectangles.Add((id, source.Name, source.Kind, x + frame[0], y + frame[1], width, depth));
+            }
+            if (rectangles.Count != 7 || rectangles.Select(room => room.Id).Distinct(StringComparer.Ordinal).Count() != 7)
+                throw new InvalidDataException($"Expected seven unique M78 upper rooms/connectors, found {rectangles.Count}.");
+            for (int i = 0; i < rectangles.Count; i++)
+            for (int j = i + 1; j < rectangles.Count; j++)
+            {
+                var a = rectangles[i]; var b = rectangles[j];
+                double overlapX = Math.Min(a.X + a.W, b.X + b.W) - Math.Max(a.X, b.X);
+                double overlapY = Math.Min(a.Y + a.D, b.Y + b.D) - Math.Max(a.Y, b.Y);
+                if (overlapX > Tol && overlapY > Tol) throw new InvalidDataException($"M78 rooms '{a.Id}' and '{b.Id}' overlap in plan.");
+            }
+
+            var upperLevel = selection.GetProperty("selection").GetProperty("levels").EnumerateArray()
+                .FirstOrDefault(level => Text(level, "id") == "Upper FF");
+            if (upperLevel.ValueKind == JsonValueKind.Undefined) throw new InvalidDataException("Selected-D source has no upper-level datum.");
+            double elevation = Number(upperLevel, "elevation_ft");
+            string output = Path.Combine(root, ".local", "revit-pilot", "upper-suite", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            File.WriteAllBytes(Path.Combine(output, "m78-search.json"), studyBytes);
+            File.WriteAllBytes(Path.Combine(output, "selected-d-study.json"), selectionBytes);
+
+            doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            var roomAreas = new List<(string Id, string Name, double Area, double ExpectedArea)>();
+            using (var tx = new Transaction(doc, "Create separate M78 upper-suite room study"))
+            {
+                tx.Start();
+                var seedLevels = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>().ToArray();
+                Level level;
+                if (seedLevels.Length == 1)
+                {
+                    level = seedLevels[0];
+                    level.Name = "M78 Upper FF (Hypothetical Test)";
+                    level.Elevation = elevation;
+                }
+                else
+                {
+                    foreach (var seed in seedLevels) doc.Delete(seed.Id);
+                    level = Level.Create(doc, elevation);
+                    level.Name = "M78 Upper FF (Hypothetical Test)";
+                }
+                Tag(level, Marker);
+                var planType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>()
+                    .First(v => v.ViewFamily == ViewFamily.FloorPlan);
+                var plan = ViewPlan.Create(doc, planType.Id, level.Id);
+                plan.Name = "M78 Hypothetical Upper Suite Room Blocks";
+
+                var allRects = rectangles.Select(room => (room.X, room.Y, room.W, room.D)).ToList();
+                var xCuts = allRects.SelectMany(r => new[] { r.X, r.X + r.W }).Append(frame[0]).Append(frame[0] + shellWidth)
+                    .Distinct().ToArray();
+                var yCuts = allRects.SelectMany(r => new[] { r.Y, r.Y + r.D }).Append(frame[1]).Append(frame[1] + shellDepth)
+                    .Distinct().ToArray();
+                var segments = new Dictionary<string, (double X1, double Y1, double X2, double Y2)>(StringComparer.Ordinal);
+                void AddSegment(double x1, double y1, double x2, double y2)
+                {
+                    string a = PointKey(x1, y1), b = PointKey(x2, y2);
+                    if (a == b) return;
+                    string key = string.CompareOrdinal(a, b) < 0 ? a + "|" + b : b + "|" + a;
+                    if (!segments.ContainsKey(key)) segments.Add(key, (x1, y1, x2, y2));
+                }
+                var edges = new List<(double X1, double Y1, double X2, double Y2)>();
+                foreach (var room in rectangles)
+                {
+                    edges.Add((room.X, room.Y, room.X + room.W, room.Y));
+                    edges.Add((room.X + room.W, room.Y, room.X + room.W, room.Y + room.D));
+                    edges.Add((room.X + room.W, room.Y + room.D, room.X, room.Y + room.D));
+                    edges.Add((room.X, room.Y + room.D, room.X, room.Y));
+                }
+                edges.Add((frame[0], frame[1], frame[0] + shellWidth, frame[1]));
+                edges.Add((frame[0] + shellWidth, frame[1], frame[0] + shellWidth, frame[1] + shellDepth));
+                edges.Add((frame[0] + shellWidth, frame[1] + shellDepth, frame[0], frame[1] + shellDepth));
+                edges.Add((frame[0], frame[1] + shellDepth, frame[0], frame[1]));
+                foreach (var edge in edges)
+                {
+                    bool vertical = Math.Abs(edge.X1 - edge.X2) < Tol;
+                    var cuts = vertical
+                        ? yCuts.Where(c => c >= Math.Min(edge.Y1, edge.Y2) - Tol && c <= Math.Max(edge.Y1, edge.Y2) + Tol).OrderBy(c => edge.Y2 >= edge.Y1 ? c : -c).ToArray()
+                        : xCuts.Where(c => c >= Math.Min(edge.X1, edge.X2) - Tol && c <= Math.Max(edge.X1, edge.X2) + Tol).OrderBy(c => edge.X2 >= edge.X1 ? c : -c).ToArray();
+                    for (int i = 0; i + 1 < cuts.Length; i++)
+                        if (vertical) AddSegment(edge.X1, cuts[i], edge.X1, cuts[i + 1]);
+                        else AddSegment(cuts[i], edge.Y1, cuts[i + 1], edge.Y1);
+                }
+                var curveArray = new CurveArray();
+                foreach (var segment in segments.Values)
+                    curveArray.Append(Line.CreateBound(new XYZ(segment.X1, segment.Y1, elevation), new XYZ(segment.X2, segment.Y2, elevation)));
+                var plane = Plane.CreateByNormalAndOrigin(XYZ.BasisZ, new XYZ(frame[0], frame[1], elevation));
+                var sketch = SketchPlane.Create(doc, plane);
+                doc.Create.NewRoomBoundaryLines(sketch, curveArray, plan);
+                doc.Regenerate();
+                foreach (var roomSpec in rectangles)
+                {
+                    var room = doc.Create.NewRoom(level, new UV(roomSpec.X + roomSpec.W / 2, roomSpec.Y + roomSpec.D / 2));
+                    room.Number = roomSpec.Id;
+                    room.Name = roomSpec.Name;
+                    Tag(room, Marker + ":" + roomSpec.Id);
+                }
+                foreach (var edge in new[]
+                {
+                    (frame[0], frame[1], frame[0] + shellWidth, frame[1]),
+                    (frame[0] + shellWidth, frame[1], frame[0] + shellWidth, frame[1] + shellDepth),
+                    (frame[0] + shellWidth, frame[1] + shellDepth, frame[0], frame[1] + shellDepth),
+                    (frame[0], frame[1] + shellDepth, frame[0], frame[1])
+                })
+                {
+                    var modelCurve = doc.Create.NewModelCurve(Line.CreateBound(new XYZ(edge.Item1, edge.Item2, elevation), new XYZ(edge.Item3, edge.Item4, elevation)), sketch);
+                    Tag(modelCurve, Marker + ":SHELL-OUTLINE-ONLY");
+                }
+                doc.Regenerate();
+                foreach (var roomSpec in rectangles)
+                {
+                    var room = new FilteredElementCollector(doc).OfClass(typeof(SpatialElement)).WhereElementIsNotElementType().OfType<Room>()
+                        .SingleOrDefault(item => item.Number == roomSpec.Id && item.Area > 0);
+                    double expectedArea = roomSpec.W * roomSpec.D;
+                    if (room is null || Math.Abs(room.Area - expectedArea) > 0.1)
+                        throw new InvalidOperationException($"Revit room '{roomSpec.Id}' area mismatch: expected {expectedArea:0.##} sf, found {room?.Area ?? 0:0.##} sf.");
+                    roomAreas.Add((room.Number, room.Name, Math.Round(room.Area, 2), Math.Round(expectedArea, 2)));
+                }
+                tx.Commit();
+            }
+
+            string rvtPath = Path.Combine(output, "FH_M78_Upper_Suite_Test.rvt");
+            doc.SaveAs(rvtPath, new SaveAsOptions());
+            var fingerprint = SavedModelIdentity.Capture(doc);
+            var inventory = new
+            {
+                schema = "forever-home.m78-upper-suite-revit-study.v1",
+                status = "hypothetical upper-suite room-boundary study; not an approved shell or coordinated building model",
+                source_sha256 = new { m78_search = studyHash, selected_d_study = selectionHash },
+                model_fingerprint = fingerprint,
+                shell_test = new { width_ft = shellWidth, depth_ft = shellDepth, frame_offset_ft = frame, status = "owner-authorized comparison only; unselected" },
+                level = new { name = "M78 Upper FF (Hypothetical Test)", elevation_ft = elevation },
+                rooms = roomAreas.Select(room => new { id = room.Id, name = room.Name, area_sf = room.Area, expected_area_sf = room.ExpectedArea }).ToArray(),
+                counts = new { room_count = rectangles.Count, wall_count = 0, door_count = 0, floor_count = 0, stair_count = 0 },
+                limitations = new[]
+                {
+                    "Only room-separation boundaries and a model-line shell outline were authored; the outline is not a wall or envelope assembly.",
+                    "No actual openings, door swings, privacy screens, stairs, roof, structure, MEP, or lift product were modeled.",
+                    "The source M78 corridor grid is sampled reachability, not a measured clear route or code finding.",
+                    "This hypothetical comparison does not amend the selected-D source or approve a building dimension.",
+                    "No code-compliance, accessibility, structural-safety, certification or construction-readiness claim is made."
+                }
+            };
+            File.WriteAllText(Path.Combine(output, "study-manifest.json"), JsonSerializer.Serialize(inventory, new JsonSerializerOptions { WriteIndented = true }));
+            using (var writer = new StreamWriter(Path.Combine(output, "room-inventory.csv"), false, new System.Text.UTF8Encoding(true)))
+            {
+                writer.WriteLine("id,name,area_sf,expected_area_sf");
+                foreach (var row in roomAreas.OrderBy(item => item.Id, StringComparer.Ordinal))
+                {
+                    writer.WriteLine($"\"{row.Id}\",\"{row.Name}\",\"{row.Area.ToString(CultureInfo.InvariantCulture)}\",\"{row.ExpectedArea.ToString(CultureInfo.InvariantCulture)}\"");
+                }
+            }
+            using var ifcOptions = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true };
+            bool ifcOk;
+            using (var export = new Transaction(doc, "Export hypothetical M78 upper-suite IFC2x3"))
+            {
+                export.Start();
+                try { ifcOk = doc.Export(output, "FH_M78_Upper_Suite_Test", ifcOptions); }
+                finally { if (export.GetStatus() == TransactionStatus.Started) export.RollBack(); }
+            }
+            SavedModelIdentity.AssertSame(doc, fingerprint);
+            string ifcPath = Path.Combine(output, "FH_M78_Upper_Suite_Test.ifc");
+            File.WriteAllText(Path.Combine(output, "export-result.json"), JsonSerializer.Serialize(new
+            {
+                ifc2x3_api_result = ifcOk,
+                model_fingerprint = fingerprint,
+                ifc_file = Path.GetFileName(ifcPath),
+                ifc_bytes = File.Exists(ifcPath) ? new FileInfo(ifcPath).Length : 0,
+                ifc_sha256 = File.Exists(ifcPath) ? Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant() : null
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            TaskDialog.Show("Forever Home upper-suite test", $"Saved a separate M78 room-boundary study (no construction geometry implied):\n{output}\n\nIFC2x3 export API: {ifcOk}");
+            return ifcOk ? Result.Succeeded : Result.Failed;
+        }
+        catch (Exception ex)
+        {
+            message = ex.ToString();
+            try { if (doc?.IsValidObject == true) doc.Close(false); } catch { }
+            return Result.Failed;
+        }
     }
 }
 

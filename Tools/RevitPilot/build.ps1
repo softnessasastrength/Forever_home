@@ -1,6 +1,10 @@
-param([string]$Dotnet = 'dotnet')
+param([string]$Dotnet = '')
 $ErrorActionPreference = 'Stop'
 $pilotRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+$repoDotnet = Join-Path $pilotRoot '.local/dotnet/dotnet.exe'
+if ([string]::IsNullOrWhiteSpace($Dotnet)) {
+    $Dotnet = if (Test-Path -LiteralPath $repoDotnet) { $repoDotnet } else { 'dotnet' }
+}
 $env:DOTNET_CLI_HOME = Join-Path $pilotRoot '.local/dotnet-home'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
 $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = '1'

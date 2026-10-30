@@ -29,3 +29,19 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/validate_upper_sui
 ## Limits
 
 The route uses a sampled 4 ft corridor grid and nominal room-contact reservations. It does not represent actual doors/openings or swings, wall thickness, privacy, egress, finished interior dimensions, floor openings, stair/headroom geometry, structure, services, roof, site, code applicability, Revit placement or IFC. The search is deterministic but bounded and incomplete; its candidate is a room-block concept only. No claim of code compliance, structural safety, professional approval, or construction readiness follows.
+
+## Disposable Revit/IFC implementation (M81)
+
+The Revit 2027.3.0.28 pilot command now consumes the archived `search.json` and selected-D source after checking both source hashes. It created `.local/revit-pilot/upper-suite/20261030T200906834Z/` as an isolated derivative. The selected-D source and all Incoming RFAs remain unchanged.
+
+The saved model has one level, `M78 Upper FF (Hypothetical Test)` at 5 ft, seven source-matching room-boundary spaces and a model-line rectangle for the 38.333333 x 40 ft envelope translated by the documented upper-frame offset `[0, 6]` ft. The command verifies room areas before saving and exports IFC2X3 from that saved document. A subsequent Revit open visually confirmed the room-block plan. The model contains no walls, slabs, stairs, doors, windows, roof, structure, MEP or M-06 fixture.
+
+Reproduce the independent check from the repository root:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_upper_suite_ifc.py .local/revit-pilot/upper-suite/20261030T200906834Z
+```
+
+Result: **32/32 checks passed**, IFC2X3 schema validation reports zero issues, and two independent validation reports match byte-for-byte (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). The saved RVT is SHA256 `28BC319633C2EE96711896203355163D49469A64CC265F3540E449D1E6844995`; its IFC2X3 export is SHA256 `87478B8D794C88904AA4532BA5B96025F488AB9EFFED54E23B3F39B01A82C96`. The validator also checks the seven room rectangles remain inside the local hypothetical shell envelope and confirms the IFC has zero walls, slabs, stairs, stair flights, doors and windows.
+
+This host result closes only Revit generation and room-space IFC validation for the test case. It does not validate actual door openings, stair geometry, privacy, egress, clear routes, code applicability, product fit, roof, services or structure. The bounded M78 search remains incomplete; this is not an approved shell dimension or a construction model.

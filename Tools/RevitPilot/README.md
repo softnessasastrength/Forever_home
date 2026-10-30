@@ -128,6 +128,24 @@ Run evidence identity regression tests with `./.venv/Scripts/python.exe -m unitt
 
 Success requires actual in-Revit execution, all expected fixture objects, successful export calls, independently parsed IFC geometry, source/backup reopening, visual review of drawings, and a documented Revit 2018 import/loss assessment. Header checks alone do not validate drawings. Partial results must remain explicitly partial.
 
+## M78 hypothetical upper-suite Revit/IFC study
+
+The **Build upper-suite test study** command consumes the archived M78 search and selected-D source only after their SHA256 values match their manifests. It opens a new blank Revit project and writes an isolated RVT, source snapshots, inventory and IFC2X3 export under `.local/revit-pilot/upper-suite/<timestamp>/`. The derivative contains one hypothetical upper datum, seven room-boundary spaces and a model-line shell outline at the selected-D frame offset. It has no construction geometry and does not change selected D or assign M-06.
+
+Build the add-in using the repository-local SDK when present (the script falls back to `dotnet` on PATH):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File Tools/RevitPilot/build.ps1
+```
+
+After the authorized project-local add-in has been loaded in Revit 2027, use **Add-Ins → Forever Home Pilot → Build upper-suite test study** from a blank project. On 2026-10-30 the host wrote `.local/revit-pilot/upper-suite/20261030T200906834Z/`. Independently check the saved RVT/IFC chain, IFC2X3 schema, single level, all seven space IDs/names/areas/world-coordinate bounds, local shell containment and intentional absence of physical construction categories:
+
+```powershell
+./.venv/Scripts/python.exe Tools/RevitPilot/validate_upper_suite_ifc.py .local/revit-pilot/upper-suite/20261030T200906834Z
+```
+
+The recorded result is **32/32** with zero IFC schema issues. Two reports match byte-for-byte. This checker covers a space study; it does not establish actual doors, clear routes, privacy, egress, accessibility, code compliance, structural safety, product fit or construction readiness. Full run hashes and remaining manual checks are recorded in the M78 study README and `PROGRESS.md`.
+
 ## Dependencies and build
 
 - Windows x64, licensed/active Revit 2027, installed API DLLs, and English-Imperial family templates.

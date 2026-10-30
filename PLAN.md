@@ -857,3 +857,35 @@ Acceptance criteria:
 - Record disposable Revit review, actual door/wall geometry, swing, privacy and code assessment as outstanding.
 
 Current status: Complete as a schematic alignment check. The 3.5 ft nominal test interval on U-02's north edge is x=17.416667..20.916667 ft at y=27.5 ft, centered over the selected-D 4 x 4 ft stair-approach proxy at (19.166667,30) ft. Ten checks pass; two PowerShell 5.1 runs reproduce JSON and SVG byte-for-byte. No wall or door is modeled, and M78's 38.333333 x 40 ft test envelope is still unselected. See `Tools/screen_m79_u02_hall_approach_slot.ps1` and `Architecture/M79_U02_Hall_Approach_Slot_2026-10-29/README.md`.
+
+### M80 - Validate the incoming toilet-family host probe in Revit 2027
+
+Acceptance criteria:
+
+- Preserve the three owner-supplied Incoming RFA files and their source hashes; load and inspect them only in a new disposable Revit project.
+- Use a basic temporary wall for the documented Evolution hosted-placement probe; report family/type identity, local solid bounds, transformed hosted extents and host identity separately.
+- Pass the PowerShell host-output gate and family-intake provenance validator; do not infer fixture pairing, clearance, room fit, service routing or product approval.
+
+Current status: Complete as a disposable family-geometry and host-orientation probe. Revit 2027 run `20261030T195404237Z` records five family results and 14 measured types. The output gate passes **101/101** checks, including the Evolution 0467.400 temporary basic-wall placement at 17.5052 in projection x 22 in width x 34.25 in height; source-family geometry reports 3 positive-volume solids. Family-intake provenance and the full offline suite pass. The three Incoming RFAs remain untouched and unapproved. These measurements do not establish an assembled toilet, room fit, clearance, service path, code compliance or product selection.
+
+### M81 - Generate and validate the hypothetical M78 upper-suite Revit/IFC study
+
+Acceptance criteria:
+
+- Consume only the archived M78 search and selected-D source with matching source fingerprints; preserve the selected-D source and all Incoming RFAs.
+- In a separate Revit project, create the selected source-level datum, seven room-boundary spaces and a plan-only hypothetical shell outline; create no construction geometry or assign M-06.
+- Save the RVT before exporting IFC2X3, tie both files to an exact saved-model fingerprint, and independently validate schema, storey, space identity, area, bounds, shell containment and absent physical construction entities.
+- Document the reproducible build and validator commands, evidence hashes, manual-review limits and outstanding next steps.
+
+Current status: Complete as a room-boundary and IFC2X3 pipeline milestone. The Revit 2027.3.0.28 host command created `.local/revit-pilot/upper-suite/20261030T200906834Z/`; the derivative was reopened and visually reviewed in Revit. Independent `validate_upper_suite_ifc.py` passes **32/32** checks, including the clean IFC2X3 schema, one upper storey at 5 ft, seven source-matching spaces, areas and world-coordinate plan bounds, room-block containment inside the local hypothetical envelope, and zero walls, slabs, stairs, doors or windows. Two validation runs produce byte-identical reports (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). Saved RVT SHA256 is `28BC319633C2EE96711896203355163D49469A64CC265F3540E449D1E6844995`; IFC SHA256 is `87478B8D794C88904AA4532BA5B96025F488AB9EFFED54E23B3F39B01A82C96`. RevitPilot builds with **0 errors** and two pre-existing `MSB3277` Revit API reference warnings; its per-user manifest retained the authorized AddInId and its previous copy is backed up in ignored `.local/revit-pilot/registration-backups/20261030T160652/`. The IFC file is a space-study export, not an architectural building model, compliance finding or construction document. See the M78 README and `Tools/RevitPilot/README.md` for reproduction.
+
+### M82 - Advance the unresolved M-06 fit gate without assigning room B
+
+Acceptance criteria:
+
+- Independently pair any proposed toilet bowl/tank/seat only from verified family types and manufacturer product documentation; preserve source RFA files.
+- Compare measured assembled geometry with a clearly cited Connecticut code/clearance basis, door and approach geometry, and a plausible service route before considering a room location.
+- Keep room B unassigned when any required product geometry, applicable clearance basis, door/approach or service evidence remains unresolved.
+- Make no M-06 baseline or selected-D edits unless later explicitly authorized by the owner.
+
+Current status: Planned. Existing host measurements cover individual family types and one Evolution host orientation only; they do not establish a toilet assembly or a supportable room-B fit. M-06 product pairing, applicable site/permit code basis, actual door/approach and service path remain open.
