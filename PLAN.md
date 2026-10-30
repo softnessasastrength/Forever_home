@@ -953,6 +953,7 @@ Acceptance criteria:
 
 - Run two isolated Windows PowerShell 5.1 generations of the checked-in selected-D source and require 43/43 checks, valid SVG XML, and byte-identical seven-file outputs.
 - Independently validate the fresh selected-D Revit run's exact saved RVT/IFC2X3 pair; require source, saved-model/export fingerprints, levels, all 21 rooms and areas/bounds, schema checks and intended absence of construction classes to pass.
+- Run the repository's offline RevitPilot unit suite and record the exact command and result; this is validator/unit testing, not geometry fitting.
 - Confirm the tracked source fingerprint is unchanged and do not overwrite the selected-D baseline or any retained Revit evidence.
 
-Current status: Complete. Both M88 replays pass **43/43**, all three plan SVGs parse, and all seven files match byte-for-byte. A fresh IFC validation returns **26/26** passing checks and the same deterministic report hash as M84. The saved source, RVT and IFC remain at their recorded hashes; see the M88 evidence in `PROGRESS.md`.
+Current status: Complete. Both M88 replays pass **43/43**, all three plan SVGs parse, and all seven files match byte-for-byte. A fresh IFC validation returns **26/26** passing checks and the same deterministic report hash as M84. The offline RevitPilot unit suite passes **40/40**. The saved source, RVT and IFC remain at their recorded hashes; see the M88 evidence in `PROGRESS.md`.
