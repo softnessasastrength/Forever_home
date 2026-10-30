@@ -1011,3 +1011,13 @@ Acceptance criteria:
 - Confirm the selected-D source hash remains unchanged and document the scope limitation that this is a validated space study, not a complete building model.
 
 Current status: Complete. The retained pair passes 26/26 checks with zero errors; the new report is byte-identical to the previous M88 report. Selected-D source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The model still contains no native walls, slabs, stairs, doors or windows. See M93 in `PROGRESS.md`.
+
+### M94 - Refresh the public KOHLER Tresham sink evidence and gross-envelope screen
+
+Acceptance criteria:
+
+- Recheck the current KOHLER product page and manufacturer-hosted specification for K-2844-4-0; use the latest dated nominal overall dimensions surfaced by that source.
+- Bind the quarantined public RFA's URL and SHA256 in the generated report, while explicitly leaving type-to-SKU mapping and Revit solid measurements unverified until read-only inspection.
+- Generate the existing M-06 gross-body comparison twice into ignored directories and require byte-identical output; preserve B as a gross unassigned search window and make no fixture or room assignment.
+
+Current status: Manufacturer evidence refreshed and the source report now identifies the 2025-02-08 KOHLER specification (nominal 24 x 19.5 x 34.625 in) and quarantined RFA SHA256. Both fresh PowerShell 5.1 runs pass 22/22 checks and produce byte-identical output. The RFA remains uninspected; no complete M-06 fit, door/approach, service route, code applicability, or room assignment is established. See M94 in `PROGRESS.md` and the M-06 sink research note.
