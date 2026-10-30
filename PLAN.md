@@ -935,3 +935,14 @@ Acceptance criteria:
 - Preserve selected-D, owner-supplied Incoming RFAs and B's unassigned status; do not infer current geometry or services from predecessor instructions.
 
 Current status: Complete as a public-source cross-check. The linked installation manual is dated 2019 and covers 211AA/211BA/211CA series; the current 610AA page displayed “Out of stock” on 2026-10-30. Neither observation resolves exact current SKU geometry, verified purchasing availability, or a service route. See M86 in `PROGRESS.md` and the dated M-06 research entry.
+
+### M87 - Retrieve the public KOHLER Tresham family candidate into quarantine
+
+Acceptance criteria:
+
+- Retrieve an exact or explicitly candidate public Revit-family URL without sign-in, account creation, payment, or access-control bypass.
+- Preserve the downloaded bytes in ignored quarantine with source page, direct URL, retrieval time, byte count and SHA256 sidecar; record the container signature, and leave incoming owner RFAs untouched. Confirm that Revit can open it as an RFA only during read-only Family Editor inspection.
+- Keep the sink unselected and do not include its geometry in the toilet/lavatory fit study until read-only Revit inspection confirms model version, family category/host, type identity, parameters and measured solids.
+- Keep room B unassigned until selected product geometry, applicable clearance, door/approach and plausible service routing pass together.
+
+Current status: Complete for public retrieval and provenance only. An anonymous direct request through the KOHLER dealer's public BIM link returned a 659,456-byte RFA served from KOHLER's technical-content host. It is quarantined under ignored `.local/revit-pilot/family-intake/candidates/` with SHA256 recorded in a sidecar. The Family Editor inspection is pending because Revit remains stopped at a mismatched unsigned-add-in prompt. This candidate is not selected, placed, or used to revise the existing gross-body screen. See M87 in `PROGRESS.md` and `Research/M06_Sink_Candidates_2026-10-28.md`.
