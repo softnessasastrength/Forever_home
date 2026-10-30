@@ -977,3 +977,14 @@ Acceptance criteria:
 - Keep B unassigned and preserve selected-D, source RFAs and the current product selection pending confirmed geometry, clearance, door/approach and service evidence.
 
 Current status: Complete as a date-stamped public index recheck. Exact-SKU queries returned retail listings but no current 610AA manufacturer family or dimensional drawing; the manufacturer's live linked files remain predecessor-series documents. This does not establish global nonexistence. M-06 remains open, and B remains unassigned. See M90 in `PROGRESS.md` and the M-06 research note.
+
+### M91 - Make the M83 Revit host study tolerant of template levels
+
+Acceptance criteria:
+
+- The disposable roof-comparison command must not delete template-owned levels to establish its relative datum.
+- Reuse the lowest existing level, label it as a local relative reference, and preserve any additional template levels; create one only if the new document contains none.
+- Build the revised add-in into a separate ignored directory, verify its local manifest identity and DLL hash, and run the offline regression suite.
+- Do not claim Revit-host or IFC completion until the exact matching DLL is loaded and the disposable export passes the M83 IFC validator.
+
+Current status: Source repair and isolated compilation complete. The host run remains pending because the last confirmed Revit prompt named a different DLL; no trust choice or per-user registration change was made. See M91 in `PROGRESS.md`.

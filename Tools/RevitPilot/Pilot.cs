@@ -1799,15 +1799,17 @@ public class GableMassingCommand : IExternalCommand
                 tx.Start();
                 var seedLevels = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>().ToArray();
                 Level datum;
-                if (seedLevels.Length == 1)
+                if (seedLevels.Length > 0)
                 {
-                    datum = seedLevels[0];
+                    // Revit templates may supply several levels with dependent views.
+                    // Keep them intact; deleting template-owned levels can fail or
+                    // remove view structure for no benefit in this disposable study.
+                    datum = seedLevels.OrderBy(level => level.Elevation).First();
                     datum.Name = "M83 Relative Eave Reference (Not a Building Datum)";
                     datum.Elevation = 0;
                 }
                 else
                 {
-                    foreach (var seed in seedLevels) doc.Delete(seed.Id);
                     datum = Level.Create(doc, 0);
                     datum.Name = "M83 Relative Eave Reference (Not a Building Datum)";
                 }
@@ -1900,7 +1902,9 @@ public class GableMassingCommand : IExternalCommand
                 source_fingerprint_sha256 = dataHash,
                 model_fingerprint = fingerprint,
                 display_material = new { name = displayMaterialName, selected_as_product = false, function = "neutral view-only color for comparison surfaces" },
-                counts = new { option_count = records.Count, generic_model_direct_shapes = records.Count, roofs = 0, walls = 0, floors = 0, doors = 0, windows = 0, stairs = 0 },
+                counts = new { option_count = records.Count, generic_model_direct_shapes = records.Count,
+                    levels = new FilteredElementCollector(doc).OfClass(typeof(Level)).GetElementCount(),
+                    roofs = 0, walls = 0, floors = 0, doors = 0, windows = 0, stairs = 0 },
                 geometry = records,
                 limitations = new[]
                 {
