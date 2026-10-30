@@ -946,3 +946,13 @@ Acceptance criteria:
 - Keep room B unassigned until selected product geometry, applicable clearance, door/approach and plausible service routing pass together.
 
 Current status: Complete for public retrieval and provenance only. An anonymous direct request through the KOHLER dealer's public BIM link returned a 659,456-byte RFA served from KOHLER's technical-content host. It is quarantined under ignored `.local/revit-pilot/family-intake/candidates/` with SHA256 recorded in a sidecar. The Family Editor inspection is pending because Revit remains stopped at a mismatched unsigned-add-in prompt. This candidate is not selected, placed, or used to revise the existing gross-body screen. See M87 in `PROGRESS.md` and `Research/M06_Sink_Candidates_2026-10-28.md`.
+
+### M88 - Recheck selected-D source replay and saved IFC lineage
+
+Acceptance criteria:
+
+- Run two isolated Windows PowerShell 5.1 generations of the checked-in selected-D source and require 43/43 checks, valid SVG XML, and byte-identical seven-file outputs.
+- Independently validate the fresh selected-D Revit run's exact saved RVT/IFC2X3 pair; require source, saved-model/export fingerprints, levels, all 21 rooms and areas/bounds, schema checks and intended absence of construction classes to pass.
+- Confirm the tracked source fingerprint is unchanged and do not overwrite the selected-D baseline or any retained Revit evidence.
+
+Current status: Complete. Both M88 replays pass **43/43**, all three plan SVGs parse, and all seven files match byte-for-byte. A fresh IFC validation returns **26/26** passing checks and the same deterministic report hash as M84. The saved source, RVT and IFC remain at their recorded hashes; see the M88 evidence in `PROGRESS.md`.
