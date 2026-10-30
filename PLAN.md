@@ -1128,3 +1128,15 @@ Acceptance criteria:
 - Preserve selected-D and incoming family files; do not launch Revit, change roof decisions or modify remote state.
 
 Current status: Complete. M83 regenerated against the extended M102 research note, with three runs passing 13/13 and all four artifacts identical (roof-options JSON SHA256 `8FAF694BCD4AC229836FF49D7DBC35F482F90008E517EF032C5676709DCEEC16`; checks `3F38BA0E3FCA9BCA3D4982F85EB9A8486017967A09899488FC92C1BC9772E32D`; SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`; manifest `D71EC4AC99DD47024F9337A1D695B589F3382EAD663D76AE7BA12AEFCB9B69A0`). M101 and M103 replays each pass their checks and reproduce their checked-in JSON/CSV. Only provenance hashes changed in M83. See its README and M101/M103 packages.
+
+### M105 - Compare the routed M78 bath placements against both roof axes
+
+Acceptance criteria:
+
+- Reuse only the five archived highest-ranked public-access M78 layouts and bind their search/manifest and the current M83 roof options by SHA256.
+- Confirm each sampled layout keeps public hall reach to U-01/U-02/U-04, no U-03 public-side access, U-02's north-side sample, seven non-overlapping in-shell rooms and source-matching block areas.
+- Compare U-05's ideal roof-plane exposure under all six pitch/axis cases; keep fixture locations, use zones, finished headroom and code conclusions out of scope.
+- Replay twice with 12/12 checks and byte-identical JSON/CSV; reject output outside the checkout.
+- Report trade-offs and incomplete-search limits without changing M78, selected-D, room area or roof selection.
+
+Current status: Complete for the archived five-candidate subset. The script passes **12/12 checks** on two replays and matches the checked-in report (JSON SHA256 `8C5BC07D8D2122B166CF8B1AEB89522C48A375AC63DF00599BE7490F09E85349`; CSV SHA256 `BF4278BB1DB471CA65EEE9BC8EBBD07D42042C933B25F41D04BDBA104FD90BAA`). M78-TOP-05 (U-05 at x=1.333, y=1 ft, 9×10 ft) improves the minimum relative-eave rise for ridge Y while retaining the sampled route; it trades against the M78 winner, which does better for ridge X. TOP-05 is only the most balanced of these five archived layouts, not an exhaustive optimum or recommendation. See its README.
