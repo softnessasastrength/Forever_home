@@ -1021,3 +1021,13 @@ Acceptance criteria:
 - Generate the existing M-06 gross-body comparison twice into ignored directories and require byte-identical output; preserve B as a gross unassigned search window and make no fixture or room assignment.
 
 Current status: Manufacturer evidence refreshed and the source report now identifies the 2025-02-08 KOHLER specification (nominal 24 x 19.5 x 34.625 in) and quarantined RFA SHA256. Both fresh PowerShell 5.1 runs pass 22/22 checks and produce byte-identical output. The RFA remains uninspected; no complete M-06 fit, door/approach, service route, code applicability, or room assignment is established. See M94 in `PROGRESS.md` and the M-06 sink research note.
+
+### M95 - Pin the selected toilet's current-SKU manufacturer infographic
+
+Acceptance criteria:
+
+- Retrieve the public product-page infographic identified as 610AA001.020, preserve its URL, byte count and SHA256, and distinguish image annotations from the older predecessor-linked spec sheet and from measured Revit geometry.
+- Add a PowerShell validator that confirms the image and selected-D source hashes, retains M-06 B as an unassigned gross gap, and checks only the annotated toilet plan rectangle in both orientations.
+- Run the validator twice and require 8/8 checks and byte-identical output; do not claim toilet/lavatory fit, door/approach, service route, code applicability, or assignment.
+
+Current status: Complete for a hash-pinned product-page infographic screen. The current SKU image annotates 30-1/4 x 19 x 30-7/8 in overall dimensions, 12-in rough-in and 17-in seat height (with a seat-height variation note). Two replays pass 8/8 and match SHA256 `E42AA40EBD1E121532EFEE15DF0EAA8CDBF4B7333F1D0A0C2A4A9977C26ECFC8`. Detailed Revit family geometry and all whole-room gates remain open; B remains unassigned. See M95 in `PROGRESS.md` and the current-SKU note in `Research/M06_Toilet_Options_2026-10-27.md`.
