@@ -39,6 +39,7 @@ $checks = [ordered]@{
     room_block_areas_match_m78_program_dimensions = $true
     primary_bath_area_remains_90_sf = $true
     all_six_roof_cases_are_evaluated_per_candidate = $true
+    comparison_svg_is_valid = $true
     selected_d_unchanged = $true
 }
 
@@ -117,6 +118,46 @@ foreach ($candidate in $candidates) {
 
 if ($results.Count -ne 30) { $checks.all_six_roof_cases_are_evaluated_per_candidate = $false }
 if ((Get-Sha256 $selectedPath) -ne $selectedHash) { $checks.selected_d_unchanged = $false }
+$svgLines = [System.Collections.Generic.List[string]]::new()
+$scale = 7.2
+$plotTop = 76.0
+$panelDefinitions = @(
+    [pscustomobject]@{ index = 1; candidate = $candidates[1]; title = 'M78-TOP-02 | current search winner' },
+    [pscustomobject]@{ index = 2; candidate = $candidates[4]; title = 'M78-TOP-05 | balanced roof-edge option' }
+)
+$svgLines.Add('<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500">')
+$svgLines.Add('<title>M105 comparison of the M78 winner and roof-balanced U-05 layout</title>')
+$svgLines.Add('<style>text{font-family:Arial,sans-serif;fill:#253342}.title{font-size:25px;font-weight:700}.panel{font-size:18px;font-weight:700}.label{font-size:11px;font-weight:600}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#273d4c;stroke-width:2.5}.approach{fill:#e5b64c;fill-opacity:.22;stroke:#9a6815;stroke-width:2;stroke-dasharray:7 5}.U01{fill:#d9e5ef}.U02{fill:#e5def1}.U03{fill:#d9eadf}.U04{fill:#e8dfd5}.U05{fill:#f4c58a;stroke:#a75314;stroke-width:2.5}.U06{fill:#d8e9e6}.CPRIVATE{fill:#e8e8e3}</style>')
+$svgLines.Add('<text class="title" x="48" y="38">M105 | Upper-suite room blocks and primary-bath roof exposure</text>')
+foreach ($panel in $panelDefinitions) {
+    $panelLeft = if ($panel.index -eq 1) { 68.0 } else { 570.0 }
+    $svgLines.Add(('<text class="panel" x="{0}" y="64">{1}</text>' -f $panelLeft,$panel.title))
+    $shellHeight = $shellDepth * $scale
+    $shellWidthPx = $shellWidth * $scale
+    $svgLines.Add(('<rect class="shell" x="{0}" y="{1}" width="{2}" height="{3}"/>' -f $panelLeft,$plotTop,$shellWidthPx,$shellHeight))
+    foreach ($property in $panel.candidate.rectangles.PSObject.Properties) {
+        $room = $property.Value
+        $x = $panelLeft + ([double]$room.x_ft * $scale)
+        $y = $plotTop + (($shellDepth - [double]$room.y_ft - [double]$room.depth_ft) * $scale)
+        $w = [double]$room.width_ft * $scale
+        $h = [double]$room.depth_ft * $scale
+        $class = ([string]$room.id).Replace('-','')
+        $svgLines.Add(('<rect class="{0}" x="{1}" y="{2}" width="{3}" height="{4}" stroke="#465b68" stroke-width="1.3"/>' -f $class,$x,$y,$w,$h))
+        $svgLines.Add(('<text class="label" text-anchor="middle" x="{0}" y="{1}">{2}</text>' -f ($x+$w/2.0),($y+$h/2.0+4.0),[string]$room.id))
+    }
+    $approach = $search.reserved_stair_approach
+    $ax = $panelLeft + ([double]$approach.x_ft * $scale)
+    $ay = $plotTop + (($shellDepth - [double]$approach.y_ft - [double]$approach.depth_ft) * $scale)
+    $svgLines.Add(('<rect class="approach" x="{0}" y="{1}" width="{2}" height="{3}"/>' -f $ax,$ay,([double]$approach.width_ft*$scale),([double]$approach.depth_ft*$scale)))
+    $u05 = $panel.candidate.rectangles.'U-05'
+    $svgLines.Add(('<text class="small" x="{0}" y="{1}">U-05: x={2}, y={3} ft; {4} × {5} ft; 90 sf</text>' -f $panelLeft,($plotTop+$shellHeight+23.0),[Math]::Round([double]$u05.x_ft,3),[Math]::Round([double]$u05.y_ft,3),[Math]::Round([double]$u05.width_ft,3),[Math]::Round([double]$u05.depth_ft,3)))
+}
+$svgLines.Add('<text class="small" x="68" y="432">Dashed box = reserved stair-approach proxy. Both retain M78 sampled hall access to U-01/U-02/U-04 and no U-03 hall sample.</text>')
+$svgLines.Add('<text class="small" x="68" y="454">M78-TOP-05 shifts/rotates U-05 while retaining 90 sf; roof-plane rise is more balanced for X/Y, not measured fixture headroom.</text>')
+$svgLines.Add('<text class="small" x="68" y="476">38⅓ × 40 ft hypothetical test shell. Room-block study only: no walls, doors, roof assembly, fixture locations, or code finding.</text>')
+$svgLines.Add('</svg>')
+$svgText = $svgLines -join "`n"
+try { [xml]$svgText | Out-Null } catch { $checks.comparison_svg_is_valid = $false; Write-Warning $_.Exception.Message }
 $report = [ordered]@{
     milestone = 'M105'
     title = 'Roof-edge sensitivity across five route-ranked M78 room layouts'
@@ -144,6 +185,9 @@ if (-not $resolvedOutput.StartsWith($repoPrefix, [StringComparison]::OrdinalIgno
 if (-not (Test-Path -LiteralPath $resolvedOutput)) { New-Item -ItemType Directory -Path $resolvedOutput -Force | Out-Null }
 $jsonPath = Join-Path $resolvedOutput 'route-ranked-roof-exposure.json'
 $csvPath = Join-Path $resolvedOutput 'bath-roof-exposure.csv'
+$svgPath = Join-Path $resolvedOutput 'routed-bath-roof-alternative.svg'
 ConvertTo-Json -InputObject $report -Depth 12 | Set-Content -LiteralPath $jsonPath -Encoding utf8
 $results | Export-Csv -LiteralPath $csvPath -NoTypeInformation -Encoding UTF8
-Write-Output "M105 checks passed: $($checks.Count)/$($checks.Count); $($candidateSummaries.Count) route-ranked layouts, $($results.Count) roof cases; JSON SHA256 $((Get-Sha256 $jsonPath)); CSV SHA256 $((Get-Sha256 $csvPath))."
+$svgText | Set-Content -LiteralPath $svgPath -Encoding utf8
+[xml](Get-Content -LiteralPath $svgPath -Raw) | Out-Null
+Write-Output "M105 checks passed: $($checks.Count)/$($checks.Count); $($candidateSummaries.Count) route-ranked layouts, $($results.Count) roof cases; JSON SHA256 $((Get-Sha256 $jsonPath)); CSV SHA256 $((Get-Sha256 $csvPath)); SVG SHA256 $((Get-Sha256 $svgPath))."

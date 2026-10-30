@@ -28,7 +28,7 @@ At 8:12, minimum plane rise above the relative eave across U-05 is:
 
 M78-TOP-05 is the most balanced of these five against the two ridge directions: compared with M78's current winner it raises the U-05 block's minimum relative roof plane for ridge Y from 0 to 0.889 ft, while reducing the ridge-X value from 1.333 to 0.667 ft. Compared with TOP-04 it holds the X value and raises Y from 0.667 to 0.889 ft. This is a room-block roof-edge trade-off, not a bathroom fixture/headroom result or recommendation. The U-05 block remains 90 sf and retains the source route proxy.
 
-Two independent PowerShell 5.1 runs pass **12/12 checks** and match the checked-in output: JSON SHA256 `8C5BC07D8D2122B166CF8B1AEB89522C48A375AC63DF00599BE7490F09E85349`; CSV SHA256 `BF4278BB1DB471CA65EEE9BC8EBBD07D42042C933B25F41D04BDBA104FD90BAA`.
+The side-by-side plan is available as [routed-bath-roof-alternative.svg](routed-bath-roof-alternative.svg). Two independent PowerShell 5.1 runs pass **13/13 checks**, the SVG parses as XML, and JSON/CSV/SVG outputs match the checked-in files. SHA256: JSON `424312A30240E1252A39B0FD1BF567F58BB9B4BEA2B4A04D41B725220AF43D19`; CSV `BF4278BB1DB471CA65EEE9BC8EBBD07D42042C933B25F41D04BDBA104FD90BAA`; SVG `39A55B56E59922E07E2096E0E22AB6AC794C5913536A976A0336CD84465D39F3`.
 
 ## Limits
 

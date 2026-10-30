@@ -1,0 +1,44 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500">
+<title>M105 comparison of the M78 winner and roof-balanced U-05 layout</title>
+<style>text{font-family:Arial,sans-serif;fill:#253342}.title{font-size:25px;font-weight:700}.panel{font-size:18px;font-weight:700}.label{font-size:11px;font-weight:600}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#273d4c;stroke-width:2.5}.approach{fill:#e5b64c;fill-opacity:.22;stroke:#9a6815;stroke-width:2;stroke-dasharray:7 5}.U01{fill:#d9e5ef}.U02{fill:#e5def1}.U03{fill:#d9eadf}.U04{fill:#e8dfd5}.U05{fill:#f4c58a;stroke:#a75314;stroke-width:2.5}.U06{fill:#d8e9e6}.CPRIVATE{fill:#e8e8e3}</style>
+<text class="title" x="48" y="38">M105 | Upper-suite room blocks and primary-bath roof exposure</text>
+<text class="panel" x="68" y="64">M78-TOP-02 | current search winner</text>
+<rect class="shell" x="68" y="76" width="275.9999976" height="288"/>
+<rect class="U01" x="68" y="166" width="72" height="115.2" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="104" y="227.6">U-01</text>
+<rect class="CPRIVATE" x="101.6" y="115.6" width="72" height="46.8" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="137.6" y="143">C-PRIVATE</text>
+<rect class="U02" x="148.4" y="166" width="115.2" height="69.6" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="206" y="204.8">U-02</text>
+<rect class="U03" x="148.4" y="239.2" width="98.4" height="66" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="197.6" y="276.2">U-03</text>
+<rect class="U05" x="68" y="284.8" width="72" height="64.8" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="104" y="321.2">U-05</text>
+<rect class="U06" x="250.4" y="239.2" width="72" height="86.4" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="286.4" y="286.4">U-06</text>
+<rect class="U04" x="286.4" y="137.2" width="57.6" height="98.4" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="315.2" y="190.4">U-04</text>
+<rect class="approach" x="191.6" y="133.6" width="28.8" height="28.8"/>
+<text class="small" x="68" y="387">U-05: x=0, y=2 ft; 10 Ã— 9 ft; 90 sf</text>
+<text class="panel" x="570" y="64">M78-TOP-05 | balanced roof-edge option</text>
+<rect class="shell" x="570" y="76" width="275.9999976" height="288"/>
+<rect class="U01" x="570" y="166" width="72" height="115.2" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="606" y="227.6">U-01</text>
+<rect class="CPRIVATE" x="603.6" y="115.6" width="72" height="46.8" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="639.6" y="143">C-PRIVATE</text>
+<rect class="U02" x="650.4" y="166" width="115.2" height="69.6" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="708" y="204.8">U-02</text>
+<rect class="U03" x="650.4" y="239.2" width="98.4" height="66" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="699.6" y="276.2">U-03</text>
+<rect class="U05" x="579.6" y="284.8" width="64.8" height="72" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="612" y="324.8">U-05</text>
+<rect class="U06" x="752.4" y="239.2" width="72" height="86.4" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="788.4" y="286.4">U-06</text>
+<rect class="U04" x="788.4" y="137.2" width="57.6" height="98.4" stroke="#465b68" stroke-width="1.3"/>
+<text class="label" text-anchor="middle" x="817.2" y="190.4">U-04</text>
+<rect class="approach" x="693.6" y="133.6" width="28.8" height="28.8"/>
+<text class="small" x="570" y="387">U-05: x=1.333, y=1 ft; 9 Ã— 10 ft; 90 sf</text>
+<text class="small" x="68" y="432">Dashed box = reserved stair-approach proxy. Both retain M78 sampled hall access to U-01/U-02/U-04 and no U-03 hall sample.</text>
+<text class="small" x="68" y="454">M78-TOP-05 shifts/rotates U-05 while retaining 90 sf; roof-plane rise is more balanced for X/Y, not measured fixture headroom.</text>
+<text class="small" x="68" y="476">38â…“ Ã— 40 ft hypothetical test shell. Room-block study only: no walls, doors, roof assembly, fixture locations, or code finding.</text>
+</svg>

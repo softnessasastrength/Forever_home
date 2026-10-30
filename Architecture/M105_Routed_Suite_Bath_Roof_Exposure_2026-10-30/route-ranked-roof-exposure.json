@@ -404,6 +404,7 @@
                    "room_block_areas_match_m78_program_dimensions":  true,
                    "primary_bath_area_remains_90_sf":  true,
                    "all_six_roof_cases_are_evaluated_per_candidate":  true,
+                   "comparison_svg_is_valid":  true,
                    "selected_d_unchanged":  true
                },
     "failures":  [
