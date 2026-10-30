@@ -1052,3 +1052,12 @@ Acceptance criteria:
 - Confirm selected-D source and the three owner-supplied untracked RFAs retain their recorded hashes; do not change the baseline or host project files.
 
 Current status: Complete. Both fresh source generations pass 43/43, all three SVGs parse, and all seven outputs match. The retained IFC validator passes 26/26 with zero errors and reproduces the prior report hash `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. Selected-D source is unchanged. This validates its 21-space IFC study, not missing native building elements or host-side M-83 roof geometry. See M97 in `PROGRESS.md`.
+
+### M98 - Re-run the offline RevitPilot regression suite
+
+Acceptance criteria:
+
+- Run the repository's RevitPilot unit suite without launching Revit or modifying a model.
+- Record the exact command, count, result, and scope limitation.
+
+Current status: Complete. `.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v` passes **41/41** tests. This verifies offline command/validator contracts; it does not replace Revit-host geometry checks or IFC export validation. See M98 in `PROGRESS.md`.
