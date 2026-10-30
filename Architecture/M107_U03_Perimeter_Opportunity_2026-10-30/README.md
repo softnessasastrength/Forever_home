@@ -31,7 +31,7 @@ The PowerShell 5.1 audit verifies archive/source binding, selected-D source bind
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/audit_m107_u03_perimeter_opportunity.ps1 -OutputDirectory .local/revalidation/M107-replay
 ```
 
-Two independent audit runs pass **16/16 checks** and match the checked-in JSON (`F900B4141E413092F0CEE026AACDBF60C68E11EFC89EA263FF7D8F70B33F0F01`), CSV (`5694A12290DBA1036CDE66F43A09F0F4D41A58135AA45CCE652412ED382D6D9`) and SVG (`717848A345EA89A72857AA0DB160F8FF3EEB2E0F5F105A47C7D47A303982C286`). SVG parsing passes.
+Two independent audit runs pass **16/16 checks** and match the checked-in JSON (`4D3C875BE12B7EE19485B59A5D7257EC55C9935B44E04E176D69AD4AAB9F40F5`), CSV (`5694A12290DBA1036CDE66F43A09F0F4D41A58135AA45CCE652412ED382D6D9D`) and SVG (`33FECC98570429E0D347780199215FEC2A11130523DF3E8DEA368F76A1D5F176`). SVG parsing passes.
 
 ## Result
 

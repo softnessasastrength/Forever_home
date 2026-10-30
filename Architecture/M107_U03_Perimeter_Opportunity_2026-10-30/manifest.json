@@ -2,14 +2,14 @@
     "generator":  "Tools/audit_m107_u03_perimeter_opportunity.ps1",
     "source_hashes_sha256":  {
                                  "route_tested_archive":  "f4b206596e54ba0d72e8dac72021eae9318fdf7bc4d75c55d3152fa5e3142f28",
-                                 "M78_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
-                                 "M78_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
+                                 "source_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                                 "source_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
                                  "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
                              },
     "output_hashes_sha256":  {
-                                 "json":  "f900b4141e413092f0cee026aacdbf60c68e11efc89ea263ff7d8f70b33f0f01",
+                                 "json":  "4d3c875be12b7ee19485b59a5d7257ec55c9935b44e04e176d69ad4aab9f40f5",
                                  "csv":  "5694a12290dba1036cde66f43a09f0f4d41a58135aa45cce652412ed382d6d9d",
-                                 "svg":  "717848a345ea89a72857aa0db160f8ff3eeb2e0f5f105a47c7d47a303982c286"
+                                 "svg":  "33fecc98570429e0d347780199215fec2a11130523df3e8dea368f76a1d5f176"
                              },
     "counts":  {
                    "route_tested_candidates":  457,

@@ -1,27 +1,32 @@
 param(
     [string]$ArchivePath = (Join-Path $PSScriptRoot '../Architecture/M107_U03_Perimeter_Opportunity_2026-10-30/all-route-tested-candidates.json'),
-    [string]$OutputDirectory = (Join-Path $PSScriptRoot '../Architecture/M107_U03_Perimeter_Opportunity_2026-10-30')
+    [string]$OutputDirectory = (Join-Path $PSScriptRoot '../Architecture/M107_U03_Perimeter_Opportunity_2026-10-30'),
+    [string]$SearchPath = (Join-Path $PSScriptRoot '../Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/search.json'),
+    [string]$SearchManifestPath = (Join-Path $PSScriptRoot '../Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/manifest.json'),
+    [int]$ExpectedCandidateCount = 457,
+    [int]$ExpectedRequiredRouteCandidateCount = 5,
+    [int]$ExpectedRequiredRouteAndU02NorthCount = 5,
+    [ValidateSet('M107','M108')][string]$Milestone = 'M107'
 )
 
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $archivePath = (Resolve-Path -LiteralPath $ArchivePath).Path
 $archiveDirectory = Split-Path -Parent $archivePath
-$m78Directory = Join-Path $repo 'Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29'
-$m78SearchPath = Join-Path $m78Directory 'search.json'
-$m78ManifestPath = Join-Path $m78Directory 'manifest.json'
+$searchPath = (Resolve-Path -LiteralPath $SearchPath).Path
+$searchManifestPath = (Resolve-Path -LiteralPath $SearchManifestPath).Path
 $selectedPath = Join-Path $repo 'Architecture/Selected_Design_Iteration_2026-10-27/study.json'
 
 function Get-Sha256([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
 function Test-Near([double]$A, [double]$B, [double]$Tolerance = 0.000001) { [Math]::Abs($A - $B) -le $Tolerance }
 
 $archive = Get-Content -LiteralPath $archivePath -Raw | ConvertFrom-Json
-$m78Search = Get-Content -LiteralPath $m78SearchPath -Raw | ConvertFrom-Json
-$m78Manifest = Get-Content -LiteralPath $m78ManifestPath -Raw | ConvertFrom-Json
-$shellWidth = [double]$m78Search.coordinate_basis.width_ft
-$shellDepth = [double]$m78Search.coordinate_basis.depth_ft
+$search = Get-Content -LiteralPath $searchPath -Raw | ConvertFrom-Json
+$searchManifest = Get-Content -LiteralPath $searchManifestPath -Raw | ConvertFrom-Json
+$shellWidth = [double]$search.coordinate_basis.width_ft
+$shellDepth = [double]$search.coordinate_basis.depth_ft
 $archiveHash = Get-Sha256 $archivePath
-$m78SearchHash = Get-Sha256 $m78SearchPath
+$searchHash = Get-Sha256 $searchPath
 $selectedHash = Get-Sha256 $selectedPath
 $candidateRecords = @($archive.candidates)
 $results = [System.Collections.Generic.List[object]]::new()
@@ -37,16 +42,16 @@ $tolerance = 0.00001
 $checks = [ordered]@{
     archive_schema_is_expected = ($archive.schema -eq 'forever-home.m37-route-tested-candidate-archive.v1')
     archive_candidate_count_matches_manifest = ($candidateRecords.Count -eq [int]$archive.candidate_count -and $candidateRecords.Count -eq [int]$archive.route_runs_total)
-    archive_binds_M78_search = ($archive.source_search_sha256 -eq $m78SearchHash -and $m78Manifest.output_hashes_sha256.search -eq $m78SearchHash)
-    M78_shell_is_hypothetical_38_333333_by_40 = (Test-Near $shellWidth 38.333333 -and (Test-Near $shellDepth 40.0))
-    M78_manifest_binds_current_selected_D = ($m78Manifest.source_fingerprints_sha256.'selected_D_study.json' -eq $selectedHash)
-    M37_all_route_records_are_exported = ($candidateRecords.Count -eq [int]$m78Search.search.hall_route_searches)
+    archive_binds_source_search = ($archive.source_search_sha256 -eq $searchHash -and $searchManifest.output_hashes_sha256.search -eq $searchHash)
+    shell_is_hypothetical_38_333333_by_40 = (Test-Near $shellWidth 38.333333 -and (Test-Near $shellDepth 40.0))
+    source_manifest_binds_current_selected_D = ($searchManifest.source_fingerprints_sha256.'selected_D_study.json' -eq $selectedHash)
+    M37_all_route_records_are_exported = ($candidateRecords.Count -eq [int]$search.search.hall_route_searches)
     every_candidate_has_all_seven_room_blocks = $true
     every_candidate_is_inside_test_shell = $true
     every_candidate_has_no_overlapping_room_blocks = $true
     route_counts_reconstruct_from_sampled_room_sides = $true
-    five_candidates_reach_required_public_rooms = $true
-    five_required_route_candidates_have_U02_north_sample = $true
+    expected_required_route_candidate_count_matches = $true
+    expected_required_route_and_U02_north_count_matches = $true
     no_U03_test_shell_perimeter_contact_in_bounded_archive = $true
     no_U03_perimeter_contact_among_required_route_candidates = $true
     selected_D_unchanged = $true
@@ -113,11 +118,11 @@ foreach ($candidate in $candidateRecords) {
     })
 }
 
-$checks.M37_all_route_records_are_exported = ($candidateRecords.Count -eq 457 -and $candidateRecords.Count -eq [int]$archive.route_runs_total)
+$checks.M37_all_route_records_are_exported = ($candidateRecords.Count -eq $ExpectedCandidateCount -and $candidateRecords.Count -eq [int]$archive.route_runs_total)
 $checks.every_candidate_is_inside_test_shell = ($checks.every_candidate_is_inside_test_shell -and $containedCandidateCount -eq $candidateRecords.Count)
 $checks.every_candidate_has_no_overlapping_room_blocks = ($checks.every_candidate_has_no_overlapping_room_blocks -and $nonOverlappingCandidateCount -eq $candidateRecords.Count)
-$checks.five_candidates_reach_required_public_rooms = ($requiredRouteCandidateCount -eq 5)
-$checks.five_required_route_candidates_have_U02_north_sample = ($requiredRouteAndU02NorthCount -eq 5)
+$checks.expected_required_route_candidate_count_matches = ($requiredRouteCandidateCount -eq $ExpectedRequiredRouteCandidateCount)
+$checks.expected_required_route_and_U02_north_count_matches = ($requiredRouteAndU02NorthCount -eq $ExpectedRequiredRouteAndU02NorthCount)
 $checks.no_U03_test_shell_perimeter_contact_in_bounded_archive = ($perimeterCandidateCount -eq 0)
 $checks.no_U03_perimeter_contact_among_required_route_candidates = ($requiredRouteAndU03PerimeterCount -eq 0 -and $requiredRouteAndU02NorthAndU03PerimeterCount -eq 0)
 if ((Get-Sha256 $selectedPath) -ne $selectedHash) { $checks.selected_D_unchanged = $false }
@@ -130,8 +135,8 @@ $null = New-Item -ItemType Directory -Path $OutputDirectory -Force
 $results | Export-Csv -LiteralPath $csvPath -NoTypeInformation -Encoding UTF8
 
 $report = [ordered]@{
-    milestone = 'M107'
-    title = 'Bounded U-03 test-shell perimeter opportunity audit'
+    milestone = $Milestone
+    title = ('Bounded {0} U-03 test-shell perimeter opportunity audit' -f $Milestone)
     status = 'design-screen result only; not an egress, code-compliance, or room-classification determination'
     interpretation = 'No route-tested candidate in this bounded M78 archive places U-03 against the hypothetical test-shell perimeter. This does not establish that no different layout or separately evaluated opening solution can work.'
     shell = [ordered]@{ width_ft = $shellWidth; depth_ft = $shellDepth; status = 'hypothetical M78 comparison shell; not selected house geometry' }
@@ -144,8 +149,8 @@ $report = [ordered]@{
         required_route_candidates_with_U03_perimeter_contact = $requiredRouteAndU03PerimeterCount
         required_route_and_U02_north_candidates_with_U03_perimeter_contact = $requiredRouteAndU02NorthAndU03PerimeterCount
     }
-    source_hashes_sha256 = [ordered]@{ route_tested_archive = $archiveHash; M78_search = $m78SearchHash; M78_manifest = (Get-Sha256 $m78ManifestPath); selected_D_study = $selectedHash }
-    search_scope = [ordered]@{ search_complete = [bool]$m78Search.search.search_complete; bounded_layout_limit = [int]$archive.search_parameters.layout_limit; tested_route_records = [int]$archive.route_runs_total; note = 'The bounded search reports search_complete=false. Its 457 archived candidates are not an exhaustive set of all possible arrangements.' }
+    source_hashes_sha256 = [ordered]@{ route_tested_archive = $archiveHash; source_search = $searchHash; source_manifest = (Get-Sha256 $searchManifestPath); selected_D_study = $selectedHash }
+    search_scope = [ordered]@{ search_complete = [bool]$search.search.search_complete; bounded_layout_limit = [int]$archive.search_parameters.layout_limit; node_limit_reached = [bool]$search.search.node_limit_reached; nodes_expanded = [int]$search.search.nodes_expanded; tested_route_records = [int]$archive.route_runs_total; note = ('The bounded search reports search_complete={0}. Its {1} archived placements do not establish that other search configurations or arrangements cannot work.' -f [bool]$search.search.search_complete,[int]$archive.route_runs_total) }
     candidate_results = @($results.ToArray())
     checks = $checks
     failures = @($checks.Keys | Where-Object { -not $checks[$_] })
@@ -154,7 +159,7 @@ $report = [ordered]@{
         'Perimeter contact is only a potential wall location; no wall, window, EERO, yard/court or route to public way is represented.',
         'The 4 ft M37 corridor grid and sampled edge goals are schematic reachability proxies; they do not establish door clear width, maneuvering clearance or code compliance.',
         'U-03 remains a hybrid bedroom/office and its sleeping-room classification is unresolved.',
-        'The candidate set is bounded and incomplete. This result applies only to these 457 route-tested placements and current source inputs.',
+        ('The candidate set is bounded; search_complete={0}. This result applies only to these {1} route-tested placements and current source inputs.' -f [bool]$search.search.search_complete,[int]$archive.route_runs_total),
         'No structural, code-compliance, professional certification or construction-readiness conclusion is made.'
     )
 }
@@ -162,13 +167,12 @@ $report | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $jsonPath -Encodin
 
 $svg = @(
     '<svg xmlns="http://www.w3.org/2000/svg" width="920" height="590" viewBox="0 0 920 590">',
-    '<title>M107 bounded U-03 perimeter opportunity screen</title>',
-    '<style>text{font-family:Arial,sans-serif;fill:#263743}.title{font-size:25px;font-weight:700}.label{font-size:14px;font-weight:700}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#2c4556;stroke-width:4}.room{stroke:#536671;stroke-width:1.5}.primary{fill:#d9e5ef}.guest{fill:#e7dfd6}.hybrid{fill:#f3c4ba;stroke:#a24032;stroke-width:3}.bath{fill:#dcebdd}.private{fill:#e9e0f0}.contact{stroke:#287459;stroke-width:8}</style>',
-    '<text class="title" x="38" y="40">M107 | U-03 perimeter opportunity in the bounded route search</text>'
+    ('<title>{0} bounded U-03 perimeter opportunity screen</title>' -f $Milestone),
+    '<style>text{font-family:Arial,sans-serif;fill:#263743}.title{font-size:25px;font-weight:700}.label{font-size:14px;font-weight:700}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#2c4556;stroke-width:4}.room{stroke:#536671;stroke-width:1.5}.primary{fill:#d9e5ef}.guest{fill:#e7dfd6}.hybrid{fill:#f3c4ba;stroke:#a24032;stroke-width:3}.bath{fill:#dcebdd}.private{fill:#e9e0f0}.contact{stroke:#287459;stroke-width:8}</style>'
 )
 $scale = 9.3; $left = 90.0; $top = 70.0
 $svg += ('<rect class="shell" x="{0}" y="{1}" width="{2}" height="{3}"/>' -f $left,$top,($shellWidth*$scale),($shellDepth*$scale))
-$displayCandidate = $m78Search.best_candidate
+$displayCandidate = $search.best_candidate
 foreach ($roomId in $roomIds) {
     $r = $displayCandidate.rectangles.$roomId
     $x = $left + [double]$r.x_ft*$scale
@@ -176,8 +180,9 @@ foreach ($roomId in $roomIds) {
     $class = switch ($roomId) { 'U-01' {'primary'} 'U-03' {'hybrid'} 'U-04' {'guest'} 'U-05' {'bath'} 'U-06' {'bath'} 'C-PRIVATE' {'private'} default {'room'} }
     $svg += ('<rect class="room {0}" x="{1}" y="{2}" width="{3}" height="{4}"/><text class="label" text-anchor="middle" x="{5}" y="{6}">{7}</text>' -f $class,$x,$y,([double]$r.width_ft*$scale),([double]$r.depth_ft*$scale),($x+[double]$r.width_ft*$scale/2.0),($y+[double]$r.depth_ft*$scale/2.0+5.0),$roomId)
 }
-$svg += '<text class="small" x="42" y="475">457 placements route-tested; 5 reach sampled U-01/U-02/U-04 hall sides (all 5 include U-02 north).</text>'
-$svg += '<text class="small" x="42" y="498">U-03 test-shell perimeter contacts: 0 of 457. This example is the M78 retained candidate, with U-03 internal.</text>'
+$svg += ('<text class="title" x="38" y="40">{0} | U-03 perimeter opportunity in the bounded route search</text>' -f $Milestone)
+$svg += ('<text class="small" x="42" y="475">{0} placements route-tested; {1} reach sampled U-01/U-02/U-04 hall sides ({2} include U-02 north).</text>' -f $candidateRecords.Count,$requiredRouteCandidateCount,$requiredRouteAndU02NorthCount)
+$svg += ('<text class="small" x="42" y="498">U-03 test-shell perimeter contacts: {0} of {1}. Example: the source search best candidate.</text>' -f $perimeterCandidateCount,$candidateRecords.Count)
 $svg += '<text class="small" x="42" y="521">Search is bounded and incomplete. Shell contact would only suggest a wall zone, not provide an opening.</text>'
 $svg += '<text class="small" x="42" y="544">38 1/3 x 40 ft is a hypothetical comparison shell, not a selected house dimension.</text>'
 $svg += '</svg>'
@@ -199,6 +204,6 @@ $manifest = [ordered]@{
 }
 $manifest | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
 if (@($checks.Values | Where-Object { $_ -ne $true }).Count -gt 0) { throw ('M107 checks failed: ' + (@($checks.Keys | Where-Object { -not $checks[$_] }) -join ', ')) }
-Write-Output ('M107 checks passed: {0}/{1}' -f $checks.Count,$checks.Count)
+Write-Output ('{0} checks passed: {1}/{2}' -f $Milestone,$checks.Count,$checks.Count)
 Write-Output ('Candidates: {0}; required-route candidates: {1}; U-03 perimeter contacts: {2}.' -f $candidateRecords.Count,$requiredRouteCandidateCount,$perimeterCandidateCount)
 Write-Output ('JSON SHA256 {0}; CSV SHA256 {1}; SVG SHA256 {2}.' -f $outputHashes.json,$outputHashes.csv,$outputHashes.svg)
