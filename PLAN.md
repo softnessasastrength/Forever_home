@@ -1082,3 +1082,15 @@ Acceptance criteria:
 - Confirm the checked-in selected-D source fingerprint remains unchanged and document the default overwrite behavior.
 
 Current status: Complete. Both invocation forms pass 43/43 and yield byte-identical seven-file output; all three SVGs parse. Absolute external and repository-relative traversal paths are rejected before creation. Selected-D source remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. See M100 in `PROGRESS.md` and the selected-D package README.
+
+### M101 - Screen upper-suite room blocks against hypothetical gable planes
+
+Acceptance criteria:
+
+- Bind the M78 room-block search and manifest plus M83 roof options and current selected-D source by SHA256; refuse stale or mismatched inputs.
+- Calculate the minimum and maximum ideal roof-plane rise above a relative eave across all seven room blocks for the three existing pitches and two ridge axes (42 combinations).
+- Keep eave/floor datum, roof build-up and clear headroom explicitly unassigned; do not add a code threshold or select a roof.
+- Run two independent PowerShell 5.1 replays and require all checks to pass and JSON/CSV outputs to match byte-for-byte; reject an output path outside the checkout.
+- Record the design implication and limits without editing selected-D or source M78/M83 artifacts.
+
+Current status: Complete. The source-bound screen passes **9/9 checks** and produces 42 room/case rows. Two replays match (JSON SHA256 `BC35C68B0903D3186A202A517672D8C336CE8C13840CA8028121DC3509775978`; CSV SHA256 `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`). On the M78 blocks, ridge-X options put U-05's minimum ideal plane 1.333/1.667/2.000 ft above relative eave for 8:12/10:12/12:12; ridge-Y options leave U-01/U-04/U-05 touching the eave plane. This is not interior headroom. The 38⅓ × 40 ft shell remains an exploration case; no pitch/ridge choice is made. See `Architecture/M101_Upper_Suite_Roof_Height_Ranges_2026-10-30/README.md`.
