@@ -7,6 +7,7 @@ param(
     [switch]$LandingAlignedRootSeeds,
     [switch]$EarlyPublicRoutePrune,
     [switch]$DeferredEarlyRouteChecks,
+    [switch]$ExportAllRouteTestedCandidates,
     [ValidateSet('balanced','U-01-only','U-02-only','U-04-only')]
     [string]$RootSearchScope = 'balanced',
     [ValidateSet('baseline','guest-branch-first')]
@@ -503,6 +504,24 @@ $report|ConvertTo-Json -Depth 28|Set-Content -LiteralPath $jsonPath -Encoding ut
 $checkReport=[ordered]@{count=$checks.Count;passed=@($checks.Keys|Where-Object{$checks[$_]});failed=@();checks=$checks;search_summary=$report.search;source_fingerprints_sha256=$report.source_fingerprints_sha256;interpretation='A passing integrity check validates search setup and evidence. A viable layout is claimed only when its recorded hall reachability checks pass.'}
 $checkReport|ConvertTo-Json -Depth 20|Set-Content -LiteralPath $checkPath -Encoding utf8
 
+$routeCandidateArchivePath = $null
+$routeCandidateArchiveHash = $null
+if($ExportAllRouteTestedCandidates){
+    $routeCandidateArchivePath=Join-Path $target 'all-route-tested-candidates.json'
+    $routeCandidateArchive=[ordered]@{
+        schema='forever-home.m37-route-tested-candidate-archive.v1'
+        source_search_sha256=(Get-FileHash -LiteralPath $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        source_fingerprints_sha256=$report.source_fingerprints_sha256
+        search_parameters=$report.search
+        candidate_count=$tested.Count
+        route_runs_total=$routeRuns
+        candidates=@($tested)
+        interpretation='Archive contains only complete packings with a non-null sampled hall-route result from this bounded run.'
+    }
+    ConvertTo-Json -InputObject $routeCandidateArchive -Depth 28|Set-Content -LiteralPath $routeCandidateArchivePath -Encoding utf8
+    $routeCandidateArchiveHash=(Get-FileHash -LiteralPath $routeCandidateArchivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+
 $scale=18.0;$sx=40.0;$sy=70.0
 $svg=[System.Collections.Generic.List[string]]::new()
 $svg.Add('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="790" viewBox="0 0 900 790">')
@@ -525,7 +544,9 @@ $svg -join "`n"|Set-Content -LiteralPath $svgPath -Encoding utf8
 $manifest=[ordered]@{generator='Tools/test_m37_upper_suite_pack_and_route.ps1';source_fingerprints_sha256=$report.source_fingerprints_sha256;search_parameters=[ordered]@{node_limit=$script:NodeLimit;layout_limit=$script:LayoutLimit;root_search_scope=$RootSearchScope;u02_root_plan_variant=$U02RootPlanVariant;additional_contact_samples=$script:AdditionalContactSamples;public_door_edge_samples=$script:PublicDoorEdgeSamples;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;shell_width_override_ft=$ShellWidthOverrideFt;shell_depth_override_ft=$ShellDepthOverrideFt};output_hashes_sha256=[ordered]@{search=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
 if($script:UseEarlyPublicRoutePrune){$manifest.search_parameters['early_public_route_pruning']=$true}
 if($script:UseDeferredEarlyRouteChecks){$manifest.search_parameters['deferred_early_route_checks']=$true}
+if($ExportAllRouteTestedCandidates){$manifest.optional_route_tested_candidate_archive=[ordered]@{file='all-route-tested-candidates.json';sha256=$routeCandidateArchiveHash;candidate_count=$tested.Count}}
 $manifest|ConvertTo-Json -Depth 12|Set-Content -LiteralPath (Join-Path $target 'manifest.json') -Encoding utf8
 Write-Output("M37 search-integrity checks passed: {0}/{1}" -f $checks.Count,$checks.Count)
 Write-Output("Search nodes: {0}/{1}; bounded layouts: {2}; lift-clear route placements: {3}; route runs: {4}." -f $script:Nodes,$script:NodeLimit,$script:Layouts.Count,$translationsTested,$routeRuns)
 Write-Output("Required public-room candidate: {0}; U-03 corridor-side reach observed: {1}." -f ($null -ne $bestPrivate),($null -ne $bestU03Side))
+if($ExportAllRouteTestedCandidates){Write-Output("Optional route-tested candidate archive: {0} complete route records; SHA256 {1}." -f $tested.Count,$routeCandidateArchiveHash)}

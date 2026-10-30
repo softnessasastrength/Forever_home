@@ -1152,3 +1152,14 @@ Acceptance criteria:
 - Preserve selected-D, RFAs and the routed suite baseline.
 
 Current status: Complete as an important unresolved design gate. Two PowerShell 5.1 replays pass **15/15 checks** and reproduce JSON/CSV/SVG (SHA256 JSON `20F7F98D2FD8A4321AF3BCADAEFD72073A98357920BAA1A58B6BDBC89F1AEC39`; CSV `6B33957F62C3962B32F9555C2BE98EE49AF3BDE2840847F3D92781B03D07F46B`; SVG `D1EE610546D22A162F1539A14D9270305B942E13656FB3CFB64E6B5851B121CE`). Every retained M78 layout places U-01/U-04 on shell edges but U-03 8.166667 ft from its nearest perimeter edge. If U-03 is intended for sleeping, R310.1 opening provision remains unaddressed by the room layout. This is not a compliance finding or proof that a roof opening cannot qualify. See `Research/M106_CT_Sleeping_Room_EERO_Study_2026-10-30.md` and the M106 package.
+
+### M107 - Search all route-tested upper-suite packings for a U-03 perimeter opportunity
+
+Acceptance criteria:
+
+- Preserve M78 and selected-D while adding an opt-in archive of all complete route-tested placements; default M37 artefacts must remain byte-identical.
+- Audit all archived rectangles against the hypothetical 38.333333 × 40 ft shell and sampled room-side reachability; retain the bounded-search warning.
+- Check whether any required-route candidate with north-side U-02 arrival places U-03 at a shell edge.
+- Produce source-bound, reproducible JSON/CSV/SVG and leave U-03's sleeping-room classification and EERO design unresolved.
+
+Current status: Complete as a bounded design screen. The opt-in M37 run archives 457 placements, 5 of which reach sampled hall sides for U-01/U-02/U-04; all five include a sampled north-side U-02 approach. None of the 457 placements puts U-03 on the hypothetical shell perimeter. The search hit its node limit and reports `search_complete: false`; this is not an exhaustive impossibility result. Three standard M37 artefacts exactly match M78, and the M37 checks pass 28/28. The new audit passes **16/16 checks** on two runs with byte-identical outputs (JSON `F900B4141E413092F0CEE026AACDBF60C68E11EFC89EA263FF7D8F70B33F0F01`; CSV `5694A12290DBA1036CDE66F43A09F0F4D41A58135AA45CCE652412ED382D6D9`; SVG `717848A345EA89A72857AA0DB160F8FF3EEB2E0F5F105A47C7D47A303982C286`). See `Architecture/M107_U03_Perimeter_Opportunity_2026-10-30/README.md`. If U-03 is intended for sleeping, a different room/shell arrangement or a separately evaluated opening strategy remains needed; no alternative is presumed to work.
