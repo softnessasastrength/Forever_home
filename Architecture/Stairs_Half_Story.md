@@ -39,13 +39,13 @@ Each run feels intimate and house-like — not a grand hotel stair. Carpeted tre
 
 **Baseline for Revit families:** **6 risers @ 7-1/4"** = **43-1/2"** floor-to-floor for each half-story.
 
-If structural floor-to-floor differs, **adjust riser height uniformly** (all risers equal) within code max (typically **7-3/4"** IRC R311) and keep step count in the **5–7** band when the level change is a true half-story. If rise exceeds ~51", add a landing and second short flight rather than exceeding 7 steps without re-evaluating the split geometry.
+If structural floor-to-floor differs, **adjust riser height uniformly** (all risers equal) and keep the preferred step count in the **5–7** band when a level change is a true half-story. The generic **7-3/4 in** IRC figure formerly shown here is not the current Connecticut amended value: the 2022 CSBC amended R311.7.5.1 publishes an 8-1/4 in maximum riser. The selected-D 60 in comparison and the difference from this 5–7-riser owner preference are documented in [Connecticut stair-code research](../Research/Connecticut_Stair_Code_Research_2026-10-30.md). Confirm the adopted code for the eventual municipality and permit path; do not infer fit, headroom or compliance from rise arithmetic. If rise exceeds ~51 in, this owner-intent spec calls for a landing and second short flight rather than exceeding 7 steps without re-evaluating the split geometry.
 
 ### 2.2 Treads and width
 
 | Parameter | Value | Notes |
 |---|---|---|
-| Riser height | **7-1/4"** preferred; **max 7-3/4"** | All risers equal within **3/8"** tolerance |
+| Riser height | **7-1/4 in preferred; verify jurisdiction-specific maximum** | All risers equal within **3/8 in** tolerance |
 | Tread depth (nosing to nosing) | **10-1/2"** preferred; **min 10"** | Uniform |
 | Nosing projection | **3/4" to 1-1/4"** | Consistent; closed risers preferred |
 | Number of treads (straight run) | **Risers − 1** | e.g. 6 risers → **5 treads** + top landing floor |
