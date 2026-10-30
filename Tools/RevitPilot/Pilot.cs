@@ -54,6 +54,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(SelectedDCommand).FullName!));
         panel.AddItem(new PushButtonData("FHUpperSuiteTest", "Build upper-suite\ntest study",
             Assembly.GetExecutingAssembly().Location, typeof(UpperSuiteComparisonCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHGableMassing", "Build M83 gable\nmassing options",
+            Assembly.GetExecutingAssembly().Location, typeof(GableMassingCommand).FullName!));
         panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
@@ -1693,6 +1695,246 @@ public class UpperSuiteComparisonCommand : IExternalCommand
                 ifc_sha256 = File.Exists(ifcPath) ? Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant() : null
             }, new JsonSerializerOptions { WriteIndented = true }));
             TaskDialog.Show("Forever Home upper-suite test", $"Saved a separate M78 room-boundary study (no construction geometry implied):\n{output}\n\nIFC2x3 export API: {ifcOk}");
+            return ifcOk ? Result.Succeeded : Result.Failed;
+        }
+        catch (Exception ex)
+        {
+            message = ex.ToString();
+            try { if (doc?.IsValidObject == true) doc.Close(false); } catch { }
+            return Result.Failed;
+        }
+    }
+}
+
+[Transaction(TransactionMode.Manual)]
+public class GableMassingCommand : IExternalCommand
+{
+    const string DataRelativePath = "Architecture/M83_Gable_Massing_38_333333x40_2026-10-30/roof-options.json";
+    const string DataManifestRelativePath = "Architecture/M83_Gable_Massing_38_333333x40_2026-10-30/manifest.json";
+    const string Marker = "FH-M83-GABLE-MASSING";
+    const double TolFt = 0.002;
+
+    static string Sha256(byte[] bytes) => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant();
+    static JsonDocument ParseJson(byte[] bytes) => JsonDocument.Parse(System.Text.Encoding.UTF8.GetString(bytes).TrimStart('\uFEFF', '\r', '\n', ' ', '\t'));
+    static string Text(JsonElement item, string key) => item.GetProperty(key).GetString() ?? "";
+    static double Number(JsonElement item, string key) => item.GetProperty(key).GetDouble();
+    static void Tag(Element element, string value)
+    {
+        var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (parameter is not null && !parameter.IsReadOnly) parameter.Set(value);
+    }
+
+    static void AddFace(TessellatedShapeBuilder builder, ElementId materialId, params XYZ[] points) =>
+        builder.AddFace(new TessellatedFace(points, materialId));
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? doc = null;
+        try
+        {
+            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+            string dataPath = Path.Combine(root, DataRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            string dataManifestPath = Path.Combine(root, DataManifestRelativePath.Replace('/', Path.DirectorySeparatorChar));
+            byte[] dataBytes = File.ReadAllBytes(dataPath), dataManifestBytes = File.ReadAllBytes(dataManifestPath);
+            using var dataJson = ParseJson(dataBytes);
+            using var dataManifestJson = ParseJson(dataManifestBytes);
+            var model = dataJson.RootElement;
+            var modelManifest = dataManifestJson.RootElement;
+            if (Text(model, "schema") != "forever-home.m83-gable-massing-options.v1")
+                throw new InvalidDataException("Unsupported M83 roof-option data schema.");
+            string dataHash = Sha256(dataBytes);
+            if (!string.Equals(dataHash, Text(modelManifest.GetProperty("output_hashes_sha256"), "roof_options"), StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("M83 roof-option JSON does not match its generator manifest.");
+
+            var sources = model.GetProperty("source_fingerprints_sha256");
+            var requiredSources = new Dictionary<string, string>(StringComparer.Ordinal)
+            {
+                ["m78_search"] = "Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/search.json",
+                ["m78_manifest"] = "Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/manifest.json",
+                ["selected_d_study"] = "Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                ["m38_pitch_options"] = "Architecture/M38_Steep_Roof_Pitch_Options_2026-10-28/pitch-options.json",
+                ["m38_manifest"] = "Architecture/M38_Steep_Roof_Pitch_Options_2026-10-28/manifest.json",
+                ["Connecticut_roof_research"] = "Research/Connecticut_Roof_Code_Research_2026-10-28.md"
+            };
+            foreach (var source in requiredSources)
+            {
+                string sourcePath = Path.Combine(root, source.Value.Replace('/', Path.DirectorySeparatorChar));
+                string actual = Sha256(File.ReadAllBytes(sourcePath));
+                if (!string.Equals(actual, Text(sources, source.Key), StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidDataException($"M83 source fingerprint mismatch for {source.Key}.");
+            }
+
+            var basis = model.GetProperty("coordinate_basis");
+            double width = Number(basis, "shell_width_ft"), depth = Number(basis, "shell_depth_ft");
+            if (Math.Abs(width - 38.333333) > 1e-6 || Math.Abs(depth - 40.0) > 1e-6 ||
+                !Text(basis, "shell_status").Contains("hypothetical", StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("M83 is restricted to the 38.333333 x 40 ft hypothetical shell comparison.");
+
+            var options = model.GetProperty("results").EnumerateArray().ToArray();
+            if (options.Length != 6 || options.Select(option => Text(option, "case_id")).Distinct(StringComparer.Ordinal).Count() != 6)
+                throw new InvalidDataException($"Expected six unique roof massing options; found {options.Length}.");
+            foreach (var option in options)
+            {
+                string axis = Text(option, "ridge_axis");
+                double expectedRidgeLength = axis == "X" ? width : axis == "Y" ? depth : -1;
+                double expectedSpan = axis == "X" ? depth : axis == "Y" ? width : -1;
+                if (expectedRidgeLength < 0 || Math.Abs(Number(option, "ridge_length_ft") - expectedRidgeLength) > 1e-6 ||
+                    Math.Abs(Number(option, "transverse_span_ft") - expectedSpan) > 1e-6)
+                    throw new InvalidDataException($"Roof option {Text(option, "case_id")} has an inconsistent ridge orientation.");
+                if (!Text(option, "selection_status").Contains("not owner-selected", StringComparison.OrdinalIgnoreCase) ||
+                    option.GetProperty("physical_thickness_ft").ValueKind != JsonValueKind.Null)
+                    throw new InvalidDataException($"Roof option {Text(option, "case_id")} is selected or has an invented thickness.");
+            }
+
+            string output = Path.Combine(root, ".local", "revit-pilot", "roof-massing", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            File.WriteAllBytes(Path.Combine(output, "roof-options.json"), dataBytes);
+            File.WriteAllBytes(Path.Combine(output, "roof-options-manifest.json"), dataManifestBytes);
+            doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
+            var records = new List<object>();
+            const string displayMaterialName = "M83 Display Only - Not a Material Specification";
+            using (var tx = new Transaction(doc, "Create M83 comparative roof surfaces"))
+            {
+                tx.Start();
+                var seedLevels = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>().ToArray();
+                Level datum;
+                if (seedLevels.Length == 1)
+                {
+                    datum = seedLevels[0];
+                    datum.Name = "M83 Relative Eave Reference (Not a Building Datum)";
+                    datum.Elevation = 0;
+                }
+                else
+                {
+                    foreach (var seed in seedLevels) doc.Delete(seed.Id);
+                    datum = Level.Create(doc, 0);
+                    datum.Name = "M83 Relative Eave Reference (Not a Building Datum)";
+                }
+                Tag(datum, Marker + ":RELATIVE-ZERO-ONLY");
+
+                var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>()
+                    .First(view => view.ViewFamily == ViewFamily.ThreeDimensional);
+                var view3d = View3D.CreateIsometric(doc, viewType.Id);
+                view3d.Name = "M83 Gable Massing Comparisons (Study Only)";
+                view3d.SetCategoryHidden(new ElementId(BuiltInCategory.OST_Levels), true);
+                var displayMaterialId = Material.Create(doc, displayMaterialName);
+                var displayMaterial = (Material)doc.GetElement(displayMaterialId);
+                displayMaterial.Color = new Color(171, 139, 105);
+
+                var optionsGeometry = new Options { DetailLevel = ViewDetailLevel.Fine, IncludeNonVisibleObjects = false };
+                foreach (var option in options)
+                {
+                    string caseId = Text(option, "case_id");
+                    string axis = Text(option, "ridge_axis");
+                    double rise = Number(option, "rise_above_relative_eave_ft");
+                    var offset = option.GetProperty("display_offset_ft");
+                    double ox = Number(offset, "x"), oy = Number(offset, "y");
+                    var builder = new TessellatedShapeBuilder();
+                    builder.OpenConnectedFaceSet(false);
+                    if (axis == "X")
+                    {
+                        double ym = oy + depth / 2.0;
+                        AddFace(builder, displayMaterial.Id,
+                            new XYZ(ox, oy, 0), new XYZ(ox + width, oy, 0),
+                            new XYZ(ox + width, ym, rise), new XYZ(ox, ym, rise));
+                        AddFace(builder, displayMaterial.Id,
+                            new XYZ(ox, ym, rise), new XYZ(ox + width, ym, rise),
+                            new XYZ(ox + width, oy + depth, 0), new XYZ(ox, oy + depth, 0));
+                    }
+                    else
+                    {
+                        double xm = ox + width / 2.0;
+                        AddFace(builder, displayMaterial.Id,
+                            new XYZ(ox, oy, 0), new XYZ(xm, oy, rise),
+                            new XYZ(xm, oy + depth, rise), new XYZ(ox, oy + depth, 0));
+                        AddFace(builder, displayMaterial.Id,
+                            new XYZ(xm, oy, rise), new XYZ(ox + width, oy, 0),
+                            new XYZ(ox + width, oy + depth, 0), new XYZ(xm, oy + depth, rise));
+                    }
+                    builder.CloseConnectedFaceSet();
+                    builder.Target = TessellatedShapeBuilderTarget.Mesh;
+                    builder.Fallback = TessellatedShapeBuilderFallback.Salvage;
+                    builder.Build();
+                    var directShape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+                    directShape.ApplicationId = "ForeverHome.M83";
+                    directShape.ApplicationDataId = caseId;
+                    directShape.SetName(caseId + " - Conceptual Gable Surfaces");
+                    directShape.SetShape(builder.GetBuildResult().GetGeometricalObjects());
+                    Tag(directShape, Marker + ":" + caseId + ":OPEN-MESH-ONLY");
+
+                    BoundingBoxXYZ? bounds = directShape.get_BoundingBox(null);
+                    if (bounds is null) throw new InvalidOperationException($"M83 DirectShape has no bounds: {caseId}.");
+                    double bx = bounds.Max.X - bounds.Min.X, by = bounds.Max.Y - bounds.Min.Y, bz = bounds.Max.Z - bounds.Min.Z;
+                    if (Math.Abs(bx - width) > TolFt || Math.Abs(by - depth) > TolFt ||
+                        Math.Abs(bz - rise) > TolFt || Math.Abs(bounds.Min.X - ox) > TolFt || Math.Abs(bounds.Min.Y - oy) > TolFt)
+                        throw new InvalidOperationException($"M83 Revit bounds differ from expected local envelope for {caseId}: {bx:0.######} x {by:0.######} x {bz:0.######} ft.");
+                    var geometry = directShape.get_Geometry(optionsGeometry);
+                    int meshCount = geometry?.OfType<Mesh>().Count() ?? 0;
+                    int solidCount = geometry?.OfType<Solid>().Count(solid => solid.Volume > 1e-9) ?? 0;
+                    if (meshCount < 1 || solidCount != 0)
+                        throw new InvalidOperationException($"M83 {caseId} expected open mesh geometry and no solid; got {meshCount} meshes / {solidCount} solids.");
+                    records.Add(new
+                    {
+                        case_id = caseId,
+                        direct_shape_unique_id = directShape.UniqueId,
+                        ridge_axis = axis,
+                        expected_rise_ft = rise,
+                        expected_two_plane_area_sf = Number(option, "two_plane_surface_area_sf"),
+                        mesh_count = meshCount,
+                        positive_volume_solid_count = solidCount,
+                        bounds_ft = new { min_x = bounds.Min.X, min_y = bounds.Min.Y, min_z = bounds.Min.Z,
+                            max_x = bounds.Max.X, max_y = bounds.Max.Y, max_z = bounds.Max.Z }
+                    });
+                }
+                tx.Commit();
+            }
+
+            string rvtPath = Path.Combine(output, "FH_M83_Gable_Massing_Comparison.rvt");
+            doc.SaveAs(rvtPath, new SaveAsOptions());
+            var fingerprint = SavedModelIdentity.Capture(doc);
+            var inventory = new
+            {
+                schema = "forever-home.m83-gable-massing-revit.v1",
+                status = "disposable hypothetical comparison; open roof-surface meshes only; not a building roof",
+                source_fingerprint_sha256 = dataHash,
+                model_fingerprint = fingerprint,
+                display_material = new { name = displayMaterialName, selected_as_product = false, function = "neutral view-only color for comparison surfaces" },
+                counts = new { option_count = records.Count, generic_model_direct_shapes = records.Count, roofs = 0, walls = 0, floors = 0, doors = 0, windows = 0, stairs = 0 },
+                geometry = records,
+                limitations = new[]
+                {
+                        "Each DirectShape is an open, zero-thickness pair of planar roof faces; it is a display/massing mesh, not a Revit Roof element or assembly. The single neutral display material is not a product or material specification.",
+                    "The zero-elevation level is a local relative reference only and is not tied to a project floor or wall plate.",
+                    "Option display offsets are solely to separate alternatives in this comparison file; they are not house coordinates.",
+                    "No gable wall, overhang, dormer, opening, framing, structure, snow/wind design, drainage, attic, headroom, site, or code determination is represented.",
+                    "No code-compliance, structural-safety, professional certification, or construction-readiness claim is made."
+                }
+            };
+            File.WriteAllText(Path.Combine(output, "study-manifest.json"), JsonSerializer.Serialize(inventory, new JsonSerializerOptions { WriteIndented = true }));
+
+            using var ifcOptions = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true };
+            bool ifcOk;
+            using (var export = new Transaction(doc, "Export M83 roof-surface comparison IFC2x3"))
+            {
+                export.Start();
+                try { ifcOk = doc.Export(output, "FH_M83_Gable_Massing_Comparison", ifcOptions); }
+                finally { if (export.GetStatus() == TransactionStatus.Started) export.RollBack(); }
+            }
+            SavedModelIdentity.AssertSame(doc, fingerprint);
+            string ifcPath = Path.Combine(output, "FH_M83_Gable_Massing_Comparison.ifc");
+            File.WriteAllText(Path.Combine(output, "export-result.json"), JsonSerializer.Serialize(new
+            {
+                ifc2x3_api_result = ifcOk,
+                model_fingerprint = fingerprint,
+                ifc_file = Path.GetFileName(ifcPath),
+                ifc_bytes = File.Exists(ifcPath) ? new FileInfo(ifcPath).Length : 0,
+                ifc_sha256 = File.Exists(ifcPath) ? Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(ifcPath))).ToLowerInvariant() : null
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            doc.Close(false);
+            doc = null;
+            data.Application.OpenAndActivateDocument(rvtPath);
+            TaskDialog.Show("Forever Home roof study", $"Created a separate M83 Revit/IFC comparison with six conceptual open-surface options (no roof assembly or house datum):\n{output}\n\nIFC2x3 export API: {ifcOk}");
             return ifcOk ? Result.Succeeded : Result.Failed;
         }
         catch (Exception ex)

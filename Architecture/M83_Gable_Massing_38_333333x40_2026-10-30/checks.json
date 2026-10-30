@@ -1,0 +1,44 @@
+﻿{
+    "count":  13,
+    "passed":  [
+                   "selected_D_source_matches_archived_M78",
+                   "M78_shell_is_owner_authorized_hypothetical_case",
+                   "M38_pitch_source_is_manifest_bound",
+                   "six_pitch_and_orientation_options_generated",
+                   "all_pitch_options_remain_unselected",
+                   "each_projected_roof_footprint_matches_test_shell",
+                   "rise_equals_half_run_times_pitch_ratio",
+                   "roof_area_equals_two_idealized_slope_planes",
+                   "rise_increases_with_pitch_for_each_ridge_axis",
+                   "display_offsets_keep_comparison_instances_separate",
+                   "no_roof_thickness_or_absolute_eave_datum_invented",
+                   "source_mentions_no_code_or_structural_design_claim",
+                   "selected_D_unchanged_during_generation"
+               ],
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "selected_D_source_matches_archived_M78":  true,
+                   "M78_shell_is_owner_authorized_hypothetical_case":  true,
+                   "M38_pitch_source_is_manifest_bound":  true,
+                   "six_pitch_and_orientation_options_generated":  true,
+                   "all_pitch_options_remain_unselected":  true,
+                   "each_projected_roof_footprint_matches_test_shell":  true,
+                   "rise_equals_half_run_times_pitch_ratio":  true,
+                   "roof_area_equals_two_idealized_slope_planes":  true,
+                   "rise_increases_with_pitch_for_each_ridge_axis":  true,
+                   "display_offsets_keep_comparison_instances_separate":  true,
+                   "no_roof_thickness_or_absolute_eave_datum_invented":  true,
+                   "source_mentions_no_code_or_structural_design_claim":  true,
+                   "selected_D_unchanged_during_generation":  true
+               },
+    "source_fingerprints_sha256":  {
+                                       "m78_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                                       "m78_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
+                                       "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "m38_pitch_options":  "d24fc18da1116ccf7916d388d5f243737518c5e499fb0efa37fee682c001cb84",
+                                       "m38_manifest":  "852564ef1828a82a49a535f0c539b0df7764be23b6cb76f76269cdcc634430df",
+                                       "Connecticut_roof_research":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   }
+}

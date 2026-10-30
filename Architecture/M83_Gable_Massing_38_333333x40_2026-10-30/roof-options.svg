@@ -1,0 +1,27 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:22px;font-weight:bold}.label{font-size:14px}.note{font-size:12px;fill:#5b554d}.axis{stroke:#74695d;stroke-width:1.4}.roof{fill:none;stroke:#533e30;stroke-width:3}.ridge{stroke:#302b25;stroke-width:1.5;stroke-dasharray:5 4}</style>
+<text class="title" x="34" y="34">M83 - steep-gable massing options</text>
+<text class="note" x="34" y="56">38.333333 x 40 ft hypothetical test outline; six comparison cases, not a selected house roof.</text>
+<polyline class="roof" points="109,192 175,149.333333333333 241,192"/><line class="ridge" x1="175" y1="149.333333333333" x2="175" y2="149.333333333333"/>1
+<line class="axis" x1="109" y1="192" x2="241" y2="192"/>
+<text class="label" x="70" y="120">M83-X-8:12 - ridge X</text><text class="note" x="70" y="242">13.33 ft rise above local eave; 1,843 sf two-plane area</text>
+<polyline class="roof" points="414,192 480,138.666666666667 546,192"/><line class="ridge" x1="480" y1="138.666666666667" x2="480" y2="138.666666666667"/>1
+<line class="axis" x1="414" y1="192" x2="546" y2="192"/>
+<text class="label" x="375" y="120">M83-X-10:12 - ridge X</text><text class="note" x="375" y="242">16.67 ft rise above local eave; 1,996 sf two-plane area</text>
+<polyline class="roof" points="719,192 785,128 851,192"/><line class="ridge" x1="785" y1="128" x2="785" y2="128"/>1
+<line class="axis" x1="719" y1="192" x2="851" y2="192"/>
+<text class="label" x="680" y="120">M83-X-12:12 - ridge X</text><text class="note" x="680" y="242">20.00 ft rise above local eave; 2,168 sf two-plane area</text>
+<polyline class="roof" points="111.75000055,342 175,301.111111466667 238.24999945,342"/><line class="ridge" x1="175" y1="301.111111466667" x2="175" y2="301.111111466667"/>1
+<line class="axis" x1="111.75000055" y1="342" x2="238.24999945" y2="342"/>
+<text class="label" x="70" y="270">M83-Y-8:12 - ridge Y</text><text class="note" x="70" y="392">12.78 ft rise above local eave; 1,843 sf two-plane area</text>
+<polyline class="roof" points="416.75000055,342 480,290.888889333333 543.24999945,342"/><line class="ridge" x1="480" y1="290.888889333333" x2="480" y2="290.888889333333"/>1
+<line class="axis" x1="416.75000055" y1="342" x2="543.24999945" y2="342"/>
+<text class="label" x="375" y="270">M83-Y-10:12 - ridge Y</text><text class="note" x="375" y="392">15.97 ft rise above local eave; 1,996 sf two-plane area</text>
+<polyline class="roof" points="721.75000055,342 785,280.6666672 848.24999945,342"/><line class="ridge" x1="785" y1="280.6666672" x2="785" y2="280.6666672"/>1
+<line class="axis" x1="721.75000055" y1="342" x2="848.24999945" y2="342"/>
+<text class="label" x="680" y="270">M83-Y-12:12 - ridge Y</text><text class="note" x="680" y="392">19.17 ft rise above local eave; 2,168 sf two-plane area</text>
+<line class="axis" x1="34" y1="414" x2="1060" y2="414"/>
+<text class="note" x="34" y="438">Profiles show span and rise only; roof faces are zero-thickness open surfaces. Option spacing is diagram-only.</text>
+<text class="note" x="34" y="458">No walls, roof assembly, framing, snow/wind analysis, code decision, or construction geometry.</text>
+<text class="note" x="34" y="478">Local relative datum only; absolute eave/ridge elevations, site, and shell remain unresolved.</text>
+</svg>

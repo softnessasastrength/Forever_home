@@ -1,0 +1,16 @@
+﻿{
+    "generator":  "Tools/build_m83_gable_massing_options.ps1",
+    "source_fingerprints_sha256":  {
+                                       "m78_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                                       "m78_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
+                                       "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "m38_pitch_options":  "d24fc18da1116ccf7916d388d5f243737518c5e499fb0efa37fee682c001cb84",
+                                       "m38_manifest":  "852564ef1828a82a49a535f0c539b0df7764be23b6cb76f76269cdcc634430df",
+                                       "Connecticut_roof_research":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "output_hashes_sha256":  {
+                                 "roof_options":  "172ed5ecc2eac08387a730b6692caca47fea81adc0318252d0547d761dd27506",
+                                 "checks":  "8975d1d9e7de8a0279f5d27be057168e7f3c07f6189ce9f9e115c05b5ba03f9b",
+                                 "svg":  "9c5ea4dbbb297a530463774c610ce8d1c81e18e7fa1135a414bcdbc632981219"
+                             }
+}
