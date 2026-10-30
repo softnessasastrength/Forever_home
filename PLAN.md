@@ -1140,3 +1140,15 @@ Acceptance criteria:
 - Report trade-offs and incomplete-search limits without changing M78, selected-D, room area or roof selection.
 
 Current status: Complete for the archived five-candidate subset. The script passes **13/13 checks** on two replays, parses the plan SVG as XML, and matches checked-in JSON/CSV/SVG (SHA256 JSON `424312A30240E1252A39B0FD1BF567F58BB9B4BEA2B4A04D41B725220AF43D19`; CSV `BF4278BB1DB471CA65EEE9BC8EBBD07D42042C933B25F41D04BDBA104FD90BAA`; SVG `39A55B56E59922E07E2096E0E22AB6AC794C5913536A976A0336CD84465D39F3`). M78-TOP-05 (U-05 at x=1.333, y=1 ft, 9×10 ft) improves the minimum relative-eave rise for ridge Y while retaining the sampled route; it trades against the M78 winner, which does better for ridge X. TOP-05 is only the most balanced of these five archived layouts, not an exhaustive optimum or recommendation. See its README and `routed-bath-roof-alternative.svg`.
+
+### M106 - Screen bedroom-capable room blocks for shell-perimeter opening opportunity
+
+Acceptance criteria:
+
+- Use official Connecticut CSBC amended IRC R310.1 as a conditional design screen; cite the current statewide source and separate it from permit-specific applicability.
+- Check U-01/U-03/U-04 perimeter contact in all five archived M78 route-ranked cases, with source fingerprints, room IDs/areas and shell dimensions verified.
+- Distinguish a possible shell-edge wall zone from an actual exterior wall or emergency escape opening; leave U-03 sleeping-room classification and roof-opening acceptability unresolved.
+- Generate reproducible JSON/CSV/SVG, require 13/13 checks and byte-identical independent runs, parse SVG, and reject output outside checkout.
+- Preserve selected-D, RFAs and the routed suite baseline.
+
+Current status: Complete as an important unresolved design gate. Two PowerShell 5.1 replays pass **15/15 checks** and reproduce JSON/CSV/SVG (SHA256 JSON `20F7F98D2FD8A4321AF3BCADAEFD72073A98357920BAA1A58B6BDBC89F1AEC39`; CSV `6B33957F62C3962B32F9555C2BE98EE49AF3BDE2840847F3D92781B03D07F46B`; SVG `D1EE610546D22A162F1539A14D9270305B942E13656FB3CFB64E6B5851B121CE`). Every retained M78 layout places U-01/U-04 on shell edges but U-03 8.166667 ft from its nearest perimeter edge. If U-03 is intended for sleeping, R310.1 opening provision remains unaddressed by the room layout. This is not a compliance finding or proof that a roof opening cannot qualify. See `Research/M106_CT_Sleeping_Room_EERO_Study_2026-10-30.md` and the M106 package.

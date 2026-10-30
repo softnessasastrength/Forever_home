@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="850" height="550" viewBox="0 0 850 550">
+<title>M106 bedroom-capable room blocks and hypothetical shell perimeter</title>
+<style>text{font-family:Arial,sans-serif;fill:#263743}.title{font-size:25px;font-weight:700}.label{font-size:14px;font-weight:700}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#2c4556;stroke-width:4}.room{stroke:#536671;stroke-width:1.5}.edge{fill:#d9e5ef}.guest{fill:#e7dfd6}.hybrid{fill:#f3c4ba;stroke:#a24032;stroke-width:3}.marker{stroke:#287459;stroke-width:8}</style>
+<text class="title" x="38" y="40">M106 | Bedroom-capable blocks at the M78 test perimeter</text>
+<rect class="shell" x="128" y="86" width="283.6666642" height="296"/>
+<rect class="room edge" x="128" y="178.5" width="74" height="118.4"/>
+<text class="label" text-anchor="middle" x="165" y="242.7">U-01</text>
+<line class="marker" x1="128" y1="178.5" x2="128" y2="296.9"/>
+<rect class="room hybrid" x="210.633333333333" y="253.733333333333" width="101.133333333333" height="67.8333333333333"/>
+<text class="label" text-anchor="middle" x="261.2" y="292.65">U-03</text>
+<rect class="room guest" x="352.466666666667" y="148.9" width="59.2" height="101.133333333333"/>
+<text class="label" text-anchor="middle" x="382.066666666667" y="204.466666666667">U-04</text>
+<line class="marker" x1="411.6666642" y1="148.9" x2="411.6666642" y2="250.033333333333"/>
+<text class="small" x="40" y="415">Green: U-01/U-04 touch a test-shell edge. Red: U-03 is internal, with no perimeter wall segment in this packing.</text>
+<text class="small" x="40" y="440">R310.1 requires an opening in every sleeping room, opening directly to a public way or qualifying yard/court.</text>
+<text class="small" x="40" y="465">No actual exterior wall/opening is modeled. U-03 status and any roof-opening approach remain unresolved.</text>
+<text class="small" x="40" y="490">38â…“ Ã— 40 ft hypothetical shell; room blocks and route samples only. Not a code compliance finding.</text>
+</svg>
