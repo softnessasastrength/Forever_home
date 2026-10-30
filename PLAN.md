@@ -967,3 +967,13 @@ Acceptance criteria:
 - Keep the options labelled hypothetical and unselected; do not claim host-side Revit/IFC validation from source calculations.
 
 Current status: Complete for source-side option reproducibility. Two fresh PowerShell 5.1 runs pass **13/13** and reproduce all four artifacts byte-for-byte. Selected-D remains unchanged. M83's separate Revit derivative, IFC2X3 export and IFC geometry validation remain outstanding; no roof pitch or ridge direction is selected. See M89 in `PROGRESS.md`.
+
+### M90 - Recheck exact-SKU public family and dimension sources for M-06
+
+Acceptance criteria:
+
+- Search public manufacturer-indexed sources and exact-SKU Revit/RFA/BIM queries without signing in or bypassing access gates.
+- Distinguish returned manufacturer evidence from retailer claims and from search-engine non-results; do not infer that the absence of an indexed result proves nonexistence.
+- Keep B unassigned and preserve selected-D, source RFAs and the current product selection pending confirmed geometry, clearance, door/approach and service evidence.
+
+Current status: Complete as a date-stamped public index recheck. Exact-SKU queries returned retail listings but no current 610AA manufacturer family or dimensional drawing; the manufacturer's live linked files remain predecessor-series documents. This does not establish global nonexistence. M-06 remains open, and B remains unassigned. See M90 in `PROGRESS.md` and the M-06 research note.
