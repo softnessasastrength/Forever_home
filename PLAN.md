@@ -914,3 +914,14 @@ Acceptance criteria:
 - Preserve existing historical mismatch evidence, Incoming RFAs and all remote state.
 
 Current status: Complete for source reproduction and the current room-study export. Runs in `.local/revalidation/selectedD-source-a/` and `selectedD-source-b/` each pass **43/43** checks, parse all three SVGs, and match all seven artifacts byte-for-byte. A recursive JSON comparison finds no geometry or other study-content drift; only the fingerprint values for `Requirements/Room_Program.md` and `Decisions/2026-10-27_Selected_Architectural_Direction_D.md` differ in the regenerated output. No selected-D source file was changed. The fresh host package `.local/revit-pilot/selected-d/20261030T002652845Z/` binds source SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`, saved RVT SHA256 `c6ced6acd0e59e49ea0e9821153204fc81ed6cede2fcd4f4d7e387c0acefd6d0`, and IFC2X3 SHA256 `56251f4754567c78ebb657ec2b99894958c15ef73663f737742f3f36a8472f6f`. Two validator reports match byte-for-byte (SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`); **26/26** checks pass with zero errors. The IFC contains the expected three storeys and 21 spaces with matching identities, areas, levels and profile/plan bounds; native walls, slabs, stairs, doors and windows remain intentionally absent. This is a validated space-study model, not a complete building model.
+
+### M85 - Audit the current 610AA manufacturer specification link without assigning room B
+
+Acceptance criteria:
+
+- Resolve the exact specification link exposed by the current manufacturer page for owner-selected SKU 610AA001.020; record the linked document's own model designation and revision rather than attributing predecessor data to the current SKU.
+- Compare manufacturer dimensions only at their documented scope and precision; do not synthesize a current product envelope from predecessor parts, generic families, or retailer data.
+- Preserve Incoming RFAs and selected-D/M-06 baselines. Keep room B unassigned until actual selected-product geometry, applicable clearance basis, door/approach and plausible service routing are supported together.
+- Record exact URLs, the evidence boundary and remaining retrieval needs in `Research/M06_Toilet_Options_2026-10-27.md` and `PROGRESS.md`.
+
+Current status: Complete as a manufacturer-document provenance check; the M-06 fit gate remains open. The current 610AA product page identifies the selected SKU but its live Spec Sheet link resolves to a 211AA.104 predecessor sheet (revised 9/13), which specifies predecessor components and nominal dimensions only. The linked drawing cannot establish exact 610AA geometry. No family, model, or room assignment was changed. See M85 in `PROGRESS.md` and the dated research entry.
