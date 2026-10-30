@@ -1334,3 +1334,9 @@ The next M-06 gate remains read-only Revit inspection of the quarantined exact-s
 
 - Command: `.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v`.
 - Result: **41 tests passed**. This includes static command contracts and offline IFC-validator tests; it did not launch Revit, alter models, generate geometry, or export IFC. M83 and M-06 host-side inspection gates remain open.
+
+## M99 - Audit Revit 2027 add-in startup manifests - 2026-10-30
+
+- Read the per-user Revit 2027 add-in registration. `ForeverHome.Pilot.addin` contains the authorized AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`; its assembly resolves inside this checkout to `.local/revit-pilot/build-m83-level-safe/Release/net10.0-windows/RevitPilot.dll`, SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`.
+- The same per-user folder contains a separate `ForeverHome.SelectedD.addin`, 20 bytes, last modified 2026-10-27 08:17, with the exact text `<RevitAddIns />` and no AddInId or assembly. Current Revit startup journals report `Failed to load add-in manifest file: Empty addin file!`; the stub is a plausible source of that warning, but this is not proven to be the unsigned trust prompt's target.
+- Left that separate manifest untouched: owner authorization covers only the RevitPilot registration with the specified AddInId. No registry, Revit trust, Windows, browser or security setting was changed. The visible trust prompt remains inaccessible, and no trust option or model command was selected. The exact DLL hash is verified, but the current prompt cannot yet be matched to it.

@@ -1061,3 +1061,13 @@ Acceptance criteria:
 - Record the exact command, count, result, and scope limitation.
 
 Current status: Complete. `.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v` passes **41/41** tests. This verifies offline command/validator contracts; it does not replace Revit-host geometry checks or IFC export validation. See M98 in `PROGRESS.md`.
+
+### M99 - Audit Revit 2027 add-in startup manifests without changing registrations
+
+Acceptance criteria:
+
+- Confirm the authorized per-user RevitPilot manifest still has AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, resolves to a DLL inside this checkout, and matches the recorded SHA256.
+- Identify the source and exact contents of Revit's “Empty addin file” startup warning, while preserving any manifest outside the explicitly authorized RevitPilot registration.
+- Do not choose a trust option or run a host command unless the visible prompt identifies the exact verified project-local RevitPilot build.
+
+Current status: Read-only audit complete. The RevitPilot registration still resolves inside the checkout to `build-m83-level-safe/.../RevitPilot.dll`, SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`. A separate `ForeverHome.SelectedD.addin` is 20 bytes and contains only `<RevitAddIns />`, with no AddInId or assembly. The journal warning about an empty add-in manifest is consistent with this stub, but it does not establish that the stub caused the unsigned trust prompt. The stub was not modified because it is outside the authorized RevitPilot registration. No trust choice or host command was made; see M99 in `PROGRESS.md`.

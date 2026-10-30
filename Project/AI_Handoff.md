@@ -44,6 +44,8 @@ For M-06, the current American Standard 610AA001.020 product page has a manufact
 
 Revit 2027 currently has two responsive startup windows with blank titles; the CUA accessibility bridge cannot expose either. Journals show a generic unsigned-add-in prompt but no RevitPilot path/AddInId, so do not choose a trust option until the visible prompt can be matched to the hash-verified project-local DLL. M83 host-side gable generation/IFC validation and the authorized read-only family inspection remain open. Preserve the selected-D baseline and all original family files.
 
+Read-only startup audit found a separate 20-byte per-user `ForeverHome.SelectedD.addin` stub containing only `<RevitAddIns />` and no AddInId/assembly; the startup journal's empty-manifest warning is consistent with it but does not prove it is the trust prompt target. The authorized `ForeverHome.Pilot.addin` remains matched to the local build-M83 DLL and recorded SHA256. Do not alter the stub or accept any trust prompt until its exact DLL identity is visible and verified.
+
 ## Current high-level decisions
 - **Selected schematic direction D:** lower-level bedroom-capable flex room, B's 40 x 42 ft main-shell test, future 8 x 8 ft lift reservation (with B's eight-riser arithmetic as a comparison only), and a main half bath. Arrival/hall is the selected zone; pantry-side search window B is the first fit-study candidate, with exact location/size/service TBD. Lower sleeping and full bathing remain stair-dependent until a suitable lift or site-specific route is proven. See the dated decision record and its open findings before authoring geometry.
 - Modest traditional exterior, comfortable multi-level interior, future accessibility; site and final area TBD.
