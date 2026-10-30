@@ -1001,3 +1001,13 @@ Acceptance criteria:
 Current status: Complete for a preliminary planning screen. Connecticut DAS lists the 2022 CSBC, based on the 2021 IRC, as current and says the planned 2026 effective date is delayed. The cited IRC basis supports 15 in from the water-closet center to side obstruction and 21 in clear in front for early screening only. Municipality, permit path, accessibility scope, exact fixture geometry, door/approach and service routing remain open. See `Research/M06_Clearance_Basis_2026-10-30.md` and M92 in `PROGRESS.md`.
 
 The M78 room-packing search remains the current upper-suite candidate. Larger experimental budgets and pruning combinations did not yield reproducible output before the available run windows ended; no partial search result has been promoted. Any further search work should profile and optimize the generator before raising its limits.
+
+### M93 - Revalidate the retained selected-D IFC pair after M83 restart work
+
+Acceptance criteria:
+
+- Re-run the independent validator against the retained fresh selected-D Revit 2027 run without overwriting its RVT or IFC.
+- Require source/RVT/IFC fingerprints, IFC2X3 schema, all levels and 21 spaces with identities, areas and plan/body bounds to pass.
+- Confirm the selected-D source hash remains unchanged and document the scope limitation that this is a validated space study, not a complete building model.
+
+Current status: Complete. The retained pair passes 26/26 checks with zero errors; the new report is byte-identical to the previous M88 report. Selected-D source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The model still contains no native walls, slabs, stairs, doors or windows. See M93 in `PROGRESS.md`.

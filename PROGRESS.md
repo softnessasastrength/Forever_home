@@ -1287,3 +1287,10 @@ Source: [KOHLER Stores by General Plumbing Supply Tresham product page and BIM l
 - Tried three larger 38.333333 x 40 ft room-search runs (16,000-node unpruned; 8,000-node route-pruned; 4,000-node deferred-check route-pruned). They did not produce a retained report or artifact within the observed run windows; no incomplete output has been treated as a result. M78's reproducible 4,000-node run remains the evidence baseline. Profile the search's branch/route evaluation before increasing its budget again.
 
 Sources: [Connecticut DAS current State Building Code](https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations), [Connecticut DAS code adoption process](https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process), [2021 IRC R307.1 (ICC)](https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning), and the [2022 Connecticut State Building Code](https://portal.ct.gov/-/media/DAS/Office-of-State-Building-Inspector/2022-State-Codes/2022-CSBC-Final.pdf).
+
+## M93 - Revalidate retained selected-D IFC2X3 pair - 2026-10-30
+
+- Ran `.venv/Scripts/python.exe Tools/RevitPilot/validate_selected_d_ifc.py .local/revit-pilot/selected-d/20261030T002652845Z --report .local/revalidation/M93-selectedD-validation.json`.
+- Result: **26/26 checks pass**, zero errors. The validator confirms checked-in source identity, exact saved-RVT/IFC lineage, IFC2X3 parse/schema, three storeys, 21 source-matched spaces with names, areas, levels, plan bounds and body-profile areas, and intentionally empty native construction categories.
+- The new report SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B` is byte-identical to the M88 report. Selected-D source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The RVT/IFC pair was read only; no model file was changed.
+- This revalidates the room-space study and its IFC export, not a complete building model. Native walls, slabs, stairs, doors, windows, roof and services remain unrepresented; M83 host validation and M-06 fit gates remain open.
