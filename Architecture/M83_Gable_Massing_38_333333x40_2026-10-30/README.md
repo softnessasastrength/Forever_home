@@ -36,3 +36,7 @@ Autodesk documents `TessellatedShapeBuilder` as a way to build connected planar 
 - No pitch or ridge direction is recommended by the script. The 12:12 option is merely the steepest of three requested comparisons.
 - No roof loads, snow drift, wind design, structure, member sizing, fire performance, insulation, ventilation, egress, attic/headroom, drainage or construction details are evaluated.
 - IFC validation covers schema, saved-model/export lineage, six generic proxy entities, world-coordinate bounding extents, and triangulated surface areas. It cannot establish professional approval, code compliance, structural safety or construction readiness.
+
+## Source refresh after M102
+
+The Connecticut roof research note was extended with the R305.1 sloped-ceiling basis on 2026-10-30. Because the M83 generator records that note's SHA256, its four source artifacts were regenerated against the revised note. Three PowerShell 5.1 runs (checked-in destination and two isolated outputs) pass **13/13** checks and match byte-for-byte. This refresh changes only source provenance; roof pitches, ridge cases and geometry remain the same. M101 and M103 downstream analyses were regenerated against the refreshed M83 report.

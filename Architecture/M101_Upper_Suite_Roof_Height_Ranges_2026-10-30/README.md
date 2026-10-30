@@ -14,7 +14,7 @@ The script hash-checks the M78 search against its manifest, confirms M83 binds t
 
 ## Result
 
-The source screen passes **9/9 checks** and produces 42 room/case rows. Independent runs to separate ignored directories produce identical output hashes: JSON `BC35C68B0903D3186A202A517672D8C336CE8C13840CA8028121DC3509775978`; CSV `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`.
+The source screen passes **9/9 checks** and produces 42 room/case rows. Independent runs to separate ignored directories produce identical output hashes: JSON `143DACB30BD4F40793B47BE225B70F5490DAF39987C4AF9F67B489CE274C6457`; CSV `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`.
 
 The two ridge directions place the low roof plane over different room blocks:
 

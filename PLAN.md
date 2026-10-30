@@ -1093,7 +1093,7 @@ Acceptance criteria:
 - Run two independent PowerShell 5.1 replays and require all checks to pass and JSON/CSV outputs to match byte-for-byte; reject an output path outside the checkout.
 - Record the design implication and limits without editing selected-D or source M78/M83 artifacts.
 
-Current status: Complete. The source-bound screen passes **9/9 checks** and produces 42 room/case rows. Two replays match (JSON SHA256 `BC35C68B0903D3186A202A517672D8C336CE8C13840CA8028121DC3509775978`; CSV SHA256 `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`). On the M78 blocks, ridge-X options put U-05's minimum ideal plane 1.333/1.667/2.000 ft above relative eave for 8:12/10:12/12:12; ridge-Y options leave U-01/U-04/U-05 touching the eave plane. This is not interior headroom. The 38⅓ × 40 ft shell remains an exploration case; no pitch/ridge choice is made. See `Architecture/M101_Upper_Suite_Roof_Height_Ranges_2026-10-30/README.md`.
+Current status: Complete. The source-bound screen passes **9/9 checks** and produces 42 room/case rows. Two replays match (JSON SHA256 `143DACB30BD4F40793B47BE225B70F5490DAF39987C4AF9F67B489CE274C6457`; CSV SHA256 `FA0E1FB05ADA716759841ABDCC008E0DCC6C12A377C9701A48874D4DE24C0DE2`). On the M78 blocks, ridge-X options put U-05's minimum ideal plane 1.333/1.667/2.000 ft above relative eave for 8:12/10:12/12:12; ridge-Y options leave U-01/U-04/U-05 touching the eave plane. This is not interior headroom. The 38⅓ × 40 ft shell remains an exploration case; no pitch/ridge choice is made. See `Architecture/M101_Upper_Suite_Roof_Height_Ranges_2026-10-30/README.md`.
 
 ### M102 - Record the current Connecticut sloped-ceiling screening basis
 
@@ -1105,3 +1105,26 @@ Acceptance criteria:
 - Update the research note, project handoff and progress log; preserve all geometry sources and selected-D.
 
 Current status: Complete as statewide preliminary research. Connecticut DAS still lists 2022 CSBC/2021 IRC as current and reports the anticipated 2026 code effective date delayed pending legislative review. Amended IRC R305.1 provides baseline heights of 7 ft for habitable space/halls and 6 ft 8 in for baths/toilets/laundry, with a sloped-ceiling exception based on 5 ft and 7 ft bands and a separate showerhead-area provision. M101 cannot test this without the finished floor/eave relationship, wall/eave location, roof/ceiling build-down, classification and fixture location. No pass/fail code result is claimed. See `Research/Connecticut_Roof_Code_Research_2026-10-28.md`.
+
+### M103 - Derive effective-eave threshold sensitivities for upper rooms
+
+Acceptance criteria:
+
+- Bind the M78/M83 geometry, selected-D source, room program and dated Connecticut code research note by SHA256.
+- For U-01 through U-04, derive the effective finished-ceiling height at the eave datum needed to make the full schematic block at least 5 ft and at least half its area at least 7 ft, using each of the six M83 gable cases.
+- Label the room-block area proxy, U-02 classification uncertainty, bathroom/circulation exclusions, unknown floor/eave and roof-to-ceiling offsets, and code applicability; make no pass/fail declaration.
+- Replay twice in PowerShell 5.1 to byte-identical JSON/CSV, validate the calculation, and reject output outside the checkout.
+- Record the orientation trade-off without selecting a roof or altering selected-D.
+
+Current status: Complete as a parametric screening tool. Two independent runs pass **10/10 checks** and match byte-for-byte (JSON SHA256 `4B74367B5F111271B6B171FFBF3AF8B2F0438024A8EF87C2428F8C0AEDC3391C`; CSV SHA256 `F7D70A521EAD5934B15D85C5B603389014BBF1C2D75FEC79FBEE852E66FB5910`). With the M78 room blocks, the generic 5/7 ft thresholds require an effective eave-ceiling datum of -0.444 to -3.167 ft for ridge-X cases (U-03 controls), versus 5 ft for ridge-Y cases (U-04 controls). These are calculated datum thresholds, not chosen eave heights or compliance findings. U-05/U-06 bath zones and C-PRIVATE are excluded. See `Architecture/M103_Upper_Suite_Sloped_Ceiling_Thresholds_2026-10-30/README.md`.
+
+### M104 - Refresh M83 and downstream hashes after code-note update
+
+Acceptance criteria:
+
+- Re-run the documented M83 PowerShell generator after its source code research note changes; preserve all six roof cases and geometry.
+- Require three isolated/repository runs to pass 13/13 and all four M83 artifacts to match byte-for-byte.
+- Regenerate M101/M103 derived reports against the refreshed M83 source and verify independent replay hashes match their checked-in artifacts.
+- Preserve selected-D and incoming family files; do not launch Revit, change roof decisions or modify remote state.
+
+Current status: Complete. M83 regenerated against the extended M102 research note, with three runs passing 13/13 and all four artifacts identical (roof-options JSON SHA256 `8FAF694BCD4AC229836FF49D7DBC35F482F90008E517EF032C5676709DCEEC16`; checks `3F38BA0E3FCA9BCA3D4982F85EB9A8486017967A09899488FC92C1BC9772E32D`; SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`; manifest `D71EC4AC99DD47024F9337A1D695B589F3382EAD663D76AE7BA12AEFCB9B69A0`). M101 and M103 replays each pass their checks and reproduce their checked-in JSON/CSV. Only provenance hashes changed in M83. See its README and M101/M103 packages.
