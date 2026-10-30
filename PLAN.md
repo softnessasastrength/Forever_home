@@ -957,3 +957,13 @@ Acceptance criteria:
 - Confirm the tracked source fingerprint is unchanged and do not overwrite the selected-D baseline or any retained Revit evidence.
 
 Current status: Complete. Both M88 replays pass **43/43**, all three plan SVGs parse, and all seven files match byte-for-byte. A fresh IFC validation returns **26/26** passing checks and the same deterministic report hash as M84. The offline RevitPilot unit suite passes **40/40**. The saved source, RVT and IFC remain at their recorded hashes; see the M88 evidence in `PROGRESS.md`.
+
+### M89 - Recheck reproducibility of the hypothetical M83 gable comparisons
+
+Acceptance criteria:
+
+- Re-run the documented gable comparison generator twice into separate ignored directories; require all 13 source checks and byte-identical `roof-options.json`, `checks.json`, SVG and manifest outputs.
+- Parse the generated diagram and confirm the checked-in selected-D source remains unchanged.
+- Keep the options labelled hypothetical and unselected; do not claim host-side Revit/IFC validation from source calculations.
+
+Current status: Complete for source-side option reproducibility. Two fresh PowerShell 5.1 runs pass **13/13** and reproduce all four artifacts byte-for-byte. Selected-D remains unchanged. M83's separate Revit derivative, IFC2X3 export and IFC geometry validation remain outstanding; no roof pitch or ridge direction is selected. See M89 in `PROGRESS.md`.
