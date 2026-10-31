@@ -1,0 +1,67 @@
+{
+    "status":  "pass",
+    "passed":  12,
+    "total":  12,
+    "items":  [
+                  {
+                      "id":  "M213_and_M186_source_runs_pass",
+                      "pass":  true,
+                      "detail":  "The exact M213 candidate is regenerated before M215 geometry is derived."
+                  },
+                  {
+                      "id":  "selected_D_fingerprint_unchanged",
+                      "pass":  true,
+                      "detail":  "Protected selected-D source hash is unchanged."
+                  },
+                  {
+                      "id":  "36in_orthogonal_route_to_porch",
+                      "pass":  true,
+                      "detail":  "A continuous 36-in schematic route connects the open living edge to the porch terminus."
+                  },
+                  {
+                      "id":  "positive_clearance_to_every_modeled_obstacle",
+                      "pass":  true,
+                      "detail":  "The swept route corridor remains at least 3 in from every M186 obstacle, including the expanded A reservation and shifted porch-wall segments."
+                  },
+                  {
+                      "id":  "route_centerline_fits_A_to_porch_clearance_band",
+                      "pass":  true,
+                      "detail":  "The horizontal route centerline clears the protected-A north edge and porch-face wall by the 3-in analysis buffer."
+                  },
+                  {
+                      "id":  "quarter_foot_grid_translation_lower_bound",
+                      "pass":  true,
+                      "detail":  "The vertical gap requires at least 0.4167 ft north translation; the first 0.25-ft search increment satisfying it is 0.5 ft."
+                  },
+                  {
+                      "id":  "A_and_B_remain_clear_of_moved_social_blocks",
+                      "pass":  true,
+                      "detail":  "Dining and porch blocks have no area overlap with protected west A or the unassigned east B search reservation."
+                  },
+                  {
+                      "id":  "dining_and_porch_within_hypothetical_shell",
+                      "pass":  true,
+                      "detail":  "The 11 x 10 ft dining and 12 x 10 ft porch test blocks remain inside the 40 x 42 ft comparison shell."
+                  },
+                  {
+                      "id":  "dining_furniture_and_use_zones_contained",
+                      "pass":  true,
+                      "detail":  "All inherited dining table, chair and chair-use proxy rectangles remain inside the translated dining block."
+                  },
+                  {
+                      "id":  "nominal_door_opening_within_porch_face",
+                      "pass":  true,
+                      "detail":  "The tested nominal 5-ft porch opening fits the translated porch face."
+                  },
+                  {
+                      "id":  "M06_B_remains_unassigned",
+                      "pass":  true,
+                      "detail":  "No bathroom footprint or room assignment is introduced."
+                  },
+                  {
+                      "id":  "kitchen_and_island_test_dimensions_inherited",
+                      "pass":  true,
+                      "detail":  "The tested kitchen, island and route source remains the unselected M213 comparison."
+                  }
+              ]
+}

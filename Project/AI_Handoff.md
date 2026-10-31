@@ -1,10 +1,12 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M214 route-tangency diagnosis; local sandbox only)
+Updated: 2026-10-31 (M215 protected-A porch-approach reserve; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**Current checkpoint — M215, 2026-10-31:** M214's route tangencies are resolved in a bounded schematic comparison by moving the 11 × 10 ft dining block, 12 × 10 ft porch and associated wall proxies 0.5 ft north within the source-comparison shell. M215 explicitly checks a 36-in route from the open living edge through the nominal 5-ft porch opening; it is 34 ft long and remains at least 3 in from all modeled obstacles (6 in from original west A). The 0.5-ft move is the first quarter-foot grid increment above the 0.416667-ft minimum derived from the A-to-wall gap. The 12/12 report, checks and clearance CSV reproduce byte-for-byte in two independent PowerShell 5.1 replays. A 1-ft alternative also passes but leaves only 4 in to the north shell test limit. Neither layout, kitchen size, opening or route is selected. See `Architecture/M215_Porch_Approach_Reserve_2026-10-31/README.md`. Selected-D and the Evolution RFA remain hash-stable. The Revit computer-use bridge still fails with `Computer Use native pipe is unavailable`; no model was opened or changed. Next: pursue the kitchen/room coordination and restore approved host access before a disposable Revit derivative. Keep M-06/B unassigned.
 
 **Current checkpoint — M214, 2026-10-31:** M213's 13.25 × 13.5 ft kitchen comparison reproduces in two independent PowerShell 5.1 runs (13/13 each; all three M213 artifacts and four embedded M186 outputs match). Its 33.5-ft, 36-in path has zero gap to the analytically expanded west-A reservation and the porch-face wall east of the nominal opening; the original A boundary is 3 in away, exactly the M211 search buffer. The path passes M186's no-overlap contract but is not robust enough to advance to Revit. M212's smaller 13 × 13.5 ft sample has zero stool-proxy edge margin; M213's 13.25-ft sample adds 3 in to that proxy. Neither kitchen size is selected. See `Architecture/M214_Route_Tangency_Diagnosis_2026-10-31/README.md`. Selected-D and the Evolution RFA remain hash-stable. Revit is still not available for host interaction through the computer-use bridge. Next: find a route with positive separation from the expanded A reservation and porch-wall geometry, then advance only a qualified plan candidate to a disposable Revit derivative. Keep M-06/B unassigned.
 

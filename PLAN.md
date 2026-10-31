@@ -2246,6 +2246,15 @@ Status: Complete as one bounded interpolation. Retained output and two independe
 - Record the required next gate before any route candidate advances to a disposable Revit model.
 
 Status: Complete as a reproducible failure diagnosis. Two M213 replays each pass 13/13 and match the M186 route report and obstacle CSV hashes. M213's 33.5-ft, 36-in-proxy path has 0 ft clearance to the already-expanded west-A boundary and to the porch wall east of the nominal door; the gap to original A is exactly the analytical 3-in reserve. The route therefore passes no-overlap checks but has no geometric reserve at those two modeled boundaries. No candidate advances to Revit. See `Architecture/M214_Route_Tangency_Diagnosis_2026-10-31/README.md`.
+
+## M215 — Recover a protected-A porch approach reserve — 2026-10-31
+
+- Preserve M213's kitchen/pantry/furniture comparison, owner's open kitchen/living preference, 36-in route width, and unassigned M-06/B.
+- Translate only the dining/porch study blocks and porch-face wall proxies north; check exact 36-in swept rectangles against all M186 obstacles, including protected A, B and the nominal door walls.
+- Derive the continuous translation needed for a 3-in route-to-obstacle sensitivity, compare it to the quarter-foot search increment, and verify the selected comparison remains inside M213's hypothetical shell bounds.
+- Bind source fingerprints; emit deterministic JSON/checks/per-obstacle CSV; require two byte-identical PowerShell 5.1 replays. Do not assign a kitchen, door or room size or create Revit elements.
+
+Status: Complete as two bounded route/layout comparisons. The 0.5-ft north translation is the first quarter-foot grid increment above the analytically derived 0.416667-ft minimum needed to create a centerline band between protected A and the porch wall. Its explicit 36-in route is 34 ft long and stays at least 3 in from every modeled obstacle; gap to original A is 6 in. It keeps the 11 × 10 ft dining and 12 × 10 ft porch blocks within the source-comparison shell, with 10 in at the north test boundary. The 1-ft alternative also passes but is 6 in longer and leaves only 4 in to that boundary. Both cases pass 12/12; the retained 0.5-ft output and two independent replays match byte-for-byte. No design placement is selected and no Revit model is advanced. See `Architecture/M215_Porch_Approach_Reserve_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:
