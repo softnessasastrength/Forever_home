@@ -1,11 +1,13 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-31 (M170 BIM baseline revalidation after Revit refresh)
+Updated: 2026-10-31 (M171 upper-suite interface geometry and M170 BIM revalidation)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**M171, 2026-10-31:** the new PowerShell interface audit independently joins two fresh M164 room archives to their route audits. Both M37 runs pass 31/31 at 3,122 nodes and produce the same 120-candidate archive; both M164 audits pass 16/16 and retain 48 route-qualified candidates. M171 passes 17/17 on each pair and the retained package; JSON SHA256 `E2569D7F77EF699C85EDA4376D1C9FF4056001AAF86CB1553CE9133B75D6ECDF`, CSV SHA256 `86AEB8D19704E584A3CC8A7D79390F7B79D7CDE9434FF950568E798794F1D91A`. All six links use the source-defined 0.5 ft nominal wall allowance. The narrow U-02/U-03 private interface is 3.5 ft in every option; U-02 has east/north sampled hall reach in all candidates and south reach in 24. These are not doors or clear widths. No layout, opening, wall or shell is selected; selected-D and Revit/IFC remain untouched. Revit remains behind its trial overlay, preventing host actions. See M171 in `PLAN.md`, `PROGRESS.md` and its README.
 
 **M170, 2026-10-31:** after the Revit restart, the owner-selected-D PowerShell generator was replayed twice into ignored scratch directories. Both runs pass 43/43, parse all SVGs, and reproduce the seven output files byte-for-byte; selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The retained selected-D Revit/IFC2X3 pair passes 26/26; M78 passes 32/32; M83-A passes 21/21; M83-B passes 21/21 only when paired with the preserved exact `.0001.rvt` backup. Its primary RVT remains a different SHA256 and is not the IFC source; all files are preserved. The offline suite passes 49/49. Revit is still running behind the trial-introduction WebView with no model open and add-in load unverified. No trust setting, selected-D source, Incoming RFA, remote ref or history changed. M-06/B remains unassigned. See M170 in `PLAN.md` and `PROGRESS.md`.
 
