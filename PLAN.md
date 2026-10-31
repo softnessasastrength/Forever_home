@@ -7,7 +7,7 @@ Status: M246 replays the source-bound M83 gable generator twice; both runs pass 
 
 **Acceptance:** regenerate the existing M83 report into two isolated directories; require all generator checks, identical output hashes against the checked-in report, valid SVG XML, unchanged selected-D, and explicit distinction between comparative massing and a selected/native roof.
 
-**Result:** both PowerShell 5.1 runs pass 13/13. JSON, checks and SVG match the retained M83 report and each other byte-for-byte; SVG parses. The 12:12 half-span calculations are 20 ft (ridge-X) and 19.1667 ft (ridge-Y) above the hypothetical relative eave. Selected-D is unchanged. No Revit or IFC action occurred. See `Architecture/M246_Gable_Study_Replay_2026-10-31/README.md`; this does not resolve site/code/structural design or create a native roof.
+**Result:** both PowerShell 5.1 runs pass 13/13; the offline RevitPilot suite passes 49/49. JSON, checks and SVG match the retained M83 report and each other byte-for-byte; SVG parses. The 12:12 half-span calculations are 20 ft (ridge-X) and 19.1667 ft (ridge-Y) above the hypothetical relative eave. Selected-D is unchanged. No Revit or IFC host action occurred. See `Architecture/M246_Gable_Study_Replay_2026-10-31/README.md`; this does not resolve site/code/structural design or create a native roof.
 
 ## M245 — Preflight the current RevitPilot build without changing registration
 

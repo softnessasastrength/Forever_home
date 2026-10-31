@@ -19,6 +19,8 @@ Both runs pass **13/13** generator checks. The retained M83 artifacts and both i
 | `checks.json` | `0498973FE03FF7D80EE4CCCCBEEC99995AE6AC1C757FAC96D479D8CE9C20DFD6` |
 | `roof-options.svg` | `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219` |
 
+The repository's offline RevitPilot regression suite also passes **49/49** with `.\.venv\Scripts\python.exe -m unittest discover -s Tools\RevitPilot\tests -v`. This exercises command/validator contracts and does not replace Revit host execution.
+
 The JSON parses with six cases on the source-bound hypothetical **38.333333 × 40 ft** upper-shell outline. The SVG parses as XML. The 12:12 comparison rises 20 ft above the relative eave for ridge-X and 19.1667 ft for ridge-Y; these are idealized half-span calculations, not building heights. Selected-D remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`.
 
 ## Limits
