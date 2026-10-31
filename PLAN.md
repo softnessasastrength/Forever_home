@@ -2059,3 +2059,29 @@ Acceptance criteria:
 - Record MiEN's published 23.75-in seat height against the owner's 24–26-in program target; do not round or alter the target silently. Keep M-06/B unassigned until actual fixture geometry, clearance, door/approach and services all pass together.
 
 Status: In progress. The inspector builds with zero errors and two reference-conflict warnings; the reproducible validator fixture runner passes 3/3 cases (valid report 11/11, wrong source hash rejected, incomplete solid bounds rejected). The exact Tauri request and hash-verified project-local DLL are prepared. Revit host execution is pending because the running window is not accessible through the current computer-use surface; no restart or load choice was made.
+
+## M190 — Check the M188 dining route against chair pull-out use — 2026-10-31
+
+Acceptance criteria:
+
+- Reproduce the sole M188 north-shift route from its M186 sources without editing the original route study.
+- Interpret the written 36-in chair pull-out as a labeled rectangular proxy extending outward from each table edge; preserve the 36-in route width.
+- Reconstruct the swept route from compressed waypoints and compare its union against chair-use zones; bind room specification, M188/M186, selected-D and M-06 inputs by SHA256.
+- Emit JSON/checks/CSV/SVG; parse SVG; replay independently and require byte-identical output.
+- Preserve selected-D, all Incoming RFAs, Revit/IFC and B-unassigned status.
+
+Status: Complete as a route-conflict audit. M188's 56.5-ft, seven-turn north-shift route has zero extra table-edge gap and 6.5 ft of unassigned travel. The 36-in chair-use interpretation overlaps it by **1.5 sf union area**, so that candidate fails the proxy screen. The audit corrects overlap accounting from M186's 383 serialized subrectangles by using 36-in segment rectangles and caps at endpoints/actual turns; M186 remains unchanged. PowerShell 5.1 passes 8/8 checks in retained and independent runs; four outputs match byte-for-byte and SVG XML parses. This rejects the tested candidate, not every possible arrangement. See `Architecture/M190_Dining_Pullout_Route_Audit_2026-10-31/README.md`.
+
+## M191 — Retest dining placements with pull-out zones reserved — 2026-10-31
+
+Acceptance criteria:
+
+- Retest M188 baseline, one-foot east and one-foot north translations using the documented 36 × 60-in table and four 18 × 20-in chair bodies.
+- Reserve one explicitly labeled 36-in-from-table-edge chair-use rectangle per seat and rerun M186's 0.25-ft/36-in route search without other changes.
+- Check every furniture/use proxy remains within the 11 × 10-ft dining test block and record path, closest sampled approach, and unsatisfied constraints.
+- Bind source hashes; emit deterministic JSON/checks/CSV; require two byte-identical PowerShell 5.1 runs.
+- Preserve selected-D, Revit/IFC, Incoming RFAs and M-06/B unassigned status.
+
+Status: Complete as a bounded sensitivity. All three layouts keep the table, chair bodies and pull-out proxies inside the dining target block, but **0/3** recover a route to the nominal porch door. The nearest reachable sampled points remain 10 ft away. This narrows the current table/chair/route arrangement; it does not prove other orientations or layouts impossible. Retained and independent runs pass 7/7 checks and their JSON/checks/CSV match byte-for-byte. See `Architecture/M191_Dining_Pullout_Placement_Search_2026-10-31/README.md`.
+
+Next: test alternative four-chair orientations and smaller compound table translations against the same pull-out and route constraints, then carry only a nonfragile candidate to isolated Revit wall/opening coordination. In parallel, complete the pending read-only Tauri family host inspection when Revit is safely accessible. Keep selected-D unchanged and M-06/B unassigned.

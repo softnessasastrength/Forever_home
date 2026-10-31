@@ -1,0 +1,42 @@
+{
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "three_declared_translations",
+                      "pass":  true,
+                      "detail":  "Baseline and owner-authorized M188 east/north one-foot sensitivities are tested."
+                  },
+                  {
+                      "id":  "documented_chair_body_dimensions",
+                      "pass":  true,
+                      "detail":  "Every case retains exactly four 18 x 20-in chair-body envelopes."
+                  },
+                  {
+                      "id":  "all_furniture_and_pullouts_inside_program_block",
+                      "pass":  true,
+                      "detail":  "Every unchanged table/chair body and 36-in pull-out proxy stays inside the 11 x 10-ft study block."
+                  },
+                  {
+                      "id":  "route_search_keeps_36in_width",
+                      "pass":  true,
+                      "detail":  "M186 retains its exact quarter-foot grid and 36-in route width."
+                  },
+                  {
+                      "id":  "selected_d_unchanged",
+                      "pass":  true,
+                      "detail":  "Selected-D source fingerprint matches protected baseline."
+                  },
+                  {
+                      "id":  "m06_b_unassigned",
+                      "pass":  true,
+                      "detail":  "East/pantry-side M-06/B remains unassigned."
+                  },
+                  {
+                      "id":  "source_hashes_bound",
+                      "pass":  true,
+                      "detail":  "Search, prior placement, specification, selected-D and bath-window sources are fingerprinted."
+                  }
+              ]
+}

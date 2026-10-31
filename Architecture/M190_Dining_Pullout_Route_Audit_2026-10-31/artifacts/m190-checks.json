@@ -1,0 +1,47 @@
+{
+    "status":  "pass",
+    "passed":  8,
+    "total":  8,
+    "items":  [
+                  {
+                      "id":  "source_hashes_bound",
+                      "pass":  true,
+                      "detail":  "M188/M186/spec/selected-D/bath-first inputs are fingerprinted."
+                  },
+                  {
+                      "id":  "north_route_replays",
+                      "pass":  true,
+                      "detail":  "The same documented one-foot north shift reproduces the 56.5-ft M188 route."
+                  },
+                  {
+                      "id":  "four_documented_chair_bodies",
+                      "pass":  true,
+                      "detail":  "Four 18 x 20-in chair-body envelopes retain the M188 arrangement."
+                  },
+                  {
+                      "id":  "documented_36in_pullout_depth",
+                      "pass":  true,
+                      "detail":  "Each pull-out study envelope extends 36 in from its corresponding table edge."
+                  },
+                  {
+                      "id":  "pullout_envelopes_inside_dining_target",
+                      "pass":  true,
+                      "detail":  "The pull-out proxies fit the 11 x 10-ft study block."
+                  },
+                  {
+                      "id":  "through_route_conflict_is_reported",
+                      "pass":  true,
+                      "detail":  "The audit must flag any positive-area route conflict with the explicit chair-use proxy; a conflict rejects this candidate, not the audit."
+                  },
+                  {
+                      "id":  "selected_d_preserved",
+                      "pass":  true,
+                      "detail":  "Protected selected-D baseline remains unchanged."
+                  },
+                  {
+                      "id":  "m06_b_unassigned",
+                      "pass":  true,
+                      "detail":  "East/pantry-side B remains an unassigned search window."
+                  }
+              ]
+}

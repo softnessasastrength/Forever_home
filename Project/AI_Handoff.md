@@ -1,11 +1,13 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-31 (M185 pantry-dogleg/M-06 constraint sweep; M184 route overlay; M183 option gate; earlier M179–M174 work retained below)
+Updated: 2026-10-31 (M191 dining pull-out route search; M190 pull-out conflict audit; M185–M174 history retained below)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**Current checkpoint — M191, 2026-10-31:** Owner-directed upper-suite inputs remain: hypothetical 38⅓ × 40 ft exploration only; direct upper hall arrival to U-02; U-03 private-only through U-02; guest hall arrival and both Jack-and-Jill links retained; explore a steep traditional gable with Connecticut research, no pitch/structure/site decision. Selected-D is unchanged. M190 audited M188's sole route-restoring dining translation against a clearly labeled 36-in chair pull-out proxy: the route intersects the south-chair zones by 1.5 sf union area. M191 reserved four such use zones while rerunning the M186 route search for baseline, one-foot east and one-foot north furniture placements; 0/3 reached the nominal porch door, nearest sampled point 10 ft away. Retained and independent PowerShell 5.1 runs pass 8/8 and 7/7 checks and reproduce outputs byte-for-byte. No other furniture orientation was tested. The study does not make a layout selection; M-06/B stays unassigned. Revit is running but its window is inaccessible via the current CUA bridge; the hash-verified, Load-Once-authorized M189 family geometry inspection is still pending. Next: test alternative chair arrangements under the same route/pull-out constraints, then carry a robust candidate to a disposable Revit wall/opening study. Keep all model and source-family files protected.
 
 **M185, 2026-10-31:** M179's 36-in dogleg overlaps the blocked west M-06 diagnostic by 0.708333 sf; moving its turn one foot earlier clears that region but overlaps the assumed stool-use envelope by 1.5 sf and leaves only 4 in separation from the diagnostic. No tested quarter-foot single-elbow position clears both. The M179 route starts outside source M-01, across a 4 ft 4 in unassigned kitchen-to-living band, so it is not continuous public circulation. The owner-selected east/pantry-side M-06/B window remains clear and unassigned. Retained plus two isolated PowerShell 5.1 replays pass 21/21 and reproduce all artifacts byte-for-byte. Selected-D source and all Incoming RFAs are unchanged.
 
