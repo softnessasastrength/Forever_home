@@ -65,3 +65,7 @@ That is a route proposal, not a resolved entrance design: the 6 in gap is a room
 ## Owner decision still needed
 
 The current evidence favours retaining the larger D room blocks for a detailed schematic, but it does not select the B-first room arrangement or porch position. The most consequential choices are whether to treat the porch as a separate 10 × 12 ft projection beyond the test shell or revise the room arrangement, whether the dining door should stay centered despite the cramped seating option, and whether the east-side entry trade-off is acceptable. These are surfaced for review before any wall/floor modeling.
+
+## M176 scope correction: route pass uses larger room blocks
+
+The M173 route result is bound to the unapproved bath-first comparison's **17 ft 4 in x 16 ft M-02 (277.33 sf)** and **11 ft 4 in x 14 ft M-03 (158.67 sf)** blocks. The owner-directed program targets remain **14 x 12 ft / 168 sf** for kitchen and **11 x 10 ft / 110 sf** for dining. M173's 29/29 route checks therefore apply only to the larger alternative and do not establish fit at the smaller program areas. The source-bound comparison and repeated audit are in [M176](../M176_Social_Route_Target_Scope_Audit_2026-10-31/README.md). The compact integrated layout remains unresolved.
