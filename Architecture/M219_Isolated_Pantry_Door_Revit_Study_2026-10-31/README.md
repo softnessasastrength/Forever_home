@@ -22,9 +22,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/RevitPilot/build.p
   -BuildDirectory build-m219-pantry-study
 ```
 
-The verified build SHA256 is `643964517CFC4E87D1DCEC75C0050BFF40B1BD4C5D26403DB165F6848CA98B1A`. Its build-local manifest carries the authorised AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and resolves to this worktree. The per-user Revit manifest currently points to an older M-189 build. No manifest replacement or add-in load has been performed for M219.
+The verified build SHA256 is `643964517CFC4E87D1DCEC75C0050BFF40B1BD4C5D26403DB165F6848CA98B1A`. Its build-local manifest carries the authorised AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and resolves to this worktree. On 31 October, the existing per-user registration's exact AddInId was verified and its bytes preserved at `.local/revit-pilot/registration-backups/20261031T193038052Z/ForeverHome.Pilot.addin` (backup SHA256 `7F7FECAE3E70972EBF561602E2EF8393414AE3E26D77D81512C4887E74865CB7`). The matching registration now points to this exact DLL and the path/hash were rechecked. Revit remained open, so its current session has not loaded this changed registration; do not claim M219 loaded until a later launch and exact **Load Once** prompt verification.
 
-When the supported Windows computer-use surface is available, install the verified build-local manifest under the repository's exact AddInId/back-up procedure in `AGENTS.md`, restart Revit, and choose **Load Once** only if the prompt identifies this exact path and SHA. Run **Build M-218 pantry-door swing comparison** from the Forever Home ribbon. Do not close unsaved owner documents. The command creates both RVTs, writes `m218-revit-study-manifest.json`, then opens the kitchen-swing derivative for inspection.
+When the supported Windows computer-use surface is available and the owner document state can be observed, restart Revit without closing unsaved owner work. Choose **Load Once** only if the prompt identifies this exact path and SHA. Run **Build M-218 pantry-door swing comparison** from the Forever Home ribbon. The command creates both RVTs, writes `m218-revit-study-manifest.json`, then opens the kitchen-swing derivative for inspection.
 
 ## Independent manifest/file-integrity gate
 
@@ -49,6 +49,6 @@ The production validator checks schema/status, all four pinned source hashes, is
 
 ## Current status and limitations
 
-The M219 build succeeded with 0 errors and 2 MSB3277 reference-resolution warnings (`Microsoft.VisualBasic`, `System.Drawing`). The required `node_repl`/`@oai/sky` computer-use pipe was unavailable, including after the prescribed reconnect attempt. Consequently, no M219 DLL was loaded, no per-user manifest was replaced, and no RVTs were generated. This is the present execution blocker.
+The M219 build succeeded with 0 errors and 2 MSB3277 reference-resolution warnings (`Microsoft.VisualBasic`, `System.Drawing`). The required `node_repl`/`@oai/sky` computer-use pipe was unavailable, including after the prescribed reconnect attempt. The registration is prepared, but the already-open Revit session has not reloaded it; no M219 DLL was loaded and no RVTs were generated. This is the present execution blocker.
 
 No wall assembly, finish build-up, rough opening, jamb, threshold, hardware, exact hinge/leaf behavior, shelving, stocked contents, occupant maneuvering, MEP service route, or site is modeled. The proxies do not establish code compliance, accessibility, product fit, serviceability, structural adequacy, professional review, permit approval, or construction readiness. M-06/B remains unassigned.
