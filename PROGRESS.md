@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M253 — Refresh exact-SKU public BIM evidence for the M-06 toilet
+
+- Rechecked American Standard's current 610AA001.020 page and its linked resources. The live product page confirms the complete SKU, a 17-in bowl height with seat, and 12-in rough-in, but links only to older 211AA-series spec/installation PDFs. The predecessor spec's overall nominal dimensions are not attributed to 610AA001.020.
+- Refreshed exact-SKU queries on public BIMobject/BIMstore/RevitCity and broad RFA indexes; found no matching family. BIMstore's current American Standard listing is APAC product content with different models; RevitCity's generic result has no SKU and a sign-in gate.
+- M120/M229's pinned current-SKU infographic remains the source for a 19 x 30-1/4 in 2D plan envelope, not full 3D geometry. No family was downloaded; M-06/A/B remain unassigned. Details and sources: `Architecture/M253_M06_Current_SKU_BIM_Refresh_2026-10-31/README.md`.
+
 ## M252 — Inspect quarantined predecessor bowl geometry in Revit
 
 - Revit 2027.3 completed the staged `Inspect quarantined family geometry` request in a new Imperial project derivative. It did not open selected-D, place a family instance, or create a host probe.

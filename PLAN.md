@@ -1,7 +1,13 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M252 completes an isolated Revit 2027 measurement of the quarantined 3195A101.020 predecessor bowl: three types, 14.1253 x 29.1884 x 17.1581 in family-symbol bounds, zero instances, no selected-D access. The report and derivative pass 7/7 independent read-only checks; the repository validator remains pending because Revit holds the source open and this PowerShell session is Restricted. M-06/A/B remain unassigned.
+Status: M253 found no public exact-SKU Revit family for 610AA001.020. The current manufacturer page links predecessor 211AA-series PDFs; the selected-SKU infographic provides only a 19 x 30-1/4 in plan envelope. M252 isolated predecessor-bowl report passed 7/7 checks, with external source-file validation pending due to the Revit lock and Restricted PowerShell policy. M-06/A/B remain unassigned.
+
+## M253 — Refresh the selected M-06 toilet's exact-SKU public BIM evidence
+
+**Acceptance:** inspect current manufacturer product resources and public BIM indexes for the selected `610AA001.020` without accounts, gated downloads, or spending; verify whether the manufacturer-linked dimensional documents actually match the selected SKU; retain the current infographic dimensions only at their documented scope; keep M-06/A/B unassigned.
+
+**Result:** the current manufacturer page confirms `610AA001.020` and lists only a spec sheet and installation guide, but both linked documents describe predecessor 211AA models. Public exact-SKU BIM searches found no matching RFA; the public American Standard BIMstore page exposes different APAC products, while RevitCity's generic item lacks a SKU and download is sign-in-gated. The M120/M229 manufacturer infographic is the current-SKU source for a 19 x 30-1/4 in plan envelope, not a full 3D family. Do not fabricate an assembled family by combining the M252 bowl predecessor with current-SKU plan data. See `Architecture/M253_M06_Current_SKU_BIM_Refresh_2026-10-31/README.md`.
 
 ## M252 — Measure quarantined predecessor bowl geometry in Revit
 
