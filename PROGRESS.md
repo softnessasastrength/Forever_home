@@ -6,6 +6,7 @@ Updated: 2026-10-31
 
 - Replayed `Tools/build_m83_gable_massing_options.ps1` into two isolated `.local/revalidation` directories. Both runs pass **13/13** checks; `roof-options.json`, `checks.json` and `roof-options.svg` match the retained M83 artifacts byte-for-byte. SVG parses as XML.
 - The offline RevitPilot regression suite passes **49/49**; this does not substitute for the Revit host run, which remains inaccessible through the supported UI bridge.
+- Fresh IFC revalidation of retained M83-A and M83-B exact-backup exports passes **21/21** each with zero schema errors and matching saved-RVT fingerprints. Reports: `F0EAAC76625EAA898BA6E22FCFAF693C91D6BE4BB8169C31D4E82CF584938F59` and `B4A3239F653DC0FD2F220453E87B6977436D265D4C28981BD3EA21EC10E2743F`. The later-saved primary M83-B RVT is excluded; its `.0001.rvt` backup remains the matching source.
 - The source-bound shell remains a hypothetical 38.333333 × 40 ft comparison. The 12:12 cases rise 20 ft (ridge-X) and 19.1667 ft (ridge-Y) above a relative eave. These are comparative calculations, not selected building elevations.
 - Selected-D hash remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. No Revit host, model, IFC, selected-D, RFA or remote state changed.
 - Evidence and commands: `Architecture/M246_Gable_Study_Replay_2026-10-31/README.md`. M83 remains open-surface massing, not a native roof or code/structural design.
