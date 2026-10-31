@@ -95,7 +95,16 @@ def validate(run_directory: Path, report_path: Path | None = None) -> dict[str, 
         "No code applicability, snow/wind load, structural adequacy, accessibility, professional certification or construction-readiness finding is made.",
     ]
     if errors:
-        result = {"schema": "forever-home.m83-gable-massing-ifc-validation.v1", "status": "fail", "checks": checks, "observations": observations, "errors": errors, "limitations": limitations}
+        result = {
+            "schema": "forever-home.m83-gable-massing-ifc-validation.v1",
+            "status": "fail",
+            "checks": checks,
+            "passed_count": sum(bool(value) for value in checks.values()),
+            "check_count": len(checks),
+            "observations": observations,
+            "errors": errors,
+            "limitations": limitations,
+        }
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         return result

@@ -1535,3 +1535,10 @@ The next M-06 gate remains read-only Revit inspection of the quarantined exact-s
 - Added direct Autodesk API references to the M83 README. The `Document.Regenerate` API reference describes refreshing changed document elements and demonstrates reading updated element state after regeneration, supporting the code order `SetShape` → `Regenerate` → bounds query.
 - The Revit 2027 IFC export guide documents API export through `Document.Export(String, String, IFCExportOptions)`. Source inspection confirms the M83 command uses `IFCVersion.IFC2x3CV2`.
 - This confirms the documented API path only. Revit execution of the repair, six-option geometry, saved-RVT fingerprint and independent IFC validation are still outstanding. No model or remote state changed.
+
+## M126 - Test and repair M83 IFC validator failure reporting - 2026-10-30
+
+- Added `Tools/RevitPilot/tests/test_m83_gable_ifc_validator.py` with five tests for expected case bounds, metre-to-foot conversion and triangulated surface area, rejection of non-finite geometry, geometry-engine exceptions, and machine-readable missing-host failure reports.
+- The missing-artifact test found a real CLI defect: `validate()` returned early without `passed_count`/`check_count`, then `main()` indexed those fields. Added both counters to the early failure result.
+- Focused command `.venv\Scripts\python.exe -m unittest discover -s Tools\RevitPilot\tests -p 'test_m83_gable_ifc_validator.py' -v` passes **5/5**. Running the CLI against an empty ignored directory prints `FAIL: 0/6 checks passed`, writes valid JSON and exits 1 without traceback.
+- Full suite `.venv\Scripts\python.exe -m unittest discover -s Tools\RevitPilot\tests -v` passes **47/47**. These remain offline checks; no successful M83 Revit derivative or IFC export was created. No model or remote state changed.

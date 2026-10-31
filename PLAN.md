@@ -1345,3 +1345,14 @@ Acceptance criteria:
 - Keep documentation research distinct from runtime verification; do not mark M83 host/IFC completion based on references alone.
 
 Status: Complete as a documentation cross-check. Autodesk's API reference describes `Document.Regenerate` as updating document elements after changes and demonstrates reading modified element state only after regeneration. Autodesk's Revit 2027 IFC guide documents API export through `Document.Export(String, String, IFCExportOptions)`; `GableMassingCommand` sets `IFCVersion.IFC2x3CV2`. These sources support the documented API route, but M83 still requires the six-case Revit run and independent IFC validation. See M125 in `PROGRESS.md` and the M83 README.
+
+## M126 - Test and repair M83 IFC validator failure reporting
+
+Acceptance criteria:
+
+- Add focused tests for M83 expected bounds, IFC mesh unit conversion/triangle area, invalid geometry, and missing host artifacts.
+- Ensure the missing-artifact path emits the same machine-readable count fields consumed by the command-line summary.
+- Run the validator against an empty disposable folder; require a clear failed report and exit code 1 rather than a traceback.
+- Run the complete offline RevitPilot test suite and keep its result distinct from Revit runtime/IFC-export validation.
+
+Status: Complete. New M83 validator tests cover the geometric helper functions and missing-input path. The test exposed an early-return bug: missing required artifacts produced no `passed_count` or `check_count`, while the CLI summary indexed both fields and raised `KeyError`. The failure result now includes both counts. The focused M83 IFC validator tests pass 5/5; the empty-run CLI prints `FAIL: 0/6 checks passed`, writes a parseable report and exits 1 without traceback. The entire offline suite passes **47/47**. No successful M83 host IFC has yet been produced or validated. See M126 in `PROGRESS.md`.
