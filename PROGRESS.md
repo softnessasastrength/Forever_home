@@ -2091,3 +2091,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Recorded the owner's selection of one dominant traditional main gable with a simpler, subordinate porch roof in `Decisions/2026-10-31_Roofline_Concept.md`.
 - Pitch, ridge/eave elevations and orientation, roof assembly, structure, and site response remain unresolved. M135's pitch cases remain geometric studies, not selected or structurally endorsed specifications.
 - No Revit, IFC, selected-D, family source, or remote state changed.
+
+## M195 — Social layout and porch-door alignment search — 2026-10-31
+
+- Added `Tools/search_m195_social_layout_candidates.ps1` and the retained evidence in `Architecture/M195_Social_Layout_Search_2026-10-31/`. It tests four declared dining/table/porch placements, translating the dining/porch axis and rotating the table with four chair bodies and four 36-in use-zone proxies. Each placement reruns the M186 36-in route search on its quarter-foot grid.
+- Three Windows PowerShell 5.1 executions pass **9/9** M195 checks; each generated M186 run passes **29/29**. Retained JSON, checks and CSV match both independent scratch replays byte-for-byte. Hashes and exact commands are in the README.
+- **0/4** placements reach the porch with the fixed M178 13.5 × 14 ft / 189 sf kitchen and 8 × 4 ft island. Nearest reachable samples are 12–12.5 ft from the candidate door. Pantry-side M-06/B stays unassigned, clear of the dining/porch footprints and protected in each route search. The porch overlaps alternate A by 0.403–1.007 sf in these sensitivities.
+- This milestone does not vary the kitchen area, prove a minimum, or establish a viable layout. Dining/chair-use envelopes, stools and other circulation items remain proxies; actual walls, openings, door operation, appliances and site connection remain uncoordinated. Selected-D, RVT/IFC and Incoming RFA sources are unchanged.
+- Next: vary the kitchen envelope/area and opening relationship to circulation, keeping the 8 × 4 ft island as the prioritized comparison and B unassigned. Measure the stool family in an authorized Revit inspection when the host application is safely accessible.
