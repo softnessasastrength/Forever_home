@@ -1649,3 +1649,15 @@ Acceptance criteria:
 - Keep M-06/B and any hall-edge alternative unassigned.
 
 Status: Complete as a bounded public-source search. The manufacturer page still links a 2013 211AA.104 predecessor spec and a 2019 211AA-series installation guide. RevitCity lists a generic “American Standard Toilet” entry from Revit 2011 with no model number and requires login to download. Exact-SKU searches found no public indexed RFA. No gated file was fetched or account used. See Architecture/M155_Champion_Pro_RFA_Public_Source_Check_2026-10-30/README.md; the current 610AA assembly remains unresolved.
+
+## M156 - Audit bedroom-candidate perimeter contact across M115 routes
+
+Acceptance criteria:
+
+- Bind the M115 candidate archive and search to its independent audit and manifest, plus the selected-D source, room program and existing Connecticut R310 research note.
+- Reconstruct the 73 M147-compatible room-block candidates and measure U-01/U-03/U-04 contact with the owner-authorized hypothetical shell outline.
+- Record edge and candidate counts without calling shell contact a wall or opening; preserve bedroom classification and code applicability as unresolved.
+- Run twice in isolated scratch directories under Windows PowerShell 5.1 and require 16/16 checks plus byte-identical JSON/CSV artifacts.
+- Leave selected-D, Revit/IFC, source RFAs and shell/layout selections untouched.
+
+Status: Complete as a bounded geometry screen. Two PowerShell 5.1 runs pass 16/16 and match all outputs. Across 73 route-compatible M115 candidates, U-01 has zero test-shell perimeter contacts, U-03 has 73, and U-04 has 28. This identifies a primary-bedroom edge-access gap in the U-03-seeded candidate set; it does not establish an exterior wall, EERO, sleeping-room classification or compliance. See `Architecture/M156_M115_Sleeping_Room_Perimeter_2026-10-30/README.md`. M157 will test primary-bedroom perimeter-rooted search seeds without changing default search behavior.

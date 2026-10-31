@@ -1736,3 +1736,10 @@ The next M-06 gate remains read-only Revit inspection of the quarantined exact-s
 - RevitCity's public search exposes “American Standard Toilet,” Revit Architecture 2011, uploaded in 2010, with no model number. The detail page requires login or joining to download. BIMobject's public American Standard catalogue and exact-SKU search produced no indexed current family.
 - No account, credential, gated download or purchase was used. Search absence is not proof that no exact family exists outside these public results. Do not treat the generic 2011 family as product-geometry evidence.
 - M-06 remains unassigned. The current infographic plan rectangle remains the only current-SKU plan-size source in M120; complete assembly geometry, door/approach, finished clearances and service route are still unresolved. See M155 README.
+
+## M156 - M115 sleeping-room candidate perimeter screen - 2026-10-30
+
+- Added `Tools/analyze_m156_m115_sleeping_room_perimeter.ps1` and `Architecture/M156_M115_Sleeping_Room_Perimeter_2026-10-30/`. It verifies M115 archive/search/audit/manifest bindings and M147's exact route/privacy filter before measuring U-01/U-03/U-04 contact with the hypothetical test-shell outline.
+- Two Windows PowerShell 5.1 runs in isolated scratch paths pass **16/16** and reproduce JSON/CSV outputs byte-for-byte. The report contains 219 rows across 73 candidates. U-01 has **0/73** hypothetical perimeter contact, U-03 **73/73**, and U-04 **28/73**. No exterior wall or EERO is claimed.
+- This identifies a primary-bedroom edge-access gap in the U-03-rooted M115 candidate set. M157 is planned to test U-01 perimeter roots while preserving owner-directed route/link requirements and the generator's default-output compatibility.
+- Selected-D remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`; the three untracked Incoming RFAs remain preserved. No Revit, IFC, room selection, remote state or existing history changed.
