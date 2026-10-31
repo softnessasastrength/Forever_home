@@ -65,6 +65,35 @@ def geometry_metrics(product: Any, settings: Any, unit_scale: float) -> dict[str
     }
 
 
+def make_geometry_settings() -> Any:
+    settings = ifcopenshell.geom.settings()
+    settings.set(settings.USE_WORLD_COORDS, True)
+    # IfcOpenShell returns SI coordinates by default. Ask it to retain the IFC
+    # project's declared units so unit_scale * FT_PER_METRE converts to feet.
+    settings.set(settings.CONVERT_BACK_UNITS, True)
+    return settings
+
+
+def case_id_for_proxy(proxy: Any, geometry_rows: list[dict[str, Any]]) -> str | None:
+    """Match an IFC proxy to the exact Revit DirectShape recorded in the run."""
+    tag = str(getattr(proxy, "Tag", None) or "").strip()
+    name = str(getattr(proxy, "Name", None) or "")
+    if not tag or not name.endswith(f":{tag}"):
+        return None
+
+    matches: list[str] = []
+    for row in geometry_rows:
+        unique_id = str(row.get("direct_shape_unique_id", ""))
+        suffix = unique_id.rsplit("-", 1)[-1]
+        try:
+            element_id = str(int(suffix, 16))
+        except ValueError:
+            continue
+        if element_id == tag:
+            matches.append(str(row.get("case_id", "")))
+    return matches[0] if len(matches) == 1 and matches[0] else None
+
+
 def expected_bounds(option: dict[str, Any], width: float, depth: float, rise: float) -> dict[str, float]:
     offset = option["display_offset_ft"]
     x, y = float(offset["x"]), float(offset["y"])
@@ -131,8 +160,7 @@ def validate(run_directory: Path, report_path: Path | None = None) -> dict[str, 
         and export_result.get("ifc_bytes") == paths["ifc"].stat().st_size
         and export_result.get("ifc_sha256") == sha256(paths["ifc"])
     )
-    geometry_settings = ifcopenshell.geom.settings()
-    geometry_settings.set(geometry_settings.USE_WORLD_COORDS, True)
+    geometry_settings = make_geometry_settings()
     model_ifc = None
     logger = None
     try:
@@ -172,14 +200,14 @@ def validate(run_directory: Path, report_path: Path | None = None) -> dict[str, 
     if model_ifc:
         proxies = model_ifc.by_type("IfcBuildingElementProxy")
         entities_by_name: dict[str, Any] = {}
+        geometry_rows = study_manifest.get("geometry", [])
         for proxy in proxies:
             label_fields = [getattr(proxy, name, None) for name in ("Name", "Tag", "Description", "ObjectType")]
             label = " | ".join(str(value or "") for value in label_fields)
-            matches = [case_id for case_id in expected_options if case_id in label]
-            if len(matches) != 1:
-                geometry_errors.append(f"Proxy label is missing a unique M83 case ID: {label!r}")
+            case_id = case_id_for_proxy(proxy, geometry_rows)
+            if case_id not in expected_options:
+                geometry_errors.append(f"IFC proxy cannot be bound to a unique source DirectShape: {label!r}")
                 continue
-            case_id = matches[0]
             if case_id in entities_by_name:
                 geometry_errors.append(f"Duplicate IFC proxy for {case_id}")
                 continue

@@ -5,10 +5,39 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from Tools.RevitPilot.validate_gable_massing_ifc import expected_bounds, geometry_metrics, validate
+from Tools.RevitPilot.validate_gable_massing_ifc import (
+    case_id_for_proxy,
+    expected_bounds,
+    geometry_metrics,
+    make_geometry_settings,
+    validate,
+)
 
 
 class M83GableIfcValidatorTests(unittest.TestCase):
+    def test_geometry_settings_return_project_units_and_world_coordinates(self):
+        class FakeSettings:
+            USE_WORLD_COORDS = "world"
+            CONVERT_BACK_UNITS = "project-units"
+
+            def __init__(self):
+                self.values = {}
+
+            def set(self, key, value):
+                self.values[key] = value
+
+        settings = FakeSettings()
+        with patch("Tools.RevitPilot.validate_gable_massing_ifc.ifcopenshell.geom.settings", return_value=settings):
+            self.assertIs(make_geometry_settings(), settings)
+        self.assertEqual(settings.values, {"world": True, "project-units": True})
+
+    def test_proxy_is_bound_to_direct_shape_by_saved_revit_element_id(self):
+        proxy = SimpleNamespace(Tag="2794", Name="12 - Conceptual Gable Surfaces:2794")
+        rows = [{"case_id": "M83-X-8:12", "direct_shape_unique_id": "e2ba5e72-6b64-4724-a2c6-db2cb927bed8-00000aea"}]
+
+        self.assertEqual(case_id_for_proxy(proxy, rows), "M83-X-8:12")
+        self.assertIsNone(case_id_for_proxy(SimpleNamespace(Tag="2795", Name="Generic proxy"), rows))
+
     def test_expected_bounds_include_display_offset_and_relative_rise(self):
         option = {"display_offset_ft": {"x": 50.0, "y": 100.0}}
 
