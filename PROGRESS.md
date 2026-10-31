@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M248 — Revalidate current selected-D geometry and IFC exports
+
+- Ran `Tools/validate_architectural_bim_baseline.ps1` into `.local/revalidation/M247-current-baseline/`. Both selected-D generations pass **43/43**, seven files match per run, six plan SVGs parse, and the retained IFC2x3 passes **26/26** with zero schema errors.
+- Room inventory, IFC storeys/space identity/name/area/level/bounds/profile, and saved-RVT/IFC fingerprints match the pinned study. L-02/U-06 overlap remains 0 sf; M-06 footprint remains TBD. Report SHA256: `6325795E1735FAA19AE78567705D2BF455E901760CC49D07BA228E5057CC8239`.
+- Protected selected-D/RVT/IFC hashes remain unchanged. The Incoming Evolution RFA remains SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. Construction categories remain empty; this verifies the room-space study, not a complete house model. Details: `Architecture/M248_Current_Baseline_Revalidation_2026-10-31/README.md`.
+
 ## M247 — Refresh the public exact-SKU M-06 family search
 
 - Rechecked the current American Standard page and exact-SKU infographic; the downloaded infographic matches M120's pinned SHA256 `F09F6BFBCBB62F53828BD99E46F2351BB279E4C031980BBC5E35790E0FE86FBF` (133,750 bytes). Current page links still resolve to older 211AA-series spec and installation documents.
