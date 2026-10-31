@@ -1,6 +1,7 @@
 # M225 — M-06 exact-SKU public resource audit
 
-**Date:** 2026-10-31  
+**Date:** 2026-10-31
+
 **Status:** public-source audit complete; selected fixture fit remains unresolved.
 
 ## Scope and method
