@@ -14,7 +14,7 @@ $expected = @{
     m228 = 'f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff'
     m215 = 'f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
     m232 = 'dd324b1b88d73902a03e33144dd4f48694fbb6839dec86be1f5f69623ea7a180'
-    decision = 'bbcd232445a4babedba0ba0e2729c4d5c954520e605df69c342e043100151f1b'
+    decision = 'ef07fc60f94ec61a62a0cae486fbd18be040a02c1659fa1be35f341be369ec99'
 }
 function Hash([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
 $sourceHashes = @{

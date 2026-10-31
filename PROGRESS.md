@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M236 — Repair and replay the M-01 six-inch translation study pin
+
+- A fresh replay exposed that the M233 script expected decision-note SHA256 `bbcd232445a4babedba0ba0e2729c4d5c954520e605df69c342e043100151f1b`, while the unchanged committed note hashes to `ef07fc60f94ec61a62a0cae486fbd18be040a02c1659fa1be35f341be369ec99`. Corrected the stale pin only.
+- Three isolated Windows PowerShell 5.1 runs pass **10/10**. `m233-checks.json` and the SVG reproduce byte-for-byte across all three and match retained M233 artifact hashes (`F3C51A710E69359AE6DF19695C6EA5C214D6B45F1793E045F44A0CC2FACDC151`; `7D3F97953783EDDB726761495F122851C289A4FFB0ED922F1FF76C39C5205113`). `git diff --check` passes.
+- Selected-D remains unchanged; the 6-in east translation remains an unselected room-block study, with 240 sf gross area, west A protected for research, east B unassigned, and M-06 unassigned. No doors, clear path, actual fixture fit, service route or code conclusion follows. The next physical-model gate remains a disposable Revit derivative; native Revit access is still blocked by the trial overlay's inaccessible nested WebView close target.
+
 ## M235 — Revalidate the selected-D geometry and IFC baseline
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
