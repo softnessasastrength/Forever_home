@@ -1,0 +1,232 @@
+﻿[
+    {
+        "candidate_id":  "M130-NE-19",
+        "variant":  "M130-source-layout",
+        "interface_wall_band_ft":  0.5,
+        "U01_U05_block_separation_ft":  0.5,
+        "U01_U05_contact_length_ft":  9,
+        "source_nominal_opening_reservation_ft":  3.5,
+        "centered_reservation_end_margin_ft":  2.75,
+        "U05_shift_from_M130_ft":  0,
+        "shell_width_ft":  38.333333,
+        "shell_depth_ft":  40,
+        "u01":  {
+                    "id":  "U-01",
+                    "x":  1.1666663333333387,
+                    "y":  10.5,
+                    "w":  16,
+                    "d":  10
+                },
+        "u05":  {
+                    "id":  "U-05",
+                    "x":  8.1666663333333389,
+                    "y":  21,
+                    "w":  9,
+                    "d":  10
+                },
+        "other_rooms":  [
+                            {
+                                "id":  "U-04",
+                                "x":  30.333333000000003,
+                                "y":  22.166666666666664,
+                                "w":  8,
+                                "d":  13.666666666666666
+                            },
+                            {
+                                "id":  "U-03",
+                                "x":  24.666666333333339,
+                                "y":  0,
+                                "w":  13.666666666666666,
+                                "d":  9.1666666666666661
+                            },
+                            {
+                                "id":  "U-06",
+                                "x":  28.333333000000003,
+                                "y":  9.6666666666666661,
+                                "w":  10,
+                                "d":  12
+                            },
+                            {
+                                "id":  "C-PRIVATE",
+                                "x":  1.1666663333333387,
+                                "y":  0,
+                                "w":  6.5,
+                                "d":  10
+                            },
+                            {
+                                "id":  "U-02",
+                                "x":  8.1666663333333389,
+                                "y":  0,
+                                "w":  16,
+                                "d":  9.6666666666666661
+                            }
+                        ],
+        "roof_cases":  [
+                           {
+                               "roof_case_id":  "M83-X-8:12",
+                               "pitch":  "8:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  6,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  12.666667,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-X-10:12",
+                               "pitch":  "10:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  7.5,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  15.833333,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-X-12:12",
+                               "pitch":  "12:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  9,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  19,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-8:12",
+                               "pitch":  "8:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  5.444444,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  11.444444,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-10:12",
+                               "pitch":  "10:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  6.805555,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  14.305555,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-12:12",
+                               "pitch":  "12:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  8.166666,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  17.166666,
+                               "finished_headroom_checked":  false
+                           }
+                       ],
+        "retained_input_public_route_samples":  3,
+        "u03_public_side_reachable_in_retained_input":  false
+    },
+    {
+        "candidate_id":  "M130-NE-24",
+        "variant":  "M130-source-layout",
+        "interface_wall_band_ft":  0.5,
+        "U01_U05_block_separation_ft":  0.5,
+        "U01_U05_contact_length_ft":  10,
+        "source_nominal_opening_reservation_ft":  3.5,
+        "centered_reservation_end_margin_ft":  3.25,
+        "U05_shift_from_M130_ft":  0,
+        "shell_width_ft":  38.333333,
+        "shell_depth_ft":  40,
+        "u01":  {
+                    "id":  "U-01",
+                    "x":  4.1666663333333389,
+                    "y":  10.5,
+                    "w":  16,
+                    "d":  10
+                },
+        "u05":  {
+                    "id":  "U-05",
+                    "x":  7.1666663333333389,
+                    "y":  21,
+                    "w":  10,
+                    "d":  9
+                },
+        "other_rooms":  [
+                            {
+                                "id":  "U-04",
+                                "x":  30.333333000000003,
+                                "y":  22.166666666666664,
+                                "w":  8,
+                                "d":  13.666666666666666
+                            },
+                            {
+                                "id":  "U-03",
+                                "x":  24.666666333333339,
+                                "y":  0,
+                                "w":  13.666666666666666,
+                                "d":  9.1666666666666661
+                            },
+                            {
+                                "id":  "U-06",
+                                "x":  28.333333000000003,
+                                "y":  9.6666666666666661,
+                                "w":  10,
+                                "d":  12
+                            },
+                            {
+                                "id":  "C-PRIVATE",
+                                "x":  1.1666663333333387,
+                                "y":  0,
+                                "w":  6.5,
+                                "d":  10
+                            },
+                            {
+                                "id":  "U-02",
+                                "x":  8.1666663333333389,
+                                "y":  0,
+                                "w":  16,
+                                "d":  9.6666666666666661
+                            }
+                        ],
+        "roof_cases":  [
+                           {
+                               "roof_case_id":  "M83-X-8:12",
+                               "pitch":  "8:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  6.666667,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  12.666667,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-X-10:12",
+                               "pitch":  "10:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  8.333333,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  15.833333,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-X-12:12",
+                               "pitch":  "12:12",
+                               "ridge_axis":  "X",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  10,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  19,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-8:12",
+                               "pitch":  "8:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  4.777778,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  11.444444,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-10:12",
+                               "pitch":  "10:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  5.972222,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  14.305555,
+                               "finished_headroom_checked":  false
+                           },
+                           {
+                               "roof_case_id":  "M83-Y-12:12",
+                               "pitch":  "12:12",
+                               "ridge_axis":  "Y",
+                               "u05_minimum_ideal_rise_above_relative_eave_ft":  7.166666,
+                               "u05_maximum_ideal_rise_above_relative_eave_ft":  17.166666,
+                               "finished_headroom_checked":  false
+                           }
+                       ],
+        "retained_input_public_route_samples":  3,
+        "u03_public_side_reachable_in_retained_input":  false
+    }
+]

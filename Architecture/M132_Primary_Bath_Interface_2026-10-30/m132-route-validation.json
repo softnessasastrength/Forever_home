@@ -1,0 +1,109 @@
+{
+    "schema":  "forever-home.m37-candidate-route-validation.v1",
+    "status":  "PASS",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "M76-derived 38.333333 x 40 ft hypothetical upper-shell test envelope; unselected proposal, owner-authorized exploration only"
+              },
+    "route_grid_ft":  0.16666666666666666,
+    "public_edge_samples_per_room_side":  9,
+    "landing_start":  {
+                          "x_ft":  19.166666666666668,
+                          "y_ft":  30
+                      },
+    "lift_keepout":  {
+                         "id":  "lift projected keepout (inside upper shell)",
+                         "x_ft":  21.166666666666668,
+                         "y_ft":  28,
+                         "width_ft":  8,
+                         "depth_ft":  8
+                     },
+    "candidate_json_path":  "Architecture\\M132_Primary_Bath_Interface_2026-10-30\\m132-layouts.json",
+    "candidate_json_sha256":  "c9868179d98ab132209e34cacf44d05dbd732fc889801a02289d3411c6b00853",
+    "generator":  "Tools/test_m37_upper_suite_pack_and_route.ps1",
+    "generator_sha256":  "f60d0a2f4897b6683d765842d0279cba50bad5b4688381c560c03a44976610d6",
+    "results":  [
+                    {
+                        "candidate_id":  "M130-NE-19",
+                        "variant":  "M130-source-layout",
+                        "route_result":  "sampled grid result",
+                        "visited_grid_cells":  8899,
+                        "public_room_sample_sides":  {
+                                                         "U-01":  [
+                                                                      "east",
+                                                                      "north",
+                                                                      "east",
+                                                                      "north",
+                                                                      "east",
+                                                                      "north",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east"
+                                                                  ],
+                                                         "U-02":  [
+                                                                      "north",
+                                                                      "north",
+                                                                      "north"
+                                                                  ],
+                                                         "U-03":  [
+
+                                                                  ],
+                                                         "U-04":  [
+                                                                      "west",
+                                                                      "west"
+                                                                  ]
+                                                     },
+                        "required_public_rooms_reached":  true,
+                        "u03_public_side_reachable":  false
+                    },
+                    {
+                        "candidate_id":  "M130-NE-24",
+                        "variant":  "M130-source-layout",
+                        "route_result":  "sampled grid result",
+                        "visited_grid_cells":  7918,
+                        "public_room_sample_sides":  {
+                                                         "U-01":  [
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east",
+                                                                      "east"
+                                                                  ],
+                                                         "U-02":  [
+                                                                      "north"
+                                                                  ],
+                                                         "U-03":  [
+
+                                                                  ],
+                                                         "U-04":  [
+                                                                      "west",
+                                                                      "west"
+                                                                  ]
+                                                     },
+                        "required_public_rooms_reached":  true,
+                        "u03_public_side_reachable":  false
+                    }
+                ],
+    "checks":  {
+                   "passed_count":  4,
+                   "check_count":  4,
+                   "failed":  [
+
+                              ],
+                   "checks":  {
+                                  "two_exact_M130_source_layouts_checked":  true,
+                                  "both_layouts_reach_sampled_U01_U02_U04_public_edges":  true,
+                                  "neither_layout_reaches_a_sampled_U03_public_edge":  true,
+                                  "sampled_hall_grid_route_is_not_a_door_or_accessibility_check":  true
+                              }
+               },
+    "interpretation":  "Sampled 4 ft corridor-grid connectivity from the reserved landing approach to room-edge goals. It identifies reachable sides, not actual door openings, private-room door links, passage clear width, accessibility, egress or code compliance."
+}

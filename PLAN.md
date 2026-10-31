@@ -1390,7 +1390,7 @@ Acceptance criteria:
 - Do not create an account, enter credentials, contact support, generate a product project/spec, or download through a gated workflow.
 - Preserve the exact-SKU model as unresolved and keep M-06/B unassigned.
 
-Status: Complete as an unauthenticated source check. The linked ATS Digital Asset Library is a JavaScript application. Its visible anonymous US-catalog Products search displayed **0 products** for exact SKU 610AA001.020. This confirms only the result of that public search, not global nonexistence. ATS's public FAQ documents its Revit download path through an authenticated Project/Spec workflow and support contact where the Revit link is absent. That FAQ does not establish the access policy for every Digital Asset Library object. No credentials or account actions were used; exact 610AA geometry remains unresolved.
+Status: Complete as an unauthenticated source check. The visible anonymous US-catalog Products search displayed **0 products** for exact SKU 610AA001.020. A separate anonymous Champion PRO Series search exposed three family records; inspected 211CA1XX is standard-height with a different bowl model and is not the selected 610AA chair-height product. The Revit format download requires an email address. No account, credentials, or email submission was used; see M131 and the dated evidence in `Research/M06_Toilet_Options_2026-10-27.md`. Exact 610AA geometry remains unresolved.
 
 ## M130 - Compare primary-bath roof exposure across U-03 privacy layouts
 
@@ -1404,15 +1404,27 @@ Acceptance criteria:
 
 Status: Complete. The new source-bound analyzer passes 15/15 checks for 64 layouts and 384 room-roof cases; two runs reproduce all four outputs byte-for-byte. Candidate position changes the relative roof-plane exposure over U-05. At 12:12, the sampled maximum minimum-rise case is 10 ft for M130-NE-24/ridge X and 8.166666 ft for M130-NE-19/ridge Y. Both are descriptive room-block comparisons; the eave/floor datum and actual fixtures are absent. See the M130 README and PROGRESS.md.
 
-## M131 - Furnish the upper-suite bath and test real circulation interfaces
+## M131 - Resolve the public ATS Champion PRO RFA lead
+
+Acceptance criteria:
+
+- Compare the exact `610AA001.020` product record against every public Champion PRO family result without inferring model equivalence from a shared collection name.
+- Record the public family metadata, product type, rough-in, bowl identity, plan dimensions and access/download requirements.
+- Do not submit an email address, sign in, create an account, or download via an email-gated workflow without specific owner authorization for the address and destination.
+- If specifically authorized, preserve source URL and SHA256 in ignored intake quarantine before read-only Revit inspection; never place an unverified alternate in selected-D.
+- Keep M-06 B unassigned pending exact product geometry, applicable clearance, door/approach and plausible service route.
+
+Status: Complete as a bounded anonymous public-library check. The exact 610AA SKU was not returned; the inspected 211CA1XX is a standard-height 3195C101 family record and is not a selected-SKU match. The Revit download path requests an email address; no address was submitted. The comparative family would not resolve the exact selected fixture, so no owner input is required to close this public-search milestone. See M131 and the research note; M-06/B remain unassigned.
+
+## M132 - Furnish the upper-suite bath and test real circulation interfaces
 
 Acceptance criteria:
 
 - Start from M130's two ridge-axis comparison leaders only as study seeds; retain alternates and do not declare a preferred plan.
 - Use only product-backed fixture dimensions from public sources already available or obtained without gated access; mark missing dimensions instead of fabricating them.
-- Show door leaf/swing, approach area, fixture use envelopes, wall thickness assumptions and plausible service zones as explicit proposals.
-- Recheck sampled U-02 arrival, U-03 private-only topology and the Connecticut conditional ceiling/EERO screens after any proposed placement.
-- Do not assign M-06 or bathroom room B until exact product geometry, applicable clearance basis, door/approach and a plausible service route are all supported.
+- Test a primary-only U-01/U-05 shared-wall interface, then show door location/leaf/swing, approach area, fixture use envelopes and plausible service zones as explicit proposals when the required dimensions are available.
+- Screen documented fixture spacing; recheck sampled U-02 arrival, U-03 private-only topology and Connecticut conditional ceiling/EERO screens after any proposed placement. Separate arithmetic screens from real doorway, route and finished-headroom validation.
+- Do not assign M-06 or any bathroom footprint until applicable clearance basis, door/approach and service routing have support.
 - Keep this as source-bound 2D study geometry until an isolated Revit derivative can be safely validated; no selected-D baseline edits.
 
-Status: Planned. M130 demonstrates that U-05's roof exposure depends on its layout/orientation and the ridge axis. Exact selected Champion PRO geometry remains unavailable in the anonymous public lookup, and the Revit host prompt still requires a safe, exact-DLL match. The bath fit remains the next design study, with those evidence gates stated explicitly.
+Status: In progress. M132's analyzer passes 25/25 checks with the M37 route report attached; both unchanged M130 layouts pass 4/4 route checks and all seven generated artifacts replay byte-for-byte. Their 0.5 ft U-01/U-05 separation is the wall-band convention used by M37 topology; the source upper-door matrix records a 3.5 ft nominal reservation along their 9 ft/10 ft contact bands. No room coordinates are changed, and the reservation is not a door design. The current 610AA infographic envelope and two research-only lavatory candidates pass 8/8 body-plus-21-in-strip cases under the stated 15-in WC-centerline and 30-in WC-spacing assumptions. The six ideal roof cases were recomputed over each unchanged U-05 block. M37 grid samples reach public edges at U-01/U-02/U-04 and do not reach a public edge at U-03; this is not physical door geometry or proof of U-03's private door route. Finished-face clearance, selected bath fixtures, service routing, headroom, code applicability, Revit placement and IFC remain open. See the M132 package and PROGRESS.md.

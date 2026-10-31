@@ -19,7 +19,9 @@ param(
     [ValidateRange(0,64)]
     [int]$AdditionalContactSamples = 0,
     [ValidateRange(1,9)]
-    [int]$PublicDoorEdgeSamples = 1
+    [int]$PublicDoorEdgeSamples = 1,
+    [string]$ValidateCandidateJsonPath = '',
+    [string]$CandidateRouteReportPath = ''
 )
 
 $ErrorActionPreference='Stop'
@@ -326,6 +328,45 @@ function Get-HallReachability($rects,$keepout){
         $reachable[$id]=@($sides)
     }
     [ordered]@{visited_cells=$visitedCount;reachable_room_sides=$reachable;required_public_rooms_reached=(@($reachable['U-01']).Count -gt 0 -and @($reachable['U-02']).Count -gt 0 -and @($reachable['U-04']).Count -gt 0);u03_hall_side_reachable=(@($reachable['U-03']).Count -gt 0)}
+}
+if(-not [string]::IsNullOrWhiteSpace($ValidateCandidateJsonPath)){
+    if([string]::IsNullOrWhiteSpace($CandidateRouteReportPath)){throw 'Candidate route validation requires -CandidateRouteReportPath.'}
+    if(-not $script:UseLandingAlignedRootSeeds -or [Math]::Abs($script:ShellW-38.333333) -gt 0.000001 -or [Math]::Abs($script:ShellD-40.0) -gt 0.000001){throw 'Candidate validation is limited to the landing-aligned hypothetical 38.333333 x 40 ft test shell.'}
+    $candidatePath=[System.IO.Path]::GetFullPath((Join-Path $repo $ValidateCandidateJsonPath))
+    if(-not $candidatePath.StartsWith(($repo.TrimEnd([System.IO.Path]::DirectorySeparatorChar)+[System.IO.Path]::DirectorySeparatorChar),[StringComparison]::OrdinalIgnoreCase)){throw 'Candidate JSON must resolve inside this repository.'}
+    if(-not (Test-Path -LiteralPath $candidatePath -PathType Leaf)){throw "Candidate JSON is missing: $candidatePath"}
+    $candidateDocument=Get-Content -LiteralPath $candidatePath -Raw | ConvertFrom-Json
+    $candidateRows=@($candidateDocument)
+    if($candidateRows.Count -ne 2){throw "Expected the two exact M132 M130-source layouts; found $($candidateRows.Count)."}
+    $routeRows=[System.Collections.Generic.List[object]]::new()
+    foreach($candidate in $candidateRows){
+        $rects=[ordered]@{}
+        foreach($room in @($candidate.other_rooms)+@($candidate.u01)+@($candidate.u05)){
+            if($rects.Contains([string]$room.id)){throw "Duplicate room in $($candidate.candidate_id)/$($candidate.variant): $($room.id)"}
+            $rects[[string]$room.id]=New-Box ([string]$room.id) ([double]$room.x) ([double]$room.y) ([double]$room.w) ([double]$room.d)
+        }
+        $route=Get-HallReachability $rects $liftKeepout
+        if($null -eq $route){$routeRows.Add([pscustomobject][ordered]@{candidate_id=[string]$candidate.candidate_id;variant=[string]$candidate.variant;route_result='blocked start or no route result';visited_grid_cells=0;public_room_sample_sides=@{};required_public_rooms_reached=$false;u03_public_side_reachable=$false})}
+        else{$routeRows.Add([pscustomobject][ordered]@{candidate_id=[string]$candidate.candidate_id;variant=[string]$candidate.variant;route_result='sampled grid result';visited_grid_cells=[int]$route.visited_cells;public_room_sample_sides=$route.reachable_room_sides;required_public_rooms_reached=[bool]$route.required_public_rooms_reached;u03_public_side_reachable=[bool]$route.u03_hall_side_reachable})}
+    }
+    $routeChecks=[ordered]@{
+        two_exact_M130_source_layouts_checked=($routeRows.Count -eq 2)
+        both_layouts_reach_sampled_U01_U02_U04_public_edges=(@($routeRows|Where-Object { -not $_.required_public_rooms_reached }).Count -eq 0)
+        neither_layout_reaches_a_sampled_U03_public_edge=(@($routeRows|Where-Object { $_.u03_public_side_reachable }).Count -eq 0)
+        sampled_hall_grid_route_is_not_a_door_or_accessibility_check=$true
+    }
+    $routeFailed=@($routeChecks.Keys|Where-Object{-not $routeChecks[$_]})
+    $candidateHash=(Get-FileHash -LiteralPath $candidatePath -Algorithm SHA256).Hash.ToLowerInvariant()
+    $candidateRelativePath=$candidatePath.Substring($repo.Length).TrimStart([char[]]@('\','/'))
+    $report=[ordered]@{schema='forever-home.m37-candidate-route-validation.v1';status=if($routeFailed.Count){'FAIL'}else{'PASS'};shell=[ordered]@{width_ft=$script:ShellW;depth_ft=$script:ShellD;status=$script:ShellCase};route_grid_ft=([double](1.0/$grid));public_edge_samples_per_room_side=$script:PublicDoorEdgeSamples;landing_start=[ordered]@{x_ft=$startX;y_ft=$startY};lift_keepout=$liftKeepout;candidate_json_path=$candidateRelativePath;candidate_json_sha256=$candidateHash;generator='Tools/test_m37_upper_suite_pack_and_route.ps1';generator_sha256=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant();results=@($routeRows);checks=[ordered]@{passed_count=($routeChecks.Count-$routeFailed.Count);check_count=$routeChecks.Count;failed=$routeFailed;checks=$routeChecks};interpretation='Sampled 4 ft corridor-grid connectivity from the reserved landing approach to room-edge goals. It identifies reachable sides, not actual door openings, private-room door links, passage clear width, accessibility, egress or code compliance.'}
+    $reportPath=[System.IO.Path]::GetFullPath((Join-Path $repo $CandidateRouteReportPath))
+    if(-not $reportPath.StartsWith(($repo.TrimEnd([System.IO.Path]::DirectorySeparatorChar)+[System.IO.Path]::DirectorySeparatorChar),[StringComparison]::OrdinalIgnoreCase)){throw 'Candidate route report must resolve inside this repository.'}
+    $reportDir=Split-Path -Parent $reportPath
+    if(-not(Test-Path -LiteralPath $reportDir)){New-Item -ItemType Directory -Path $reportDir -Force|Out-Null}
+    [System.IO.File]::WriteAllText($reportPath,(ConvertTo-Json -InputObject $report -Depth 12)+"`n",[System.Text.UTF8Encoding]::new($false))
+    Write-Output ("M37 candidate route validation {0}: {1}/{2} checks; {3} layouts; {4} samples per room edge" -f $report.status,$report.checks.passed_count,$report.checks.check_count,$routeRows.Count,$script:PublicDoorEdgeSamples)
+    if($routeFailed.Count){throw "M37 candidate route validation failed: $($routeFailed -join ', ')"}
+    return
 }
 function Test-PartialPublicAccess($rects,$keepout){
     $script:EarlyRouteCheckCount++

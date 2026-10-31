@@ -1,0 +1,35 @@
+{
+    "schema":  "forever-home.m132-checks.v1",
+    "passed_count":  25,
+    "check_count":  25,
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "selected_D_fingerprint_matches_documented_baseline":  true,
+                   "M130_input_and_sink_report_schemas_are_expected":  true,
+                   "M37_route_report_matches_the_exact_M132_layout_artifact":  true,
+                   "all_M37_sampled_routes_pass_when_report_is_supplied":  true,
+                   "source_hashes_match_reviewed_artifacts":  true,
+                   "shell_remains_owner_authorized_hypothetical_38_333333_by_40":  true,
+                   "exact_selected_toilet_dimensions_are_source_documented":  true,
+                   "only_documented_sink_envelopes_are_used":  true,
+                   "both_M130_comparison_leaders_exist_once":  true,
+                   "selected_source_records_U01_to_U05_primary_only_door_reservation":  true,
+                   "both_M130_leaders_match_the_M37_half_foot_wall_band":  true,
+                   "nominal_door_reservation_fits_both_contact_bands":  true,
+                   "M130_room_coordinates_are_preserved_without_a_bath_shift":  true,
+                   "all_proposed_rooms_stay_inside_hypothetical_shell":  true,
+                   "all_proposed_room_blocks_keep_source_areas":  true,
+                   "no_proposed_room_blocks_overlap":  true,
+                   "private_bath_touches_only_primary_room":  true,
+                   "every_layout_has_six_finite_updated_ideal_roof_comparisons":  true,
+                   "each_fixture_pair_passes_bounded_body_clearance_screen":  true,
+                   "toilet_front_screen_is_at_least_21_inches":  true,
+                   "toilet_side_centerline_screen_is_at_least_15_inches":  true,
+                   "sink_and_toilet_nominal_bodies_do_not_overlap":  true,
+                   "no_door_dimensions_are_invented":  true,
+                   "no_bathing_fixture_dimensions_are_invented":  true,
+                   "selected_D_source_unchanged":  true
+               }
+}

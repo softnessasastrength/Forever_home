@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="910" height="505" viewBox="0 0 910 505">
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#20262d}.title{font-size:15px;font-weight:700}.label{font-size:12px}.small{font-size:10px}.room{fill:#e7e8e5;stroke:#59636d;stroke-width:1}.primary{fill:#dce8f5}.bath{fill:#f4e2c6;stroke:#9c6a24;stroke-width:2}.fixture{fill:#fafafa;stroke:#3e5264;stroke-width:1.5}.clear{fill:#d9eef2;fill-opacity:.48;stroke:#3b91a1;stroke-dasharray:4 3;stroke-width:1}.shell{fill:#fff;stroke:#242b30;stroke-width:2}.shared{stroke:#bf3c35;stroke-width:4;stroke-dasharray:7 4}.spacer{stroke:#b37b20;stroke-width:2;stroke-dasharray:3 3}</style>
+<g transform="translate(0,0)">
+<text x="18" y="22" class="title">M130-NE-19 - M130 source layout</text>
+<text x="18" y="39" class="small">Hypothetical shell; gross room blocks only; scale 10 px/ft</text>
+<rect x="28" y="52" width="383.33" height="400" class="shell"/>
+<rect x="331.33" y="93.67" width="80" height="136.67" class="room"/>
+<text x="335.33" y="106.67" class="small">U-04</text>
+<rect x="274.67" y="360.33" width="136.67" height="91.67" class="room"/>
+<text x="278.67" y="373.33" class="small">U-03</text>
+<rect x="311.33" y="235.33" width="100" height="120" class="room"/>
+<text x="315.33" y="248.33" class="small">U-06</text>
+<rect x="39.67" y="352" width="65" height="100" class="room"/>
+<text x="43.67" y="365" class="small">C-PRIVATE</text>
+<rect x="109.67" y="355.33" width="160" height="96.67" class="room"/>
+<text x="113.67" y="368.33" class="small">U-02</text>
+<rect x="39.67" y="247" width="160" height="100" class="primary" stroke="#59636d"/>
+<text x="44.67" y="264" class="label">U-01 Primary</text>
+<rect x="109.67" y="142" width="90" height="100" class="bath"/>
+<text x="114.67" y="159" class="label">U-05 Primary bath</text>
+<rect x="114.25" y="167.21" width="15.83" height="17.5" class="clear"/>
+<rect x="137.17" y="158.25" width="20" height="17.5" class="clear"/>
+<rect x="114.25" y="142" width="15.83" height="25.21" class="fixture"/>
+<rect x="137.17" y="142" width="20" height="16.25" class="fixture"/>
+<text x="116.25" y="154" class="small">610AA envelope</text>
+<text x="139.17" y="154" class="small">Tresham candidate</text>
+<line x1="109.67" y1="244.5" x2="199.67" y2="244.5" class="spacer"/>
+<line x1="137.17" y1="244.5" x2="172.17" y2="244.5" class="shared"/>
+<text x="18" y="472" class="small">0.5 ft M37 wall-band convention; red = centered 3.5 ft source reservation, not a door design.</text>
+<text x="18" y="487" class="small">Blue dashed = 21 in screen strips; M-06 toilet envelope is illustrative in U-05.</text>
+</g>
+<g transform="translate(455,0)">
+<text x="18" y="22" class="title">M130-NE-24 - M130 source layout</text>
+<text x="18" y="39" class="small">Hypothetical shell; gross room blocks only; scale 10 px/ft</text>
+<rect x="28" y="52" width="383.33" height="400" class="shell"/>
+<rect x="331.33" y="93.67" width="80" height="136.67" class="room"/>
+<text x="335.33" y="106.67" class="small">U-04</text>
+<rect x="274.67" y="360.33" width="136.67" height="91.67" class="room"/>
+<text x="278.67" y="373.33" class="small">U-03</text>
+<rect x="311.33" y="235.33" width="100" height="120" class="room"/>
+<text x="315.33" y="248.33" class="small">U-06</text>
+<rect x="39.67" y="352" width="65" height="100" class="room"/>
+<text x="43.67" y="365" class="small">C-PRIVATE</text>
+<rect x="109.67" y="355.33" width="160" height="96.67" class="room"/>
+<text x="113.67" y="368.33" class="small">U-02</text>
+<rect x="69.67" y="247" width="160" height="100" class="primary" stroke="#59636d"/>
+<text x="74.67" y="264" class="label">U-01 Primary</text>
+<rect x="99.67" y="152" width="100" height="90" class="bath"/>
+<text x="104.67" y="169" class="label">U-05 Primary bath</text>
+<rect x="104.25" y="177.21" width="15.83" height="17.5" class="clear"/>
+<rect x="127.17" y="168.25" width="20" height="17.5" class="clear"/>
+<rect x="104.25" y="152" width="15.83" height="25.21" class="fixture"/>
+<rect x="127.17" y="152" width="20" height="16.25" class="fixture"/>
+<text x="106.25" y="164" class="small">610AA envelope</text>
+<text x="129.17" y="164" class="small">Tresham candidate</text>
+<line x1="99.67" y1="244.5" x2="199.67" y2="244.5" class="spacer"/>
+<line x1="132.17" y1="244.5" x2="167.17" y2="244.5" class="shared"/>
+<text x="18" y="472" class="small">0.5 ft M37 wall-band convention; red = centered 3.5 ft source reservation, not a door design.</text>
+<text x="18" y="487" class="small">Blue dashed = 21 in screen strips; M-06 toilet envelope is illustrative in U-05.</text>
+</g>
+</svg>
