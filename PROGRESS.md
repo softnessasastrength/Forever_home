@@ -26,6 +26,12 @@ Updated: 2026-10-31
 - The official LIXIL Pro **211AA104.020** predecessor page does expose a Revit link, but it resolves to the already quarantined, hash-pinned family (`37D3E56962B81F4B0ACE3D36D25BAFC03B7DEE1232E7DE7BBF9B95E4B0B75F63`) inspected read-only as one seat-only Plumbing Fixtures type. It cannot stand in for either the predecessor toilet body or current 610AA. TOTO Drake BIM hits are a different brand/model and were excluded.
 - No new family was downloaded. The current-SKU assembled geometry remains unverified; M-06 and A/B stay unassigned. See the M239 research note for sources and bounded-search limits.
 
+## M240 — Revalidate hash-pinned M-06 family intake evidence
+
+- Replayed `Tools/RevitPilot/validate_family_intake_snapshot.ps1` twice against the pinned 2026-10-31 manifest. Both runs locate **6/6** original family hashes and pass **173** integrity checks across **24** measured types; the second run log is retained under ignored `.local/revalidation` (SHA256 `14C93478B03B1BD4DFD9557785A6F4BE4590758DFFD7AE7CE14EBFAEC9D67CF4`).
+- Relevant symbol-local measurements include predecessor bowl `3195A101.020` (13.9997 × 29.0628 × 17.0953 in), predecessor seat `5325.010`, three Evolution family types, and Tresham K-2844-4-0. The exact family extents and validator scope are recorded in the M240 README.
+- Snapshot copying and validation changed no source RFA, selected-D, retained RVT/IFC or remote state. These measurements do not establish installed orientation/fit, a whole selected-SKU assembly, applicable clearances, door/approach, or services; M-06/A/B remain unassigned.
+
 ## M235 — Revalidate the selected-D geometry and IFC baseline
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
