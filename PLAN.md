@@ -2155,15 +2155,42 @@ Acceptance criteria:
 
 Status: Complete. Two independent PowerShell runs pass 6/6 wrapper checks; all six embedded searches pass (29/29, 31/31 and 31/31). The current placement improves the nearest approach from 9.5 ft at 5 × 7 to 4 ft at 5 × 6 but still finds no route. Both north-edge cases yield a 28-ft four-turn route and consume 38.75 sf (65.7%) of west A between the pantry and route. The 36-in shared-wall option still leaves only 2 in to the test-shell edge; no pantry door geometry is modeled. See `Architecture/M206_Specified_Pantry_Size_Sensitivity_2026-10-31/README.md`.
 
-## M207 — Decide west-A circulation versus M-06 use
+## M207 - Pantry placement sensitivity and west-A trade-off
 
 Acceptance criteria:
 
-- Present the verified pantry/route overlap with west A and retain B as unassigned.
-- Obtain owner direction before advancing any layout that treats A as circulation or as a bath search location.
-- Preserve selected-D, RVT, IFC and RFAs while comparing the authorized direction.
+- Use the owner-authorized 5 x 6 ft pantry envelope without changing its area/use or selecting a placement.
+- Compare current, north-edge and east-edge positions under the M186 route model; report west-A overlap and keep B unassigned/protected.
+- Treat a pantry that blocks the fixed route-opening node as a rejected placement, not a route-search pass; preserve failed-gate evidence.
+- Bind source hashes and selected-D; emit JSON/checks/CSV and reproduce them in two independent Windows PowerShell 5.1 runs.
+- Preserve selected-D, RVT, IFC, Incoming RFAs and remote state.
 
-Status: Awaiting owner priority; no space is assigned.
+Status: Analysis complete. The retained run and two independent replays pass 6/6 checks and reproduce the report artifacts byte-for-byte. Three of six positions find a 28-ft/four-turn sampled route. The current placement finds none; east-mid and east-north block the opening node before grid expansion. The two north cases use 38.75 sf of A between pantry and route; east-south reduces that to 8.75 sf but still routes through A. B remains unassigned and clear. No pantry location or layout is selected. See `Architecture/M207_Pantry_Edge_Sensitivity_2026-10-31/README.md`.
+
+Owner selected west A protection for M-06 on 2026-10-31; the primary search keeps A as an obstacle. No bath is assigned. M-06 remains gated on exact product geometry, applicable clearance basis, door/approach and plausible services route.
+
+## M208 - Protected-A pantry and porch-door sensitivity - 2026-10-31
+
+Acceptance criteria:
+
+- Keep A and B as route obstacles; use only pantry positions that do not occupy A/B in the primary comparison.
+- Compare the specified 5 x 6 ft east-edge pantry at south and middle positions against west, center and east five-foot porch-door samples.
+- Bind the A-protection decision and selected-D; emit deterministic JSON/checks/CSV and pass two independent PowerShell replays.
+- Preserve selected-D, Revit, IFC, Incoming RFAs and remote state.
+
+Status: Complete as a bounded sensitivity. Retained and two independent runs pass 6/6 checks and reproduce all three outputs byte-for-byte. No door sample restores a route with the east/south pantry and the current dining/porch placement; the east/middle pantry blocks the fixed living/opening node before grid expansion. A remains unoccupied and protected; B remains unassigned. See `Architecture/M208_Protected_AB_Route_Search_2026-10-31/README.md`.
+
+## M209 - Northward dining/porch translation with A and B protected - 2026-10-31
+
+Acceptance criteria:
+
+- Preserve A and B as route obstacles, use the 5 x 6 ft east/south pantry, and apply the owner-preferred fully open kitchen/living connection.
+- Translate the documented 11 x 10 ft dining and 12 x 10 ft porch together through quarter-foot northward sensitivities inside the hypothetical 40 x 42 ft shell.
+- Retain the M178 8 x 4 ft island and current dining/chair-use proxies; bind source hashes and selected-D.
+- Require M186's full 36-in route checks; report route length, turns, A/B overlap, closest point and minimum gap. Reproduce outputs byte-for-byte in two independent Windows PowerShell 5.1 runs.
+- Preserve selected-D, Revit, IFC, Incoming RFAs and remote state; no placement is selected.
+
+Status: Complete as a bounded reachability sensitivity. The retained eleven-case run and two independent PowerShell 5.1 replays pass 9/9 checks and reproduce JSON/checks/CSV byte-for-byte. Five shifts find a sampled route, first at 5.5 ft north; the 33.5-ft/four-turn path is tangent to A, and none of the passing routes has a 3-in proxy reserve. This is fragile reachability evidence, not a fit-ready layout. No placement is selected. See `Architecture/M209_Protected_AB_North_Placement_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:
@@ -2280,3 +2307,4 @@ Acceptance criteria:
 Status: Complete as arithmetic fit screening, not an integrated plan. Two independent scratch runs and the retained `artifacts-v2/` package pass 10/10; all four outputs match byte-for-byte. M193 also checks each upstream fingerprint recorded by M172. The 8 × 4 ft reference needs a 13 ft clear cross-section and 15 ft end span, so it fails the 14 × 12 ft clear rectangle. A 7 × 3 ft test island (5 ft quartz + 2 ft butcher block) fits exactly with zero reserve at either axis; a 6 × 3 ft test (4 ft quartz + 2 ft butcher block) adds 12 in total end reserve but still has zero cross-section reserve. Both retain 24 in body + 12 in overhang and the 42 in clearances. They are proposals; no stool, dining/porch route, appliance-open, wall placement or tolerance is checked. See `Architecture/M193_Compact_Island_Fit_2026-10-31/README.md`.
 
 Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documented 11 × 10 ft dining target, all four 36 in chair-use proxies, the full 36 in living-to-porch route, half-wall/opening geometry and 12 × 10 ft porch in one source-bound coordinate study. Compare at least the 7 × 3 and 6 × 3 island options. A candidate qualifies only if all required rectangles fit and the swept route reaches the porch without proxy intersections; record exact reserve/gaps and reject fragile zero-margin routes. The site-fitted patio remains a later exterior gate. Then carry a route-qualified candidate into disposable Revit wall/opening geometry. In parallel, complete the pending read-only Tauri family host inspection when Revit is safely accessible. Keep selected-D unchanged and M-06/B unassigned.
+- Next: run the owner-authorized M-04 pantry placement sensitivity, retain its 5 Ã— 7 ft test area and function, and keep B unassigned.

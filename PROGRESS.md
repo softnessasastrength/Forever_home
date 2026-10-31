@@ -2173,3 +2173,23 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Current placement has no route but improves nearest point from 9.5 ft for the 5 × 7 proxy to 4 ft for 5 × 6. Both north-edge placements yield 28-ft/four-turn routes. Pantry plus route uses 38.75 sf (65.7%) of west A. The 36-in shared-wall case leaves 2 in to the hypothetical shell edge. Pantry door fit/swing remains untested.
 - M-06/B remains unassigned; west A remains an unassigned trade-off area. No layout selected and no selected-D, RVT, IFC or RFA changed.
 - Next owner choice: whether A may be consumed for pantry/circulation in a future layout study, or should remain available for the unresolved half bath while circulation is searched elsewhere. See `Architecture/M206_Specified_Pantry_Size_Sensitivity_2026-10-31/README.md`.
+
+## M207 - Pantry edge-placement sensitivity - 2026-10-31
+
+- The owner authorized alternate placements for the 5 × 6 ft specified pantry while preserving its area/use and keeping M-06/B unassigned. Added `Tools/search_m207_pantry_edge_sensitivity.ps1` and `Architecture/M207_Pantry_Edge_Sensitivity_2026-10-31/README.md`.
+- Six current/north/east edge positions reuse M186's route model. Retained run and two independent Windows PowerShell 5.1 replays each pass 6/6 wrapper checks; JSON/checks/CSV match byte-for-byte. Three cases return the same 28-ft/four-turn sampled route. Current position finds no route; the east-mid and east-north pantry positions block the fixed route-opening node before grid expansion and are explicitly rejected.
+- North cases use 38.75 sf of west A between pantry and route. East-south reduces that measured overlap to 8.75 sf, but the route still crosses A; it therefore does not preserve A for a possible half bath. B remains an obstacle, unassigned and route-free.
+- Selected-D is unchanged at SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`. Revit, IFC, source RFAs and remote state are unchanged. No pantry position is selected.
+- Owner subsequently selected west A protection for M-06. M208/M209 preserve A as an obstacle in the primary search; no bath is assigned. The M-06 product/clearance/door/service gate remains open.
+
+## M208 - Protected-A pantry and porch-door sensitivity - 2026-10-31
+
+- Owner selected “Protect A for M-06.” Recorded the decision in `Decisions/2026-10-31_M06_West_A_Protection.md` and added it to the kitchen-area decision record. This reserves A in the primary search; it does not assign a bath.
+- Added `Tools/search_m208_protected_ab_route_search.ps1`. With A/B protected, six 5 × 6 ft east-edge pantry/porch-door cases pass 6/6 wrapper checks. The east/south pantry at door centers x=2, 5.5 and 9 ft finds no route; the east/middle pantry blocks the fixed opening node and is rejected before grid expansion. Both M06 windows remain clear. Independent reproducibility is documented in the README; retained result hashes are in `Architecture/M208_Protected_AB_Route_Search_2026-10-31/README.md`.
+- This confirms moving the door alone does not solve the current fixed dining/porch arrangement when A is reserved. No selected-D, RVT, IFC, RFA or remote state changed.
+
+## M209 - Northward dining/porch search with A/B protected - 2026-10-31
+
+- Added `Tools/search_m209_protected_ab_north_placement.ps1`. The retained eleven-case run passes 9/9 wrapper checks and M186 route checks. It translates the 11 × 10 ft dining and 12 × 10 ft porch north by 4.0–6.5 ft in quarter-foot increments, keeps the 5 × 6 ft pantry east/south, preserves both A/B route obstacles, retains the 8 × 4 ft island, and starts from the owner-preferred fully open kitchen/living connection.
+- **5/11** shifts find a sampled 36-in route, first at 5.5 ft north. The shortest is 33.5 ft/four turns. The route is tangent to A (0-ft minimum modeled gap); no passing case reaches the 3-in reserve screen. This is reachability evidence only, not a fit-ready layout. The porch reaches y=30 ft at first route passage and stays inside the hypothetical shell, but actual wall, opening and shell construction are absent.
+- Two independent PowerShell 5.1 replay runs pass 9/9 checks and reproduce all three retained artifacts byte-for-byte. Selected-D remains at its documented hash; no selected-D, RVT, IFC, source RFA or remote state changed. M-06/B remains unassigned; no bath fit, code or construction conclusion follows. See `Architecture/M209_Protected_AB_North_Placement_2026-10-31/README.md`.
