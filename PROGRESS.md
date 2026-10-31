@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M242 — Test hall/kitchen closure against the porch route proxy
+
+- Added `Tools/analyze_m242_hall_kitchen_gap_vs_porch_route.ps1` and `Architecture/M242_Hall_Kitchen_Gap_Route_Sensitivity_2026-10-31/README.md`. This derives an unselected 6-in westward M-02 test move from M241's measured hall/kitchen gap; M-02 area stays 277.333 sf.
+- Three Windows PowerShell 5.1 runs pass **13/13** and reproduce JSON byte-for-byte. Checks SHA256: `44b68032dd98186920373ac4bd4b82fd204c15bc979094a44ab877d81eb0c5b3`; report SHA256: `54c197565569919636ea0fa851e86fcb05fccc5b11a6b4841a09e7f6dbdb8711`.
+- The move closes the M-05/M-02 gap and forms a 12-ft block edge with no checked room/A/B overlap. It reduces the fixed M215 36-in route proxy's kitchen-edge clearance from +4 in to −2 in (2-in intrusion). This rules out this single move with this fixed route; alternate route alignments remain untested.
+- Selected-D, west-A protection, B/M-06 assignments, RVT/IFC and remote state are unchanged. The test is not selected and does not define walls/openings or code dimensions.
+
 ## M241 — Audit living / hall / kitchen block interfaces
 
 - Added `Tools/analyze_m241_living_kitchen_interface.ps1` and `Architecture/M241_Living_Kitchen_Interface_2026-10-31/README.md` as a source-pinned follow-up to the owner's six-inch east-translation direction. It compares selected-D room blocks and the M228 dining proposal against the unselected M232 M-01 move.

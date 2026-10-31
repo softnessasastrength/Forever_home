@@ -1,0 +1,100 @@
+{
+    "schema":  "forever-home.m242-hall-kitchen-route-sensitivity.v1",
+    "status":  "pass; analysis-only, schematic, not selected",
+    "candidate":  "Translate M-02 west only by the measured 0.5-ft M-05/M-02 gap; preserve its source gross area and room height.",
+    "source_hashes_sha256":  {
+                                 "selected_d":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m228":  "f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff",
+                                 "m215":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1",
+                                 "m241":  "9d1dd046749c5187836e96f1c3692dd7816ee6e209ac55ec08344f8f16be9098"
+                             },
+    "selected_d_modified":  false,
+    "translation_west_ft":  0.5,
+    "room_blocks_ft":  {
+                           "source_kitchen":  [
+                                                  22,
+                                                  0.66666666666666663,
+                                                  17.333333333333332,
+                                                  16
+                                              ],
+                           "candidate_kitchen":  [
+                                                     21.5,
+                                                     0.66666666666666663,
+                                                     17.333333333333332,
+                                                     16
+                                                 ],
+                           "hall":  [
+                                        17.166666666666668,
+                                        0.66666666666666663,
+                                        4.333333333333333,
+                                        12
+                                    ],
+                           "moved_living":  [
+                                                1.166667,
+                                                0.666667,
+                                                16,
+                                                15
+                                            ]
+                       },
+    "kitchen_area_sf":  277.333333,
+    "interfaces":  {
+                       "moved_living_to_kitchen_gap_ft":  4.333333,
+                       "hall_to_kitchen_shared_edge_ft":  12
+                   },
+    "m215_route":  {
+                       "width_in":  36,
+                       "coordinate_origin_ft":  [
+                                                    0.66666666666666663,
+                                                    0.66666666666666663
+                                                ],
+                       "source_kitchen":  {
+                                              "minimum_centerline_distance_ft":  1.833333,
+                                              "route_half_width_ft":  1.5,
+                                              "signed_clearance_ft":  0.333333,
+                                              "nearest_route_segment":  1
+                                          },
+                       "candidate_kitchen":  {
+                                                 "minimum_centerline_distance_ft":  1.333333,
+                                                 "route_half_width_ft":  1.5,
+                                                 "signed_clearance_ft":  -0.166667,
+                                                 "nearest_route_segment":  1
+                                             },
+                       "route_clearance_loss_in":  6
+                   },
+    "candidate_overlaps":  [
+                               {
+                                   "with":  "M-01 + 6 in east",
+                                   "overlap_sf":  0
+                               },
+                               {
+                                   "with":  "M-05",
+                                   "overlap_sf":  0
+                               },
+                               {
+                                   "with":  "protected west A",
+                                   "overlap_sf":  0
+                               },
+                               {
+                                   "with":  "unassigned east B",
+                                   "overlap_sf":  0
+                               },
+                               {
+                                   "with":  "M228 dining proposal",
+                                   "overlap_sf":  0
+                               },
+                               {
+                                   "with":  "M-04",
+                                   "overlap_sf":  0
+                               }
+                           ],
+    "interpretation":  [
+                           "A west shift equal to the measured 6-in hall/kitchen gap closes that room-block gap and gives M-05/M-02 a 12-ft shared edge while preserving the kitchen gross area.",
+                           "With M-01 already in the owner-directed six-inch sensitivity, both living and kitchen touch M-05 as room blocks; this does not create wall openings or establish a continuous walkable/visually open connection.",
+                           "The same kitchen move reduces the nearest edge clearance to the fixed M215 36-in route proxy by 6 in: from +4 in at source to -2 in (a 2-in intrusion) at the candidate kitchen edge. The specific M215 route therefore conflicts with this candidate; alternative route searches are not tested here."
+                       ],
+    "limitations":  [
+                        "M215 is one schematic route candidate; conflict with it does not prove that all route alignments fail.",
+                        "Room-block gaps/contacts are not walls, openings, finished-face clearances or built dimensions. No route reroute, physical opening, door, furniture, fixture or service is modeled.",
+                        "No room position is selected. West A remains protected; B and M-06 remain unassigned. This is not a code-compliance, accessibility, structural, professional, permit or construction-readiness conclusion."
+                    ]
+}

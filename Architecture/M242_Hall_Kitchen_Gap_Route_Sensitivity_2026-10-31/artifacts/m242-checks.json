@@ -1,0 +1,20 @@
+{
+    "schema":  "forever-home.m242-hall-kitchen-route-sensitivity-checks.v1",
+    "result":  "pass",
+    "check_count":  13,
+    "checks":  {
+                   "selected_d_hash_matches":  true,
+                   "m215_route_hash_matches":  true,
+                   "m228_coordinate_frame_hash_matches":  true,
+                   "m241_owner_move_hash_matches":  true,
+                   "west_translation_equals_measured_six_inch_gap":  true,
+                   "kitchen_gross_area_preserved":  true,
+                   "shell_containment_preserved":  true,
+                   "kitchen_hall_gap_closed":  true,
+                   "no_positive_room_block_overlap":  true,
+                   "living_kitchen_direct_gap_remains":  true,
+                   "route_width_is_pinned_to_36_inches":  true,
+                   "source_route_clears_kitchen_block":  true,
+                   "moved_kitchen_interferes_with_fixed_route_proxy":  true
+               }
+}
