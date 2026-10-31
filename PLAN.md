@@ -1380,3 +1380,14 @@ Acceptance criteria:
 - Record the public-source finding, its limits, and the remaining exact-SKU model/fit gates.
 
 Status: Complete as a source-availability check. LIXIL Pro identifies 4225A104.020 as a discontinued 1.28 gpf tank-only item with nominal 19 x 9-1/16 x 13-3/16 in dimensions and explicitly reports that no design files or 3D objects are currently available. This closes the public manufacturer-family path for that predecessor tank, not the current selected 610AA assembly. M-06 and B remain unassigned.
+
+## M129 - Check the manufacturer-linked ATS model-library route without authentication
+
+Acceptance criteria:
+
+- Follow public links from the manufacturer product resources to ATS and search public indexing for the selected 610AA001.020 and documented predecessor component SKUs.
+- Record whether an exact model is directly exposed without sign-in; distinguish a JavaScript shell, search non-results, and documented account-dependent Spec Tool behavior.
+- Do not create an account, enter credentials, contact support, generate a product project/spec, or download through a gated workflow.
+- Preserve the exact-SKU model as unresolved and keep M-06/B unassigned.
+
+Status: Complete as an unauthenticated source check. The linked ATS Digital Asset Library was not text-queryable beyond its JavaScript application shell, and public exact-SKU indexing returned no ATS family result. ATS's public FAQ documents its Revit download path through an authenticated Project/Spec workflow and support contact where the Revit link is absent. That FAQ does not establish the access policy for every Digital Asset Library object. No credentials or account actions were used; exact 610AA geometry remains unresolved.
