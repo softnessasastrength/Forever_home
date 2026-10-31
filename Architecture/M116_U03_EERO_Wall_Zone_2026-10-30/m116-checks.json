@@ -1,6 +1,6 @@
 ﻿{
     "schema":  "forever-home.m116-u03-eero-wall-zone-checks.v1",
-    "passed":  20,
+    "passed":  21,
     "failed":  [
 
                ],
@@ -14,12 +14,13 @@
                    "privacy_subset_reaches_all_three_public_room_samples":  true,
                    "privacy_subset_keeps_sampled_north_side_U02_arrival":  true,
                    "northeast_privacy_subset_has_64_candidates":  true,
+                   "northeast_orientation_counts_are_44_north_long_20_east_long":  true,
                    "northwest_privacy_subset_has_9_candidates":  true,
                    "northeast_candidates_touch_north_and_east_test_edges":  true,
                    "northwest_candidates_touch_north_and_west_test_edges":  true,
                    "U03_room_blocks_match_source_dimensions_allowing_rotation":  true,
                    "gross_U03_room_rectangle_is_125_28_sf_within_programmed_120_to_150_sf":  true,
-                   "gross_north_and_east_edge_arithmetic_is_110_and_164_inches":  true,
+                   "both_ne_orientations_have_source_preserved_area_and_edge_lengths":  true,
                    "code_note_records_current_2022_basis_and_2026_delay":  true,
                    "code_note_cites_EERO_requirements_and_open_limitations":  true,
                    "minimum_area_arithmetic_is_consistent":  true,
@@ -32,7 +33,7 @@
                                  "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
                                  "owner_proposal":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
                                  "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
-                                 "code_basis_note":  "674e5aed7994904568d81edd1c38a234e198f0fc1e3adc35c0693a002d6e21ac",
-                                 "analyzer":  "707ba7b20196b0fee8dd834be6e3ecd1754ab8fd22f0bdccba62a722f64693a0"
+                                 "code_basis_note":  "30d58b0c00aeac72a4da5b9b422288c222b4022e8d16e53ea1a8268877a4137b",
+                                 "analyzer":  "eac451533c34b4f709949f60398571d53f2c823ce551a6e75a964f55522b61d9"
                              }
 }

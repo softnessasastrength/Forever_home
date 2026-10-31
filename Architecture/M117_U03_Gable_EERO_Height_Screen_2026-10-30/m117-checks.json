@@ -1,0 +1,42 @@
+﻿{
+    "schema":  "forever-home.m117-u03-gable-eero-checks.v1",
+    "passed":  19,
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "M115_archive_and_audit_are_hash_linked":  true,
+                   "M116_report_is_bound_to_same_selected_D":  true,
+                   "owner_keeps_U03_private_only":  true,
+                   "M115_ne_privacy_subset_count_is_64":  true,
+                   "northeast_privacy_candidates_have_two_documented_orientations":  true,
+                   "both_orientations_match_selected_D_source_dimensions":  true,
+                   "M83_roof_hash_matches_manifest":  true,
+                   "M83_shell_matches_M115_exploration":  true,
+                   "all_twelve_orientation_pitch_axis_cases_are_covered":  true,
+                   "all_M83_options_remain_unselected":  true,
+                   "code_thresholds_match_M116":  true,
+                   "minimum_area_opening_proxy_satisfies_area_and_minimum_dimensions":  true,
+                   "orientation_specific_gable_contact_matches_room_dimensions":  true,
+                   "ridge_X_places_U03_east_edge_on_gable_end":  true,
+                   "ridge_Y_places_U03_north_edge_on_gable_end":  true,
+                   "gable_rise_matches_orientation_axis_and_pitch_geometry":  true,
+                   "all_eave_thresholds_are_relative_not_selected":  true,
+                   "selected_D_baseline_is_unchanged":  true,
+                   "no_code_compliance_or_window_product_claim":  true
+               },
+    "source_hashes_sha256":  {
+                                 "M115_archive":  "11360170f462fc28ffd50b71808de12180331121b0041c2da637458f1eda9fb1",
+                                 "M115_audit":  "986416f2831c5c83dfb8abe8aaf6dda65d42120314b8e121301cd71e401e56f8",
+                                 "M116_report":  "d56db0512092785bae045283bd668c4e5054af06835faf03274cb0ce1e0c6f14",
+                                 "M83_roof_options":  "8faf694bcd4ac229836ff49d7dbc35f482f90008e517ef032c5676709dceec16",
+                                 "M83_manifest":  "d71ec4ac99dd47024f9337a1d695b589f3382ead663d76ae7ba12aefcb9b69a0",
+                                 "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_proposal":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "M37_generator":  "8b634e5ae8bfc1889ef5c13b49e8042b4fc0bef1326e190732aa881695cc9da2",
+                                 "M115_audit_script":  "19e2b3eb9a18a1911d5463c80dd5ed2dcf4ed6a3b7f1778ff268765e92a3e7e7",
+                                 "M116_analyzer":  "eac451533c34b4f709949f60398571d53f2c823ce551a6e75a964f55522b61d9",
+                                 "M83_generator":  "da24c395d3877998bff83f4e5b96e187b8c6ee514b55239bb90e25bdf2c9e5b8",
+                                 "analyzer":  "4d66722982b0aa967a8b826f1154a4ecad6e30b25e8993a23bb1045f69cbf1c4"
+                             }
+}

@@ -29,6 +29,8 @@ $privacy=@($all|Where-Object{$_.public_rooms_reached_count -eq 3 -and -not $_.ha
 $northeast=@($privacy|Where-Object{(Room-Edges $_.rectangles.'U-03') -eq 'east,north'})
 $northwest=@($privacy|Where-Object{(Room-Edges $_.rectangles.'U-03') -eq 'north,west'})
 $u03=$northeast[0].rectangles.'U-03'
+$northeastNorthLong=@($northeast|Where-Object{[double]$_.rectangles.'U-03'.width_ft -gt [double]$_.rectangles.'U-03'.depth_ft})
+$northeastEastLong=@($northeast|Where-Object{[double]$_.rectangles.'U-03'.depth_ft -gt [double]$_.rectangles.'U-03'.width_ft})
 $u03Area=[double]$u03.width_ft*[double]$u03.depth_ft
 $northWallIn=[double]$u03.width_ft*12.0
 $eastWallIn=[double]$u03.depth_ft*12.0
@@ -51,12 +53,13 @@ $checks=[ordered]@{
     privacy_subset_reaches_all_three_public_room_samples=$allPublic
     privacy_subset_keeps_sampled_north_side_U02_arrival=$allU02North
     northeast_privacy_subset_has_64_candidates=($northeast.Count -eq 64)
+    northeast_orientation_counts_are_44_north_long_20_east_long=($northeastNorthLong.Count -eq 44 -and $northeastEastLong.Count -eq 20)
     northwest_privacy_subset_has_9_candidates=($northwest.Count -eq 9)
     northeast_candidates_touch_north_and_east_test_edges=$allNEContacts
     northwest_candidates_touch_north_and_west_test_edges=$allNWContacts
     U03_room_blocks_match_source_dimensions_allowing_rotation=$dimensionsMatch
     gross_U03_room_rectangle_is_125_28_sf_within_programmed_120_to_150_sf=([Math]::Abs($u03Area-125.2777777778)-lt 0.01 -and $u03Area -ge 120 -and $u03Area -le 150)
-    gross_north_and_east_edge_arithmetic_is_110_and_164_inches=([Math]::Abs($northWallIn-110)-lt 0.001 -and [Math]::Abs($eastWallIn-164)-lt 0.001)
+    both_ne_orientations_have_source_preserved_area_and_edge_lengths=([Math]::Abs($u03Area-125.2777777778)-lt 0.01 -and @($northeastNorthLong|Where-Object{[Math]::Abs($_.rectangles.'U-03'.width_ft-13.6666666667)-gt $tol -or [Math]::Abs($_.rectangles.'U-03'.depth_ft-9.1666666667)-gt $tol}).Count -eq 0 -and @($northeastEastLong|Where-Object{[Math]::Abs($_.rectangles.'U-03'.width_ft-9.1666666667)-gt $tol -or [Math]::Abs($_.rectangles.'U-03'.depth_ft-13.6666666667)-gt $tol}).Count -eq 0)
     code_note_records_current_2022_basis_and_2026_delay=($codeNote -match '2022 Connecticut State Building Code' -and $codeNote -match 'effective date was delayed')
     code_note_cites_EERO_requirements_and_open_limitations=($codeNote -match 'R310\.1' -and $codeNote -match '5\.7 square feet' -and $codeNote -match '44 inches' -and $codeNote -match 'not a code review')
     minimum_area_arithmetic_is_consistent=([Math]::Abs($minClearAreaSqIn-820.8)-lt 0.001 -and [Math]::Abs($heightAtMinWidthIn-41.04)-lt 0.001 -and [Math]::Abs($widthAtMinHeightIn-34.2)-lt 0.001)
@@ -70,7 +73,7 @@ $report=[ordered]@{
     status='conditional code-basis and perimeter-zone screen; no window or wall is modeled and no compliance result is determined'
     code_basis=[ordered]@{as_of='2026-10-30';current_code='2022 Connecticut State Building Code based on 2021 IRC';'2026_code_status'='DAS reports expected effective date delayed pending LRRC approval';conditional_sleeping_room_requirement='one operable emergency escape and rescue opening per sleeping room, to a public way or qualifying yard/court';minimum_net_clear_area_sq_ft=$minClearAreaSqFt;grade_floor_exception_sq_ft=5.0;minimum_clear_width_in=$minClearWidthIn;minimum_clear_height_in=$minClearHeightIn;maximum_bottom_of_clear_opening_in=$maxSillIn;grade_floor_exception_assessed=$false;code_compliance_claimed=$false}
     study=[ordered]@{selected_D_shell_unchanged='36 x 32 ft test wing';M115_shell=[ordered]@{width_ft=$shellW;depth_ft=$shellD;status='exploration only'};privacy_candidates=$privacy.Count;northeast_privacy_candidates=$northeast.Count;northwest_privacy_candidates=$northwest.Count;public_route_all_three=$true;U02_north_side_sample_all=$true;U03_hall_side_sample_all=$false}
-    U03_geometry=[ordered]@{source_preserved_width_ft=[double]$u03.width_ft;source_preserved_depth_ft=[double]$u03.depth_ft;gross_rectangle_area_sq_ft=$u03Area;north_test_edge_length_in=$northWallIn;east_test_edge_length_in=$eastWallIn;status='schematic gross block dimensions, not finished interior dimensions or clear wall/opening dimensions'}
+    U03_geometry=[ordered]@{gross_rectangle_area_sq_ft=$u03Area;northeast_orientation_distribution=@([ordered]@{count=$northeastNorthLong.Count;source_preserved_width_ft=13.6666666667;source_preserved_depth_ft=9.1666666667;north_test_edge_length_in=164.0;east_test_edge_length_in=110.0},[ordered]@{count=$northeastEastLong.Count;source_preserved_width_ft=9.1666666667;source_preserved_depth_ft=13.6666666667;north_test_edge_length_in=110.0;east_test_edge_length_in=164.0});north_edge_length_range_in=@(110.0,164.0);east_edge_length_range_in=@(110.0,164.0);status='schematic gross block dimensions, not finished interior dimensions or clear wall/opening dimensions'}
     EERO_threshold_arithmetic=[ordered]@{minimum_net_area_sq_in=$minClearAreaSqIn;height_at_20_in_clear_width_in=$heightAtMinWidthIn;width_at_24_in_clear_height_in=$widthAtMinHeightIn;interpretation='area arithmetic only; actual opening must meet area, both minimum dimensions, operability, sill and applicable location/path requirements'}
     interpretation='The M115 northeast privacy subset provides two candidate perimeter lines for future wall/opening study. It does not demonstrate a wall, opening, qualifying exterior discharge, roof clearance or code compliance.'
     limitations=@('U-03 remains a hybrid bedroom/office with sleeping-room status unresolved.','Exact town, site, grade, permit date, occupancy/code path and local official interpretation are unknown.','No exterior wall, framing, egress window product, net-clear opening, operating hardware, sill, well/guard, roof/eave, structure, yard/court or public-way route is modeled.','The 38 1/3 x 40 ft shell is unselected; room rectangles exclude no wall thickness and gross area is not net usable area.','No Revit/IFC or selected-D geometry changed; no code-compliance, accessibility, structural or construction-readiness claim is made.')

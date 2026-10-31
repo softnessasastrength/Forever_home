@@ -10,7 +10,7 @@ If U-03 is intended for sleeping, the Connecticut-amended IRC R310.1 conditional
 
 ## Geometric screen
 
-M115's full-route privacy subset contains 73 candidates. Sixty-four have U-03 touching the north and east edges of the hypothetical shell; nine touch north and west. The 64 northeast cases retain sampled U-01/U-02/U-04 public route reach and have no sampled U-03 hall-side reach. U-03's preserved rectangle is about 9.1667 x 13.6667 ft (125.28 sf gross by rectangle arithmetic), corresponding to 110 in along the north test edge and 164 in along the east test edge.
+M115's full-route privacy subset contains 73 candidates. Sixty-four have U-03 touching the north and east edges of the hypothetical shell; nine touch north and west. Of the northeast 64, **44** place the longer source-preserved U-03 side north (13.6667 x 9.1667 ft) and **20** place it east (9.1667 x 13.6667 ft). Both have 125.28 sf gross area by rectangle arithmetic. North/east test-edge lengths swap: 164/110 in for the 44 north-long cases and 110/164 in for the 20 east-long cases. All 64 retain sampled U-01/U-02/U-04 public route reach and have no sampled U-03 hall-side reach. These counts are bounded-search results, not a room-orientation recommendation.
 
 Those are gross room-block dimensions. They are not clear wall lengths or dimensions for a window. A 20 x 24 in clear opening is only 3.33 sf, so it would not meet the 5.7 sf minimum area. At the 20 in minimum width, area alone requires 41.04 in clear height; at 24 in clear height, it requires 34.2 in clear width. A selected product must satisfy the actual area, width, height, operability, sill and exterior discharge/path requirements together. No product or opening is sized here.
 
@@ -24,6 +24,6 @@ From the repository root in Windows PowerShell 5.1:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/analyze_m116_u03_eero_wall_zone.ps1
 ```
 
-The source-bound analyzer passes **20/20** checks. Two independent runs reproduce both output files byte-for-byte. Report SHA256: `E2BAE1F74A9B7C0B4CF19137AFB3EAD87A1AC8AA230D7BF44D384CA6CF120303`. Checks SHA256: `910DB895D0851EE4C617896DE838284C0D079A2363FA2DADBFAA815C33FB99DB`. Analyzer SHA256: `707BA7B20196B0FEE8DD834BE6E3ECD1754AB8FD22F0BDCCBA62A722F64693A0`.
+The source-bound analyzer passes **21/21** checks. Two independent runs reproduce both output files byte-for-byte. The corrected orientation distribution is checked against the full M115 archive; report hashes are stored in the package output.
 
 The script binds the M115 archive and audit, selected-D, owner proposal, room program and this code-basis note by SHA256. Its source includes no wall or window geometry, and the output expressly makes no code-compliance claim. No Revit, IFC, selected-D or RFA was changed.
