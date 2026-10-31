@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M246 — Replay the steep-gable massing comparison
+
+- Replayed `Tools/build_m83_gable_massing_options.ps1` into two isolated `.local/revalidation` directories. Both runs pass **13/13** checks; `roof-options.json`, `checks.json` and `roof-options.svg` match the retained M83 artifacts byte-for-byte. SVG parses as XML.
+- The source-bound shell remains a hypothetical 38.333333 × 40 ft comparison. The 12:12 cases rise 20 ft (ridge-X) and 19.1667 ft (ridge-Y) above a relative eave. These are comparative calculations, not selected building elevations.
+- Selected-D hash remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. No Revit host, model, IFC, selected-D, RFA or remote state changed.
+- Evidence and commands: `Architecture/M246_Gable_Study_Replay_2026-10-31/README.md`. M83 remains open-surface massing, not a native roof or code/structural design.
+
 ## M245 — RevitPilot build preflight
 
 - Built the checked-out C# source into a fresh ignored directory with `Tools/RevitPilot/build.ps1 -Dotnet .local/dotnet/dotnet.exe -BuildDirectory m244-isolated-build`. Build result: **0 errors**, **2 MSB3277 conflict-warning groups**.
