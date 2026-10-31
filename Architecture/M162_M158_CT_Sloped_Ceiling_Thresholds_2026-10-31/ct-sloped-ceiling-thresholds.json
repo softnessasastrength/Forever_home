@@ -10,7 +10,7 @@
                                                     "full_modeled_block_minimum":  5,
                                                     "at_least_half_modeled_block":  7
                                                 },
-                           "research_note_sha256":  "8681b92c923946d383c3226ccfbd0ed3538265b63f9ce4c653ab425f4eb7e28b"
+                           "research_note_sha256":  "6a456d2879922f4012bd15b7aecbef06676055dce5e28092e86bccf075e807fe"
                        },
     "method":  "For each rectangular M158 block, compute ideal zero-thickness gable rise across its cross-slope interval. The median is solved by bisection on the uniform rectangle-area distribution. Assuming the entire modeled block represents required floor area, the symbolic effective eave ceiling threshold is max(5 ft - minimum rise, 7 ft - median rise).",
     "unknowns":  {
@@ -26,9 +26,9 @@
                                  "m158_manifest":  "2f950e75b333fe24333e2e249594dc5c694d730ce967aa33c28e1fa6dd03057d",
                                  "m158_archive":  "676c8f3d2cb6b7d7f032b515351749900ffb38d5342f8b7e2ab90f62dde40892",
                                  "m158_audit":  "92f7de85d0e0c9db873e3ae2b2a6f3e10bf5dd7e9581867c92b927b9032826a9",
-                                 "m83_roof_options":  "8faf694bcd4ac229836ff49d7dbc35f482f90008e517ef032c5676709dceec16",
-                                 "m159_roof_exposure":  "129af2dede5fc4012496537b62b68169a29e5ee75667b91adaeba481dfbb7a59",
-                                 "ct_code_research_note":  "8681b92c923946d383c3226ccfbd0ed3538265b63f9ce4c653ab425f4eb7e28b",
+                                 "m83_roof_options":  "39a54e0660f2c206634b4d0921f015870fa0df4a39a71cfe7ea71799ab383550",
+                                 "m159_roof_exposure":  "7b47345c76083b2d1f05477f236a100dd2c2b09beaaaa881d8a1b3e1e60944da",
+                                 "ct_code_research_note":  "6a456d2879922f4012bd15b7aecbef06676055dce5e28092e86bccf075e807fe",
                                  "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
                                  "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
                              },

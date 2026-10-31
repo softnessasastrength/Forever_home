@@ -21,7 +21,7 @@ Both runs pass **15/15** source, inventory and arithmetic checks and produce the
 
 | Artifact | SHA256 |
 |---|---|
-| `m159-relative-gable-exposure.json` | `129AF2DEDE5FC4012496537B62B68169A29E5EE75667B91ADAEBA481DFBB7A59` |
+| `m159-relative-gable-exposure.json` | `7B47345C76083B2D1F05477F236A100DD2C2B09BEAAAA881D8A1B3E1E60944DA` |
 | `m159-room-gable-exposure.csv` | `62D9E137B68BB2508AA0FE4ED183F68BE8D80632ADF2536D4DDBF2E6F8143595` |
 
 The two M158 candidates have identical U-01/U-03/U-04 rectangles; they differ in the alternate U-05 block, so their bedroom-capable-block roof exposure is identical. With a ridge along X, U-01 and U-04 touch ideal south/north eave edges and have 0 ft relative rise at those edges. With a ridge along Y, U-03 and U-04 touch ideal west eave edges and have 0 ft relative rise there. Thus, at least two of the three bedroom-capable blocks meet an ideal eave for either ridge direction across all three pitch cases. This is a coordination sensitivity for wall/eave/ceiling placement; it does not mean finished headroom is zero or insufficient.

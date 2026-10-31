@@ -39,7 +39,7 @@ Autodesk documents `TessellatedShapeBuilder` as a way to build connected planar 
 
 ## Source refresh after later Connecticut research
 
-After subsequent edits to the Connecticut research note, the four M83 artifacts were regenerated. Three PowerShell 5.1 runs (the checked-in destination and two isolated outputs) pass **13/13** checks and match byte-for-byte: `roof-options.json` SHA256 `DB8BD3EB591CB936B8811332F34EE1FA86745D3F167CA4480E44A871DA803ED2`, `checks.json` `1E23B0C7C7AD0B2300BAE21034BB29CE628153C920AA42C98875BC7D18384976`, `manifest.json` `1A877A2823FB07805B15A3AA8DE3C247C211FE0A87CE781C52BF5A64FC0A5BFB`, and unchanged SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`. Geometry remains the same six hypothetical comparisons; only source provenance changed.
+After the 2026-10-31 Connecticut adoption-status recheck, the four M83 artifacts were regenerated. Three PowerShell 5.1 runs (the checked-in destination and two isolated outputs) pass **13/13** checks and match byte-for-byte: `roof-options.json` SHA256 `39A54E0660F2C206634B4D0921F015870FA0DF4A39A71CFE7EA71799AB383550`, `checks.json` `0498973FE03FF7D80EE4CCCCBEEC99995AE6AC1C757FAC96D479D8CE9C20DFD6`, `manifest.json` `B51B8CB7B9617D6DDF2BB905B763ED0684E65114D6DA9AC93AAC5809D39F422B`, and unchanged SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`. Geometry remains the same six hypothetical comparisons; only source provenance changed. The current official statewide code-adoption status is recorded in the bound research note.
 
 ## Revit bounds-evaluation repair and M165 host validation
 

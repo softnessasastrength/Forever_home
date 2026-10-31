@@ -13,7 +13,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/analyze_m162_m158_
 
 The script verifies M158 search, manifest, candidate archive and independent audit; M83 roof options; M159's link from M158 to those roof options; the Connecticut research note; Room Program; and selected-D source. It produces `ct-sloped-ceiling-thresholds.json` and `ct-sloped-ceiling-thresholds.csv`.
 
-Both Windows PowerShell 5.1 runs pass **16/16** checks and produce 48 room/candidate/roof rows. JSON SHA256 is `6C8087DAC2AA0297953BB4AA8D6D87F2DF22FA06F4E46348EC31DF6AF0D549A2`; CSV SHA256 is `CF487F1FB539E6A0AB605F58F07E4C3F8B47761669C7DC278B89FC5F0749D903`. The two outputs match byte-for-byte. The report contains each room's program use but makes no code classification, threshold pass/fail, roof selection, or code-applicability decision.
+Both Windows PowerShell 5.1 runs pass **16/16** checks and produce 48 room/candidate/roof rows. After M166's current Connecticut adoption-status source recheck and dependent M83/M159 refresh, JSON SHA256 is `F16921DA3F2BEA533D705D9AE8B7236B29000D644CE4EE5E8B1ACFD6EC60A09D`; CSV SHA256 remains `CF487F1FB539E6A0AB605F58F07E4C3F8B47761669C7DC278B89FC5F0749D903`. Tracked and isolated outputs match byte-for-byte. The report contains each room's program use but makes no code classification, threshold pass/fail, roof selection, or code-applicability decision.
 
 ## Method
 

@@ -50,3 +50,9 @@ Sources: [2022 Connecticut State Building Code with Errata #1 (official PDF; §R
 The official DAS adoption-process page was checked again on 2026-10-30. It continues to say the anticipated 2026 codes were expected to take effect July 1, 2026, but the effective date is delayed while approval by the Legislative Regulation Review Committee is pending. The adopted-code page continues to identify the 2022 code as current. This is a statewide publication check only; it does not determine the code edition or amendments applicable to a future project.
 
 Source: [Connecticut DAS Building and Fire Code Adoption Process](https://portal.ct.gov/en/DAS/Office-of-State-Building-Inspector/Building-and-Fire-Code-Adoption-Process).
+
+### Adoption-status recheck — 2026-10-31
+
+The official Connecticut DAS adoption-process page was checked again on 2026-10-31. It still reports that the planned 2026 code effective date has been delayed while Legislative Regulation Review Committee approval is pending. The state's current-code history continues to identify the 2022 CSBC (based on the 2021 IRC and other 2021 model codes) as currently in effect. This confirms the statewide published status only; it does not establish the code cycle for this project without a municipality, occupancy/classification and permit filing date.
+
+Sources: [DAS Building and Fire Code Adoption Process](https://portal.ct.gov/DAS/Office-of-State-Building-Inspector/Building-and-Fire-Code-Adoption-Process), [DAS History of the Connecticut State Building Code](https://portal.ct.gov/das/office-of-state-building-inspector/history-of-the-connecticut-state-building-code), and [2022 CSBC R305.1 text](https://portal.ct.gov/das/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csbc-final.pdf?hash=CFF91D23F3B884050971E83A0C228136&rev=956cd99f97a64058bee1e4abb01ec3ef).
