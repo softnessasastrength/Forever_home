@@ -1,11 +1,13 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-31 (M171 upper-suite interface geometry and M170 BIM revalidation)
+Updated: 2026-10-31 (M172 compact social-space constraints, M171 upper-suite interface geometry and M170 BIM revalidation)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**M172, 2026-10-31:** `Tools/analyze_m172_compact_social_space_constraints.ps1` binds the 14 x 12 ft M-02 and 11 x 10 ft M-03 study targets, current island specification, and verified selected-D source. Three PowerShell 5.1 runs pass 22/22 with byte-identical JSON/CSV/SVG/check artifacts; all SVGs parse as XML. The coupled 12 ft 6 in appliance run and 13 ft 6 in opposing counter/island/half-wall section cannot both fit the 14 x 12 ft block in either orthogonal orientation (deficit 6 in or 18 in). The 8-ft island with 42-in end allowances spans 15 ft. The 11 x 10 ft dining target fits the minimum table envelope in one orientation but not the preferred one. This is a constraint screen, not the integrated open-plan route test or an approved layout. No Revit, IFC or selected-D geometry changed. Revit remains on the trial introduction with no model open; exact RevitPilot manifest/DLL fingerprints match, but the CUA bridge reports no accessibility state.
 
 **M171, 2026-10-31:** the new PowerShell interface audit independently joins two fresh M164 room archives to their route audits. Both M37 runs pass 31/31 at 3,122 nodes and produce the same 120-candidate archive; both M164 audits pass 16/16 and retain 48 route-qualified candidates. M171 passes 17/17 on each pair and the retained package; JSON SHA256 `E2569D7F77EF699C85EDA4376D1C9FF4056001AAF86CB1553CE9133B75D6ECDF`, CSV SHA256 `86AEB8D19704E584A3CC8A7D79390F7B79D7CDE9434FF950568E798794F1D91A`. All six links use the source-defined 0.5 ft nominal wall allowance. The narrow U-02/U-03 private interface is 3.5 ft in every option; U-02 has east/north sampled hall reach in all candidates and south reach in 24. These are not doors or clear widths. No layout, opening, wall or shell is selected; selected-D and Revit/IFC remain untouched. Revit remains behind its trial overlay, preventing host actions. See M171 in `PLAN.md`, `PROGRESS.md` and its README.
 

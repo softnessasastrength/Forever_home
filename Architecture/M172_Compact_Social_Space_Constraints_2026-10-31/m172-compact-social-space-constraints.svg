@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='1100' height='570' viewBox='0 0 1100 570'>
+<style>text{font-family:Arial,sans-serif;fill:#29251f}.title{font-size:24px;font-weight:bold}.sub{font-size:16px;fill:#62594e}.label{font-size:18px;font-weight:bold}.body{font-size:16px}.note{font-size:14px;fill:#7a4d34}rect{stroke-width:2}.kitchen{fill:#f4e4b7;stroke:#8c6a2d}.dining{fill:#e1ebd9;stroke:#54734b}</style>
+<text x='30' y='42' class='title'>M172 compact kitchen / dining constraint screen</text>
+<text x='30' y='70' class='sub'>Documented target envelopes only; no room adjacency or selected layout is implied.</text>
+<rect x='31' y='120' width='336' height='288' class='kitchen'/>
+<text x='41' y='145' class='label'>M-02 14 x 12 ft target</text>
+<rect x='395' y='144' width='264' height='240' class='dining'/>
+<text x='405' y='169' class='label'>M-03 11 x 10 ft target</text>
+<text x='30' y='455' class='body'>Coupled kitchen screen: 12 ft 6 in appliance run x 13 ft 6 in counter/island/half-wall section.</text>
+<text x='30' y='481' class='body'>14-ft axis orientation: section fits by 6 in; run misses the other axis by 6 in.</text>
+<text x='30' y='507' class='body'>Rotated: run fits by 18 in; section misses the other axis by 18 in.</text>
+<text x='30' y='533' class='note'>Dining minimum table envelope fits with 12 in short-axis reserve; preferred envelope does not. Route remains untested.</text>
+<text x='30' y='558' class='note'>Schematic illustration of target rectangles only; not a coordinated plan or construction geometry.</text>
+</svg>
