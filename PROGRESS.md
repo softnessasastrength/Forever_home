@@ -20,6 +20,12 @@ Updated: 2026-10-31
 - Confirmed that the 2022 IRC's 36-in yard-to-public-way path (R310.1 exception) and 36-in stair clear width (R311.7.1) are section-specific; they do not establish a general interior hallway width. M215 remains a geometric 36-in proxy.
 - Documented applicability limits and missing inputs in `Research/M238_Connecticut_Code_Status_2026-10-31.md`. No model or selected-D edits; no compliance conclusion.
 
+## M239 — Recheck public-family provenance for the selected M-06 toilet
+
+- Confirmed the project target is American Standard Champion PRO **610AA001.020**. Its official current product page exposes a spec sheet and installation guide, with no Revit download link.
+- The official LIXIL Pro **211AA104.020** predecessor page does expose a Revit link, but it resolves to the already quarantined, hash-pinned family (`37D3E56962B81F4B0ACE3D36D25BAFC03B7DEE1232E7DE7BBF9B95E4B0B75F63`) inspected read-only as one seat-only Plumbing Fixtures type. It cannot stand in for either the predecessor toilet body or current 610AA. TOTO Drake BIM hits are a different brand/model and were excluded.
+- No new family was downloaded. The current-SKU assembled geometry remains unverified; M-06 and A/B stay unassigned. See the M239 research note for sources and bounded-search limits.
+
 ## M235 — Revalidate the selected-D geometry and IFC baseline
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
