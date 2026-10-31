@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M243 — Recenter the porch-route start beside the test kitchen shift
+
+- Added `Tools/search_m243_route_start_sensitivity.ps1` and `Architecture/M243_Moved_Kitchen_Route_Start_Sensitivity_2026-10-31/README.md`. It regenerates M215/M213/M186 inputs and checks three complete route envelopes, including 36-in start/end caps, against the M242 kitchen candidate and pinned M186 obstacles.
+- Three Windows PowerShell 5.1 runs pass **14/14** checks and reproduce the report/check JSON byte-for-byte. Checks SHA256: `05a442256502a5652d03e6d6ae614641858c6b3f4c6fa6790990b4563ddae21b`; report SHA256: `30309c0bf4c4a478b67e3f1d183d75e8de09ea3c5b19f2c301d66ce6bea29ac8`.
+- With the M242 6-in west kitchen test move, the original route-start envelope overlaps it by 2 in (0.5 sf). Moving the route start 3 in west clears it but leaves 1 in to the candidate kitchen, below the M215 study's 3-in analysis screen. A 6-in west start shift leaves 4 in at the kitchen, a 3-in minimum to the other checked proxies, and a 33.5-ft route centerline.
+- This is one route-start adjustment, not exhaustive routing. Candidate kitchen, route and room blocks remain unselected. Selected-D/RVT/IFC, west-A protection, B/M-06 assignment and remote state are unchanged; no code or construction conclusion follows.
+
 ## M242 — Test hall/kitchen closure against the porch route proxy
 
 - Added `Tools/analyze_m242_hall_kitchen_gap_vs_porch_route.ps1` and `Architecture/M242_Hall_Kitchen_Gap_Route_Sensitivity_2026-10-31/README.md`. This derives an unselected 6-in westward M-02 test move from M241's measured hall/kitchen gap; M-02 area stays 277.333 sf.
