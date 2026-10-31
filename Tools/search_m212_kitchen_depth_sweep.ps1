@@ -1,5 +1,5 @@
 param(
-    [string]$OutputDirectory='Architecture/M212_Porch_Door_Alignment_2026-10-31/artifacts',
+    [string]$OutputDirectory='Architecture/M212_Kitchen_Depth_Sweep_2026-10-31/artifacts',
     [string]$ScratchPrefix='M212'
 )
 $ErrorActionPreference='Stop'
@@ -29,9 +29,9 @@ if([double]$m178.candidate.kitchen_area_sf-ne189-or[double]$m178.candidate.islan
 $m192Spec=@($m192.source_fingerprints_sha256.PSObject.Properties|Where-Object Name -eq $specRel)[0]
 if($null-eq$m192Spec-or[string]$m192Spec.Value-ne$hashes[$specRel]){throw 'M192 no longer binds the current kitchen/porch specification.'}
 
-# Northward translations test the clearance needed to pass above protected A
-# before approaching the porch. Dining/porch areas and documented furniture
-# sizes remain fixed; all placements are hypothetical, not design selections.
+# Kitchen-depth cases test whether M178's source run, island and stool-use
+# proxies fit smaller envelopes while retaining the protected-A route setup.
+# All dimensions are sensitivities, not selected architectural dimensions.
 $cases=@()
 foreach($depth in @(12.5,13.0,13.5,14.0)){
  $label=('{0:0.##}' -f $depth).Replace('.','_');$counterY=($depth-12.5)/2
