@@ -1,7 +1,12 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M250 replays M241/M242/M243 twice and freshly validates the selected-D/IFC baseline (2 × 43 geometry checks, six parseable SVGs, retained IFC2x3 26/26 with zero errors). The owner-directed six-inch M-01 east move remains analysis-only; paired studies show a separate six-inch kitchen move clashes with the fixed porch-route proxy, while a six-inch route-start sensitivity clears only the tested proxies. The current isolated M244 RevitPilot DLL (`DAA17862…C4B0EC`) is now registered under the authorized AddInId after backing up the previous per-user manifest. The startup journal records a generic unsigned-add-in TaskDialog with a Load Once button but no assembly path/hash or chosen button; the visible trial intro overlay prevents the supported bridge from inspecting that prompt. No family derivative was generated. The candidate remains a predecessor bowl only (not selected 610AA001.020). Selected-D, source RFAs and retained RVT/IFC remain unchanged; M-06/A/B remain unassigned. Continue only when the prompt's exact DLL path/hash can be verified and Load Once chosen. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
+Status: M252 completes an isolated Revit 2027 measurement of the quarantined 3195A101.020 predecessor bowl: three types, 14.1253 x 29.1884 x 17.1581 in family-symbol bounds, zero instances, no selected-D access. The report and derivative pass 7/7 independent read-only checks; the repository validator remains pending because Revit holds the source open and this PowerShell session is Restricted. M-06/A/B remain unassigned.
+
+## M252 — Measure quarantined predecessor bowl geometry in Revit
+
+**Acceptance:** run the staged hash-pinned request with the exact project-local RevitPilot build in a blank disposable project; require the report to identify Revit 2027, the source hash before and after, three types with positive-volume finite solid bounds, zero family instances, no selected-D access, and an RVT derivative under ignored `.local`. Independently check report structure and derivative hash; keep M-06/A/B unassigned and document any validator limitation.
+
 
 ## M250 — Replay the living/kitchen sensitivities and prepare an isolated Revit family measurement
 

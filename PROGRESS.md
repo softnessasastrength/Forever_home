@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M252 — Inspect quarantined predecessor bowl geometry in Revit
+
+- Revit 2027.3 completed the staged `Inspect quarantined family geometry` request in a new Imperial project derivative. It did not open selected-D, place a family instance, or create a host probe.
+- The hash-pinned Champion PRO predecessor bowl (`3195A101.020`, not the selected complete 610AA001.020) reports three types, each with six positive-volume solids and 14.1253 x 29.1884 x 17.1581 in family-symbol bounds. Revit recorded source SHA256 `F301D2CB77F13269E21DC44FD6953946158034122BB3C10889FCBA9470846393` before and after. Derivative RVT SHA256 is `C8284793D66E11BD0DD265B0159EC7C62392710E1F7B5E23EB90A0B9F00FE55E`.
+- A read-only PowerShell audit of report schema/status, recorded source hash/path, derivative path/hash, scope, dimensions and limitations passed **7/7**. The repository's independent `.ps1` validator was blocked by this session's effective `Restricted` PowerShell execution policy; independently rehashing the source was also blocked while Revit held it open. No execution-policy/security setting was changed. The report itself records identical expected hashes before and after.
+- The output remains ignored under `.local`. The measurement informs only the predecessor bowl envelope; it does not establish a selected-SKU toilet, installed fit, clearance, door/approach, services, or code applicability. West A remains protected, east B and M-06 unassigned; selected-D/RVT/IFC and remote state are unchanged. Evidence: `Architecture/M252_Quarantined_Family_Geometry_Inspection_2026-10-31/README.md`.
+
 ## M250 — Replay the integrated living/kitchen screens; prepare a quarantined-family derivative
 
 - Confirmed branch `codex/house-design-sandbox` and a clean worktree before this chunk; it was already 26 commits ahead of its local tracking ref. No remote or commit history changes were made. The owner's answer “Test 6 in east move” was already encoded in M233 and M241; this chunk carries that sensitivity through the hall/kitchen route comparison rather than altering selected-D.
