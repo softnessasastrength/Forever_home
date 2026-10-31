@@ -1865,6 +1865,11 @@ public class GableMassingCommand : IExternalCommand
                     directShape.SetShape(builder.GetBuildResult().GetGeometricalObjects());
                     Tag(directShape, Marker + ":" + caseId + ":OPEN-MESH-ONLY");
 
+                    // DirectShape bounds are not guaranteed to be populated until
+                    // Revit regenerates the document after SetShape. This command
+                    // verifies the actual Revit geometry before committing the
+                    // disposable comparison transaction.
+                    doc.Regenerate();
                     BoundingBoxXYZ? bounds = directShape.get_BoundingBox(null);
                     if (bounds is null) throw new InvalidOperationException($"M83 DirectShape has no bounds: {caseId}.");
                     double bx = bounds.Max.X - bounds.Min.X, by = bounds.Max.Y - bounds.Min.Y, bz = bounds.Max.Z - bounds.Min.Z;

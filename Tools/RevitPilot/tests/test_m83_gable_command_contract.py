@@ -19,6 +19,19 @@ class M83GableCommandContractTests(unittest.TestCase):
         self.assertNotIn("doc.Delete(", gable_command)
         self.assertIn("levels = new FilteredElementCollector(doc).OfClass(typeof(Level)).GetElementCount()", gable_command)
 
+    def test_direct_shape_regenerates_before_bounds_validation(self):
+        command = COMMAND_PATH.read_text(encoding="utf-8")
+        start = command.index("public class GableMassingCommand")
+        end = command.index("public class CompactCoreCommand", start)
+        gable_command = command[start:end]
+
+        shape_index = gable_command.index("directShape.SetShape(")
+        regenerate_index = gable_command.index("doc.Regenerate();", shape_index)
+        bounds_index = gable_command.index("directShape.get_BoundingBox(null)", shape_index)
+
+        self.assertLess(shape_index, regenerate_index)
+        self.assertLess(regenerate_index, bounds_index)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -40,3 +40,9 @@ Autodesk documents `TessellatedShapeBuilder` as a way to build connected planar 
 ## Source refresh after M102
 
 The Connecticut roof research note was extended with the R305.1 sloped-ceiling basis on 2026-10-30. Because the M83 generator records that note's SHA256, its four source artifacts were regenerated against the revised note. Three PowerShell 5.1 runs (checked-in destination and two isolated outputs) pass **13/13** checks and match byte-for-byte. This refresh changes only source provenance; roof pitches, ridge cases and geometry remain the same. M101 and M103 downstream analyses were regenerated against the refreshed M83 report.
+
+## Revit bounds-evaluation repair (M121; host validation pending)
+
+The first M83 host invocation stopped at `M83 DirectShape has no bounds: M83 X 8:12.` The command read `DirectShape.get_BoundingBox(null)` immediately after `SetShape` while still inside the open transaction. The isolated source fix now calls `doc.Regenerate()` after each shape assignment and before validating its bounding box; a contract test guards this ordering. The code compiles in `.local/revit-pilot/build-m83-regenerate-bounds-v1/Release/net10.0-windows/RevitPilot.dll` (SHA256 `32B3AB18B33ECC12704FAE292F704FF4775799485AD34A12F582FADC969D0CD8`).
+
+**The repair has not yet passed in Revit.** The still-running Revit process produced an unsigned-add-in dialog for the old `build-m83-level-safe` DLL, not this build. That mismatched prompt was not accepted. The new build may be loaded once only after Revit is fully restarted and the prompt path is verified against the new manifest/build hash. Then rerun all six cases and the independent IFC validator; preserve both the old failed run and new result.
