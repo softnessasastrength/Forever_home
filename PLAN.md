@@ -2149,11 +2149,21 @@ Status: Complete. Two independent PowerShell runs pass 6/6 wrapper checks; all s
 
 Acceptance criteria:
 
-- Repeat the current and north-edge pantry cases at the 5 × 6 ft size specified in `Architecture/Kitchen_Dining_Porch_Specs.md`; retain the same kitchen/living, dining, island, stool, door and B constraints.
-- Report route reachability, pantry/route overlap with A, dining boundary margin, kitchen shared-wall length and all modeled proxy conflicts.
+- Repeat M205's current and north-edge pantry positions at the 5 × 6 ft size specified in `Architecture/Kitchen_Dining_Porch_Specs.md`; retain the same kitchen/living, dining, island, stool, door and B constraints.
+- Report route reachability, pantry/route use of A, dining boundary margin, kitchen shared-wall length and modeled proxy conflicts.
 - Bind sources and reproduce outputs independently. Treat every placement as a sensitivity, not a design selection; do not change selected-D, RVT, IFC or RFAs.
 
-Status: Next authorized geometry sensitivity; no placement selected.
+Status: Complete. Two independent PowerShell runs pass 6/6 wrapper checks; all six embedded searches pass (29/29, 31/31 and 31/31). The current placement improves the nearest approach from 9.5 ft at 5 × 7 to 4 ft at 5 × 6 but still finds no route. Both north-edge cases yield a 28-ft four-turn route and consume 38.75 sf (65.7%) of west A between the pantry and route. The 36-in shared-wall option still leaves only 2 in to the test-shell edge; no pantry door geometry is modeled. See `Architecture/M206_Specified_Pantry_Size_Sensitivity_2026-10-31/README.md`.
+
+## M207 — Decide west-A circulation versus M-06 use
+
+Acceptance criteria:
+
+- Present the verified pantry/route overlap with west A and retain B as unassigned.
+- Obtain owner direction before advancing any layout that treats A as circulation or as a bath search location.
+- Preserve selected-D, RVT, IFC and RFAs while comparing the authorized direction.
+
+Status: Awaiting owner priority; no space is assigned.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:

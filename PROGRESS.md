@@ -2166,3 +2166,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Two independent PowerShell 5.1 runs pass 6/6 M205 checks. The three embedded route runs pass 29/29, 31/31 and 31/31, respectively; JSON/checks/CSV match byte-for-byte. The current pantry has no route (nearest point 9.5 ft). Both north-edge cases find a 28-ft four-turn route.
 - Passing cases use 43.92 sf (74.5%) of the 58.99-sf west-A diagnostic window between the moved pantry and route. The 36-in shared-wall case leaves 2 in between shifted dining and the hypothetical shell edge. Door opening, rough opening, swing and approach are not modeled. No design selected; B remains unassigned and selected-D/RVT/IFC/RFAs are unchanged.
 - Next: compare the documented 5 × 6 ft pantry target under the same fixed constraints. See `Architecture/M205_Pantry_Location_Sensitivity_2026-10-31/README.md`.
+## M206 — Specified pantry size sensitivity — 2026-10-31
+
+- Added `Tools/search_m206_specified_pantry_size_sensitivity.ps1` and `Architecture/M206_Specified_Pantry_Size_Sensitivity_2026-10-31/`. Tests M205's three pantry positions at the documented 5 × 6 ft / 30 sf size while retaining B and all route/furniture proxies.
+- Two independent PowerShell 5.1 runs pass 6/6 M206 checks; all six embedded M186 searches pass 29/29, 31/31 and 31/31. JSON/checks/CSV match byte-for-byte.
+- Current placement has no route but improves nearest point from 9.5 ft for the 5 × 7 proxy to 4 ft for 5 × 6. Both north-edge placements yield 28-ft/four-turn routes. Pantry plus route uses 38.75 sf (65.7%) of west A. The 36-in shared-wall case leaves 2 in to the hypothetical shell edge. Pantry door fit/swing remains untested.
+- M-06/B remains unassigned; west A remains an unassigned trade-off area. No layout selected and no selected-D, RVT, IFC or RFA changed.
+- Next owner choice: whether A may be consumed for pantry/circulation in a future layout study, or should remain available for the unresolved half bath while circulation is searched elsewhere. See `Architecture/M206_Specified_Pantry_Size_Sensitivity_2026-10-31/README.md`.
