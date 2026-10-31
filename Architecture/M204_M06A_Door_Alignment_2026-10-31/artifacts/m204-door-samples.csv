@@ -1,0 +1,4 @@
+"door_center_x_ft","path_found","route_length_ft","route_turns","reachable_nodes","nearest_to_door_ft","M06_A_route_union_overlap_sf","M06_A_status","M06_B_status"
+"2","False",,,"5940","12","0","Released only for this circulation sensitivity; not an assigned bathroom.","Unassigned room-block gap only; not a bath footprint."
+"5.5","False",,,"5940","12","0","Released only for this circulation sensitivity; not an assigned bathroom.","Unassigned room-block gap only; not a bath footprint."
+"9","False",,,"5940","9.5","0","Released only for this circulation sensitivity; not an assigned bathroom.","Unassigned room-block gap only; not a bath footprint."

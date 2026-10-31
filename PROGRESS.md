@@ -2150,3 +2150,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - No route appears after 5,940 nodes; the nearest reachable point remains 9.5 ft from the tested door. The no-path case consumes **0 sf** of A. Pantry, B and stool-use proxies remain prominent frontier constraints; releasing A alone is insufficient with this fixed dining arrangement.
 - B remains unassigned. No selected-D, RVT, IFC or Incoming RFA changed. No usability, code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
 - Next: compare west, central and east porch-door centers with A released while preserving B and all other proxies. Do not change the pantry footprint before that test.
+
+## M204 — Door alignment under alternate-A trade-off — 2026-10-31
+
+- Added `Tools/search_m204_m06a_door_alignment.ps1` and `Architecture/M204_M06A_Door_Alignment_2026-10-31/`. It tests west/center/east five-foot door centers x=2, 5.5 and 9 ft with the fully open living start and west A released, retaining pantry, entry, island, stool, dining and chair-use proxies; B remains an obstacle.
+- Two independent Windows PowerShell 5.1 runs pass **6/6** M204 checks; all six embedded M186 searches pass **29/29**. JSON, checks and CSV match byte-for-byte.
+- **0/3** door samples find a route; all reach 5,940 nodes. Nearest approach is 9.5 ft at the east door and 12 ft at the west/center doors. The measured overlap with A is zero because no route reaches the door.
+- This does not establish that all door locations or dining layouts fail. It shows that door movement alone does not resolve the fixed pantry-side approach. M-04 remains pinned pending owner input; selected-D, RVT, IFC and Incoming RFA sources remain unchanged.
+- Next: run the owner-authorized M-04 pantry placement sensitivity, retain its 5 × 7 ft test area and function, and keep B unassigned.

@@ -2130,12 +2130,20 @@ Status: Complete. **0** routes found after releasing A; nearest point remains 9.
 
 Acceptance criteria:
 
-- Test west, central and east five-foot porch-door center samples on the documented 12-ft porch face under the fully open kitchen/living case with A released.
-- Preserve pantry-side B as a blocked, unassigned search window and hold kitchen, island, pantry, entry, dining set, chair-use zones and all other route proxies fixed.
-- Report route reachability, nearest approach and any A overlap/unassigned travel; no tested door is selected by the search.
-- Bind source hashes and reproduce outputs independently. Preserve selected-D, RVT/IFC and Incoming RFAs.
+- Test west, centered and east five-foot porch-door centers x=2, 5.5 and 9 ft with the fully open kitchen/living start and A released.
+- Preserve B, pantry, entry, island, stool, dining and chair-use proxies; report distance, reachability and any A consumption.
+- Bind sources and reproduce outputs independently; do not select door geometry or alter house files.
 
-Status: Authorized sensitivity following the M203 no-route finding; no design geometry selected.
+Status: Complete. **0/3** positions find a route; all reach 5,940 nodes. The east position is 9.5 ft from the nearest reachable node; west/center are 12 ft away. No route consumes A. Further door movement alone is not the evident next lever. See `Architecture/M204_M06A_Door_Alignment_2026-10-31/README.md`.
+## M205 — Test M-04 pantry location sensitivity — 2026-10-31
+
+Acceptance criteria:
+
+- Only proceed if the owner confirms the unapproved M-04 test footprint may move; retain its 5 × 7 ft area and documented pantry function for the first comparison.
+- Keep the owner's preferred open kitchen/living connection, larger-island priority, current dining/chair-use geometry, M-06/A trade-off reporting and pantry-side B protection.
+- If authorized, test a bounded set of pantry placements, checking kitchen adjacency, pantry-door approach, B, route gaps and area/use trade-offs. No placement becomes selected by the search.
+
+Status: Authorized as a labeled sensitivity by the owner on 2026-10-31; the 5 × 7 ft test block may move while its area/function and B protection remain. No placement is selected.
 
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
