@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M244 — Current-checkout selected-D and IFC replay
+
+- Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M244-current-baseline` from the current sandbox checkout. It exits 0; both PowerShell geometry generations pass **43/43**, seven outputs match byte-for-byte, and all six generated plan SVGs parse.
+- Retained IFC2x3 validation passes **26/26** with zero errors. Storeys, space IDs/names/areas/levels/bounds/body-profile areas and Revit room inventory IDs/areas match documented selected-D inputs. The stacked L-02/U-06 check remains 0 sf; main bath footprint TBD.
+- Protected selected-D/RVT/IFC hashes match their recorded values. Validation report SHA256: `A1E387082544E3A116DCCA9E3428CBC9B6C8CFCF3F8AFDFD9AC12E70F964E93B`. Full evidence/limitations: `Architecture/M244_Baseline_Revalidation_2026-10-31/README.md`.
+- This verifies the scripted space-study and retained exports only. Construction categories remain empty. Revit appears running, but the supported CUA returned `Accessibility state unavailable` on two attempts; no UI action or add-in load was made. Native house geometry and a current Revit-to-IFC round trip remain outstanding.
+
 ## M243 — Recenter the porch-route start beside the test kitchen shift
 
 - Added `Tools/search_m243_route_start_sensitivity.ps1` and `Architecture/M243_Moved_Kitchen_Route_Start_Sensitivity_2026-10-31/README.md`. It regenerates M215/M213/M186 inputs and checks three complete route envelopes, including 36-in start/end caps, against the M242 kitchen candidate and pinned M186 obstacles.
