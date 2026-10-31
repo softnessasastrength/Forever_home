@@ -1569,3 +1569,15 @@ Acceptance criteria:
 - Record that this verifies a room-boundary/space study, not authored construction geometry or code compliance.
 
 Status: Complete. Both generation runs pass 43/43 and their seven output hashes match; all SVGs parse. The retained IFC report passes 26/26, with IFC2X3 schema clean and zero errors. Source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The IFC still has no walls, floors, stairs, doors, windows, roof, structure, services or fixtures. See M146 in `PROGRESS.md`.
+
+## M147 - Compare route-compatible M115 suite interfaces
+
+Acceptance criteria:
+
+- Bind the complete M115 archive to its independent audit and verify all audit checks and source fingerprints before analysis.
+- Filter the route-tested candidate set by direct sampled arrival at U-01/U-02/U-04 and no sampled U-03 public reach, then independently reconstruct all six owner-directed room-link contacts.
+- Compare contact lengths with the selected-D 3.5 ft nominal reservation as a clearly labeled proxy; separate northeast and northwest U-03 shell-edge groups and report zero-margin cases without ranking a layout.
+- Generate hash-bound JSON/CSV and replay into two isolated scratch paths with byte-identical artifacts.
+- Preserve the hypothetical 38 1/3 x 40 ft shell and incomplete-search limitation. Do not change selected-D or claim actual doors, code, clearance, accessibility, Revit/IFC, service routing or a selected plan.
+
+Status: Complete as a comparison-only boundary screen. M147 passes 13/13 checks and reproduces byte-for-byte across isolated runs. It finds 73 route-compatible candidates (64 east+north, nine north+west), with all six contact reservations fitting arithmetically. Forty-four of 64 east+north layouts and three of nine north+west layouts have zero centered end margin at one or more contacts. No layout is selected; see the M147 report and README.
