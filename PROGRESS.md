@@ -2142,3 +2142,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - No route is found after reaching 5,816 nodes; nearest reachable point remains 9.5 ft from the tested door. The 4.333-ft band between the 13.5-ft kitchen test and source living block remains unassigned and is not physically modeled. Fully opening this connection alone does not solve the route.
 - Both M-06 windows remain protected for this run; B remains unassigned. Selected-D, RVT, IFC and Incoming RFA sources are unchanged.
 - Next: test alternate A as a separately reported route trade-off while keeping B blocked and measuring all other proxies.
+
+## M203 — Alternate-A circulation trade-off — 2026-10-31
+
+- Added `Tools/search_m203_m06a_circulation_tradeoff.ps1` and `Architecture/M203_M06A_Circulation_Tradeoff_2026-10-31/`. It starts from the fully open kitchen/living case, releases only west diagnostic A, holds B and all other obstacles, and measures A overlap/centerline use if a route appears.
+- Two independent PowerShell 5.1 runs pass **7/7** M203 checks; both embedded M186 runs pass **29/29** and JSON/checks/CSV match byte-for-byte.
+- No route appears after 5,940 nodes; the nearest reachable point remains 9.5 ft from the tested door. The no-path case consumes **0 sf** of A. Pantry, B and stool-use proxies remain prominent frontier constraints; releasing A alone is insufficient with this fixed dining arrangement.
+- B remains unassigned. No selected-D, RVT, IFC or Incoming RFA changed. No usability, code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
+- Next: compare west, central and east porch-door centers with A released while preserving B and all other proxies. Do not change the pantry footprint before that test.

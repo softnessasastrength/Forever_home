@@ -1,0 +1,42 @@
+{
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "only_west_A_released",
+                      "pass":  true,
+                      "detail":  "The west diagnostic A is released for this sensitivity; east B remains a route obstacle."
+                  },
+                  {
+                      "id":  "B_unassigned",
+                      "pass":  true,
+                      "detail":  "Pantry-side M-06/B remains unassigned."
+                  },
+                  {
+                      "id":  "open_kitchen_living_start",
+                      "pass":  true,
+                      "detail":  "Search starts at the source living point with no half-wall or return."
+                  },
+                  {
+                      "id":  "door_matches_M198_best_gap",
+                      "pass":  true,
+                      "detail":  "Five-foot door remains at the best-gap M198 sensitivity, not selected design."
+                  },
+                  {
+                      "id":  "route_engine_contract_passes",
+                      "pass":  true,
+                      "detail":  "M186 completed every source and finite-grid contract check."
+                  },
+                  {
+                      "id":  "selected_D_fingerprint_protected",
+                      "pass":  true,
+                      "detail":  "Selected-D remains at its protected source SHA256."
+                  },
+                  {
+                      "id":  "A_use_measured_as_tradeoff",
+                      "pass":  true,
+                      "detail":  "Any route-area overlap and centerline length inside A are separately reported; A is not called a bathroom."
+                  }
+              ]
+}

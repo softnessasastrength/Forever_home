@@ -2116,6 +2116,27 @@ Acceptance criteria:
 
 Status: Authorized trade-off sensitivity; no layout or room assignment selected.
 
+## M203 — Test alternate-A circulation trade-off — 2026-10-31
+
+Acceptance criteria:
+
+- Starting from M202, release only west diagnostic A; preserve B and all other fixed M-06, pantry, entry, island, stool, dining and chair-use constraints.
+- Report any route's area/centerline use of A, unassigned travel, route length/turns and minimum proxy gaps; clearly label A as an unassigned bath option consumed as circulation.
+- Bind source hashes and reproduce deterministic PowerShell outputs twice; preserve selected-D, RVT/IFC and Incoming RFA inputs.
+
+Status: Complete. **0** routes found after releasing A; nearest point remains 9.5 ft from the porch door. B, pantry and stool-use proxies remain major frontier constraints. No route consumes A in this case. Next: compare west, central and east door centers under this A trade-off before considering any change to the pantry footprint. See `Architecture/M203_M06A_Circulation_Tradeoff_2026-10-31/README.md`.
+
+## M204 — Compare porch-door alignment with A released — 2026-10-31
+
+Acceptance criteria:
+
+- Test west, central and east five-foot porch-door center samples on the documented 12-ft porch face under the fully open kitchen/living case with A released.
+- Preserve pantry-side B as a blocked, unassigned search window and hold kitchen, island, pantry, entry, dining set, chair-use zones and all other route proxies fixed.
+- Report route reachability, nearest approach and any A overlap/unassigned travel; no tested door is selected by the search.
+- Bind source hashes and reproduce outputs independently. Preserve selected-D, RVT/IFC and Incoming RFAs.
+
+Status: Authorized sensitivity following the M203 no-route finding; no design geometry selected.
+
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:
