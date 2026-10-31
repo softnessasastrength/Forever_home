@@ -1369,3 +1369,14 @@ Acceptance criteria:
 - Inspect the live Revit add-in prompt against the exact project-local manifest/DLL. Do not accept a mismatched or stale DLL; record the outstanding host gate.
 
 Status: Complete as a fresh offline/source and export-baseline revalidation. Host execution of M83 remains an explicit open gate under M121/M127.
+
+## M128 - Verify availability of the Champion PRO predecessor tank family
+
+Acceptance criteria:
+
+- Inspect the public manufacturer record for tank SKU 4225A104.020 and capture its product role, stated status/dimensions, and design-file availability.
+- Compare the tank SKU only with the documented predecessor 211AA.104 component pair; do not infer that it is the 610AA001.020 current assembly.
+- Do not invent tank solid geometry, download gated content, or assign M-06/B on this evidence.
+- Record the public-source finding, its limits, and the remaining exact-SKU model/fit gates.
+
+Status: Complete as a source-availability check. LIXIL Pro identifies 4225A104.020 as a discontinued 1.28 gpf tank-only item with nominal 19 x 9-1/16 x 13-3/16 in dimensions and explicitly reports that no design files or 3D objects are currently available. This closes the public manufacturer-family path for that predecessor tank, not the current selected 610AA assembly. M-06 and B remain unassigned.
