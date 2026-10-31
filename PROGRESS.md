@@ -25,6 +25,13 @@ Status: Compact-Core C and owner-selected direction D remain preserved compatibi
 - Scope remains a room-boundary study. The IFC contains no authored walls, slabs, stairs, doors, windows, roof, structure, MEP or M-06 fixture. It is not a complete architectural model or evidence of code compliance, structural safety, professional certification or construction readiness.
 - Scratch output stayed under ignored `.local/revalidation/`; selected-D source, tracked derived artifacts, retained RVT/IFC and all five incoming family files were not modified.
 
+## M138 - Hypothetical upper-suite IFC revalidation - 2026-10-30
+
+- Ran `.venv/Scripts/python.exe Tools/RevitPilot/validate_upper_suite_ifc.py .local/revit-pilot/upper-suite/20261030T200906834Z` twice, writing independent reports to `.local/revalidation/M140-upper-suite-ifc.json` and `M140-upper-suite-ifc-repeat.json`.
+- Both runs pass **32/32 checks**. The reports are byte-identical, SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`; validator reports IFC2X3 with no schema issues. Checks bind the RVT/IFC export fingerprints and compare seven room-space identities, areas, levels and plan bounds to the M78 source study.
+- The retained derivative is explicitly a room-boundary test: one `M78 Upper FF (Hypothetical Test)` level, seven spaces and a plan-only 38 1/3 x 40 ft envelope. It contains no native walls, floors, stairs, doors, windows, roof, structure, services or fixtures. No code or construction claim follows.
+- Selected-D, retained M78 RVT/IFC, all five incoming RFA files and remote refs are unchanged. The separate M83 gable host export still awaits resolution of Revit's stale-DLL prompt; the prompt's old DLL SHA differs from the authorized current manifest build.
+
 ## M81 — M78 hypothetical upper-suite Revit/IFC milestone — 2026-10-30
 
 - Fixed JSON BOM handling in the new RevitPilot M78 command while retaining raw-byte SHA256 provenance. A Revit 2027.3.0.28 run created a separate model at `.local/revit-pilot/upper-suite/20261030T200906834Z/`; selected D and the Incoming RFAs were not edited.

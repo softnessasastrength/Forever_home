@@ -1487,3 +1487,14 @@ Acceptance criteria:
 - Record that room-space IFC validation is not a complete physical architectural model or construction/code approval.
 
 Status: Complete as a scratch regeneration and retained-export validation. The current source regenerated consistently in two isolated runs (43/43 each; all seven outputs byte-identical between runs), and selected-D checks/geometry are semantically equivalent to the checked-in derived package. Embedded fingerprints for `Requirements/Room_Program.md` and `Decisions/2026-10-27_Selected_Architectural_Direction_D.md` differ from the currently regenerated output; no tracked selected-D package was refreshed. The retained Revit/IFC2X3 pair passes 26/26 independent checks with zero errors. See M137 in `PROGRESS.md`.
+
+## M138 - Revalidate the hypothetical upper-suite IFC derivative
+
+Acceptance criteria:
+
+- Run the independent upper-suite IFC validator twice against the retained isolated M78 Revit 2027 derivative, writing reports under ignored scratch paths.
+- Require all 32 checks to pass, zero IFC schema issues and byte-identical validation reports.
+- Confirm that room identities, areas, levels and plan boxes match the source study, and that the IFC remains the explicitly limited room-space test described in the source README.
+- Preserve the RVT, IFC, selected-D source, incoming RFA files and remote state.
+
+Status: Complete. Both fresh reports pass 32/32 and are byte-identical (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). The host derivative remains one level and seven room-space blocks with no modeled walls, floors, stairs, doors, windows, roof, structure, MEP or fixtures; see M138 in `PROGRESS.md`.
