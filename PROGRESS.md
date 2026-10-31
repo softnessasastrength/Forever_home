@@ -2025,3 +2025,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Retained run passes **14/14 checks**. Three relaxations restore a sampled route: removing the unmeasured assumed stool-use proxy (28.5 ft, five turns), removing the already-blocked west diagnostic (28.5 ft, five turns), or removing the dining table/chair set (54.5 ft, five turns). Pantry, island, half-wall/return, east/B, M-05 entry, and perimeter casework removal each remain no-path individually.
 - Every restored path crosses the proxy removed for that run. These are not clear routes or selected plans. The east/B relaxation was specifically tested and does not solve the route alone; B stays unassigned.
 - Retained run and independent replays pass 14/14; JSON, checks and CSV hashes are recorded in the package README. CSV fields were checked against all nine report scenarios. Selected-D/RVT/IFC/RFAs remain unchanged.
+
+## M188 - Dining-set placement sensitivity - 2026-10-31
+
+- Added Tools/search_m188_dining_set_placement.ps1; it reuses M186 on the unchanged 40 x 42 ft test envelope and moves the documented 36 x 60 in table plus four 18 x 20 in chair proxies as a rigid set by one foot along each cardinal direction.
+- Five cases pass **6/6 checks**, including fit of every furniture-body rectangle within the 11 x 10 ft dining test block and preservation of selected-D. Only a one-foot north translation returns a route: 56.5 ft long, seven turns. Its table-edge gap is exactly zero and 6.5 ft of route is in unassigned space; it is not a viable selected route without further evidence.
+- The route still lacks physical doors/openings/walls, chair pull-out operation and occupant testing. The 36-in minimum pull-out in the written spec has not been modeled as an independent swept-use envelope. No accessibility/code or functional-route finding follows.
+- Retained run plus independent PowerShell replay pass 6/6 and reproduce the refined JSON/checks/CSV/SVG artifacts byte-for-byte. Hashes are recorded in the M188 README. Selected-D/RVT/IFC/RFAs remain unchanged; M-06/B is unassigned.

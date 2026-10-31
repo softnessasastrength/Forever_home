@@ -2034,3 +2034,16 @@ Acceptance criteria:
 Status: Complete. Three of nine single-proxy relaxations restore a sampled path: stool-use proxy (28.5 ft/five turns), west diagnostic (28.5 ft/five turns), and dining set (54.5 ft/five turns). The other six—including M-05 entry—do not. This isolates tradeoff sensitivities; none is a valid route while its omitted proxy remains. See `Architecture/M187_Route_Sensitivity_2026-10-31/README.md`.
 
 Next: replace the assumed stool envelope with measured geometry from the protected incoming families when permitted Revit host evidence is available, then inspect the entry opening/interface and physical walls in an isolated derivative. Do not relocate the M-06 search window or assign B without product/clearance/approach/service evidence.
+
+## M188 - Test dining-set translation against the public route
+
+Acceptance criteria:
+
+- Use only source-documented 36 x 60 in table and 18 x 20 in chair body sizes; translate the set rigidly without resizing it.
+- Test baseline and one-foot cardinal translations within the M178 11 x 10 ft dining test block, then rerun the same M186 route grid and constraints.
+- Record route length, turns, minimum table-edge gap and unassigned-space use; no path is described as usable without actual openings, door, wall and movement geometry.
+- Keep selected-D, Revit/IFC, Incoming RFAs and M-06/B status unchanged; require deterministic PowerShell output and passing checks.
+
+Status: Complete as an unapproved placement sensitivity. Only the one-foot north translation restores a grid route (56.5 ft, seven turns); it has zero additional table-edge gap and traverses 6.5 ft of unassigned space. The result is too fragile to select. See `Architecture/M188_Dining_Set_Placement_2026-10-31/README.md`.
+
+Next: if owner accepts further schematic exploration, search small combined table offsets and alternative four-chair placement while enforcing the full 36-in chair-use envelope and a separate route. Then move to actual Revit wall/opening coordination only in a disposable derivative after exact local DLL verification.
