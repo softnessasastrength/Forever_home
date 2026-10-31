@@ -1787,3 +1787,15 @@ Acceptance criteria:
 - Preserve selected-D, owner RFAs, all design selections and remote state; keep roof geometry comparative and unselected.
 
 Status: Complete as a dated statewide source recheck and dependent-artifact refresh. DAS's adoption-process page, code-history page and official 2022 CSBC text were checked on 2026-10-31. The 2026 code effective date remains delayed pending Legislative Regulation Review Committee approval; the 2022 CSBC remains identified by DAS as currently in effect. This does not establish the future project's municipality, occupancy or applicable permit cycle. The updated research note drives three M83 generator runs (13/13 each, all four artifacts byte-identical), three M159 runs (15/15 each, JSON/CSV byte-identical), and two M162 runs (16/16, JSON/CSV byte-identical). Both existing M83 host IFC2X3 derivatives were revalidated at 21/21 after the source refresh. No model geometry, selected-D source, Incoming RFA, roof choice or remote state changed. See `Research/Connecticut_Roof_Code_Research_2026-10-28.md` and the linked M83/M159/M162 reports.
+
+## M167 - Reverify the public Champion PRO bowl family and its boundary
+
+Acceptance criteria:
+
+- Locate the source product page and direct file without account creation, sign-in, payment or gated-access bypass; record the product SKU, family scope, source URL, retrieval hash and date.
+- Compare the retrieved RFA byte-for-byte with any preserved Incoming source before treating it as new intake evidence.
+- If it is hash-identical to a preserved source, use its existing Revit intake report and perform any requested Revit inspection read-only; close without saving and confirm the hash remains unchanged.
+- Distinguish bowl geometry from the selected 610AA complete toilet; do not infer a current tank/seat crosswalk from predecessor-series parameters or dimensions.
+- Preserve the selected-D baseline, Incoming RFAs, Revit host derivative, and unassigned M-06 room; record remaining fit gates.
+
+Status: Complete as a public-source and read-only family recheck. The LIXIL Pro page lists white bowl SKU `3195A101.020` and a direct public Revit download, explicitly describing a bowl-only product with tank sold separately. The downloaded RFA (487,424 bytes; SHA256 `F301D2CB77F13269E21DC44FD6953946158034122BB3C10889FCBA9470846393`) exactly matches the already preserved Incoming file. The source-bound Revit 2027.3 intake report independently passes 101/101 and records three types; `3195A101.020` measures 13.9997 x 29.0628 x 17.0953 in from six positive-volume solids in symbol coordinates. A new read-only Family Editor 3D-view inspection was closed without saving; source hash remains unchanged. The complete 610AA assembly mapping, actual fit, applicable clearance, door/approach, lavatory and services remain open. M-06/B stays unassigned. See `Research/M06_Toilet_Options_2026-10-27.md` and M160.
