@@ -45,7 +45,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass `
 
 Current offline result: **5/5 validator fixtures pass**, including valid pair/hash acceptance and rejection of a changed RVT fingerprint, missing swing alternative, selected-D scope claim, and unexpected model-curve count. Fixture files are synthetic byte arrays, not Revit files. This only tests the manifest/file-identity gate; it is not evidence that Revit has generated either model.
 
-The production validator checks schema/status, all four pinned source hashes, isolated scope flags, both unique swing alternatives, each RVT's size and SHA256, reported counts (13 walls and 48 model curves per file), and preservation of A/B status. It explicitly does **not** inspect native RVT geometry. After a host run, inspect both files in Revit and capture native read-only audits or equivalent element inventory before treating the geometry as verified.
+M222 extends the production validator beyond this original file/hash/count gate. When the updated M222 command is run, it records each native tagged `Wall` and `ModelCurve` endpoint, wall height, and marker in the manifest; the PowerShell gate checks inventory shape, numeric bounds, marker uniqueness and per-opening-position distribution. This is a command-side audit, not an independent reopen of the RVT. See [M222](../M222_Native_Pantry_Study_Geometry_Audit_2026-10-31/README.md). Until the updated DLL is safely loaded and both models generated, no native geometry is verified.
 
 ## Current status and limitations
 

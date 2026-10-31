@@ -2,6 +2,15 @@
 
 Updated: 2026-10-31
 
+## M222 — Native geometry audit for pantry-door Revit studies
+
+- Extended `PantryDoorStudyCommand` to capture native tagged `Wall`/`ModelCurve` location endpoints, wall test heights, and unique markers before saving. It now stops on wrong native element counts or duplicate/missing markers.
+- Extended the independent PowerShell 5.1 gate to check those recorded geometry rows, numeric bounds/elevations, marker uniqueness, and expected 4/5/4 walls plus 16 model curves for each lower/center/upper opening position.
+- Build: `.local/dotnet/dotnet.exe build Tools/RevitPilot/RevitPilot.csproj -c Release -o .local/revit-pilot/build-m222-native-audit/Release/net10.0-windows /p:BaseOutputPath=.local/revit-pilot/build-m222-native-audit/obj/` — 0 errors, 2 MSB3277 Revit reference-resolution warning groups. DLL SHA256 `765E8749BCAF75F4855FC2F45711C0B0EFBDE17B89147F13D5049D8D576F1F01`.
+- Fixture command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/RevitPilot/test_validate_m218_revit_study.ps1 -ResultPath .local/revalidation/M222-m218-native-geometry-audit.json` — **7/7** pass. The suite includes invalid endpoint and missing-position negative cases. RVT payloads are synthetic; no host-generated geometry is verified.
+- Revit UI access remains unavailable: `@oai/sky` imports, but its session object has no `list_apps` method. No UI operation, Revit restart, DLL registration change, or native file generation was attempted. M219 registration and backup remain as previously documented.
+- Owner's “Keep both in study” instruction is embodied by the kitchen-swing and pantry-swing output pair. West A stays protected, east B stays unassigned; selected-D and RFAs unchanged. No code, accessibility, structural, permit, professional, or construction-readiness conclusion.
+
 ## M221 — M-06 manufacturer Revit-family crosswalk refresh
 
 - Checked the public American Standard current 610AA001.020 page and LIXIL Pro predecessor 211AA104.020 page. The current SKU page lists specification/installation resources but no public Revit link; the predecessor page does link a public RFA.

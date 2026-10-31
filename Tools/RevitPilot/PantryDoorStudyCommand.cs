@@ -33,13 +33,49 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 
     private sealed record DoorPosition(string Id, double StartY);
+    private sealed record Point3(double x, double y, double z);
+    private sealed record GeometryRecord(string marker, Point3 start, Point3 end, double? height_ft);
     private sealed record StudyFile(string swing_into, string file_name, string sha256, long bytes,
-        int wall_count, int model_curve_count, string status);
+        int wall_count, int model_curve_count, IReadOnlyList<GeometryRecord> walls,
+        IReadOnlyList<GeometryRecord> model_curves, string status);
 
     private static string Sha256(string path)
     {
         using var stream = File.OpenRead(path);
         return Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
+    }
+
+    private static Point3 Point(XYZ point) => new(point.X, point.Y, point.Z);
+
+    private static GeometryRecord Record(Element element)
+    {
+        if (element.Location is not LocationCurve location)
+            throw new InvalidDataException($"Tagged study element {element.Id} has no curve location.");
+        var marker = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "";
+        if (string.IsNullOrWhiteSpace(marker))
+            throw new InvalidDataException($"Tagged study element {element.Id} has no marker.");
+        var height = element is Wall wall
+            ? wall.get_Parameter(BuiltInParameter.WALL_USER_HEIGHT_PARAM)?.AsDouble()
+            : null;
+        return new GeometryRecord(marker, Point(location.Curve.GetEndPoint(0)), Point(location.Curve.GetEndPoint(1)), height);
+    }
+
+    private static (IReadOnlyList<GeometryRecord> Walls, IReadOnlyList<GeometryRecord> Curves) AuditGeometry(Document doc)
+    {
+        var walls = new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>()
+            .Where(element => (element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "")
+                .StartsWith("M218-", StringComparison.Ordinal))
+            .Select(Record).OrderBy(record => record.marker, StringComparer.Ordinal).ToList();
+        var curves = new FilteredElementCollector(doc).OfClass(typeof(ModelCurve)).Cast<ModelCurve>()
+            .Where(element => (element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "")
+                .StartsWith("M218-", StringComparison.Ordinal))
+            .Select(Record).OrderBy(record => record.marker, StringComparer.Ordinal).ToList();
+        if (walls.Count != 13 || curves.Count != 48)
+            throw new InvalidDataException($"Generated study geometry inventory mismatch: walls={walls.Count}, model_curves={curves.Count}.");
+        if (walls.Select(item => item.marker).Distinct(StringComparer.Ordinal).Count() != walls.Count ||
+            curves.Select(item => item.marker).Distinct(StringComparer.Ordinal).Count() != curves.Count)
+            throw new InvalidDataException("Generated study geometry contains duplicate element markers.");
+        return (walls, curves);
     }
 
     private static string RootFromAssembly()
@@ -146,7 +182,8 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     private static List<XYZ> Offset(IReadOnlyList<XYZ> points, double offsetX)
         => points.Select(point => new XYZ(point.X + offsetX, point.Y, LineZFt)).ToList();
 
-    private static int BuildStudyFile(UIApplication ui, string path, string swingInto,
+    private static (int WallCount, int CurveCount, IReadOnlyList<GeometryRecord> Walls,
+        IReadOnlyList<GeometryRecord> Curves) BuildStudyFile(UIApplication ui, string path, string swingInto,
         IReadOnlyList<DoorPosition> positions, IReadOnlyList<XYZ> routePoints, out int wallCount, out int curveCount)
     {
         var app = ui.Application;
@@ -240,6 +277,10 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
                 curveCount = lineIds.Count;
             }
 
+            var geometry = AuditGeometry(doc);
+            wallCount = geometry.Walls.Count;
+            curveCount = geometry.Curves.Count;
+
             using (var save = new Transaction(doc, "Name isolated M218 pantry door study"))
             {
                 save.Start();
@@ -260,7 +301,7 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
 
             doc.SaveAs(path, new SaveAsOptions());
             doc.Close(false);
-            return wallCount;
+            return (wallCount, curveCount, geometry.Walls, geometry.Curves);
         }
         catch
         {
@@ -298,9 +339,10 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
             {
                 var fileName = $"FH_M218_Pantry_Swing_Into_{(swingInto == "kitchen" ? "Kitchen" : "Pantry")}.rvt";
                 var path = Path.Combine(output, fileName);
-                BuildStudyFile(data.Application, path, swingInto, positions, route, out var wallCount, out var curveCount);
+                var geometry = BuildStudyFile(data.Application, path, swingInto, positions, route, out var wallCount, out var curveCount);
                 var info = new FileInfo(path);
                 files.Add(new StudyFile(swingInto, fileName, Sha256(path), info.Length, wallCount, curveCount,
+                    geometry.Walls, geometry.Curves,
                     "saved as isolated disposable comparison; not the selected house model"));
             }
 

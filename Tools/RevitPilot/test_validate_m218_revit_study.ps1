@@ -33,6 +33,22 @@ function WriteFixture([string]$Name, [scriptblock]$Mutation = {}) {
     $pantry = Join-Path $directory 'FH_M218_Pantry_Swing_Into_Pantry.rvt'
     [IO.File]::WriteAllBytes($kitchen, [byte[]](1,2,3,4,5))
     [IO.File]::WriteAllBytes($pantry, [byte[]](6,7,8,9,10))
+    $walls = New-Object System.Collections.Generic.List[object]
+    $curves = New-Object System.Collections.Generic.List[object]
+    foreach ($position in @('lower','center','upper')) {
+        $wallTotal = if ($position -eq 'center') { 5 } else { 4 }
+        for ($i=1; $i -le $wallTotal; $i++) {
+            $walls.Add([pscustomobject]@{ marker="M218-$position-PANTRY-$('{0:D2}' -f $i)"; start=[pscustomobject]@{x=13.5;y=1.25;z=0.0}; end=[pscustomobject]@{x=18.5;y=1.25;z=0.0}; height_ft=10.0 })
+        }
+        foreach ($family in @('M02-envelope-not-walls','36in-approach-proxy','kitchen-swing-bounds-not-door-leaf','M215-route-centerline')) {
+            for ($i=1; $i -le 4; $i++) {
+                $curves.Add([pscustomobject]@{ marker="M218-$position-$family-$('{0:D2}' -f $i)"; start=[pscustomobject]@{x=1.0;y=1.0;z=0.05}; end=[pscustomobject]@{x=2.0;y=1.0;z=0.05}; height_ft=$null })
+            }
+        }
+    }
+    $wallsArray = $walls.ToArray()
+    $curvesArray = $curves.ToArray()
+    $pantryCurves = @($curvesArray | ForEach-Object { $copy = $_ | Select-Object *; $copy.marker = ([string]$copy.marker).Replace('kitchen-swing','pantry-swing'); $copy })
     $report = [pscustomobject]@{
         schema='forever-home-m218-revit-pantry-door-study-v1'
         status='pass; two separate disposable Revit comparison files generated'
@@ -44,8 +60,8 @@ function WriteFixture([string]$Name, [scriptblock]$Mutation = {}) {
             m218='946aaf98fc44fa67cd5546168feecd896d4c36543bc097553c75c7389385a3d43'
         }
         files=@(
-            [pscustomobject]@{ swing_into='kitchen'; file_name=[IO.Path]::GetFileName($kitchen); sha256=(Get-FileHash $kitchen -Algorithm SHA256).Hash; bytes=(Get-Item $kitchen).Length; wall_count=13; model_curve_count=48 }
-            [pscustomobject]@{ swing_into='pantry'; file_name=[IO.Path]::GetFileName($pantry); sha256=(Get-FileHash $pantry -Algorithm SHA256).Hash; bytes=(Get-Item $pantry).Length; wall_count=13; model_curve_count=48 }
+            [pscustomobject]@{ swing_into='kitchen'; file_name=[IO.Path]::GetFileName($kitchen); sha256=(Get-FileHash $kitchen -Algorithm SHA256).Hash; bytes=(Get-Item $kitchen).Length; wall_count=13; model_curve_count=48; walls=$wallsArray; model_curves=$curvesArray }
+            [pscustomobject]@{ swing_into='pantry'; file_name=[IO.Path]::GetFileName($pantry); sha256=(Get-FileHash $pantry -Algorithm SHA256).Hash; bytes=(Get-Item $pantry).Length; wall_count=13; model_curve_count=48; walls=$wallsArray; model_curves=$pantryCurves }
         )
         limitations=@('West A remains protected and east B remains unassigned.')
     }
@@ -56,7 +72,7 @@ function WriteFixture([string]$Name, [scriptblock]$Mutation = {}) {
 }
 
 $valid = WriteFixture 'valid'
-InvokeValidator 'valid_pair_and_hashes_pass' $valid 0 'SUMMARY 8/8 M218 Revit study integrity checks passed'
+InvokeValidator 'valid_pair_and_hashes_pass' $valid 0 'SUMMARY 9/9 M218 Revit study integrity checks passed'
 $wrongHash = WriteFixture 'wrong-hash' { param($r,$d) $r.files[0].sha256 = ('0' * 64) }
 InvokeValidator 'tampered_rvt_fingerprint_rejected' $wrongHash 1 'FAIL both_rvt_hashes_sizes_and_recorded_counts'
 $missingAlternative = WriteFixture 'missing-alternative' { param($r,$d) $r.files = @($r.files | Where-Object swing_into -eq 'kitchen') }
@@ -65,6 +81,10 @@ $selectedOpened = WriteFixture 'selected-d-scope' { param($r,$d) $r.project_scop
 InvokeValidator 'selected-d-open_claim_rejected' $selectedOpened 1 'FAIL selected_design_not_opened_or_modified'
 $badCounts = WriteFixture 'bad-counts' { param($r,$d) $r.files[1].model_curve_count = 47 }
 InvokeValidator 'unexpected_element_count_rejected' $badCounts 1 'FAIL both_rvt_hashes_sizes_and_recorded_counts'
+$badEndpoint = WriteFixture 'bad-endpoint' { param($r,$d) $r.files[0].walls[0].start.x = 5.0 }
+InvokeValidator 'out_of_envelope_native_wall_endpoint_rejected' $badEndpoint 1 'FAIL native_geometry_inventory_coordinates_and_markers'
+$badPosition = WriteFixture 'missing-position-curves' { param($r,$d) $r.files[1].model_curves = @($r.files[1].model_curves | Where-Object { $_.marker -notlike 'M218-upper-*' }) }
+InvokeValidator 'missing_native_geometry_position_rejected' $badPosition 1 'FAIL native_geometry_inventory_coordinates_and_markers'
 
 $passed = @($checks | Where-Object pass).Count
 $status = if ($passed -eq $checks.Count) { 'pass' } else { 'fail' }
