@@ -25,7 +25,7 @@ The reference is Connecticut's 2022 CSBC amended IRC R305.1 sloped-room exceptio
 | 10:12, ridge Y | U-04 | 5.000 ft |
 | 12:12, ridge Y | U-04 | 5.000 ft |
 
-Two independent PowerShell runs pass **10/10 checks** and match the checked-in artifacts: JSON SHA256 `4B74367B5F111271B6B171FFBF3AF8B2F0438024A8EF87C2428F8C0AEDC3391C`; CSV SHA256 `F7D70A521EAD5934B15D85C5B603389014BBF1C2D75FEC79FBEE852E66FB5910`.
+Two independent PowerShell runs pass **10/10 checks** and match the checked-in artifacts: JSON SHA256 `952DD76E85A208713E7D08A206EAD0088365CD0A4C8B8D2F2496476396ED1889`; CSV SHA256 `F7D70A521EAD5934B15D85C5B603389014BBF1C2D75FEC79FBEE852E66FB5910`. The JSON provenance was refreshed against the Connecticut research note's current SHA256; the geometry and all 24 threshold rows are unchanged.
 
 With these room blocks, ridge X needs a lower effective eave threshold under the generic 5/7 ft arithmetic than ridge Y. Negative thresholds are algebraic results relative to the room's finished floor; they do not imply a below-floor eave is buildable or acceptable. This is an orientation sensitivity of this room-block arrangement, not a recommendation: daylight, views, structure, roof form and the actual finished section remain unknown. U-02 is included as geometry only while its room classification is unresolved.
 

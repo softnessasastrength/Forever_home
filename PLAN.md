@@ -1476,6 +1476,8 @@ Acceptance criteria:
 - Do not screen bath/shower headroom until exact family geometry and location are verified.
 - Generate reproducible source-bound evidence, identify what input would resolve the largest uncertainty, and make no selected-D, Revit, IFC or source-family changes.
 
+Status: Complete as a symbolic section sensitivity. `Tools/analyze_m136_upper_suite_datum_builddown_sensitivity.ps1` passes 8/8 checks and produces 12 source-bound room/case inequalities for the three requested roof comparisons; two isolated runs match byte-for-byte. The required finished-floor/eave separation is expressed as `z_eave - z_finished_floor >= threshold + b_eave`; all variables remain unassigned. The most useful resolving inputs are the floor-to-geometric-eave elevation difference and defined roof/eave-to-finished-ceiling build-up. A spatially varying ceiling requires a defined surface before area fractions can be calculated. No roof, datum, M-06/B assignment or code outcome is selected. See M136 in `PROGRESS.md` and its README.
+
 ## M137 - Refresh selected-D source and retained IFC evidence
 
 Acceptance criteria:
