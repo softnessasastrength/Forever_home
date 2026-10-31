@@ -127,7 +127,7 @@ Acceptance criteria:
 - IFC must independently validate four 4 x 2 ft base modules plus one 8 x 4 ft, 1.25 in generic countertop placeholder, with a 35.75 in top documented as nominally 36 in. Material split, seam, support and finish remain unassigned; candidate is still a study placeholder, not an approved family or shop drawing.
 - Select a checked-in export manifest for the active study without temporarily overwriting the Compact-Core C configuration.
 
-Status: **M-02 geometry and IFC fit gate complete for an isolated study; downloaded family/product approval remains open.** RevitCity 19967's preserved trial fails its fit gate: its 8 x 4 ft surface sits about 1 in east/north of the source origin and exports at z=1.1401–1.1811 ft. RevitCity 21015 conflicts with the appliance-free concept (fixed 1000 mm width, integrated cooktop/oven and stools). The RevitCity 7216 modules fit the source-derived 8 x 4 ft plan, and the current Revit derivative contains four 4 x 2 ft casework modules plus a generic unassigned-finish 8 x 4 ft top. The host command report records a 34.5 in physical casework body and 1.25 in top (35.75 in actual, nominally 36 in). Revit audit `20261027T204528345Z` and IFC export `20261027T204553821Z` share saved-RVT SHA256 `01a38eb274b5170d75834d0fce29e2da31e0e45f764d9ed2fac71670a4f0ef1f`; independent validation passes 13/13 checks, including IFC2X3 schema, 21 spaces/three storeys, physical geometry, module bounds, top bounds and overall assembly. The exact tested DLL build and command report are recorded in `PROGRESS.md`. Finish split, seam, supports, overhang, finish and fabrication remain unresolved; 42 in circulation cannot be claimed until perimeter counters and obstacles are modeled. The family and placeholder remain study geometry, not an approved product or shop drawing. No structural, code-compliance or construction-readiness claim is made.
+Status: **M-02 geometry and IFC fit gate complete for an isolated study; downloaded family/product approval remains open.** RevitCity 19967's preserved trial fails its fit gate: its 8 x 4 ft surface sits about 1 in east/north of the source origin and exports at z=1.1401–1.1811 ft. RevitCity 21015 conflicts with the appliance-free concept (fixed 1000 mm width, integrated cooktop/oven and stools). The RevitCity 7216 modules fit the source-derived 8 x 4 ft plan, and the current Revit derivative contains four 4 x 2 ft casework modules plus a generic unassigned-finish 8 x 4 ft top. The host command report records a 34.5 in physical casework body and 1.25 in top (35.75 in actual, nominally 36 in). Revit audit `20261027T204528345Z` and IFC export `20261027T204553821Z` share saved-RVT SHA256 `01a38eb274b5170d75834d0fce29e2da31e0e45f764d9ed2fac71670a4f0ef1f`; independent validation passes 15/15 checks, including IFC2X3 schema, 21 spaces/three storeys, physical geometry, module bounds, top bounds and overall assembly. The exact tested DLL build and command report are recorded in `PROGRESS.md`. Finish split, seam, supports, overhang, finish and fabrication remain unresolved; 42 in circulation cannot be claimed until perimeter counters and obstacles are modeled. The family and placeholder remain study geometry, not an approved product or shop drawing. No structural, code-compliance or construction-readiness claim is made.
 
 Fresh host verification on 2026-10-28 independently reran the patched build against a separate copy of the preserved pre-countertop backup; it did not alter the earlier fit-test model or owner-selected D baseline. Revit 2027.3 loaded build `build-m02-solid-bounds-v2` with SHA-256 `081437DFBBB125115C2F9D15E960D83D26A9B2DAF78C240A370C0BD30BF6DAE2`. The new countertop report, read-only audit and IFC export are `20261028T002706119Z`, `20261028T003043114Z` and `20261028T003116629Z`; the audit/export match RVT SHA-256 `9a196455548286ecffcfa0f851c425654efc4c316c9b40e2f9dd5b5bb7cd1bd1`. IFC SHA-256 `d2ccbad29003b0fcd77f0d6fcb8d22c47c9e63a565066074b9364217ae3b3c56` passes the documented validator **13/13** with zero schema issues, 21 spaces/three storeys, four measured cabinet modules, one separate 1.25 in top, and no non-annotation geometry decode failures. The six known model-line annotation decode exceptions remain separately reported. The repeat command against the already-tagged original test copy refused a duplicate, as intended.
 
@@ -902,7 +902,7 @@ Acceptance criteria:
 - Export IFC2X3 from the saved derivative, tie the export to the exact RVT fingerprint, and validate schema, roof option identities, extents and intended entity classification.
 - Keep pitch, orientation, eave/ridge elevation, roof build-up, structure, loads, snow/drift analysis, site/code applicability and construction details unselected or explicitly open. Do not claim code compliance or structural adequacy.
 
-Current status: Source-side geometry and isolated RevitPilot command are implemented. Two PowerShell 5.1 runs reproduce all four generated artifacts byte-for-byte and pass 13/13 checks. The first host attempt was blocked because the live Revit trust prompt named `.local/revit-pilot/build/.../RevitPilot.dll` (SHA256 `98D7074187B0A80E1B4932388F869629FB83C7CEE47A997D49F0F07A1E7BCF12`) while the registered manifest named `build-m83` (SHA256 `F0FA012228D7BE410078254CA91F66BC40E657E54E5A03BED0E058E4C9E3145D`). M91 corrected the source's level-deletion risk and updated the authorized per-user registration to the isolated, verified `build-m83-level-safe` DLL. A restart was attempted, but the computer-use bridge now reports two responsive Revit startup windows with blank titles and unavailable accessibility state; the fresh trust prompt cannot be verified or accepted. M83's host derivative, IFC2X3 export and independent IFC validation remain outstanding. No pitch or ridge direction is selected.
+Current status: Source-side geometry and isolated RevitPilot command are implemented. Two PowerShell 5.1 runs reproduce all four generated artifacts byte-for-byte and pass 15/15 checks. The first host attempt was blocked because the live Revit trust prompt named `.local/revit-pilot/build/.../RevitPilot.dll` (SHA256 `98D7074187B0A80E1B4932388F869629FB83C7CEE47A997D49F0F07A1E7BCF12`) while the registered manifest named `build-m83` (SHA256 `F0FA012228D7BE410078254CA91F66BC40E657E54E5A03BED0E058E4C9E3145D`). M91 corrected the source's level-deletion risk and updated the authorized per-user registration to the isolated, verified `build-m83-level-safe` DLL. A restart was attempted, but the computer-use bridge now reports two responsive Revit startup windows with blank titles and unavailable accessibility state; the fresh trust prompt cannot be verified or accepted. M83's host derivative, IFC2X3 export and independent IFC validation remain outstanding. No pitch or ridge direction is selected.
 
 ### M84 - Reproduce and revalidate the checked-in selected-D model
 
@@ -1041,7 +1041,7 @@ Acceptance criteria:
 - Pin upstream report/source hashes, require source D and B to remain unchanged/unassigned, and replay twice to byte-identical reports.
 - Preserve all products as research candidates; do not infer walls, doors, approach, service routing, permit applicability, or actual room fit from the rectangular screen.
 
-Current status: The script passes 13/13 checks and screens 16 combinations (eight sink candidates, two plan orientations each); both runs match SHA256 `7F133044E9F0B4BB78756A1267F4C9144B0064E76808F0D55BDB4D8077EE3DC8`. KOHLER Tresham's assumed pair envelope is 57 x 51.25 in at 0-degree sink rotation and 54.75 x 51.25 in at 90 degrees; the measured centerline-to-nearest-sink-body distances in the two screens are 18 and 20.25 in. This is a gross-body minimum-strip study only. M-06 B remains unassigned. See M96 in `PROGRESS.md`.
+Current status: The script passes 15/15 checks and screens 16 combinations (eight sink candidates, two plan orientations each); both runs match SHA256 `7F133044E9F0B4BB78756A1267F4C9144B0064E76808F0D55BDB4D8077EE3DC8`. KOHLER Tresham's assumed pair envelope is 57 x 51.25 in at 0-degree sink rotation and 54.75 x 51.25 in at 90 degrees; the measured centerline-to-nearest-sink-body distances in the two screens are 18 and 20.25 in. This is a gross-body minimum-strip study only. M-06 B remains unassigned. See M96 in `PROGRESS.md`.
 
 ### M97 - Reconfirm selected-D source reproducibility and retained IFC lineage
 
@@ -1580,7 +1580,7 @@ Acceptance criteria:
 - Generate hash-bound JSON/CSV and replay into two isolated scratch paths with byte-identical artifacts.
 - Preserve the hypothetical 38 1/3 x 40 ft shell and incomplete-search limitation. Do not change selected-D or claim actual doors, code, clearance, accessibility, Revit/IFC, service routing or a selected plan.
 
-Status: Complete as a comparison-only boundary screen. M147 passes 13/13 checks and reproduces byte-for-byte across isolated runs. It finds 73 route-compatible candidates (64 east+north, nine north+west), with all six contact reservations fitting arithmetically. Forty-four of 64 east+north layouts and three of nine north+west layouts have zero centered end margin at one or more contacts. No layout is selected; see the M147 report and README.
+Status: Complete as a comparison-only boundary screen. M147 passes 15/15 checks and reproduces byte-for-byte across isolated runs. It finds 73 route-compatible candidates (64 east+north, nine north+west), with all six contact reservations fitting arithmetically. Forty-four of 64 east+north layouts and three of nine north+west layouts have zero centered end margin at one or more contacts. No layout is selected; see the M147 report and README.
 
 ## M150 - Revalidate retained M-06 family-intake evidence by source hash
 
@@ -1661,3 +1661,67 @@ Acceptance criteria:
 - Leave selected-D, Revit/IFC, source RFAs and shell/layout selections untouched.
 
 Status: Complete as a bounded geometry screen. Two PowerShell 5.1 runs pass 16/16 and match all outputs. Across 73 route-compatible M115 candidates, U-01 has zero test-shell perimeter contacts, U-03 has 73, and U-04 has 28. This identifies a primary-bedroom edge-access gap in the U-03-seeded candidate set; it does not establish an exterior wall, EERO, sleeping-room classification or compliance. See `Architecture/M156_M115_Sleeping_Room_Perimeter_2026-10-30/README.md`. M157 will test primary-bedroom perimeter-rooted search seeds without changing default search behavior.
+
+## M157 - Search M37 from U-01 perimeter roots
+
+Acceptance criteria:
+
+- Add an opt-in U-01 perimeter-root mode covering all four hypothetical shell edges and reproducible along-edge seed fractions; reject incompatible flag combinations.
+- Reproduce current M37 default artifacts with both the pre-change generator and the updated generator to prove byte-for-byte default compatibility.
+- Search the owner-authorized 38 1/3 x 40 ft exploration shell with direct U-02 hall arrival, private-only U-03 public access, both Jack-and-Jill links and five sampled hall points per side.
+- Repeat the bounded search and require identical generator artifacts; independently verify every route archive row for source room inventory/orientation, shell containment, non-overlap and six nominal room contacts.
+- Quantify exterior-outline contact for U-01/U-03/U-04 and keep shell outline distinct from an authored exterior wall or EERO.
+- Preserve selected-D, source RFAs, Revit model, IFC and remote state.
+
+Status: Complete as a reproducible bounded search diagnostic. The default M37 pre-change and post-change outputs match byte-for-byte on current inputs. Two U-01 perimeter-root runs match all five generator artifacts; M37 passes 29/29. The independent archive audit passes 20/20 across 766 route-tested layouts. U-01 touches the hypothetical outline in 766/766, U-03 in 0/766, and U-04 in 20/766; zero layouts meet all required sampled public routes while preserving private-only U-03. The bounded search is incomplete, and no layout is selected. See `Architecture/M157_U01_Perimeter_Root_Search_2026-10-30/README.md`.
+
+## M158 - Require joint perimeter contact for bedroom-capable blocks
+
+Acceptance criteria:
+
+- Add a separately opt-in M37 room-placement constraint requiring shell-outline contact for U-01, U-03 and U-04 while retaining U-01 perimeter-root seeds and leaving default search output unchanged.
+- Validate that every retained complete layout meets the three requested outline contacts, all source dimensions, six topology contacts, containment, non-overlap and stair/lift proxy constraints.
+- Evaluate sampled U-01/U-02/U-04 hall reach and no sampled U-03 public-side reach; describe the search as bounded/incomplete if its cap is reached.
+- Replay the joint-contact search and independently audit its artifacts; make no candidate, shell, EERO, window, roof or code applicability selection.
+- Leave selected-D, RFAs, Revit/IFC and remote state unchanged.
+
+Status: Complete as a bounded search diagnostic. The opt-in M37 constraint preserves all default artifacts: the modified default replay passes 28/28 and exactly matches the pre-M157 search/check/SVG/manifest hashes. Two joint-contact runs pass 31/31, match all five artifacts, and record two complete packings after 2,865/4,800 nodes. The independent archive audit passes 16/16 twice with byte-identical JSON/CSV outputs; the independent candidate validator passes 115/115 for the best record. Both archived candidates have U-01/U-03/U-04 outline contact, valid source dimensions and six source topology links, shell containment, non-overlap and clear lift/approach proxy rectangles. One meets the sampled U-01/U-02/U-04 route goals while keeping U-03 away from sampled public sides; the other does not. The search remains bounded/incomplete; no layout is selected and outline contact is not an exterior wall, opening or EERO. See `Architecture/M158_Joint_Bedroom_Perimeter_Search_2026-10-31/README.md`.
+
+## M159 - Compare the M158 joint-contact candidates against ideal gable planes
+
+Acceptance criteria:
+
+- Bind both M158 archived room-block arrangements and their source hashes; do not promote either candidate or shell.
+- Re-evaluate room-block footprint positions against the existing idealized 8:12, 10:12 and 12:12 gable comparison set on both ridge axes, using only documented block dimensions and source coordinates.
+- Report relative roof-plane rise at perimeter-contact edges and compare candidate exposure without inventing floor/eave datum, ceiling build-down, structural depth or window dimensions.
+- Re-run the arithmetic/report generation twice and require byte-identical outputs plus source-bound validation checks.
+- State explicitly that the result is a geometry sensitivity, not finished headroom, an opening/EERO test, code compliance or a roof selection.
+- Preserve selected-D, M-06/B, incoming RFAs, Revit/IFC and remote state.
+
+Status: Complete as relative geometry sensitivity. The new source-bound PowerShell analyzer passes 15/15 checks on both candidates and all six M83 gable planes. Two Windows PowerShell 5.1 runs reproduce the 84-row JSON/CSV outputs byte-for-byte. The M158 candidates have identical U-01/U-03/U-04 blocks and differ only in U-05. Ridge X puts U-01/U-04 at ideal opposite eaves; ridge Y puts U-03/U-04 at the ideal west eave. At least two bedroom-capable blocks therefore have zero relative plane rise at an ideal eave for every tested axis/pitch case. This is an eave/wall/ceiling coordination sensitivity, not finished headroom, a room suitability result, an EERO finding or a design rejection. No roof, layout, datum or dimension is selected. See `Architecture/M159_M158_Gable_Exposure_2026-10-31/README.md`.
+
+## M160 - Find public product and installation evidence for exact M-06 fixtures
+
+Acceptance criteria:
+
+- Recheck manufacturer-published current 610AA001.020 product, specification, installation and public BIM/RFA sources; capture direct source links, access date and exact SKU identity.
+- Distinguish current-product evidence from 211AA predecessor documents and generic third-party families; do not infer missing assembly or plan dimensions.
+- Inspect public metadata without account creation, credentials, purchase or gated-download bypass.
+- Compare source findings with the preserved Incoming RFA inventory and M120's provisional geometry sources; keep all originals hash-stable.
+- Keep M-06/B unassigned until exact installed fixture and lavatory geometry, applicable clearance basis, real door/approach, and plausible service routing can be checked together.
+- Preserve selected-D, Revit/IFC and remote state; record the Revit trust-prompt mismatch without loading any unverified DLL.
+
+Status: Complete as a dated public-source recheck. On 2026-10-31, the current American Standard page reconfirmed 610AA001.020 and its listed included seat/installation kit, 12-in rough-in and 17-in seat height. Its live technical links still resolve to the 2013 211AA.104 predecessor specification and 2019 211AA/211BA/211CA installation guide. Public exact-SKU RFA/Revit/BIM/CAD/3D searches produced no indexed exact-current family or current assembly drawing. No account, form, credential, paid source or gated download was used. Search absence is not proof that none exists in a registered/unindexed source. Keep M-06/B unassigned; see `Architecture/M160_610AA_Public_Model_Source_Recheck_2026-10-31/README.md`.
+
+## M161 - Read-only inspect the exact-source M-06 families in Revit
+
+Acceptance criteria:
+
+- Proceed only after the active Revit security prompt identifies the exact hash-verified project-local RevitPilot DLL recorded in the authorized per-user manifest; choose **Load Once** only for that exact build.
+- Inspect each already quarantined RFA with its recorded source URL/SHA256 in Revit Family Editor without saving, upgrading-overwriting or editing the source.
+- Record family category, type names, formulas/parameters, positive-solid geometry and symbol-local bounds; distinguish symbol-local evidence from host-oriented/installed placement.
+- Make a disposable derivative only if placement testing is needed; preserve the selected-D baseline and all Incoming source RFAs.
+- Keep M-06/B unassigned until exact toilet and lavatory geometry, applicable clearance basis, real door/approach and plausible service route support a combined fit.
+- Preserve Revit/IFC compatibility; report prompt mismatch, unavailable sources or inspection failures without bypassing trust/access controls.
+
+Status: Planned; Revit currently blocks this work because its unsigned-add-in prompt names `build-m83-level-safe`, while the verified per-user manifest for the authorized AddInId points to `build-m83-regenerate-bounds-v1` (SHA256 `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`). Repository instructions require owner direction if prompt identity differs. No prompt option has been selected.

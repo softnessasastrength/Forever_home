@@ -111,3 +111,23 @@ Both runs pass **25/25** checks and match byte-for-byte: `search.json` SHA256 `C
 This is a room-block and clearance-envelope screen, not Revit geometry. The nominal 3.5 ft reservations are source door-matrix values, not verified clear openings. The screen does not model partitions, actual door leaves/swings, corridor-door connections, landing shape beyond the source block, stairs, floor opening, headroom, furniture, finishes, structure, services, fire/life safety, code, accessibility, IFC or construction. The lift is an existing schematic reservation, not a selected product or shaft design.
 
 Next: model specified public doorway/contact edges during placement or test owner-approved landing-contact alternatives. The corrected U-02-only and balanced-root tests connect different individual public rooms but neither produces U-01/U-02/U-04 together. Keep the private U-01 → C-PRIVATE → U-02 → U-03 chain, guest access and Jack-and-Jill links; inspect any future candidate only in a disposable Revit derivative, never by changing selected D. Connecticut steep-gable and permit inputs remain site-, municipality- and date-dependent. No code-compliance, structural-safety, certification or construction-readiness claim is made.
+
+### U-01 perimeter-root mode (M157)
+
+The opt-in switches `-U01PerimeterRootSeeds`, `-U01PerimeterSeedEdge` and `-U01PerimeterSpreadSeeds` mirror the earlier U-03-root mode. They require `-LandingAlignedRootSeeds` and `-RootSearchScope U-01-only`; they do not alter default output. Reproduce the owner-authorized 38 1/3 × 40 ft exploration case with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_suite_pack_and_route.ps1 `
+  -ShellWidthOverrideFt 38.333333 -ShellDepthOverrideFt 40 `
+  -RootSearchScope U-01-only -U02RootPlanVariant guest-branch-first `
+  -AdditionalContactSamples 0 -PublicDoorEdgeSamples 5 `
+  -LandingAlignedRootSeeds -U01PerimeterRootSeeds -U01PerimeterSeedEdge all `
+  -U01PerimeterSpreadSeeds -NodeLimit 4800 -LayoutLimit 10000 `
+  -ExportAllRouteTestedCandidates -OutputDirectory .local/revalidation/M157-U01
+```
+
+The M157 search passes 29/29, records 766 route-tested packings and remains incomplete. U-01 touches the hypothetical outline in all 766, U-03 in none and U-04 in 20. No record reaches all three public-room samples while retaining no U-03 public-side sample. See `Architecture/M157_U01_Perimeter_Root_Search_2026-10-30/README.md` and `Tools/audit_m157_u01_perimeter_search.ps1` for the independent 20/20 candidate-archive audit. Outline contact is not a wall or an EERO.
+
+### Joint U-01/U-03/U-04 perimeter-contact mode (M158)
+
+The opt-in `-RequiredPerimeterContactRooms 'U-01,U-03,U-04'` constraint requires all three bedroom-capable program blocks to touch the hypothetical test-shell outline. It uses the same owner-authorized 38 1/3 x 40 ft search and five sampled points per public room. The modified default M37 replay remains byte-identical to the pre-M157 artifact set. Two joint-mode runs pass 31/31 and match all five artifacts; independent archive audits pass 16/16 twice, and the best-candidate validator passes 115/115. Both retained candidates have the three requested outline contacts; one meets all sampled public-route points while keeping U-03 private in the sampled proxy. The second fails the public-route condition. This is incomplete room-block arithmetic only. No shell, layout, wall, window, roof, door, code result or house design is selected. See `Architecture/M158_Joint_Bedroom_Perimeter_Search_2026-10-31/README.md`.
