@@ -43,13 +43,13 @@ function New-RouteRects([object[]]$Points,[double]$Width) {
     $rects = New-Object System.Collections.Generic.List[object]
     for ($i=0; $i -lt $Points.Count-1; $i++) {
         $a=$Points[$i]; $b=$Points[$i+1]
-        if ([Math]::Abs([double]$a[0]-[double]$b[0]) -lt 0.000001) {
-            $rects.Add([ordered]@{id="route-segment-$i";x=([double]$a[0]-$Width/2);y=([Math]::Min([double]$a[1],[double]$b[1]));w=$Width;d=([Math]::Abs([double]$b[1]-[double]$a[1]))})
+        if ([Math]::Abs([double]$a.x-[double]$b.x) -lt 0.000001) {
+            $rects.Add([ordered]@{id="route-segment-$i";x=([double]$a.x-$Width/2);y=([Math]::Min([double]$a.y,[double]$b.y));w=$Width;d=([Math]::Abs([double]$b.y-[double]$a.y))})
         } else {
-            $rects.Add([ordered]@{id="route-segment-$i";x=([Math]::Min([double]$a[0],[double]$b[0]));y=([double]$a[1]-$Width/2);w=([Math]::Abs([double]$b[0]-[double]$a[0]));d=$Width})
+            $rects.Add([ordered]@{id="route-segment-$i";x=([Math]::Min([double]$a.x,[double]$b.x));y=([double]$a.y-$Width/2);w=([Math]::Abs([double]$b.x-[double]$a.x));d=$Width})
         }
         if ($i -gt 0) {
-            $rects.Add([ordered]@{id="route-corner-$i";x=([double]$a[0]-$Width/2);y=([double]$a[1]-$Width/2);w=$Width;d=$Width})
+            $rects.Add([ordered]@{id="route-corner-$i";x=([double]$a.x-$Width/2);y=([double]$a.y-$Width/2);w=$Width;d=$Width})
         }
     }
     return $rects.ToArray()
@@ -94,7 +94,7 @@ $chairs=@(
 )
 $door=[ordered]@{center_x=8.5;width=5.0;left=6.0;right=11.0;y=23.5;offset_from_dining_center_ft=3.0}
 $routeWidth=3.0
-$routePoints=@(@(10.25,0.25),@(10.25,22.0),@(8.5,22.0),@(8.5,27.0))
+$routePoints=@([pscustomobject]@{x=10.25;y=0.25},[pscustomobject]@{x=10.25;y=22.0},[pscustomobject]@{x=8.5;y=22.0},[pscustomobject]@{x=8.5;y=27.0})
 $routeRects=New-RouteRects -Points $routePoints -Width $routeWidth
 $wallSegments=@(
     [ordered]@{id='porch-wall-west-of-door';x=-0.5;y=23.5;w=5.0;d=0.5},
@@ -106,7 +106,7 @@ foreach($r in $routeRects){foreach($o in $obstacles){$hit=Get-Overlap $r $o;if($
 $chairTableHits=New-Object System.Collections.Generic.List[object]
 foreach($c in $chairs){$hit=Get-Overlap $table $c;if($null -ne $hit){$chairTableHits.Add($hit)}}
 $routeCenterAxisAligned=$true
-for($i=0;$i -lt $routePoints.Count-1;$i++){if([Math]::Abs($routePoints[$i][0]-$routePoints[$i+1][0])-gt 0.000001 -and [Math]::Abs($routePoints[$i][1]-$routePoints[$i+1][1])-gt 0.000001){$routeCenterAxisAligned=$false}}
+for($i=0;$i -lt $routePoints.Count-1;$i++){if([Math]::Abs($routePoints[$i].x-$routePoints[$i+1].x)-gt 0.000001 -and [Math]::Abs($routePoints[$i].y-$routePoints[$i+1].y)-gt 0.000001){$routeCenterAxisAligned=$false}}
 $aisleIn=($counterFrontX-($island.x+$island.w))*12
 $routeMarginIn=($aisleIn-($routeWidth*12))/2
 $chairGapIn=([double]$routeRects[0].x-8.0)*12
@@ -146,9 +146,9 @@ Add-Check 'table_documented_minimum_clearances' (@($tableClearance.Values | Wher
 Add-Check 'four_chairs_do_not_overlap_table' ($chairTableHits.Count -eq 0) 'The four table-side/end chair rectangles do not overlap the table body.'
 Add-Check 'route_centerline_is_orthogonal' $routeCenterAxisAligned 'Route centerline uses only axis-aligned segments.'
 Add-Check 'route_avoids_closed_state_obstacles' ($routeHits.Count -eq 0) 'Route corridor has no positive-area intersection with modeled closed-state obstacles.'
-Add-Check 'route_passes_living_opening' ($routePoints[0][0] -ge $livingOpening.x -and $routePoints[0][0] -le ($livingOpening.x+$livingOpening.w)) 'Route centerline enters through the proposed 6 ft living opening.'
-Add-Check 'route_fits_nominal_porch_door' ([Math]::Abs($door.center_x-$routePoints[2][0])-lt 0.001 -and $door.right-$door.left -eq 5.0 -and $routeWidth -le ($door.right-$door.left)) '36 in route is centered within a nominal 5 ft door reservation.'
-Add-Check 'route_reaches_porch_3ft' ([Math]::Abs(($routePoints[-1][1]-$porch.y)-3.0)-lt 0.001) 'Route continues 3 ft into the porch test rectangle.'
+Add-Check 'route_passes_living_opening' ($routePoints[0].x -ge $livingOpening.x -and $routePoints[0].x -le ($livingOpening.x+$livingOpening.w)) 'Route centerline enters through the proposed 6 ft living opening.'
+Add-Check 'route_fits_nominal_porch_door' ([Math]::Abs($door.center_x-$routePoints[2].x)-lt 0.001 -and $door.right-$door.left -eq 5.0 -and $routeWidth -le ($door.right-$door.left)) '36 in route is centered within a nominal 5 ft door reservation.'
+Add-Check 'route_reaches_porch_3ft' ([Math]::Abs(($routePoints[-1].y-$porch.y)-3.0)-lt 0.001) 'Route continues 3 ft into the porch test rectangle.'
 Add-Check 'porch_wall_gap_preserved' ([Math]::Abs($porch.y-($dining.y+$dining.d)-0.5)-lt 0.001) '0.5 ft porch wall-gap convention is preserved.'
 Add-Check 'route_dining_zone_spill_is_reported' ($diningZoneSpillIn -gt 0) 'The 36 in route corridor extends beyond the 11 ft dining zone into unassigned open-plan space; the spill is quantified.'
 Add-Check 'm06_b_remains_unassigned' ($m173.geometry.m06_window_b_remains_unassigned -eq $true) 'M-06/B is not assigned by this kitchen/dining proposal.'

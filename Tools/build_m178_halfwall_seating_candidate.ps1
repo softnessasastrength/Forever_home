@@ -1,4 +1,4 @@
-param([string]$OutputDirectory='Architecture/M178_Halfwall_Seating_Candidate_2026-10-31')
+param([string]$OutputDirectory='Architecture/M178_Halfwall_Seating_Candidate_2026-10-31',[switch]$OverwriteGenerated)
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $out=Join-Path $root $OutputDirectory
@@ -6,7 +6,7 @@ $m172Path=Join-Path $root 'Architecture/M172_Compact_Social_Space_Constraints_20
 $m173Path=Join-Path $root 'Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json'
 $selectedPath=Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27/study.json'
 foreach($p in @($m172Path,$m173Path,$selectedPath)){if(-not(Test-Path -LiteralPath $p -PathType Leaf)){throw "Missing source: $p"}}
-if((Test-Path -LiteralPath $out) -and @(Get-ChildItem -LiteralPath $out -Force).Count -gt 0){throw "Refusing to overwrite nonempty output: $out"}
+if((Test-Path -LiteralPath $out) -and -not$OverwriteGenerated -and @(Get-ChildItem -LiteralPath $out -Force).Count -gt 0){throw "Refusing to overwrite nonempty output: $out"}
 if(-not(Test-Path -LiteralPath $out)){New-Item -ItemType Directory -Path $out|Out-Null}
 $m172=Get-Content $m172Path -Raw|ConvertFrom-Json;$m173=Get-Content $m173Path -Raw|ConvertFrom-Json
 $targetK=[double]$m172.targets.M02_kitchen_area_sf;$targetD=[double]$m172.targets.M03_dining_area_sf
@@ -23,9 +23,9 @@ $table=[ordered]@{id='dining-table';x=3.0;y=17.5;w=5.0;d=3.0}
 $chairs=@([ordered]@{id='south-chair-1';x=3.5;y=15.8333333333;w=1.5;d=1.6666666667},[ordered]@{id='south-chair-2';x=6.0;y=15.8333333333;w=1.5;d=1.6666666667},[ordered]@{id='west-chair-1';x=1.3333333333;y=17.5;w=1.6666666667;d=1.5},[ordered]@{id='west-chair-2';x=1.3333333333;y=19.0;w=1.6666666667;d=1.5})
 $door=[ordered]@{left=6.0;right=11.0;center=8.5;y=24.5;width=5.0}
 $porchWalls=@([ordered]@{id='porch-wall-west-of-door';x=-0.5;y=24.5;w=6.5;d=0.5},[ordered]@{id='porch-wall-east-of-door';x=11.0;y=24.5;w=0.5;d=0.5})
-$points=@(@(14.5,10.0),@(11.25,10.0),@(11.25,22.5),@(8.5,22.5),@(8.5,27.5));$routeWidth=3.0
+$points=@([pscustomobject]@{x=14.5;y=10.0},[pscustomobject]@{x=11.25;y=10.0},[pscustomobject]@{x=11.25;y=22.5},[pscustomobject]@{x=8.5;y=22.5},[pscustomobject]@{x=8.5;y=27.5});$routeWidth=3.0
 function Overlap($a,$b){$dx=[Math]::Min($a.x+$a.w,$b.x+$b.w)-[Math]::Max($a.x,$b.x);$dy=[Math]::Min($a.y+$a.d,$b.y+$b.d)-[Math]::Max($a.y,$b.y);if($dx-gt 0.000001-and $dy-gt 0.000001){return [ordered]@{a=$a.id;b=$b.id;area_sf=[Math]::Round($dx*$dy,5)}};return $null}
-function RouteRects($pts,$width){$r=New-Object System.Collections.Generic.List[object];for($i=0;$i-lt $pts.Count-1;$i++){$a=$pts[$i];$b=$pts[$i+1];if([Math]::Abs($a[0]-$b[0])-lt 0.000001){$r.Add([ordered]@{id="route-$i";x=$a[0]-$width/2;y=[Math]::Min($a[1],$b[1]);w=$width;d=[Math]::Abs($b[1]-$a[1])})}else{$r.Add([ordered]@{id="route-$i";x=[Math]::Min($a[0],$b[0]);y=$a[1]-$width/2;w=[Math]::Abs($b[0]-$a[0]);d=$width})};if($i-gt 0){$r.Add([ordered]@{id="route-corner-$i";x=$a[0]-$width/2;y=$a[1]-$width/2;w=$width;d=$width})}};return $r.ToArray()}
+function RouteRects($pts,$width){$r=New-Object System.Collections.Generic.List[object];for($i=0;$i-lt $pts.Count-1;$i++){$a=$pts[$i];$b=$pts[$i+1];if([Math]::Abs($a.x-$b.x)-lt 0.000001){$r.Add([ordered]@{id="route-$i";x=$a.x-$width/2;y=[Math]::Min($a.y,$b.y);w=$width;d=[Math]::Abs($b.y-$a.y)})}else{$r.Add([ordered]@{id="route-$i";x=[Math]::Min($a.x,$b.x);y=$a.y-$width/2;w=[Math]::Abs($b.x-$a.x);d=$width})};if($i-gt 0){$r.Add([ordered]@{id="route-corner-$i";x=$a.x-$width/2;y=$a.y-$width/2;w=$width;d=$width})}};return $r.ToArray()}
 $route=RouteRects $points $routeWidth;$obstacles=@($counter)+@($modules)+@($island)+@($stools)+@($table)+@($chairs)+@($wall)+@($return)+@($porchWalls)
 $hits=New-Object System.Collections.Generic.List[object];foreach($r in $route){foreach($o in $obstacles){$h=Overlap $r $o;if($null-ne$h){$hits.Add($h)}}}
 $checks=New-Object System.Collections.Generic.List[object];function Check($id,$pass,$detail){$script:checks.Add([pscustomobject]@{id=$id;pass=[bool]$pass;detail=$detail})}
@@ -55,13 +55,14 @@ Check 'assumed_stool_zone_inside_kitchen' ($stools.x+$stools.w-le$k.w-and$stools
 Check 'stool_end_side_allowance_disclosed' ($stools.w-eq4-and$stools.w*12-eq48) 'Two assumed 24 in positions use all 48 in; no side allowance.'
 Check 'halfwall_length_within_source_band' ($wall.d-ge7-and$wall.d-le9) '7 ft half-wall proposal is at the low end of the documented 8 ft +/- 12 in band.'
 Check 'opening_and_return_fit' ($opening.d-eq6-and$return.d-eq1-and$wall.d+$opening.d+$return.d-eq14) '7 ft wall, 6 ft opening and 1 ft end return fit along the 14 ft side.'
-Check 'living_route_crosses_opening' ($points[0][1]-ge7-and$points[0][1]+$routeWidth/2-le13-and$points[0][1]-$routeWidth/2-ge7) '36 in approach crosses the 6 ft side opening with 18 in margins.'
-Check 'route_centerline_orthogonal' (($points|ForEach-Object{$_.Count}|Where-Object{$_-ne2}).Count-eq0) 'All centerline points are two-coordinate orthogonal waypoints.'
+$orthogonal=$true;for($i=0;$i-lt$points.Count-1;$i++){if([Math]::Abs($points[$i].x-$points[$i+1].x)-gt0.000001-and[Math]::Abs($points[$i].y-$points[$i+1].y)-gt0.000001){$orthogonal=$false}}
+Check 'living_route_crosses_opening' ($points[0].y-ge7-and$points[0].y+$routeWidth/2-le13-and$points[0].y-$routeWidth/2-ge7) '36 in approach crosses the 6 ft side opening with 18 in margins.'
+Check 'route_centerline_orthogonal' $orthogonal 'Every route segment is axis-aligned.'
 Check 'route_avoids_closed_state_obstacles' ($hits.Count-eq0) 'Route does not overlap modeled closed-state casework, seating/table proxies or wall segments.'
 Check 'dining_candidate_area' ([Math]::Abs($dining.w*$dining.d-$targetD)-lt 0.001) 'Dining remains 11 x 10 ft / 110 sf.'
 Check 'dining_table_clearance_proxy' (@($tableClear.Values|Where-Object{[double]$_-lt36}).Count-eq0) 'Table has at least 36 in to each dining test-zone edge.'
 Check 'porch_candidate_area' ([Math]::Abs($porch.w*$porch.d-120)-lt 0.001) 'Porch remains a 12 x 10 ft / 120 sf test rectangle.'
-Check 'route_reaches_porch' ([Math]::Abs(($points[-1][1]-$porch.y)-3)-lt0.001) 'Route continues 3 ft into the porch candidate.'
+Check 'route_reaches_porch' ([Math]::Abs(($points[-1].y-$porch.y)-3)-lt0.001) 'Route continues 3 ft into the porch candidate.'
 Check 'route_spill_reported' ($routeSpill-gt0) 'Dining-side corridor east spill is explicitly quantified.'
 Check 'm06_b_unassigned' ($m173.geometry.m06_window_b_remains_unassigned-eq$true) 'M-06/B remains unassigned.'
 $passed=@($checks|Where-Object pass).Count;$status='fail';if($passed-eq$checks.Count){$status='pass'}

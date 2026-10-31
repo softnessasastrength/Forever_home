@@ -1,0 +1,191 @@
+﻿{
+    "schema":  "forever-home-m179-pantry-route-audit-v1",
+    "status":  "route alternative in unapproved bath-first room-block comparison",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0"
+                                   },
+    "room_overlay":  {
+                         "M02_origin_in_source_ft":  [
+                                                         0.66666666666666663,
+                                                         0.66666666666666663
+                                                     ],
+                         "M04_source_rect_ft":  [
+                                                    12.5,
+                                                    17.166666666666668,
+                                                    5,
+                                                    7
+                                                ],
+                         "M04_local_rect_ft":  [
+                                                   11.833333333333334,
+                                                   16.5,
+                                                   5,
+                                                   7
+                                               ],
+                         "M04_status":  "Unapproved bath-first room-block alternative; overlay comparison only."
+                     },
+    "m178_straight_route":  {
+                                "centerline_ft":  [
+                                                      {
+                                                          "x":  14.5,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  27.5
+                                                      }
+                                                  ],
+                                "pantry_positive_area_intersections":  [
+                                                                           {
+                                                                               "route":  "segment-1",
+                                                                               "obstacle":  "M-04-pantry-candidate",
+                                                                               "overlap_area_sf":  5.5
+                                                                           },
+                                                                           {
+                                                                               "route":  "corner-2",
+                                                                               "obstacle":  "M-04-pantry-candidate",
+                                                                               "overlap_area_sf":  2.29167
+                                                                           }
+                                                                       ]
+                            },
+    "dogleg_route":  {
+                         "centerline_ft":  [
+                                               {
+                                                   "x":  14.5,
+                                                   "y":  10
+                                               },
+                                               {
+                                                   "x":  11.25,
+                                                   "y":  10
+                                               },
+                                               {
+                                                   "x":  11.25,
+                                                   "y":  14.5
+                                               },
+                                               {
+                                                   "x":  9.5,
+                                                   "y":  14.5
+                                               },
+                                               {
+                                                   "x":  9.5,
+                                                   "y":  22.5
+                                               },
+                                               {
+                                                   "x":  8.5,
+                                                   "y":  22.5
+                                               },
+                                               {
+                                                   "x":  8.5,
+                                                   "y":  27.5
+                                               }
+                                           ],
+                         "width_in":  36,
+                         "route_rectangles_ft":  [
+                                                     {
+                                                         "id":  "segment-0",
+                                                         "x":  11.25,
+                                                         "y":  8.5,
+                                                         "w":  3.25,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "segment-1",
+                                                         "x":  9.75,
+                                                         "y":  10,
+                                                         "w":  3,
+                                                         "d":  4.5
+                                                     },
+                                                     {
+                                                         "id":  "corner-1",
+                                                         "x":  9.75,
+                                                         "y":  8.5,
+                                                         "w":  3,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "segment-2",
+                                                         "x":  9.5,
+                                                         "y":  13,
+                                                         "w":  1.75,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "corner-2",
+                                                         "x":  9.75,
+                                                         "y":  13,
+                                                         "w":  3,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "segment-3",
+                                                         "x":  8,
+                                                         "y":  14.5,
+                                                         "w":  3,
+                                                         "d":  8
+                                                     },
+                                                     {
+                                                         "id":  "corner-3",
+                                                         "x":  8,
+                                                         "y":  13,
+                                                         "w":  3,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "segment-4",
+                                                         "x":  8.5,
+                                                         "y":  21,
+                                                         "w":  1,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "corner-4",
+                                                         "x":  8,
+                                                         "y":  21,
+                                                         "w":  3,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "segment-5",
+                                                         "x":  7,
+                                                         "y":  22.5,
+                                                         "w":  3,
+                                                         "d":  5
+                                                     },
+                                                     {
+                                                         "id":  "corner-5",
+                                                         "x":  7,
+                                                         "y":  21,
+                                                         "w":  3,
+                                                         "d":  3
+                                                     }
+                                                 ],
+                         "positive_area_intersections":  [
+
+                                                         ],
+                         "dining_east_extent_in":  21,
+                         "pantry_start_local_y_ft":  16.5,
+                         "dogleg_turn_local_y_ft":  14.5
+                     },
+    "conclusion":  "The M178 straight east-side route collides with the M-04 pantry block in the existing bath-first room-block alternative. A dogleg shifts west before the pantry begins and continues along the dining east edge; it clears the modeled pantry, furniture and wall rectangles while retaining the nominal porch door. The dogleg has a 21 in transverse spill beyond the dining width below the pantry and relies on the proposed absence of east-side dining chairs. No room layout or route is selected.",
+    "limitations":  [
+                        "Bath-first blocks are unapproved and larger than owner room-area targets; coordinate overlay is comparative only.",
+                        "Dining leg is tangent to the 36 in table edge envelope and depends on no east-side chair; pulled-back seating and people are not measured.",
+                        "The 21 in transition spill is unassigned and may conflict with other rooms or shell boundaries.",
+                        "Porch door is a nominal 5 ft reservation, not a verified clear opening. Appliance-open envelopes, wall construction, threshold, shell, site, service routes, Revit and IFC are not validated.",
+                        "M-06/B remains unassigned; no code compliance, accessibility, structural safety, certification, permit approval or construction readiness is established."
+                    ]
+}

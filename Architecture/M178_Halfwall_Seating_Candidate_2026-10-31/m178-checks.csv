@@ -17,7 +17,7 @@
 "halfwall_length_within_source_band","True","7 ft half-wall proposal is at the low end of the documented 8 ft +/- 12 in band."
 "opening_and_return_fit","True","7 ft wall, 6 ft opening and 1 ft end return fit along the 14 ft side."
 "living_route_crosses_opening","True","36 in approach crosses the 6 ft side opening with 18 in margins."
-"route_centerline_orthogonal","True","All centerline points are two-coordinate orthogonal waypoints."
+"route_centerline_orthogonal","True","Every route segment is axis-aligned."
 "route_avoids_closed_state_obstacles","True","Route does not overlap modeled closed-state casework, seating/table proxies or wall segments."
 "dining_candidate_area","True","Dining remains 11 x 10 ft / 110 sf."
 "dining_table_clearance_proxy","True","Table has at least 36 in to each dining test-zone edge."

@@ -96,7 +96,7 @@
                    {
                        "id":  "route_centerline_orthogonal",
                        "pass":  true,
-                       "detail":  "All centerline points are two-coordinate orthogonal waypoints."
+                       "detail":  "Every route segment is axis-aligned."
                    },
                    {
                        "id":  "route_avoids_closed_state_obstacles",
