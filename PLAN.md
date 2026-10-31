@@ -1,15 +1,19 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M230 screens all 16 documented sink/orientation rectangles against the current-SKU 610AA001.020 plan envelope in west A under the provisional 15/30/21-in same-wall screen. All 16 pass the gross room-block abstraction, with 3.5 in of width remaining in the widest case before walls or finishes; that slim margin is a prompt for actual dimensions, not a fit claim. Sink products remain unselected, and A/B/M-06 remain unassigned. Exact installed geometry, walls, door/approach, services and local code applicability remain unresolved. M228 remains a dining adjacency proposal; M-01/M-05 still have a 0.5-ft gap with no public route. The selected-D baseline remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`; two source generations pass 43/43 and the retained matched Revit 2027.3 / IFC2X3 package passes 26/26 with zero errors, three storeys, 21 source-matching spaces and clean schema. Native construction categories remain empty. The owner-selected pantry door comparison keeps both swings; host-generated Revit studies remain pending. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
+Status: M231 records the owner direction to keep west A primary for M-06. Its SVG draws two M230 same-wall envelope examples as explicitly unselected, with A remaining an unassigned gross 62 x 137 in room-block gap. The widest candidate leaves 3.5 in before walls/finishes; this is not a clear-interior fit. The hall opening, door/approach, exact sink selection and services remain unresolved. M230 screens all 16 candidate sink/orientation rectangles against the current 610AA plan dimensions under provisional 15/30/21-in assumptions; A/B/M-06 remain unassigned. M228 is still only a dining adjacency proposal; M-01/M-05 retain a 0.5-ft gap with no public route. The selected-D baseline remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`; two source generations pass 43/43 and the retained matched Revit 2027.3 / IFC2X3 package passes 26/26 with zero errors, three storeys, 21 source-matching spaces and clean schema. Native construction categories remain empty. The owner-selected pantry door comparison keeps both swings; host-generated Revit studies remain pending. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
+
+## M231 — Visualize two unselected fixture-envelope examples in west A
+
+**Acceptance:** derive an SVG only from the pinned M230 report; show Tresham and the widest-screened sink as explicitly unselected examples; mark A's gross boundary, body rectangles, 15/30/21-in assumptions, and 51.25-in body-plus-front-strip depth line; parse XML and reproduce outputs in two isolated PowerShell 5.1 replays. Preserve A as primary while leaving the access route, sink selection and all assignments open.
+
+**Result:** all three runs pass 8/8 and reproduce the SVG/check files byte-for-byte. The two examples are illustrative only. The owner clarified that west A remains the primary M-06 search area; this resolves search priority but not the M-01/M-05 gap, public approach, room assignment or fixture fit. See `Architecture/M231_West_A_Pair_Envelope_Diagram_2026-10-31/README.md`.
 
 ## M230 — Compare toilet/lavatory plan envelopes in protected west A
 
 **Acceptance:** pin selected-D, M120 current-toilet observation, M120 sink candidate-pair screen and owner A-protection decision; require A/B/M-06 remain unassigned; test all eight research sink candidates in both orientations against the 610AA001.020 manufacturer plan envelope and provisional 15/30/21-in spacing basis; distinguish nominal plan rectangles from installed geometry; reproduce the report/check files in two independent PowerShell 5.1 replays.
 
 **Result:** all 16 cases pass all 16 checks, meet the assumed side and centerline screens, avoid body-box overlap and remain inside gross A. The widest pair uses 58.5 of A's 62 gross inches, leaving only 3.5 in before finishes or wall thickness. All candidates remain research-only; no door, arrival route, actual finished face, fixture service route or sink selection is established. A/B remain unassigned. See `Architecture/M230_West_A_Toilet_Lavatory_Envelopes_2026-10-31/README.md`.
-
-## M229 — Re-screen west A from current 610AA001.020 plan callouts
 
 ## M229 — Re-screen west A from current 610AA001.020 plan callouts
 

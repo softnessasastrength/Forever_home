@@ -21,7 +21,7 @@ Two independent replays pass **8/8** source/scope checks and reproduce the retai
 - A graph that treats separations of at most 0.5 ft as *adjacency sensitivities* finds the shortest chain `M-05 → M-01 Living → M06-A`, crossing two 0.5-ft (6-in) gaps. Those gaps are not openings, door clearances or walkable route widths.
 - East B (92.17 sf gross) remains unassigned. The script is pinned to selected D; it does not change the file or choose a replacement room block.
 
-This conflicts with the owner-selected first-fit intent of placing M-06 at the arrival/hall edge. A remains the owner-protected M-06 search window, but its public approach cannot be treated as solved by this room-block study. A focused owner question is pending on whether to keep A primary and test a connection or compare a separate hall-edge proposal while retaining A as fallback.
+This conflicts with the earlier arrival/hall-edge first-fit intent. The owner later clarified that **west A stays primary** for M-06. This selects search priority only; its public approach cannot be treated as solved by this room-block study. The hall-to-living connection still needs a measured path and door study.
 
 ## Limits
 

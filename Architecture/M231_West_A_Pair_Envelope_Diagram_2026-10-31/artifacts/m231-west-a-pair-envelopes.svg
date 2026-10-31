@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="980" viewBox="0 0 1180 980">
+<title>West A hypothetical same-wall M-06 fixture envelope comparison</title>
+<desc>Two labeled rectangular envelope examples inside unassigned west A. Neither fixture pair is selected or installed. The front-depth screen is a planning proxy only.</desc>
+<rect width="1180" height="980" fill="#fbfaf7"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#262626}.title{font-size:25px;font-weight:700}.subtitle{font-size:14px}.paneltitle{font-size:16px;font-weight:700}.label{font-size:12px}.small{font-size:11px}.dimension{stroke:#4b5563;stroke-width:1.4;fill:none}.boundary{stroke:#1f2937;stroke-width:2;fill:#fff}.toilet{fill:#cfe8f3;stroke:#216b8c;stroke-width:2}.sink{fill:#e8d8bd;stroke:#805d32;stroke-width:2}.centerline{stroke:#6b7280;stroke-width:1;stroke-dasharray:5 4}.frontline{stroke:#b45309;stroke-width:1.5;stroke-dasharray:7 5}</style>
+<text x="50" y="44" class="title">M-06 west A - same-wall envelope examples</text>
+<text x="50" y="70" class="subtitle">62 x 137 in gross search window; candidate rectangles use the M230 assumptions. No room is assigned.</text>
+<text x="85" y="112" class="paneltitle">Example: KOHLER Tresham K-2844-4-0 - unselected</text>
+<text x="85" y="132" class="small">Sink plan envelope 24 x 19.5 in (Tresham candidate)</text>
+<rect x="85" y="150" width="310" height="685" class="boundary"/>
+<line x1="160" y1="150" x2="160" y2="835" class="centerline"/>
+<line x1="310" y1="150" x2="310" y2="835" class="centerline"/>
+<rect x="112.5" y="150" width="95" height="151.25" rx="5" class="toilet"/>
+<rect x="250" y="150" width="120" height="97.5" rx="5" class="sink"/>
+<text x="117.5" y="184" class="small">610AA</text>
+<text x="255" y="184" class="small">Sink</text>
+<line x1="85" y1="406.25" x2="395" y2="406.25" class="frontline"/>
+<text x="89" y="400.25" class="small">51.25 in body + front-strip depth screen</text>
+<line x1="85" y1="859" x2="395" y2="859" class="dimension"/>
+<text x="215" y="878" class="label">62 in gross width</text>
+<text x="85" y="902" class="label">Screen width used: 57 in; gross remainder: 5 in</text>
+<text x="650" y="112" class="paneltitle">Widest screened body: TOTO Clayton LPT780 - unselected</text>
+<text x="650" y="132" class="small">Sink plan envelope 27 x 19.625 in (Research candidate)</text>
+<rect x="650" y="150" width="310" height="685" class="boundary"/>
+<line x1="725" y1="150" x2="725" y2="835" class="centerline"/>
+<line x1="875" y1="150" x2="875" y2="835" class="centerline"/>
+<rect x="677.5" y="150" width="95" height="151.25" rx="5" class="toilet"/>
+<rect x="807.5" y="150" width="135" height="98.125" rx="5" class="sink"/>
+<text x="682.5" y="184" class="small">610AA</text>
+<text x="812.5" y="184" class="small">Sink</text>
+<line x1="650" y1="406.25" x2="960" y2="406.25" class="frontline"/>
+<text x="654" y="400.25" class="small">51.25 in body + front-strip depth screen</text>
+<line x1="650" y1="859" x2="960" y2="859" class="dimension"/>
+<text x="780" y="878" class="label">62 in gross width</text>
+<text x="650" y="902" class="label">Screen width used: 58.5 in; gross remainder: 3.5 in</text>
+<text x="50" y="920" class="label">Illustrative rectangles only: shared back line; WC centerline 15 in from side; fixture centerlines 30 in apart; front strip 21 in.</text>
+<text x="50" y="944" class="label">No walls/finishes, door, hall approach, privacy, faucet zone, services or installed clearances are shown. A and B remain unassigned.</text>
+</svg>

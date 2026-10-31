@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M231 — Diagram two M230 same-wall envelope examples; confirm west A primary
+
+- Added `Tools/draw_m06_west_a_pair_envelopes.ps1` and an SVG generated solely from the hash-pinned M230 output. It depicts nominal Tresham and the widest source candidate (TOTO Clayton) as **unselected**, with west A's gross boundary, toilet/sink body rectangles, and the provisional spacing/depth-screen labels.
+- Owner clarified the unresolved access choice: **keep west A primary**. Recorded this in the M-06 decision log and M227/M228 reports. This sets search priority only; A's hall approach and door remain unresolved, and A/B/M-06 remain unassigned.
+- All three PowerShell 5.1 runs pass **8/8** checks, parse the SVG as XML, and reproduce both artifacts byte-for-byte: `m231-checks.json` `721C04AD8D6D21B80DC6CCF6EC17DF9B8DC15AAC2EF670133BD39ABD3352538B`; `m231-west-a-pair-envelopes.svg` `E57519854BDD0FBAE535C1F50367719971531657A380A9A131B653ECB3A205AA`. M230's 3.5-in gross reserve before walls/finishes is visually shown; no installed fit is claimed. See `Architecture/M231_West_A_Pair_Envelope_Diagram_2026-10-31/README.md`.
+
 ## M230 — Same-wall toilet/lavatory envelope comparison in protected west A
 
 - Added `Tools/screen_m06_west_a_toilet_lavatory_pair_envelopes.ps1`, pinned to selected-D, the M120 current-SKU observation, all 16 sink candidate orientation inputs, and the owner decision to protect A. The generator recomputes a single same-wall body/spacing abstraction; A/B and M-06 remain unassigned.

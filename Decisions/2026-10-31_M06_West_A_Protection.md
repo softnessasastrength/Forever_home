@@ -6,6 +6,8 @@
 
 On 2026-10-31, the owner selected **“Protect A for M-06”** for the next integrated layout search. West diagnostic window A must remain free of pantry and circulation geometry in the primary search branch. Pantry or route alternatives that consume A may be described separately as rejected trade-offs; they must not be treated as the primary candidate.
 
+After the M227 hall-adjacency review and M228 dining-connection study, the owner clarified: **“Keep west A primary.”** Continue the primary M-06 fit and access work around A. This is a search-priority decision only; it does not establish a public-hall opening, route, room assignment or fixture layout.
+
 Pantry-side window B remains unassigned and protected under the prior owner direction. A and B are search reservations only. This choice does not establish a half-bath footprint, fixture placement, door, clearances, services, code applicability, accessibility, or a final room layout.
 
 ## Evidence informing the choice
