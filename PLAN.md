@@ -1592,3 +1592,27 @@ Acceptance criteria:
 - Document exact-family, toilet assembly, door/approach, code applicability, service-route and Revit trust-prompt limitations.
 
 Status: Complete as evidence revalidation. Two snapshot runs verify all six source hashes and pass 155/155 integrity checks across 24 family types; the manufacturer-source validator passes. The M120 envelope screen passes 14/14 twice and keeps M-06/B unassigned. The exact 610AA family and full current-SKU assembly remain unavailable. See M150 in `PROGRESS.md` and its README.
+
+## M151 - Check pantry-side M-06 window against arrival/hall adjacency
+
+Acceptance criteria:
+
+- Bind the current owner-follow-up study, selected-D study, room program, owner direction and M120 report by SHA256.
+- Reconstruct schematic adjacency without converting block contact into a claimed door or route.
+- Check direct M-05 entry/hall contact, the M-06 B links to pantry/dining, and the shortest room-block adjacency chain.
+- Replay in separate PowerShell 5.1 output directories; require all checks, XML-parse the SVG and compare JSON/CSV/SVG hashes.
+- Keep M-06 unassigned and preserve the owner-selected pantry-side window as the first research window; any alternative remains a separate sensitivity case.
+
+Status: Complete as an adjacency-only finding. M151 passes 11/11 checks in two runs with byte-identical JSON, CSV and SVG. The 124 × 84 in B window contacts the pantry block and is 0.5 ft from dining; it has no direct contact with M-05 entry/hall. Its shortest block chain crosses living and dining and is not a walkable route. See `Architecture/M151_M06_Hall_Adjacency_Screen_2026-10-30/README.md`. M-06 remains unassigned.
+
+## M152 - Revalidate owner-selected 38⅓ × 40 ft upper-suite exploration
+
+Acceptance criteria:
+
+- Reproduce the documented M78 bounded M37 search using the owner's selected exploration direction, without changing selected-D or treating the shell as an approved footprint.
+- Validate the regenerated search independently and compare candidate room areas, route topology and search completeness with the retained M78 evidence.
+- Confirm direct sampled hall arrival for U-01/U-02/U-04, private-only U-03 and both Jack-and-Jill links remain represented.
+- Record what the larger test shell resolves and what remains unmodeled: actual walls/openings, stair/headroom, egress, privacy, floor/roof geometry, services and site-specific code review.
+- Keep all generated artifacts in ignored scratch paths until exact replay and independent validation finish; do not alter the retained M78 package or selected-D.
+
+Status: In progress. The user selected exploration of 38⅓ × 40 ft after the 36 × 32 ft selected-D-derived test wing failed the M46 packing/route sample. M78 already documents this exact hypothetical shell, so the current work is a fresh bounded replay and independent validation rather than a new dimension proposal.
