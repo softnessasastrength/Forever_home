@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M230 — Same-wall toilet/lavatory envelope comparison in protected west A
+
+- Added `Tools/screen_m06_west_a_toilet_lavatory_pair_envelopes.ps1`, pinned to selected-D, the M120 current-SKU observation, all 16 sink candidate orientation inputs, and the owner decision to protect A. The generator recomputes a single same-wall body/spacing abstraction; A/B and M-06 remain unassigned.
+- All 16/16 research-only sink/orientation rectangles pass the provisional 15-in WC centerline-to-side, 30-in adjacent fixture centerline and 21-in front-strip screen inside A's 62 × 137 in gross room-block gap. The largest width is 58.5 in, leaving only 3.5 in gross before walls/finishes; this is not a fit result. No lavatory selection, actual walls, door, approach, privacy, plumbing or service route is established.
+- Tresham's source-pair status text was stale. The output adds a follow-up note that M119/M150 measured its symbol-local bounds at 24.0063 × 19.4998 × 34.625 in; host orientation and installed fit remain unverified.
+- The retained PowerShell 5.1 run and two isolated replays pass **16/16** and reproduce both report/check JSON files byte-for-byte: `m230-checks.json` `64D39E7A089902D91CF777AEAF28F09E6B1F3A3233D246B29D25069A6D43ADC4`; `m230-report.json` `1859CED601E1982D41BAEE58A191F2766771729921FBCD8AC3A59DC590B0E686`. See `Architecture/M230_West_A_Toilet_Lavatory_Envelopes_2026-10-31/README.md`.
+
 ## M229 — West A screen refreshed from the selected toilet's current-SKU plan callouts
 
 - Added `Tools/screen_m06_west_a_selected_sku_envelope.ps1`, bound to selected-D and M120 manufacturer observations. This corrects the evidence basis used by M226: the selected American Standard 610AA001.020 manufacturer infographic calls out a 19 × 30¼ in plan envelope, so the body need not be described as predecessor geometry for this plan-only screen. The official image was freshly fetched and its bytes match the recorded SHA256. The exact Revit family/CAD and complete current installation drawing remain unverified.
