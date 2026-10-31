@@ -100,7 +100,11 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
         var actualHash = Sha256(path);
         if (!StringComparer.OrdinalIgnoreCase.Equals(actualHash, expectedHash))
             throw new InvalidOperationException($"Study input fingerprint mismatch for {relativePath}: expected {expectedHash}; actual {actualHash}.");
-        return JsonDocument.Parse(File.ReadAllBytes(path));
+        var bytes = File.ReadAllBytes(path);
+        // System.Text.Json rejects the UTF-8 BOM present in the committed selected-D source.
+        // Preserve hash verification over the original bytes, then skip only that optional marker for parsing.
+        var offset = bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF ? 3 : 0;
+        return JsonDocument.Parse(bytes.AsMemory(offset));
     }
 
     private static double Number(JsonElement item, string key) => item.GetProperty(key).GetDouble();

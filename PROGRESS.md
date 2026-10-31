@@ -2,6 +2,21 @@
 
 Updated: 2026-10-31
 
+## M234 — Repair RevitPilot parsing for the selected-D UTF-8 BOM
+
+- A live Revit M219 execution reached the authorized exact-path/hash prompt and Load Once was selected. The M219 command failed immediately because `ReadPinnedJson` passed selected-D's leading UTF-8 BOM to `System.Text.Json`; no output folder, RVT, or study manifest was created.
+- Patched `Tools/RevitPilot/PantryDoorStudyCommand.cs`: fingerprint verification remains over original bytes; parsing skips exactly the optional leading `EF BB BF` marker. Build `build-m232-bom-fix` succeeds with **0 errors** and **2 MSB3277 warning groups**. DLL SHA256: `FF5578C1CB386114260FBF08F59A421A7B04A24F3E2DFF3CF81CD6C4BE2B01BF`.
+- A standalone .NET 10 parser check applied the same BOM-offset logic to all four pinned JSON inputs (selected-D BOM plus three no-BOM reports); all four parse. Existing M218/M222 validator fixture suite passes **7/7**. Per-user manifest AddInId/path/hash was checked; prior registration is preserved at `.local/revit-pilot/registration-backups/20261031T203854666Z/ForeverHome.Pilot.addin`, SHA256 `FF9881DF0A46DCA759E5DF8A8D7977A513E5ECF112E06C5C6ACE8FC4A57BBAA8`.
+- Revit restarted with no owner document open, but the trial intro overlay blocks the new prompt. The authorized close action was refused twice because the hit target is owned by nested `msedgewebview2.exe`; per the supported Computer Use limits, no other process was targeted. No M234 Load Once choice, pantry RVT, or manifest exists. The source fix is built but host-unverified.
+- Details and next gate: M219/M222 README sections and `Tools/RevitPilot/PantryDoorStudyCommand.cs`.
+
+## M233 — Diagram the owner-requested six-inch M-01 translation
+
+- The owner answered **“Test 6 in east move.”** Recorded this as analysis-only scope in `Decisions/2026-10-31_M01_Living_Translation_Test.md`.
+- Added `Tools/draw_m232_m01_six_in_sensitivity.ps1` and the M233 diagram package. It pins selected-D, M228, M232 and the direction addendum, and distinguishes source M-01 from its proposed +0.5-ft east position. Selected-D remains unchanged.
+- All three Windows PowerShell 5.1 runs pass **10/10** and reproduce outputs byte-for-byte: `m233-checks.json` `F3C51A710E69359AE6DF19695C6EA5C214D6B45F1793E045F44A0CC2FACDC151`; SVG `7D3F97953783EDDB726761495F122851C289A4FFB0ED922F1FF76C39C5205113`.
+- This is an unselected room-block sensitivity only. The 240-sf living block gains schematic edge contacts, but no wall openings, door, passable route, M-06 assignment, fixture fit or service routing is established. A/B/M-06 remain unassigned. See `Architecture/M233_M01_Six_In_Translation_Study_2026-10-31/README.md`.
+
 ## M232 — Test a hypothetical M-01 shift for an adjacency chain to west A
 
 - Recorded the owner's “Keep west A primary” direction in a separate addendum so the hash-pinned west-A protection decision remains unchanged.
