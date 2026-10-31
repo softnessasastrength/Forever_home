@@ -1716,11 +1716,11 @@ Status: Complete as a dated public-source recheck. On 2026-10-31, the current Am
 
 Acceptance criteria:
 
-- Proceed only after the active Revit security prompt identifies the exact hash-verified project-local RevitPilot DLL recorded in the authorized per-user manifest; choose **Load Once** only for that exact build.
-- Inspect each already quarantined RFA with its recorded source URL/SHA256 in Revit Family Editor without saving, upgrading-overwriting or editing the source.
-- Record family category, type names, formulas/parameters, positive-solid geometry and symbol-local bounds; distinguish symbol-local evidence from host-oriented/installed placement.
+- Before relying on Revit host evidence, verify the authorized per-user AddInId, manifest path and project-local DLL SHA256. If a security prompt appears, choose **Load Once** only when its path matches that exact verified build.
+- Use existing source-hash-bound Family Intake reports for previously inspected M-06 candidates; inspect the quarantined KOHLER Tresham K-2844-4-0 RFA in Family Editor read-only, without saving, editing or overwriting its source.
+- Record category, displayed type dimensions/formulas, visible assembly and the limits of symbol-local or unhosted evidence; do not infer installed bounds or connections from nominal type parameters.
 - Make a disposable derivative only if placement testing is needed; preserve the selected-D baseline and all Incoming source RFAs.
-- Keep M-06/B unassigned until exact toilet and lavatory geometry, applicable clearance basis, real door/approach and plausible service route support a combined fit.
+- Keep M-06/B unassigned until exact selected toilet and lavatory geometry, applicable clearance basis, real door/approach and plausible service route support a combined fit.
 - Preserve Revit/IFC compatibility; report prompt mismatch, unavailable sources or inspection failures without bypassing trust/access controls.
 
-Status: Planned; Revit currently blocks this work because its unsigned-add-in prompt names `build-m83-level-safe`, while the verified per-user manifest for the authorized AddInId points to `build-m83-regenerate-bounds-v1` (SHA256 `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`). Repository instructions require owner direction if prompt identity differs. No prompt option has been selected.
+Status: Complete as a read-only source review and host-state revalidation. On 2026-10-31, a fresh Revit 2027.3 process loaded the exact manifest DLL from the current worktree (SHA256 `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`); no startup trust prompt appeared and no trust setting was changed. The exact hash-pinned KOHLER Tresham source was opened, visually checked in Preview and Reference Level, and closed without saving; its SHA256 remained unchanged. This confirms existing M119 Family Editor findings for this source, not new host-placement or fit evidence. Existing hash-bound intake evidence for other M-06 candidate RFAs remains in M110/M120/M150. No exact-current 610AA full-toilet RFA/assembly geometry is available from the reviewed public sources, so M-06/B remains unassigned. Door/approach, applicable clearance and plausible service routing are still unverified.
