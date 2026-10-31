@@ -2017,3 +2017,20 @@ Acceptance criteria:
 - Report the search bounds, grid resolution, route starts/ends, unassigned-space excursions, closest proxy separations and any unsatisfied constraints; a geometric non-overlap is not called a usable route.
 - Preserve the 168-sf owner kitchen target as a target and identify M178's +21-sf proposal without treating it as approved; keep B unassigned.
 - Produce deterministic JSON/CSV/SVG and explicit incomplete-search limits; do not change selected-D, Revit/IFC or Incoming RFAs.
+
+Status: Complete as a bounded schematic search. PowerShell 5.1 retained generation and two independent replays pass 29/29; JSON, checks, CSV and SVG match byte-for-byte, and the SVG parses as XML. No route reaches the nominal porch door: the 5,299-node connected region is exhausted within a 23,088-node grid; nearest reachable point is 10 ft away by Manhattan distance. This rejects only the sampled grid under the listed proxy blocks, not every continuous route. M-06/B remains unassigned and selected-D unchanged. See `Architecture/M186_Multiturn_Route_Search_2026-10-31/README.md`.
+
+Next: M187 isolates one proxy-relaxation at a time to measure which reservation constrains the bounded social route most. Treat relaxations strictly as sensitivities, not layout decisions; preserve the combined-constraint M186 no-route baseline, M-06/B unassigned, and selected-D.
+
+## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
+
+Acceptance criteria:
+
+- Reuse the exact M186 search with the same shell, grid, route width, start/opening/goal and source fingerprints; alter only one declared obstacle set per case.
+- Test stool-use proxy, west diagnostic, east/B window, pantry, island, half-wall/return, M-05 entry, dining set and perimeter casework independently; do not combine relaxations.
+- Report whether a sampled path returns, its length/turn count, reachable nodes, and remaining constraints; explicitly state that paths traverse the removed proxy.
+- Keep B unassigned, selected-D and source families unchanged; emit deterministic summary JSON/checks/CSV and pass two independent replays.
+
+Status: Complete. Three of nine single-proxy relaxations restore a sampled path: stool-use proxy (28.5 ft/five turns), west diagnostic (28.5 ft/five turns), and dining set (54.5 ft/five turns). The other six—including M-05 entry—do not. This isolates tradeoff sensitivities; none is a valid route while its omitted proxy remains. See `Architecture/M187_Route_Sensitivity_2026-10-31/README.md`.
+
+Next: replace the assumed stool envelope with measured geometry from the protected incoming families when permitted Revit host evidence is available, then inspect the entry opening/interface and physical walls in an isolated derivative. Do not relocate the M-06 search window or assign B without product/clearance/approach/service evidence.

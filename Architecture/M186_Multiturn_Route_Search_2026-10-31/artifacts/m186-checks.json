@@ -1,0 +1,152 @@
+{
+    "status":  "pass",
+    "passed":  29,
+    "total":  29,
+    "items":  [
+                  {
+                      "id":  "M179:Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M179:Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M179:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M179:Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M180:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M180:Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M180:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "M185:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                      "pass":  true,
+                      "detail":  "Upstream source fingerprint is current."
+                  },
+                  {
+                      "id":  "source_schemas",
+                      "pass":  true,
+                      "detail":  "M178, M180 and M185 have the expected retained source schemas."
+                  },
+                  {
+                      "id":  "selected_d_baseline_current",
+                      "pass":  true,
+                      "detail":  "Selected-D remains at the protected source fingerprint."
+                  },
+                  {
+                      "id":  "m06_b_unassigned",
+                      "pass":  true,
+                      "detail":  "Owner-selected east/pantry-side M-06/B remains only an unassigned search window."
+                  },
+                  {
+                      "id":  "shell_test_40_by_42",
+                      "pass":  true,
+                      "detail":  "The bounded search uses the matching 40 x 42 ft envelope recorded in selected-D and the bath-first source."
+                  },
+                  {
+                      "id":  "grid_is_analysis_resolution",
+                      "pass":  true,
+                      "detail":  "Quarter-foot spacing is explicitly a search resolution, not an architectural dimension."
+                  },
+                  {
+                      "id":  "route_width_36in",
+                      "pass":  true,
+                      "detail":  "The swept corridor uses the source 36-in proxy width."
+                  },
+                  {
+                      "id":  "start_and_goal_nodes_clear",
+                      "pass":  true,
+                      "detail":  "Both the fixed kitchen-opening node and nominal porch-door node clear the static no-go proxy set."
+                  },
+                  {
+                      "id":  "living_start_inside_M01",
+                      "pass":  true,
+                      "detail":  "The route begins at M180â€™s point inside source M-01."
+                  },
+                  {
+                      "id":  "opening_connector_clear",
+                      "pass":  true,
+                      "detail":  "Pinned living-to-opening connector has no positive-area intersection with modeled obstacle rectangles."
+                  },
+                  {
+                      "id":  "opening_reservation_crossed",
+                      "pass":  true,
+                      "detail":  "Pinned connector crosses M178â€™s 6-ft opening reservation at the M180 source y-coordinate."
+                  },
+                  {
+                      "id":  "goal_is_nominal_porch_door",
+                      "pass":  true,
+                      "detail":  "Route search ends at the nominal 5-ft porch-door reservation before extending 3 ft into the porch."
+                  },
+                  {
+                      "id":  "search_completed_or_bounded",
+                      "pass":  true,
+                      "detail":  "Deterministic BFS terminates inside the finite shell-derived grid."
+                  },
+                  {
+                      "id":  "route_result_serializable",
+                      "pass":  true,
+                      "detail":  "A found route has a start, an opening point and a porch terminus; a no-path result is also recorded explicitly."
+                  },
+                  {
+                      "id":  "no_route_within_declared_search",
+                      "pass":  true,
+                      "detail":  "The exhaustive 0.25-ft grid search found no route within the bounded shell and modeled proxy set."
+                  },
+                  {
+                      "id":  "incoming_families_hashes_recorded",
+                      "pass":  true,
+                      "detail":  "Every current Incoming RFA is recorded by filename and SHA256."
+                  },
+                  {
+                      "id":  "m185_one_elbow_constraint_retained",
+                      "pass":  true,
+                      "detail":  "The preceding M185 result still shows no sampled single-elbow position clearing both limiting proxies."
+                  }
+              ]
+}

@@ -1,0 +1,77 @@
+{
+    "status":  "pass",
+    "passed":  14,
+    "total":  14,
+    "items":  [
+                  {
+                      "id":  "baseline_no_path",
+                      "pass":  true,
+                      "detail":  "The retained combined-constraint M186 baseline has no sampled route."
+                  },
+                  {
+                      "id":  "nine_independent_cases",
+                      "pass":  true,
+                      "detail":  "Nine declared one-at-a-time relaxations were evaluated."
+                  },
+                  {
+                      "id":  "selected_D_hash_unchanged",
+                      "pass":  true,
+                      "detail":  "The selected-D source hash matches M186."
+                  },
+                  {
+                      "id":  "B_still_unassigned",
+                      "pass":  true,
+                      "detail":  "M186 asserts that east/B remains unassigned."
+                  },
+                  {
+                      "id":  "all_outputs_collected",
+                      "pass":  true,
+                      "detail":  "Every declared run produced a parsable report."
+                  },
+                  {
+                      "id":  "result:assumed_stool_use",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:east_B_search_window",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:west_diagnostic",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:pantry",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:island",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:halfwall_and_return",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:entry",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:dining_set",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  },
+                  {
+                      "id":  "result:perimeter_casework",
+                      "pass":  true,
+                      "detail":  "Sensitivity search ran and returned a reachable region."
+                  }
+              ]
+}

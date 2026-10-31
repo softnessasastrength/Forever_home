@@ -1,0 +1,425 @@
+{
+    "schema":  "forever-home-m187-route-sensitivity-v1",
+    "status":  "pass",
+    "method":  "Replays M186 nine times, each time removing only the listed obstacle proxy or the explicitly grouped dining set, then records route reachability and remaining frontier.",
+    "baseline_m186_sha256":  "5e3c5ccdc5abf45f147666ca461e3aec79669a77b577e2783c441a50403234ca",
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "baseline_path_found":  false,
+    "analysis_grid_step_ft":  0.25,
+    "route_width_in":  36,
+    "cases":  [
+                  {
+                      "relaxation":  "assumed_stool_use",
+                      "removed_proxy_ids":  [
+                                                "assumed-stool-use-proxy"
+                                            ],
+                      "meaning":  "Removes the assumed 24-in stool occupancy proxy only.",
+                      "path_found":  true,
+                      "route_length_ft":  28.5,
+                      "turn_count":  5,
+                      "expanded_nodes":  4232,
+                      "reachable_nodes":  4306,
+                      "nearest_door_manhattan_ft":  0,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  135
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  72
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:west_of_core",
+                                                             "frontier_edge_count":  59
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  45
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "east_B_search_window",
+                      "removed_proxy_ids":  [
+                                                "east_of_core"
+                                            ],
+                      "meaning":  "Relaxes the reserved unassigned east/B search window only; does not assign B.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  7731,
+                      "reachable_nodes":  7731,
+                      "nearest_door_manhattan_ft":  10,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  54
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-04-pantry",
+                                                             "frontier_edge_count":  40
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "west_diagnostic",
+                      "removed_proxy_ids":  [
+                                                "west_of_core"
+                                            ],
+                      "meaning":  "Removes the already-blocked west diagnostic rectangle only.",
+                      "path_found":  true,
+                      "route_length_ft":  28.5,
+                      "turn_count":  5,
+                      "expanded_nodes":  4045,
+                      "reachable_nodes":  4116,
+                      "nearest_door_manhattan_ft":  0,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-04-pantry",
+                                                             "frontier_edge_count":  89
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  77
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  72
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall-return",
+                                                             "frontier_edge_count":  41
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "pantry",
+                      "removed_proxy_ids":  [
+                                                "M-04-pantry"
+                                            ],
+                      "meaning":  "Removes the pantry room-block proxy only.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  5375,
+                      "reachable_nodes":  5375,
+                      "nearest_door_manhattan_ft":  9.5,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:west_of_core",
+                                                             "frontier_edge_count":  57
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "island",
+                      "removed_proxy_ids":  [
+                                                "island"
+                                            ],
+                      "meaning":  "Removes the kitchen island proxy only.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  6163,
+                      "reachable_nodes":  6163,
+                      "nearest_door_manhattan_ft":  10,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:assumed-stool-use-proxy",
+                                                             "frontier_edge_count":  64
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  54
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "halfwall_and_return",
+                      "removed_proxy_ids":  [
+                                                "half-wall",
+                                                "half-wall-return"
+                                            ],
+                      "meaning":  "Removes the half-wall and return proxies only.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  5819,
+                      "reachable_nodes":  5819,
+                      "nearest_door_manhattan_ft":  10,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  54
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-04-pantry",
+                                                             "frontier_edge_count":  40
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "entry",
+                      "removed_proxy_ids":  [
+                                                "M-05-entry"
+                                            ],
+                      "meaning":  "Removes the entry room-block proxy only.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  6299,
+                      "reachable_nodes":  6299,
+                      "nearest_door_manhattan_ft":  10,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  54
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-04-pantry",
+                                                             "frontier_edge_count":  40
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "dining_set",
+                      "removed_proxy_ids":  [
+                                                "dining-table",
+                                                "south-chair-1",
+                                                "south-chair-2",
+                                                "west-chair-1",
+                                                "west-chair-2"
+                                            ],
+                      "meaning":  "Removes table and four stationary chair-body proxies together.",
+                      "path_found":  true,
+                      "route_length_ft":  54.5,
+                      "turn_count":  5,
+                      "expanded_nodes":  6593,
+                      "reachable_nodes":  6597,
+                      "nearest_door_manhattan_ft":  0,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:perimeter-run",
+                                                             "frontier_edge_count":  65
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  },
+                  {
+                      "relaxation":  "perimeter_casework",
+                      "removed_proxy_ids":  [
+                                                "perimeter-run"
+                                            ],
+                      "meaning":  "Removes the perimeter cabinet-run proxy only.",
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "expanded_nodes":  5874,
+                      "reachable_nodes":  5874,
+                      "nearest_door_manhattan_ft":  10,
+                      "remaining_blocked_frontier":  [
+                                                         {
+                                                             "constraint":  "centerline-envelope:east_of_core",
+                                                             "frontier_edge_count":  140
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:island",
+                                                             "frontier_edge_count":  113
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:half-wall",
+                                                             "frontier_edge_count":  73
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-05-entry",
+                                                             "frontier_edge_count":  70
+                                                         },
+                                                         {
+                                                             "constraint":  "centerline-envelope:M-04-pantry",
+                                                             "frontier_edge_count":  40
+                                                         }
+                                                     ],
+                      "interpretation":  "Single-proxy sensitivity only. Any route is an analysis-grid candidate with that proxy removed, not a selected or validated layout."
+                  }
+              ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  14,
+                   "total":  14,
+                   "items":  [
+                                 {
+                                     "id":  "baseline_no_path",
+                                     "pass":  true,
+                                     "detail":  "The retained combined-constraint M186 baseline has no sampled route."
+                                 },
+                                 {
+                                     "id":  "nine_independent_cases",
+                                     "pass":  true,
+                                     "detail":  "Nine declared one-at-a-time relaxations were evaluated."
+                                 },
+                                 {
+                                     "id":  "selected_D_hash_unchanged",
+                                     "pass":  true,
+                                     "detail":  "The selected-D source hash matches M186."
+                                 },
+                                 {
+                                     "id":  "B_still_unassigned",
+                                     "pass":  true,
+                                     "detail":  "M186 asserts that east/B remains unassigned."
+                                 },
+                                 {
+                                     "id":  "all_outputs_collected",
+                                     "pass":  true,
+                                     "detail":  "Every declared run produced a parsable report."
+                                 },
+                                 {
+                                     "id":  "result:assumed_stool_use",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:east_B_search_window",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:west_diagnostic",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:pantry",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:island",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:halfwall_and_return",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:entry",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:dining_set",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 },
+                                 {
+                                     "id":  "result:perimeter_casework",
+                                     "pass":  true,
+                                     "detail":  "Sensitivity search ran and returned a reachable region."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "This sensitivity relaxes analysis proxies, not actual geometry. A restored path does not authorize removing a room, furniture or M-06 reservation.",
+                        "An east/B relaxation does not assign B or establish fixture, clearance, privacy, approach or service feasibility.",
+                        "The finite quarter-foot grid and rectangular proxies do not prove continuous route impossibility or usability.",
+                        "No Revit/IFC model, selected-D baseline or source family is modified.",
+                        "No code, accessibility, structural, professional, permit or construction-readiness claim is made."
+                    ]
+}
