@@ -2,6 +2,11 @@
 
 Updated: 2026-10-31
 
+## M249 — Recheck Revit host accessibility
+
+- Current CUA inventory lists Revit 2027 running at window id `657372`; a read-only `getApp` call returns `Accessibility state unavailable for window 657372`.
+- No command, prompt, document or model state could be inspected. No DLL was loaded; no RVT, selected-D, IFC, family source or registration changed. Continue script/source work where possible; native M-06 derivative generation awaits supported Revit UI access.
+
 ## M248 — Revalidate current selected-D geometry and IFC exports
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1` into `.local/revalidation/M247-current-baseline/`. Both selected-D generations pass **43/43**, seven files match per run, six plan SVGs parse, and the retained IFC2x3 passes **26/26** with zero schema errors.
