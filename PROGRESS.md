@@ -2,6 +2,15 @@
 
 Updated: 2026-10-31
 
+## M225 — Exact-SKU public resource audit for M-06
+
+- Rechecked American Standard's public page for selected model 610AA001.020 and followed both linked PDF resources. The specification PDF identifies 211AA.104 (revised 2013), predecessor bowl 3195A.101 and tank 4225A.104; the installation guide identifies the older 211AA/211BA/211CA series. Neither resource provides exact 610AA assembly geometry.
+- Searched exact-SKU public web results for a Revit/RFA/BIM family. No exact family was located in the sources checked. This is not proof that none exists elsewhere; no account or gated source was accessed.
+- Disposition: selected 610AA remains the intent, but its assembled envelope is unverified. Do not use the predecessor dimensions or seat-only RFA as its geometry. West A stays protected and east B unassigned pending exact model/drawing, applicable clearance basis, real approach/door and plausible service route. Full evidence and source links: `Research/M225_M06_Exact_SKU_Resource_Audit_2026-10-31.md`.
+- Reconfirmed the owner-directed pantry study retains both swing alternatives. M218 source analysis replayed twice with 6/6 checks and byte-identical JSON/checks/CSV; M222 validator fixtures pass 7/7. These are offline analytical/manifest checks, not proof of Revit-generated geometry. The supported Computer Use native pipe is unavailable; no RVT was generated in this turn.
+- Replayed `Tools/validate_architectural_bim_baseline.ps1` after the audit. Both selected-D runs pass 43/43 geometry checks; seven artifacts match per run; three SVGs parse; retained IFC passes 26/26 with zero errors. Report: `.local/revalidation/architectural-bim-baseline-20261031T195302793Z/baseline-validation.json`; protected source/RVT/IFC hashes remain unchanged.
+- Selected-D, retained RVT/IFC, and RFAs were not modified. No code, accessibility, structural, professional, permit or construction-readiness conclusion.
+
 ## M224 — Refresh Connecticut stair basis and selected-D rise comparison
 
 - Rechecked current Connecticut DAS pages: 2022 CSBC still applies to applications filed from 2022-10-01; the expected 2026 code effective date is delayed pending LRRC approval. Official PDF text confirms the CT amendment to 2021 IRC R311.7.5.1 is 8.25 in maximum riser and R311.7.5.2 is 9 in minimum tread. The generic IRC text's 7.75 in is not the Connecticut amended value.
