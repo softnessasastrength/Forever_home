@@ -29,4 +29,8 @@ The 124 × 84 in pantry-side B rectangle in the separate owner-follow-up proposa
 - Actual walls/finished faces, fixture orientation, door and approach, privacy, rough-in datum, water/waste/vent route and locally applicable requirements remain open.
 - This screen makes no code-compliance, accessibility, safety, professional-certification or construction-readiness determination.
 
+## Public family-source check (M122; 2026-10-30)
+
+The current [American Standard product page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring) still identifies 610AA001.020, but its public resource links resolve to the 2013 `211AA.104` predecessor specification and 2019 `211AA` series installation guide. A public [RevitCity search](https://www.revitcity.com/downloads.php?action=search&keywords=American+standard+toilet) exposes older/generic toilet-family listings marked “Login or Join to download.” Publicly indexed exact-SKU searches did not return a freely accessible 610AA001.020 RFA. No account-gated download was attempted. This is only a bounded search result, not proof that no exact family exists elsewhere. The product’s current RFA and complete current-SKU installation documentation remain sourcing gaps; no proxy family is approved for M-06.
+
 No selected-D source/model, IFC, owner-selected fixture, Incoming RFA source or remote state was modified.
