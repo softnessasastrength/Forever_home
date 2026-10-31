@@ -1628,3 +1628,13 @@ Acceptance criteria:
 - Label the alternative as unassigned and identify the tradeoff: it satisfies hall-edge adjacency arithmetic while leaving the owner-selected pantry-side first-search window untouched.
 
 Status: Complete as a gross-block sensitivity. Two PowerShell 5.1 runs pass 12/12 checks and match JSON/CSV/SVG byte-for-byte. The derived M06-H rectangle is x=5.5 ft, y=16.1667 ft, 10.3333 × 7 ft; it has 6.5 ft projected contact with M-05 across the nominal 0.5 ft gap, 10.3333 ft projected contact with living across the same gap, and zero overlap with current room and core rectangles. These are adjacency proxies, not walls, openings, fit, route or assigned room geometry. The owner-selected pantry-side B remains first in research priority and M-06 remains unassigned. See M153 report README.
+## M154 - Recheck Connecticut M-06 clearance basis and current envelope replay
+
+Acceptance criteria:
+
+- Recheck Connecticut DAS's current-code and adoption-status pages and distinguish adopted requirements from draft or delayed future codes.
+- Record the provisional 2021 IRC basis and exact fixture-spacing values only under a stated detached one-family assumption, with applicable amendment sources.
+- Replay the current M120 source-bound gross-envelope screen twice; require 14/14 checks, 16/16 pair containment and byte identity with the retained package.
+- Keep product geometry, actual wall faces, door/approach, accessibility scope, plumbing route and M-06 assignment explicitly unresolved.
+
+Status: Complete as a current research-basis snapshot plus screen replay. Connecticut DAS still lists the 2022 CSBC based on 2021 model codes as current; its 2026 code effective date is delayed pending legislative approval. Both M120 replays pass 14/14 and match the checked-in report/checks hashes. The preliminary 15/30/21 in screen remains a reference only; no local applicability or compliance determination is made. See Architecture/M154_CT_M06_Code_Basis_Recheck_2026-10-30/README.md and Research/M06_Toilet_Options_2026-10-27.md.
