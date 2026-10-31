@@ -9,6 +9,12 @@ Status: Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0
 
 **Current result:** the manufacturer page identifies 610AA001.020 but its visible resource links resolve to 2013/2019 PDFs for predecessor 211AA series products. Those PDFs list bowl 3195A.101 and tank 4225A.104, not the selected 610AA assembly. No exact-SKU public RFA was found in the bounded search. Current assembled geometry remains unverified, so no M-06 placement is supported. See `Research/M225_M06_Exact_SKU_Resource_Audit_2026-10-31.md`. Selected-D, RVT/IFC and source families remain unchanged.
 
+## M226 — Screen west A with current CT residential spacing and predecessor-only envelope
+
+**Acceptance:** use selected-D's unassigned west A dimensions and owner-protected-A direction; apply only sourced 2021 IRC R307.1/P2705.1 spacing values; use the old 211AA dimensions only as an explicitly unverified proxy; replay deterministically; keep both windows unassigned and exclude lavatory, door/approach and service routing from any fit claim.
+
+**Current result:** the PowerShell 5.1 study places a toilet-only lower-bound proxy box inside gross west A in both orientations (2/2): 30 × 51.25 in and 30.25 × 40 in. Replays generated identical JSON. The source product is still predecessor 211AA104.020, not selected 610AA001.020 geometry. No lavatory/30-in center spacing, finish/wall thickness, door/swing, public-hall approach, plumbing route or full room fit is tested. A and B remain unassigned. See `Architecture/M226_M06_West_A_Clearance_Proxy_2026-10-31/README.md` and current code-source refresh in `Research/M06_Clearance_Basis_2026-10-30.md`.
+
 ## M216 — Validate the isolated M-06 family host-probe report
 
 **Acceptance:** build the project-local RevitPilot DLL without installation; extend the independent PowerShell validator to distinguish unhosted source-family inspection from a one-instance synthetic-wall probe; require exact host identity, finite positive measured solids, consistent bounds, truthful connector counts, and explicit limits on service-route/code conclusions. Fixture tests must prove a valid report passes and malformed host/service claims fail. Do not register or load the DLL unless exact AddInId/path/hash conditions and Revit access are verified. Do not modify selected-D or assign M-06/B.

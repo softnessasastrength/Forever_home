@@ -11,6 +11,14 @@ Updated: 2026-10-31
 - Replayed `Tools/validate_architectural_bim_baseline.ps1` after the audit. Both selected-D runs pass 43/43 geometry checks; seven artifacts match per run; three SVGs parse; retained IFC passes 26/26 with zero errors. Report: `.local/revalidation/architectural-bim-baseline-20261031T195302793Z/baseline-validation.json`; protected source/RVT/IFC hashes remain unchanged.
 - Selected-D, retained RVT/IFC, and RFAs were not modified. No code, accessibility, structural, professional, permit or construction-readiness conclusion.
 
+## M226 — Apply the Connecticut residential spacing screen to protected west A
+
+- Refreshed `Research/M06_Clearance_Basis_2026-10-30.md` against current DAS and official ICC 2021 IRC section text. For a qualifying residential-code scope, R307.1 points to Figure R307.1/P2705.1; P2705.1 supplies 15-in WC-center-to-side spacing, 30-in adjacent fixture center spacing, 21-in front clearance, and a no-interference rule for doors/windows. Targeted search of the official CSBC amendments PDF found no R307.1/P2705.1 amendment text. Municipality, permit path, classification and accessibility scope remain open.
+- Added `Tools/screen_m06_west_a_predecessor_clearance.ps1`. It hash-pins selected-D and the predecessor envelope report, rejects any non-unassigned source windows, and computes only a rectangular toilet-body-plus-side/front-screen in west A under the 211AA predecessor proxy.
+- Retained run and two isolated Windows PowerShell 5.1 replays report **2/2 orientations contained in gross A** and produce byte-identical JSON (all SHA256 `C88C5C15ED170AB30A399828E9173477F06FDAF98EE6655372F1643FD8AC42DA`). The 0° proxy envelope is 30 × 51.25 in; the 90° proxy envelope is 30.25 × 40 in. A is 62 × 137 in gross, not clear interior dimensions.
+- This does not establish 610AA001.020 geometry or a bathroom fit. Lavatory, 30-in adjacent-fixture spacing, wall build-up, actual door/swing, hall approach, privacy and water/waste/vent route are absent. West A and east B both remain unassigned. Selected-D, RVT/IFC and RFAs remain unchanged.
+- Exact code-source limits and the proxy report are documented in `Research/M06_Clearance_Basis_2026-10-30.md` and `Architecture/M226_M06_West_A_Clearance_Proxy_2026-10-31/README.md`.
+
 ## M224 — Refresh Connecticut stair basis and selected-D rise comparison
 
 - Rechecked current Connecticut DAS pages: 2022 CSBC still applies to applications filed from 2022-10-01; the expected 2026 code effective date is delayed pending LRRC approval. Official PDF text confirms the CT amendment to 2021 IRC R311.7.5.1 is 8.25 in maximum riser and R311.7.5.2 is 9 in minimum tread. The generic IRC text's 7.75 in is not the Connecticut amended value.
