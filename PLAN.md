@@ -1994,3 +1994,26 @@ Acceptance criteria:
 - Emit deterministic JSON/CSV; rerun twice from empty PowerShell 5.1 scratch directories and compare bytes.
 
 Status: Complete as a source-bound overlay audit. M173's previously retained route has 17.750 sf union overlap with the M-04 pantry block and 22.250 sf with the already-blocked west M-06 diagnostic window; it has 0 sf overlap with the east/B search window. M173's own 0-intersection result covered its listed kitchen/dining obstacles, while this overlay exposes room-block conflicts that were not part of that obstacle set. The route must not be treated as complete for the bath-first adjacency arrangement. The study still does not establish physical walls or openings, and B remains unassigned. PowerShell 5.1 retained run plus two scratch replays pass 10/10 with three byte-identical artifacts. No selected-D, Revit/IFC or Incoming RFA changed. See `Architecture/M184_Social_Route_Pantry_Overlay_2026-10-31/README.md`.
+
+## M185 - Test the pantry dogleg against both M-06 search regions - 2026-10-31
+
+Acceptance criteria:
+
+- Bind M179, M178, the bath-first room blocks, M-06 search-window status, and selected-D source by SHA256.
+- Compare the original 36-in dogleg with a clearly labelled earlier-turn sensitivity against the pantry, both M-06 windows, and the M178 fixture/furniture proxies.
+- Measure the M179 route origin against source M-01 and explicitly report any unassigned kitchen-to-living transition band.
+- Sweep the single-elbow turn from 13.00 to 15.00 ft in 0.25-ft increments; compute union overlap area to avoid double-counting corridor elbows.
+- Record all five Incoming RFA hashes, preserve selected-D and keep M-06/B unassigned.
+- Emit deterministic PowerShell 5.1 JSON, checks, CSV and SVG; require passing source/geometry gates, XML parsing, and byte-identical retained and two scratch outputs.
+
+Status: Complete as a route-conflict study, not a route selection. M179's full-width elbow overlaps the blocked west M-06 diagnostic by 0.708333 sf union area. An earlier turn clears that diagnostic but overlaps the assumed stool-use proxy by 1.5 sf and passes only 4 in from the diagnostic. The 13.00–15.00 ft single-elbow sensitivity sweep at 0.25-ft intervals has no sample clear of both; its lowest combined sampled overlap is 0.708333 sf at the original 14.5-ft turn. M179 starts outside M-01 in the 4 ft 4 in unassigned band between living and kitchen, so neither dogleg is continuous living-to-porch circulation. Pantry and east/B window remain clear in the compared variants; B stays unassigned. Retained and two isolated replays pass 21/21 and produce byte-identical JSON, checks, CSV and SVG; SVG XML parses. Selected-D SHA256 remains `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`. No Revit/IFC, selected-D or source RFA changed. See `Architecture/M185_Dogleg_M06_Overlay_2026-10-31/README.md`.
+
+## M186 - Search multi-turn social-route alternatives against current constraints
+
+Acceptance criteria:
+
+- Use the current M178/M179 geometry and source bath-first blocks; bind the search to selected-D and protected Incoming RFA hashes.
+- Search 36-in swept route alternatives with more than one elbow against the pantry, both M-06 windows, kitchen casework/island/stool proxy, dining table/chairs, half-wall and porch opening reservation.
+- Report the search bounds, grid resolution, route starts/ends, unassigned-space excursions, closest proxy separations and any unsatisfied constraints; a geometric non-overlap is not called a usable route.
+- Preserve the 168-sf owner kitchen target as a target and identify M178's +21-sf proposal without treating it as approved; keep B unassigned.
+- Produce deterministic JSON/CSV/SVG and explicit incomplete-search limits; do not change selected-D, Revit/IFC or Incoming RFAs.

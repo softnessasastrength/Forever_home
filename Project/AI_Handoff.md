@@ -1,11 +1,15 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-31 (M179 pantry-route overlay; M178 kitchen/half-wall candidate; M177 route candidate; M176 scope audit; M175 intake validator hardening; M174 stool-family inspection in progress)
+Updated: 2026-10-31 (M185 pantry-dogleg/M-06 constraint sweep; M184 route overlay; M183 option gate; earlier M179–M174 work retained below)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**M185, 2026-10-31:** M179's 36-in dogleg overlaps the blocked west M-06 diagnostic by 0.708333 sf; moving its turn one foot earlier clears that region but overlaps the assumed stool-use envelope by 1.5 sf and leaves only 4 in separation from the diagnostic. No tested quarter-foot single-elbow position clears both. The M179 route starts outside source M-01, across a 4 ft 4 in unassigned kitchen-to-living band, so it is not continuous public circulation. The owner-selected east/pantry-side M-06/B window remains clear and unassigned. Retained plus two isolated PowerShell 5.1 replays pass 21/21 and reproduce all artifacts byte-for-byte. Selected-D source and all Incoming RFAs are unchanged.
+
+Selected-D baseline validation was refreshed without editing its source package. `Tools/build_selected_house_schematic.ps1 -LayoutVariant OwnerSelectedD` ran twice to scratch: 43/43 geometry checks each time; outputs match between runs. Plan SVG/CSV files match the tracked package, and study geometry is semantically identical when excluding stale embedded source fingerprints and JSON property ordering. The tracked `study.json` still references older Room Program and design-decision hashes; do not silently overwrite it. The saved 2026-10-30 Revit 2027.3 room-study and IFC2X3 pair passes the independent validator 26/26 with zero schema issues, 3 storeys and 21 spaces. Its construction categories remain empty: this is not a physical house model. The existing Python validator was run only for IFC validation, not geometry fitting. See M185 in `PLAN.md`, `PROGRESS.md`, and its README. Next: search bounded multi-turn 36-in route alternatives and report room spill and proxy conflicts before any Revit work.
 
 **M179, 2026-10-31:** source-bound overlay shows M178's straight east-aisle route intersects M-04 in the unapproved bath-first blocks (two overlapping corridor rectangles; one reports 5.5 sf). A westward dogleg at local y=14.5 ft, before M-04 begins at y=16.5 ft, then stays along the dining target's east edge. It clears all modeled pantry/furniture/island/cabinet/wall rectangles, passes the nominal porch door and reaches 3 ft into the porch. The short connector spills 21 in east of dining below the pantry; the dining leg is tangent to the table edge and assumes no east chair. M179 passes 21/21 in two byte-identical scratch replays and retained outputs. M177/M178 waypoints were fixed to `{x,y}` records and their output packages regenerated/replayed. No selected-D, RFA, RVT/IFC or remote state changed; M-06/B remains unassigned. Next: test the spill against actual shell/adjacent reservations and furniture/door use before Revit. See M179 README.
 
