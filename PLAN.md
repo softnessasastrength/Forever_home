@@ -2203,6 +2203,17 @@ Acceptance criteria:
 - Reproduce retained artifacts in two independent Windows PowerShell 5.1 runs; preserve selected-D, Revit, IFC, Incoming RFAs and remote state.
 
 Status: Complete as a bounded sensitivity. Retained output and two independent Windows PowerShell 5.1 replays pass 11/11 wrapper checks and reproduce JSON/checks/CSV byte-for-byte. All fourteen cases pass M186's full route checks and report 0-ft route-edge gap to protected A; none reaches the 3-in proxy reserve. Door alignment changes route length but does not resolve the A bottleneck. No door position or layout is selected. See `Architecture/M210_Porch_Door_Alignment_2026-10-31/README.md`.
+
+## M211 - Protected-A clearance-buffer route sensitivity - 2026-10-31
+
+Acceptance criteria:
+
+- Hold M210's first and farthest route-passing dining/porch offsets and eastmost tested porch-door center fixed; retain the M178 kitchen/island, pantry and all other route proxies.
+- Test 0, 3, 6 and 12 in analytical eastward expansions of the protected-A no-go boundary. These are route-search reserve sensitivities only, not changes to M-06 geometry or clearance requirements.
+- Report path existence/length and measured gap from the original A boundary; keep A and B unassigned/protected and label every result as hypothetical.
+- Bind sources and selected-D, require all M186 checks, preserve project/RFA/remote files, and reproduce JSON/checks/CSV in two independent PowerShell runs.
+
+Status: Complete as a bounded clearance sensitivity. The retained run and two independent PowerShell 5.1 replays pass 12/12 checks and reproduce JSON/checks/CSV byte-for-byte. All eight M186 route runs pass; a route exists at both offsets for every buffer. The vertical leg shifts east by the tested 0/3/6/12 in reserve, with corresponding measured gap to the original west-A boundary. This tests only route reachability around a reserved obstacle envelope, not an M-06 footprint or applicable clearance requirement. No route or layout is selected. See `Architecture/M211_A_Clearance_Buffer_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:

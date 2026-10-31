@@ -2200,3 +2200,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - The retained run and two independent Windows PowerShell 5.1 replays pass 11/11 checks. All 14 embedded M186 runs pass their complete route checks and find routes measuring 33.5–37.5 ft. JSON/checks/CSV reproduce byte-for-byte; retained SHA256 values are recorded in the README.
 - All 14 cases report a 0-ft path-edge gap to protected west A and fail the 3-in proxy-reserve screen. The path remains at x=18 ft through the A bottleneck; changing the door center reduces path length but does not resolve clearance. No door/layout selected; route remains schematic reachability evidence only.
 - Selected-D, RVT, IFC, Incoming RFA and remote state are unchanged. M-06/B remains unassigned. No code, accessibility, structural, professional, permit or construction-readiness conclusion follows. See the M210 README for inputs, limits and final hashes.
+
+## M211 - Protected-A clearance-buffer route sensitivity - 2026-10-31
+
+- Added `Tools/search_m211_a_clearance_buffer.ps1` and `Architecture/M211_A_Clearance_Buffer_2026-10-31/`. It tests 0, 3, 6 and 12 in analytical eastward expansions of the protected west-A no-go boundary at the 5.5-ft and 6.5-ft north offsets; the M210 x=9-ft door remains fixed. Buffering changes the route search only, not M-06 geometry or assignment.
+- Retained plus two independent PowerShell 5.1 replays pass 12/12 wrapper checks; all eight embedded M186 runs pass their complete route checks. JSON/checks/CSV reproduce byte-for-byte; hashes are in the README.
+- All eight cases find routes. Route length is 33.5 ft at 5.5-ft north and 34.5 ft at 6.5-ft north. The vertical leg shifts east by the tested amount, yielding 0, 3, 6 or 12 in measured gap to the original A edge. Six cases meet this study's 3-in proxy reserve; this is not a code or product clearance standard.
+- No route, room layout or pantry position is selected. Selected-D, RVT, IFC, Incoming RFA and remote state are unchanged. M-06/B remains unassigned. See the M211 README for assumptions, reproduction and limitations.
