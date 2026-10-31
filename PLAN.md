@@ -2237,6 +2237,15 @@ Acceptance criteria:
 - State that 3 in is an analysis increment from the quarter-foot grid, not a product/code requirement. Do not select this dimension.
 
 Status: Complete as one bounded interpolation. Retained output and two independent PowerShell 5.1 replays pass 13/13 wrapper checks and reproduce JSON/checks/CSV byte-for-byte; its M186 route passes 31/31. The 13.25-ft depth gives a 178.875-sf envelope (+10.875 sf from program) and a 3-in proxy margin with a 33.5-ft route. The margin is a quarter-foot grid sensitivity, not product/code guidance. No kitchen size is selected. See `Architecture/M213_Kitchen_Margin_Sensitivity_2026-10-31/README.md`.
+
+## M214 — Diagnose the M213 route's zero-clearance contacts — 2026-10-31
+
+- Re-run M213 twice in distinct scratch folders and verify both its summary artifacts and embedded M186 route evidence reproduce byte-for-byte.
+- Identify which modeled obstacles set M213's `route_nonfragile` result; distinguish the 3-in original-A search reserve from a true positive clearance beyond that reserve.
+- Preserve the open kitchen/living preference, both M-06 search reservations, and all selected-D/RVT/IFC/RFA sources. Do not convert a sensitivity buffer into an architectural or code requirement.
+- Record the required next gate before any route candidate advances to a disposable Revit model.
+
+Status: Complete as a reproducible failure diagnosis. Two M213 replays each pass 13/13 and match the M186 route report and obstacle CSV hashes. M213's 33.5-ft, 36-in-proxy path has 0 ft clearance to the already-expanded west-A boundary and to the porch wall east of the nominal door; the gap to original A is exactly the analytical 3-in reserve. The route therefore passes no-overlap checks but has no geometric reserve at those two modeled boundaries. No candidate advances to Revit. See `Architecture/M214_Route_Tangency_Diagnosis_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:

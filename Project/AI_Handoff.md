@@ -1,10 +1,12 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M213 kitchen-margin interpolation; local sandbox only)
+Updated: 2026-10-31 (M214 route-tangency diagnosis; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**Current checkpoint — M214, 2026-10-31:** M213's 13.25 × 13.5 ft kitchen comparison reproduces in two independent PowerShell 5.1 runs (13/13 each; all three M213 artifacts and four embedded M186 outputs match). Its 33.5-ft, 36-in path has zero gap to the analytically expanded west-A reservation and the porch-face wall east of the nominal opening; the original A boundary is 3 in away, exactly the M211 search buffer. The path passes M186's no-overlap contract but is not robust enough to advance to Revit. M212's smaller 13 × 13.5 ft sample has zero stool-proxy edge margin; M213's 13.25-ft sample adds 3 in to that proxy. Neither kitchen size is selected. See `Architecture/M214_Route_Tangency_Diagnosis_2026-10-31/README.md`. Selected-D and the Evolution RFA remain hash-stable. Revit is still not available for host interaction through the computer-use bridge. Next: find a route with positive separation from the expanded A reservation and porch-wall geometry, then advance only a qualified plan candidate to a disposable Revit derivative. Keep M-06/B unassigned.
 
 **Current checkpoint - M213, 2026-10-31:** Owner directed west A be protected for M-06 and prefers a fully open kitchen/living connection. M207–M212 tested pantry, route, door and kitchen-depth sensitivities. M213 interpolates a 13.25-ft depth between M212's 13- and 13.5-ft test cases while retaining the 13.5-ft cross-section, 8 × 4 ft island and 12.5-ft run. The retained run and two independent PowerShell 5.1 replays pass 13/13; the M186 route passes 31/31 and all artifacts reproduce byte-for-byte. Area is 178.875 sf (+10.875 sf vs program), with a 3-in assumed stool-proxy margin and a 33.5-ft route. The increment is the analysis grid, not a code/product requirement. No kitchen size selected. Selected-D remains SHA256 516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb. No selected-D/RVT/IFC/RFA or remote state changed. M-06/B remains unassigned; no code or construction-readiness claim. See M207–M213 reports and `Decisions/2026-10-31_M06_West_A_Protection.md`.
 
