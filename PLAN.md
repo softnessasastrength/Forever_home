@@ -1356,3 +1356,16 @@ Acceptance criteria:
 - Run the complete offline RevitPilot test suite and keep its result distinct from Revit runtime/IFC-export validation.
 
 Status: Complete. New M83 validator tests cover the geometric helper functions and missing-input path. The test exposed an early-return bug: missing required artifacts produced no `passed_count` or `check_count`, while the CLI summary indexed both fields and raised `KeyError`. The failure result now includes both counts. The focused M83 IFC validator tests pass 5/5; the empty-run CLI prints `FAIL: 0/6 checks passed`, writes a parseable report and exits 1 without traceback. The entire offline suite passes **47/47**. No successful M83 host IFC has yet been produced or validated. See M126 in `PROGRESS.md`.
+
+## M127 - Refresh the reproducible BIM baseline and M-06 source gate
+
+Acceptance criteria:
+
+- Regenerate OwnerSelectedD twice in separate ignored scratch folders; require 43/43 geometry checks, valid SVG, seven artifacts matching one another and the retained M109 generation, and the source-study hash to remain unchanged.
+- Independently rerun the exact retained saved-RVT/IFC2X3 validator and require all 26 checks to pass with no errors; describe the scope as a room-boundary study.
+- Regenerate the six M83 gable comparison options twice and require all four artifacts to match the retained M122 output; do not represent this source-generation check as Revit host validation.
+- Rerun the full offline RevitPilot test suite.
+- Recheck the public exact-SKU manufacturer resources and RevitCity download gate; do not use credentials or gated downloads, and keep M-06/B unassigned.
+- Inspect the live Revit add-in prompt against the exact project-local manifest/DLL. Do not accept a mismatched or stale DLL; record the outstanding host gate.
+
+Status: Complete as a fresh offline/source and export-baseline revalidation. Host execution of M83 remains an explicit open gate under M121/M127.
