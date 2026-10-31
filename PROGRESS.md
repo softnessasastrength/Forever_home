@@ -2114,3 +2114,9 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Owner directed reserving a clear route toward a future pool; the pool position and dimensions remain unselected.
 - Updated `Architecture/Outdoor_Gathering_Concept_2026-10-31.md` and recorded the decision in `Decisions/2026-10-31_Patio_Outdoor_Zones.md`. The selected Adirondack model's source reference remains to be recovered.
 - No patio size, site placement, orientation, grade, route width, fireplace specification or pool specification was inferred. This is not a site-fitted plan or code/accessibility determination.
+
+## M200 — Owner Tauri seat-height exception — 2026-10-31
+
+- Owner permits the MiEN Tauri's published 23.75-in seat height as a product-specific recorded exception to the kitchen specification's 24–26-in range. The general target remains unchanged; the Tauri is not selected.
+- Added `Decisions/2026-10-31_Tauri_Seat_Height_Exception.md` and updated the M174 family-inspection research note. The exact-hash quarantined RFA still requires its authorized read-only Revit inspection before any disposable fit test.
+- No family source, selected-D, RVT, IFC or remote state was changed. This height exception does not establish fit, occupied-use allowance, comfort, accessibility or compliance.

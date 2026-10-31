@@ -4,7 +4,7 @@
 
 ## Manufacturer evidence
 
-MiEN identifies the Tauri counter stool `TAURI-STL-24-N-N` at a 23.75 in seat height. Its current [Tauri product page](https://miencompany.com/product/tauri/) lists counter stools at 23.75 in. The current [4-leg chair and stool cut sheet](https://miencompany.com/wp-content/uploads/2025/10/tauri-4-leg-chair-cut-sheet-g003.pdf) gives counter-stool seat height as 23.75 in. The project kitchen specification asks for two stools with a 24–26 in seat height. The Tauri is therefore 0.25 in below the written lower bound; do not round it to 24 in or alter the specification silently.
+MiEN identifies the Tauri counter stool `TAURI-STL-24-N-N` at a 23.75 in seat height. Its current [Tauri product page](https://miencompany.com/product/tauri/) lists counter stools at 23.75 in. The current [4-leg chair and stool cut sheet](https://miencompany.com/wp-content/uploads/2025/10/tauri-4-leg-chair-cut-sheet-g003.pdf) gives counter-stool seat height as 23.75 in. The project kitchen specification asks for two stools with a 24–26 in seat height. The owner permits the Tauri's 0.25-in shortfall as a **product-specific recorded exception**; the general target remains unchanged. See `Decisions/2026-10-31_Tauri_Seat_Height_Exception.md`.
 
 The product page describes the Tauri as student seating with an ergonomic, winged shell. That shape may project beyond a conventional rectangular stool footprint, so a generic 24-in-deep occupancy box is not a substitute for its actual symbol envelope or seated-use area.
 
@@ -28,6 +28,6 @@ The symbol bounds, once captured, will describe product geometry only. They will
 1. Restart Revit without discarding any open work, then load **once** only if the trust prompt identifies the exact local RevitPilot DLL and SHA256 in the registration record.
 2. Run the prepared quarantined-family geometry request and validate its report with `Tools/RevitPilot/validate_candidate_family_geometry.ps1`.
 3. Re-run the route sensitivity with the measured stool body plus a separately labeled use-envelope assumption; retain M-06/B as unassigned.
-4. Ask the owner whether a quarter-inch difference from the selected seat-height range is acceptable only if the measurement survives host/orientation review and the product is otherwise under consideration.
+4. The owner has accepted the 23.75-in seat-height exception for the Tauri candidate. Keep it conditional on product review; do not treat the exception as product selection, fit approval or permission to alter the general 24–26-in requirement.
 
 This is not a product approval, accessible seating check, code review, structural assessment, or construction-ready design.

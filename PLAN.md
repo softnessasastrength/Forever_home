@@ -2105,6 +2105,16 @@ Acceptance criteria:
 
 Status: Complete as an adjacency decision. Patio sizing and site fit await survey/location information; see `Decisions/2026-10-31_Patio_Outdoor_Zones.md`.
 
+## M200 — Record Tauri stool seat-height exception — 2026-10-31
+
+Acceptance criteria:
+
+- Preserve the general 24–26 in seat-height target while recording the owner's explicit 23.75-in exception for the MiEN Tauri candidate.
+- Keep the stool unselected until the exact-hash quarantined family receives the authorized read-only Revit geometry inspection and disposable fit review.
+- Do not infer occupied-use clearance, comfort, accessibility, code compliance or product suitability from seat height.
+
+Status: Complete as a product-specific owner decision; no family geometry or house model changed. See `Decisions/2026-10-31_Tauri_Seat_Height_Exception.md` and `Research/M174_MiEN_Tauri_Counter_Stool_Family_Inspection_2026-10-31.md`.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:
