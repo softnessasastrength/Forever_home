@@ -1969,7 +1969,7 @@ Acceptance criteria:
 
 Status: Complete as an unapproved route comparison. A route through the unassigned 44-in strip between pantry and B clears modeled assigned blocks and furniture (13/13 checks, two byte-identical replays), leaving 4 in at each side. It avoids M181's stool/table bottleneck but overlaps the already-blocked west M-06 diagnostic window by 4.736 sf, intrudes 2 in into the source M-02 block outside the reduced kitchen, and requires a new south opening from M-01. This uses unassigned circulation adjacent to B and may constrain bath approach/door/services; it does not establish a usable route or fit. No layout/room selection, Revit/IFC edit or baseline change. See `Architecture/M182_Pantry_Bypass_Route_Audit_2026-10-31/README.md`.
 
-Next: after the M183 route-option gate, continue source-bound refinement of the social circulation and M-01/M-02 interface. Reopen M-06/B only when exact fixture assembly geometry, applicable clearance, approach/door and plausible services can be tested together. Confirm actual town and permit timing before treating the Connecticut screening basis as applicable.
+Next: reject or revise the existing M173 route against the M-04 pantry overlay before refining the social circulation and M-01/M-02 interface. Continue to keep M-06/B unassigned until exact fixture assembly geometry, applicable clearance, approach/door and plausible services can be tested together. Confirm actual town and permit timing before treating the Connecticut screening basis as applicable.
 
 ## M183 - Consolidate competing social-route constraints - 2026-10-31
 
@@ -1982,3 +1982,15 @@ Acceptance criteria:
 - Run in PowerShell 5.1 from the retained output and two clean scratch directories; require 12/12 checks and byte-identical outputs.
 
 Status: Complete as a route-option gate. M181's diagonal kitchen-side candidate has only 0.60 in at the assumed stool proxy, 2 in at the dining table and 0.38 in at the blocked west search-window diagnostic. M182's pantry-side bypass has a 44-in unassigned throat with 4-in margins on each side, overlaps the blocked west diagnostic, intrudes 2 in into source M-02 and requires a new M-01 south opening. Neither is selected or demonstrated operational. PowerShell 5.1 retained generation and two independent replays pass 12/12 with all three JSON/CSV artifacts byte-identical. Selected-D and the three known Incoming RFA fingerprints remain unchanged; B remains unassigned. See `Architecture/M183_Route_Option_Gate_2026-10-31/README.md`. Connecticut DAS rechecked on 2026-10-31 still lists the 2022 CSBC based on the 2021 IRC as current and says the 2026 code effective date is delayed pending legislative approval. Actual town, permit timing and scope remain unknown.
+
+## M184 - Overlay the retained social route against pantry and M-06 search blocks - 2026-10-31
+
+Acceptance criteria:
+
+- Bind the M173 route to the exact bath-first room-block and selected-D sources from which it was generated.
+- Intersect all retained 36-in route rectangles with the pantry and both M-06 search-window rectangles in their shared source coordinate frame.
+- Calculate union overlap area to avoid double-counting at adjoining route elbows; also retain raw pair intersections for review.
+- Assert zero overlap with east/B and report any pantry/west-diagnostic conflict; preserve B-unassigned and selected-D invariants.
+- Emit deterministic JSON/CSV; rerun twice from empty PowerShell 5.1 scratch directories and compare bytes.
+
+Status: Complete as a source-bound overlay audit. M173's previously retained route has 17.750 sf union overlap with the M-04 pantry block and 22.250 sf with the already-blocked west M-06 diagnostic window; it has 0 sf overlap with the east/B search window. M173's own 0-intersection result covered its listed kitchen/dining obstacles, while this overlay exposes room-block conflicts that were not part of that obstacle set. The route must not be treated as complete for the bath-first adjacency arrangement. The study still does not establish physical walls or openings, and B remains unassigned. PowerShell 5.1 retained run plus two scratch replays pass 10/10 with three byte-identical artifacts. No selected-D, Revit/IFC or Incoming RFA changed. See `Architecture/M184_Social_Route_Pantry_Overlay_2026-10-31/README.md`.

@@ -1,0 +1,149 @@
+{
+    "schema":  "forever-home-m184-social-route-pantry-overlay-v1",
+    "status":  "existing route fails pantry overlay; no route or room selected",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "coordinate_origin_source_ft":  [
+                                        0.66666666666666663,
+                                        0.66666666666666663
+                                    ],
+    "route_width_in":  36,
+    "existing_social_route_internal_obstacle_intersection_count":  0,
+    "compared_obstacles":  [
+                               {
+                                   "target":  "M-04",
+                                   "source_rect_world_ft":  {
+                                                                "x":  12.5,
+                                                                "y":  17.166666666666668,
+                                                                "w":  5,
+                                                                "d":  7
+                                                            },
+                                   "strict_positive_area_intersections":  3,
+                                   "sum_of_rectangle_pair_intersections_sf":  26.75,
+                                   "union_overlap_area_sf":  17.75,
+                                   "route_rectangles":  [
+                                                            {
+                                                                "route_rectangle_index":  1,
+                                                                "intersection_area_sf":  8.5
+                                                            },
+                                                            {
+                                                                "route_rectangle_index":  3,
+                                                                "intersection_area_sf":  9.25
+                                                            },
+                                                            {
+                                                                "route_rectangle_index":  4,
+                                                                "intersection_area_sf":  9
+                                                            }
+                                                        ]
+                               },
+                               {
+                                   "target":  "west_of_core",
+                                   "source_rect_world_ft":  {
+                                                                "x":  12,
+                                                                "y":  16.166666666666668,
+                                                                "w":  5.1666666666666679,
+                                                                "d":  11.416666666666664
+                                                            },
+                                   "strict_positive_area_intersections":  3,
+                                   "sum_of_rectangle_pair_intersections_sf":  31.25,
+                                   "union_overlap_area_sf":  22.25,
+                                   "route_rectangles":  [
+                                                            {
+                                                                "route_rectangle_index":  1,
+                                                                "intersection_area_sf":  11.5
+                                                            },
+                                                            {
+                                                                "route_rectangle_index":  3,
+                                                                "intersection_area_sf":  10.75
+                                                            },
+                                                            {
+                                                                "route_rectangle_index":  4,
+                                                                "intersection_area_sf":  9
+                                                            }
+                                                        ]
+                               },
+                               {
+                                   "target":  "east_of_core",
+                                   "source_rect_world_ft":  {
+                                                                "x":  21.166666666666668,
+                                                                "y":  17.166666666666668,
+                                                                "w":  13.166666666666668,
+                                                                "d":  7
+                                                            },
+                                   "strict_positive_area_intersections":  0,
+                                   "sum_of_rectangle_pair_intersections_sf":  0,
+                                   "union_overlap_area_sf":  0,
+                                   "route_rectangles":  [
+
+                                                        ]
+                               }
+                           ],
+    "finding":  "The existing M173 36-in route corridor has 17.750 sf union overlap with source M-04 pantry and 22.250 sf with the blocked west M-06 search diagnostic; it has 0.000 sf overlap with the east B search window. The original social-route check reports zero intersections against its modeled kitchen/dining obstacles, which did not include these room-block overlays.",
+    "disposition":  "Do not carry the M173 route forward as a complete bath-first circulation solution. M-06/B remains unassigned; this overlay does not select an alternative or make a physical room.",
+    "limitations":  [
+                        "Rectangles are existing schematic route and room-block proxies in the shared source coordinate frame, not walls or verified openings.",
+                        "Union overlap areas are geometric intersections only; no door leaf, approach, movement, privacy, service, finish or tolerance is modeled.",
+                        "The blocked west M-06 rectangle is a diagnostic overlay, not a physical fixture.",
+                        "No Revit/IFC model or selected-D source was changed; no code, accessibility, structural, professional, permit or construction-readiness finding."
+                    ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  10,
+                   "total":  10,
+                   "items":  [
+                                 {
+                                     "id":  "expected_study_sources",
+                                     "pass":  true,
+                                     "detail":  "The route and bath-first room blocks are the expected retained study outputs."
+                                 },
+                                 {
+                                     "id":  "social_route_bound_to_current_bathfirst",
+                                     "pass":  true,
+                                     "detail":  "The social route was generated from the exact bath-first source currently overlaid."
+                                 },
+                                 {
+                                     "id":  "selected_d_baseline_unchanged",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source fingerprint remains at the protected baseline."
+                                 },
+                                 {
+                                     "id":  "social_route_is_36_in_test",
+                                     "pass":  true,
+                                     "detail":  "The source route rectangles use the documented 36-in proxy width."
+                                 },
+                                 {
+                                     "id":  "bath_first_pantry_is_found",
+                                     "pass":  true,
+                                     "detail":  "M-04 is present in the source bath-first main-floor room blocks."
+                                 },
+                                 {
+                                     "id":  "social_route_has_pantry_overlap",
+                                     "pass":  true,
+                                     "detail":  "At least one positive-area part of the 36-in corridor intersects the M-04 pantry block."
+                                 },
+                                 {
+                                     "id":  "overlap_union_not_pair_sum",
+                                     "pass":  true,
+                                     "detail":  "Union area removes duplicate area where adjacent route rectangles overlap at corners."
+                                 },
+                                 {
+                                     "id":  "b_search_window_stays_clear",
+                                     "pass":  true,
+                                     "detail":  "The existing route corridor does not intersect the east/pantry-side M-06/B diagnostic window."
+                                 },
+                                 {
+                                     "id":  "west_window_conflict_recorded",
+                                     "pass":  true,
+                                     "detail":  "The route also crosses the already-blocked west M-06 diagnostic window; that rectangle is not a physical bath."
+                                 },
+                                 {
+                                     "id":  "m06_b_unassigned",
+                                     "pass":  true,
+                                     "detail":  "The B region remains an unassigned search gap."
+                                 }
+                             ]
+               }
+}

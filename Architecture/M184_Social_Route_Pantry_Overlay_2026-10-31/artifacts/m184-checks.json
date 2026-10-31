@@ -1,0 +1,57 @@
+{
+    "status":  "pass",
+    "passed":  10,
+    "total":  10,
+    "items":  [
+                  {
+                      "id":  "expected_study_sources",
+                      "pass":  true,
+                      "detail":  "The route and bath-first room blocks are the expected retained study outputs."
+                  },
+                  {
+                      "id":  "social_route_bound_to_current_bathfirst",
+                      "pass":  true,
+                      "detail":  "The social route was generated from the exact bath-first source currently overlaid."
+                  },
+                  {
+                      "id":  "selected_d_baseline_unchanged",
+                      "pass":  true,
+                      "detail":  "Selected-D source fingerprint remains at the protected baseline."
+                  },
+                  {
+                      "id":  "social_route_is_36_in_test",
+                      "pass":  true,
+                      "detail":  "The source route rectangles use the documented 36-in proxy width."
+                  },
+                  {
+                      "id":  "bath_first_pantry_is_found",
+                      "pass":  true,
+                      "detail":  "M-04 is present in the source bath-first main-floor room blocks."
+                  },
+                  {
+                      "id":  "social_route_has_pantry_overlap",
+                      "pass":  true,
+                      "detail":  "At least one positive-area part of the 36-in corridor intersects the M-04 pantry block."
+                  },
+                  {
+                      "id":  "overlap_union_not_pair_sum",
+                      "pass":  true,
+                      "detail":  "Union area removes duplicate area where adjacent route rectangles overlap at corners."
+                  },
+                  {
+                      "id":  "b_search_window_stays_clear",
+                      "pass":  true,
+                      "detail":  "The existing route corridor does not intersect the east/pantry-side M-06/B diagnostic window."
+                  },
+                  {
+                      "id":  "west_window_conflict_recorded",
+                      "pass":  true,
+                      "detail":  "The route also crosses the already-blocked west M-06 diagnostic window; that rectangle is not a physical bath."
+                  },
+                  {
+                      "id":  "m06_b_unassigned",
+                      "pass":  true,
+                      "detail":  "The B region remains an unassigned search gap."
+                  }
+              ]
+}
