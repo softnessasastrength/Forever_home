@@ -2207,3 +2207,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Retained plus two independent PowerShell 5.1 replays pass 12/12 wrapper checks; all eight embedded M186 runs pass their complete route checks. JSON/checks/CSV reproduce byte-for-byte; hashes are in the README.
 - All eight cases find routes. Route length is 33.5 ft at 5.5-ft north and 34.5 ft at 6.5-ft north. The vertical leg shifts east by the tested amount, yielding 0, 3, 6 or 12 in measured gap to the original A edge. Six cases meet this study's 3-in proxy reserve; this is not a code or product clearance standard.
 - No route, room layout or pantry position is selected. Selected-D, RVT, IFC, Incoming RFA and remote state are unchanged. M-06/B remains unassigned. See the M211 README for assumptions, reproduction and limitations.
+
+## M212 - Kitchen-depth and social-proxy containment sweep - 2026-10-31
+
+- Added `Tools/search_m212_kitchen_depth_sweep.ps1` and `Architecture/M212_Kitchen_Depth_Sweep_2026-10-31/`. It compares four source-derived kitchen-depth envelopes while holding the 13.5-ft cross-section, 8 × 4 ft island, 12.5-ft run, M211 3-in A reserve and route/social blocks fixed.
+- Retained plus two independent PowerShell 5.1 replays pass 13/13 wrapper checks and reproduce JSON/checks/CSV byte-for-byte. All four M186 runs pass 31/31 and find a route.
+- The 12.5-ft depth produces 168.75 sf but leaves 6 in of the assumed stool-use proxy outside. At 13 ft / 175.5 sf, the run/island/stool proxies fit with zero minimum margin. At 13.5 ft / 182.25 sf, the proxy margin is 6 in. The smaller cases are analytical envelopes, not selected room dimensions or fit-ready designs.
+- No kitchen size selected. Selected-D, RVT, IFC, Incoming RFA and remote state unchanged; M-06/B remains unassigned. No code, accessibility, structural, professional, permit or construction-readiness result follows. Hashes and assumptions are in the M212 README.

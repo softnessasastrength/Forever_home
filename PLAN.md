@@ -2214,6 +2214,18 @@ Acceptance criteria:
 - Bind sources and selected-D, require all M186 checks, preserve project/RFA/remote files, and reproduce JSON/checks/CSV in two independent PowerShell runs.
 
 Status: Complete as a bounded clearance sensitivity. The retained run and two independent PowerShell 5.1 replays pass 12/12 checks and reproduce JSON/checks/CSV byte-for-byte. All eight M186 route runs pass; a route exists at both offsets for every buffer. The vertical leg shifts east by the tested 0/3/6/12 in reserve, with corresponding measured gap to the original west-A boundary. This tests only route reachability around a reserved obstacle envelope, not an M-06 footprint or applicable clearance requirement. No route or layout is selected. See `Architecture/M211_A_Clearance_Buffer_2026-10-31/README.md`.
+
+## M212 - Kitchen-depth and social-proxy containment sweep - 2026-10-31
+
+Acceptance criteria:
+
+- Hold M211's 3-in west-A route-search reserve, 5.5-ft north dining/porch shift, x=9-ft door, open kitchen/living preference, 13.5-ft cross-section, 8 × 4 ft island and specified 12.5-ft casework run fixed.
+- Compare kitchen depth test values derived from current source geometry: 12.5-ft run boundary, 13-ft end of the existing stool-use proxy, 13.5-ft cross-section test value and the 14-ft M178 baseline. Keep all labeled as analysis cases.
+- Center the existing 12.5-ft run in each test envelope; report area, casework/stool fit and edge reserve alongside M186 route checks. Do not count an overhanging or tangent proxy as a fit-ready result.
+- Bind source fingerprints and selected-D, retain A/B protection, emit JSON/checks/CSV, and reproduce the retained reports byte-for-byte in two PowerShell runs.
+- Preserve selected-D/RVT/IFC/RFAs/remote state; do not select a kitchen size or claim code/structural suitability.
+
+Status: Complete as a bounded depth/route sensitivity. Retained run and two independent PowerShell 5.1 replays pass 13/13 checks and reproduce JSON/checks/CSV byte-for-byte; all four embedded M186 runs pass 31/31. The 168.75-sf 12.5-ft case finds a route but the assumed stool-use block extends 6 in beyond the kitchen envelope. At 175.5 sf (13-ft depth), all source blocks fit but the stool proxy is tangent to the boundary; 182.25 sf (13.5-ft depth) leaves 6 in proxy margin. No kitchen size is selected and no product/code fit is established. See `Architecture/M212_Kitchen_Depth_Sweep_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:
