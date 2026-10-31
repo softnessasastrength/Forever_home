@@ -1581,3 +1581,14 @@ Acceptance criteria:
 - Preserve the hypothetical 38 1/3 x 40 ft shell and incomplete-search limitation. Do not change selected-D or claim actual doors, code, clearance, accessibility, Revit/IFC, service routing or a selected plan.
 
 Status: Complete as a comparison-only boundary screen. M147 passes 13/13 checks and reproduces byte-for-byte across isolated runs. It finds 73 route-compatible candidates (64 east+north, nine north+west), with all six contact reservations fitting arithmetically. Forty-four of 64 east+north layouts and three of nine north+west layouts have zero centered end margin at one or more contacts. No layout is selected; see the M147 report and README.
+
+## M150 - Revalidate retained M-06 family-intake evidence by source hash
+
+Acceptance criteria:
+
+- Validate manufacturer intake provenance and each recorded Revit 2027 family source against its SHA256 without moving or rewriting source RFAs.
+- Revalidate the retained family-intake measurements against an isolated byte-matched snapshot so a historical six-file run is not confused with today's five-file Incoming folder.
+- Replay the M-06 gross-envelope screen twice and confirm its 16 research pairs remain unassigned and clearances remain a labelled preliminary screen.
+- Document exact-family, toilet assembly, door/approach, code applicability, service-route and Revit trust-prompt limitations.
+
+Status: Complete as evidence revalidation. Two snapshot runs verify all six source hashes and pass 155/155 integrity checks across 24 family types; the manufacturer-source validator passes. The M120 envelope screen passes 14/14 twice and keeps M-06/B unassigned. The exact 610AA family and full current-SKU assembly remain unavailable. See M150 in `PROGRESS.md` and its README.
