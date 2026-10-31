@@ -2,8 +2,8 @@
     "schema":  "forever-home-m21-main-floor-access-v1",
     "status":  "Unapproved plan-coordinate comparison; no house geometry or entry orientation selected.",
     "source_fingerprints_sha256":  {
-                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "f06fc345a915a67b2712a997a04cf01e9c1d86ea3384ab9f6cfc70fc88f540e1",
-                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "51a2a8f87fcc2ba5ed3ab755b56ae15a69555d438ca41ec6cb6c352aa6a971fc",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
                                        "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
                                    },
     "assumptions":  [

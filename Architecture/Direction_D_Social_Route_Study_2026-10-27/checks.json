@@ -1,7 +1,7 @@
 ﻿{
     "status":  "pass",
-    "passed":  22,
-    "total":  22,
+    "passed":  29,
+    "total":  29,
     "checks":  [
                    {
                        "id":  "source_candidate_room_blocks",
@@ -32,6 +32,10 @@
                        "pass":  true
                    },
                    {
+                       "id":  "stool_occupancy_depth_is_labelled_assumption",
+                       "pass":  true
+                   },
+                   {
                        "id":  "m19_sink_dw_adjacent",
                        "pass":  true
                    },
@@ -44,7 +48,7 @@
                        "pass":  true
                    },
                    {
-                       "id":  "route_width_at_island_exit",
+                       "id":  "island_post_stool_gap_shortfall_is_explicit",
                        "pass":  true
                    },
                    {
@@ -64,6 +68,30 @@
                        "pass":  true
                    },
                    {
+                       "id":  "centered_route_corridor_clear_of_modeled_obstacles",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "offset_route_corridor_clear_of_modeled_obstacles",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_centerlines_remain_axis_aligned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_corridor_rectangles_preserve_36in_width",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_crosses_proposed_living_opening",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "route_crosses_door_gap_and_reaches_porch",
+                       "pass":  true
+                   },
+                   {
                        "id":  "porch_adjacent_and_inside_test_extent",
                        "pass":  true
                    },
@@ -76,7 +104,7 @@
                        "pass":  true
                    },
                    {
-                       "id":  "half_wall_edge_length_arithmetic",
+                       "id":  "half_wall_and_opening_edge_length_arithmetic",
                        "pass":  true
                    },
                    {

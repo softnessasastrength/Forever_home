@@ -40,7 +40,10 @@
                    "candidate_entry_hall_and_living_share_edge":  true,
                    "candidate_keeps_original_room_areas":  true,
                    "proposed_main_stair_and_lift_blocks_clear_placed_main_rooms":  true,
-                   "upper_landing_reaches_rear_wing_edge":  true,
+                   "upper_landing_reaches_main_shell_rear_edge":  true,
+                   "upper_stair_run_meets_upper_landing_without_plan_gap":  true,
+                   "upper_floor_bridge_meets_upper_wing_and_main_shell_edges":  true,
+                   "upper_landing_matches_upper_floor_bridge_footprint":  true,
                    "upper_connector_aligns_with_upper_hall":  true,
                    "lift_west_face_aligns_with_upper_core_hall":  true,
                    "lower_stair_landing_and_run_are_edge_adjacent":  true,
@@ -61,6 +64,9 @@
                          "lower_L02_net_sf":  110,
                          "selected_bath_area_sf":  null,
                          "comparison_stair_run_ft":  6.416666666666667,
+                         "upper_stair_to_landing_plan_gap_ft":  0,
+                         "upper_wing_to_bridge_plan_gap_ft":  0,
+                         "bridge_to_main_shell_rear_edge_gap_ft":  0,
                          "lift_shift_from_B_origin_in":  4,
                          "main_floor_profile_sf":  1564.667,
                          "upper_floor_with_connector_sf":  1168
@@ -324,39 +330,39 @@
                             ],
     "findings":  [
                      {
+                         "id":  "D-OPEN-01",
                          "priority":  "P1",
                          "status":  "open",
-                         "id":  "D-OPEN-01",
                          "issue":  "D now has a connected plan-level stair comparison and 4 x 4 ft upper landing extension. Native Revit must verify stair runs, the main/rear shared-wall openings, clear landing space, floor edges, headroom and structure."
                      },
                      {
+                         "id":  "D-OPEN-02",
                          "priority":  "P1",
                          "status":  "open",
-                         "id":  "D-OPEN-02",
                          "issue":  "M-06 is a half bath by owner direction and the arrival/hall edge is selected as its test zone; exact position, footprint, fixtures and service route remain unresolved. Keep the room out of geometry and area totals until fit is supported."
                      },
                      {
+                         "id":  "D-OPEN-03",
                          "priority":  "P1",
                          "status":  "open",
-                         "id":  "D-OPEN-03",
                          "issue":  "Kitchen fit uses the existing 17 ft 4 in x 16 ft test block; room area and appliance-open clearances remain unapproved."
                      },
                      {
+                         "id":  "D-OPEN-04",
                          "priority":  "P2",
                          "status":  "open",
-                         "id":  "D-OPEN-04",
                          "issue":  "Technology block is moved outside the Jack-and-Jill footprint; confirm hall access, ventilation, equipment service and acoustic separation."
                      },
                      {
+                         "id":  "D-OPEN-05",
                          "priority":  "P2",
                          "status":  "open",
-                         "id":  "D-OPEN-05",
                          "issue":  "Entry storage, secure storage, garage transfer, site access, porch thresholds and the full accessible route remain unplaced or unverified."
                      },
                      {
+                         "id":  "D-OPEN-06",
                          "priority":  "P1",
                          "status":  "open",
-                         "id":  "D-OPEN-06",
                          "issue":  "The lift reservation shifts 4 in west to meet the upper core hall in plan; door side, landing maneuvering, pit, overrun, product fit and lower/upper stopping geometry remain unverified."
                      }
                  ],

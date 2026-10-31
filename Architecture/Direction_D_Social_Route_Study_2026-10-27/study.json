@@ -2,10 +2,10 @@
     "schema":  "forever-home-direction-d-social-route-v1",
     "status":  "unapproved furnishing and social-route proposal; not house geometry or a selected layout",
     "source_fingerprints_sha256":  {
-                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "f06fc345a915a67b2712a997a04cf01e9c1d86ea3384ab9f6cfc70fc88f540e1",
-                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "669312ea7f0df0c22909364ff79bf4a5bcef2bb576c0777609158fcfa38c4145",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
                                        "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
-                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e",
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "6512122eb20be3407c4d1b571ba7f5a6c0c0034f727ddd5cdad2a38419121461",
                                        "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290"
                                    },
     "inputs":  {
@@ -39,13 +39,17 @@
                    "half_wall_and_minimum_opening_ft":  [
                                                             8,
                                                             6
-                                                        ]
+                                                        ],
+                   "stool_occupancy_allowance_ft":  2,
+                   "stool_occupancy_allowance_basis":  "Assumed 2-ft plan-depth proxy; the source defines two stools and a 12-in overhang but no occupied-use depth."
                },
     "geometry":  {
                      "kitchen_id":  "M-02",
                      "dining_id":  "M-03",
                      "living_id":  "M-01",
                      "entry_id":  "M-05",
+                     "tested_route_origin":  "Living-room side of the proposed kitchen/living opening.",
+                     "tested_route_destination":  "Through a nominal dining-door reservation and the 6-in test gap to 3 ft inside the 12 x 10 ft porch test rectangle.",
                      "island_world_rect_ft":  [
                                                   5.333,
                                                   6.667,
@@ -55,7 +59,7 @@
                      "kitchen_fit_study":  {
                                                "status":  "Schematic M19 fit option; positions/order are a test arrangement, not owner-selected fixture locations.",
                                                "perimeter_run_world_rect_ft":  [
-                                                                                   3.083,
+                                                                                   0.667,
                                                                                    14.667,
                                                                                    12.5,
                                                                                    2
@@ -65,7 +69,7 @@
                                                                              "id":  "sink_base",
                                                                              "label":  "36 in sink base",
                                                                              "width_ft":  3,
-                                                                             "x":  3.0833333333333326,
+                                                                             "x":  0.66666666666666663,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          },
@@ -73,7 +77,7 @@
                                                                              "id":  "dishwasher",
                                                                              "label":  "24 in dishwasher",
                                                                              "width_ft":  2,
-                                                                             "x":  6.0833333333333321,
+                                                                             "x":  3.6666666666666665,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          },
@@ -81,7 +85,7 @@
                                                                              "id":  "range_landing_west",
                                                                              "label":  "12 in landing",
                                                                              "width_ft":  1,
-                                                                             "x":  8.0833333333333321,
+                                                                             "x":  5.6666666666666661,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          },
@@ -89,7 +93,7 @@
                                                                              "id":  "induction_range",
                                                                              "label":  "30 in induction range",
                                                                              "width_ft":  2.5,
-                                                                             "x":  9.0833333333333321,
+                                                                             "x":  6.6666666666666661,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          },
@@ -97,7 +101,7 @@
                                                                              "id":  "range_landing_east",
                                                                              "label":  "12 in landing",
                                                                              "width_ft":  1,
-                                                                             "x":  11.583333333333332,
+                                                                             "x":  9.1666666666666661,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          },
@@ -105,7 +109,7 @@
                                                                              "id":  "refrigerator",
                                                                              "label":  "36 in refrigerator",
                                                                              "width_ft":  3,
-                                                                             "x":  12.583333333333332,
+                                                                             "x":  10.166666666666666,
                                                                              "y":  14.666666666666668,
                                                                              "depth_ft":  2
                                                                          }
@@ -115,7 +119,7 @@
                                                "appliance_open_clearances_modeled":  false,
                                                "service_routes_modeled":  false,
                                                "layout_assumptions":  [
-                                                                          "One north-wall run centered within the M-02 room-block test rectangle.",
+                                                                          "One north-wall run west-aligned within the M-02 room-block test rectangle to leave an east-side route lane.",
                                                                           "Source-size modules arranged sink, adjacent dishwasher, range with 12-in minimum landings and refrigerator.",
                                                                           "Module footprints use the documented 24-in base depth; appliance door swings and operating envelopes are not modeled."
                                                                       ]
@@ -232,40 +236,94 @@
                      "porch_to_test_shell_edge_reserve_in":  4,
                      "island_front_clearance_in":  48.00,
                      "island_east_edge_clearance_in":  56.00,
-                     "island_back_total_allowance_ft":  6.000,
-                     "documented_stool_allowance_ft":  2,
-                     "post_seating_route_clear_ft":  4.000,
+                     "island_to_counter_front_clear_ft":  4,
+                     "assumed_stool_occupancy_allowance_ft":  2,
+                     "post_seating_route_clear_ft":  2,
+                     "post_seating_route_target_in":  36,
+                     "post_seating_route_shortfall_in":  12,
+                     "kitchen_island_to_living_porch_route_verified":  false,
                      "dining_east_clear_band_ft":  4.833,
                      "dining_south_table_clear_ft":  4.5,
                      "dining_east_route_surplus_over_36in_ft":  1.833,
                      "proposed_route_centerline_world_ft":  [
-                                                                [
-                                                                    9.333,
-                                                                    12.667
-                                                                ],
-                                                                [
-                                                                    9.333,
-                                                                    17.167
-                                                                ],
-                                                                [
-                                                                    9.333,
-                                                                    30.667
-                                                                ],
-                                                                [
-                                                                    6.333,
-                                                                    30.667
-                                                                ],
-                                                                [
-                                                                    6.333,
-                                                                    31.167
-                                                                ]
+                                                                {
+                                                                    "x":  20,
+                                                                    "y":  11.667
+                                                                },
+                                                                {
+                                                                    "x":  15.583,
+                                                                    "y":  11.667
+                                                                },
+                                                                {
+                                                                    "x":  15.583,
+                                                                    "y":  20
+                                                                },
+                                                                {
+                                                                    "x":  9.333,
+                                                                    "y":  20
+                                                                },
+                                                                {
+                                                                    "x":  9.333,
+                                                                    "y":  30.667
+                                                                },
+                                                                {
+                                                                    "x":  6.333,
+                                                                    "y":  30.667
+                                                                },
+                                                                {
+                                                                    "x":  6.333,
+                                                                    "y":  34.667
+                                                                }
                                                             ],
+                     "route_terminus_y_inside_porch_ft":  3,
                      "route_corridor_rectangles_ft":  [
                                                           {
-                                                              "x":  7.8333333333333339,
-                                                              "y":  12.666666666666668,
+                                                              "x":  15.583333333333332,
+                                                              "y":  10.166666666666666,
+                                                              "w":  4.4166666666666679,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  14.083333333333332,
+                                                              "y":  11.666666666666666,
                                                               "w":  3,
-                                                              "h":  18
+                                                              "h":  8.3333333333333339
+                                                          },
+                                                          {
+                                                              "x":  14.083333333333332,
+                                                              "y":  10.166666666666666,
+                                                              "w":  3,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  9.3333333333333339,
+                                                              "y":  18.5,
+                                                              "w":  6.2499999999999982,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  14.083333333333332,
+                                                              "y":  18.5,
+                                                              "w":  3,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  7.8333333333333339,
+                                                              "y":  20,
+                                                              "w":  3,
+                                                              "h":  10.666666666666668
+                                                          },
+                                                          {
+                                                              "x":  7.8333333333333339,
+                                                              "y":  18.5,
+                                                              "w":  3,
+                                                              "h":  3
+                                                          },
+                                                          {
+                                                              "x":  6.3333333333333339,
+                                                              "y":  29.166666666666668,
+                                                              "w":  3,
+                                                              "h":  3
                                                           },
                                                           {
                                                               "x":  7.8333333333333339,
@@ -275,22 +333,42 @@
                                                           },
                                                           {
                                                               "x":  4.8333333333333339,
-                                                              "y":  29.166666666666668,
-                                                              "w":  6.00000000000000637,
-                                                              "h":  3
-                                                          },
-                                                          {
-                                                              "x":  4.83333333333333363,
                                                               "y":  30.666666666666668,
                                                               "w":  3,
-                                                              "h":  0.5
+                                                              "h":  4.0000000000000036
+                                                          },
+                                                          {
+                                                              "x":  4.8333333333333339,
+                                                              "y":  29.166666666666668,
+                                                              "w":  3,
+                                                              "h":  3
                                                           }
                                                       ],
+                     "route_obstacle_intersections":  [
+
+                                                      ],
+                     "route_obstacle_intersection_count":  0,
+                     "route_table_proxy_gap_in":  8,
                      "kitchen_living_shared_edge_ft":  15.000,
-                     "half_wall_allowance_ft":  [
-                                                    8,
-                                                    7.000
-                                                ],
+                     "half_wall_and_opening_proposal_world_rects_ft":  {
+                                                                           "half_wall":  [
+                                                                                             18,
+                                                                                             0.66666666666666663,
+                                                                                             0.5,
+                                                                                             8
+                                                                                         ],
+                                                                           "opening":  [
+                                                                                           18,
+                                                                                           8.6666666666666661,
+                                                                                           0.5,
+                                                                                           6
+                                                                                       ]
+                                                                       },
+                     "half_wall_edge_length_allowances_ft":  [
+                                                                 8,
+                                                                 6,
+                                                                 1.000
+                                                             ],
                      "m06_window_b_remains_unassigned":  true,
                      "entry_approach":  "Unverified; M-05 is on the east exterior wall in inherited B-first adjacency candidate."
                  },
@@ -303,7 +381,7 @@
                   "clearance_method":  "Minimum axis-aligned route-centerline-segment to chair-rectangle distance minus half the 36-in route width; rounded to 0.1 in.",
                   "nominal_door_width_in":  60,
                   "clear_leaf_width_verified":  false,
-                  "status":  "36-in corridor clearance is measured from the route centerline to chair proxy rectangles, then reduced by half the corridor width. Actual door clear width, leaf swing, floor transition and furnished-use clearance require product/site review."
+                  "status":  "Living-to-porch 36-in route clearance is measured from orthogonal route centerline segments to modeled obstacle rectangles. Actual door clear width, leaf swing, floor transition, finished walls and furnished-use clearance require product/site review."
               },
     "second_route_scenario":  {
                                   "furniture_arrangement":  "Two chairs on the west long side, one north and one south; more conventional end seating, with all chairs clear of the east-side/south-turn route.",
@@ -315,47 +393,106 @@
                                   "clearance_method":  "Minimum axis-aligned route-centerline-segment to chair-rectangle distance minus half the 36-in route width; rounded to 0.1 in.",
                                   "route_corridor_rectangles_ft":  [
                                                                        {
-                                                                           "x":  7.8333333333333339,
-                                                                           "y":  12.666666666666668,
-                                                                           "w":  3,
-                                                                           "h":  18
+                                                                           "x":  15.583333333333332,
+                                                                           "y":  10.166666666666666,
+                                                                           "w":  4.4166666666666679,
+                                                                           "h":  3
                                                                        },
                                                                        {
-                                                                           "x":  7.8333333333333339,
-                                                                           "y":  29.166666666666668,
+                                                                           "x":  14.083333333333332,
+                                                                           "y":  11.666666666666666,
+                                                                           "w":  3,
+                                                                           "h":  8.3333333333333339
+                                                                       },
+                                                                       {
+                                                                           "x":  14.083333333333332,
+                                                                           "y":  10.166666666666666,
                                                                            "w":  3,
                                                                            "h":  3
                                                                        },
                                                                        {
-                                                                           "x":  6.3333333333333339,
+                                                                           "x":  9.3333333333333339,
+                                                                           "y":  18.5,
+                                                                           "w":  6.2499999999999982,
+                                                                           "h":  3
+                                                                       },
+                                                                       {
+                                                                           "x":  14.083333333333332,
+                                                                           "y":  18.5,
+                                                                           "w":  3,
+                                                                           "h":  3
+                                                                       },
+                                                                       {
+                                                                           "x":  7.8333333333333339,
+                                                                           "y":  20,
+                                                                           "w":  3,
+                                                                           "h":  10.666666666666668
+                                                                       },
+                                                                       {
+                                                                           "x":  7.8333333333333339,
+                                                                           "y":  18.5,
+                                                                           "w":  3,
+                                                                           "h":  3
+                                                                       },
+                                                                       {
+                                                                           "x":  7.8333333333333339,
                                                                            "y":  29.166666666666668,
-                                                                           "w":  4.5,
+                                                                           "w":  1.5,
+                                                                           "h":  3
+                                                                       },
+                                                                       {
+                                                                           "x":  7.8333333333333339,
+                                                                           "y":  29.166666666666668,
+                                                                           "w":  3,
                                                                            "h":  3
                                                                        },
                                                                        {
                                                                            "x":  6.3333333333333339,
                                                                            "y":  30.666666666666668,
                                                                            "w":  3,
-                                                                           "h":  0.5
+                                                                           "h":  4.0000000000000036
+                                                                       },
+                                                                       {
+                                                                           "x":  6.3333333333333339,
+                                                                           "y":  29.166666666666668,
+                                                                           "w":  3,
+                                                                           "h":  3
                                                                        }
                                                                    ],
+                                  "route_obstacle_intersections":  [
+
+                                                                   ],
+                                  "route_obstacle_intersection_count":  0,
+                                  "route_table_proxy_gap_in":  8,
                                   "route_centerline_world_ft":  [
-                                                                    [
-                                                                        9.333,
-                                                                        12.667
-                                                                    ],
-                                                                    [
-                                                                        9.333,
-                                                                        30.667
-                                                                    ],
-                                                                    [
-                                                                        7.833,
-                                                                        30.667
-                                                                    ],
-                                                                    [
-                                                                        7.833,
-                                                                        31.167
-                                                                    ]
+                                                                    {
+                                                                        "x":  20,
+                                                                        "y":  11.667
+                                                                    },
+                                                                    {
+                                                                        "x":  15.583,
+                                                                        "y":  11.667
+                                                                    },
+                                                                    {
+                                                                        "x":  15.583,
+                                                                        "y":  20
+                                                                    },
+                                                                    {
+                                                                        "x":  9.333,
+                                                                        "y":  20
+                                                                    },
+                                                                    {
+                                                                        "x":  9.333,
+                                                                        "y":  30.667
+                                                                    },
+                                                                    {
+                                                                        "x":  7.833,
+                                                                        "y":  30.667
+                                                                    },
+                                                                    {
+                                                                        "x":  7.833,
+                                                                        "y":  34.667
+                                                                    }
                                                                 ],
                                   "tradeoff":  "The 5-ft nominal porch-door reservation shifts 1.5 ft east of the dining centerline; actual wall returns and visual alignment need review."
                               },
@@ -365,7 +502,7 @@
                       "Both door options use the same four-chair proposal: two chairs along the west long side and one at each end. The door-centered option leaves less separation between the route corner and the occupied south-end chair.",
                       "The offset option moves the nominal 5-ft French-door reservation 1.5 ft east of the dining centerline; verify wall returns and sightline before selection.",
                       "The 5-ft nominal French-door pair reservation is not evidence of a 36-in clear leaf; vendor clear opening and swing remain unresolved.",
-                      "The 8-ft half wall and remaining open span are only edge-length arithmetic; no wall segment location, height-bearing status or framing is defined."
-                  ],
-    "generated_utc":  "2026-10-27T23:02:11Z"
+                      "The 8-ft half-wall and 6-ft opening are proposed positions on the shared edge; no wall height, bearing status, framing or openings in the actual building are defined.",
+                      "The route is a living-to-porch circulation proposal; it does not verify a post-seating route from the kitchen island work face. The island, stool and counter aisle remains a separate fit problem."
+                  ]
 }

@@ -3,7 +3,7 @@
     "status":  "unapproved dimensional stress test; hold product-specific Revit placement pending a current selected refrigerator and coordinated alcove/aisle",
     "source":  {
                    "m19_study":  "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
-                   "m19_study_sha256":  "51a2a8f87fcc2ba5ed3ab755b56ae15a69555d438ca41ec6cb6c352aa6a971fc",
+                   "m19_study_sha256":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
                    "counter_depth_in":  24,
                    "nominal_counter_face_to_island_clearance_in":  48,
                    "documented_island_counter_minimum_in":  42,
@@ -32,7 +32,7 @@
                                          "source_url":  "https://www.geappliances.com/appliance/GE-ENERGY-STAR-18-6-Cu-Ft-Counter-Depth-French-Door-Refrigerator-GWE19JMLES"
                                      },
                            "refrigerator_module_world_rect_ft":  [
-                                                                     12.583,
+                                                                     10.167,
                                                                      14.667,
                                                                      3,
                                                                      2
@@ -63,7 +63,7 @@
                                          "source_url":  "https://www.geappliances.com/appliance/GE-21-8-Cu-Ft-Counter-Depth-Side-By-Side-Refrigerator-GZS22IMNES"
                                      },
                            "refrigerator_module_world_rect_ft":  [
-                                                                     12.583,
+                                                                     10.167,
                                                                      14.667,
                                                                      3,
                                                                      2
