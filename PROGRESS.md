@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M247 — Refresh the public exact-SKU M-06 family search
+
+- Rechecked the current American Standard page and exact-SKU infographic; the downloaded infographic matches M120's pinned SHA256 `F09F6BFBCBB62F53828BD99E46F2351BB279E4C031980BBC5E35790E0FE86FBF` (133,750 bytes). Current page links still resolve to older 211AA-series spec and installation documents.
+- Public RFA/CAD searches returned no exact 610AA001.020 family. RevitCity's public search exposed only generic “American Standard Toilet,” Revit Architecture 2011, no SKU/dimensions, and a sign-in gate to download. No account or download was used.
+- Replayed the existing M229 toilet-only screen twice: **14/14** each, byte-identical to retained JSON/check files. Both orientations pass only the assumed 15-in side / 21-in front proxies and gross-A containment; sink/walls/door/approach/services remain untested.
+- West A remains protected; east B and M-06 remain unassigned. No model or source family changed. See `Research/M247_M06_Public_Family_Search_Refresh_2026-10-31.md`. Exact product geometry, applicable clearances, door/approach and services remain gates to a disposable Revit study.
+
 ## M246 — Replay the steep-gable massing comparison
 
 - Replayed `Tools/build_m83_gable_massing_options.ps1` into two isolated `.local/revalidation` directories. Both runs pass **13/13** checks; `roof-options.json`, `checks.json` and `roof-options.svg` match the retained M83 artifacts byte-for-byte. SVG parses as XML.
