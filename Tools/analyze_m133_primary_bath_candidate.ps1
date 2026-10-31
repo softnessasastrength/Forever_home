@@ -69,7 +69,7 @@ $checks = [ordered]@{
     WC_21in_front_strip_screen_is_unobstructed = $true
     WC_to_sink_centerline_assumption_is_met = $true
     centered_nominal_door_reservation_fits_contact_band = $true
-    fixture_bodies_do_not_cross_south_entry_wall_line = $true
+    reserved_south_interface_line_has_no_fixture_body = $true
 }
 
 foreach ($layout in $m132Layouts) {
@@ -99,7 +99,9 @@ foreach ($layout in $m132Layouts) {
     if ([Math]::Abs([Math]::Abs($sinkCenterlineAlongWall - $wcCenterlineAlongWall) - $wcSinkCenterlineAssumptionIn) -gt 0.000001) { $checks.WC_to_sink_centerline_assumption_is_met = $false }
     if ($room.width_in -lt $doorReservationIn -or $doorX -lt 0.0 -or ($doorX + $doorReservationIn) -gt $room.width_in) { $checks.centered_nominal_door_reservation_fits_contact_band = $false }
     foreach ($fixture in $fixtures) {
-        if ([Math]::Abs($fixture.y_in) -le 0.000001) { $checks.fixture_bodies_do_not_cross_south_entry_wall_line = $false }
+        $overlapsReservationInterval = (($fixture.x_in -lt ($doorX + $doorReservationIn)) -and (($fixture.x_in + $fixture.width_in) -gt $doorX))
+        $crossesSouthWallLine = (($fixture.y_in -le 0.000001) -and (($fixture.y_in + $fixture.depth_in) -gt 0.000001))
+        if ($overlapsReservationInterval -and $crossesSouthWallLine) { $checks.reserved_south_interface_line_has_no_fixture_body = $false }
     }
     if ($wcSideBand.y_in -lt 0.0 -or ($wcSideBand.y_in + $wcSideBand.depth_in) -gt $room.depth_in) { $checks.WC_15in_side_clearance_screen_is_unobstructed = $false }
     if (-not (Test-Contains $room $wcFrontBand)) { $checks.WC_21in_front_strip_screen_is_unobstructed = $false }

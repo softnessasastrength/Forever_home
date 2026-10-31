@@ -27,7 +27,7 @@ The study places nominal product envelopes in both unchanged M130 U-05 blocks fr
 | KOHLER Entity K-26108-LA-0 nominal plan envelope | centered on north edge, `(24,88)`, 60 x 32 in | centered on north edge, `(30,76)`, 60 x 32 in |
 | Selected-D primary-bath nominal reservation | centered on south edge, `x=33..75`, 42 in wide | centered on south edge, `x=39..81`, 42 in wide |
 
-The toilet faces east. Its centerline is 29 1/2 in north of the south room edge; the Tresham centerline is 59 1/2 in north, giving the prior explicit 30-in layout assumption. A 30-in-wide side-clearance screen (15 in from the WC centerline) and a 21-in-deep frontal strip are checked against the other fixture bodies. Both fit inside the gross room bounds without fixture-body overlap. The tub is centered on the north edge, leaving the south entry edge free of fixture bodies. These are only plan-envelope calculations.
+The toilet faces east. Its centerline is 29 1/2 in north of the south room edge; the Tresham centerline is 59 1/2 in north, giving the prior explicit 30-in layout assumption. A 30-in-wide side-clearance screen (15 in from the WC centerline) and a 21-in-deep frontal strip are checked against the other fixture bodies. Both fit inside the gross room bounds without fixture-body overlap. The checker also confirms that no fixture body intersects the reserved south-wall line segment; it does not test a door approach or passage. The tub is centered on the north edge. These are only plan-envelope calculations.
 
 The 610AA dimensions come from the product infographic already recorded in the M-06 research; the toilet still has no exact-SKU Revit solids. KOHLER lists the Tresham as 24 x 19 1/2 x 34 5/8 in nominal in its collection sheet and exposes a direct product-family RFA URL. That family has been downloaded without sign-in to the ignored intake quarantine, SHA256 `3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949`; its category, type data, parameters and physical geometry have not yet been inspected in Revit. KOHLER lists the Entity bath as 60 x 32 x 15 3/4 in overall with integral apron/flange for alcove installation; its family was subsequently retrieved under M134 to ignored quarantine, SHA256 `DBE1D03ACD1C4DBB5DF2B670CDF87A2E5ADC74E35EF4FEC46382EE0A7AB5B948`. Both manufacturer families remain uninspected, and the bath family drain hand is unverified.
 
@@ -35,10 +35,10 @@ The 610AA dimensions come from the product infographic already recorded in the M
 
 - Windows PowerShell 5.1: **12/12 checks pass** across both source layouts.
 - A second run to `.local/revalidation/M133-repeat/` matches all four generated artifacts byte-for-byte:
-  - checks JSON: `68EF6943888296FD50B39A40AF5A997F23CEBEA219280F47BFC89DBFE68DFB5D`
+  - checks JSON: `26F0E56A4B7CCBE6F1747EBE995FDD02F42B52B2D539DEA6CF31FE96EDC35023`
   - fixture-layout CSV: `0628D6FA430CD39001371650158AC3190AD289601C06947D984050EA067A7A14`
   - plan SVG: `7DC8AFCB6C74648862DEE931CAFA79B160F470832E44A28851B960C7684665DA`
-  - report JSON: `94E289BB7FD167CA87CF9AEE7E89F948EC40FB84266970C58DC26F79E7E57C4F`
+  - report JSON: `C3252E3A74786697C813B6030D81DC6007B9ABB3C97977F62192DC4E6F344EF6`
 - SVG parses as XML. Inputs are SHA256-pinned to selected-D, M132, the M-06 sink envelope data and clearance note, and the upper-suite product research note.
 
 ## Limits and next gate

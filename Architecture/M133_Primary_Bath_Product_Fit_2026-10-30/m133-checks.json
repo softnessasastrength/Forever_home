@@ -18,7 +18,7 @@
                     "WC_21in_front_strip_screen_is_unobstructed":  true,
                     "WC_to_sink_centerline_assumption_is_met":  true,
                     "centered_nominal_door_reservation_fits_contact_band":  true,
-                    "fixture_bodies_do_not_cross_south_entry_wall_line":  true
+                    "reserved_south_interface_line_has_no_fixture_body":  true
                 },
     "source_hashes_sha256":  {
                                  "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
@@ -28,6 +28,6 @@
                                  "sink_sources":  "dc8ce0123ce233948b15d59d7f7ed6f6b1b10d74a7492e6eb808c4b9794ba9f7",
                                  "clearance_source":  "bd0b6a5692ca345ff43fcdbbdfe09b02f090e466e1420874c87f58fc7c495bc7",
                                  "product_sources":  "7955d9aa6fb9b5173e3b83a92283864621144552451c5b03d7ab74578713047c",
-                                 "analyzer":  "ee76fc309bbff5e05386f25134daa45db86aad1cf50e4c1b180ac346e9a1df8b"
+                                 "analyzer":  "bfc454f13e39518eb009dd64fdb0c7d89881f38e3badcf0caafec59d4c1ba734"
                              }
 }
