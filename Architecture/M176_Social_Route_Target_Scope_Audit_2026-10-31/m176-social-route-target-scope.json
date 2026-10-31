@@ -1,0 +1,59 @@
+﻿{
+    "schema":  "forever-home-m176-social-route-target-scope-audit-v1",
+    "status":  "source-bound dimensional scope audit; no layout selected",
+    "inputs":  {
+                   "m172_study_sha256":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                   "m173_study_sha256":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                   "m173_checks_sha256":  "475ec7e0b078bc4e6500149ad45239317d74ce3e3ffe1dbb49b99b4cb7b55191",
+                   "bath_first_candidate_sha256":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                   "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+               },
+    "owner_program_targets":  {
+                                  "M02_kitchen_ft":  [
+                                                         14,
+                                                         12
+                                                     ],
+                                  "M02_area_sf":  168,
+                                  "M03_dining_ft":  [
+                                                        11,
+                                                        10
+                                                    ],
+                                  "M03_area_sf":  110,
+                                  "combined_area_sf":  278,
+                                  "interpretation":  "Owner-directed program-area targets; not approved finished dimensions."
+                              },
+    "m173_route_test_candidate":  {
+                                      "M02_kitchen_ft":  [
+                                                             17.333333333333332,
+                                                             16
+                                                         ],
+                                      "M02_area_sf":  277.33,
+                                      "M02_over_target_sf":  109.33,
+                                      "M02_over_target_percent":  65.08,
+                                      "M03_dining_ft":  [
+                                                            11.333333333333334,
+                                                            14
+                                                        ],
+                                      "M03_area_sf":  158.67,
+                                      "M03_over_target_sf":  48.67,
+                                      "M03_over_target_percent":  44.24,
+                                      "combined_area_sf":  436,
+                                      "combined_over_target_sf":  158,
+                                      "combined_over_target_percent":  56.83,
+                                      "status":  "Unapproved bath-first adjacency alternative; room areas preserved; schematic blocks only"
+                                  },
+    "route_evidence":  {
+                           "checks_passed":  29,
+                           "checks_total":  29,
+                           "route_obstacle_intersections":  0,
+                           "interpretation":  "The route result is valid only for the broader M173 alternative extents above; it does not test the 14 x 12 ft and 11 x 10 ft program targets."
+                       },
+    "conclusion":  "M173 route/furnishing checks do not establish fit at the owner-directed compact kitchen and dining area targets. The 277.33 sf kitchen and 158.67 sf dining blocks are 65.08% and 44.24% larger than their respective 168 sf and 110 sf targets. Their 29/29 route pass remains a broad, unapproved alternative result.",
+    "next_design_gate":  "Create a separate connected open-plan proposal bound to 168 sf kitchen and 110 sf dining program areas. Preserve room-area targets, distinguish area zones from fixed rectangles, include the documented 8 x 4 ft island, source-sized perimeter run, seating proxy, dining furniture, half-wall/opening, porch door reservation and connected route. Report any geometry that spills between conceptual zones; do not edit selected-D or claim the compact targets already fit.",
+    "limitations":  [
+                        "This is an audit of source scope and area arithmetic, not a replacement layout or a geometry fit.",
+                        "The M173 route script tests living-to-porch circulation and does not verify a route from the island work face.",
+                        "Appliance door operation, exact stool occupied envelope, wall construction, door clear width, thresholds, services, site, and professional review remain unresolved.",
+                        "M-06/B remains unassigned; no code-compliance, structural-safety, certification, permit, or construction-readiness claim follows."
+                    ]
+}

@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$ManifestPath,
-    [string]$IncomingFolder
+    [string]$IncomingFolder,
+    [switch]$AllowHistoricalSnapshot
 )
 
 $ErrorActionPreference = 'Stop'
@@ -10,6 +11,7 @@ if ([string]::IsNullOrWhiteSpace($IncomingFolder)) {
     $IncomingFolder = Join-Path $PSScriptRoot '../../Revit/Family_Intake/Incoming'
 }
 $IncomingFolder = (Resolve-Path -LiteralPath $IncomingFolder).Path
+$canonicalIncomingFolder = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../../Revit/Family_Intake/Incoming')).Path
 $manifest = Get-Content -LiteralPath $ManifestPath -Raw | ConvertFrom-Json
 $expectedFiles = @(Get-ChildItem -LiteralPath $IncomingFolder -Filter '*.rfa' -File | ForEach-Object { $_.Name } | Sort-Object)
 $errors = New-Object System.Collections.Generic.List[string]
@@ -23,12 +25,25 @@ function Assert-Intake([bool]$Condition, [string]$Message) {
 Assert-Intake ($manifest.revit_version -eq '2027') 'Unexpected Revit version in intake manifest.'
 Assert-Intake ($manifest.status -like 'executed;*') 'Manifest does not identify a completed intake run.'
 $manifestSourceFolder = [System.IO.Path]::GetFullPath([string]$manifest.source_folder).TrimEnd('\')
-Assert-Intake ($manifestSourceFolder -ieq $IncomingFolder.TrimEnd('\')) 'Manifest source folder does not match the validated incoming folder.'
+$sourceFolderMatches = $manifestSourceFolder -ieq $IncomingFolder.TrimEnd('\')
+$historicalSnapshotMatches = $AllowHistoricalSnapshot -and
+    $manifestSourceFolder -ieq $canonicalIncomingFolder.TrimEnd('\') -and
+    $IncomingFolder.TrimEnd('\') -ine $canonicalIncomingFolder.TrimEnd('\')
+Assert-Intake ($sourceFolderMatches -or $historicalSnapshotMatches) 'Manifest source folder does not match the validated incoming folder or an explicitly authorized historical snapshot.'
 Assert-Intake ($manifest.results.Count -eq $expectedFiles.Count) 'Result count does not match current incoming RFA count.'
 $reportedFiles = @($manifest.results | ForEach-Object { $_.file } | Sort-Object)
 Assert-Intake ((Compare-Object $expectedFiles $reportedFiles).Count -eq 0) 'Manifest file set differs from current incoming RFA set.'
 
 foreach ($result in $manifest.results) {
+    $safeLeafName = [System.IO.Path]::GetFileName([string]$result.file) -eq [string]$result.file
+    $sourcePath = if ($safeLeafName) { Join-Path $IncomingFolder ([string]$result.file) } else { '' }
+    $sourceExists = $safeLeafName -and (Test-Path -LiteralPath $sourcePath -PathType Leaf)
+    Assert-Intake $safeLeafName "$($result.file): manifest filename must be a leaf filename."
+    Assert-Intake $sourceExists "$($result.file): source family file is missing from the validated input folder."
+    if ($sourceExists) {
+        $actualSourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
+        Assert-Intake ($actualSourceHash -ieq [string]$result.source_sha256) "$($result.file): source file SHA256 differs from the intake manifest."
+    }
     Assert-Intake ($result.status -in @('loaded', 'already_present')) "$($result.file): family was not loaded successfully ($($result.status))."
     Assert-Intake (-not [string]::IsNullOrWhiteSpace($result.category)) "$($result.file): category is missing."
     Assert-Intake (-not [string]::IsNullOrWhiteSpace($result.placement_type)) "$($result.file): placement type is missing."
@@ -104,3 +119,6 @@ if ($errors.Count -gt 0) {
 Write-Output ("PASS: {0} family results, {1} measured types; {2} intake integrity checks passed." -f `
     $manifest.results.Count, (($manifest.results | ForEach-Object { $_.types.Count } | Measure-Object -Sum).Sum), $checks)
 Write-Output 'Screen only: these checks validate measurement presence and finite positive solid extents; they do not validate product size, placement, hosting, clearance, fit, or approval.'
+if ($historicalSnapshotMatches) {
+    Write-Output 'Historical snapshot mode: every manifest family filename and SHA256 was checked against the supplied snapshot; the canonical Incoming folder was not changed.'
+}

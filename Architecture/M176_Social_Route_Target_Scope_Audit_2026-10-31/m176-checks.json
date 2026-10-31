@@ -1,0 +1,72 @@
+﻿{
+    "status":  "pass",
+    "passed":  13,
+    "total":  13,
+    "checks":  [
+                   {
+                       "id":  "m172_input_schema",
+                       "pass":  true,
+                       "detail":  "Compact target study is the expected source schema."
+                   },
+                   {
+                       "id":  "m173_input_schema",
+                       "pass":  true,
+                       "detail":  "Route study is the expected source schema."
+                   },
+                   {
+                       "id":  "target_sources_current",
+                       "pass":  true,
+                       "detail":  "Every M172 fingerprint matches the current repository source."
+                   },
+                   {
+                       "id":  "route_sources_current",
+                       "pass":  true,
+                       "detail":  "Every M173 fingerprint matches the current repository source."
+                   },
+                   {
+                       "id":  "candidate_room_blocks_present",
+                       "pass":  true,
+                       "detail":  "Bath-first comparison contains the expected kitchen and dining IDs."
+                   },
+                   {
+                       "id":  "owner_kitchen_target_14x12",
+                       "pass":  true,
+                       "detail":  "M172 source binds the owner-directed 14 x 12 ft / 168 sf kitchen target."
+                   },
+                   {
+                       "id":  "owner_dining_target_11x10",
+                       "pass":  true,
+                       "detail":  "M172 source binds the owner-directed 11 x 10 ft / 110 sf dining target."
+                   },
+                   {
+                       "id":  "candidate_kitchen_area_recomputed",
+                       "pass":  true,
+                       "detail":  "M-02 area is recomputed from the broad alternative rectangle, not copied from its narrative."
+                   },
+                   {
+                       "id":  "candidate_dining_area_recomputed",
+                       "pass":  true,
+                       "detail":  "M-03 area is recomputed from the broad alternative rectangle, not copied from its narrative."
+                   },
+                   {
+                       "id":  "broad_candidate_exceeds_both_targets",
+                       "pass":  true,
+                       "detail":  "Both route-study room blocks exceed their owner-directed area targets."
+                   },
+                   {
+                       "id":  "route_study_reports_29_checks",
+                       "pass":  true,
+                       "detail":  "The historical route check report passes 29/29 for its own test geometry."
+                   },
+                   {
+                       "id":  "route_study_is_not_selected_geometry",
+                       "pass":  true,
+                       "detail":  "The route study is explicitly unapproved and retains M-06/B as unassigned."
+                   },
+                   {
+                       "id":  "selected_d_source_unchanged",
+                       "pass":  true,
+                       "detail":  "Current selected-D source matches the route study fingerprint."
+                   }
+               ]
+}
