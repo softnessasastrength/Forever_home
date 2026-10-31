@@ -1266,3 +1266,16 @@ Acceptance criteria:
 - Record runtime, results and limitations; make no shell or room selection.
 
 Status: Complete. The full replay passed M37 integrity 28/28 and expanded 3,996/4,000 nodes in about 12 minutes. The independent validator passes 112/112. The first replay exposed only an extra `u03_perimeter_root_seeds:false` metadata field; after changing serialization so this opt-in flag appears only when enabled, a second full replay exactly matched M78's search, checks, SVG and manifest hashes. Historical M113/M114/M115 audits pass 17/17, 19/19 and 21/21. This establishes reproducibility of an incomplete bounded room-block search, not design feasibility or code compliance. Scratch evidence is `.local/revalidation/M117-M78Replay/`; see `Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/README.md`.
+
+## M119 - Inspect the quarantined KOHLER Tresham family
+
+Acceptance criteria:
+
+- Verify and preserve the exact quarantined RFA by SHA256 before and after opening it in Revit 2027.3.
+- Record Family Editor category, displayed type count/parameters/formulas, visual assembly and any host behavior that can actually be established.
+- Close without saving; do not load into a project, place, assign, or modify selected-D.
+- Update the intake record and manifest, and state which later fit evidence is still required.
+
+Status: Complete as a manual, read-only family inspection. The 659,456-byte Revit 2011 RFA was identified by Revit 2027.3 and upgraded in memory; it was closed without saving. SHA256 before/after is `3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949`. The Family Editor shows a combined basin/pedestal, category Plumbing Fixtures, and ten finish/color types. Type `Fireclay-C-White` displays report parameters 24.0078125 x 19.5 x 34.625 in, closely matching the published nominal size; Waste Connection is enabled and sanitary diameter is 1-1/4 in by a 5/8-in-radius formula. These are type parameters, not solid-bound measurements. Host behavior, actual connector objects, a cited applicable clearance basis, door/approach, service route and whole-room fit remain open. KOHLER's specification says this model is not ADA compliant; no applicability finding is made. Keep M-06 unselected and B unassigned. Full inspection record and reproduction steps: `Architecture/M119_Tresham_Family_Inspection_2026-10-30/README.md`.
+
+Next: M-06 still needs measured positive-solid and hosted orientation evidence for a toilet/lavatory pair, a researched jurisdictional clearance basis, explicit door/arrival geometry and a plausible service route in a disposable study before B can be assigned.
