@@ -1,0 +1,82 @@
+﻿{
+    "milestone":  "M153",
+    "title":  "Hall-edge M-06 gross-window alternative sensitivity",
+    "status":  "alternative unassigned location passes schematic room/core overlap and block-adjacency checks; not a fixture or bathroom fit",
+    "owner_selected_B":  {
+                             "id":  "M06-B",
+                             "x":  21.166666666666668,
+                             "y":  23.666666666666668,
+                             "w":  10.333333333333332,
+                             "d":  7,
+                             "kind":  "owner-selected pantry-side search window; unassigned"
+                         },
+    "alternative_hall_window":  {
+                                    "id":  "M06-H",
+                                    "x":  5.5,
+                                    "y":  16.166666666666664,
+                                    "w":  10.333333333333332,
+                                    "d":  7,
+                                    "kind":  "derived hall-edge sensitivity; unassigned"
+                                },
+    "derivation":  "Keep the current B gross dimensions; set candidate X to M-05 east edge plus the existing 0.5 ft schematic block separation, and candidate Y to M-01 north edge plus that same separation.",
+    "hall_contact":  {
+                         "axis":  "x",
+                         "gap_ft":  0.5,
+                         "projected_contact_ft":  6.5
+                     },
+    "other_room_contacts":  [
+                                {
+                                    "candidate":  "M06-H",
+                                    "block":  "M-01",
+                                    "axis":  "y",
+                                    "gap_ft":  0.5,
+                                    "projected_contact_ft":  10.333333,
+                                    "kind":  "schematic adjacency proxy; not a wall or opening"
+                                },
+                                {
+                                    "candidate":  "M06-H",
+                                    "block":  "M-05",
+                                    "axis":  "x",
+                                    "gap_ft":  0.5,
+                                    "projected_contact_ft":  6.5,
+                                    "kind":  "schematic adjacency proxy; not a wall or opening"
+                                }
+                            ],
+    "room_overlaps":  [
+
+                      ],
+    "core_overlaps":  [
+
+                      ],
+    "checks":  {
+                   "proposal_binds_current_selected_d":  true,
+                   "existing_B_stays_unassigned":  true,
+                   "current_B_matches_M120_gross_window":  true,
+                   "room_program_keeps_arrival_hall_priority_and_pantry_B_first":  true,
+                   "owner_decision_keeps_M06_unassigned":  true,
+                   "alternative_uses_same_gross_size":  true,
+                   "alternative_within_test_shell":  true,
+                   "alternative_directly_adjoins_entry_hall":  true,
+                   "alternative_clear_of_current_room_blocks":  true,
+                   "alternative_clear_of_stair_lift_comparison_blocks":  true,
+                   "alternative_remains_distinct_from_owner_selected_B":  true,
+                   "no_native_wall_or_opening_is_claimed":  true
+               },
+    "failures":  [
+
+                 ],
+    "source_hashes_sha256":  {
+                                 "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "owner_direction":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                 "m120_report":  "fb3c9037ed7f2ba468e1a884090a42fcf73e6673e3c913173515574d05180960"
+                             },
+    "tradeoff":  "The alternative directly adjoins the entry/hall block and clears current room/core rectangles but abandons the owner-selected pantry-side B location. Keep pantry-side B as first research area; this sensitivity does not select or assign the alternative.",
+    "limitations":  [
+                        "The alternative is derived from schematic blocks, not approved dimensions or walls.",
+                        "A 0.5 ft gap and projected edge overlap do not establish a door, clear width, approach or walkable route.",
+                        "No product geometry, fixture orientation, applicable clearance basis, plumbing connection, rough-in or service route is tested.",
+                        "The test shell and inherited stair/lift rectangles are comparison inputs only; no code, accessibility, egress, structural or construction determination follows."
+                    ]
+}

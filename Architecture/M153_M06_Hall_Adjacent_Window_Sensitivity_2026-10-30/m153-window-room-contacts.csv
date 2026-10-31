@@ -1,0 +1,3 @@
+﻿"candidate","block","axis","gap_ft","projected_contact_ft","kind"
+"M06-H","M-01","y","0.5","10.333333","schematic adjacency proxy; not a wall or opening"
+"M06-H","M-05","x","0.5","6.5","schematic adjacency proxy; not a wall or opening"

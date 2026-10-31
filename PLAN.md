@@ -1615,4 +1615,16 @@ Acceptance criteria:
 - Record what the larger test shell resolves and what remains unmodeled: actual walls/openings, stair/headroom, egress, privacy, floor/roof geometry, services and site-specific code review.
 - Keep all generated artifacts in ignored scratch paths until exact replay and independent validation finish; do not alter the retained M78 package or selected-D.
 
-Status: In progress. The user selected exploration of 38⅓ × 40 ft after the 36 × 32 ft selected-D-derived test wing failed the M46 packing/route sample. M78 already documents this exact hypothetical shell, so the current work is a fresh bounded replay and independent validation rather than a new dimension proposal.
+Status: Complete as a fresh revalidation of the already documented hypothetical test. The replay passes 28/28 and reproduces all four M78 artifacts byte-for-byte; the independent candidate validator passes 112/112 and the retained Revit IFC2X3 export passes 32/32. The selected candidate reaches U-01/U-02/U-04 hall samples and retains private-only U-03, while six alternate search layouts show sampled U-03 hall-side reach and must not be confused with the retained candidate. Search remains capped/incomplete, and no shell dimension is approved. See `Architecture/M152_Upper_Suite_Larger_Shell_Revalidation_2026-10-30/README.md`.
+
+## M153 - Measure a separate hall-edge M-06 search-window sensitivity
+
+Acceptance criteria:
+
+- Preserve the owner-selected pantry-side M06-B rectangle, its dimensions and unassigned status.
+- Derive an alternative rectangle of the exact same gross size from the current M-05 hall edge and M-01 block edge using only the existing 0.5 ft schematic separation.
+- Check shell containment, direct schematic hall adjacency, overlap against all existing room blocks and the inherited stair/lift comparison rectangles, and source bindings to selected D, owner direction and M120.
+- Replay twice into ignored paths, compare JSON/CSV/SVG hashes and parse the diagram XML.
+- Label the alternative as unassigned and identify the tradeoff: it satisfies hall-edge adjacency arithmetic while leaving the owner-selected pantry-side first-search window untouched.
+
+Status: Complete as a gross-block sensitivity. Two PowerShell 5.1 runs pass 12/12 checks and match JSON/CSV/SVG byte-for-byte. The derived M06-H rectangle is x=5.5 ft, y=16.1667 ft, 10.3333 × 7 ft; it has 6.5 ft projected contact with M-05 across the nominal 0.5 ft gap, 10.3333 ft projected contact with living across the same gap, and zero overlap with current room and core rectangles. These are adjacency proxies, not walls, openings, fit, route or assigned room geometry. The owner-selected pantry-side B remains first in research priority and M-06 remains unassigned. See M153 report README.
