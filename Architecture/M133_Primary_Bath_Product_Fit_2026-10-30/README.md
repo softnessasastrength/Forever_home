@@ -34,12 +34,12 @@ The 610AA dimensions come from the product infographic already recorded in the M
 ## Verification
 
 - Windows PowerShell 5.1: **12/12 checks pass** across both source layouts.
-- A second run to `.local/revalidation/M141-M133-repeat/` matches all four generated artifacts byte-for-byte:
-  - checks JSON: `F5F828ECCD080016828F3A41C89CDFC975974553493603180E4FAFACF0213F53`
+- A second run to `.local/revalidation/M142-M133-repeat/` matches all four generated artifacts byte-for-byte:
+  - checks JSON: `4DBB60C6203E09C11ED68530932ADF6FDC5EA70984A5919D44F588A5E3507672`
   - fixture-layout CSV: `0628D6FA430CD39001371650158AC3190AD289601C06947D984050EA067A7A14`
   - plan SVG: `7DC8AFCB6C74648862DEE931CAFA79B160F470832E44A28851B960C7684665DA`
-  - report JSON: `D33F813A4C5E0CA260B687C0E14EC810AAABEC7882C8AAFBEE3C2962D4F17E29`
-- SVG parses as XML. Inputs are SHA256-pinned to selected-D, M132, the M-06 sink envelope data and clearance note, the upper-suite product research note, and `Research/M06_Toilet_Options_2026-10-27.md` (SHA256 `72F80E43F85E204A28B342B629518AA5012F76FB792042818970380C451FB252`). The analyzer now records the exact-SKU toilet source note directly; its 19 x 30 1/4 in plan envelope remains an infographic-based comparison, not verified Revit solids.
+  - report JSON: `91B11F7AA940D19279E484603B00708FC4773F5B014459EA3FD6C4794BE8A863`
+- SVG parses as XML. Inputs are SHA256-pinned to selected-D, M132, the M-06 sink envelope data and clearance note, the upper-suite product research note, and `Research/M06_Toilet_Options_2026-10-27.md` (SHA256 `7BDAE9F61FD7A8855DC8A18DEE03F09CFA9FC40F8FCA4733367D8A9389A74B89`). The analyzer now records the exact-SKU toilet source note directly; its 19 x 30 1/4 in plan envelope remains an infographic-based comparison, not verified Revit solids.
 
 ## Limits and next gate
 

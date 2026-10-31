@@ -48,6 +48,13 @@ Status: Compact-Core C and owner-selected direction D remain preserved compatibi
 - M133's source-binding was tightened so `Tools/analyze_m133_primary_bath_candidate.ps1` now hashes the M-06 toilet research note that supplies the selected product-envelope basis. Two PowerShell runs pass 12/12 and match four outputs byte-for-byte; refreshed report SHA256 `D33F813A4C5E0CA260B687C0E14EC810AAABEC7882C8AAFBEE3C2962D4F17E29`, checks SHA256 `F5F828ECCD080016828F3A41C89CDFC975974553493603180E4FAFACF0213F53`. CSV/SVG remain byte-identical (`0628D6FA…A7A14`, `7DC8AFCB…665DA`). No room layout or product geometry changed.
 - Sources and scope are in the M141 section of `Research/M06_Toilet_Options_2026-10-27.md`. No selected-D source, Revit file, IFC, incoming RFA or remote state changed.
 
+## M142 - RevitCity exact-SKU public search - 2026-10-30
+
+- Anonymous search-engine indexing of RevitCity for `610AA001.020`, `3195A101.020`, `211AA104.020`, Champion PRO and American Standard toilet terms did not expose an exact selected-product family. The broader American Standard result identifies only a generic `Standard Toilet / American Standard Toilet`, Revit Architecture 2011, with no SKU or dimensions.
+- Reopened the existing RevitCity object page in Edge; its accessibility tree showed `Welcome!`, `Login` and `Join`, and the object page explicitly says Login or Join to download. The previously assumed active login was absent in this Edge profile. No account, credential or gated download was used.
+- Generic family provenance and dimensions are insufficient; do not quarantine or use it as a 610AA replacement. Keep M-06/B unassigned. The M142 evidence and public link are recorded in `Research/M06_Toilet_Options_2026-10-27.md`.
+- Because M133 hash-binds that toilet research note, regenerated the tracked proposal package and replayed it to `.local/revalidation/M142-M133-repeat/`. Both runs pass **12/12** and match all four artifacts byte-for-byte; refreshed report SHA256 `91B11F7AA940D19279E484603B00708FC4773F5B014459EA3FD6C4794BE8A863`, checks SHA256 `4DBB60C6203E09C11ED68530932ADF6FDC5EA70984A5919D44F588A5E3507672`. CSV/SVG remain byte-identical (`0628D6FA…A7A14`, `7DC8AFCB…665DA`). The toilet envelope/layout is unchanged; the package now records the updated source-note SHA256 `7BDAE9F61FD7A8855DC8A18DEE03F09CFA9FC40F8FCA4733367D8A9389A74B89`.
+
 ## M81 — M78 hypothetical upper-suite Revit/IFC milestone — 2026-10-30
 
 - Fixed JSON BOM handling in the new RevitPilot M78 command while retaining raw-byte SHA256 provenance. A Revit 2027.3.0.28 run created a separate model at `.local/revit-pilot/upper-suite/20261030T200906834Z/`; selected D and the Incoming RFAs were not edited.

@@ -224,6 +224,12 @@ At the time of this page check, the manufacturer's product page displayed `Out o
 
 Sources: [American Standard 610AA001.020 product page and linked infographic](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring); [linked 211AA predecessor-series technical sheet](https://lixil.cdn.celum.cloud/167631_as_us_bath_spec__211A%20%287076%29_0_original.pdf); [linked 211-series installation guide](https://lixil.cdn.celum.cloud/173349_as_us_bath_install__211A__211B__211C%20%284513%29_0_original.pdf).
 
+### M142 RevitCity exact-SKU search boundary (2026-10-30)
+
+Rechecked public RevitCity search results for `610AA001.020`, `3195A101.020`, `211AA104.020` and American Standard Champion PRO/toilet terms. Exact-SKU searches did not expose a 610AA family. The public broader search surfaces a generic **Standard Toilet / American Standard Toilet**, tagged Revit Architecture 2011, with no published SKU, dimensional schedule or family lineage that ties it to the selected product. Its result page says **Login or Join to download**. The active Edge view likewise displayed `Welcome!` with `Login` and `Join` links, so the earlier assumption that this browser session was already authenticated was not true for the current profile. No sign-in, account creation or gated download was attempted.
+
+This generic family is not a qualified substitute and cannot establish the exact 610AA plan envelope, bowl/tank assembly, clearance or service connections. Its age also makes Revit 2027 conversion/inspection an unnecessary next step without provenance or dimensions. Keep it out of the quarantine and selected-D; M-06/B remains unassigned. See the public [RevitCity American Standard search](https://www.revitcity.com/downloads.php?action=search&keywords=american+standard) and the M142 entry in PLAN/PROGRESS.
+
 ### M128 current tank-family availability cross-check (2026-10-30)
 
 The official [LIXIL Pro page for Champion PRO tank 4225A104.020](https://lixilpro.com/products/toilets/Floor-Standing-Toilets/Champion-PRO-128-gpf-48-Lpf-12-Inch-Rough-Tank/White-%28020%29-4225A104020/) identifies a discontinued 1.28 gpf, 12-in rough tank-only product. The manufacturer lists nominal dimensions 19 x 9-1/16 x 13-3/16 in and describes it as pairing with a separate Champion PRO bowl. On the same public page, the manufacturer explicitly states that no design files or 3D objects are currently available. No RFA download was attempted because the authoritative source says none is offered.

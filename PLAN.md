@@ -1439,7 +1439,7 @@ Acceptance criteria:
 - Generate source-bound JSON, CSV and SVG with a Windows PowerShell 5.1 replay whose outputs match byte-for-byte.
 - Record inaccessible physical details and defer a selected door, wall assembly, tub access, fixture use, rough-in and service route until supported by exact product/Revit geometry and applicable criteria.
 
-Status: Complete as a proposal-only envelope test. `Tools/analyze_m133_primary_bath_candidate.ps1` passes 12/12 checks on both unchanged M130 room-block alternatives; the current tracked package and `.local/revalidation/M141-M133-repeat/` replay match all four output artifacts byte-for-byte, and the SVG parses as XML. The analyzer hashes the source note for the M-06 610AA product comparison. The test fits a manufacturer-dimensioned KOHLER Entity 60 x 32 in bath envelope, KOHLER Tresham 24 x 19 1/2 in sink envelope, and the M-06 610AA toilet comparison envelope while preserving the source nominal entry band and stated preliminary fixture screens. Both KOHLER family files are quarantined under M134 with their hashes recorded, but neither has been inspected in Revit; physical family solids, bathroom entry/swing, use clearances, wall build-up, plumbing and code applicability are unresolved. No fixture/room selection, Revit/IFC validation or compliance result is made. See the M133 package, product-source note and PROGRESS.md.
+Status: Complete as a proposal-only envelope test. `Tools/analyze_m133_primary_bath_candidate.ps1` passes 12/12 checks on both unchanged M130 room-block alternatives; the current tracked package and `.local/revalidation/M142-M133-repeat/` replay match all four output artifacts byte-for-byte, and the SVG parses as XML. The analyzer hashes the source note for the M-06 610AA product comparison. The test fits a manufacturer-dimensioned KOHLER Entity 60 x 32 in bath envelope, KOHLER Tresham 24 x 19 1/2 in sink envelope, and the M-06 610AA toilet comparison envelope while preserving the source nominal entry band and stated preliminary fixture screens. Both KOHLER family files are quarantined under M134 with their hashes recorded, but neither has been inspected in Revit; physical family solids, bathroom entry/swing, use clearances, wall build-up, plumbing and code applicability are unresolved. No fixture/room selection, Revit/IFC validation or compliance result is made. See the M133 package, product-source note and PROGRESS.md.
 
 ## M134 - Inspect public KOHLER fixture families read-only
 
@@ -1521,3 +1521,14 @@ Acceptance criteria:
 - Keep M-06/B unassigned and record any volatile availability display as dated and provisional.
 
 Status: Complete as a public source-provenance check. The exact 610AA infographic continues to support its 19 x 30 1/4 in plan envelope, 30 7/8 in overall height, 17 in height with seat and 12 in rough-in. The current product page's linked spec and installation PDFs describe the predecessor 211AA series, so their component mapping is not evidence for the current SKU. The manufacturer page displayed Out of stock when checked; this is not treated as discontinuation. No RFA is linked. M133 was refreshed to hash-bind the M-06 toilet research note and its two fresh runs pass 12/12 with identical artifacts. See M141 in `Research/M06_Toilet_Options_2026-10-27.md`, the M133 package and `PROGRESS.md`.
+
+## M142 - Recheck RevitCity for an exact Champion PRO family
+
+Acceptance criteria:
+
+- Search anonymous public RevitCity results for exact 610AA001.020 and listed 211AA/3195A predecessor SKUs; inspect public metadata for product identity, Revit version and dimensions.
+- Do not enter credentials, create an account, or download from a result that states Login or Join to download.
+- Reject generic toilet geometry as a 610AA substitute unless exact manufacturer/model identity and dimensions are documented.
+- Keep M-06/B unassigned; record the public-source gate and any browser-session login assumption correction.
+
+Status: Complete as an anonymous source check. No exact 610AA listing was exposed. The broad search returned only an unidentified, Revit Architecture 2011 `Standard Toilet / American Standard Toilet` record with no model dimensions, while its page requires Login or Join to download. The active Edge profile was visibly logged out, and no sign-in or download occurred. The family is not a fit candidate. M133 was replayed twice after this research-note update and still passes 12/12; see its current source hash and outputs. See M142 in `Research/M06_Toilet_Options_2026-10-27.md` and `PROGRESS.md`.
