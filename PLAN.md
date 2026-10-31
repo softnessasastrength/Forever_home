@@ -1452,3 +1452,26 @@ Acceptance criteria:
 - Do not use the families to claim suitability, code compliance, service feasibility or construction readiness.
 
 Status: In progress. Both public Kohler RFA files are retrieved and quarantined under ignored `.local/revit-pilot/family-intake/candidates/` with exact hashes in their manifests and this progress record. Revit inspection is still outstanding: the Windows computer-use host failed twice before exposing a screenshot (`foreground window did not report a process id`), and no Revit UI action was taken. Continue with read-only family inspection only when the host can be safely observed; no source-family save is permitted.
+
+## M135 - Select a lead steep-roof case for upper-suite section study
+
+Acceptance criteria:
+
+- Reconfirm the M78 38 1/3 x 40 ft room-pack proposal, M79 nominal U-02 direct-hall approach reservation, M83 six gable comparisons, M103 Connecticut sloped-ceiling arithmetic and M133 bath-envelope proposal without changing their inputs.
+- Replay outputs under ignored scratch paths and require byte-identical generated artifacts; parse generated SVG files as XML.
+- Use only documented source geometry to compare roof-plane heights. Label any lead as a study priority, not an approved roof or shell dimension.
+- Recheck Connecticut's currently published code-adoption status using the official DAS source; do not infer future permit applicability.
+- Keep U-03 private-only, U-02 direct hall arrival and M-06/B unassigned. Do not modify selected-D, RVT, IFC or source RFAs.
+- Record missing floor/eave datum, roof build-down, ceiling and verified fixture geometry before any code-facing section claim.
+
+Status: Complete as a reproducibility and direction screen. M79 (10/10), M83 (13/13), M103 (10/10) and M133 (12/12) passed fresh Windows PowerShell 5.1 runs; M79, M83 and M133 outputs match checked-in artifacts, M103's 24-row JSON/CSV hashes match the retained outputs, and all three SVGs parse. The 12:12 ridge-X case has the strongest idealized sleeping-room ceiling envelope among the tested cases, so it is the lead for an explicitly parametric section study only. No roof or shell is selected. M136 is that next study; see `Architecture/M135_Upper_Suite_Steep_Gable_Direction_2026-10-30/README.md`.
+
+## M136 - Parametric upper-suite section sensitivity
+
+Acceptance criteria:
+
+- Compare 12:12/ridge X, 12:12/ridge Y and 10:12/ridge X against the unchanged M78 room blocks; keep the 38 1/3 x 40 ft shell explicitly hypothetical.
+- Treat finished eave-ceiling height, roof/ceiling build-down and datum offsets as named unknown variables; report threshold relationships without selecting numerical design values. Label any optional illustrative sweep as analyst-selected, not owner-approved.
+- Preserve direct U-02 hall arrival and U-03 private-only topology. Keep M-06/B and fixture locations unassigned.
+- Do not screen bath/shower headroom until exact family geometry and location are verified.
+- Generate reproducible source-bound evidence, identify what input would resolve the largest uncertainty, and make no selected-D, Revit, IFC or source-family changes.

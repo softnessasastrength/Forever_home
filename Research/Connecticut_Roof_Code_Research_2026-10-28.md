@@ -44,3 +44,9 @@ This rule cannot be compared directly to M101's roof-plane heights: M101 measure
 On 2026-10-30, Connecticut DAS still lists the 2022 CSBC, based on the 2021 codes, as current for permits filed from 2022-10-01. Its adoption-process page says the anticipated 2026 codes (based on the 2024 IRC and other editions) were expected for 2026-07-01 but that effective date is delayed pending Legislative Regulation Review Committee approval. Accordingly, this is a current statewide research basis, not a prediction of the code edition applicable to a future permit. Municipality, project classification and permit date remain unknown.
 
 Sources: [2022 Connecticut State Building Code with Errata #1 (official PDF; §R305.1, pp. 136–137)](https://portal.ct.gov/das/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csbc-final.pdf?rev=a59cc11db0564caaa5477bd696ee85f2), [current code regulations and adopted editions](https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations), and [current adoption-process status](https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process).
+
+### Adoption-status recheck — 2026-10-30
+
+The official DAS adoption-process page was checked again on 2026-10-30. It continues to say the anticipated 2026 codes were expected to take effect July 1, 2026, but the effective date is delayed while approval by the Legislative Regulation Review Committee is pending. The adopted-code page continues to identify the 2022 code as current. This is a statewide publication check only; it does not determine the code edition or amendments applicable to a future project.
+
+Source: [Connecticut DAS Building and Fire Code Adoption Process](https://portal.ct.gov/en/DAS/Office-of-State-Building-Inspector/Building-and-Fire-Code-Adoption-Process).
