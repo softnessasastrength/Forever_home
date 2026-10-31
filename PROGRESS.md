@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M241 — Audit living / hall / kitchen block interfaces
+
+- Added `Tools/analyze_m241_living_kitchen_interface.ps1` and `Architecture/M241_Living_Kitchen_Interface_2026-10-31/README.md` as a source-pinned follow-up to the owner's six-inch east-translation direction. It compares selected-D room blocks and the M228 dining proposal against the unselected M232 M-01 move.
+- Three Windows PowerShell 5.1 runs pass **12/12** checks and reproduce both JSON files byte-for-byte. Checks SHA256: `85249001d7a2b57de98e44faa7505fd2b5b4e86ddecf936ae55a524b9a3a9399`; report SHA256: `9d1dd046749c5187836e96f1c3692dd7816ee6e209ac55ec08344f8f16be9098`.
+- The move closes the 6-in M-01/M-05 block gap and forms a 12-ft shared edge. Living/kitchen x-gap narrows from 5 ft 4 in to 4 ft 10 in; the M-05/kitchen gap remains 6 in. The M-01/dining edge reduces by 2 in. The owner's fully open kitchen/living preference remains unresolved because the room rectangles do not encode walls or openings.
+- Selected-D, protected west A, unassigned B, M-06, RFAs, RVT/IFC and remote state are unchanged. No room position or opening was selected. This remains schematic geometry with no code, accessibility, structural, permit or construction-readiness conclusion.
+
 ## M236 — Repair and replay the M-01 six-inch translation study pin
 
 - A fresh replay exposed that the M233 script expected decision-note SHA256 `bbcd232445a4babedba0ba0e2729c4d5c954520e605df69c342e043100151f1b`, while the unchanged committed note hashes to `ef07fc60f94ec61a62a0cae486fbd18be040a02c1659fa1be35f341be369ec99`. Corrected the stale pin only.
