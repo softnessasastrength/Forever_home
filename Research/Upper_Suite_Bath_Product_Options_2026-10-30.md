@@ -20,7 +20,9 @@ Sources:
 
 ### KOHLER Entity K-26108-LA-0 alcove bath
 
-KOHLER's product page lists the left-drain Entity bath at 60 x 32 x 15 3/4 in overall, with an integral apron and integral flange, for alcove installation. The family page lists an RFA/Revit design-file option, but no bath family was downloaded in this study. The fit screen uses a 60 x 32 in nominal plan envelope only; the flange, wall finish, installation tolerance, access/use envelope, drain connection and exact solids are absent. The right-drain counterpart, opening direction and service routing remain open.
+KOHLER's product page lists the left-drain Entity bath at 60 x 32 x 15 3/4 in overall, with an integral apron and integral flange, for alcove installation. The family page lists an RFA/Revit design-file option. The M133 fit screen uses a 60 x 32 in nominal plan envelope only; the flange, wall finish, installation tolerance, access/use envelope, drain connection and exact solids are absent. The right-drain counterpart, opening direction and service routing remain open.
+
+The official page's server-rendered product-file link exposes `https://techcomm.kohler.com/techcomm/cad/Bath-Alcove-KOHLER-Entity-K-26108.rfa`. A HEAD request returned HTTP 200 and 1,187,840 bytes; that exact file has since been retrieved without sign-in into ignored `.local/revit-pilot/family-intake/candidates/kohler-entity-k-26108-2026-10-30/`. SHA256 is `DBE1D03ACD1C4DBB5DF2B670CDF87A2E5ADC74E35EF4FEC46382EE0A7AB5B948`. Its source manifest records the URL, size, retrieval time and the fact that left/right drain type is unverified. It has not been opened or modified in Revit.
 
 - [KOHLER Entity K-26108-LA-0 product page and design files](https://dev.studiokohler.com/products/bathroom/bathing/26108-la)
 - [KOHLER specification sheet](https://techcomm.kohler.com/techcomm/#/product/26108-LA)
