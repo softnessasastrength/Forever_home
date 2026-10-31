@@ -2061,6 +2061,16 @@ Acceptance criteria:
 
 Status: In progress. Owner selected the minimum-area search and authorized dining/porch repositioning within the test shell. The M187 sensitivity baseline was replayed twice; both runs pass 14/14 and match all three summary artifacts byte-for-byte. It confirms that the existing 189-sf M178 case has no route while both diagnostic zones are obstacles. Removing only west A restores a 28.5-ft sampled path that remains clear of B but touches the island/stool proxies with zero minimum reserve and uses unassigned space; removing dining furniture instead gives a 54.5-ft path. Neither is a candidate. Next: vary dining/porch placement and kitchen envelope with a bounded search that keeps B protected, then compare alternate-A use as a separately labeled fallback trade-off.
 
+## M196 — Owner roofline massing direction — 2026-10-31
+
+Acceptance criteria:
+
+- Record the owner's direction for one dominant traditional main gable with a simpler, subordinate porch roof.
+- Keep pitch, ridge/eave heights and orientation, roof assemblies, structure and site response unselected; identify prior pitch screens as geometric studies only.
+- Update the design handoff and plan; do not alter selected-D or roof geometry in Revit.
+
+Status: Complete as a massing-direction record. The owner selected a single main gable with simpler porch roof. No pitch or structural specification is selected. See `Decisions/2026-10-31_Roofline_Concept.md`.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:

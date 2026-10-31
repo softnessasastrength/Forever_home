@@ -2085,3 +2085,9 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Owner chose to search for the **smallest kitchen area** that preserves the larger island and passes the route test; 189 sf is not a cap. Owner authorized moving dining and porch within the hypothetical shell while retaining the documented 11 × 10 ft and 12 × 10 ft study footprints.
 - Replayed `Tools/search_m187_route_sensitivity.ps1` twice with distinct scratch prefixes. Both runs pass **14/14**; JSON, checks and CSV match byte-for-byte. Removing only west diagnostic A restores a 28.5-ft / five-turn path with B still clear, but the path is tangent to the island/stool proxies (0-in minimum gap) and uses 6.5 ft of unassigned space. Removing the dining set instead gives 54.5 ft / five turns. Those are constraint sensitivities, not layouts.
 - Search guardrails: keep B unassigned and clear of routes; show any candidate that consumes alternate A as a separate trade-off; include actual route width, stool/use zones, dining use zones, room blocks, porch-door passage and shell containment. Selected-D remains SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`; incoming RFA hashes are unchanged. No RVT/IFC or remote state changed.
+
+## M196 — Owner roofline massing direction — 2026-10-31
+
+- Recorded the owner's selection of one dominant traditional main gable with a simpler, subordinate porch roof in `Decisions/2026-10-31_Roofline_Concept.md`.
+- Pitch, ridge/eave elevations and orientation, roof assembly, structure, and site response remain unresolved. M135's pitch cases remain geometric studies, not selected or structurally endorsed specifications.
+- No Revit, IFC, selected-D, family source, or remote state changed.
