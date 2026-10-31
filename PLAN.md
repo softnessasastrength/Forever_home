@@ -2092,7 +2092,18 @@ Acceptance criteria:
 - Bind inputs by source hash; reproduce JSON/checks/CSV byte-for-byte in independent PowerShell 5.1 runs. No selected-D, RVT/IFC or Incoming RFA changes.
 - Treat all door positions as sensitivity samples, not an owner-selected opening or code-compliant design.
 
-Status: Authorized for exploration. Owner directed the search to vary porch-door alignment independently of dining. Door center, final door type and actual clear width remain unselected.
+Status: Complete as a bounded sensitivity. Two independent PowerShell 5.1 runs pass 7/7 checks and their JSON/checks/CSV match byte-for-byte; all 30 embedded M186 searches pass 29/29. **0/15** door centers find a route. The nearest reachable point is 9.5 ft from the eastmost center (x=9 ft); the centered x=5.5-ft case is 12 ft away. Door locations remain unselected. See `Architecture/M198_Porch_Door_Alignment_2026-10-31/README.md`.
+
+## M202 — Compare fully open kitchen/living connection — 2026-10-31
+
+Acceptance criteria:
+
+- Test the owner's preferred fully open connection against the current half-wall route model while preserving 14-ft kitchen depth, 8 × 4 ft island, 36-in route proxy, chair-use zones and porch-door case.
+- Remove only the half-wall/return proxies and correctly begin circulation in the source living room; retain both M-06 diagnostics, entry, pantry and all other fixed obstacles.
+- Bind source hashes and report route, closest reach and all changed assumptions. Keep the half-wall as a documented comparison; no opening span or structural detail is selected.
+- Preserve selected-D, RVT/IFC and Incoming RFA sources; pass independent deterministic PowerShell validation.
+
+Status: Planned from the owner's preference. M187 found that removing the half-wall alone did not restore its route; M202 tests the updated fixed dining/porch arrangement and is not expected to prove the full plan resolved.
 
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 

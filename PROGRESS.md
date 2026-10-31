@@ -2126,3 +2126,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Owner prefers a fully open kitchen/living connection. The existing kitchen specification permits this as an alternative to the 42-in half-wall with six-foot opening; the general specification remains intact and the half-wall remains a comparison variant.
 - M187 found that removing only the half-wall/return did not restore a route. The preference therefore remains a search direction, not a route solution or coordinated opening.
 - Added `Decisions/2026-10-31_Kitchen_Living_Opening_Preference.md`. No wall, header, beam, selected-D, RVT or IFC geometry changed; no structural or code conclusion follows.
+
+## M198 — Porch-door alignment search — 2026-10-31
+
+- Added `Tools/search_m198_porch_door_alignment.ps1` and `Architecture/M198_Porch_Door_Alignment_2026-10-31/`. It tests 15 five-foot door centers from x=2 to x=9 ft in half-foot increments across the documented 12-ft porch face, holding dining, chair-use zones, M178 kitchen and all M-06 constraints fixed.
+- Two independent Windows PowerShell 5.1 runs pass **7/7** M198 checks; all 30 embedded M186 searches pass **29/29**. JSON, checks and CSV match byte-for-byte; hashes and commands are in the README.
+- **0/15** door positions find a route. The nearest point is 9.5 ft away at x=9 ft; the centered x=5.5-ft case is 12 ft away. All runs reach 5,296 nodes. The eastmost door is closer but still disconnected, so no position is selected.
+- The porch overlaps west diagnostic A by 0.402778 sf; A remains unassigned. Pantry-side B remains unassigned and protected. Selected-D, RVT, IFC and Incoming RFAs are unchanged; no code/accessibility/structural/construction claim follows.
+- Next: test the owner's preferred fully open kitchen/living connection while holding the rest of the layout fixed; retain the half-wall as a comparison.

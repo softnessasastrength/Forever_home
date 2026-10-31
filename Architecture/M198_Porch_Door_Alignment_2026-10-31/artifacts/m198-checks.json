@@ -1,0 +1,42 @@
+{
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "all_15_finite_door_positions_tested",
+                      "pass":  true,
+                      "detail":  "All half-foot positions with a five-foot opening fully inside the 12-ft porch face were tested."
+                  },
+                  {
+                      "id":  "every_embedded_m186_contract_passes",
+                      "pass":  true,
+                      "detail":  "Every generated full-shell route search passes its source and route-contract checks."
+                  },
+                  {
+                      "id":  "fixed_kitchen_and_dining_inputs",
+                      "pass":  true,
+                      "detail":  "Kitchen remains the 189-sf M178 study with its 8 x 4 ft island; door position is the only intended variable."
+                  },
+                  {
+                      "id":  "B_unassigned",
+                      "pass":  true,
+                      "detail":  "Pantry-side M-06/B remains unassigned in all cases."
+                  },
+                  {
+                      "id":  "alternate_A_porch_tradeoff_reported",
+                      "pass":  true,
+                      "detail":  "Porch overlaps alternate A by 0.402778 sf; A remains an unassigned diagnostic option, not a room."
+                  },
+                  {
+                      "id":  "selected_D_hash_protected",
+                      "pass":  true,
+                      "detail":  "Selected-D fingerprint remains unchanged."
+                  },
+                  {
+                      "id":  "door_locations_remain_sensitivities",
+                      "pass":  true,
+                      "detail":  "No tested opening position is recorded as selected design."
+                  }
+              ]
+}
