@@ -5,10 +5,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 STUDY_PATH = ROOT / "Architecture" / "Selected_Design_Iteration_2026-10-27" / "study.json"
+CHECKS_PATH = ROOT / "Architecture" / "Selected_Design_Iteration_2026-10-27" / "checks.json"
 COMMAND_PATH = ROOT / "Tools" / "RevitPilot" / "Pilot.cs"
 
 
 class SelectedDStudyContractTests(unittest.TestCase):
+    def test_upper_stair_bridge_plan_continuity_is_explicit(self):
+        report = json.loads(CHECKS_PATH.read_text(encoding="utf-8-sig"))
+        checks = report["checks"]
+        measurements = report["measurements"]
+
+        self.assertTrue(checks["upper_stair_run_meets_upper_landing_without_plan_gap"])
+        self.assertTrue(checks["upper_floor_bridge_meets_upper_wing_and_main_shell_edges"])
+        self.assertTrue(checks["upper_landing_matches_upper_floor_bridge_footprint"])
+        self.assertAlmostEqual(measurements["upper_stair_to_landing_plan_gap_ft"], 0.0, places=6)
+        self.assertAlmostEqual(measurements["upper_wing_to_bridge_plan_gap_ft"], 0.0, places=6)
+        self.assertAlmostEqual(measurements["bridge_to_main_shell_rear_edge_gap_ft"], 0.0, places=6)
+
     def test_room_block_schema_is_consumed_by_revit_command(self):
         study = json.loads(STUDY_PATH.read_text(encoding="utf-8-sig"))
         command = COMMAND_PATH.read_text(encoding="utf-8")

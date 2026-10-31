@@ -1,0 +1,108 @@
+﻿{
+    "schema":  "forever-home.m116-u03-eero-wall-zone.v1",
+    "status":  "conditional code-basis and perimeter-zone screen; no window or wall is modeled and no compliance result is determined",
+    "code_basis":  {
+                       "as_of":  "2026-10-30",
+                       "current_code":  "2022 Connecticut State Building Code based on 2021 IRC",
+                       "2026_code_status":  "DAS reports expected effective date delayed pending LRRC approval",
+                       "conditional_sleeping_room_requirement":  "one operable emergency escape and rescue opening per sleeping room, to a public way or qualifying yard/court",
+                       "minimum_net_clear_area_sq_ft":  5.7,
+                       "grade_floor_exception_sq_ft":  5,
+                       "minimum_clear_width_in":  20,
+                       "minimum_clear_height_in":  24,
+                       "maximum_bottom_of_clear_opening_in":  44,
+                       "grade_floor_exception_assessed":  false,
+                       "code_compliance_claimed":  false
+                   },
+    "study":  {
+                  "selected_D_shell_unchanged":  "36 x 32 ft test wing",
+                  "M115_shell":  {
+                                     "width_ft":  38.333333,
+                                     "depth_ft":  40,
+                                     "status":  "exploration only"
+                                 },
+                  "privacy_candidates":  73,
+                  "northeast_privacy_candidates":  64,
+                  "northwest_privacy_candidates":  9,
+                  "public_route_all_three":  true,
+                  "U02_north_side_sample_all":  true,
+                  "U03_hall_side_sample_all":  false
+              },
+    "U03_geometry":  {
+                         "gross_rectangle_area_sq_ft":  125.27777777777776,
+                         "northeast_orientation_distribution":  [
+                                                                    {
+                                                                        "count":  44,
+                                                                        "source_preserved_width_ft":  13.6666666667,
+                                                                        "source_preserved_depth_ft":  9.1666666667,
+                                                                        "north_test_edge_length_in":  164,
+                                                                        "east_test_edge_length_in":  110
+                                                                    },
+                                                                    {
+                                                                        "count":  20,
+                                                                        "source_preserved_width_ft":  9.1666666667,
+                                                                        "source_preserved_depth_ft":  13.6666666667,
+                                                                        "north_test_edge_length_in":  110,
+                                                                        "east_test_edge_length_in":  164
+                                                                    }
+                                                                ],
+                         "north_edge_length_range_in":  [
+                                                            110,
+                                                            164
+                                                        ],
+                         "east_edge_length_range_in":  [
+                                                           110,
+                                                           164
+                                                       ],
+                         "status":  "schematic gross block dimensions, not finished interior dimensions or clear wall/opening dimensions"
+                     },
+    "EERO_threshold_arithmetic":  {
+                                      "minimum_net_area_sq_in":  820.80000000000007,
+                                      "height_at_20_in_clear_width_in":  41.040000000000006,
+                                      "width_at_24_in_clear_height_in":  34.2,
+                                      "interpretation":  "area arithmetic only; actual opening must meet area, both minimum dimensions, operability, sill and applicable location/path requirements"
+                                  },
+    "interpretation":  "The M115 northeast privacy subset provides two candidate perimeter lines for future wall/opening study. It does not demonstrate a wall, opening, qualifying exterior discharge, roof clearance or code compliance.",
+    "limitations":  [
+                        "U-03 remains a hybrid bedroom/office with sleeping-room status unresolved.",
+                        "Exact town, site, grade, permit date, occupancy/code path and local official interpretation are unknown.",
+                        "No exterior wall, framing, egress window product, net-clear opening, operating hardware, sill, well/guard, roof/eave, structure, yard/court or public-way route is modeled.",
+                        "The 38 1/3 x 40 ft shell is unselected; room rectangles exclude no wall thickness and gross area is not net usable area.",
+                        "No Revit/IFC or selected-D geometry changed; no code-compliance, accessibility, structural or construction-readiness claim is made."
+                    ],
+    "source_hashes_sha256":  {
+                                 "M115_archive":  "11360170f462fc28ffd50b71808de12180331121b0041c2da637458f1eda9fb1",
+                                 "M115_audit":  "986416f2831c5c83dfb8abe8aaf6dda65d42120314b8e121301cd71e401e56f8",
+                                 "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_proposal":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "code_basis_note":  "30d58b0c00aeac72a4da5b9b422288c222b4022e8d16e53ea1a8268877a4137b",
+                                 "analyzer":  "eac451533c34b4f709949f60398571d53f2c823ce551a6e75a964f55522b61d9"
+                             },
+    "checks":  {
+                   "M115_archive_hash_matches_independent_audit":  true,
+                   "all_M115_audit_checks_pass":  true,
+                   "selected_D_hash_matches_archived_exploration":  true,
+                   "current_owner_private_only_direction_is_preserved":  true,
+                   "U03_program_remains_hybrid_bedroom_office":  true,
+                   "M115_privacy_subset_has_73_candidates":  true,
+                   "privacy_subset_reaches_all_three_public_room_samples":  true,
+                   "privacy_subset_keeps_sampled_north_side_U02_arrival":  true,
+                   "northeast_privacy_subset_has_64_candidates":  true,
+                   "northeast_orientation_counts_are_44_north_long_20_east_long":  true,
+                   "northwest_privacy_subset_has_9_candidates":  true,
+                   "northeast_candidates_touch_north_and_east_test_edges":  true,
+                   "northwest_candidates_touch_north_and_west_test_edges":  true,
+                   "U03_room_blocks_match_source_dimensions_allowing_rotation":  true,
+                   "gross_U03_room_rectangle_is_125_28_sf_within_programmed_120_to_150_sf":  true,
+                   "both_ne_orientations_have_source_preserved_area_and_edge_lengths":  true,
+                   "code_note_records_current_2022_basis_and_2026_delay":  true,
+                   "code_note_cites_EERO_requirements_and_open_limitations":  true,
+                   "minimum_area_arithmetic_is_consistent":  true,
+                   "grade_floor_exception_is_not_assumed":  true,
+                   "selected_D_baseline_remains_identical_to_M115_source":  true
+               },
+    "failed":  [
+
+               ]
+}

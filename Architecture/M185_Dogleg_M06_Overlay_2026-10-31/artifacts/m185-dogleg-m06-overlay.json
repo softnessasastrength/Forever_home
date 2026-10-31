@@ -1,0 +1,449 @@
+{
+    "schema":  "forever-home-m185-dogleg-m06-overlay-v1",
+    "status":  "unapproved route conflict comparison; no room or route selected",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json":  "34a0e6a15ca24e8ada928d87978669dfd772d9dd5b5ce88f56f43ff73dbf1a42",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "incoming_rfa_hashes":  [
+                                {
+                                    "file":  "american-standard-champion-pro-211AA104-020-predecessor.rfa",
+                                    "sha256":  "37d3e56962b81f4b0ace3d36d25bafc03b7dee1232e7de7bbf9b95e4b0b75f63"
+                                },
+                                {
+                                    "file":  "american-standard-champion-pro-3195A101020-bowl.rfa",
+                                    "sha256":  "f301d2cb77f13269e21dc44fd6953946158034122bb3c10889fcba9470846393"
+                                },
+                                {
+                                    "file":  "american-standard-evolution-0467004.020.rfa",
+                                    "sha256":  "39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea"
+                                },
+                                {
+                                    "file":  "Solid_Surface_Vanity_Counter_w_Faucet_22366.rfa",
+                                    "sha256":  "3524afc61b87377aa0809f18f6fa21c56343e22bfb9a9053cd91b9085629d154"
+                                },
+                                {
+                                    "file":  "Sony_Flat_LED_TV_face_based_17584.rfa",
+                                    "sha256":  "b7cf36f69f3ba0a28a4e9ef4d9b94fe505e36b15eb48d149d0f44ea145cd49af"
+                                }
+                            ],
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "candidate_context":  {
+                              "kitchen_area_sf":  189,
+                              "kitchen_program_target_sf":  168,
+                              "kitchen_over_target_sf":  21,
+                              "route_width_in":  36,
+                              "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                          },
+    "living_interface":  {
+                             "source_M01_rect_local_ft":  [
+                                                              17.833333333333332,
+                                                              0,
+                                                              16,
+                                                              15
+                                                          ],
+                             "kitchen_east_edge_ft":  13.5,
+                             "unassigned_kitchen_to_living_band_ft":  4.333333,
+                             "M179_start_ft":  [
+                                                   14.5,
+                                                   10
+                                               ],
+                             "M179_start_inside_M01":  false
+                         },
+    "m06_windows_local_to_kitchen_origin_ft":  [
+                                                   {
+                                                       "id":  "west_of_core",
+                                                       "x":  11.333333333333334,
+                                                       "y":  15.500000000000002,
+                                                       "w":  5.1666666666666679,
+                                                       "d":  11.416666666666664
+                                                   },
+                                                   {
+                                                       "id":  "east_of_core",
+                                                       "x":  20.5,
+                                                       "y":  16.5,
+                                                       "w":  13.166666666666668,
+                                                       "d":  7
+                                                   }
+                                               ],
+    "pantry_local_to_kitchen_origin_ft":  {
+                                              "x":  11.833333333333334,
+                                              "y":  16.5,
+                                              "w":  5,
+                                              "d":  7
+                                          },
+    "M179_route":  {
+                       "centerline_ft":  [
+                                             {
+                                                 "x":  14.5,
+                                                 "y":  10
+                                             },
+                                             {
+                                                 "x":  11.25,
+                                                 "y":  10
+                                             },
+                                             {
+                                                 "x":  11.25,
+                                                 "y":  14.5
+                                             },
+                                             {
+                                                 "x":  9.5,
+                                                 "y":  14.5
+                                             },
+                                             {
+                                                 "x":  9.5,
+                                                 "y":  22.5
+                                             },
+                                             {
+                                                 "x":  8.5,
+                                                 "y":  22.5
+                                             },
+                                             {
+                                                 "x":  8.5,
+                                                 "y":  27.5
+                                             }
+                                         ],
+                       "west_diagnostic_intersections":  {
+                                                             "route_rect":  "m179-dogleg-corner-2",
+                                                             "obstacle":  "west_of_core",
+                                                             "overlap_sf":  0.708333
+                                                         },
+                       "west_diagnostic_union_overlap_sf":  0.708333,
+                       "pantry_intersections":  {
+
+                                                },
+                       "east_B_intersections":  {
+
+                                                }
+                   },
+    "M185_earlier_turn":  {
+                              "centerline_ft":  [
+                                                    {
+                                                        "x":  14.5,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  11.25,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  11.25,
+                                                        "y":  13.5
+                                                    },
+                                                    {
+                                                        "x":  9.5,
+                                                        "y":  13.5
+                                                    },
+                                                    {
+                                                        "x":  9.5,
+                                                        "y":  22.5
+                                                    },
+                                                    {
+                                                        "x":  8.5,
+                                                        "y":  22.5
+                                                    },
+                                                    {
+                                                        "x":  8.5,
+                                                        "y":  27.5
+                                                    }
+                                                ],
+                              "width_in":  36,
+                              "turn_shift_ft":  1,
+                              "turn_y_ft":  13.5,
+                              "route_rectangles_ft":  [
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-0",
+                                                              "x":  11.25,
+                                                              "y":  8.5,
+                                                              "w":  3.25,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-1",
+                                                              "x":  9.75,
+                                                              "y":  10,
+                                                              "w":  3,
+                                                              "d":  3.5
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-corner-1",
+                                                              "x":  9.75,
+                                                              "y":  8.5,
+                                                              "w":  3,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-2",
+                                                              "x":  9.5,
+                                                              "y":  12,
+                                                              "w":  1.75,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-corner-2",
+                                                              "x":  9.75,
+                                                              "y":  12,
+                                                              "w":  3,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-3",
+                                                              "x":  8,
+                                                              "y":  13.5,
+                                                              "w":  3,
+                                                              "d":  9
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-corner-3",
+                                                              "x":  8,
+                                                              "y":  12,
+                                                              "w":  3,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-4",
+                                                              "x":  8.5,
+                                                              "y":  21,
+                                                              "w":  1,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-corner-4",
+                                                              "x":  8,
+                                                              "y":  21,
+                                                              "w":  3,
+                                                              "d":  3
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-segment-5",
+                                                              "x":  7,
+                                                              "y":  22.5,
+                                                              "w":  3,
+                                                              "d":  5
+                                                          },
+                                                          {
+                                                              "id":  "m185-earlier-turn-corner-5",
+                                                              "x":  7,
+                                                              "y":  21,
+                                                              "w":  3,
+                                                              "d":  3
+                                                          }
+                                                      ],
+                              "west_diagnostic_intersections":  {
+
+                                                                },
+                              "pantry_intersections":  {
+
+                                                       },
+                              "east_B_intersections":  {
+
+                                                       },
+                              "existing_proxy_intersections":  {
+                                                                   "route_rect":  "m185-earlier-turn-corner-3",
+                                                                   "obstacle":  "assumed-stool-occupancy",
+                                                                   "overlap_sf":  1.5
+                                                               },
+                              "assumed_stool_union_overlap_sf":  1.5,
+                              "west_diagnostic_union_overlap_sf":  0,
+                              "minimum_edge_gap_to_west_diagnostic_in":  4,
+                              "porch_depth_reached_ft":  3
+                          },
+    "single_turn_sensitivity":  [
+                                    {
+                                        "turn_center_y_ft":  13,
+                                        "west_diagnostic_union_overlap_sf":  0,
+                                        "assumed_stool_union_overlap_sf":  2.25,
+                                        "total_of_two_union_overlaps_sf":  2.25,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  13.25,
+                                        "west_diagnostic_union_overlap_sf":  0,
+                                        "assumed_stool_union_overlap_sf":  1.875,
+                                        "total_of_two_union_overlaps_sf":  1.875,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  13.5,
+                                        "west_diagnostic_union_overlap_sf":  0,
+                                        "assumed_stool_union_overlap_sf":  1.5,
+                                        "total_of_two_union_overlaps_sf":  1.5,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  13.75,
+                                        "west_diagnostic_union_overlap_sf":  0,
+                                        "assumed_stool_union_overlap_sf":  1.125,
+                                        "total_of_two_union_overlaps_sf":  1.125,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  14,
+                                        "west_diagnostic_union_overlap_sf":  0,
+                                        "assumed_stool_union_overlap_sf":  0.75,
+                                        "total_of_two_union_overlaps_sf":  0.75,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  14.25,
+                                        "west_diagnostic_union_overlap_sf":  0.354167,
+                                        "assumed_stool_union_overlap_sf":  0.375,
+                                        "total_of_two_union_overlaps_sf":  0.729167,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  14.5,
+                                        "west_diagnostic_union_overlap_sf":  0.708333,
+                                        "assumed_stool_union_overlap_sf":  0,
+                                        "total_of_two_union_overlaps_sf":  0.708333,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  14.75,
+                                        "west_diagnostic_union_overlap_sf":  1.0625,
+                                        "assumed_stool_union_overlap_sf":  0,
+                                        "total_of_two_union_overlaps_sf":  1.0625,
+                                        "both_clear":  false
+                                    },
+                                    {
+                                        "turn_center_y_ft":  15,
+                                        "west_diagnostic_union_overlap_sf":  1.416667,
+                                        "assumed_stool_union_overlap_sf":  0,
+                                        "total_of_two_union_overlaps_sf":  1.416667,
+                                        "both_clear":  false
+                                    }
+                                ],
+    "lowest_sampled_total_overlap":  {
+                                         "turn_center_y_ft":  14.5,
+                                         "west_diagnostic_union_overlap_sf":  0.708333,
+                                         "assumed_stool_union_overlap_sf":  0,
+                                         "total_of_two_union_overlaps_sf":  0.708333,
+                                         "both_clear":  false
+                                     },
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  21,
+                   "total":  21,
+                   "items":  [
+                                 {
+                                     "id":  "m179_sources_current",
+                                     "pass":  true,
+                                     "detail":  "Every fingerprint bound by the source M179 route audit matches the current repository."
+                                 },
+                                 {
+                                     "id":  "selected_d_baseline_current",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source matches the protected baseline fingerprint recorded in M178."
+                                 },
+                                 {
+                                     "id":  "m06_zone_source",
+                                     "pass":  true,
+                                     "detail":  "Bath-first source retains the owner-selected pantry-side search candidate."
+                                 },
+                                 {
+                                     "id":  "m06_b_unassigned",
+                                     "pass":  true,
+                                     "detail":  "East/pantry-side B remains an unassigned search window."
+                                 },
+                                 {
+                                     "id":  "m179_start_not_misrepresented_as_living",
+                                     "pass":  true,
+                                     "detail":  "M179 begins outside source M-01; the dogleg is not a complete living-to-porch route."
+                                 },
+                                 {
+                                     "id":  "incoming_family_sources_present",
+                                     "pass":  true,
+                                     "detail":  "The three protected untracked manufacturer RFAs remain present in Incoming."
+                                 },
+                                 {
+                                     "id":  "incoming_family_hashes_recorded",
+                                     "pass":  true,
+                                     "detail":  "Every RFA currently in Incoming has a SHA256 fingerprint in the report."
+                                 },
+                                 {
+                                     "id":  "original_dogleg_clears_pantry",
+                                     "pass":  true,
+                                     "detail":  "M179 dogleg remains clear of the bath-first pantry block."
+                                 },
+                                 {
+                                     "id":  "original_dogleg_clips_west_diagnostic",
+                                     "pass":  true,
+                                     "detail":  "M179 dogleg full-width elbow overlaps the blocked west M-06 diagnostic window."
+                                 },
+                                 {
+                                     "id":  "original_dogleg_clears_east_B",
+                                     "pass":  true,
+                                     "detail":  "M179 dogleg does not intersect the unassigned east/pantry-side B window."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_orthogonal",
+                                     "pass":  true,
+                                     "detail":  "Earlier-turn route retains an axis-aligned waypoint sequence."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_clears_pantry",
+                                     "pass":  true,
+                                     "detail":  "Earlier-turn route is clear of the source pantry block."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_clears_west_diagnostic",
+                                     "pass":  true,
+                                     "detail":  "Earlier-turn corridor rectangles stay outside the blocked west M-06 diagnostic window."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_clears_east_B",
+                                     "pass":  true,
+                                     "detail":  "Earlier-turn route stays outside the owner-selected east B search window."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_west_edge_gap_recomputed",
+                                     "pass":  true,
+                                     "detail":  "Minimum rectangle-to-rectangle separation from the west diagnostic is recomputed as only 4 in."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_stool_conflict_recorded",
+                                     "pass":  true,
+                                     "detail":  "Earlier turn conflicts with the explicitly assumed stool-occupancy proxy; it is not promoted as a clear route."
+                                 },
+                                 {
+                                     "id":  "earlier_turn_clears_other_modeled_proxies",
+                                     "pass":  true,
+                                     "detail":  "Earlier turn introduces no other positive-area overlap with counter, island, half-wall, dining furniture or porch-wall proxies."
+                                 },
+                                 {
+                                     "id":  "36_in_route_width",
+                                     "pass":  true,
+                                     "detail":  "Both options use the same documented 36-in route-width proxy."
+                                 },
+                                 {
+                                     "id":  "kitchen_area_tradeoff_preserved",
+                                     "pass":  true,
+                                     "detail":  "M178 remains a 189 sf proposal, explicitly 21 sf above the owner-directed 168 sf target."
+                                 },
+                                 {
+                                     "id":  "porch_terminus_preserved",
+                                     "pass":  true,
+                                     "detail":  "The revised route still extends 3 ft into the porch test rectangle."
+                                 },
+                                 {
+                                     "id":  "single_turn_sensitivity_no_false_clearance",
+                                     "pass":  true,
+                                     "detail":  "The tested 13.00-15.00 ft quarter-foot single-elbow sweep has no sampled point clear of both the blocked west diagnostic and assumed stool proxy."
+                                 }
+                             ]
+               },
+    "conclusion":  "The M179 dogleg is not a complete living-to-porch route: its start at (14.5,10) ft lies in the 4 ft 4 in unassigned band between M-02 and source M-01. The route also overlaps the blocked west M-06 diagnostic by 0.708 sf. Moving the west turn 1 ft earlier removes that overlap but creates a 1.5 sf union overlap with the assumed stool-occupancy proxy; the quarter-foot single-elbow sensitivity sweep has no tested setting that clears both. East/pantry-side M-06/B stays clear but unassigned. Neither route nor room is selected.",
+    "limitations":  [
+                        "All room blocks, M-06 windows, routes and fixture/furniture envelopes are schematic rectangles in a shared source coordinate frame.",
+                        "The M179 start lies in an unassigned band; no physical opening or connection from living has been established.",
+                        "The west M-06 rectangle is a blocked diagnostic, not a physical room; avoiding it is not an approach, door or code clearance.",
+                        "The stool occupied-use zone is an explicit 24-in-deep assumption, not measured family geometry.",
+                        "This candidate has no verified shell fit, walls/openings, door swing, furniture movement, appliance-open route, services, Revit host geometry or IFC export.",
+                        "Kitchen test area remains 21 sf above the owner-directed program target.",
+                        "M-06/B stays unassigned; no accessibility, code, structural-safety, professional, permit or construction-readiness conclusion follows."
+                    ]
+}

@@ -1,0 +1,13 @@
+﻿{
+    "generator":  "Tools/test_m35_social_zone_casework_porch.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
+                                       "Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+                                   },
+    "output_hashes_sha256":  {
+                                 "fit_json":  "c955d706f2a813a72891267b850e83b3486d4bcc6ae35b35bfea1aa3f6a3b304",
+                                 "checks_json":  "13abbd5a8058fe00fc2a13bc3f76f975dfa10897011127b7983a945289d436ab",
+                                 "svg":  "6bf7cd134af4c3c5ec83c17a15816c06bc07a771122753e1b6e09f76339dd5b0"
+                             }
+}

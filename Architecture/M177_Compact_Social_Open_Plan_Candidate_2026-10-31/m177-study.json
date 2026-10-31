@@ -1,0 +1,148 @@
+﻿{
+    "schema":  "forever-home-m177-compact-social-open-plan-v1",
+    "status":  "unapproved compact open-plan geometry proposal; no house layout selected",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290",
+                                       "Decisions/2026-10-28_House_Design_Direction_Followup.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648"
+                                   },
+    "program_targets":  {
+                            "kitchen_area_sf":  168,
+                            "dining_area_sf":  110,
+                            "porch_area_sf":  120,
+                            "interpretation":  "Program areas; kitchen and dining are not treated as fixed finished rectangles."
+                        },
+    "proposal":  {
+                     "kitchen":  {
+                                     "rect_ft":  [
+                                                     0,
+                                                     0,
+                                                     14,
+                                                     13.5
+                                                 ],
+                                     "area_sf":  189,
+                                     "area_over_target_sf":  21,
+                                     "tradeoff":  "The 14 x 13.5 ft route-study envelope adds 21 sf to the 168 sf program target; it does not demonstrate every perimeter clearance or seating condition."
+                                 },
+                     "dining":  {
+                                    "rect_ft":  [
+                                                    0,
+                                                    13.5,
+                                                    11,
+                                                    10
+                                                ],
+                                    "area_sf":  110,
+                                    "table_rect_ft":  [
+                                                          3,
+                                                          17,
+                                                          5,
+                                                          3
+                                                      ],
+                                    "furniture":  "Two chairs on the south long side and two at the west end; no north/east end chairs, leaving the route approach unobstructed.",
+                                    "minimum_clearance_in":  {
+                                                                 "west_in":  36,
+                                                                 "east_in":  36,
+                                                                 "south_in":  42,
+                                                                 "north_in":  42
+                                                             }
+                                },
+                     "island":  {
+                                    "rect_ft":  [
+                                                    4.5,
+                                                    2.75,
+                                                    4,
+                                                    8
+                                                ],
+                                    "source_size_ft":  [
+                                                           8,
+                                                           4
+                                                       ],
+                                    "orientation":  "4 ft across kitchen width and 8 ft toward dining; two stools are proposed on the 4 ft dining-facing end.",
+                                    "stool_occupied_zone_rect_ft":  [
+                                                                        4.5,
+                                                                        10.75,
+                                                                        4,
+                                                                        2
+                                                                    ],
+                                    "stool_depth_basis":  "Assumed 24 in plan-depth proxy; occupied product envelope not measured."
+                                },
+                     "perimeter":  {
+                                       "rect_ft":  [
+                                                       12,
+                                                       0.5,
+                                                       2,
+                                                       12.5
+                                                   ],
+                                       "module_order":  [
+                                                            "sink-base",
+                                                            "dishwasher",
+                                                            "west-range-landing",
+                                                            "induction-range",
+                                                            "east-range-landing",
+                                                            "refrigerator"
+                                                        ],
+                                       "module_total_ft":  12.5,
+                                       "service_and_open_appliance_envelopes_modeled":  false
+                                   },
+                     "half_wall":  {
+                                       "wall_length_ft":  7,
+                                       "opening_width_ft":  6,
+                                       "unassigned_edge_return_ft":  1,
+                                       "status":  "Proposal using low end of documented half-wall adjustment; no wall or opening authored."
+                                   },
+                     "porch":  {
+                                   "rect_ft":  [
+                                                   -0.5,
+                                                   24,
+                                                   12,
+                                                   10
+                                               ],
+                                   "nominal_door":  {
+                                                        "width_ft":  5,
+                                                        "center_offset_east_ft":  3
+                                                    },
+                                   "wall_gap_ft":  0.5
+                               },
+                     "route":  {
+                                   "width_in":  36,
+                                   "centerline_ft":  [
+                                                         {
+                                                             "x":  10.25,
+                                                             "y":  0.25
+                                                         },
+                                                         {
+                                                             "x":  10.25,
+                                                             "y":  22
+                                                         },
+                                                         {
+                                                             "x":  8.5,
+                                                             "y":  22
+                                                         },
+                                                         {
+                                                             "x":  8.5,
+                                                             "y":  27
+                                                         }
+                                                     ],
+                                   "closed_state_obstacle_intersections":  [
+
+                                                                           ],
+                                   "work_aisle_width_in":  42,
+                                   "route_margin_each_side_in":  3,
+                                   "dining_zone_east_spill_in":  9,
+                                   "status":  "Plan-coordinate living-to-porch proposal through the 42 in kitchen aisle; it does not validate travel with appliances open."
+                               }
+                 },
+    "conclusion":  "A connected 36 in living-to-porch centerline avoids the modeled closed-state furniture and cabinet blocks in this explicit route study. The kitchen envelope is 21 sf above the owner-directed program target, the 4 ft dining-facing island end gives two assumed 24 in stool positions no side allowance, the dining route shares the no-end-chair zone, and the route uses a 42 in work aisle with only 3 in geometric margins. Treat as a trade-off study, not a selected plan.",
+    "limitations":  [
+                        "The 42 in clearance from island to half-wall is not modeled or established by this candidate.",
+                        "No complete room boundary, wall returns, swing arcs, thresholds or physical clear openings are modeled.",
+                        "The 5 ft French-door pair and 6 ft living opening are nominal reservations, not verified clear widths.",
+                        "Oven, dishwasher and refrigerator operation envelopes are absent; the route may be blocked while appliances are open.",
+                        "The stool body, pull-back, ergonomic envelope and product selection are unverified; the 24 in occupancy depth is an assumption.",
+                        "No site, overall shell fit, M-06 fixture fit, service route, roof, structure, IFC, code review or professional review is included.",
+                        "The proposal does not change selected-D, assign M-06/B, or establish code compliance, accessibility, structural safety, certification, permit approval or construction readiness."
+                    ]
+}

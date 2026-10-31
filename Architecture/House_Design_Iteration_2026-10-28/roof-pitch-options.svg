@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="980" viewBox="0 0 1120 980">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:25px;font-weight:bold}.sub{font-size:16px}.panel{fill:#fbf8f1;stroke:#c8baa3;stroke-width:1.5}.paneltitle{font-size:17px;font-weight:bold}.label{font-size:14px}.roof{fill:#947358;fill-opacity:.22;stroke:#594638;stroke-width:4}.base{stroke:#6b6257;stroke-width:2}.note{font-size:14px;fill:#514b43}</style>
+<text class="title" x="36" y="38">Steep gable proportions â€” proposal comparison</text>
+<text class="sub" x="36" y="66">Unapproved 40 Ã— 42 ft test envelope; common drawing scale 6 px/ft; rise shown above a hypothetical eave datum.</text>
+<text class="sub" x="36" y="91">Pitch and ridge direction remain TBD. No roof assembly, wings, openings, loads or structure are modeled.</text>
+<rect class="panel" x="36" y="112" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="52" y="140">10:12 | ridge parallel to 42-ft shell depth</text>
+<text class="label" x="52" y="164">span 40 ft | rise 16.667 ft above eave | proposal only</text>
+<line class="base" x1="84" y1="336" x2="508" y2="336"/>
+<path class="roof" d="M 176 336 L 296 235.998 L 416 336 Z"/>
+<line class="base" x1="176" y1="336" x2="176" y2="356"/>
+<line class="base" x1="416" y1="336" x2="416" y2="356"/>
+<text class="label" x="296" y="374" text-anchor="middle">40 ft</text>
+<text class="label" x="344" y="255.998" text-anchor="middle">16.667 ft rise</text>
+<rect class="panel" x="572" y="112" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="588" y="140">10:12 | ridge parallel to 40-ft shell width</text>
+<text class="label" x="588" y="164">span 42 ft | rise 17.5 ft above eave | proposal only</text>
+<line class="base" x1="620" y1="336" x2="1044" y2="336"/>
+<path class="roof" d="M 706 336 L 832 231 L 958 336 Z"/>
+<line class="base" x1="706" y1="336" x2="706" y2="356"/>
+<line class="base" x1="958" y1="336" x2="958" y2="356"/>
+<text class="label" x="832" y="374" text-anchor="middle">42 ft</text>
+<text class="label" x="880" y="251" text-anchor="middle">17.5 ft rise</text>
+<rect class="panel" x="36" y="384" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="52" y="412">12:12 | ridge parallel to 42-ft shell depth</text>
+<text class="label" x="52" y="436">span 40 ft | rise 20 ft above eave | proposal only</text>
+<line class="base" x1="84" y1="608" x2="508" y2="608"/>
+<path class="roof" d="M 176 608 L 296 488 L 416 608 Z"/>
+<line class="base" x1="176" y1="608" x2="176" y2="628"/>
+<line class="base" x1="416" y1="608" x2="416" y2="628"/>
+<text class="label" x="296" y="646" text-anchor="middle">40 ft</text>
+<text class="label" x="344" y="508" text-anchor="middle">20 ft rise</text>
+<rect class="panel" x="572" y="384" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="588" y="412">12:12 | ridge parallel to 40-ft shell width</text>
+<text class="label" x="588" y="436">span 42 ft | rise 21 ft above eave | proposal only</text>
+<line class="base" x1="620" y1="608" x2="1044" y2="608"/>
+<path class="roof" d="M 706 608 L 832 482 L 958 608 Z"/>
+<line class="base" x1="706" y1="608" x2="706" y2="628"/>
+<line class="base" x1="958" y1="608" x2="958" y2="628"/>
+<text class="label" x="832" y="646" text-anchor="middle">42 ft</text>
+<text class="label" x="880" y="502" text-anchor="middle">21 ft rise</text>
+<rect class="panel" x="36" y="656" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="52" y="684">14:12 | ridge parallel to 42-ft shell depth</text>
+<text class="label" x="52" y="708">span 40 ft | rise 23.333 ft above eave | proposal only</text>
+<line class="base" x1="84" y1="880" x2="508" y2="880"/>
+<path class="roof" d="M 176 880 L 296 740.002 L 416 880 Z"/>
+<line class="base" x1="176" y1="880" x2="176" y2="900"/>
+<line class="base" x1="416" y1="880" x2="416" y2="900"/>
+<text class="label" x="296" y="918" text-anchor="middle">40 ft</text>
+<text class="label" x="344" y="760.002" text-anchor="middle">23.333 ft rise</text>
+<rect class="panel" x="572" y="656" width="520" height="258" rx="8"/>
+<text class="paneltitle" x="588" y="684">14:12 | ridge parallel to 40-ft shell width</text>
+<text class="label" x="588" y="708">span 42 ft | rise 24.5 ft above eave | proposal only</text>
+<line class="base" x1="620" y1="880" x2="1044" y2="880"/>
+<path class="roof" d="M 706 880 L 832 733 L 958 880 Z"/>
+<line class="base" x1="706" y1="880" x2="706" y2="900"/>
+<line class="base" x1="958" y1="880" x2="958" y2="900"/>
+<text class="label" x="832" y="918" text-anchor="middle">42 ft</text>
+<text class="label" x="880" y="753" text-anchor="middle">24.5 ft rise</text>
+<text class="note" x="36" y="944">Illustrative geometry only. Steep pitch does not establish lower snow load or structural suitability; consult site-specific code path and qualified design.</text>
+</svg>

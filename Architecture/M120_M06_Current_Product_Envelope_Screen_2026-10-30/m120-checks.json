@@ -1,0 +1,27 @@
+{
+    "schema":  "forever-home.m120-m06-screen-checks.v1",
+    "result":  "pass",
+    "check_count":  14,
+    "checks":  {
+                   "observation_input_hash_matches":  true,
+                   "selected_d_hash_matches":  true,
+                   "owner_proposal_hash_matches":  true,
+                   "predecessor_pair_source_hash_matches":  true,
+                   "m06_remains_unassigned":  true,
+                   "current_wc_source_identifies_selected_sku":  true,
+                   "current_wc_plan_bounds_are_finite_positive":  true,
+                   "wc_rough_in_is_retained":  true,
+                   "sink_candidate_pair_count_matches":  true,
+                   "all_pairs_meet_preliminary_side_spacing_screen":  true,
+                   "all_pair_body_boxes_nonoverlap_under_assumption":  true,
+                   "all_pairs_contained_in_gross_B_rectangle":  true,
+                   "no_pair_promoted_to_selected_fixture":  true,
+                   "no_room_assignment_or_compliance_claim":  true
+               },
+    "counts":  {
+                   "pairs":  16,
+                   "side_spacing_screen_pass":  16,
+                   "body_nonoverlap_pass":  16,
+                   "gross_containment_pass":  16
+               }
+}

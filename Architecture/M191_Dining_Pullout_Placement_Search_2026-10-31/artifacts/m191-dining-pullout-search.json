@@ -1,0 +1,481 @@
+{
+    "schema":  "forever-home-m191-dining-pullout-placement-search-v1",
+    "status":  "pass",
+    "design_result":  "no_tested_translation_restores_route_with_pullout_proxies",
+    "method":  "Three rigid one-foot placement cases generated from the M188 arrangement; each reruns the M186 36-in route search with four 36-in-from-table-edge chair-use rectangles added as obstacles.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Tools/search_m188_dining_set_placement.ps1":  "0bbcbca1132781ab18420c4f9a754af51507824b85d63a3bd01b1f973573fa67",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "program_block_local_ft":  [
+                                   0,
+                                   14,
+                                   11,
+                                   10
+                               ],
+    "target_dining_area_sf":  110,
+    "cases":  [
+                  {
+                      "case":  "baseline",
+                      "translation_ft":  [
+                                             0,
+                                             0
+                                         ],
+                      "result":  "no_candidate_on_bounded_quarter_foot_grid",
+                      "path_found":  false,
+                      "path_length_ft":  null,
+                      "turns":  null,
+                      "reached_nodes":  5284,
+                      "nearest_to_porch_ft":  10,
+                      "chair_bodies":  [
+                                           {
+                                               "y":  15.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  3.5
+                                           },
+                                           {
+                                               "y":  15.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  6
+                                           },
+                                           {
+                                               "y":  17.5,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  1.3333333333
+                                           },
+                                           {
+                                               "y":  19,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  1.3333333333
+                                           }
+                                       ],
+                      "pullout_use_envelopes":  [
+                                                    {
+                                                        "y":  14.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  3.5
+                                                    },
+                                                    {
+                                                        "y":  14.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  6
+                                                    },
+                                                    {
+                                                        "y":  17.5,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  0
+                                                    },
+                                                    {
+                                                        "y":  19,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  0
+                                                    }
+                                                ],
+                      "route_waypoints":  [
+                                              {
+                                                  "x":  19.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  13.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  8.5,
+                                                  "y":  27.5
+                                              }
+                                          ],
+                      "blocking_frontier":  [
+                                                {
+                                                    "constraint":  "centerline-envelope:east_of_core",
+                                                    "frontier_edge_count":  140
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:island",
+                                                    "frontier_edge_count":  113
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall",
+                                                    "frontier_edge_count":  73
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-05-entry",
+                                                    "frontier_edge_count":  70
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:perimeter-run",
+                                                    "frontier_edge_count":  49
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-04-pantry",
+                                                    "frontier_edge_count":  40
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall-return",
+                                                    "frontier_edge_count":  33
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:assumed-stool-use-proxy",
+                                                    "frontier_edge_count":  32
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:west_of_core",
+                                                    "frontier_edge_count":  19
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:south-chair-1-pullout-36in",
+                                                    "frontier_edge_count":  3
+                                                }
+                                            ]
+                  },
+                  {
+                      "case":  "east_1ft",
+                      "translation_ft":  [
+                                             1,
+                                             0
+                                         ],
+                      "result":  "no_candidate_on_bounded_quarter_foot_grid",
+                      "path_found":  false,
+                      "path_length_ft":  null,
+                      "turns":  null,
+                      "reached_nodes":  5284,
+                      "nearest_to_porch_ft":  10,
+                      "chair_bodies":  [
+                                           {
+                                               "y":  15.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  4.5
+                                           },
+                                           {
+                                               "y":  15.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  7
+                                           },
+                                           {
+                                               "y":  17.5,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  2.3333333332999997
+                                           },
+                                           {
+                                               "y":  19,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  2.3333333332999997
+                                           }
+                                       ],
+                      "pullout_use_envelopes":  [
+                                                    {
+                                                        "y":  14.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  4.5
+                                                    },
+                                                    {
+                                                        "y":  14.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  7
+                                                    },
+                                                    {
+                                                        "y":  17.5,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  1
+                                                    },
+                                                    {
+                                                        "y":  19,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  1
+                                                    }
+                                                ],
+                      "route_waypoints":  [
+                                              {
+                                                  "x":  19.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  13.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  8.5,
+                                                  "y":  27.5
+                                              }
+                                          ],
+                      "blocking_frontier":  [
+                                                {
+                                                    "constraint":  "centerline-envelope:east_of_core",
+                                                    "frontier_edge_count":  140
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:island",
+                                                    "frontier_edge_count":  113
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall",
+                                                    "frontier_edge_count":  73
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-05-entry",
+                                                    "frontier_edge_count":  70
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:perimeter-run",
+                                                    "frontier_edge_count":  49
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-04-pantry",
+                                                    "frontier_edge_count":  40
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall-return",
+                                                    "frontier_edge_count":  33
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:assumed-stool-use-proxy",
+                                                    "frontier_edge_count":  32
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:west_of_core",
+                                                    "frontier_edge_count":  19
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:south-chair-1-pullout-36in",
+                                                    "frontier_edge_count":  3
+                                                }
+                                            ]
+                  },
+                  {
+                      "case":  "north_1ft",
+                      "translation_ft":  [
+                                             0,
+                                             1
+                                         ],
+                      "result":  "no_candidate_on_bounded_quarter_foot_grid",
+                      "path_found":  false,
+                      "path_length_ft":  null,
+                      "turns":  null,
+                      "reached_nodes":  5296,
+                      "nearest_to_porch_ft":  10,
+                      "chair_bodies":  [
+                                           {
+                                               "y":  16.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  3.5
+                                           },
+                                           {
+                                               "y":  16.8333333333,
+                                               "w":  1.5,
+                                               "d":  1.6666666667,
+                                               "x":  6
+                                           },
+                                           {
+                                               "y":  18.5,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  1.3333333333
+                                           },
+                                           {
+                                               "y":  20,
+                                               "w":  1.6666666667,
+                                               "d":  1.5,
+                                               "x":  1.3333333333
+                                           }
+                                       ],
+                      "pullout_use_envelopes":  [
+                                                    {
+                                                        "y":  15.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  3.5
+                                                    },
+                                                    {
+                                                        "y":  15.5,
+                                                        "w":  1.5,
+                                                        "d":  3,
+                                                        "x":  6
+                                                    },
+                                                    {
+                                                        "y":  18.5,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  0
+                                                    },
+                                                    {
+                                                        "y":  20,
+                                                        "w":  3,
+                                                        "d":  1.5,
+                                                        "x":  0
+                                                    }
+                                                ],
+                      "route_waypoints":  [
+                                              {
+                                                  "x":  19.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  13.5,
+                                                  "y":  10
+                                              },
+                                              {
+                                                  "x":  8.5,
+                                                  "y":  27.5
+                                              }
+                                          ],
+                      "blocking_frontier":  [
+                                                {
+                                                    "constraint":  "centerline-envelope:east_of_core",
+                                                    "frontier_edge_count":  140
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:island",
+                                                    "frontier_edge_count":  113
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall",
+                                                    "frontier_edge_count":  73
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-05-entry",
+                                                    "frontier_edge_count":  70
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:perimeter-run",
+                                                    "frontier_edge_count":  53
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:M-04-pantry",
+                                                    "frontier_edge_count":  40
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:assumed-stool-use-proxy",
+                                                    "frontier_edge_count":  36
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:half-wall-return",
+                                                    "frontier_edge_count":  33
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:west_of_core",
+                                                    "frontier_edge_count":  19
+                                                },
+                                                {
+                                                    "constraint":  "centerline-envelope:south-chair-1-pullout-36in",
+                                                    "frontier_edge_count":  3
+                                                }
+                                            ]
+                  }
+              ],
+    "summary":  [
+                    {
+                        "case":  "baseline",
+                        "translation_x_ft":  0,
+                        "translation_y_ft":  0,
+                        "path_found":  false,
+                        "route_length_ft":  null,
+                        "turn_count":  null,
+                        "reachable_nodes":  5284,
+                        "nearest_porch_door_ft":  10,
+                        "all_bodies_and_pullouts_inside_11_by_10":  true,
+                        "pullout_proxy_count":  4,
+                        "grid_step_ft":  0.25,
+                        "route_width_in":  36
+                    },
+                    {
+                        "case":  "east_1ft",
+                        "translation_x_ft":  1,
+                        "translation_y_ft":  0,
+                        "path_found":  false,
+                        "route_length_ft":  null,
+                        "turn_count":  null,
+                        "reachable_nodes":  5284,
+                        "nearest_porch_door_ft":  10,
+                        "all_bodies_and_pullouts_inside_11_by_10":  true,
+                        "pullout_proxy_count":  4,
+                        "grid_step_ft":  0.25,
+                        "route_width_in":  36
+                    },
+                    {
+                        "case":  "north_1ft",
+                        "translation_x_ft":  0,
+                        "translation_y_ft":  1,
+                        "path_found":  false,
+                        "route_length_ft":  null,
+                        "turn_count":  null,
+                        "reachable_nodes":  5296,
+                        "nearest_porch_door_ft":  10,
+                        "all_bodies_and_pullouts_inside_11_by_10":  true,
+                        "pullout_proxy_count":  4,
+                        "grid_step_ft":  0.25,
+                        "route_width_in":  36
+                    }
+                ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  7,
+                   "total":  7,
+                   "items":  [
+                                 {
+                                     "id":  "three_declared_translations",
+                                     "pass":  true,
+                                     "detail":  "Baseline and owner-authorized M188 east/north one-foot sensitivities are tested."
+                                 },
+                                 {
+                                     "id":  "documented_chair_body_dimensions",
+                                     "pass":  true,
+                                     "detail":  "Every case retains exactly four 18 x 20-in chair-body envelopes."
+                                 },
+                                 {
+                                     "id":  "all_furniture_and_pullouts_inside_program_block",
+                                     "pass":  true,
+                                     "detail":  "Every unchanged table/chair body and 36-in pull-out proxy stays inside the 11 x 10-ft study block."
+                                 },
+                                 {
+                                     "id":  "route_search_keeps_36in_width",
+                                     "pass":  true,
+                                     "detail":  "M186 retains its exact quarter-foot grid and 36-in route width."
+                                 },
+                                 {
+                                     "id":  "selected_d_unchanged",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source fingerprint matches protected baseline."
+                                 },
+                                 {
+                                     "id":  "m06_b_unassigned",
+                                     "pass":  true,
+                                     "detail":  "East/pantry-side M-06/B remains unassigned."
+                                 },
+                                 {
+                                     "id":  "source_hashes_bound",
+                                     "pass":  true,
+                                     "detail":  "Search, prior placement, specification, selected-D and bath-window sources are fingerprinted."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "The three one-foot translations are finite sensitivities, not a continuous/exhaustive search and not owner-selected furniture positions.",
+                        "The 36-in pull-out rectangle is a study interpretation of Kitchen_Dining_Porch_Specs.md; exact chair, occupant and motion geometry are absent.",
+                        "Grid search can only establish a path within the tested quarter-foot centerline lattice and listed static proxies.",
+                        "The source 42-in preferred distance to walls/porch doors is not checked because physical walls and clear door geometry are unresolved.",
+                        "Kitchen/dining arrangement, test shell and M-06 windows remain unapproved; B stays unassigned.",
+                        "No Revit/IFC, selected-D, Incoming RFA, remote state or history is changed.",
+                        "No code, accessibility, structural-safety, professional, permit or construction-readiness conclusion is made."
+                    ]
+}

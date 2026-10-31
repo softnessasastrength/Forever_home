@@ -1,0 +1,335 @@
+﻿{
+    "schema":  "forever-home.m35-social-zone-casework-porch.v1",
+    "title":  "M35 â€” social-zone casework, occupied chairs and porch route screen",
+    "status":  "two explicit porch candidates; east-side candidate passes schematic room/casework/chair-route checks, pending product operation and owner/site review",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd",
+                                       "Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+                                   },
+    "assumptions":  [
+                        "The source-defined kitchen and dining room blocks are clear-room targets, not verified wall faces.",
+                        "The south kitchen edge is a proposed 24in-deep continuous counter run; appliance products, depths, handles, door swings and exact clearances are not represented.",
+                        "The 36in sink-base option, appliance sequence, half-wall location, 6ft half-wall length and 0.5ft island shift are proposals chosen for this fit screen, not owner selections.",
+                        "The east porch is a site-unoriented proposal outside the current 40x42ft conditioned-shell test boundary; porch projection is allowed because X-01 is exterior/semi-conditioned.",
+                        "The nominal 0.5ft room-block separators represent wall allowance in source studies, not modeled wall construction.",
+                        "The east dining side is kept chair-free to test a distinct 36in route; French-door swing and exterior landing/grade are not modeled."
+                    ],
+    "room_blocks":  {
+                        "M02":  {
+                                    "id":  "M-02",
+                                    "name":  "Kitchen",
+                                    "x_ft":  22,
+                                    "y_ft":  0.66666666666666663,
+                                    "width_ft":  14,
+                                    "depth_ft":  12,
+                                    "area_sf":  168,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "M03":  {
+                                    "id":  "M-03",
+                                    "name":  "Dining",
+                                    "x_ft":  22,
+                                    "y_ft":  13.166666666666666,
+                                    "width_ft":  11,
+                                    "depth_ft":  10,
+                                    "area_sf":  110,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "M04":  {
+                                    "id":  "M-04",
+                                    "name":  "Pantry",
+                                    "x_ft":  31.5,
+                                    "y_ft":  23.666666666666668,
+                                    "width_ft":  5,
+                                    "depth_ft":  7,
+                                    "area_sf":  35,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "M01":  {
+                                    "id":  "M-01",
+                                    "name":  "Living room",
+                                    "x_ft":  5.5,
+                                    "y_ft":  0.66666666666666663,
+                                    "width_ft":  16,
+                                    "depth_ft":  15,
+                                    "area_sf":  240,
+                                    "status":  "proposed room-block placement; not wall geometry"
+                                },
+                        "shell":  {
+                                      "name":  "main shell test envelope",
+                                      "x_ft":  0,
+                                      "y_ft":  0,
+                                      "width_ft":  40,
+                                      "depth_ft":  42
+                                  },
+                        "M06_B":  {
+                                      "name":  "M06-B unassigned pantry-side search window",
+                                      "x_ft":  21.166666666666668,
+                                      "y_ft":  23.666666666666668,
+                                      "width_ft":  10.333333333333332,
+                                      "depth_ft":  7
+                                  }
+                    },
+    "casework":  {
+                     "south_wall_run":  {
+                                            "name":  "24in-deep south-wall cabinet run candidate",
+                                            "x_ft":  22,
+                                            "y_ft":  0.66666666666666663,
+                                            "width_ft":  14,
+                                            "depth_ft":  2
+                                        },
+                     "depth_in":  24,
+                     "appliance_width_schedule":  [
+                                                      {
+                                                          "id":  "refrigerator width reservation",
+                                                          "x_ft":  22,
+                                                          "width_in":  36,
+                                                          "source":  "counter-depth preferred width; depth/opening unresolved"
+                                                      },
+                                                      {
+                                                          "id":  "sink-base width reservation",
+                                                          "x_ft":  25,
+                                                          "width_in":  36,
+                                                          "source":  "one listed 33in or 36in option; 36in used for stress screen"
+                                                      },
+                                                      {
+                                                          "id":  "dishwasher width reservation",
+                                                          "x_ft":  28,
+                                                          "width_in":  24,
+                                                          "source":  "listed 24in width; adjacent to sink"
+                                                      },
+                                                      {
+                                                          "id":  "range plus two landing reservations",
+                                                          "x_ft":  30,
+                                                          "width_in":  54,
+                                                          "source":  "listed 30in range with 12in clear counter each side"
+                                                      }
+                                                  ],
+                     "combined_width_in":  150,
+                     "source_run_length_in":  168,
+                     "unassigned_residual_width_in":  18,
+                     "sequence_note":  "Fridge, 36in sink base, adjacent 24in dishwasher, and 30in range with 12in counter landings each side; no product model or operating envelope.",
+                     "halfwall":  {
+                                      "name":  "6ft x 6in half-wall candidate",
+                                      "x_ft":  21.5,
+                                      "y_ft":  0.66666666666666663,
+                                      "width_ft":  0.5,
+                                      "depth_ft":  6
+                                  },
+                     "halfwall_source_length_range_in":  [
+                                                             72,
+                                                             108
+                                                         ],
+                     "halfwall_clear_opening_ft":  6
+                 },
+    "island":  {
+                   "source_body":  {
+                                       "x_ft":  26.666666666666668,
+                                       "y_ft":  6.666666666666667,
+                                       "width_ft":  8,
+                                       "depth_ft":  4
+                                   },
+                   "candidate_body":  {
+                                          "name":  "M35 shifted appliance-free island candidate",
+                                          "x_ft":  26.666666666666668,
+                                          "y_ft":  6.166666666666667,
+                                          "width_ft":  8,
+                                          "depth_ft":  4
+                                      },
+                   "south_shift_ft":  0.5,
+                   "clearance_42in":  {
+                                          "name":  "island 42in clear-floor envelope",
+                                          "x_ft":  23.166666666666668,
+                                          "y_ft":  2.666666666666667,
+                                          "width_ft":  15,
+                                          "depth_ft":  11
+                                      },
+                   "clearance_envelope_extension_beyond_M02":  {
+                                                                   "east_ft":  2.1666666666666714,
+                                                                   "north_past_M02_ft":  1.0000000000000018,
+                                                                   "into_M03_ft":  0.50000000000000178
+                                                               },
+                   "south_run_to_body_clearance_ft":  3.5,
+                   "halfwall_to_body_clearance_ft":  4.6666666666666679,
+                   "source_split_and_stools":  "6ft/2ft surface split remains unresolved; two stools are required by source spec but stool envelopes and occupied positions are unmodeled."
+               },
+    "dining":  {
+                   "table":  {
+                                 "name":  "36x60in table candidate",
+                                 "x_ft":  25,
+                                 "y_ft":  17.166666666666664,
+                                 "width_ft":  5,
+                                 "depth_ft":  3
+                             },
+                   "table_clearance_36in":  {
+                                                "name":  "36in table pull-back envelope",
+                                                "x_ft":  22,
+                                                "y_ft":  14.166666666666664,
+                                                "width_ft":  11,
+                                                "depth_ft":  9
+                                            },
+                   "table_clearance_42in_preferred":  {
+                                                          "name":  "42in preferred table envelope",
+                                                          "x_ft":  21.5,
+                                                          "y_ft":  13.666666666666664,
+                                                          "width_ft":  12,
+                                                          "depth_ft":  10
+                                                      },
+                   "chairs":  [
+                                  {
+                                      "name":  "north chair (no east-side chair)",
+                                      "x_ft":  26.75,
+                                      "y_ft":  20.166666666666664,
+                                      "width_ft":  1.5,
+                                      "depth_ft":  1.6666666666666667
+                                  },
+                                  {
+                                      "name":  "south chair A",
+                                      "x_ft":  25.5,
+                                      "y_ft":  15.499999999999998,
+                                      "width_ft":  1.5,
+                                      "depth_ft":  1.6666666666666667
+                                  },
+                                  {
+                                      "name":  "south chair B",
+                                      "x_ft":  27.5,
+                                      "y_ft":  15.499999999999998,
+                                      "width_ft":  1.5,
+                                      "depth_ft":  1.6666666666666667
+                                  },
+                                  {
+                                      "name":  "west end chair",
+                                      "x_ft":  23.333333333333332,
+                                      "y_ft":  17.916666666666664,
+                                      "width_ft":  1.6666666666666667,
+                                      "depth_ft":  1.5
+                                  }
+                              ],
+                   "chair_free_side":  "east",
+                   "porch_route_36in":  {
+                                            "name":  "36in table-to-French-door route; east side kept chair-free",
+                                            "x_ft":  30,
+                                            "y_ft":  17.166666666666664,
+                                            "width_ft":  3,
+                                            "depth_ft":  3
+                                        },
+                   "French_door_width_ft":  5,
+                   "French_door_opening":  {
+                                               "name":  "proposed 5ft French-door opening at east wall",
+                                               "x_ft":  33,
+                                               "y_ft":  16.166666666666664,
+                                               "width_ft":  0.5,
+                                               "depth_ft":  5
+                                           }
+               },
+    "porch_candidates":  {
+                             "north":  {
+                                           "rectangle":  {
+                                                             "name":  "north porch candidate (12x10)",
+                                                             "x_ft":  21.5,
+                                                             "y_ft":  23.666666666666664,
+                                                             "width_ft":  12,
+                                                             "depth_ft":  10
+                                                         },
+                                           "overlap_with_unassigned_M06_B_sf":  70,
+                                           "overlap_with_island_42in_sf":  0,
+                                           "status":  "not preferred for this layout; occupies 70sf of the gross M-06 B search window"
+                                       },
+                             "east":  {
+                                          "rectangle":  {
+                                                            "name":  "east porch candidate (12x10)",
+                                                            "x_ft":  33.5,
+                                                            "y_ft":  13.666666666666666,
+                                                            "width_ft":  12,
+                                                            "depth_ft":  10
+                                                        },
+                                          "French_door_opening":  {
+                                                                      "name":  "proposed 5ft French-door opening at east wall",
+                                                                      "x_ft":  33,
+                                                                      "y_ft":  16.166666666666664,
+                                                                      "width_ft":  0.5,
+                                                                      "depth_ft":  5
+                                                                  },
+                                          "exterior_door_opening":  {
+                                                                        "name":  "proposed 3ft porch exterior door opening",
+                                                                        "x_ft":  45.5,
+                                                                        "y_ft":  17.166666666666664,
+                                                                        "width_ft":  0.5,
+                                                                        "depth_ft":  3
+                                                                    },
+                                          "route_36in":  {
+                                                             "name":  "36in through-porch route candidate",
+                                                             "x_ft":  33.5,
+                                                             "y_ft":  17.166666666666664,
+                                                             "width_ft":  12,
+                                                             "depth_ft":  3
+                                                         },
+                                          "overlap_with_M06_B_sf":  0,
+                                          "overlap_with_island_42in_sf":  0,
+                                          "overlap_with_M04_sf":  0,
+                                          "projection_beyond_main_shell_east_ft":  5.5,
+                                          "status":  "schematic candidate; clear of B, island envelope and comparison core; extends beyond shell test boundary and meets M-04 at an edge without area overlap"
+                                      }
+                         },
+    "measured_findings":  {
+                              "M33_current_candidate_island_to_table_42in_envelope_overlap_sf":  5.166667,
+                              "M35_candidate_island_shift_south_ft":  0.5,
+                              "M35_island_42in_to_table_42in_envelopes_overlap_sf":  0,
+                              "M35_cabinet_appliance_width_sum_in":  150,
+                              "M35_cabinet_run_residual_width_in":  18,
+                              "east_porch_candidate_to_M06_B_overlap_sf":  0,
+                              "north_porch_candidate_to_M06_B_overlap_sf":  70,
+                              "east_route_chair_collisions":  [
+
+                                                              ],
+                              "comparison_core_collisions":  [
+
+                                                             ]
+                          },
+    "checks":  {
+                   "selected_D_fingerprint_matches_owner_followup":  true,
+                   "source_room_targets_remain_14x12_and_11x10":  true,
+                   "owner_appliance_widths_fit_14ft_linear_run":  true,
+                   "sink_and_dishwasher_are_adjacent_in_candidate_sequence":  true,
+                   "appliance_width_reservations_fit_candidate_perimeter_run":  true,
+                   "island_body_remains_inside_kitchen_after_half_ft_south_shift":  true,
+                   "island_42in_envelope_remains_inside_main_shell":  true,
+                   "south_cabinet_run_remains_inside_kitchen":  true,
+                   "island_42in_body_envelope_does_not_overlap_south_cabinet_run":  true,
+                   "south_cabinet_to_island_body_gap_is_exactly_42in":  true,
+                   "proposed_halfwall_uses_6in_gap_and_leaves_6ft_opening":  true,
+                   "halfwall_candidate_clears_island_42in_envelope":  true,
+                   "island_42in_and_table_36in_envelopes_do_not_overlap":  true,
+                   "island_42in_and_table_42in_preferred_envelopes_do_not_overlap":  true,
+                   "four_spec_sized_chairs_fit_dining_block":  true,
+                   "four_chair_bodies_do_not_overlap_table_or_each_other":  true,
+                   "east_side_route_is_36in_and_free_of_candidate_chairs":  true,
+                   "east_porch_is_adjacent_to_dining_with_a_5ft_door_zone":  true,
+                   "east_porch_candidate_does_not_overlap_unassigned_M06_B":  true,
+                   "east_porch_36in_route_clears_unassigned_M06_B":  true,
+                   "east_porch_candidate_clears_island_42in_envelope":  true,
+                   "east_porch_5ft_door_fits_dining_porch_shared_wall_band":  true,
+                   "east_porch_french_door_aligns_with_36in_table_route":  true,
+                   "east_porch_exterior_door_is_3ft_and_centred_on_route":  true,
+                   "social_zone_and_porch_route_clear_comparison_core":  true,
+                   "M33_preferred_clearance_candidate_overlap_is_source_derived_5_166667sf":  true,
+                   "south_shift_removes_M33_preferred_envelope_overlap":  true,
+                   "north_porch_conflict_is_quantified_against_M06_B":  true,
+                   "M06_B_remains_unassigned":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "This is a plan-envelope study, not a Revit model, IFC export, permit layout or selected design.",
+                        "The east porch location/orientation is not georeferenced; the 40x42ft main-shell test rectangle is not a surveyed building boundary.",
+                        "The 36in refrigerator width is source-derived, but depth, door opening, manufacturer installation clearances, sink plumbing, range cutout and hood duct route are not checked.",
+                        "The two island stools, occupied users, cabinetry door/drawer sweeps, refrigerator and dishwasher open envelopes, actual wall faces and French-door leaf/swing are not modeled.",
+                        "The 36in dining-to-porch route is a rectangle clear of the four candidate chairs, not a code or accessibility determination; porch grade, landing and outside route remain unknown.",
+                        "The east porch touches the proposed pantry block along an edge and projects 5.5ft beyond the main-shell test rectangle. Site, foundation, roof intersection and exterior circulation remain open.",
+                        "The island 42in clear-floor envelope extends 2.167ft east beyond M-02 and 0.5ft north into M-03; these portions must remain genuinely open and unobstructed.",
+                        "M-06 B remains an unassigned gross search window. The north porch candidate occupies 70sf of it; no M-06 geometry, fixture, door, service route or clearance has been assigned.",
+                        "No code, accessibility, structural, professional certification, permit or construction-readiness claim is made."
+                    ]
+}

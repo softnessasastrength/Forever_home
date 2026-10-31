@@ -1,0 +1,14 @@
+﻿{
+    "generator":  "Tools/build_m38_steep_roof_pitch_options.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study_json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "owner_decision":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_code_research":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "output_hashes_sha256":  {
+                                 "pitch_options":  "d24fc18da1116ccf7916d388d5f243737518c5e499fb0efa37fee682c001cb84",
+                                 "checks":  "693b7eb764c9236fd010c20a973fdb685f9d84fe47df08192e4820887c55b78b",
+                                 "svg":  "de07cc2df871269eec378554fa192550e3865bf11637aa305e20932e0e40ade7"
+                             }
+}

@@ -1,0 +1,195 @@
+{
+    "schema":  "forever-home.m133-primary-bath-fit.v1",
+    "status":  "proposal-only pass; no design selected",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "selected":  false
+              },
+    "source_hashes_sha256":  {
+                                 "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m132_layouts":  "c9868179d98ab132209e34cacf44d05dbd732fc889801a02289d3411c6b00853",
+                                 "m132_report":  "64f79b489a2b8245162af896e0ff8de988707b4cb3df9d7b99aebdb05c545f4c",
+                                 "m132_route_validation":  "1d96a5bcdb848af1f1b7e77ff5d6c7536a024dd21c590387e245c8a743d87737",
+                                 "sink_sources":  "dc8ce0123ce233948b15d59d7f7ed6f6b1b10d74a7492e6eb808c4b9794ba9f7",
+                                 "toilet_product_sources":  "7bdae9f61fd7a8855dc8a18dee03f09cfa9fc40f8fca4733367d8a9389a74b89",
+                                 "clearance_source":  "bd0b6a5692ca345ff43fcdbbdfe09b02f090e466e1420874c87f58fc7c495bc7",
+                                 "product_sources":  "7955d9aa6fb9b5173e3b83a92283864621144552451c5b03d7ab74578713047c",
+                                 "analyzer":  "aca08ee389baedb0cb044cf7bbc63c066b640aee1086a6cf37ca19999a98a688"
+                             },
+    "product_envelopes":  {
+                              "toilet":  {
+                                             "id":  "American Standard Champion PRO 610AA001.020 comparison envelope",
+                                             "width_in":  19,
+                                             "depth_in":  30.25,
+                                             "basis":  "Selected product infographic envelope as recorded in M06 research; no exact Revit solids."
+                                         },
+                              "sink":  {
+                                           "id":  "KOHLER Tresham K-2844-4-0",
+                                           "width_in":  24,
+                                           "depth_in":  19.5,
+                                           "height_in":  34.625,
+                                           "basis":  "Manufacturer nominal overall dimensions; direct source RFA is quarantined but not yet inspected."
+                                       },
+                              "bathtub":  {
+                                              "id":  "KOHLER Entity K-26108-LA-0",
+                                              "width_in":  60,
+                                              "depth_in":  32,
+                                              "height_in":  15.75,
+                                              "basis":  "Manufacturer overall dimensions; nominal plan envelope only, no local RFA geometry."
+                                          }
+                          },
+    "assumptions_in":  {
+                           "nominal_door_reservation":  42,
+                           "M37_wall_band_convention":  6,
+                           "WC_front_clearance_screen":  21,
+                           "WC_centerline_to_side_obstruction":  15,
+                           "WC_to_sink_centerline_spacing":  30
+                       },
+    "candidates":  [
+                       {
+                           "candidate_id":  "M133-M130-NE-19-TB01",
+                           "source_layout_id":  "M130-NE-19",
+                           "status":  "proposal-only; not selected",
+                           "room":  {
+                                        "width_in":  108,
+                                        "depth_in":  120
+                                    },
+                           "nominal_wc_body":  {
+                                                   "id":  "toilet_body",
+                                                   "x_in":  0,
+                                                   "y_in":  20,
+                                                   "width_in":  30.25,
+                                                   "depth_in":  19
+                                               },
+                           "nominal_sink_body":  {
+                                                     "id":  "lavatory_body",
+                                                     "x_in":  0,
+                                                     "y_in":  47.5,
+                                                     "width_in":  19.5,
+                                                     "depth_in":  24
+                                                 },
+                           "nominal_tub_body":  {
+                                                    "id":  "alcove_bath_body",
+                                                    "x_in":  24,
+                                                    "y_in":  88,
+                                                    "width_in":  60,
+                                                    "depth_in":  32
+                                                },
+                           "WC_side_clearance_screen":  {
+                                                            "id":  "WC_side_clearance_screen",
+                                                            "x_in":  0,
+                                                            "y_in":  14.5,
+                                                            "width_in":  30.25,
+                                                            "depth_in":  30
+                                                        },
+                           "WC_front_clearance_screen":  {
+                                                             "id":  "WC_front_clearance_screen",
+                                                             "x_in":  30.25,
+                                                             "y_in":  20,
+                                                             "width_in":  21,
+                                                             "depth_in":  19
+                                                         },
+                           "primary_bath_entry_reservation":  {
+                                                                  "south_wall_x_in":  33,
+                                                                  "width_in":  42,
+                                                                  "source_width_ft":  3.5,
+                                                                  "source_interface_wall_band_ft":  0.5,
+                                                                  "door_geometry_modeled":  false
+                                                              },
+                           "WC_centerline_from_south_in":  29.5,
+                           "sink_centerline_from_south_in":  59.5,
+                           "WC_sink_centerline_spacing_in":  30,
+                           "tub_access_area":  "not modeled",
+                           "service_route":  "not assessed"
+                       },
+                       {
+                           "candidate_id":  "M133-M130-NE-24-TB01",
+                           "source_layout_id":  "M130-NE-24",
+                           "status":  "proposal-only; not selected",
+                           "room":  {
+                                        "width_in":  120,
+                                        "depth_in":  108
+                                    },
+                           "nominal_wc_body":  {
+                                                   "id":  "toilet_body",
+                                                   "x_in":  0,
+                                                   "y_in":  20,
+                                                   "width_in":  30.25,
+                                                   "depth_in":  19
+                                               },
+                           "nominal_sink_body":  {
+                                                     "id":  "lavatory_body",
+                                                     "x_in":  0,
+                                                     "y_in":  47.5,
+                                                     "width_in":  19.5,
+                                                     "depth_in":  24
+                                                 },
+                           "nominal_tub_body":  {
+                                                    "id":  "alcove_bath_body",
+                                                    "x_in":  30,
+                                                    "y_in":  76,
+                                                    "width_in":  60,
+                                                    "depth_in":  32
+                                                },
+                           "WC_side_clearance_screen":  {
+                                                            "id":  "WC_side_clearance_screen",
+                                                            "x_in":  0,
+                                                            "y_in":  14.5,
+                                                            "width_in":  30.25,
+                                                            "depth_in":  30
+                                                        },
+                           "WC_front_clearance_screen":  {
+                                                             "id":  "WC_front_clearance_screen",
+                                                             "x_in":  30.25,
+                                                             "y_in":  20,
+                                                             "width_in":  21,
+                                                             "depth_in":  19
+                                                         },
+                           "primary_bath_entry_reservation":  {
+                                                                  "south_wall_x_in":  39,
+                                                                  "width_in":  42,
+                                                                  "source_width_ft":  3.5,
+                                                                  "source_interface_wall_band_ft":  0.5,
+                                                                  "door_geometry_modeled":  false
+                                                              },
+                           "WC_centerline_from_south_in":  29.5,
+                           "sink_centerline_from_south_in":  59.5,
+                           "WC_sink_centerline_spacing_in":  30,
+                           "tub_access_area":  "not modeled",
+                           "service_route":  "not assessed"
+                       }
+                   ],
+    "checks":  {
+                   "passed_count":  12,
+                   "check_count":  12,
+                   "failed":  [
+
+                              ],
+                   "results":  {
+                                   "selected_D_matches_reviewed_source":  true,
+                                   "exact_M132_layout_source_is_unchanged":  true,
+                                   "M132_analysis_and_route_reports_are_passed":  true,
+                                   "required_manufacturer_sources_are_recorded":  true,
+                                   "two_M130_upper_bath_blocks_are_tested":  true,
+                                   "all_nominal_fixture_bodies_fit_inside_each_room":  true,
+                                   "fixture_bodies_do_not_overlap":  true,
+                                   "WC_15in_side_clearance_screen_is_unobstructed":  true,
+                                   "WC_21in_front_strip_screen_is_unobstructed":  true,
+                                   "WC_to_sink_centerline_assumption_is_met":  true,
+                                   "centered_nominal_door_reservation_fits_contact_band":  true,
+                                   "reserved_south_interface_line_has_no_fixture_body":  true
+                               }
+               },
+    "limitations":  [
+                        "Product nominal rectangles, not verified Revit solids.",
+                        "The 0.5 ft interface is the existing M37 wall-band convention, not a modeled wall.",
+                        "The 3.5 ft south-edge reservation is not an opening or door.",
+                        "Door leaf, swing, approach and internal route are not modeled.",
+                        "Tub access/use envelope is not modeled.",
+                        "Rough-in, water/waste/vent routing and shared-service coordination are not checked.",
+                        "The 15 in side and 21 in front screens come from preliminary project research; local adoption/applicability and finished-face measurement remain unconfirmed.",
+                        "The 30 in WC-to-sink centerline spacing is an explicit study assumption, not a cited code requirement.",
+                        "No headroom, structural, code-compliance, Revit-placement or IFC result is claimed."
+                    ]
+}

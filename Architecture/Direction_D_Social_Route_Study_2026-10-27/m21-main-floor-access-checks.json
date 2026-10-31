@@ -1,0 +1,25 @@
+{
+    "schema":  "forever-home-m21-checks-v1",
+    "passed":  18,
+    "failed":  0,
+    "checks":  {
+                   "source_candidate_fingerprint_matches_m18":  true,
+                   "main_shell_is_documented_40_by_42_test_envelope":  true,
+                   "m05_is_4ft4_by_12ft_block":  true,
+                   "m05_area_is_52_square_feet":  true,
+                   "m05_is_8in_inside_east_test_edge":  true,
+                   "m05_to_m01_nominal_block_gap_is_6in":  true,
+                   "m05_and_m01_overlap_along_12ft":  true,
+                   "inherited_36in_route_proxy_fits_m05_y_span":  true,
+                   "proposed_route_spans_shell_edge_through_m05_gap_to_m01":  true,
+                   "m18_centered_door_proxy_gap_remains_10in":  true,
+                   "m18_offset_door_proxy_gap_remains_15in":  true,
+                   "both_door_tests_keep_identical_balanced_seating":  true,
+                   "nominal_door_pair_remains_5ft":  true,
+                   "porch_orientation_tests_remain_120sf":  true,
+                   "porch_12_by_10_reserve_remains_4in":  true,
+                   "porch_10_by_12_projection_remains_20in":  true,
+                   "m06_search_window_b_remains_unassigned":  true,
+                   "entry_proposal_does_not_claim_doors_walls_or_geographic_orientation":  true
+               }
+}

@@ -1,0 +1,193 @@
+﻿{
+    "schema":  "forever-home.m38-steep-gable-pitch-screen.v1",
+    "title":  "M38 - illustrative steep-gable pitch comparison",
+    "status":  "parametric massing comparison only; pitches are illustrative proposals and none is selected",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study_json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study_json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "owner_decision":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_code_research":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "coordinate_basis":  "40 x 42 ft selected-D-derived owner-follow-up test envelope; no site orientation, survey or approved house footprint",
+    "geometry_assumptions":  [
+                                 "Simple symmetric gable with zero modeled overhang",
+                                 "Rise is measured above a future eave datum, which remains unspecified",
+                                 "Roof area is two sloped planes only; excludes overhangs, gables, dormers, intersections, openings, waste and assemblies"
+                             ],
+    "pitch_cases":  [
+                        {
+                            "label":  "Illustrative 8:12",
+                            "rise_units":  8,
+                            "run_units":  12,
+                            "selection_status":  "comparison option only; not owner-selected"
+                        },
+                        {
+                            "label":  "Illustrative 10:12",
+                            "rise_units":  10,
+                            "run_units":  12,
+                            "selection_status":  "comparison option only; not owner-selected"
+                        },
+                        {
+                            "label":  "Illustrative 12:12",
+                            "rise_units":  12,
+                            "run_units":  12,
+                            "selection_status":  "comparison option only; not owner-selected"
+                        }
+                    ],
+    "ridge_orientations":  [
+                               {
+                                   "id":  "A",
+                                   "ridge_direction":  "parallel to 42 ft test-envelope side",
+                                   "ridge_length_ft":  42,
+                                   "transverse_span_ft":  40,
+                                   "half_run_ft":  20
+                               },
+                               {
+                                   "id":  "B",
+                                   "ridge_direction":  "parallel to 40 ft test-envelope side",
+                                   "ridge_length_ft":  40,
+                                   "transverse_span_ft":  42,
+                                   "half_run_ft":  21
+                               }
+                           ],
+    "results":  [
+                    {
+                        "orientation_id":  "A",
+                        "ridge_direction":  "parallel to 42 ft test-envelope side",
+                        "ridge_length_ft":  42,
+                        "transverse_span_ft":  40,
+                        "half_run_ft":  20,
+                        "pitch_label":  "Illustrative 8:12",
+                        "pitch_rise_units":  8,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  0.66666666666666663,
+                        "pitch_angle_degrees":  33.690067525979785,
+                        "rise_above_eave_ft":  13.333333333333332,
+                        "sloped_rafter_length_ft":  24.037008503093261,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2019.108714259834,
+                        "roof_area_factor":  1.2018504251546631,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    },
+                    {
+                        "orientation_id":  "A",
+                        "ridge_direction":  "parallel to 42 ft test-envelope side",
+                        "ridge_length_ft":  42,
+                        "transverse_span_ft":  40,
+                        "half_run_ft":  20,
+                        "pitch_label":  "Illustrative 10:12",
+                        "pitch_rise_units":  10,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  0.83333333333333337,
+                        "pitch_angle_degrees":  39.8055710922652,
+                        "rise_above_eave_ft":  16.666666666666668,
+                        "sloped_rafter_length_ft":  26.034165586355517,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2186.8699092538636,
+                        "roof_area_factor":  1.3017082793177759,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    },
+                    {
+                        "orientation_id":  "A",
+                        "ridge_direction":  "parallel to 42 ft test-envelope side",
+                        "ridge_length_ft":  42,
+                        "transverse_span_ft":  40,
+                        "half_run_ft":  20,
+                        "pitch_label":  "Illustrative 12:12",
+                        "pitch_rise_units":  12,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  1,
+                        "pitch_angle_degrees":  45,
+                        "rise_above_eave_ft":  20,
+                        "sloped_rafter_length_ft":  28.284271247461902,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2375.8787847867998,
+                        "roof_area_factor":  1.4142135623730951,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    },
+                    {
+                        "orientation_id":  "B",
+                        "ridge_direction":  "parallel to 40 ft test-envelope side",
+                        "ridge_length_ft":  40,
+                        "transverse_span_ft":  42,
+                        "half_run_ft":  21,
+                        "pitch_label":  "Illustrative 8:12",
+                        "pitch_rise_units":  8,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  0.66666666666666663,
+                        "pitch_angle_degrees":  33.690067525979785,
+                        "rise_above_eave_ft":  14,
+                        "sloped_rafter_length_ft":  25.238858928247925,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2019.108714259834,
+                        "roof_area_factor":  1.2018504251546631,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    },
+                    {
+                        "orientation_id":  "B",
+                        "ridge_direction":  "parallel to 40 ft test-envelope side",
+                        "ridge_length_ft":  40,
+                        "transverse_span_ft":  42,
+                        "half_run_ft":  21,
+                        "pitch_label":  "Illustrative 10:12",
+                        "pitch_rise_units":  10,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  0.83333333333333337,
+                        "pitch_angle_degrees":  39.8055710922652,
+                        "rise_above_eave_ft":  17.5,
+                        "sloped_rafter_length_ft":  27.335873865673289,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2186.8699092538632,
+                        "roof_area_factor":  1.3017082793177757,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    },
+                    {
+                        "orientation_id":  "B",
+                        "ridge_direction":  "parallel to 40 ft test-envelope side",
+                        "ridge_length_ft":  40,
+                        "transverse_span_ft":  42,
+                        "half_run_ft":  21,
+                        "pitch_label":  "Illustrative 12:12",
+                        "pitch_rise_units":  12,
+                        "pitch_run_units":  12,
+                        "pitch_ratio":  1,
+                        "pitch_angle_degrees":  45,
+                        "rise_above_eave_ft":  21,
+                        "sloped_rafter_length_ft":  29.698484809834994,
+                        "projected_plan_area_sf":  1680,
+                        "two_plane_area_sf":  2375.8787847867998,
+                        "roof_area_factor":  1.4142135623730951,
+                        "selection_status":  "comparison option only; not owner-selected"
+                    }
+                ],
+    "comparison":  {
+                       "span_40ft_half_run_ft":  20,
+                       "span_42ft_half_run_ft":  21,
+                       "relative_rise_increase_at_same_pitch":  0.05,
+                       "pitch_selection":  "none"
+                   },
+    "Connecticut_context":  "See Research/Connecticut_Roof_Code_Research_2026-10-28.md. Code edition/path, site loads, snow drifting, wind exposure, roof intersections and professional design remain unresolved. This is not code compliance.",
+    "checks":  {
+                   "owner_selected_steep_gable_concept_is_present":  true,
+                   "jurisdiction_is_connecticut":  true,
+                   "selected_D_provenance_matches_proposal":  true,
+                   "test_envelope_is_source_followup_40_by_42":  true,
+                   "both_ridge_orientations_preserve_projected_plan_area":  true,
+                   "pitch_options_are_explicitly_unselected":  true,
+                   "rise_follows_half_run_times_pitch_ratio":  true,
+                   "steeper_options_raise_ridge_monotonically":  true,
+                   "same_pitch_rise_increases_by_five_percent_for_42ft_span":  true,
+                   "absolute_ridge_and_eave_datums_remain_unassigned":  true,
+                   "no_code_compliance_or_structural_claim":  true,
+                   "selected_D_file_unchanged_during_run":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "8:12, 10:12 and 12:12 are illustrative comparison inputs, not adopted design dimensions or code minima.",
+                        "The rise values do not establish total building height; eave datum, story heights, wall plates, floor build-ups and roof assemblies are unassigned.",
+                        "No Revit solids, structure, snow/wind calculations, drainage, attic/headroom, code/accessibility review, IFC or construction-readiness assessment is performed.",
+                        "Connecticut jurisdiction is state-level only; municipality, parcel and permit timing are unknown."
+                    ]
+}

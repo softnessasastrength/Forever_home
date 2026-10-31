@@ -1,0 +1,67 @@
+{
+    "status":  "pass",
+    "passed":  12,
+    "total":  12,
+    "items":  [
+                  {
+                      "id":  "expected_source_schemas",
+                      "pass":  true,
+                      "detail":  "Both route options are consumed from their retained versioned study outputs."
+                  },
+                  {
+                      "id":  "selected_d_fingerprint",
+                      "pass":  true,
+                      "detail":  "Current selected-D source equals the recorded baseline fingerprint."
+                  },
+                  {
+                      "id":  "m181_sources_current",
+                      "pass":  true,
+                      "detail":  "M181 selected-D and social-route fingerprints match current sources."
+                  },
+                  {
+                      "id":  "m182_is_bound_to_m181",
+                      "pass":  true,
+                      "detail":  "M182 consumes the retained M181 result currently on disk."
+                  },
+                  {
+                      "id":  "m06_b_remains_unassigned",
+                      "pass":  true,
+                      "detail":  "The source social-route study still declares M-06/B unassigned."
+                  },
+                  {
+                      "id":  "m181_option_retains_subinch_constraints",
+                      "pass":  true,
+                      "detail":  "The diagonal route has under 1 in at the assumed stools, under 0.5 in at the blocked west search proxy, and 2 in at the dining table."
+                  },
+                  {
+                      "id":  "m182_option_retains_source_conflicts",
+                      "pass":  true,
+                      "detail":  "The bypass route retains its 44 in throat, 4 in side gaps, blocked diagnostic overlap and source M-02 intrusion."
+                  },
+                  {
+                      "id":  "incoming_families_preserved",
+                      "pass":  true,
+                      "detail":  "Three pre-existing untracked manufacturer RFAs retain their checkpoint SHA256 values."
+                  },
+                  {
+                      "id":  "incoming_sha256_american-standard-champion-pro-211AA104-020-predecessor.rfa",
+                      "pass":  true,
+                      "detail":  "Observed 37d3e56962b81f4b0ace3d36d25bafc03b7dee1232e7de7bbf9b95e4b0b75f63; expected 37d3e56962b81f4b0ace3d36d25bafc03b7dee1232e7de7bbf9b95e4b0b75f63."
+                  },
+                  {
+                      "id":  "incoming_sha256_american-standard-evolution-0467004.020.rfa",
+                      "pass":  true,
+                      "detail":  "Observed 39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea; expected 39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea."
+                  },
+                  {
+                      "id":  "incoming_sha256_american-standard-champion-pro-3195A101020-bowl.rfa",
+                      "pass":  true,
+                      "detail":  "Observed f301d2cb77f13269e21dc44fd6953946158034122bb3c10889fcba9470846393; expected f301d2cb77f13269e21dc44fd6953946158034122bb3c10889fcba9470846393."
+                  },
+                  {
+                      "id":  "no_route_is_selectable_from_current_evidence",
+                      "pass":  true,
+                      "detail":  "Both alternatives retain material conflicts or unvalidated clearances; the report must make no selection."
+                  }
+              ]
+}

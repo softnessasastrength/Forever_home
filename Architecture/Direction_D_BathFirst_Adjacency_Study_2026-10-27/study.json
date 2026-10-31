@@ -7,9 +7,9 @@
     "source_fingerprints_sha256":  {
                                        "Architecture/Schematic_Study_2026-10-25/study.json":  "b99fdb8ab4a1e3440ff6ee8f17c8e81bfce0a1360ff03213d060b998ab2d319b",
                                        "Architecture/Schematic_Study_2026-10-25/checks.json":  "f2b713aaed861c8bea951e82b9e0298ff41aaf0a13420e0fb5432ea02e9b1779",
-                                       "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
                                        "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290",
-                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
+                                       "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "6512122eb20be3407c4d1b571ba7f5a6c0c0034f727ddd5cdad2a38419121461"
                                    },
     "units":  "feet; local x right, local y toward rear; no site orientation or georeference",
     "plan_frame_offsets_ft":  {
@@ -432,20 +432,20 @@
                                      },
                             "main_shell_rear_edge_openings":  [
                                                                   {
+                                                                      "use":  "lower-to-main stair passage",
                                                                       "x_interval_ft":  [
                                                                                             12.5,
                                                                                             16.5
                                                                                         ],
-                                                                      "elevation_scope":  "lower/main; wall opening size and fire separation TBD",
-                                                                      "use":  "lower-to-main stair passage"
+                                                                      "elevation_scope":  "lower/main; wall opening size and fire separation TBD"
                                                                   },
                                                                   {
+                                                                      "use":  "upper stair bridge",
                                                                       "x_interval_ft":  [
                                                                                             17.166666666666668,
                                                                                             21.166666666666668
                                                                                         ],
-                                                                      "elevation_scope":  "main/upper; wall opening size and fire separation TBD",
-                                                                      "use":  "upper stair bridge"
+                                                                      "elevation_scope":  "main/upper; wall opening size and fire separation TBD"
                                                                   }
                                                               ],
                             "main_floor_profile_sf":  1564.667,
@@ -536,24 +536,24 @@
                           ],
     "unplaced_program":  [
                              {
-                                 "reason":  "Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD.",
+                                 "id":  "M-06",
                                  "name":  "Main half bath",
-                                 "id":  "M-06"
+                                 "reason":  "Owner selected the arrival / hall edge as the test zone and pantry-side search window as the first fit candidate; exact location, footprint and service route remain TBD."
                              },
                              {
-                                 "reason":  "Current source block is an entry/hall reservation; storage and garage arrival are not resolved.",
+                                 "id":  "M-05",
                                  "name":  "Coat storage / mudroom fit",
-                                 "id":  "M-05"
+                                 "reason":  "Current source block is an entry/hall reservation; storage and garage arrival are not resolved."
                              },
                              {
-                                 "reason":  "Discreet conditioned location remains TBD; omitted from geometric blocks.",
+                                 "id":  "S-01",
                                  "name":  "Secure storage",
-                                 "id":  "S-01"
+                                 "reason":  "Discreet conditioned location remains TBD; omitted from geometric blocks."
                              },
                              {
-                                 "reason":  "D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review.",
+                                 "id":  "C-01",
                                  "name":  "Stair, landings and lift route",
-                                 "id":  "C-01"
+                                 "reason":  "D now has a connected room-block/core comparison and a 4 x 4 ft upper floor extension; native landings, wall openings, headroom, structure and lift product still require review."
                              }
                          ]
 }

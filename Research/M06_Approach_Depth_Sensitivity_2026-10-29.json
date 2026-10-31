@@ -1,0 +1,78 @@
+{
+    "schema":  "forever-home-m06-approach-depth-sensitivity-v1",
+    "status":  "Sensitivity only; no optional clear-floor target adopted for M-06.",
+    "checked_on":  "2026-10-29",
+    "current_code_status":  {
+                                "confirmed_on":  "2026-10-29",
+                                "current_code":  "2022 Connecticut State Building Code for permits filed from 2022-10-01; based on the 2021 International Codes.",
+                                "next_code_cycle":  "The planned 2026 Connecticut code effective date remains delayed pending Legislative Regulation Review Committee approval.",
+                                "project_site_permit_classification_and_applicability_known":  false
+                            },
+    "window":  {
+                   "id":  "M06-B",
+                   "gross_width_in":  124,
+                   "gross_depth_in":  84,
+                   "gross_area_sf":  72.33,
+                   "remains_unassigned":  true,
+                   "status":  "unassigned search window only; not M-06 geometry"
+               },
+    "product_input":  {
+                          "sku":  "610AA001.020",
+                          "depth_in":  30.25,
+                          "source":  "https://www.wayfair.com/home-improvement/pdp/american-standard-champion-pro-two-piece-toilet-with-slow-close-seat-wax-ring-chair-height-white-asd13048.html",
+                          "source_quality":  "Retailer-reported; plan dimensions match the predecessor proxy but are not manufacturer-verified geometry.",
+                          "current_product_geometry_verified":  false
+                      },
+    "scenarios":  [
+                      {
+                          "id":  "conditional-2021-IRC-front-clearance",
+                          "basis":  "Preliminary 2021 IRC P2705.1 / R307.1 screening basis under an assumed detached one-family scope; applicability remains unconfirmed.",
+                          "front_clearance_in":  21,
+                          "fixture_plus_front_clearance_depth_in":  51.25,
+                          "residual_gross_depth_in":  32.75,
+                          "compliance_determination":  false
+                      },
+                      {
+                          "id":  "optional-full-bath-clear-floor-sensitivity",
+                          "basis":  "Optional usability sensitivity only: Bathrooms_Specs.md section 9 mentions 30 by 48 in where practical, while section 1.1 explicitly says not to borrow full-bath clearances as M-06 criteria.",
+                          "clear_floor_width_in":  30,
+                          "front_clearance_in":  48,
+                          "fixture_plus_front_clearance_depth_in":  78.25,
+                          "residual_gross_depth_in":  5.75,
+                          "adopted_for_M06":  false,
+                          "compliance_determination":  false
+                      }
+                  ],
+    "evaluation":  {
+                       "any_room_fit_established":  false,
+                       "wall_build_up_modeled":  false,
+                       "lavatory_layout_or_overlap_modeled":  false,
+                       "door_leaf_swing_or_clear_opening_modeled":  false,
+                       "public_hall_approach_modeled":  false,
+                       "water_drain_or_vent_route_modeled":  false,
+                       "accessibility_scope_determined":  false,
+                       "code_compliance_determined":  false,
+                       "M06_assignment":  false
+                   },
+    "limitations":  [
+                        "The 84 in depth is a gross unassigned room-block search window, not finished clear interior dimension.",
+                        "The 30.25 in toilet projection is retailer-reported for the selected SKU; the current manufacturer dimension drawing and matching RFA remain unavailable.",
+                        "The 21 in scenario is a conditional code-research screen, not an applicable-code determination for this site or permit.",
+                        "The 30 by 48 in scenario is an optional sensitivity only and is expressly not adopted for M-06; the bathroom source says not to borrow full-bath clearances as powder-room criteria.",
+                        "Residual gross depth is not allowable wall thickness or a proof that a layout fits; it excludes wall build-up, door operation, lavatory geometry and circulation.",
+                        "No room, fixture, clearance preference, door, approach, service route or code conclusion is selected by this report."
+                    ],
+    "sources":  {
+                    "Connecticut_current_code":  "https://portal.ct.gov/en/das/office-of-state-building-inspector/connecticut-state-building-code/regulations",
+                    "Connecticut_2026_adoption_status":  "https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process",
+                    "M06_code_screen_note":  "Research/2026-10-28_Connecticut_M06_Clearance_Screen.md",
+                    "owner_bath_spec":  "Architecture/Bathrooms_Specs.md sections 1.1 and 9"
+                },
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_proposal":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "target_sku_retail_envelope":  "b208a125f906c50345f9c7c2ee939c852d48941d402c39ef1f576edfbd3adb9f",
+                                       "code_screened_pair_recheck":  "3ea13edb4dd75eeca3ad07057141f468d57b7fd91b39572bd2dce55738399422",
+                                       "M06_code_screen_note":  "056755661fd29ae8e08e8f2d20e31783587e2f742b76150d11d34ce85bac5478",
+                                       "bathroom_design_spec":  "78978295ad26ce82453ad9aee07754e28d3b276086f6561c57a6a3e51529c5d0"
+                                   }
+}

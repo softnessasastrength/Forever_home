@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:22px;font-weight:bold}.note{font-size:15px}.roof{fill:#7a6250;fill-opacity:.18;stroke:#594638;stroke-width:8}.wall{fill:#f2e8d6;stroke:#716456;stroke-width:4}</style>
+<text class="title" x="42" y="42">Steep gable — conceptual section only</text>
+<rect class="wall" x="170" y="220" width="560" height="210"/>
+<path class="roof" d="M140 220 L450 70 L760 220 Z"/>
+<text class="note" x="42" y="466">Not to scale. Pitch, ridge orientation/elevation, spans, assemblies, loads, openings and site response: TBD.</text>
+<text class="note" x="42" y="490">This is a massing prompt, not a roof design or structural check.</text>
+</svg>

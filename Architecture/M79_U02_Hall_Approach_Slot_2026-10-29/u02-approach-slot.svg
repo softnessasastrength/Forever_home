@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="800" viewBox="0 0 1100 800">
+<title>M79 U-02 nominal hall approach slot alignment test</title>
+<style>text{font-family:Arial,sans-serif;fill:#253342}.title{font-size:26px;font-weight:700}.label{font-size:18px}.small{font-size:15px}.room{fill:#dfe9ef;stroke:#334b5c;stroke-width:3}.approach{fill:#f5c96a;fill-opacity:.38;stroke:#9a6815;stroke-width:3;stroke-dasharray:10 7}.wall{stroke:#243c50;stroke-width:8}.slot{stroke:#177245;stroke-width:11;stroke-dasharray:12 6}.center{stroke:#bd513b;stroke-width:2;stroke-dasharray:7 6}.marker{fill:#bd513b}.note{fill:#6a3d30}</style>
+<text class="title" x="48" y="42">M79 | U-02 hall-side approach alignment (schematic)</text>
+<rect class="room" x="294" y="322" width="576" height="348"/>
+<text class="label" x="322" y="432">U-02 | 16 x 9.667 ft source room block</text>
+<rect class="approach" x="510" y="160" width="144" height="144"/>
+<text class="label" x="475" y="146">Reserved 4 x 4 ft landing approach</text>
+<line class="wall" x1="294" y1="322" x2="870" y2="322"/>
+<line class="slot" x1="519" y1="322" x2="645" y2="322"/>
+<line class="center" x1="582" y1="322" x2="582" y2="232"/>
+<circle class="marker" cx="582" cy="232" r="7"/>
+<text class="small" x="449" y="302">Nominal 3.5 ft reservation: x=17.417..20.917 ft</text>
+<text class="small" x="400" y="338">Aligned center x=19.167 ft; hall-goal center y=30 ft</text>
+<text class="small note" x="48" y="740">Green dash is a nominal wall-edge reservation, not an actual door or clear opening. No swing, wall, jamb, or path geometry.</text>
+<text class="small note" x="48" y="766">38.333333 x 40 ft remains an unselected hypothetical test shell; see accompanying JSON for source checks and limits.</text>
+</svg>

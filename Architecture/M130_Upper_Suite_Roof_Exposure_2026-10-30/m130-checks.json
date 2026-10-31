@@ -1,0 +1,25 @@
+{
+    "schema":  "forever-home.m130-checks.v1",
+    "passed_count":  15,
+    "check_count":  15,
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "m115_archive_hash_matches_audit":  true,
+                   "m115_audit_all_checks_pass":  true,
+                   "m83_roof_hash_matches_manifest":  true,
+                   "selected_D_hash_matches_M115_sources":  true,
+                   "selected_D_hash_matches_M83_sources":  true,
+                   "shell_is_owner_authorized_hypothetical_38_333333_by_40":  true,
+                   "all_six_ideal_roof_cases_are_unselected_options":  true,
+                   "sixty_four_northeast_privacy_candidates_retain_required_sampled_routes":  true,
+                   "every_privacy_candidate_reaches_exact_required_public_rooms":  true,
+                   "each_candidate_has_seven_nonoverlapping_source_area_room_blocks":  true,
+                   "every_candidate_has_primary_bath":  true,
+                   "all_384_roof_room_cases_have_finite_nonnegative_rises":  true,
+                   "every_pitch_and_ridge_axis_is_covered":  true,
+                   "output_is_comparison_only_without_headroom_or_code_claim":  true,
+                   "selected_D_unchanged":  true
+               }
+}

@@ -1,0 +1,25 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="1120" viewBox="0 0 1180 1120">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:22px;font-weight:bold}.room{fill:#eadfce;stroke:#716456;stroke-width:2}.porch{fill:#dbe8ed;stroke:#557989;stroke-width:2}.cabinet{fill:#b49a77;stroke:#6b563c;stroke-width:2}.island{fill:#829d85;stroke:#3e6046;stroke-width:2}.clear{fill:#98b4a2;fill-opacity:.22;stroke:#52705e;stroke-width:2;stroke-dasharray:8 5}.tableclear{fill:#c3b4d8;fill-opacity:.18;stroke:#705b8c;stroke-width:2;stroke-dasharray:7 5}.chair{fill:#b29b7c;stroke:#6d5740;stroke-width:2}.wall{fill:#6e675d}.route{fill:#63a6be;fill-opacity:.22;stroke:#27728b;stroke-width:2;stroke-dasharray:5 4}.door{fill:#f5cf72;stroke:#8b6516;stroke-width:2}.b{fill:#eaa19a;fill-opacity:.55;stroke:#a7463c;stroke-width:2;stroke-dasharray:7 4}.label{font-size:12px}.note{font-size:13px;fill:#5b554d}.warn{font-size:13px;fill:#9b3d34}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}</style>
+<text class="title" x="30" y="32">M35 â€” casework, occupied-chair and porch-route candidate</text>
+<text class="note" x="30" y="54">East porch is a proposal; shell edges are test bounds. Dashed regions show screened clearances.</text>
+<rect class="shell" x="30" y="80" width="880" height="924"/>
+<rect class="room" x="151.0" y="94.66666666666666586" width="352" height="330"/><text class="label" x="156.0" y="111.66666666666666586">M-01</text>
+<rect class="room" x="514" y="94.66666666666666586" width="308" height="264"/><text class="label" x="519" y="111.66666666666666586">M-02</text>
+<rect class="room" x="514" y="369.666666666666652" width="242" height="220"/><text class="label" x="519" y="386.666666666666652">M-03</text>
+<rect class="room" x="723.0" y="600.666666666666696" width="110" height="154"/><text class="label" x="728.0" y="617.666666666666696">M-04</text>
+<rect class="porch" x="767" y="380.666666666667" width="264" height="220"/><text class="label" x="772" y="397.666666666667">X-01 east porch candidate</text>
+<rect class="cabinet" x="514" y="94.6666666666667" width="308" height="44"/><text class="label" x="519" y="110.666666666667">24in perimeter run: fridge / sink / DW / range+landings</text>
+<rect class="wall" x="503" y="94.6666666666667" width="11" height="132"/><text class="label" x="507" y="110.666666666667">6ft half wall</text>
+<rect class="clear" x="539.666666666667" y="138.666666666667" width="330" height="242"/><rect class="tableclear" x="503" y="380.666666666667" width="264" height="220"/>
+<rect class="island" x="616.666666666667" y="215.666666666667" width="176" height="88"/><text class="label" x="621.666666666667" y="232.666666666667">8Ã—4 island, shifted 6in south</text>
+<rect class="tableclear" x="580" y="457.666666666667" width="110" height="66"/><rect class="chair" x="580" y="457.666666666667" width="110" height="66"/><text class="label" x="585" y="474.666666666667">36Ã—60 table</text>
+<rect class="chair" x="618.5" y="523.666666666667" width="33" height="36.6666666666667"/>
+<rect class="chair" x="591" y="421" width="33" height="36.6666666666667"/>
+<rect class="chair" x="635" y="421" width="33" height="36.6666666666667"/>
+<rect class="chair" x="543.333333333333" y="474.166666666667" width="36.6666666666667" height="33"/>
+<rect class="route" x="690" y="457.666666666667" width="66" height="66"/><rect class="door" x="756" y="435.666666666667" width="11" height="110"/><text class="label" x="761" y="451.666666666667">5ft French pair</text>
+<rect class="route" x="767" y="457.666666666667" width="264" height="66"/><rect class="door" x="1031" y="457.666666666667" width="11" height="66"/><text class="label" x="1036" y="473.666666666667">3ft exterior door</text>
+<rect class="b" x="495.666666666667" y="600.666666666667" width="227.333333333333" height="154"/><text class="warn" x="499.666666666667" y="617.666666666667">M-06 B stays unassigned</text>
+<text class="note" x="30" y="1010">North porch comparison overlaps B by 70sf. East porch clears B but projects outside the main-shell test boundary.</text>
+<text class="note" x="30" y="1032">No Revit walls, appliance open envelopes, door swings, site orientation or code/structural checks are represented.</text>
+</svg>

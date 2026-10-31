@@ -1,0 +1,57 @@
+{
+    "schema":  "forever-home-m21-main-floor-access-v1",
+    "status":  "Unapproved plan-coordinate comparison; no house geometry or entry orientation selected.",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "assumptions":  [
+                        "The east side is a plan-coordinate edge of the inherited 40 x 42 ft test shell; geographic direction and front orientation are unknown.",
+                        "The M18 36 in route width is reused as a plan-route proxy through M-05 solely to inspect block geometry.",
+                        "A straight east-to-west route from the test-shell edge, through M-05 and across the nominal M-05/M-01 block gap, is a proposal for comparison.",
+                        "The existing M18 dining and porch arrangement is carried forward as a separate plan-coordinate branch; its door remains nominal and unverified."
+                    ],
+    "m05_geometry":  {
+                         "block_ft":  [
+                                          35,
+                                          0.667,
+                                          4.333,
+                                          12
+                                      ],
+                         "area_sf":  52,
+                         "test_shell_east_reserve_in":  8,
+                         "to_m01_nominal_gap_in":  6,
+                         "m01_shared_edge_span_ft":  12,
+                         "route_proxy_width_in":  36,
+                         "route_proxy_centerline_ft":  {
+                                                           "from_east_shell_edge_ft":  [
+                                                                                           40,
+                                                                                           6.667
+                                                                                       ],
+                                                           "to_living_block_ft":  [
+                                                                                      34.5,
+                                                                                      6.667
+                                                                                  ]
+                                                       },
+                         "remaining_block_width_beyond_route_proxy_in":  16
+                     },
+    "m18_dining_porch":  {
+                             "centered_door_proxy_clear_gap_in":  10,
+                             "offset_door_proxy_clear_gap_in":  15,
+                             "centered_and_offset_keep_same_balanced_seating":  true,
+                             "nominal_door_width_in":  60,
+                             "porch_12_by_10_reserve_in":  4,
+                             "porch_10_by_12_projection_in":  20
+                         },
+    "gates":  [
+                  "No M-05 door location, swing, opening width or wall assembly is defined.",
+                  "The 6 in room-block separation is arithmetic, not a wall, opening, threshold or finished connection.",
+                  "The 36 in corridor is only a coordinate proxy; door clear width, approach maneuvering, finish dimensions and accessibility are unverified.",
+                  "Garage arrival, grade, exterior approach, site, cardinal orientation and public-hall routing require documented design input.",
+                  "Porch reserves and projections are measured against a test outline, not coordinated walls, foundations, roof or site.",
+                  "M-06 remains unassigned; no bathroom or service route is introduced."
+              ],
+    "no_walls_or_doors_authored":  true,
+    "no_ifc_generated":  true
+}

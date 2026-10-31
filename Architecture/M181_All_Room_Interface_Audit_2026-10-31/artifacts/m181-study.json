@@ -1,0 +1,462 @@
+﻿{
+    "schema":  "forever-home-m181-all-room-interface-v1",
+    "status":  "unapproved room-block interface and swept-route proposal",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M180_Living_Shell_Route_Audit_2026-10-31/artifacts/m180-study.json":  "ad8f179fc78f572ce8be3daea8c62f2ede31f8793194a08c87ac1f9d6ffe3d18",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618"
+                                   },
+    "coordinate_origin_source_ft":  [
+                                        0.66666666666666663,
+                                        0.66666666666666663
+                                    ],
+    "translated_source_blocks":  {
+                                     "M-03":  {
+                                                  "id":  "M-03",
+                                                  "x":  0,
+                                                  "y":  16.5,
+                                                  "w":  11.333333333333334,
+                                                  "d":  14
+                                              },
+                                     "M-01":  {
+                                                  "id":  "M-01",
+                                                  "x":  17.833333333333332,
+                                                  "y":  0,
+                                                  "w":  16,
+                                                  "d":  15
+                                              },
+                                     "M-02":  {
+                                                  "id":  "M-02",
+                                                  "x":  0,
+                                                  "y":  0,
+                                                  "w":  17.333333333333332,
+                                                  "d":  16
+                                              },
+                                     "M-05":  {
+                                                  "id":  "M-05",
+                                                  "x":  34.333333333333336,
+                                                  "y":  0,
+                                                  "w":  4.333333333333333,
+                                                  "d":  12
+                                              },
+                                     "M-04":  {
+                                                  "id":  "M-04",
+                                                  "x":  11.833333333333334,
+                                                  "y":  16.5,
+                                                  "w":  5,
+                                                  "d":  7
+                                              }
+                                 },
+    "reduced_kitchen_candidate_local_ft":  [
+                                               0,
+                                               0,
+                                               13.5,
+                                               14
+                                           ],
+    "gaps_ft":  {
+                    "candidate_M02_to_M01":  4.3333333333333321,
+                    "source_M02_to_M01":  0.5,
+                    "candidate_M02_to_M03":  2.5,
+                    "source_M02_to_M03":  0.5
+                },
+    "m06_search_windows_candidate_local":  [
+                                               {
+                                                   "id":  "west_of_core",
+                                                   "x":  11.333333333333334,
+                                                   "y":  15.500000000000002,
+                                                   "w":  5.1666666666666679,
+                                                   "d":  11.416666666666664,
+                                                   "status":  "Blocked by relocated kitchen/pantry room blocks in the bath-first adjacency candidate; not an available M-06 search gap."
+                                               },
+                                               {
+                                                   "id":  "east_of_core",
+                                                   "x":  20.5,
+                                                   "y":  16.5,
+                                                   "w":  13.166666666666668,
+                                                   "d":  7,
+                                                   "status":  "Unassigned room-block gap only; not a bath footprint."
+                                               }
+                                           ],
+    "route_width_in":  36,
+    "swept_radius_ft":  1.5,
+    "original_m180_route":  {
+                                "centerline_local_ft":  [
+                                                            {
+                                                                "x":  19.5,
+                                                                "y":  10
+                                                            },
+                                                            {
+                                                                "x":  11.25,
+                                                                "y":  10
+                                                            },
+                                                            {
+                                                                "x":  11.25,
+                                                                "y":  14.5
+                                                            },
+                                                            {
+                                                                "x":  9.5,
+                                                                "y":  14.5
+                                                            },
+                                                            {
+                                                                "x":  9.5,
+                                                                "y":  22.5
+                                                            },
+                                                            {
+                                                                "x":  8.5,
+                                                                "y":  22.5
+                                                            },
+                                                            {
+                                                                "x":  8.5,
+                                                                "y":  27.5
+                                                            }
+                                                        ],
+                                "worst_clearance":  {
+                                                        "segment":  1,
+                                                        "target":  "west_of_core",
+                                                        "centerline_distance_ft":  1.003466,
+                                                        "buffer_clearance_in":  -5.9584
+                                                    },
+                                "minimum_clearance_by_target":  [
+                                                                    {
+                                                                        "segment":  1,
+                                                                        "target":  "M-04-pantry",
+                                                                        "centerline_distance_ft":  2.083333,
+                                                                        "buffer_clearance_in":  7
+                                                                    },
+                                                                    {
+                                                                        "segment":  0,
+                                                                        "target":  "M-05-entry",
+                                                                        "centerline_distance_ft":  14.833333,
+                                                                        "buffer_clearance_in":  160
+                                                                    },
+                                                                    {
+                                                                        "segment":  1,
+                                                                        "target":  "west_of_core",
+                                                                        "centerline_distance_ft":  1.003466,
+                                                                        "buffer_clearance_in":  -5.9584
+                                                                    },
+                                                                    {
+                                                                        "segment":  0,
+                                                                        "target":  "east_of_core",
+                                                                        "centerline_distance_ft":  6.576473,
+                                                                        "buffer_clearance_in":  60.9177
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "perimeter-cabinet-run",
+                                                                        "centerline_distance_ft":  7.603453,
+                                                                        "buffer_clearance_in":  73.2414
+                                                                    },
+                                                                    {
+                                                                        "segment":  1,
+                                                                        "target":  "island",
+                                                                        "centerline_distance_ft":  1.75,
+                                                                        "buffer_clearance_in":  3
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "assumed-stools",
+                                                                        "centerline_distance_ft":  1.5,
+                                                                        "buffer_clearance_in":  0
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "dining-table",
+                                                                        "centerline_distance_ft":  1.5,
+                                                                        "buffer_clearance_in":  0
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "south-chair-1",
+                                                                        "centerline_distance_ft":  4.5,
+                                                                        "buffer_clearance_in":  36
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "south-chair-2",
+                                                                        "centerline_distance_ft":  2,
+                                                                        "buffer_clearance_in":  6
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "west-chair-1",
+                                                                        "centerline_distance_ft":  6.5,
+                                                                        "buffer_clearance_in":  60
+                                                                    },
+                                                                    {
+                                                                        "segment":  4,
+                                                                        "target":  "west-chair-2",
+                                                                        "centerline_distance_ft":  5.85235,
+                                                                        "buffer_clearance_in":  52.2282
+                                                                    },
+                                                                    {
+                                                                        "segment":  0,
+                                                                        "target":  "half-wall",
+                                                                        "centerline_distance_ft":  3,
+                                                                        "buffer_clearance_in":  18
+                                                                    },
+                                                                    {
+                                                                        "segment":  1,
+                                                                        "target":  "wall-return",
+                                                                        "centerline_distance_ft":  1.75,
+                                                                        "buffer_clearance_in":  3
+                                                                    },
+                                                                    {
+                                                                        "segment":  5,
+                                                                        "target":  "porch-west-wall",
+                                                                        "centerline_distance_ft":  2.5,
+                                                                        "buffer_clearance_in":  12
+                                                                    },
+                                                                    {
+                                                                        "segment":  3,
+                                                                        "target":  "porch-east-wall",
+                                                                        "centerline_distance_ft":  2.5,
+                                                                        "buffer_clearance_in":  12
+                                                                    }
+                                                                ]
+                            },
+    "revised_route":  {
+                          "centerline_local_ft":  [
+                                                      {
+                                                          "x":  19.5,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  13.75
+                                                      },
+                                                      {
+                                                          "x":  10.4166666667,
+                                                          "y":  14.25
+                                                      },
+                                                      {
+                                                          "x":  9.6666666667,
+                                                          "y":  15
+                                                      },
+                                                      {
+                                                          "x":  9.6666666667,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  27.5
+                                                      }
+                                                  ],
+                          "worst_clearance":  {
+                                                  "segment":  2,
+                                                  "target":  "assumed-stools",
+                                                  "centerline_distance_ft":  1.55009,
+                                                  "buffer_clearance_in":  0.6011
+                                              },
+                          "minimum_assigned_clearance_by_target":  [
+                                                                       {
+                                                                           "segment":  5,
+                                                                           "target":  "M-04-pantry",
+                                                                           "centerline_distance_ft":  2.166667,
+                                                                           "buffer_clearance_in":  8
+                                                                       },
+                                                                       {
+                                                                           "segment":  0,
+                                                                           "target":  "M-05-entry",
+                                                                           "centerline_distance_ft":  14.833333,
+                                                                           "buffer_clearance_in":  160
+                                                                       },
+                                                                       {
+                                                                           "segment":  0,
+                                                                           "target":  "east_of_core",
+                                                                           "centerline_distance_ft":  6.576473,
+                                                                           "buffer_clearance_in":  60.9177
+                                                                       },
+                                                                       {
+                                                                           "segment":  4,
+                                                                           "target":  "perimeter-cabinet-run",
+                                                                           "centerline_distance_ft":  7.863859,
+                                                                           "buffer_clearance_in":  76.3663
+                                                                       },
+                                                                       {
+                                                                           "segment":  1,
+                                                                           "target":  "island",
+                                                                           "centerline_distance_ft":  1.75,
+                                                                           "buffer_clearance_in":  3
+                                                                       },
+                                                                       {
+                                                                           "segment":  2,
+                                                                           "target":  "assumed-stools",
+                                                                           "centerline_distance_ft":  1.55009,
+                                                                           "buffer_clearance_in":  0.6011
+                                                                       },
+                                                                       {
+                                                                           "segment":  4,
+                                                                           "target":  "dining-table",
+                                                                           "centerline_distance_ft":  1.666667,
+                                                                           "buffer_clearance_in":  2
+                                                                       },
+                                                                       {
+                                                                           "segment":  4,
+                                                                           "target":  "south-chair-1",
+                                                                           "centerline_distance_ft":  4.666667,
+                                                                           "buffer_clearance_in":  38
+                                                                       },
+                                                                       {
+                                                                           "segment":  4,
+                                                                           "target":  "south-chair-2",
+                                                                           "centerline_distance_ft":  2.166667,
+                                                                           "buffer_clearance_in":  8
+                                                                       },
+                                                                       {
+                                                                           "segment":  5,
+                                                                           "target":  "west-chair-1",
+                                                                           "centerline_distance_ft":  6.519202,
+                                                                           "buffer_clearance_in":  60.2304
+                                                                       },
+                                                                       {
+                                                                           "segment":  5,
+                                                                           "target":  "west-chair-2",
+                                                                           "centerline_distance_ft":  5.85235,
+                                                                           "buffer_clearance_in":  52.2282
+                                                                       },
+                                                                       {
+                                                                           "segment":  0,
+                                                                           "target":  "half-wall",
+                                                                           "centerline_distance_ft":  3,
+                                                                           "buffer_clearance_in":  18
+                                                                       },
+                                                                       {
+                                                                           "segment":  2,
+                                                                           "target":  "wall-return",
+                                                                           "centerline_distance_ft":  1.75,
+                                                                           "buffer_clearance_in":  3
+                                                                       },
+                                                                       {
+                                                                           "segment":  6,
+                                                                           "target":  "porch-west-wall",
+                                                                           "centerline_distance_ft":  2.5,
+                                                                           "buffer_clearance_in":  12
+                                                                       },
+                                                                       {
+                                                                           "segment":  4,
+                                                                           "target":  "porch-east-wall",
+                                                                           "centerline_distance_ft":  2.403701,
+                                                                           "buffer_clearance_in":  10.8444
+                                                                       }
+                                                                   ],
+                          "minimum_all_clearance_by_target_including_search_overlay":  [
+                                                                                           {
+                                                                                               "segment":  5,
+                                                                                               "target":  "M-04-pantry",
+                                                                                               "centerline_distance_ft":  2.166667,
+                                                                                               "buffer_clearance_in":  8
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  0,
+                                                                                               "target":  "M-05-entry",
+                                                                                               "centerline_distance_ft":  14.833333,
+                                                                                               "buffer_clearance_in":  160
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  3,
+                                                                                               "target":  "west_of_core",
+                                                                                               "centerline_distance_ft":  1.532065,
+                                                                                               "buffer_clearance_in":  0.3848
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  0,
+                                                                                               "target":  "east_of_core",
+                                                                                               "centerline_distance_ft":  6.576473,
+                                                                                               "buffer_clearance_in":  60.9177
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  4,
+                                                                                               "target":  "perimeter-cabinet-run",
+                                                                                               "centerline_distance_ft":  7.863859,
+                                                                                               "buffer_clearance_in":  76.3663
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  1,
+                                                                                               "target":  "island",
+                                                                                               "centerline_distance_ft":  1.75,
+                                                                                               "buffer_clearance_in":  3
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  2,
+                                                                                               "target":  "assumed-stools",
+                                                                                               "centerline_distance_ft":  1.55009,
+                                                                                               "buffer_clearance_in":  0.6011
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  4,
+                                                                                               "target":  "dining-table",
+                                                                                               "centerline_distance_ft":  1.666667,
+                                                                                               "buffer_clearance_in":  2
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  4,
+                                                                                               "target":  "south-chair-1",
+                                                                                               "centerline_distance_ft":  4.666667,
+                                                                                               "buffer_clearance_in":  38
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  4,
+                                                                                               "target":  "south-chair-2",
+                                                                                               "centerline_distance_ft":  2.166667,
+                                                                                               "buffer_clearance_in":  8
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  5,
+                                                                                               "target":  "west-chair-1",
+                                                                                               "centerline_distance_ft":  6.519202,
+                                                                                               "buffer_clearance_in":  60.2304
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  5,
+                                                                                               "target":  "west-chair-2",
+                                                                                               "centerline_distance_ft":  5.85235,
+                                                                                               "buffer_clearance_in":  52.2282
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  0,
+                                                                                               "target":  "half-wall",
+                                                                                               "centerline_distance_ft":  3,
+                                                                                               "buffer_clearance_in":  18
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  2,
+                                                                                               "target":  "wall-return",
+                                                                                               "centerline_distance_ft":  1.75,
+                                                                                               "buffer_clearance_in":  3
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  6,
+                                                                                               "target":  "porch-west-wall",
+                                                                                               "centerline_distance_ft":  2.5,
+                                                                                               "buffer_clearance_in":  12
+                                                                                           },
+                                                                                           {
+                                                                                               "segment":  4,
+                                                                                               "target":  "porch-east-wall",
+                                                                                               "centerline_distance_ft":  2.403701,
+                                                                                               "buffer_clearance_in":  10.8444
+                                                                                           }
+                                                                                       ],
+                          "table_clearance_in":  2,
+                          "west_search_window_clearance_in":  0.3848,
+                          "stool_clearance_in":  0.6011
+                      },
+    "conclusion":  "The orthogonal M180 elbow clips the blocked west M-06 search-window overlay. A diagonal transition from (11.25,13.75) through (10.4167,14.25) to (9.6667,15.0) clears assigned static rectangles using an 18 in radius route buffer, while retaining only 0.6 in at the assumed stool proxy, 2 in at the table edge and 0.38 in at the blocked west M-06 search-window boundary. These margins are fragile and do not validate operation; this is a proposal, not a settled approach or layout.",
+    "limitations":  [
+                        "Room, furniture and search-window geometry are schematic coordinate proxies; route buffer assumes a 36 in-wide path with rounded ends at its centerline.",
+                        "Sub-inch stool/window margins and 2 in table margin do not account for movement, tolerances or uncertainty and are insufficient to validate operation.",
+                        "The 36 in swept-path model does not establish code compliance or accessibility.",
+                        "Physical walls, door leaf/swing/clear width, thresholds, porch connection, services and Revit/IFC are unmodeled.",
+                        "M-06/B remains unassigned; no structural, professional, permit or construction approval."
+                    ]
+}

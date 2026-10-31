@@ -1,0 +1,440 @@
+﻿{
+    "milestone":  "M106",
+    "title":  "Conditional emergency escape opening perimeter screen",
+    "status":  "spatial design gate only; no egress opening is designed or code-compliance result made",
+    "code_basis":  {
+                       "jurisdiction":  "Connecticut statewide preliminary basis; local permit applicability unresolved",
+                       "adopted_provision":  "2022 Connecticut State Building Code, amended 2021 IRC R310.1",
+                       "summary":  "Every sleeping room requires at least one operable emergency escape and rescue opening, which opens directly to a public way or to a yard/court that opens to a public way.",
+                       "minimum_net_clear_area_reference_sf":  5.7,
+                       "maximum_clear_sill_height_reference_in":  44,
+                       "source_url":  "https://portal.ct.gov/das/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csbc-final.pdf?rev=a59cc11db0564caaa5477bd696ee85f2",
+                       "detailed_citation_note_sha256":  "e228079fff65df2064b399c16a68494df7480d8e00e86a655efcc714c922d57c"
+                   },
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "M78 hypothetical comparison envelope; not selected house geometry"
+              },
+    "source_hashes_sha256":  {
+                                 "m78_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                                 "m78_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
+                                 "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "ct_r310_research_note":  "e228079fff65df2064b399c16a68494df7480d8e00e86a655efcc714c922d57c"
+                             },
+    "method":  "Check whether the room-block rectangles touch the perimeter of the hypothetical M78 shell. Perimeter contact is only a potential external wall location; it does not establish a wall, window, net clear dimensions, exterior yard/route, sill height or emergency escape opening.",
+    "conditional_gate":  "U-03 is programmed as a hybrid bedroom/office, but sleeping-room status is unverified. If the owner intends it to function as a sleeping room, its current M78 room block has no test-shell perimeter edge for a conventional exterior wall opening; revise room/shell geometry or evaluate a separately documented qualifying opening path.",
+    "candidate_count":  5,
+    "candidate_layout_keys":  [
+                                  {
+                                      "candidate_id":  "M78-TOP-01",
+                                      "layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000"
+                                  },
+                                  {
+                                      "candidate_id":  "M78-TOP-02",
+                                      "layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000"
+                                  },
+                                  {
+                                      "candidate_id":  "M78-TOP-03",
+                                      "layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.5000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000"
+                                  },
+                                  {
+                                      "candidate_id":  "M78-TOP-04",
+                                      "layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000"
+                                  },
+                                  {
+                                      "candidate_id":  "M78-TOP-05",
+                                      "layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.3333,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000"
+                                  }
+                              ],
+    "results":  [
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-01",
+                        "room_program_label":  "Primary bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  0,
+                        "y_ft":  11.5,
+                        "width_ft":  10,
+                        "depth_ft":  16,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "west"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  16,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-03",
+                        "room_program_label":  "Hybrid bedroom/office",
+                        "sleeping_room_status":  "bedroom-capable; sleeping-room classification unverified",
+                        "x_ft":  11.166667,
+                        "y_ft":  8.166667,
+                        "width_ft":  13.666667,
+                        "depth_ft":  9.166667,
+                        "nearest_test_shell_edge_ft":  8.166667,
+                        "contacted_test_shell_edges":  [
+
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  false,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-04",
+                        "room_program_label":  "Guest / third bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  30.333333,
+                        "y_ft":  17.833333,
+                        "width_ft":  8,
+                        "depth_ft":  13.666667,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "east"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  13.666667,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-01",
+                        "room_program_label":  "Primary bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  0,
+                        "y_ft":  11.5,
+                        "width_ft":  10,
+                        "depth_ft":  16,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "west"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  16,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-03",
+                        "room_program_label":  "Hybrid bedroom/office",
+                        "sleeping_room_status":  "bedroom-capable; sleeping-room classification unverified",
+                        "x_ft":  11.166667,
+                        "y_ft":  8.166667,
+                        "width_ft":  13.666667,
+                        "depth_ft":  9.166667,
+                        "nearest_test_shell_edge_ft":  8.166667,
+                        "contacted_test_shell_edges":  [
+
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  false,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-04",
+                        "room_program_label":  "Guest / third bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  30.333333,
+                        "y_ft":  17.833333,
+                        "width_ft":  8,
+                        "depth_ft":  13.666667,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "east"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  13.666667,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.5000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-01",
+                        "room_program_label":  "Primary bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  0,
+                        "y_ft":  11.5,
+                        "width_ft":  10,
+                        "depth_ft":  16,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "west"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  16,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.5000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-03",
+                        "room_program_label":  "Hybrid bedroom/office",
+                        "sleeping_room_status":  "bedroom-capable; sleeping-room classification unverified",
+                        "x_ft":  11.166667,
+                        "y_ft":  8.166667,
+                        "width_ft":  13.666667,
+                        "depth_ft":  9.166667,
+                        "nearest_test_shell_edge_ft":  8.166667,
+                        "contacted_test_shell_edges":  [
+
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  false,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.5000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-04",
+                        "room_program_label":  "Guest / third bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  30.333333,
+                        "y_ft":  17.833333,
+                        "width_ft":  8,
+                        "depth_ft":  13.666667,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "east"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  13.666667,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-01",
+                        "room_program_label":  "Primary bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  0,
+                        "y_ft":  11.5,
+                        "width_ft":  10,
+                        "depth_ft":  16,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "west"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  16,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-03",
+                        "room_program_label":  "Hybrid bedroom/office",
+                        "sleeping_room_status":  "bedroom-capable; sleeping-room classification unverified",
+                        "x_ft":  11.166667,
+                        "y_ft":  8.166667,
+                        "width_ft":  13.666667,
+                        "depth_ft":  9.166667,
+                        "nearest_test_shell_edge_ft":  8.166667,
+                        "contacted_test_shell_edges":  [
+
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  false,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-04",
+                        "room_program_label":  "Guest / third bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  30.333333,
+                        "y_ft":  17.833333,
+                        "width_ft":  8,
+                        "depth_ft":  13.666667,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "east"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  13.666667,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.3333,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-01",
+                        "room_program_label":  "Primary bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  0,
+                        "y_ft":  11.5,
+                        "width_ft":  10,
+                        "depth_ft":  16,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "west"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  16,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.3333,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-03",
+                        "room_program_label":  "Hybrid bedroom/office",
+                        "sleeping_room_status":  "bedroom-capable; sleeping-room classification unverified",
+                        "x_ft":  11.166667,
+                        "y_ft":  8.166667,
+                        "width_ft":  13.666667,
+                        "depth_ft":  9.166667,
+                        "nearest_test_shell_edge_ft":  8.166667,
+                        "contacted_test_shell_edges":  [
+
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  0,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  false,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.3333,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                        "room_id":  "U-04",
+                        "room_program_label":  "Guest / third bedroom",
+                        "sleeping_room_status":  "programmed bedroom candidate; permit classification still requires review",
+                        "x_ft":  30.333333,
+                        "y_ft":  17.833333,
+                        "width_ft":  8,
+                        "depth_ft":  13.666667,
+                        "nearest_test_shell_edge_ft":  0,
+                        "contacted_test_shell_edges":  [
+                                                           "east"
+                                                       ],
+                        "perimeter_contact_lengths_ft":  {
+                                                             "west":  0,
+                                                             "east":  13.666667,
+                                                             "south":  0,
+                                                             "north":  0
+                                                         },
+                        "test_shell_perimeter_wall_opportunity":  true,
+                        "actual_exterior_wall":  false,
+                        "emergency_escape_opening_provided":  false
+                    }
+                ],
+    "checks":  {
+                   "source_search_hash_matches_manifest":  true,
+                   "m78_binds_current_selected_d":  true,
+                   "shell_dimensions_match_hypothetical_m78_case":  true,
+                   "five_route_ranked_layouts_present":  true,
+                   "route_proxy_keeps_public_and_private_requirements":  true,
+                   "bedroom_capable_rooms_exist_in_source_program":  true,
+                   "room_program_labels_match_source":  true,
+                   "code_note_cites_r310":  true,
+                   "all_fifteen_room_candidate_rows_generated":  true,
+                   "u01_has_west_perimeter_contact":  true,
+                   "u03_has_no_test_shell_perimeter_contact":  true,
+                   "u04_has_east_perimeter_contact":  true,
+                   "perimeter_contact_is_not_misreported_as_an_opening":  true,
+                   "selected_d_unchanged":  true,
+                   "svg_parses_as_xml":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "This screen measures mathematical contact to a rectangular test-shell line, not built exterior walls or openings.",
+                        "No window product, clear opening width/height, operation, sill height, well, guard, outside landing, yard/court or route to public way is modeled.",
+                        "A roof window or dormer is not assumed to qualify; its acceptability requires applicable-code interpretation and design review.",
+                        "U-03 sleeping-room status and Connecticut permit applicability remain unresolved; no compliance or safety conclusion follows.",
+                        "The top-five layout subset comes from M78\u0027s bounded 457-packing search and is not exhaustive. Selected-D remains unchanged."
+                    ]
+}

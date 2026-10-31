@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="920" height="590" viewBox="0 0 920 590">
+<title>M108 bounded U-03 perimeter opportunity screen</title>
+<style>text{font-family:Arial,sans-serif;fill:#263743}.title{font-size:25px;font-weight:700}.label{font-size:14px;font-weight:700}.small{font-size:13px}.shell{fill:#fbfaf6;stroke:#2c4556;stroke-width:4}.room{stroke:#536671;stroke-width:1.5}.primary{fill:#d9e5ef}.guest{fill:#e7dfd6}.hybrid{fill:#f3c4ba;stroke:#a24032;stroke-width:3}.bath{fill:#dcebdd}.private{fill:#e9e0f0}.contact{stroke:#287459;stroke-width:8}</style>
+<rect class="shell" x="90" y="70" width="356.4999969" height="372"/>
+<rect class="room primary" x="90" y="186.25" width="93" height="148.8"/><text class="label" text-anchor="middle" x="136.5" y="265.65">U-01</text>
+<rect class="room room" x="193.85" y="186.25" width="148.8" height="89.9"/><text class="label" text-anchor="middle" x="268.25" y="236.2">U-02</text>
+<rect class="room hybrid" x="193.85" y="280.8" width="127.1" height="85.25"/><text class="label" text-anchor="middle" x="257.4" y="328.425">U-03</text>
+<rect class="room guest" x="372.1" y="149.05" width="74.4" height="127.1"/><text class="label" text-anchor="middle" x="409.3" y="217.6">U-04</text>
+<rect class="room bath" x="90" y="339.7" width="93" height="83.7"/><text class="label" text-anchor="middle" x="136.5" y="386.55">U-05</text>
+<rect class="room bath" x="325.6" y="280.8" width="93" height="111.6"/><text class="label" text-anchor="middle" x="372.1" y="341.6">U-06</text>
+<rect class="room private" x="133.4" y="121.15" width="93" height="60.45"/><text class="label" text-anchor="middle" x="179.9" y="156.375">C-PRIVATE</text>
+<text class="title" x="38" y="40">M108 | U-03 perimeter opportunity in the bounded route search</text>
+<text class="small" x="42" y="475">863 placements route-tested; 5 reach sampled U-01/U-02/U-04 hall sides (5 include U-02 north).</text>
+<text class="small" x="42" y="498">U-03 test-shell perimeter contacts: 0 of 863. Example: the source search best candidate.</text>
+<text class="small" x="42" y="521">Search is bounded and incomplete. Shell contact would only suggest a wall zone, not provide an opening.</text>
+<text class="small" x="42" y="544">38 1/3 x 40 ft is a hypothetical comparison shell, not a selected house dimension.</text>
+</svg>

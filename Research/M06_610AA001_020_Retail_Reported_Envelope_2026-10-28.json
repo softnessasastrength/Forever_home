@@ -1,0 +1,50 @@
+{
+    "schema":  "forever-home-m06-retailer-reported-target-envelope-v1",
+    "status":  "Secondary seller dimensions for exact target SKU; use for a labelled plan-envelope screen only.",
+    "checked_on":  "2026-10-28",
+    "target_sku":  "610AA001.020",
+    "dimension_source":  "Wayfair listing identifies American Standard part 610AA001.020 and reports overall dimensions 31 H x 19 W x 30.25 D in.",
+    "retailer_reported_overall_dimensions_in":  {
+                                                    "width":  19,
+                                                    "depth":  30.25,
+                                                    "height":  31
+                                                },
+    "retailer_reported_seat_height_in":  16.5,
+    "predecessor_comparison":  {
+                                   "predecessor_sku":  "211AA104.020",
+                                   "predecessor_report_sha256":  "fc64e326bd9b9155e1bce7ee3831bed8399ca730f01dc657808ff394c0a3abbd",
+                                   "predecessor_plan_width_in":  19,
+                                   "predecessor_plan_depth_in":  30.25,
+                                   "target_retailer_plan_width_in":  19,
+                                   "target_retailer_plan_depth_in":  30.25,
+                                   "plan_envelopes_match_within_0_001_in":  true,
+                                   "predecessor_reported_height_in":  31,
+                                   "target_retailer_height_in":  31,
+                                   "height_difference_in":  0
+                               },
+    "manufacturer_cross_check":  {
+                                     "product_page":  "https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring",
+                                     "page_identifies_sku":  "610AA001.020",
+                                     "page_reports_rough_in_in":  12,
+                                     "page_reports_seat_height_in":  17,
+                                     "linked_dimension_sheet_sku":  "211AA.104 predecessor, not 610AA001.020",
+                                     "current_manufacturer_dimension_sheet_found":  false,
+                                     "vertical_seat_height_matches_retailer":  false
+                                 },
+    "retailer_source":  "https://www.wayfair.com/home-improvement/pdp/american-standard-champion-pro-two-piece-toilet-with-slow-close-seat-wax-ring-chair-height-white-asd13048.html",
+    "evaluation":  {
+                       "suitable_for_labelled_plan_envelope_screen":  true,
+                       "manufacturer_verified_current_product_geometry":  false,
+                       "current_sku_rfa_or_cad_verified":  false,
+                       "current_sku_vertical_dimensions_reconciled":  false,
+                       "room_fit_or_clearance_established":  false,
+                       "door_approach_or_service_route_established":  false,
+                       "m06_assignment":  false
+                   },
+    "limitations":  [
+                        "The plan width and depth are retailer-reported for the exact SKU, not confirmed by a current manufacturer dimension drawing or inspected current-SKU Revit family.",
+                        "American Standard reports 17 in seat height and a 12 in rough-in; Wayfair reports 16.5 in seat height. Preserve the height discrepancy and do not use the retailer vertical dimension as verified geometry.",
+                        "The manufacturer product page links a dimension sheet for predecessor 211AA.104; matching plan numbers do not prove identity of the current SKU or every installed projection.",
+                        "This source does not establish room fit, code compliance, accessible design, door/approach, service routing, or assignment of B."
+                    ]
+}

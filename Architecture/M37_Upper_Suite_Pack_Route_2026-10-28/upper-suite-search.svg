@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="900" height="790" viewBox="0 0 900 790">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:21px;font-weight:bold}.room{fill:#eadfce;stroke:#74695d;stroke-width:2}.private{fill:#c8a7d1;fill-opacity:.45;stroke:#785a88;stroke-width:2}.bath{fill:#bfd5d9;stroke:#5b7a80;stroke-width:2}.hall{fill:#d7dce4;stroke:#5f6977;stroke-width:2}.lift{fill:#e7aaa2;fill-opacity:.45;stroke:#a7463c;stroke-width:2;stroke-dasharray:7 4}.label{font-size:12px}.note{font-size:13px;fill:#5b554d}.warn{font-size:13px;fill:#8e3f35}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}</style>
+<text class="title" x="40" y="30">M37 - upper-suite pack and route search</text><text class="note" x="40" y="50">bounded search found no candidate satisfying room contacts, lift keepout and required 4ft public routes to U-01, U-02 and U-04; room rectangles and stair/lift projection only</text>
+<rect class="shell" x="40" y="70" width="648" height="576"/>
+<rect class="lift" x="421" y="574" width="144" height="72"/><text class="label" x="425" y="590">lift projected keepout</text>
+<text class="warn" x="40" y="710">No approach-clear layout was available for a route diagnostic.</text>
+<text class="note" x="40" y="730">Nodes 1500; layouts 285; search complete False. A capped search is not proof of impossibility.</text>
+<text class="note" x="40" y="752">Not Revit walls, door swings, floor openings, code or engineering.</text>
+</svg>

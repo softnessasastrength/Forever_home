@@ -1,0 +1,38 @@
+﻿{
+    "count":  11,
+    "passed":  [
+                   "owner_roof_request_is_steep_traditional_gable",
+                   "study_footprint_is_source_derived_40x42",
+                   "ridge_option_A_uses_40ft_transverse_span",
+                   "ridge_option_B_uses_42ft_transverse_span",
+                   "same_pitch_option_B_has_5_percent_larger_half_run",
+                   "no_roof_pitch_or_rise_is_invented",
+                   "code_path_is_not_assumed_from_statewide_research",
+                   "municipality_and_site_remain_open",
+                   "source_states_2022_code_applies_from_2022_10_01",
+                   "source_records_2026_adoption_delay",
+                   "no_compliance_or_structural_claim"
+               ],
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "owner_roof_request_is_steep_traditional_gable":  true,
+                   "study_footprint_is_source_derived_40x42":  true,
+                   "ridge_option_A_uses_40ft_transverse_span":  true,
+                   "ridge_option_B_uses_42ft_transverse_span":  true,
+                   "same_pitch_option_B_has_5_percent_larger_half_run":  true,
+                   "no_roof_pitch_or_rise_is_invented":  true,
+                   "code_path_is_not_assumed_from_statewide_research":  true,
+                   "municipality_and_site_remain_open":  true,
+                   "source_states_2022_code_applies_from_2022_10_01":  true,
+                   "source_records_2026_adoption_delay":  true,
+                   "no_compliance_or_structural_claim":  true
+               },
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "house_design_decision.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_Roof_Code_Research_2026-10-28.md":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "interpretation":  "Passing checks validate source-derived comparison arithmetic and explicitly unassigned roof/code inputs; not a roof design."
+}

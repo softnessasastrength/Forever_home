@@ -1,0 +1,86 @@
+{
+  "schema": "forever-home.m34-upper-suite-private-link-screen.v1",
+  "title": "M34 — upper suite direct-link spatial screen",
+  "status": "design gate; one room shift is insufficient to realize the owner-directed private sequence",
+  "source_fingerprints_sha256": {
+    "selected_D_study.json": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "owner_followup_study.json": "db41c13327eeff3c10c4d91c69ab8d0fa20147c7dcc91106d31fc417db60c2bd"
+  },
+  "coordinate_basis": "Upper room blocks use the source-documented wing-local shell; translate upper y by its recorded plan_frame_offsets_ft value only when comparing with shared-frame core geometry.",
+  "upper_wing_test_shell_ft": {
+    "width": 36.0,
+    "depth": 32.0
+  },
+  "assumptions": [
+    "The selected-D 0.5 ft block separation is retained as a nominal wall allowance, not a verified wall thickness.",
+    "The current 4 ft C-UPPER and 8x8 ft lift reservation are treated as comparison geometry, not approved construction dimensions.",
+    "A private direct connection is represented by U-02 and U-03 meeting across the nominal 0.5 ft wall zone; no door or opening is modeled."
+  ],
+  "baseline": {
+    "U02": {
+      "x_ft": 0.6666666666666666,
+      "y_ft": 21.666666666666668,
+      "width_ft": 16.0,
+      "depth_ft": 9.666666666666666
+    },
+    "U03": {
+      "id": "U-03 current position",
+      "x_ft": 21.666666666666668,
+      "y_ft": 22.166666666666668,
+      "width_ft": 13.666666666666666,
+      "depth_ft": 9.166666666666666
+    },
+    "C_UPPER": {
+      "id": "existing C-UPPER",
+      "x_ft": 17.166666666666668,
+      "y_ft": 0.6666666666666666,
+      "width_ft": 4.0,
+      "depth_ft": 30.666666666666668
+    },
+    "U03_to_lift_projected_overlap_sf": 25.0,
+    "U02_to_U03_gap_ft": 5.0
+  },
+  "direct_link_candidate": {
+    "U03": {
+      "id": "U-03 direct-link position candidate",
+      "x_ft": 17.166666666666668,
+      "y_ft": 22.166666666666668,
+      "width_ft": 13.666666666666666,
+      "depth_ft": 9.166666666666666
+    },
+    "U02_to_U03_nominal_wall_allowance_ft": 0.5,
+    "U02_U03_y_overlap_ft": 9.1667,
+    "overlap_with_existing_C_UPPER": {
+      "overlap": true,
+      "width_ft": 4.0,
+      "depth_ft": 9.166666666666668,
+      "area_sf": 36.6667
+    },
+    "overlap_with_lift_reservation": {
+      "overlap": true,
+      "width_ft": 8.0,
+      "depth_ft": 3.3333333333333357,
+      "area_sf": 26.6667
+    }
+  },
+  "checks": {
+    "selected_D_source_matches_owner_followup": true,
+    "direct_candidate_keeps_U03_source_dimensions": true,
+    "candidate_U03_inside_36x32_upper_wing_test_plate": true,
+    "U02_U03_direct_candidate_retains_nominal_6in_wall_allowance": true,
+    "selected_D_hall_has_matching_nominal_half_ft_wall_allowances": true,
+    "existing_U02_U03_gap_is_5ft": true,
+    "upper_room_frame_offset_is_source_derived": true
+  },
+  "failures": [],
+  "open_findings": [
+    "Current U-03 overlaps the shared-frame lift reservation in plan projection after applying the documented +6 ft upper-frame offset. Confirm whether the reservation is intended to persist at this location before resolving the upper plan.",
+    "Moving U-03 west to align with U-02 across the nominal wall zone occupies part of existing C-UPPER and overlaps the projected lift reservation; this is a diagnostic, not a proposed approved placement.",
+    "Preserving a private U-02-to-U-03 route, guest access, U-03/U-04 Jack-and-Jill connection, the 4 ft public hall and lift reservation requires a broader upper-floor/core re-layout. No room-size, core or shell change is authorized by this screen."
+  ],
+  "limitations": [
+    "No feasible alternate packing is asserted. The test establishes that the single direct shift does not work with current corridor/lift rectangles.",
+    "No wall, door, door swing, furniture, headroom, floor opening, shaft, stair, service or life-safety geometry is modeled.",
+    "No Revit or IFC action was performed; no code, accessibility, structural or construction claim is made."
+  ]
+}

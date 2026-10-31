@@ -1,14 +1,23 @@
-param([string]$Dotnet = 'dotnet')
+param(
+    [string]$Dotnet = '',
+    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]*$')]
+    [string]$BuildDirectory = 'build'
+)
 $ErrorActionPreference = 'Stop'
 $pilotRoot = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+$repoDotnet = Join-Path $pilotRoot '.local/dotnet/dotnet.exe'
+if ([string]::IsNullOrWhiteSpace($Dotnet)) {
+    $Dotnet = if (Test-Path -LiteralPath $repoDotnet) { $repoDotnet } else { 'dotnet' }
+}
 $env:DOTNET_CLI_HOME = Join-Path $pilotRoot '.local/dotnet-home'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
 $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = '1'
 $env:DOTNET_GENERATE_ASPNET_CERTIFICATE = 'false'
 $env:DOTNET_ADD_GLOBAL_TOOLS_TO_PATH = 'false'
-& $Dotnet build (Join-Path $PSScriptRoot 'RevitPilot.csproj') -c Release --ignore-failed-sources
+$baseOutputPath = "../../.local/revit-pilot/$BuildDirectory/"
+& $Dotnet build (Join-Path $PSScriptRoot 'RevitPilot.csproj') -c Release "-p:BaseOutputPath=$baseOutputPath" --ignore-failed-sources
 if ($LASTEXITCODE -ne 0) { throw 'Pilot build failed' }
-$pilotDll = Join-Path $pilotRoot '.local/revit-pilot/build/Release/net10.0-windows/RevitPilot.dll'
+$pilotDll = Join-Path $pilotRoot ".local/revit-pilot/$BuildDirectory/Release/net10.0-windows/RevitPilot.dll"
 Set-Content -LiteralPath (Join-Path (Split-Path $pilotDll) 'workspace.txt') -Value $pilotRoot -Encoding utf8
 $pilotEscapedDll = [System.Security.SecurityElement]::Escape($pilotDll)
 @"

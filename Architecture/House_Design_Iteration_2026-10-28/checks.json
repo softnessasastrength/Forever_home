@@ -1,0 +1,54 @@
+﻿{
+    "passed":  [
+                   "all_main_blocks_inside_40x42_test_envelope",
+                   "no_main_room_block_overlaps",
+                   "main_room_blocks_clear_comparison_stair_lift",
+                   "kitchen_target_is_exactly_14x12",
+                   "dining_target_is_exactly_11x10",
+                   "kitchen_adjoins_living_across_nominal_6in_gap",
+                   "kitchen_adjoins_dining_across_nominal_6in_gap",
+                   "dining_adjoins_pantry_across_nominal_6in_gap",
+                   "entry_adjoins_living_across_nominal_6in_gap",
+                   "pantry_side_M06_window_is_positive",
+                   "owner_requires_direct_U02_shared_hall_arrival",
+                   "M06_B_search_window_inside_test_envelope",
+                   "M06_B_remains_unassigned_and_clear_of_room_blocks",
+                   "M06_B_clear_of_stair_lift_comparison_blocks",
+                   "private_chain_has_owner_directed_U02_to_U03_link",
+                   "U03_private_only_direction_excludes_hall_edge",
+                   "guest_hall_and_both_JandJ_links_remain",
+                   "14x12_room_cannot_fit_8ft_island_with_42in_both_end_clearances"
+               ],
+    "failed":  [
+
+               ],
+    "count":  18,
+    "source_selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "room_overlaps":  [
+
+                      ],
+    "stair_lift_overlaps":  [
+
+                            ],
+    "checks":  {
+                   "all_main_blocks_inside_40x42_test_envelope":  true,
+                   "no_main_room_block_overlaps":  true,
+                   "main_room_blocks_clear_comparison_stair_lift":  true,
+                   "kitchen_target_is_exactly_14x12":  true,
+                   "dining_target_is_exactly_11x10":  true,
+                   "kitchen_adjoins_living_across_nominal_6in_gap":  true,
+                   "kitchen_adjoins_dining_across_nominal_6in_gap":  true,
+                   "dining_adjoins_pantry_across_nominal_6in_gap":  true,
+                   "entry_adjoins_living_across_nominal_6in_gap":  true,
+                   "pantry_side_M06_window_is_positive":  true,
+                   "owner_requires_direct_U02_shared_hall_arrival":  true,
+                   "M06_B_search_window_inside_test_envelope":  true,
+                   "M06_B_remains_unassigned_and_clear_of_room_blocks":  true,
+                   "M06_B_clear_of_stair_lift_comparison_blocks":  true,
+                   "private_chain_has_owner_directed_U02_to_U03_link":  true,
+                   "U03_private_only_direction_excludes_hall_edge":  true,
+                   "guest_hall_and_both_JandJ_links_remain":  true,
+                   "14x12_room_cannot_fit_8ft_island_with_42in_both_end_clearances":  true
+               },
+    "interpretation":  "Passing checks establish only schematic rectangle arithmetic, required adjacencies, an unassigned search gap and an explicit kitchen-fit failure. They do not validate a building."
+}

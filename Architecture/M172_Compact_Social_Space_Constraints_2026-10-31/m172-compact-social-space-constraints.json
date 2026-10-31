@@ -1,0 +1,225 @@
+﻿{
+    "schema":  "forever-home-m172-compact-social-space-constraints-v1",
+    "status":  "verified dimensional constraints; unapproved layout proposal; not selected-D or Revit geometry",
+    "source_fingerprints_sha256":  {
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Decisions/2026-10-28_House_Design_Direction_Followup.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "targets":  {
+                    "M02_kitchen_ft":  [
+                                           14,
+                                           12
+                                       ],
+                    "M02_kitchen_area_sf":  168,
+                    "M03_dining_ft":  [
+                                          11,
+                                          10
+                                      ],
+                    "M03_dining_area_sf":  110,
+                    "combined_target_area_sf":  278,
+                    "island_ft":  [
+                                      8,
+                                      4
+                                  ],
+                    "island_area_sf":  32,
+                    "perimeter_run_required_ft":  12.5,
+                    "perimeter_run_modules_in":  [
+                                                     36,
+                                                     24,
+                                                     12,
+                                                     30,
+                                                     12,
+                                                     36
+                                                 ],
+                    "opposing_counter_island_halfwall_section_required_ft":  13.5,
+                    "island_end_clearance_screen_ft":  15,
+                    "dining_table_ft":  [
+                                            3,
+                                            5
+                                        ],
+                    "chair_proxy_in":  [
+                                           18,
+                                           20
+                                       ],
+                    "minimum_table_and_clearance_envelope_ft":  [
+                                                                    9,
+                                                                    11
+                                                                ],
+                    "preferred_table_and_clearance_envelope_ft":  [
+                                                                      10,
+                                                                      12
+                                                                  ]
+                },
+    "coupled_kitchen_orientations":  [
+                                         {
+                                             "id":  "cross-section-on-14ft-axis",
+                                             "cross_section_axis_ft":  14,
+                                             "appliance_run_axis_ft":  12,
+                                             "cross_section_residual_in":  6,
+                                             "appliance_run_residual_in":  -6,
+                                             "cross_section_fits":  true,
+                                             "appliance_run_fits":  false,
+                                             "strict_orthogonal_fit":  false
+                                         },
+                                         {
+                                             "id":  "cross-section-on-12ft-axis",
+                                             "cross_section_axis_ft":  12,
+                                             "appliance_run_axis_ft":  14,
+                                             "cross_section_residual_in":  -18,
+                                             "appliance_run_residual_in":  18,
+                                             "cross_section_fits":  false,
+                                             "appliance_run_fits":  true,
+                                             "strict_orthogonal_fit":  false
+                                         }
+                                     ],
+    "derived":  {
+                    "minimum_kitchen_orthogonal_envelope_ft":  [
+                                                                   12.5,
+                                                                   13.5
+                                                               ],
+                    "minimum_kitchen_envelope_area_sf":  168.75,
+                    "target_kitchen_area_sf":  168,
+                    "strict_rectangle_area_difference_sf":  0.75,
+                    "dining_min_short_axis_reserve_in":  12,
+                    "dining_min_long_axis_reserve_in":  0,
+                    "dining_preferred_short_axis_deficit_in":  0,
+                    "dining_preferred_long_axis_deficit_in":  12,
+                    "selected_d_control_blocks_ft":  {
+                                                         "M02":  [
+                                                                     17.333333333333332,
+                                                                     16
+                                                                 ],
+                                                         "M03":  [
+                                                                     11.333333333333334,
+                                                                     14
+                                                                 ]
+                                                     },
+                    "selected_d_numeric_controls":  {
+                                                        "M02_coupled_orthogonal_envelope_fits":  true,
+                                                        "M02_15ft_island_end_span_fits":  true,
+                                                        "M03_preferred_table_envelope_fits":  true,
+                                                        "interpretation":  "Room-block dimension controls only; wall thickness, interior faces, exact placement and route are not established."
+                                                    }
+                },
+    "limits":  [
+                   "The coupled kitchen dimensions are an orthogonal envelope screen: perimeter module run and opposing counter/island/half-wall section are not placed relative to real openings or adjacent rooms.",
+                   "The dining envelope is the documented table plus 36-in pull-out/path clearance on each side; it does not establish occupied-chair circulation or a route to a porch door.",
+                   "No room adjacency, door, porch position, 36-in continuous route, cabinet/appliance operating envelope, finish thickness, tolerance, site, service route or Revit placement is tested.",
+                   "The selected-D study is read only; the figures do not choose room sizes, island orientation, half-wall location, or a design revision."
+               ],
+    "assertions":  [
+                       {
+                           "id":  "target-m02-source",
+                           "pass":  true,
+                           "evidence":  "Room_Program M-02 target 14 x 12 ft"
+                       },
+                       {
+                           "id":  "target-m03-source",
+                           "pass":  true,
+                           "evidence":  "Room_Program M-03 target 11 x 10 ft"
+                       },
+                       {
+                           "id":  "owner-followup-source",
+                           "pass":  true,
+                           "evidence":  "Owner follow-up repeats both targets"
+                       },
+                       {
+                           "id":  "island-owner-source",
+                           "pass":  true,
+                           "evidence":  "Kitchen island decision retains 8 x 4 ft target"
+                       },
+                       {
+                           "id":  "aisle-source",
+                           "pass":  true,
+                           "evidence":  "Kitchen spec publishes 42 in minimum, 48 in preferred"
+                       },
+                       {
+                           "id":  "cabinet-depth-source",
+                           "pass":  true,
+                           "evidence":  "Kitchen spec publishes 24 in base depth"
+                       },
+                       {
+                           "id":  "table-size-source",
+                           "pass":  true,
+                           "evidence":  "Dining table is 36 x 60 in"
+                       },
+                       {
+                           "id":  "chair-size-source",
+                           "pass":  true,
+                           "evidence":  "Chair proxy is 18 x 20 in"
+                       },
+                       {
+                           "id":  "counter-run-arithmetic",
+                           "pass":  true,
+                           "evidence":  "36 + 24 + 12 + 30 + 12 + 36 = 150 in = 12 ft 6 in"
+                       },
+                       {
+                           "id":  "cross-section-arithmetic",
+                           "pass":  true,
+                           "evidence":  "24 + 42 + 48 + 42 + 6 = 162 in = 13 ft 6 in"
+                       },
+                       {
+                           "id":  "both-orientations-screened",
+                           "pass":  true,
+                           "evidence":  "Neither orthogonal orientation fits both coupled dimensions in 14 x 12 ft"
+                       },
+                       {
+                           "id":  "long-axis-end-clearance",
+                           "pass":  true,
+                           "evidence":  "8 ft island + two documented-minimum 42 in ends = 15 ft"
+                       },
+                       {
+                           "id":  "end-clearance-deficit-14",
+                           "pass":  true,
+                           "evidence":  "15 ft exceeds 14 ft axis by 12 in"
+                       },
+                       {
+                           "id":  "end-clearance-deficit-12",
+                           "pass":  true,
+                           "evidence":  "15 ft exceeds 12 ft axis by 36 in"
+                       },
+                       {
+                           "id":  "dining-min-envelope",
+                           "pass":  true,
+                           "evidence":  "36 x 60 in table + 36 in around all sides = 9 x 11 ft envelope"
+                       },
+                       {
+                           "id":  "dining-min-orientation-fits",
+                           "pass":  true,
+                           "evidence":  "11 x 10 ft target fits only the 11 x 9 ft minimum rectangle orientation"
+                       },
+                       {
+                           "id":  "preferred-dining-does-not-fit",
+                           "pass":  true,
+                           "evidence":  "Preferred 10 x 12 ft table envelope does not fit 11 x 10 ft"
+                       },
+                       {
+                           "id":  "selected-d-control-preserved",
+                           "pass":  true,
+                           "evidence":  "Read-only selected-D study matches its previously verified source SHA256"
+                       },
+                       {
+                           "id":  "selected-d-kitchen-envelope-control",
+                           "pass":  true,
+                           "evidence":  "Current larger selected-D test block numerically contains the coupled 13 ft 6 in by 12 ft 6 in envelope"
+                       },
+                       {
+                           "id":  "selected-d-island-end-span-control",
+                           "pass":  true,
+                           "evidence":  "Current larger selected-D test block dimensions exceed the 15 ft island/end-clearance screen"
+                       },
+                       {
+                           "id":  "selected-d-dining-control",
+                           "pass":  true,
+                           "evidence":  "Current larger selected-D dining test block numerically contains the 12 x 10 ft preferred table envelope"
+                       },
+                       {
+                           "id":  "proposal-nonclaim",
+                           "pass":  true,
+                           "evidence":  "No placement, adjacency, wall, door, route, code, accessibility, structure or construction approval is asserted"
+                       }
+                   ]
+}

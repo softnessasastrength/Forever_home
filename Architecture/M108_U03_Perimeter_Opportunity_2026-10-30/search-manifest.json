@@ -1,0 +1,29 @@
+﻿{
+    "generator":  "Tools/test_m37_upper_suite_pack_and_route.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca"
+                                   },
+    "search_parameters":  {
+                              "node_limit":  8000,
+                              "layout_limit":  5000,
+                              "root_search_scope":  "balanced",
+                              "u02_root_plan_variant":  "guest-branch-first",
+                              "additional_contact_samples":  8,
+                              "public_door_edge_samples":  9,
+                              "landing_aligned_root_seed_search":  true,
+                              "shell_width_override_ft":  38.333333,
+                              "shell_depth_override_ft":  40
+                          },
+    "output_hashes_sha256":  {
+                                 "search":  "e6307fab86f36271b9a1ee88848b9349e106ecbf21849356bc223ae059a18a2c",
+                                 "checks":  "bc4fdcc86f7062e8a27795e5cd53ebb032a9d80c483baaf1486db7ecb3a63fee",
+                                 "svg":  "ce556a5273bfa61f47b9573569177e6d04f79fac33313f3bc15c594e93399ae1"
+                             },
+    "optional_route_tested_candidate_archive":  {
+                                                    "file":  "all-route-tested-candidates.json",
+                                                    "sha256":  "44380542825724e40c28bf3f1915e7f626f7c0509e2a0d4ed2251eaf623bcff2",
+                                                    "candidate_count":  863
+                                                }
+}

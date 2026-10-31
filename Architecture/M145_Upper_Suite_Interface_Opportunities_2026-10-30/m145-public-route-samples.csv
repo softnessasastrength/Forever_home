@@ -1,0 +1,3 @@
+﻿"candidate_id","u01_primary_public_side_samples","u02_required_direct_hall_side_samples","u04_guest_public_side_samples","u03_public_side_samples","u03_direct_hall_link_removed","route_is_sampled_grid_only","actual_public_doors_modeled","private_path_door_sequence"
+"M130-NE-19","east;north","north","west","","True","True","False","U-01 -> C-PRIVATE -> U-02 -> U-03"
+"M130-NE-24","east","north","west","","True","True","False","U-01 -> C-PRIVATE -> U-02 -> U-03"

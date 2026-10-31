@@ -1,0 +1,4 @@
+"record_type","route_rect","chair_use_envelope","overlap_sf"
+"route pullout intersection","segment-4","south-chair-1-use-36in-from-table-edge","0.5"
+"route pullout intersection","segment-4","south-chair-2-use-36in-from-table-edge","0.75"
+"route pullout intersection","node-4","south-chair-1-use-36in-from-table-edge","0.75"

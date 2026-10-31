@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="850" viewBox="0 0 900 850">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:21px;font-weight:bold}.sub{font-size:13px;fill:#5b554d}.room{fill:#eadfce;stroke:#74695d;stroke-width:2}.hall{fill:#d7dce4;stroke:#5f6977;stroke-width:2}.lift{fill:#e7aaa2;fill-opacity:.4;stroke:#a7463c;stroke-width:2;stroke-dasharray:7 4}.candidate{fill:#a8c7a9;fill-opacity:.55;stroke:#43684a;stroke-width:3;stroke-dasharray:8 5}.label{font-size:12px}.warn{font-size:13px;fill:#8e3f35}</style>
+<text class="title" x="40" y="30">M34 — private upper-suite link screen</text>
+<text class="sub" x="40" y="49">Upper wing local coordinates; lift shown after documented +6 ft frame translation</text>
+<rect class="room" x="52" y="450" width="288" height="174"/><text class="label" x="57" y="468">U-02 Boutique</text>
+<rect class="room" x="52" y="72" width="288" height="180"/><text class="label" x="57" y="90">U-01</text>
+<rect class="room" x="52" y="261" width="162" height="180"/><text class="label" x="57" y="279">U-05</text>
+<rect class="room" x="430" y="72" width="246" height="144"/><text class="label" x="435" y="90">U-04</text>
+<rect class="room" x="496" y="225" width="180" height="216"/><text class="label" x="501" y="243">U-06</text>
+<rect class="hall" x="349" y="72" width="72" height="552"/><text class="label" x="354" y="90">current C-UPPER</text>
+<rect class="room" x="430" y="459" width="246" height="165"/><text class="label" x="435" y="477">current U-03</text>
+<rect class="lift" x="421" y="564" width="144" height="144"/><text class="label" x="426" y="582">lift reservation (shared frame)</text>
+<rect class="candidate" x="349" y="459" width="246" height="165"/><text class="label" x="354" y="477">U-03 direct-link test</text>
+<text class="warn" x="40" y="790">One shift overlaps both the existing hall and projected lift reservation.</text>
+<text class="sub" x="40" y="812">It is a diagnostic candidate only; room, corridor, core and door re-layout is unresolved.</text>
+</svg>

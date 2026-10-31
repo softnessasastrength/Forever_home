@@ -1,0 +1,128 @@
+﻿{
+    "schema":  "forever-home.m59-porch-furniture-route.v1",
+    "title":  "M59 â€” porch table and garden-door route screen",
+    "status":  "one unselected furniture and route arrangement",
+    "source_fingerprints_sha256":  {
+                                       "M58_report":  "7f3589ab80021fba736a2736937e9ba142a01c9340775d41d5554d93a573b42e",
+                                       "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "kitchen_dining_porch_specs":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091"
+                                   },
+    "source_paths":  {
+                         "M58_report":  "Architecture/M58_East_Porch_Chair_Route_2026-10-28/east-porch-chair-route.json",
+                         "owner_followup":  "Architecture/House_Design_Iteration_2026-10-28/study.json",
+                         "spec":  "Architecture/Kitchen_Dining_Porch_Specs.md"
+                     },
+    "geometry":  {
+                     "porch_local_bounds_ft":  {
+                                                   "width":  12,
+                                                   "depth":  10
+                                               },
+                     "coordinate_note":  "Local origin is the west/south inside corner of the proposed east-attached porch; west is the dining opening and east is the garden-side opening.",
+                     "furniture":  {
+                                       "table":  {
+                                                     "name":  "30x48in porch table, long side east-west",
+                                                     "x_ft":  4,
+                                                     "y_ft":  7.5,
+                                                     "width_ft":  4,
+                                                     "depth_ft":  2.5
+                                                 },
+                                       "chair_dimensions_in":  [
+                                                                   18,
+                                                                   20
+                                                               ],
+                                       "chairs":  [
+                                                      {
+                                                          "name":  "porch chair body at x=5.000ft",
+                                                          "x_ft":  4.25,
+                                                          "y_ft":  5.833333333333333,
+                                                          "width_ft":  1.5,
+                                                          "depth_ft":  1.6666666666666667
+                                                      },
+                                                      {
+                                                          "name":  "porch chair body at x=7.000ft",
+                                                          "x_ft":  6.25,
+                                                          "y_ft":  5.833333333333333,
+                                                          "width_ft":  1.5,
+                                                          "depth_ft":  1.6666666666666667
+                                                      }
+                                                  ],
+                                       "arrangement":  "30x48 table with two 18x20 chair-body proxies on its north long side; all dimensions from project specs, seating pattern and placement are proposals."
+                                   },
+                     "route_segments":  [
+                                            {
+                                                "name":  "west door connector",
+                                                "x_ft":  0,
+                                                "y_ft":  3.75,
+                                                "width_ft":  2.5,
+                                                "depth_ft":  2.5
+                                            },
+                                            {
+                                                "name":  "30in cross-porch lane",
+                                                "x_ft":  0,
+                                                "y_ft":  1.25,
+                                                "width_ft":  12,
+                                                "depth_ft":  2.5
+                                            },
+                                            {
+                                                "name":  "east garden-door connector",
+                                                "x_ft":  9.5,
+                                                "y_ft":  3.75,
+                                                "width_ft":  2.5,
+                                                "depth_ft":  2.5
+                                            }
+                                        ],
+                     "route_width_in":  30,
+                     "nominal_french_door_options":  [
+                                                         {
+                                                             "nominal_width_ft":  5,
+                                                             "opening_interval_local_ft":  [
+                                                                                               2.5000333333333344,
+                                                                                               7.5000333333333327
+                                                                                           ],
+                                                             "entry_connector_fits":  true
+                                                         },
+                                                         {
+                                                             "nominal_width_ft":  6,
+                                                             "opening_interval_local_ft":  [
+                                                                                               2.0000333333333344,
+                                                                                               8.0000333333333327
+                                                                                           ],
+                                                             "entry_connector_fits":  true
+                                                         }
+                                                     ],
+                     "nominal_exterior_door":  {
+                                                   "width_ft":  3,
+                                                   "centered_interval_ft":  [
+                                                                                3.5,
+                                                                                6.5
+                                                                            ],
+                                                   "route_connector_fits":  true
+                                               }
+                 },
+    "checks":  {
+                   "source_fingerprints_match":  true,
+                   "furniture_table_matches_30x48_spec":  true,
+                   "two_spec_derived_chair_proxies_fit_inside_porch":  true,
+                   "table_and_chairs_do_not_overlap":  true,
+                   "all_route_segments_fit_inside_porch":  true,
+                   "route_segments_connect_as_a_continuous_30in_path":  true,
+                   "route_has_no_overlap_with_table_or_chair_bodies":  true,
+                   "west_french_door_nominal_intervals_contain_entry_path":  true,
+                   "east_3ft_exterior_door_nominal_interval_contains_exit_path":  true
+               },
+    "failures":  [
+
+                 ],
+    "assumptions":  [
+                        "The M58 east porch candidate is used as a 12x10 ft clear-interior rectangle; 50 sf remains beyond the unapproved test shell.",
+                        "Both openings are assumed centered on opposing 10 ft end walls, with no threshold or wall build-up; actual door locations, products and swings remain unselected.",
+                        "A 30in-wide path is assembled from three rectangles: the centered west connector, a cross-porch lane, and a centered east connector. They share full-width boundaries but the turning shape is not a turning-clearance or accessibility claim.",
+                        "The 30x48 table and two 18x20 chair rectangles are generic source-dimension proxies, not selected outdoor products. Chairs are stationary; people and chair movement are omitted.",
+                        "Nominal opening intervals do not establish clear width with door leaves, stops, hardware or swing."
+                    ],
+    "limitations":  [
+                        "This checks one geometric arrangement and not actual door maneuvering, furniture usability, weather exposure, drainage, grade, egress, code, accessibility or site constraints.",
+                        "The project specification allows different porch-table choices; the 30x48 rectangle is an unselected option.",
+                        "No Revit or IFC geometry was changed or validated; selected D and M-06-B remain untouched."
+                    ]
+}

@@ -1,0 +1,86 @@
+﻿{
+    "schema":  "forever-home.m36-roof-orientation-screen.v1",
+    "title":  "M36 â€” steep gable ridge orientation screen",
+    "status":  "two parametric ridge orientations compared on the source test envelope; pitch, roof geometry and code path remain unassigned",
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "house_design_decision.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_Roof_Code_Research_2026-10-28.md":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "coordinate_basis":  "Owner-follow-up schematic coordinates: x follows the 40ft envelope dimension; y follows the 42ft envelope dimension. This is not site orientation or surveyed footprint geometry.",
+    "main_shell_test_envelope_ft":  {
+                                        "width_x":  40,
+                                        "depth_y":  42,
+                                        "status":  "comparison envelope only; not approved building footprint"
+                                    },
+    "owner_input":  "steep traditional gable, pitch and ridge orientation TBD",
+    "pitch_ratio_vertical_per_horizontal":  null,
+    "options":  [
+                    {
+                        "id":  "A",
+                        "ridge_direction":  "parallel to 42ft test-envelope depth",
+                        "ridge_length_ft":  42,
+                        "transverse_span_ft":  40,
+                        "half_run_ft":  20,
+                        "pitch_ratio_vertical_per_horizontal":  null,
+                        "ridge_rise_formula":  "half_run_ft Ã— pitch_ratio; pitch not assigned"
+                    },
+                    {
+                        "id":  "B",
+                        "ridge_direction":  "parallel to 40ft test-envelope width",
+                        "ridge_length_ft":  40,
+                        "transverse_span_ft":  42,
+                        "half_run_ft":  21,
+                        "pitch_ratio_vertical_per_horizontal":  null,
+                        "ridge_rise_formula":  "half_run_ft Ã— pitch_ratio; pitch not assigned"
+                    }
+                ],
+    "same_pitch_comparison":  {
+                                  "half_run_difference_ft":  1,
+                                  "relative_half_run_and_rise_increase":  0.050000000000000044,
+                                  "interpretation":  "At any identical selected pitch ratio, the 42ft transverse span creates a 1ft larger half-run and 5 percent greater rise than the 40ft transverse span. No actual rise can be computed until pitch is selected."
+                              },
+    "code_research":  {
+                          "jurisdiction":  "Connecticut statewide research only",
+                          "checked_date":  "2026-10-29",
+                          "code_path":  "unassigned; evaluate IRC/IBC path with municipality and design professional",
+                          "code_2022_status":  "current adopted code per DAS as checked; 2026 effective date delayed pending legislative review",
+                          "roof_load_implication":  "A steep gable still requires site- and code-path-specific roof snow/wind design; the IBC snow provisions and IRC amendment are distinguished in the cited research note.",
+                          "research_note":  "Research/Connecticut_Roof_Code_Research_2026-10-28.md"
+                      },
+    "unassigned_inputs":  [
+                              "pitch ratio",
+                              "ridge direction relative to site",
+                              "ridge/eave elevations",
+                              "roof overhangs",
+                              "main/rear-wing intersection",
+                              "porch roof geometry",
+                              "roof assembly and drainage",
+                              "openings/chimneys/ducts",
+                              "municipality and permit date",
+                              "site snow/wind/terrain inputs",
+                              "framing, connections, supports and engineering"
+                          ],
+    "checks":  {
+                   "owner_roof_request_is_steep_traditional_gable":  true,
+                   "study_footprint_is_source_derived_40x42":  true,
+                   "ridge_option_A_uses_40ft_transverse_span":  true,
+                   "ridge_option_B_uses_42ft_transverse_span":  true,
+                   "same_pitch_option_B_has_5_percent_larger_half_run":  true,
+                   "no_roof_pitch_or_rise_is_invented":  true,
+                   "code_path_is_not_assumed_from_statewide_research":  true,
+                   "municipality_and_site_remain_open":  true,
+                   "source_states_2022_code_applies_from_2022_10_01":  true,
+                   "source_records_2026_adoption_delay":  true,
+                   "no_compliance_or_structural_claim":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "The 40Ã—42ft rectangle is a source-derived test envelope, not an approved footprint or site orientation.",
+                        "Only ridge direction relative to this test rectangle is compared. No roof surface, pitch, height, eave, overhang or intersection solid is generated.",
+                        "Code research identifies current statewide sources and selected roof-load topics; it does not establish project applicability, local requirements or compliance.",
+                        "No structural, professional certification, permit or construction-readiness claim is made."
+                    ]
+}

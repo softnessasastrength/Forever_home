@@ -1,0 +1,8 @@
+﻿"block_a","block_b","room_or_window_a","room_or_window_b","axis","schematic_gap_ft","shared_edge_length_ft","contact_kind","actual_wall_or_opening_modeled","selected"
+"M-01","M-02","Living room","Kitchen","x","0.5","12","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-01","M-03","Living room","Dining","x","0.5","2.5","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-01","M-05","Living room","Entry / hall","x","0.5","5","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-02","M-03","Kitchen","Dining","y","0.5","11","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-03","M-04","Dining","Pantry","y","0.5","1.5","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-03","M06-B","Dining","M-06 pantry-side search window","y","0.5","9.5","0.5 ft schematic separation; adjacency proxy","False","False"
+"M-04","M06-B","Pantry","M-06 pantry-side search window","x","0","7","coincident block edges","False","False"

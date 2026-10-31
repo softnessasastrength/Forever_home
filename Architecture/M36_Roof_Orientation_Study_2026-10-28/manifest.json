@@ -1,0 +1,13 @@
+﻿{
+    "generator":  "Tools/build_m36_roof_orientation_study.ps1",
+    "source_fingerprints_sha256":  {
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "house_design_decision.md":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                       "Connecticut_Roof_Code_Research_2026-10-28.md":  "34f118a503e5fde58c001f823ad3c6284993c67b22d469ed712fee23bdda39dc"
+                                   },
+    "output_hashes_sha256":  {
+                                 "roof_study":  "170afda61753626be9b1903bd21614e97201eabb5d6033a0e4080932100c8360",
+                                 "checks":  "78f3433ddea70a10ca958adc53e71b7da3c1359f7a0d3d8ca4650c96d2e28541",
+                                 "svg":  "a6f2106516c5779fb5e6a281b8ba2a74d27e7ada0b710249455ff800c2b64889"
+                             }
+}

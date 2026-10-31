@@ -1,0 +1,34 @@
+{
+    "schema":  "forever-home.m133-checks.v1",
+    "status":  "PASS",
+    "passed_count":  12,
+    "check_count":  12,
+    "failed":  [
+
+               ],
+    "results":  {
+                    "selected_D_matches_reviewed_source":  true,
+                    "exact_M132_layout_source_is_unchanged":  true,
+                    "M132_analysis_and_route_reports_are_passed":  true,
+                    "required_manufacturer_sources_are_recorded":  true,
+                    "two_M130_upper_bath_blocks_are_tested":  true,
+                    "all_nominal_fixture_bodies_fit_inside_each_room":  true,
+                    "fixture_bodies_do_not_overlap":  true,
+                    "WC_15in_side_clearance_screen_is_unobstructed":  true,
+                    "WC_21in_front_strip_screen_is_unobstructed":  true,
+                    "WC_to_sink_centerline_assumption_is_met":  true,
+                    "centered_nominal_door_reservation_fits_contact_band":  true,
+                    "reserved_south_interface_line_has_no_fixture_body":  true
+                },
+    "source_hashes_sha256":  {
+                                 "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m132_layouts":  "c9868179d98ab132209e34cacf44d05dbd732fc889801a02289d3411c6b00853",
+                                 "m132_report":  "64f79b489a2b8245162af896e0ff8de988707b4cb3df9d7b99aebdb05c545f4c",
+                                 "m132_route_validation":  "1d96a5bcdb848af1f1b7e77ff5d6c7536a024dd21c590387e245c8a743d87737",
+                                 "sink_sources":  "dc8ce0123ce233948b15d59d7f7ed6f6b1b10d74a7492e6eb808c4b9794ba9f7",
+                                 "toilet_product_sources":  "7bdae9f61fd7a8855dc8a18dee03f09cfa9fc40f8fca4733367d8a9389a74b89",
+                                 "clearance_source":  "bd0b6a5692ca345ff43fcdbbdfe09b02f090e466e1420874c87f58fc7c495bc7",
+                                 "product_sources":  "7955d9aa6fb9b5173e3b83a92283864621144552451c5b03d7ab74578713047c",
+                                 "analyzer":  "aca08ee389baedb0cb044cf7bbc63c066b640aee1086a6cf37ca19999a98a688"
+                             }
+}

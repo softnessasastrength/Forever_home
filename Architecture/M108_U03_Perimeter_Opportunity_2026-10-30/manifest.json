@@ -1,0 +1,24 @@
+﻿{
+    "generator":  "Tools/audit_m107_u03_perimeter_opportunity.ps1",
+    "source_hashes_sha256":  {
+                                 "route_tested_archive":  "44380542825724e40c28bf3f1915e7f626f7c0509e2a0d4ed2251eaf623bcff2",
+                                 "source_search":  "e6307fab86f36271b9a1ee88848b9349e106ecbf21849356bc223ae059a18a2c",
+                                 "source_manifest":  "905a41d59aee87bed5c6bac2bed68ab241f07f815f52a7a4ad5465bdff4939fd",
+                                 "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                             },
+    "output_hashes_sha256":  {
+                                 "json":  "de78c3278a0c1eb15397b3816d81383427b40c3a57df7fab0f43efcce9f626a4",
+                                 "csv":  "12871c360b72670dfd5f7863647f5fea0d5a17b862436b878be276a71a99a8d3",
+                                 "svg":  "3a7e54825f09873b3f1abb10b8664c42181298899ddebbb14f081d17bfde669a"
+                             },
+    "counts":  {
+                   "route_tested_candidates":  863,
+                   "candidates_reaching_required_public_rooms":  5,
+                   "required_route_candidates_with_U02_north_sample":  5,
+                   "all_candidates_with_U03_perimeter_contact":  0,
+                   "required_route_candidates_with_U03_perimeter_contact":  0,
+                   "required_route_and_U02_north_candidates_with_U03_perimeter_contact":  0
+               },
+    "checks_passed":  16,
+    "checks_total":  16
+}

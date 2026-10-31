@@ -1,0 +1,27 @@
+{
+  "passed": [
+    "selected_D_source_matches_owner_followup",
+    "direct_candidate_keeps_U03_source_dimensions",
+    "candidate_U03_inside_36x32_upper_wing_test_plate",
+    "U02_U03_direct_candidate_retains_nominal_6in_wall_allowance",
+    "selected_D_hall_has_matching_nominal_half_ft_wall_allowances",
+    "existing_U02_U03_gap_is_5ft",
+    "upper_room_frame_offset_is_source_derived"
+  ],
+  "failed": [],
+  "count": 7,
+  "open_findings": [
+    "Current U-03 overlaps the shared-frame lift reservation in plan projection after applying the documented +6 ft upper-frame offset. Confirm whether the reservation is intended to persist at this location before resolving the upper plan.",
+    "Moving U-03 west to align with U-02 across the nominal wall zone occupies part of existing C-UPPER and overlaps the projected lift reservation; this is a diagnostic, not a proposed approved placement.",
+    "Preserving a private U-02-to-U-03 route, guest access, U-03/U-04 Jack-and-Jill connection, the 4 ft public hall and lift reservation requires a broader upper-floor/core re-layout. No room-size, core or shell change is authorized by this screen."
+  ],
+  "checks": {
+    "selected_D_source_matches_owner_followup": true,
+    "direct_candidate_keeps_U03_source_dimensions": true,
+    "candidate_U03_inside_36x32_upper_wing_test_plate": true,
+    "U02_U03_direct_candidate_retains_nominal_6in_wall_allowance": true,
+    "selected_D_hall_has_matching_nominal_half_ft_wall_allowances": true,
+    "existing_U02_U03_gap_is_5ft": true,
+    "upper_room_frame_offset_is_source_derived": true
+  }
+}

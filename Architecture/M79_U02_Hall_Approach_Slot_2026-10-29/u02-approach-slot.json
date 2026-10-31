@@ -1,0 +1,78 @@
+﻿{
+    "schema":  "forever-home-m79-u02-hall-approach-slot-v1",
+    "checked_on":  "2026-10-29",
+    "status":  "Schematic north-edge nominal door-reservation alignment test only; no actual door or building dimension selected.",
+    "source":  {
+                   "M78_candidate":  "Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29/search.json",
+                   "selected_D_study":  "Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                   "M78_report_sha256":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                   "selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+               },
+    "shell_test":  {
+                       "width_ft":  38.333333,
+                       "depth_ft":  40,
+                       "status":  "hypothetical, unselected test envelope"
+                   },
+    "U02_north_edge":  {
+                           "x_start_ft":  11.166666666666668,
+                           "x_end_ft":  27.166666666666668,
+                           "y_ft":  27.5,
+                           "length_ft":  16
+                       },
+    "nominal_wall_edge_reservation":  {
+                                          "width_ft":  3.5,
+                                          "center_x_ft":  19.166666666666668,
+                                          "x_start_ft":  17.416666666666668,
+                                          "x_end_ft":  20.916666666666668,
+                                          "source":  "selected-D upper_door_matrix nominal_reservation_ft",
+                                          "status":  "reserved test interval, not a modeled clear opening"
+                                      },
+    "reserved_landing_approach":  {
+                                      "x_start_ft":  17.166666666666668,
+                                      "x_end_ft":  21.166666666666668,
+                                      "y_start_ft":  28,
+                                      "y_end_ft":  32,
+                                      "center_x_ft":  19.166666666666668,
+                                      "center_y_ft":  30,
+                                      "width_ft":  4,
+                                      "depth_ft":  4,
+                                      "source":  "selected-D stair/landing approach carried through M78"
+                                  },
+    "derived_alignment":  {
+                              "room_center_x_ft":  19.166666666666668,
+                              "approach_center_x_ft":  19.166666666666668,
+                              "horizontal_centerline_offset_ft":  0,
+                              "north_wall_to_approach_box_gap_ft":  0.5,
+                              "north_wall_to_approach_center_ft":  2.5,
+                              "nominal_side_margin_each_ft":  6.25
+                          },
+    "U02_hall_route_sample":  {
+                                  "reachable_north_edge":  true,
+                                  "room_id":  "U-02",
+                                  "room_side":  "north",
+                                  "source":  "M78 winner reachability plus independent 112-check candidate validation",
+                                  "actual_door_opening":  false
+                              },
+    "limitations":  [
+                        "The 3.5 ft value is a nominal source contact reservation, not a verified clear opening, door leaf size, or accessibility clearance.",
+                        "No wall, door family, frame, jamb, sill, swing, latch, privacy control, wall thickness, or actual hall path is modeled.",
+                        "The 4 ft landing-approach square is a plan proxy inherited from selected D; it does not prove a door can connect without a wall or stair conflict.",
+                        "The 38.333333 x 40 ft envelope remains an unselected hypothetical test case.",
+                        "This screen is not code compliance, accessibility review, fire/life-safety review, structural assessment, or construction documentation."
+                    ],
+    "checks":  {
+                   "M78_candidate_fingerprint_matches_manifest":  true,
+                   "selected_D_fingerprint_matches_candidate_and_manifest":  true,
+                   "test_shell_is_explicitly_hypothetical_M78":  true,
+                   "owner_direct_U02_public_route_requirement_reaches_candidate":  true,
+                   "U02_north_edge_has_a_hall_route_sample":  true,
+                   "U03_has_no_public_side_reach":  true,
+                   "selected_D_nominal_reservation_is_3_5_ft":  true,
+                   "nominal_slot_is_contained_on_U02_north_edge":  true,
+                   "slot_center_aligns_with_landing_approach_centerline":  true,
+                   "source_selected_D_unchanged_during_run":  true
+               },
+    "failures":  [
+
+                 ]
+}

@@ -1,0 +1,180 @@
+﻿{
+    "schema":  "forever-home-m180-living-shell-route-v1",
+    "status":  "unapproved source-coordinate route overlay",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json":  "34a0e6a15ca24e8ada928d87978669dfd772d9dd5b5ce88f56f43ff73dbf1a42",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "shell_ft":  [
+                     52,
+                     48
+                 ],
+    "coordinate_origin_source_ft":  [
+                                        0.66666666666666663,
+                                        0.66666666666666663
+                                    ],
+    "room_blocks":  {
+                        "M01_local_rect_ft":  [
+                                                  17.833333333333332,
+                                                  0,
+                                                  16,
+                                                  15
+                                              ],
+                        "M02_candidate_rect_local_ft":  [
+                                                            0,
+                                                            0,
+                                                            13.5,
+                                                            14
+                                                        ],
+                        "M02_to_M01_open_gap_ft":  4.3333333333333339,
+                        "M04_local_rect_ft":  [
+                                                  11.833333333333334,
+                                                  16.5,
+                                                  5,
+                                                  7
+                                              ],
+                        "M05_local_rect_ft":  [
+                                                  34.333333333333336,
+                                                  0,
+                                                  4.333333333333333,
+                                                  12
+                                              ]
+                    },
+    "prior_m179_origin_local_ft":  {
+                                       "x":  14.5,
+                                       "y":  10
+                                   },
+    "revised_route":  {
+                          "centerline_local_ft":  [
+                                                      {
+                                                          "x":  19.5,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  10
+                                                      },
+                                                      {
+                                                          "x":  11.25,
+                                                          "y":  14.5
+                                                      },
+                                                      {
+                                                          "x":  9.5,
+                                                          "y":  14.5
+                                                      },
+                                                      {
+                                                          "x":  9.5,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  22.5
+                                                      },
+                                                      {
+                                                          "x":  8.5,
+                                                          "y":  27.5
+                                                      }
+                                                  ],
+                          "width_in":  36,
+                          "rectangles_local_ft":  [
+                                                      {
+                                                          "id":  "route-0",
+                                                          "x":  11.25,
+                                                          "y":  8.5,
+                                                          "w":  8.25,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "route-1",
+                                                          "x":  9.75,
+                                                          "y":  10,
+                                                          "w":  3,
+                                                          "d":  4.5
+                                                      },
+                                                      {
+                                                          "id":  "corner-1",
+                                                          "x":  9.75,
+                                                          "y":  8.5,
+                                                          "w":  3,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "route-2",
+                                                          "x":  9.5,
+                                                          "y":  13,
+                                                          "w":  1.75,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "corner-2",
+                                                          "x":  9.75,
+                                                          "y":  13,
+                                                          "w":  3,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "route-3",
+                                                          "x":  8,
+                                                          "y":  14.5,
+                                                          "w":  3,
+                                                          "d":  8
+                                                      },
+                                                      {
+                                                          "id":  "corner-3",
+                                                          "x":  8,
+                                                          "y":  13,
+                                                          "w":  3,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "route-4",
+                                                          "x":  8.5,
+                                                          "y":  21,
+                                                          "w":  1,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "corner-4",
+                                                          "x":  8,
+                                                          "y":  21,
+                                                          "w":  3,
+                                                          "d":  3
+                                                      },
+                                                      {
+                                                          "id":  "route-5",
+                                                          "x":  7,
+                                                          "y":  22.5,
+                                                          "w":  3,
+                                                          "d":  5
+                                                      },
+                                                      {
+                                                          "id":  "corner-5",
+                                                          "x":  7,
+                                                          "y":  21,
+                                                          "w":  3,
+                                                          "d":  3
+                                                      }
+                                                  ],
+                          "obstacle_hits":  [
+
+                                            ],
+                          "opening_centerline_y_ft":  10,
+                          "unassigned_kitchen_living_gap_ft":  4.3333333333333339,
+                          "pantry_connector_clearance_in":  6,
+                          "porch_global_rect_ft":  [
+                                                       0.16666666666666663,
+                                                       25.166666666666668,
+                                                       12,
+                                                       10
+                                                   ]
+                      },
+    "conclusion":  "Extending the M179 route origin into M-01 makes the living-to-porch route continuous across the source-coordinate overlay. It crosses a 4 ft 4 in unassigned band between the reduced M-02 candidate and M-01. The dogleg clears M-04 and M-05 rectangles and the modeled furniture/walls; the porch remains within the 40 x 42 ft test shell. No physical opening, shell wall or room assignment is validated.",
+    "limitations":  [
+                        "Bath-first blocks and M02 candidate geometry are unapproved; source-shell arithmetic is schematic.",
+                        "The 4 ft 4 in M02-to-M01 band is unassigned and needs a room/circulation decision.",
+                        "Porch and route are only coordinate rectangles; exterior connection, wall construction, thresholds, door swing/clear width and physical passage are not modeled.",
+                        "Stool, chair movement and appliance-open envelopes are not validated.",
+                        "No Revit/IFC change or M-06/B placement is included; no accessibility/code/structural/construction approval is established."
+                    ]
+}

@@ -1,0 +1,67 @@
+﻿{
+    "status":  "pass",
+    "passed":  12,
+    "total":  12,
+    "checks":  [
+                   {
+                       "id":  "source_bathfirst_hash_current",
+                       "pass":  true,
+                       "detail":  "Bath-first room blocks match the M179-bound source hash."
+                   },
+                   {
+                       "id":  "prior_m179_origin_not_in_living",
+                       "pass":  true,
+                       "detail":  "M179 origin is outside the M-01 living block; this gap is now explicit."
+                   },
+                   {
+                       "id":  "revised_origin_inside_living",
+                       "pass":  true,
+                       "detail":  "Revised route begins inside M-01 in source-local coordinates."
+                   },
+                   {
+                       "id":  "kitchen_living_gap_quantified",
+                       "pass":  true,
+                       "detail":  "Candidate M-02 ends 4 ft 4 in west of the M-01 block; the route crosses this unassigned open band."
+                   },
+                   {
+                       "id":  "opening_cross_section_fits",
+                       "pass":  true,
+                       "detail":  "36 in route crosses the 6 ft half-wall opening with 18 in margins."
+                   },
+                   {
+                       "id":  "route_avoids_adjacent_and_furniture_blocks",
+                       "pass":  true,
+                       "detail":  "Dogleg avoids M-04, M-05, kitchen furniture, dining furniture and modeled wall segments."
+                   },
+                   {
+                       "id":  "route_reaches_nominal_porch_door",
+                       "pass":  true,
+                       "detail":  "Centerline crosses the nominal door span and extends 3 ft into the porch."
+                   },
+                   {
+                       "id":  "porch_test_within_shell",
+                       "pass":  true,
+                       "detail":  "Translated porch test rectangle fits within the 40 x 42 ft comparison shell."
+                   },
+                   {
+                       "id":  "route_corridor_within_shell",
+                       "pass":  true,
+                       "detail":  "Full 36 in route corridor bounding extent remains inside the comparison shell."
+                   },
+                   {
+                       "id":  "pantry_connector_y_gap",
+                       "pass":  true,
+                       "detail":  "Route corridor ends at local y=16 ft; pantry begins at y=16.5 ft, yielding a derived 6 in separation."
+                   },
+                   {
+                       "id":  "selected_d_unchanged",
+                       "pass":  true,
+                       "detail":  "Selected-D source fingerprint remains the verified baseline."
+                   },
+                   {
+                       "id":  "m06_b_unassigned",
+                       "pass":  true,
+                       "detail":  "M-06/B remains unassigned."
+                   }
+               ]
+}

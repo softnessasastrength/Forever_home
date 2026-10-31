@@ -7,8 +7,8 @@
     "source_fingerprints_sha256":  {
                                        "Architecture/Schematic_Study_2026-10-25/study.json":  "b99fdb8ab4a1e3440ff6ee8f17c8e81bfce0a1360ff03213d060b998ab2d319b",
                                        "Architecture/Schematic_Study_2026-10-25/checks.json":  "f2b713aaed861c8bea951e82b9e0298ff41aaf0a13420e0fb5432ea02e9b1779",
-                                       "Requirements/Room_Program.md":  "ee0e2c2122b97c2b99c16462783c2466594cb3fac18599591bf6e421428b6f6c",
-                                       "Decisions/Kitchen_Island_Finish.md":  "5165aea0df46c28f22ec87ccae658e6164cde52939510d0e9af82f3d771a8b95",
+                                       "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478",
+                                       "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290",
                                        "Decisions/2026-10-27_Selected_Architectural_Direction_D.md":  "356b51fe8bfca539dfeb5004e71fb3d51d290f7c44712da0b8c96d6a33142d6e"
                                    },
     "units":  "feet; local x right, local y toward rear; no site orientation or georeference",

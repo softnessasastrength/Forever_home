@@ -1,0 +1,80 @@
+﻿{
+    "count":  12,
+    "passed":  [
+                   "selected_D_and_decision_fingerprints_are_valid",
+                   "U02_and_U03_source_blocks_exist",
+                   "source_block_areas_preserved_in_both_orientations",
+                   "all_candidates_use_source_derived_half_ft_nominal_gap",
+                   "all_candidates_respect_one_sixth_ft_grid",
+                   "all_candidates_meet_source_3_5ft_contact_reservation",
+                   "all_candidates_keep_nominal_wall_gap_from_U02",
+                   "all_candidates_preserve_source_U03_area",
+                   "no_candidate_overlaps_U02",
+                   "candidate_sides_cover_four_orthogonal_contacts",
+                   "at_least_one_contained_contact_candidate_tested",
+                   "no_candidate_claimed_as_final_geometry"
+               ],
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "selected_D_and_decision_fingerprints_are_valid":  true,
+                   "U02_and_U03_source_blocks_exist":  true,
+                   "source_block_areas_preserved_in_both_orientations":  true,
+                   "all_candidates_use_source_derived_half_ft_nominal_gap":  true,
+                   "all_candidates_respect_one_sixth_ft_grid":  true,
+                   "all_candidates_meet_source_3_5ft_contact_reservation":  true,
+                   "all_candidates_keep_nominal_wall_gap_from_U02":  true,
+                   "all_candidates_preserve_source_U03_area":  true,
+                   "no_candidate_overlaps_U02":  true,
+                   "candidate_sides_cover_four_orthogonal_contacts":  true,
+                   "at_least_one_contained_contact_candidate_tested":  true,
+                   "no_candidate_claimed_as_final_geometry":  true
+               },
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_decision.md":  "d38dbbb8ff9a233dc1b199ab01cbf54a4871335d0d0538db59079717a4fef752"
+                                   },
+    "search_summary":  {
+                           "placements_tested":  486,
+                           "coordinate_grid_ft":  0.16666666666666666,
+                           "contact_gap_ft":  0.5,
+                           "minimum_shared_edge_ft":  3.5,
+                           "rotations_tested":  [
+                                                    "source",
+                                                    "rotated_90_degrees"
+                                                ],
+                           "placements_by_side":  [
+                                                      {
+                                                          "side":  "east",
+                                                          "placements":  83,
+                                                          "inside_shell":  83,
+                                                          "clear_single_shift":  0,
+                                                          "minimum_clash_area_sf_inside_shell":  49.5
+                                                      },
+                                                      {
+                                                          "side":  "west",
+                                                          "placements":  83,
+                                                          "inside_shell":  0,
+                                                          "clear_single_shift":  0,
+                                                          "minimum_clash_area_sf_inside_shell":  null
+                                                      },
+                                                      {
+                                                          "side":  "north",
+                                                          "placements":  160,
+                                                          "inside_shell":  0,
+                                                          "clear_single_shift":  0,
+                                                          "minimum_clash_area_sf_inside_shell":  null
+                                                      },
+                                                      {
+                                                          "side":  "south",
+                                                          "placements":  160,
+                                                          "inside_shell":  160,
+                                                          "clear_single_shift":  0,
+                                                          "minimum_clash_area_sf_inside_shell":  82.5
+                                                      }
+                                                  ],
+                           "single_shift_candidates":  0
+                       },
+    "interpretation":  "This tests U-03 contact with fixed source U-02 while all other source room/circulation rectangles and the projected lift reservation remain fixed. The source upper landing is recorded only as a boundary coordinate; no route is computed. A zero surviving placement would reject only this single-room-shift strategy, not prove the upper-suite arrangement infeasible."
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="780" viewBox="0 0 900 780"><title>M190 dining pull-out and route audit</title><desc>North-shift M188 dining layout with 36-inch schematic chair-use envelopes and sampled route overlay.</desc><g font-family="Arial,sans-serif" font-size="12">
+<rect x="150.00" y="92.00" width="242.00" height="220.00" fill="#e8f0f7" fill-opacity=".35" stroke="#56708d" stroke-width="1.5"/>
+<rect x="227.00" y="213.00" width="33.00" height="66.00" fill="#efb64b" fill-opacity=".35" stroke="#946112" stroke-width="1.5"/>
+<rect x="282.00" y="213.00" width="33.00" height="66.00" fill="#efb64b" fill-opacity=".35" stroke="#946112" stroke-width="1.5"/>
+<rect x="150.00" y="180.00" width="66.00" height="33.00" fill="#efb64b" fill-opacity=".35" stroke="#946112" stroke-width="1.5"/>
+<rect x="150.00" y="147.00" width="66.00" height="33.00" fill="#efb64b" fill-opacity=".35" stroke="#946112" stroke-width="1.5"/>
+<rect x="216.00" y="147.00" width="110.00" height="66.00" fill="#9fb18d" fill-opacity=".35" stroke="#52614a" stroke-width="1.5"/>
+<rect x="227.00" y="213.00" width="33.00" height="36.67" fill="#c9b8a7" fill-opacity=".35" stroke="#665447" stroke-width="1.5"/>
+<rect x="282.00" y="213.00" width="33.00" height="36.67" fill="#c9b8a7" fill-opacity=".35" stroke="#665447" stroke-width="1.5"/>
+<rect x="179.33" y="180.00" width="36.67" height="33.00" fill="#c9b8a7" fill-opacity=".35" stroke="#665447" stroke-width="1.5"/>
+<rect x="179.33" y="147.00" width="36.67" height="33.00" fill="#c9b8a7" fill-opacity=".35" stroke="#665447" stroke-width="1.5"/>
+<polyline points="579.00,400.00 392.00,400.00 392.00,587.00 238.00,587.00 238.00,301.00 359.00,301.00 359.00,114.00 337.00,114.00 337.00,15.00" fill="none" stroke="#216d8c" stroke-width="66" stroke-linecap="square" stroke-linejoin="round" opacity=".7"/>
+<polyline points="579.00,400.00 392.00,400.00 392.00,587.00 238.00,587.00 238.00,301.00 359.00,301.00 359.00,114.00 337.00,114.00 337.00,15.00" fill="none" stroke="#16455b" stroke-width="3"/>
+<text x="30" y="30">M190 â€” north-shift route/pull-out proxy overlap: 1.500 sf</text>
+<text x="30" y="52">Amber: 36-in-from-table-edge study envelopes; blue: 36-in swept route. Diagram is schematic.</text></g></svg>

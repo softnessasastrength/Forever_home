@@ -1,0 +1,6 @@
+﻿"case","translation_x_ft","translation_y_ft","path_found","route_length_ft","turn_count","reachable_nodes","nearest_door_manhattan_ft","dining_set_unchanged","limitation"
+"baseline","0","0","False",,,"5299","10","True","Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+"east_1ft","1","0","False",,,"5299","10","True","Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+"west_1ft","-1","0","False",,,"5299","10","True","Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+"north_1ft","0","1","True","56.5","7","5603","0","True","Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+"south_1ft","0","-1","False",,,"5287","10","True","Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."

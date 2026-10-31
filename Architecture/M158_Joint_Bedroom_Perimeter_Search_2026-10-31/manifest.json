@@ -1,0 +1,37 @@
+﻿{
+    "generator":  "Tools/test_m37_upper_suite_pack_and_route.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca"
+                                   },
+    "search_parameters":  {
+                              "node_limit":  4800,
+                              "layout_limit":  10000,
+                              "root_search_scope":  "U-01-only",
+                              "u02_root_plan_variant":  "guest-branch-first",
+                              "additional_contact_samples":  0,
+                              "public_door_edge_samples":  5,
+                              "landing_aligned_root_seed_search":  true,
+                              "shell_width_override_ft":  38.333333,
+                              "shell_depth_override_ft":  40,
+                              "u01_perimeter_root_seeds":  true,
+                              "u01_perimeter_seed_edge":  "all",
+                              "u01_perimeter_spread_seeds":  true,
+                              "required_test_shell_perimeter_contact_rooms":  [
+                                                                                  "U-01",
+                                                                                  "U-03",
+                                                                                  "U-04"
+                                                                              ]
+                          },
+    "output_hashes_sha256":  {
+                                 "search":  "e0e9c4f4046956be045d2848d236669d9dfc371bdc8cd28389dcf0830622f8d6",
+                                 "checks":  "0f2a0ab5789c1048d26a7cd7111dde1020727b3485477332dcb420313b8e3852",
+                                 "svg":  "0094315ca67301955776f5cf60b8e4f9b7d41fb136bb696cc2eb9fd586e5dd2e"
+                             },
+    "optional_route_tested_candidate_archive":  {
+                                                    "file":  "all-route-tested-candidates.json",
+                                                    "sha256":  "676c8f3d2cb6b7d7f032b515351749900ffb38d5342f8b7e2ab90f62dde40892",
+                                                    "candidate_count":  2
+                                                }
+}

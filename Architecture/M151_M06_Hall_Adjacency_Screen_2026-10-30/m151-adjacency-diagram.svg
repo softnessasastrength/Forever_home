@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="760" height="790" viewBox="0 0 760 790">
+<rect width="100%" height="100%" fill="#fffdf8"/>
+<text x="24" y="30" font-family="Arial,sans-serif" font-size="20" font-weight="bold">M-06 pantry-side window: block adjacency only</text>
+<rect x="55" y="55" width="600" height="630" fill="none" stroke="#333" stroke-width="2"/>
+<rect x="137.5" y="450.0" width="240.0" height="225.0" fill="#ece9df" stroke="#4b4944" stroke-width="1.5"/>
+<text x="257.5" y="562.5" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M-01  Living room</text>
+<rect x="385.0" y="495.0" width="210.0" height="180.0" fill="#ece9df" stroke="#4b4944" stroke-width="1.5"/>
+<text x="490.0" y="585.0" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M-02  Kitchen</text>
+<rect x="385.0" y="337.5" width="165.0" height="150.0" fill="#ece9df" stroke="#4b4944" stroke-width="1.5"/>
+<text x="467.5" y="412.5" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M-03  Dining</text>
+<rect x="527.5" y="225.0" width="75.0" height="105.0" fill="#ece9df" stroke="#4b4944" stroke-width="1.5"/>
+<text x="565.0" y="277.5" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M-04  Pantry</text>
+<rect x="65.0" y="345.0" width="65.0" height="180.0" fill="#d8e9f5" stroke="#4b4944" stroke-width="1.5"/>
+<text x="97.5" y="435.0" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M-05  Entry / hall</text>
+<rect x="372.5" y="225.0" width="155.0" height="105.0" fill="#e6ddf5" stroke="#4b4944" stroke-width="1.5" stroke-dasharray="8 5"/>
+<text x="450.0" y="277.5" font-family="Arial,sans-serif" font-size="12" text-anchor="middle">M06-B  unassigned</text>
+<text x="24" y="745" font-family="Arial,sans-serif" font-size="13">Shortest block chain: M-05 -&gt; M-01 -&gt; M-03 -&gt; M06-B; it is not a walkable route or door plan.</text>
+</svg>

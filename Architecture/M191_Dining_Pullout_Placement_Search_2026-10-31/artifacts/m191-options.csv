@@ -1,0 +1,4 @@
+"case","translation_x_ft","translation_y_ft","path_found","route_length_ft","turn_count","reachable_nodes","nearest_porch_door_ft","all_bodies_and_pullouts_inside_11_by_10","pullout_proxy_count","grid_step_ft","route_width_in"
+"baseline","0","0","False",,,"5284","10","True","4","0.25","36"
+"east_1ft","1","0","False",,,"5284","10","True","4","0.25","36"
+"north_1ft","0","1","False",,,"5296","10","True","4","0.25","36"

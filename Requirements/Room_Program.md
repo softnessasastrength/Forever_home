@@ -12,7 +12,7 @@ Existing dimensions below are schematic study inputs, not demonstrated fits. TBD
 | ID | Space | Preferred zone | Net study allowance | Requirement / coordination |
 |---|---|---|---|---|
 | U-01 | Primary bedroom | Upper private | 150–170 sf | Shared retreat; private bath; internal suite connections |
-| U-02 | Renn's boutique / walk-in | Upper private | 110–160 sf | Equal-priority personal room; storage, dressing and creative use; not counted as a legal bedroom |
+| U-02 | Renn's boutique / walk-in | Upper private | 110–160 sf | Equal-priority personal room; storage, dressing and creative use; not counted as a legal bedroom. Owner requires direct arrival from the upper shared hall while retaining its private links to C-PRIVATE and U-03; opening location, width, swing and privacy treatment remain unresolved. |
 | U-03 | Branden's hybrid bedroom/office | Upper private | 120–150 sf | Focused work and sleeping capability; suite connection; bedroom status unverified |
 | U-04 | Guest / third bedroom | Upper preferred | 100–120 sf | Independent arrival without crossing primary/boutique; exact suite boundary unresolved |
 | U-05 | Primary full bath | Upper private | 90 sf; 9 x 10 ft | Primary-only entry; tub/shower baseline, final selection pending |

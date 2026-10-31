@@ -1,0 +1,143 @@
+﻿{
+    "milestone":  "M151",
+    "title":  "Pantry-side M-06 search-window adjacency to the arrival/hall block",
+    "status":  "room-block adjacency only; no M-06 room, door or circulation path selected",
+    "design_context":  "Owner-followup 40 x 42 ft test envelope; the 124 x 84 in M06-B area is an unassigned pantry-side search window. The room program calls for an arrival/hall-edge first-fit zone.",
+    "result":  "M06-B has no direct shared edge with M-05 Entry / hall in the current proposal. Its schematic shortest adjacency chain is M-05 -\u003e M-01 Living room -\u003e M-03 Dining -\u003e M06-B. The window also shares a block edge with M-04 Pantry. This is a block-topology observation, not a walkable route.",
+    "direct_entry_hall_contact":  false,
+    "shortest_room_block_adjacency_chain":  [
+                                                "M-05",
+                                                "M-01",
+                                                "M-03",
+                                                "M06-B"
+                                            ],
+    "shell":  {
+                  "width_ft":  40,
+                  "depth_ft":  42,
+                  "status":  "existing selected-D test envelope; not approved house footprint"
+              },
+    "m06_window":  {
+                       "id":  "M06-B",
+                       "x_ft":  21.166666666666668,
+                       "y_ft":  23.666666666666668,
+                       "width_ft":  10.333333333333332,
+                       "depth_ft":  7,
+                       "area_sf":  72.33,
+                       "status":  "unassigned search window only; not M-06 geometry"
+                   },
+    "checks":  {
+                   "proposal_binds_current_selected_d":  true,
+                   "proposal_preserves_unassigned_m06":  true,
+                   "m120_window_matches_proposal":  true,
+                   "room_program_identifies_arrival_hall_zone_and_pantry_first":  true,
+                   "owner_direction_keeps_m06_in_search_only":  true,
+                   "seven_block_adjacencies_reconstructed":  true,
+                   "no_direct_entry_hall_to_m06_block_contact":  true,
+                   "m06_window_adjoins_dining_and_pantry":  true,
+                   "adjacency_chain_exists_from_entry_block_to_m06":  true,
+                   "chain_crosses_living_and_dining_blocks":  true,
+                   "all_contacts_remain_schematic_not_doors":  true
+               },
+    "failures":  [
+
+                 ],
+    "source_hashes_sha256":  {
+                                 "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "owner_direction":  "cf2a4acb729346ecd4ee86967794a3eb5911383164509cef690dd45b231c4648",
+                                 "m120_gross_envelope_report":  "fb3c9037ed7f2ba468e1a884090a42fcf73e6673e3c913173515574d05180960"
+                             },
+    "contacts":  [
+                     {
+                         "block_a":  "M-01",
+                         "block_b":  "M-02",
+                         "room_or_window_a":  "Living room",
+                         "room_or_window_b":  "Kitchen",
+                         "axis":  "x",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  12,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-01",
+                         "block_b":  "M-03",
+                         "room_or_window_a":  "Living room",
+                         "room_or_window_b":  "Dining",
+                         "axis":  "x",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  2.5,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-01",
+                         "block_b":  "M-05",
+                         "room_or_window_a":  "Living room",
+                         "room_or_window_b":  "Entry / hall",
+                         "axis":  "x",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  5,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-02",
+                         "block_b":  "M-03",
+                         "room_or_window_a":  "Kitchen",
+                         "room_or_window_b":  "Dining",
+                         "axis":  "y",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  11,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-03",
+                         "block_b":  "M-04",
+                         "room_or_window_a":  "Dining",
+                         "room_or_window_b":  "Pantry",
+                         "axis":  "y",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  1.5,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-03",
+                         "block_b":  "M06-B",
+                         "room_or_window_a":  "Dining",
+                         "room_or_window_b":  "M-06 pantry-side search window",
+                         "axis":  "y",
+                         "schematic_gap_ft":  0.5,
+                         "shared_edge_length_ft":  9.5,
+                         "contact_kind":  "0.5 ft schematic separation; adjacency proxy",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     },
+                     {
+                         "block_a":  "M-04",
+                         "block_b":  "M06-B",
+                         "room_or_window_a":  "Pantry",
+                         "room_or_window_b":  "M-06 pantry-side search window",
+                         "axis":  "x",
+                         "schematic_gap_ft":  0,
+                         "shared_edge_length_ft":  7,
+                         "contact_kind":  "coincident block edges",
+                         "actual_wall_or_opening_modeled":  false,
+                         "selected":  false
+                     }
+                 ],
+    "limitations":  [
+                        "Room blocks and the M06-B rectangle are schematic; none represents finished wall faces or an assigned room.",
+                        "Adjacency edges do not establish a door, clear opening, privacy, leaf swing, approach, passage width or a walkable path. The chain passes through proposed living and dining blocks.",
+                        "No corridor, furniture or circulation strip, wall assembly, plumbing fixture, rough-in or service route is modeled.",
+                        "The 40 x 42 ft shell is a selected-D test envelope, not an approved house footprint. This screen makes no code, accessibility, egress, structure or construction claim."
+                    ]
+}

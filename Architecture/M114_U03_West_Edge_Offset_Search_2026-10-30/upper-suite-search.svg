@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="900" height="790" viewBox="0 0 900 790">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:21px;font-weight:bold}.room{fill:#eadfce;stroke:#74695d;stroke-width:2}.private{fill:#c8a7d1;fill-opacity:.45;stroke:#785a88;stroke-width:2}.bath{fill:#bfd5d9;stroke:#5b7a80;stroke-width:2}.hall{fill:#d7dce4;stroke:#5f6977;stroke-width:2}.lift{fill:#e7aaa2;fill-opacity:.45;stroke:#a7463c;stroke-width:2;stroke-dasharray:7 4}.label{font-size:12px}.note{font-size:13px;fill:#5b554d}.warn{font-size:13px;fill:#8e3f35}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}</style>
+<text class="title" x="40" y="30">M37 - upper-suite pack and route search</text><text class="note" x="40" y="50">room-block candidate reaches required public rooms while retaining the U-01 to U-02 to U-03 private topology; U-03 has no direct hall door in proposal; schematic only; room rectangles and stair/lift projection only</text>
+<rect class="shell" x="40" y="70" width="689.999994" height="720"/>
+<rect class="lift" x="421" y="574" width="144" height="144"/><text class="label" x="425" y="590">lift projected keepout</text>
+<rect class="room" x="479.5" y="259" width="180" height="288"/><text class="label" x="483.5" y="274">U-01</text>
+<rect class="private" x="511" y="70" width="117" height="180"/><text class="label" x="515" y="85">C-PRIVATE</text>
+<rect class="room" x="214" y="70" width="288" height="174"/><text class="label" x="218" y="85">U-02</text>
+<rect class="room" x="40" y="70" width="165" height="246"/><text class="label" x="44" y="85">U-03</text>
+<rect class="bath" x="308.5" y="259" width="162" height="180"/><text class="label" x="312.5" y="274">U-05</text>
+<rect class="bath" x="40" y="325" width="180" height="216"/><text class="label" x="44" y="340">U-06</text>
+<rect class="room" x="40" y="550" width="246" height="144"/><text class="label" x="44" y="565">U-04</text>
+<text class="note" x="40" y="700">Required public rooms reached: True; U-03 has no direct hall door in the proposal.</text>
+<text class="note" x="40" y="730">Nodes 810; layouts 141; search complete False. A capped search is not proof of impossibility.</text>
+<text class="note" x="40" y="752">Not Revit walls, door swings, floor openings, code or engineering.</text>
+</svg>

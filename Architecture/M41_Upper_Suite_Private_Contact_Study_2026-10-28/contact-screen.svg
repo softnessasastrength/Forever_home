@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="900" height="850" viewBox="0 0 900 850">
+<style>text{font-family:Arial,sans-serif;fill:#302b25}.title{font-size:20px;font-weight:bold}.room{fill:#eadfce;stroke:#716456;stroke-width:2}.private{fill:#c8a7d1;fill-opacity:.55;stroke:#785a88;stroke-width:2}.hall{fill:#d7dce4;fill-opacity:.6;stroke:#5f6977;stroke-width:2}.bath{fill:#bfd5d9;stroke:#5b7a80;stroke-width:2}.lift{fill:#e7aaa2;fill-opacity:.4;stroke:#a7463c;stroke-width:2;stroke-dasharray:7 4}.candidate{fill:#a9d7b3;fill-opacity:.55;stroke:#32864d;stroke-width:3}.note{font-size:12px;fill:#5b554d}.warn{font-size:13px;fill:#8e3f35}.shell{fill:#fcfaf5;stroke:#4e463d;stroke-width:3}</style>
+<text class="title" x="35" y="30">M41 â€” U-02 / U-03 private contact screen</text>
+<text class="note" x="35" y="50">Source-sized room blocks; 36Ã—32 ft upper-wing test envelope; nominal 6 in wall bands.</text>
+<rect class="shell" x="35" y="70" width="720" height="640"/>
+<rect class="room" x="48.33333333333333260" y="83.33333333333333260" width="320" height="200"/><text class="note" x="52.33333333333333260" y="97.33333333333333260">U-01</text>
+<rect class="bath" x="48.33333333333333260" y="293.333333333333320" width="180" height="200"/><text class="note" x="52.33333333333333260" y="307.333333333333320">U-05</text>
+<rect class="private" x="238.333333333333320" y="293.333333333333320" width="130.0" height="200"/><text class="note" x="242.333333333333320" y="307.333333333333320">C-PRIVATE</text>
+<rect class="room" x="48.33333333333333260" y="503.333333333333360" width="320" height="193.3333333333333220"/><text class="note" x="52.33333333333333260" y="517.333333333333360">U-02</text>
+<rect class="hall" x="378.333333333333360" y="83.33333333333333260" width="80" height="613.333333333333360"/><text class="note" x="382.333333333333360" y="97.33333333333333260">C-UPPER</text>
+<rect class="room" x="468.333333333333360" y="83.33333333333333260" width="273.333333333333320" height="160"/><text class="note" x="472.333333333333360" y="97.33333333333333260">U-04</text>
+<rect class="bath" x="541.666666666666640" y="253.3333333333333220" width="200" height="240"/><text class="note" x="545.666666666666640" y="267.3333333333333220">U-06</text>
+<rect class="room" x="468.333333333333360" y="513.333333333333360" width="273.333333333333320" height="183.3333333333333220"/><text class="note" x="472.333333333333360" y="527.333333333333360">U-03</text>
+<rect class="lift" x="458.333333333333" y="630" width="160" height="80"/><text class="note" x="461.333333333333" y="643">projected lift</text>
+<text class="warn" x="35" y="735">Tested 486 contact placements; single-shift survivors: 0.</text>
+<text class="note" x="35" y="758">Green shows the lowest-overlap contact candidate only, not a fit solution.</text>
+<text class="note" x="35" y="780">No door, swing, construction wall, stair solid, floor opening or code check.</text>
+<rect class="candidate" x="378.33334" y="446.66666" width="273.333333333333" height="183.333333333333"/>
+</svg>

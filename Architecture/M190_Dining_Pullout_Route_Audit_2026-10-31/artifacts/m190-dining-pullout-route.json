@@ -1,0 +1,333 @@
+{
+    "schema":  "forever-home-m190-dining-pullout-route-audit-v1",
+    "status":  "pass",
+    "candidate_screen_result":  "candidate_rejected_route_overlaps_chair_use_proxy",
+    "interpretation":  "Audit of M188 north-shift route against a schematic 36-in chair pull-out/use envelope. This does not choose the layout or establish operational circulation.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m188_dining_set_placement.ps1":  "0bbcbca1132781ab18420c4f9a754af51507824b85d63a3bd01b1f973573fa67",
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "route":  {
+                  "source_case":  "M188 north_1ft",
+                  "found":  true,
+                  "length_ft":  56.5,
+                  "turns":  7,
+                  "centerline_waypoints_ft":  [
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  11,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  11,
+                                                      "y":  1.5
+                                                  },
+                                                  {
+                                                      "x":  4,
+                                                      "y":  1.5
+                                                  },
+                                                  {
+                                                      "x":  4,
+                                                      "y":  14.5
+                                                  },
+                                                  {
+                                                      "x":  9.5,
+                                                      "y":  14.5
+                                                  },
+                                                  {
+                                                      "x":  9.5,
+                                                      "y":  23
+                                                  },
+                                                  {
+                                                      "x":  8.5,
+                                                      "y":  23
+                                                  },
+                                                  {
+                                                      "x":  8.5,
+                                                      "y":  27.5
+                                                  }
+                                              ],
+                  "swept_rectangles_ft":  [
+                                              {
+                                                  "id":  "segment-0",
+                                                  "x":  11,
+                                                  "y":  8.5,
+                                                  "w":  8.5,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "segment-1",
+                                                  "x":  9.5,
+                                                  "y":  1.5,
+                                                  "w":  3,
+                                                  "d":  8.5
+                                              },
+                                              {
+                                                  "id":  "segment-2",
+                                                  "x":  4,
+                                                  "y":  0,
+                                                  "w":  7,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "segment-3",
+                                                  "x":  2.5,
+                                                  "y":  1.5,
+                                                  "w":  3,
+                                                  "d":  13
+                                              },
+                                              {
+                                                  "id":  "segment-4",
+                                                  "x":  4,
+                                                  "y":  13,
+                                                  "w":  5.5,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "segment-5",
+                                                  "x":  8,
+                                                  "y":  14.5,
+                                                  "w":  3,
+                                                  "d":  8.5
+                                              },
+                                              {
+                                                  "id":  "segment-6",
+                                                  "x":  8.5,
+                                                  "y":  21.5,
+                                                  "w":  1,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "segment-7",
+                                                  "x":  7,
+                                                  "y":  23,
+                                                  "w":  3,
+                                                  "d":  4.5
+                                              },
+                                              {
+                                                  "id":  "node-0",
+                                                  "x":  18,
+                                                  "y":  8.5,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-1",
+                                                  "x":  9.5,
+                                                  "y":  8.5,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-2",
+                                                  "x":  9.5,
+                                                  "y":  0,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-3",
+                                                  "x":  2.5,
+                                                  "y":  0,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-4",
+                                                  "x":  2.5,
+                                                  "y":  13,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-5",
+                                                  "x":  8,
+                                                  "y":  13,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-6",
+                                                  "x":  8,
+                                                  "y":  21.5,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-7",
+                                                  "x":  7,
+                                                  "y":  21.5,
+                                                  "w":  3,
+                                                  "d":  3
+                                              },
+                                              {
+                                                  "id":  "node-8",
+                                                  "x":  7,
+                                                  "y":  26,
+                                                  "w":  3,
+                                                  "d":  3
+                                              }
+                                          ],
+                  "sweep_method":  "36-in segment rectangles with 36-in square caps at endpoints and actual direction changes only.",
+                  "m186_serialized_rect_count":  383
+              },
+    "dining":  {
+                   "test_block_ft":  [
+                                         0,
+                                         14,
+                                         11,
+                                         10
+                                     ],
+                   "table_rect_ft":  {
+                                         "id":  "table",
+                                         "x":  3,
+                                         "y":  18.5,
+                                         "w":  5,
+                                         "d":  3
+                                     },
+                   "chair_body_rectangles_ft":  [
+                                                    {
+                                                        "id":  "south-chair-1",
+                                                        "x":  3.5,
+                                                        "y":  16.8333333333,
+                                                        "w":  1.5,
+                                                        "d":  1.6666666667
+                                                    },
+                                                    {
+                                                        "id":  "south-chair-2",
+                                                        "x":  6,
+                                                        "y":  16.8333333333,
+                                                        "w":  1.5,
+                                                        "d":  1.6666666667
+                                                    },
+                                                    {
+                                                        "id":  "west-chair-1",
+                                                        "x":  1.3333333333,
+                                                        "y":  18.5,
+                                                        "w":  1.6666666667,
+                                                        "d":  1.5
+                                                    },
+                                                    {
+                                                        "id":  "west-chair-2",
+                                                        "x":  1.3333333333,
+                                                        "y":  20,
+                                                        "w":  1.6666666667,
+                                                        "d":  1.5
+                                                    }
+                                                ],
+                   "pullout_use_rectangles_ft":  [
+                                                     {
+                                                         "id":  "south-chair-1-use-36in-from-table-edge",
+                                                         "x":  3.5,
+                                                         "y":  15.5,
+                                                         "w":  1.5,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "south-chair-2-use-36in-from-table-edge",
+                                                         "x":  6,
+                                                         "y":  15.5,
+                                                         "w":  1.5,
+                                                         "d":  3
+                                                     },
+                                                     {
+                                                         "id":  "west-chair-1-use-36in-from-table-edge",
+                                                         "x":  0,
+                                                         "y":  18.5,
+                                                         "w":  3,
+                                                         "d":  1.5
+                                                     },
+                                                     {
+                                                         "id":  "west-chair-2-use-36in-from-table-edge",
+                                                         "x":  0,
+                                                         "y":  20,
+                                                         "w":  3,
+                                                         "d":  1.5
+                                                     }
+                                                 ],
+                   "pullout_depth_from_table_edge_in":  36,
+                   "pullout_clearance_meaning":  "A rectangular study envelope measured outward from the table edge to 36 in; project wording does not define chair model, human occupancy, chair swept path, or whether this dimension is measured to a wall or an occupied chair."
+               },
+    "route_pullout_intersections":  [
+                                        {
+                                            "route_rect":  "segment-4",
+                                            "chair_use_envelope":  "south-chair-1-use-36in-from-table-edge",
+                                            "overlap_sf":  0.5
+                                        },
+                                        {
+                                            "route_rect":  "segment-4",
+                                            "chair_use_envelope":  "south-chair-2-use-36in-from-table-edge",
+                                            "overlap_sf":  0.75
+                                        },
+                                        {
+                                            "route_rect":  "node-4",
+                                            "chair_use_envelope":  "south-chair-1-use-36in-from-table-edge",
+                                            "overlap_sf":  0.75
+                                        }
+                                    ],
+    "route_pullout_union_overlap_sf":  1.5,
+    "interpretation_of_overlap":  "Positive-area overlap is an incompatibility under this static proxy screen. The 36-in envelope definition remains a design assumption pending interpretation by the owner/designer.",
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  8,
+                   "total":  8,
+                   "items":  [
+                                 {
+                                     "id":  "source_hashes_bound",
+                                     "pass":  true,
+                                     "detail":  "M188/M186/spec/selected-D/bath-first inputs are fingerprinted."
+                                 },
+                                 {
+                                     "id":  "north_route_replays",
+                                     "pass":  true,
+                                     "detail":  "The same documented one-foot north shift reproduces the 56.5-ft M188 route."
+                                 },
+                                 {
+                                     "id":  "four_documented_chair_bodies",
+                                     "pass":  true,
+                                     "detail":  "Four 18 x 20-in chair-body envelopes retain the M188 arrangement."
+                                 },
+                                 {
+                                     "id":  "documented_36in_pullout_depth",
+                                     "pass":  true,
+                                     "detail":  "Each pull-out study envelope extends 36 in from its corresponding table edge."
+                                 },
+                                 {
+                                     "id":  "pullout_envelopes_inside_dining_target",
+                                     "pass":  true,
+                                     "detail":  "The pull-out proxies fit the 11 x 10-ft study block."
+                                 },
+                                 {
+                                     "id":  "through_route_conflict_is_reported",
+                                     "pass":  true,
+                                     "detail":  "The audit must flag any positive-area route conflict with the explicit chair-use proxy; a conflict rejects this candidate, not the audit."
+                                 },
+                                 {
+                                     "id":  "selected_d_preserved",
+                                     "pass":  true,
+                                     "detail":  "Protected selected-D baseline remains unchanged."
+                                 },
+                                 {
+                                     "id":  "m06_b_unassigned",
+                                     "pass":  true,
+                                     "detail":  "East/pantry-side B remains an unassigned search window."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "The 36-in dining pull-out value comes from Architecture/Kitchen_Dining_Porch_Specs.md; the rectangular interpretation is an explicitly labeled study assumption.",
+                        "Chair-use envelopes extend from table edges and do not model individual product geometry, occupant body/swing, accessibility, or real chair motion.",
+                        "M188 north-shift route already has zero additional table-edge gap and crosses 6.5 ft of unassigned area; this audit tests its intersection with separate chair-use rectangles.",
+                        "42-in preferred wall/porch-door clearance from the same source is not validated because physical wall and clear-door positions are absent.",
+                        "The 40 x 42-ft shell, 13.5 x 14-ft kitchen and room blocks are unapproved comparisons.",
+                        "M-06/B remains unassigned; selected-D, RVT/IFC, Incoming RFAs and remote state are unchanged.",
+                        "No code-compliance, accessibility, structural-safety, professional, permit, or construction-readiness conclusion is made."
+                    ]
+}

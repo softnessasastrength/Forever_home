@@ -1,0 +1,112 @@
+﻿{
+    "status":  "pass",
+    "passed":  21,
+    "total":  21,
+    "checks":  [
+                   {
+                       "id":  "m173:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                       "pass":  true,
+                       "detail":  "M173 source fingerprint"
+                   },
+                   {
+                       "id":  "m173:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                       "pass":  true,
+                       "detail":  "M173 source fingerprint"
+                   },
+                   {
+                       "id":  "m173:Architecture/Kitchen_Dining_Porch_Specs.md",
+                       "pass":  true,
+                       "detail":  "M173 source fingerprint"
+                   },
+                   {
+                       "id":  "m173:Decisions/2026-10-27_Selected_Architectural_Direction_D.md",
+                       "pass":  true,
+                       "detail":  "M173 source fingerprint"
+                   },
+                   {
+                       "id":  "m173:Decisions/Kitchen_Island_Finish.md",
+                       "pass":  true,
+                       "detail":  "M173 source fingerprint"
+                   },
+                   {
+                       "id":  "m178:Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json",
+                       "pass":  true,
+                       "detail":  "M178 source fingerprint"
+                   },
+                   {
+                       "id":  "m178:Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                       "pass":  true,
+                       "detail":  "M178 source fingerprint"
+                   },
+                   {
+                       "id":  "m178:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                       "pass":  true,
+                       "detail":  "M178 source fingerprint"
+                   },
+                   {
+                       "id":  "straight_route_hits_pantry_candidate",
+                       "pass":  true,
+                       "detail":  "The M178 straight east-aisle route intersects M-04 in the bath-first alternative."
+                   },
+                   {
+                       "id":  "pantry_candidate_starts_north_of_dogleg",
+                       "pass":  true,
+                       "detail":  "Dogleg cross-corridor ends south of the pantry block with a measurable gap."
+                   },
+                   {
+                       "id":  "dogleg_cross_corridor_clears_stool_zone",
+                       "pass":  true,
+                       "detail":  "Westward shift occurs after the assumed stool zone ends."
+                   },
+                   {
+                       "id":  "dogleg_cross_corridor_clears_pantry",
+                       "pass":  true,
+                       "detail":  "Westward shift completes before the pantry starts."
+                   },
+                   {
+                       "id":  "dining_leg_inside_target_width",
+                       "pass":  true,
+                       "detail":  "Long dining leg occupies the east 36 in band within the 11 ft dining test zone."
+                   },
+                   {
+                       "id":  "dining_leg_tangent_to_table_not_overlapping",
+                       "pass":  true,
+                       "detail":  "36 in route meets the table east edge without positive-area overlap; no east-side chair is proposed."
+                   },
+                   {
+                       "id":  "stationary_chairs_clear",
+                       "pass":  true,
+                       "detail":  "Dogleg does not intersect the four stationary chair rectangles."
+                   },
+                   {
+                       "id":  "revised_route_avoids_all_modeled_obstacles",
+                       "pass":  true,
+                       "detail":  "Revised route has no positive-area overlap with the pantry, furniture, casework, island/stool or wall proxies."
+                   },
+                   {
+                       "id":  "porch_door_crossing_retained",
+                       "pass":  true,
+                       "detail":  "36 in route centerline crosses within the nominal 5 ft porch-door reservation."
+                   },
+                   {
+                       "id":  "porch_reach_retained",
+                       "pass":  true,
+                       "detail":  "Route still reaches 3 ft into the porch candidate."
+                   },
+                   {
+                       "id":  "unassigned_entry_spill_quantified",
+                       "pass":  true,
+                       "detail":  "The short kitchen-to-dining dogleg connector spills east of the dining test width; pantry is clear at this earlier y-position."
+                   },
+                   {
+                       "id":  "kitchen_area_tradeoff_retained",
+                       "pass":  true,
+                       "detail":  "M178 +21 sf area proposal remains explicit."
+                   },
+                   {
+                       "id":  "m06_b_unassigned",
+                       "pass":  true,
+                       "detail":  "M-06/B remains unassigned."
+                   }
+               ]
+}

@@ -1,0 +1,204 @@
+﻿{
+    "schema":  "forever-home-m182-pantry-bypass-route-v1",
+    "status":  "unapproved bypass route and unassigned-corridor test",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M181_All_Room_Interface_Audit_2026-10-31/artifacts/m181-study.json":  "3de30cfb477b1678e06b2a8ab1466fbeee36d174602df12da713159ad4ff3f57",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618"
+                                   },
+    "route_centerline_local_ft":  [
+                                      {
+                                          "x":  19.5,
+                                          "y":  10
+                                      },
+                                      {
+                                          "x":  18.6666666667,
+                                          "y":  10
+                                      },
+                                      {
+                                          "x":  18.6666666667,
+                                          "y":  27.5
+                                      },
+                                      {
+                                          "x":  8.5,
+                                          "y":  27.5
+                                      },
+                                      {
+                                          "x":  8.5,
+                                          "y":  30.5
+                                      }
+                                  ],
+    "route_width_in":  36,
+    "route_rectangles_local_ft":  [
+                                      {
+                                          "id":  "segment-0",
+                                          "x":  18.6666666667,
+                                          "y":  8.5,
+                                          "w":  0.83333333330000059,
+                                          "d":  3
+                                      },
+                                      {
+                                          "id":  "segment-1",
+                                          "x":  17.1666666667,
+                                          "y":  10,
+                                          "w":  3,
+                                          "d":  17.5
+                                      },
+                                      {
+                                          "id":  "corner-1",
+                                          "x":  17.1666666667,
+                                          "y":  8.5,
+                                          "w":  3,
+                                          "d":  3
+                                      },
+                                      {
+                                          "id":  "segment-2",
+                                          "x":  8.5,
+                                          "y":  26,
+                                          "w":  10.1666666667,
+                                          "d":  3
+                                      },
+                                      {
+                                          "id":  "corner-2",
+                                          "x":  17.1666666667,
+                                          "y":  26,
+                                          "w":  3,
+                                          "d":  3
+                                      },
+                                      {
+                                          "id":  "segment-3",
+                                          "x":  7,
+                                          "y":  27.5,
+                                          "w":  3,
+                                          "d":  3
+                                      },
+                                      {
+                                          "id":  "corner-3",
+                                          "x":  7,
+                                          "y":  26,
+                                          "w":  3,
+                                          "d":  3
+                                      }
+                                  ],
+    "positive_area_assigned_obstacle_intersections":  [
+
+                                                      ],
+    "blocked_west_search_window_intersections":  [
+                                                     {
+                                                         "route":  "segment-2",
+                                                         "target":  "west_of_core",
+                                                         "area_sf":  4.736111
+                                                     }
+                                                 ],
+    "route_bounds_local_ft":  {
+                                  "min_x":  7,
+                                  "min_y":  8.5,
+                                  "max_x":  20.1666666667,
+                                  "max_y":  30.5
+                              },
+    "translated_blocks":  {
+                              "M-03":  {
+                                           "id":  "M-03",
+                                           "x":  0,
+                                           "y":  16.5,
+                                           "w":  11.333333333333334,
+                                           "d":  14
+                                       },
+                              "M-01":  {
+                                           "id":  "M-01",
+                                           "x":  17.833333333333332,
+                                           "y":  0,
+                                           "w":  16,
+                                           "d":  15
+                                       },
+                              "M-02":  {
+                                           "id":  "M-02",
+                                           "x":  0,
+                                           "y":  0,
+                                           "w":  17.333333333333332,
+                                           "d":  16
+                                       },
+                              "M-05":  {
+                                           "id":  "M-05",
+                                           "x":  34.333333333333336,
+                                           "y":  0,
+                                           "w":  4.333333333333333,
+                                           "d":  12
+                                       },
+                              "M-04":  {
+                                           "id":  "M-04",
+                                           "x":  11.833333333333334,
+                                           "y":  16.5,
+                                           "w":  5,
+                                           "d":  7
+                                       }
+                          },
+    "m06_windows":  [
+                        {
+                            "id":  "west_of_core",
+                            "x":  11.333333333333334,
+                            "y":  15.500000000000002,
+                            "w":  5.1666666666666679,
+                            "d":  11.416666666666664,
+                            "status":  "Blocked by relocated kitchen/pantry room blocks in the bath-first adjacency candidate; not an available M-06 search gap."
+                        },
+                        {
+                            "id":  "east_of_core",
+                            "x":  20.5,
+                            "y":  16.5,
+                            "w":  13.166666666666668,
+                            "d":  7,
+                            "status":  "Unassigned room-block gap only; not a bath footprint."
+                        }
+                    ],
+    "pantry_to_m06b_unassigned_throat_in":  44,
+    "clearance_to_pantry_in":  4,
+    "clearance_to_m06b_window_in":  4,
+    "candidate_kitchen_corridor_west_edge_gap_ft":  3.6667,
+    "corridor_intrusion_into_source_M02_in":  2,
+    "candidate_M181_bottleneck":  [
+                                      {
+                                          "x":  19.5,
+                                          "y":  10
+                                      },
+                                      {
+                                          "x":  11.25,
+                                          "y":  10
+                                      },
+                                      {
+                                          "x":  11.25,
+                                          "y":  13.75
+                                      },
+                                      {
+                                          "x":  10.4166666667,
+                                          "y":  14.25
+                                      },
+                                      {
+                                          "x":  9.6666666667,
+                                          "y":  15
+                                      },
+                                      {
+                                          "x":  9.6666666667,
+                                          "y":  22.5
+                                      },
+                                      {
+                                          "x":  8.5,
+                                          "y":  22.5
+                                      },
+                                      {
+                                          "x":  8.5,
+                                          "y":  27.5
+                                      }
+                                  ],
+    "design_condition":  "A new, currently undocumented opening/transition at the south edge of M-01 would be required to enter the unassigned passage. This is not present in the source model.",
+    "conclusion":  "This alternative bypasses the kitchen stools and dining table by routing south from living through the 44 in unassigned corridor between pantry and M-06/B, then across the dining room south band to the nominal porch door. It leaves only 4 in to the pantry and 4 in to the M-06/B window proxy and overlaps 4.736 sf of the already-blocked west M-06 search-window rectangle. The route is geometrically possible in the rectangle overlay but is a narrow, unresolved circulation reservation that may constrain half-bath door/approach/service coordination.",
+    "limitations":  [
+                        "Bath-first blocks and all furniture, door and porch rectangles are unapproved coordinate proxies.",
+                        "The route needs a new opening at the south edge of M-01 and an assigned corridor; neither is documented or modeled.",
+                        "Four-inch margins do not validate wall finish, construction tolerance, bath door approach/swing, access, or service routing.",
+                        "The path crosses the already-blocked west bath search rectangle, and its corridor edge extends 2 in into source M-02 outside the reduced kitchen candidate.",
+                        "No occupant/furniture movement, thresholds, physical walls, door leaf or clear opening are verified.",
+                        "M-06/B remains unassigned; no Revit/IFC change or code/accessibility/structural/professional/permit/construction approval."
+                    ]
+}

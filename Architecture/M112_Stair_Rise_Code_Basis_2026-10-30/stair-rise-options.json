@@ -1,0 +1,114 @@
+{
+    "status":  "source-bound arithmetic sensitivity; not a stair selection or code-compliance finding",
+    "sources_sha256":  {
+                           "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                           "half_story_stair_spec":  "b480e12548612acb2dbaf98361e5ac1512be4d8a9f4eeebf179dd8cdbcbd7c84",
+                           "selected_direction":  "6512122eb20be3407c4d1b571ba7f5a6c0c0034f727ddd5cdad2a38419121461",
+                           "connecticut_stair_basis":  "65250b9f68a8674b2bf361f99b76c35c63a97e85ec75304f1f4e77681cc26ee6",
+                           "analyzer_script":  "d85119da4e4cea0603e962a84f5505e0029a4708936099751270e79f95faf77a"
+                       },
+    "selected_d_levels":  [
+                              {
+                                  "id":  "Lower FF",
+                                  "elevation_ft":  -5
+                              },
+                              {
+                                  "id":  "Main FF",
+                                  "elevation_ft":  0
+                              },
+                              {
+                                  "id":  "Upper FF",
+                                  "elevation_ft":  5
+                              }
+                          ],
+    "adjacent_level_rises":  [
+                                 {
+                                     "from":  "Lower FF",
+                                     "to":  "Main FF",
+                                     "rise_in":  60
+                                 },
+                                 {
+                                     "from":  "Main FF",
+                                     "to":  "Upper FF",
+                                     "rise_in":  60
+                                 }
+                             ],
+    "owner_half_story_intent":  {
+                                    "preferred_risers":  6,
+                                    "preferred_equal_riser_in":  7.25,
+                                    "preferred_total_rise_in":  43.5,
+                                    "preferred_count_range":  [
+                                                                  5,
+                                                                  7
+                                                              ],
+                                    "source":  "Architecture/Stairs_Half_Story.md"
+                                },
+    "selected_d_comparison":  {
+                                  "risers_per_flight":  8,
+                                  "equal_riser_in":  7.5,
+                                  "treads_per_flight":  7,
+                                  "tread_depth_in":  11,
+                                  "run_depth_in":  77,
+                                  "total_rise_in":  60,
+                                  "status":  "comparison baseline only; final stair count and geometry unselected"
+                              },
+    "preliminary_connecticut_basis":  {
+                                          "adopted_code":  "2022 Connecticut State Building Code, amendments to 2021 IRC",
+                                          "section_riser":  "R311.7.5.1",
+                                          "max_riser_in":  8.25,
+                                          "section_tread":  "R311.7.5.2",
+                                          "min_tread_in":  9,
+                                          "max_within_flight_riser_variation_in":  0.375,
+                                          "applicability":  "municipality, permit timing and code scope remain unconfirmed"
+                                      },
+    "arithmetic":  {
+                       "minimum_uniform_riser_count_for_60_in_at_CT_max":  8,
+                       "max_total_rise_with_seven_at_CT_max_in":  57.75,
+                       "owner_preferred_six_riser_shortfall_in":  16.5,
+                       "options":  [
+                                       {
+                                           "riser_count":  5,
+                                           "equal_riser_in":  12,
+                                           "max_riser_in":  8.25,
+                                           "within_preliminary_CT_max":  false,
+                                           "owner_half_story_preference_count":  true,
+                                           "tread_count_for_straight_run":  4,
+                                           "plan_run_at_D_comparison_tread_in":  44
+                                       },
+                                       {
+                                           "riser_count":  6,
+                                           "equal_riser_in":  10,
+                                           "max_riser_in":  8.25,
+                                           "within_preliminary_CT_max":  false,
+                                           "owner_half_story_preference_count":  true,
+                                           "tread_count_for_straight_run":  5,
+                                           "plan_run_at_D_comparison_tread_in":  55
+                                       },
+                                       {
+                                           "riser_count":  7,
+                                           "equal_riser_in":  8.571429,
+                                           "max_riser_in":  8.25,
+                                           "within_preliminary_CT_max":  false,
+                                           "owner_half_story_preference_count":  true,
+                                           "tread_count_for_straight_run":  6,
+                                           "plan_run_at_D_comparison_tread_in":  66
+                                       },
+                                       {
+                                           "riser_count":  8,
+                                           "equal_riser_in":  7.5,
+                                           "max_riser_in":  8.25,
+                                           "within_preliminary_CT_max":  true,
+                                           "owner_half_story_preference_count":  false,
+                                           "tread_count_for_straight_run":  7,
+                                           "plan_run_at_D_comparison_tread_in":  77
+                                       }
+                                   ]
+                   },
+    "interpretation":  [
+                           "Both adjacent selected-D level pairs are 60 in apart in the source room-study datums.",
+                           "At the preliminary Connecticut amended maximum of 8.25 in, at least eight equal risers are required for a 60 in rise; eight equal risers are 7.5 in each.",
+                           "The inherited eight-riser/11-in tread plan arithmetic spans 60 in and uses a 77 in straight tread run, but remains a comparison, not a selected stair.",
+                           "The owner half-story spec prefers six risers at 7.25 in (43.5 in total) and a 5-7 riser range. This preference and the selected-D 60 in adjacent level datums do not align as a single-flight count without changing a datum, dividing the rise among flights, or revising the layout.",
+                           "No floor assembly, actual floor-to-floor structural dimension, landing section, headroom, guard, support, egress, finish tolerance, project jurisdiction or permit path is resolved by this arithmetic."
+                       ]
+}

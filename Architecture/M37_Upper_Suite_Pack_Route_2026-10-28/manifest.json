@@ -1,0 +1,24 @@
+﻿{
+    "generator":  "Tools/test_m37_upper_suite_pack_and_route.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "7e223293dfa3720b3580badd5894f2dacb4330d0b8e3323c284de0d1d8045d9b",
+                                       "Requirements/Room_Program.md":  "17e8cb83e6fa25309b0c247ee5ebbe3862e99fcc5f81608e9629660b6445a478"
+                                   },
+    "search_parameters":  {
+                              "node_limit":  1500,
+                              "layout_limit":  5000,
+                              "root_search_scope":  "balanced",
+                              "u02_root_plan_variant":  "baseline",
+                              "additional_contact_samples":  0,
+                              "public_door_edge_samples":  1,
+                              "landing_aligned_root_seed_search":  false,
+                              "shell_width_override_ft":  0,
+                              "shell_depth_override_ft":  0
+                          },
+    "output_hashes_sha256":  {
+                                 "search":  "20b4a13ef50b41f6cdf456375a724d8cb2892fea103718e94cfa73382af479f1",
+                                 "checks":  "79143c3e720dc16f8c98fba41dff5ab05e45a08ec2a3901ac7f06e50411a59b8",
+                                 "svg":  "f70bf29156763863a38f6322b7e9b5acfdd677bc0be9da9c5195a5be6e138edc"
+                             }
+}

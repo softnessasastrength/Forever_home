@@ -1,0 +1,77 @@
+{
+    "schema":  "forever-home-m188-dining-set-placement-v1",
+    "status":  "complete_unapproved_layout_sensitivity",
+    "method":  "Reruns M186 with the documented 36x60-in table and four 18x20-in chair proxies translated as one rigid group by one foot along a single axis.",
+    "m186_source_sha256":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "cases":  [
+                  {
+                      "case":  "baseline",
+                      "translation_x_ft":  0,
+                      "translation_y_ft":  0,
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "reachable_nodes":  5299,
+                      "nearest_door_manhattan_ft":  10,
+                      "dining_set_unchanged":  true,
+                      "limitation":  "Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+                  },
+                  {
+                      "case":  "east_1ft",
+                      "translation_x_ft":  1,
+                      "translation_y_ft":  0,
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "reachable_nodes":  5299,
+                      "nearest_door_manhattan_ft":  10,
+                      "dining_set_unchanged":  true,
+                      "limitation":  "Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+                  },
+                  {
+                      "case":  "west_1ft",
+                      "translation_x_ft":  -1,
+                      "translation_y_ft":  0,
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "reachable_nodes":  5299,
+                      "nearest_door_manhattan_ft":  10,
+                      "dining_set_unchanged":  true,
+                      "limitation":  "Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+                  },
+                  {
+                      "case":  "north_1ft",
+                      "translation_x_ft":  0,
+                      "translation_y_ft":  1,
+                      "path_found":  true,
+                      "route_length_ft":  56.5,
+                      "turn_count":  7,
+                      "reachable_nodes":  5603,
+                      "nearest_door_manhattan_ft":  0,
+                      "dining_set_unchanged":  true,
+                      "limitation":  "Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+                  },
+                  {
+                      "case":  "south_1ft",
+                      "translation_x_ft":  0,
+                      "translation_y_ft":  -1,
+                      "path_found":  false,
+                      "route_length_ft":  null,
+                      "turn_count":  null,
+                      "reachable_nodes":  5287,
+                      "nearest_door_manhattan_ft":  10,
+                      "dining_set_unchanged":  true,
+                      "limitation":  "Whole dining set translated as an analysis proposal; physical wall/door and chair-pullback operation remain unmodeled."
+                  }
+              ],
+    "limitations":  [
+                        "One-foot translations are proposal coordinates, not owner-selected dimensions.",
+                        "All chair/table proxies move together and keep their M186 arrangement; alternative seating layouts were not tested.",
+                        "A restored sampled route still requires a real door/opening, physical walls, chair operation and project review.",
+                        "M-06/B remains unassigned; no fixture, clearance, approach or services are selected.",
+                        "No Revit/IFC, selected-D baseline, Incoming RFA or remote state is modified.",
+                        "No code, accessibility, structural, professional, permit or construction-readiness claim is made."
+                    ]
+}

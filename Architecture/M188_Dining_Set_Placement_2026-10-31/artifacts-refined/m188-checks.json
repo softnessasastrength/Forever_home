@@ -1,0 +1,31 @@
+{
+    "status":  "pass",
+    "passed":  6,
+    "total":  6,
+    "items":  [
+                  {
+                      "id":  "five_cases",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "baseline_matches_m186",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "same_table_chair_dimensions",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "all_dining_bodies_inside_test_block",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "selected_D_unchanged",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "B_unassigned",
+                      "pass":  true
+                  }
+              ]
+}

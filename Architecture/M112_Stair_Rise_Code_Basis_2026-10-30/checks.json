@@ -1,0 +1,61 @@
+{
+    "checks":  [
+                   {
+                       "id":  "source_files_present",
+                       "passed":  true,
+                       "detail":  "All source files, including the analyzer script, exist."
+                   },
+                   {
+                       "id":  "three_selected_d_test_levels",
+                       "passed":  true,
+                       "detail":  "Lower, Main and Upper test levels are present."
+                   },
+                   {
+                       "id":  "both_adjacent_rises_60_in",
+                       "passed":  true,
+                       "detail":  "The source elevations imply 60 in per adjacent pair."
+                   },
+                   {
+                       "id":  "selected_d_eight_riser_arithmetic_matches",
+                       "passed":  true,
+                       "detail":  "Eight equal 7.5 in risers sum to the 60 in comparison rise."
+                   },
+                   {
+                       "id":  "selected_d_tread_arithmetic_matches",
+                       "passed":  true,
+                       "detail":  "Seven 11 in treads produce a 77 in straight plan run."
+                   },
+                   {
+                       "id":  "ct_amended_riser_basis_present",
+                       "passed":  true,
+                       "detail":  "Current preliminary Connecticut source note identifies amended R311.7.5.1 and 8.25 in."
+                   },
+                   {
+                       "id":  "ct_tread_basis_present",
+                       "passed":  true,
+                       "detail":  "Current preliminary Connecticut source note identifies amended R311.7.5.2 and 9 in."
+                   },
+                   {
+                       "id":  "eight_risers_minimum_for_60_in",
+                       "passed":  true,
+                       "detail":  "Ceiling(60 / 8.25) = 8."
+                   },
+                   {
+                       "id":  "seven_risers_cannot_span_60_in_at_ct_max",
+                       "passed":  true,
+                       "detail":  "Seven maximum-height risers sum to 57.75 in, less than 60 in."
+                   },
+                   {
+                       "id":  "owner_six_riser_preference_recorded",
+                       "passed":  true,
+                       "detail":  "Six preferred 7.25 in risers total 43.5 in, 16.5 in short of the source transition."
+                   },
+                   {
+                       "id":  "design_and_compliance_claims_limited",
+                       "passed":  true,
+                       "detail":  "The report retains explicit design and applicability limitations."
+                   }
+               ],
+    "failed":  0,
+    "passed":  11
+}

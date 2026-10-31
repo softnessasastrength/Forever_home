@@ -1,0 +1,73 @@
+﻿{
+    "schema":  "forever-home.m113-u03-perimeter-search-audit.v1",
+    "interpretation":  "A bounded room-block search only; shell-edge contact is a possible exterior-wall zone, not a wall or opening. No route-valid upper-suite candidate was found in this sample.",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "hypothetical owner-authorized exploration only"
+              },
+    "search":  {
+                   "nodes_expanded":  464,
+                   "node_limit":  1200,
+                   "layouts_recorded":  45,
+                   "route_tested":  45,
+                   "search_complete":  false,
+                   "root_seed_sides":  [
+                                           "north",
+                                           "east",
+                                           "south",
+                                           "west"
+                                       ]
+               },
+    "result":  {
+                   "U03_perimeter_contact_candidates":  45,
+                   "U03_edge_distribution":  {
+                                                 "north":  0,
+                                                 "south":  0,
+                                                 "west":  45,
+                                                 "east":  0
+                                             },
+                   "route_reach_count_distribution":  {
+                                                          "2":  0,
+                                                          "3":  0,
+                                                          "1":  28,
+                                                          "0":  17
+                                                      },
+                   "U02_hall_sample_count":  0,
+                   "U03_hall_side_sample_count":  45,
+                   "all_required_public_rooms_count":  0,
+                   "public_route_proxy":  "sampled 4 ft hall grid to U-01/U-02/U-04; not door or clearance geometry"
+               },
+    "source_hashes_sha256":  {
+                                 "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "search":  "2a6f06fd83690d6e39a830b96848349aac72e74778b19efdc7457c000d50e752",
+                                 "generator_checks":  "ee27ab5e537316b240e0b5c1d1927d71b88a68fca7c1cf2dd23d5a06d4d94870",
+                                 "candidate_archive":  "81a1306b8d95eae36c1fe232d43deebc86e98b31aa3fe1eaeb5db29930227cd5",
+                                 "M37_generator":  "5c0ebf020ca7d566dd1484b57cd6ca9ffd55ed26422b0054dd3ad4f9dc1ea13a",
+                                 "audit_script":  "90c843512a3b903372d3f192a0033da1ef99f5b4019ebe6104111e072c7e01af"
+                             },
+    "checks":  {
+                   "source_selected_D_hash_matches":  true,
+                   "M37_proposal_and_program_sources_match_current_files":  true,
+                   "search_archive_checks_svg_and_manifest_hashes_match":  true,
+                   "bounded_U03_only_four_edge_root_mode":  true,
+                   "generator_integrity_checks_pass":  true,
+                   "M113_generator_hash_is_pinned":  true,
+                   "SVG_parses_as_XML":  true,
+                   "archive_count_matches_generator":  true,
+                   "all_seven_source_room_blocks_present_inside_hypothetical_shell":  true,
+                   "room_dimensions_match_source_allowing_rotation":  true,
+                   "all_room_pairs_keep_half_foot_proxy_separation":  true,
+                   "all_six_private_and_jack_and_jill_links_have_contact_proxy":  true,
+                   "every_U03_block_touches_hypothetical_shell_edge":  true,
+                   "public_route_counts_reconstruct_from_archived_side_samples":  true,
+                   "zero_candidates_reach_all_three_required_public_rooms":  true,
+                   "zero_candidates_reach_U02_hall_sample":  true,
+                   "selected_D_source_unchanged":  true
+               },
+    "failed":  [
+
+               ]
+}

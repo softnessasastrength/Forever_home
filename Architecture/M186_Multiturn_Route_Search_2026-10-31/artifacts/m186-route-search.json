@@ -1,0 +1,472 @@
+{
+    "schema":  "forever-home-m186-multiturn-route-search-v1",
+    "status":  "no_candidate_on_bounded_quarter_foot_grid",
+    "search_method":  "Deterministic breadth-first search over orthogonal centerline nodes; expanded rectangles enforce exact 36-in axis-aligned route width against static rectangular obstacles.",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json":  "34a0e6a15ca24e8ada928d87978669dfd772d9dd5b5ce88f56f43ff73dbf1a42",
+                                       "Tools/audit_m179_pantry_route_conflict.ps1":  "f8164aafd12ed56727f3e9d9a96f5fbc3abbe6e6357d765d28b1d50e943998bf",
+                                       "Architecture/M180_Living_Shell_Route_Audit_2026-10-31/artifacts/m180-study.json":  "ad8f179fc78f572ce8be3daea8c62f2ede31f8793194a08c87ac1f9d6ffe3d18",
+                                       "Architecture/M185_Dogleg_M06_Overlay_2026-10-31/artifacts/m185-dogleg-m06-overlay.json":  "c6344f9bda51ef6fa45da18c6fc2f336fd301e0d4828e4a89b6164567fd74ffe",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "incoming_rfa_hashes":  [
+                                {
+                                    "file":  "american-standard-champion-pro-211AA104-020-predecessor.rfa",
+                                    "sha256":  "37d3e56962b81f4b0ace3d36d25bafc03b7dee1232e7de7bbf9b95e4b0b75f63"
+                                },
+                                {
+                                    "file":  "american-standard-champion-pro-3195A101020-bowl.rfa",
+                                    "sha256":  "f301d2cb77f13269e21dc44fd6953946158034122bb3c10889fcba9470846393"
+                                },
+                                {
+                                    "file":  "american-standard-evolution-0467004.020.rfa",
+                                    "sha256":  "39715206f24de4b909e37324ce352bba3af348bca259b7a9c0ce335ed2ddc3ea"
+                                },
+                                {
+                                    "file":  "Solid_Surface_Vanity_Counter_w_Faucet_22366.rfa",
+                                    "sha256":  "3524afc61b87377aa0809f18f6fa21c56343e22bfb9a9053cd91b9085629d154"
+                                },
+                                {
+                                    "file":  "Sony_Flat_LED_TV_face_based_17584.rfa",
+                                    "sha256":  "b7cf36f69f3ba0a28a4e9ef4d9b94fe505e36b15eb48d149d0f44ea145cd49af"
+                                }
+                            ],
+    "search":  {
+                   "shell_test_ft":  [
+                                         40,
+                                         42
+                                     ],
+                   "coordinate_origin_source_ft":  [
+                                                       0.66666666666666663,
+                                                       0.66666666666666663
+                                                   ],
+                   "grid_step_ft":  0.25,
+                   "grid_step_is_design_dimension":  false,
+                   "route_width_in":  36,
+                   "centerline_bounds":  {
+                                             "x_min_local_ft":  -0.666667,
+                                             "x_max_local_ft":  39.333333,
+                                             "y_min_local_ft":  -0.666667,
+                                             "y_max_local_ft":  41.333333,
+                                             "centerline_grid_x_index":  [
+                                                                             4,
+                                                                             151
+                                                                         ],
+                                             "centerline_grid_y_index":  [
+                                                                             4,
+                                                                             159
+                                                                         ],
+                                             "node_count":  23088,
+                                             "reached_node_count":  5299,
+                                             "expanded_nodes":  5299,
+                                             "reachable_bounds":  {
+                                                                      "x_min_ft":  3.5,
+                                                                      "x_max_ft":  37.75,
+                                                                      "y_min_ft":  1,
+                                                                      "y_max_ft":  24.5
+                                                                  },
+                                             "nearest_reachable_to_porch_door":  {
+                                                                                     "x_ft":  18.5,
+                                                                                     "y_ft":  24.5,
+                                                                                     "distance_grid_steps":  40,
+                                                                                     "distance_manhattan_ft":  10
+                                                                                 },
+                                             "blocked_frontier_edges":  [
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:east_of_core",
+                                                                                "frontier_edge_count":  140
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:island",
+                                                                                "frontier_edge_count":  113
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:half-wall",
+                                                                                "frontier_edge_count":  73
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:M-05-entry",
+                                                                                "frontier_edge_count":  70
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:perimeter-run",
+                                                                                "frontier_edge_count":  54
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:M-04-pantry",
+                                                                                "frontier_edge_count":  40
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:assumed-stool-use-proxy",
+                                                                                "frontier_edge_count":  37
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:half-wall-return",
+                                                                                "frontier_edge_count":  33
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:west_of_core",
+                                                                                "frontier_edge_count":  19
+                                                                            },
+                                                                            {
+                                                                                "constraint":  "centerline-envelope:south-chair-1",
+                                                                                "frontier_edge_count":  3
+                                                                            }
+                                                                        ]
+                                         },
+                   "start_inside_M01_ft":  {
+                                               "x":  19.5,
+                                               "y":  10
+                                           },
+                   "opening_center_ft":  {
+                                             "x":  13.5,
+                                             "y":  10
+                                         },
+                   "porch_door_center_ft":  {
+                                                "x":  8.5,
+                                                "y":  24.5
+                                            },
+                   "porch_terminus_ft":  {
+                                             "x":  8.5,
+                                             "y":  27.5
+                                         },
+                   "path_found":  false,
+                   "route_length_ft":  null,
+                   "route_turn_count":  null,
+                   "compressed_waypoints_ft":  [
+                                                   {
+                                                       "x":  19.5,
+                                                       "y":  10
+                                                   },
+                                                   {
+                                                       "x":  13.5,
+                                                       "y":  10
+                                                   },
+                                                   {
+                                                       "x":  8.5,
+                                                       "y":  27.5
+                                                   }
+                                               ],
+                   "centerline_zone_lengths_ft":  {
+                                                      "dining_ft":  0,
+                                                      "living_ft":  0,
+                                                      "unassigned_ft":  0,
+                                                      "porch_ft":  0,
+                                                      "kitchen_ft":  0
+                                                  },
+                   "route_rectangles_ft":  [
+
+                                           ],
+                   "proxy_intersections":  [
+
+                                           ],
+                   "minimum_edge_gap_by_obstacle":  [
+
+                                                    ],
+                   "initial_connector_intersections":  [
+
+                                                       ],
+                   "m06_west_diagnostic_rect_local_ft":  [
+                                                             11.333333333333334,
+                                                             15.500000000000002,
+                                                             5.1666666666666679,
+                                                             11.416666666666664
+                                                         ],
+                   "m06_east_B_window_local_ft":  [
+                                                      20.5,
+                                                      16.5,
+                                                      13.166666666666668,
+                                                      7
+                                                  ],
+                   "M04_local_rect_ft":  [
+                                             11.833333333333334,
+                                             16.5,
+                                             5,
+                                             7
+                                         ],
+                   "modeled_obstacles":  [
+                                             {
+                                                 "id":  "M-05-entry",
+                                                 "x":  34.333333333333336,
+                                                 "y":  0,
+                                                 "w":  4.333333333333333,
+                                                 "d":  12
+                                             },
+                                             {
+                                                 "id":  "M-04-pantry",
+                                                 "x":  11.833333333333334,
+                                                 "y":  16.5,
+                                                 "w":  5,
+                                                 "d":  7
+                                             },
+                                             {
+                                                 "id":  "west_of_core",
+                                                 "x":  11.333333333333334,
+                                                 "y":  15.500000000000002,
+                                                 "w":  5.1666666666666679,
+                                                 "d":  11.416666666666664
+                                             },
+                                             {
+                                                 "id":  "east_of_core",
+                                                 "x":  20.5,
+                                                 "y":  16.5,
+                                                 "w":  13.166666666666668,
+                                                 "d":  7
+                                             },
+                                             {
+                                                 "id":  "perimeter-run",
+                                                 "x":  0,
+                                                 "y":  0.75,
+                                                 "w":  2,
+                                                 "d":  12.5
+                                             },
+                                             {
+                                                 "id":  "island",
+                                                 "x":  5.5,
+                                                 "y":  3,
+                                                 "w":  4,
+                                                 "d":  8
+                                             },
+                                             {
+                                                 "id":  "assumed-stool-use-proxy",
+                                                 "x":  5.5,
+                                                 "y":  11,
+                                                 "w":  4,
+                                                 "d":  2
+                                             },
+                                             {
+                                                 "id":  "half-wall",
+                                                 "x":  13,
+                                                 "y":  0,
+                                                 "w":  0.5,
+                                                 "d":  7
+                                             },
+                                             {
+                                                 "id":  "half-wall-return",
+                                                 "x":  13,
+                                                 "y":  13,
+                                                 "w":  0.5,
+                                                 "d":  1
+                                             },
+                                             {
+                                                 "id":  "dining-table",
+                                                 "x":  3,
+                                                 "y":  17.5,
+                                                 "w":  5,
+                                                 "d":  3
+                                             },
+                                             {
+                                                 "id":  "south-chair-1",
+                                                 "x":  3.5,
+                                                 "y":  15.8333333333,
+                                                 "w":  1.5,
+                                                 "d":  1.6666666667
+                                             },
+                                             {
+                                                 "id":  "south-chair-2",
+                                                 "x":  6,
+                                                 "y":  15.8333333333,
+                                                 "w":  1.5,
+                                                 "d":  1.6666666667
+                                             },
+                                             {
+                                                 "id":  "west-chair-1",
+                                                 "x":  1.3333333333,
+                                                 "y":  17.5,
+                                                 "w":  1.6666666667,
+                                                 "d":  1.5
+                                             },
+                                             {
+                                                 "id":  "west-chair-2",
+                                                 "x":  1.3333333333,
+                                                 "y":  19,
+                                                 "w":  1.6666666667,
+                                                 "d":  1.5
+                                             },
+                                             {
+                                                 "id":  "porch-wall-west-of-door",
+                                                 "x":  -0.5,
+                                                 "y":  24.5,
+                                                 "w":  6.5,
+                                                 "d":  0.5
+                                             },
+                                             {
+                                                 "id":  "porch-wall-east-of-door",
+                                                 "x":  11,
+                                                 "y":  24.5,
+                                                 "w":  0.5,
+                                                 "d":  0.5
+                                             }
+                                         ]
+               },
+    "kitchen_area_sf":  189,
+    "kitchen_program_target_sf":  168,
+    "kitchen_over_target_sf":  21,
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  29,
+                   "total":  29,
+                   "items":  [
+                                 {
+                                     "id":  "M179:Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M179:Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M179:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M179:Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M180:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M180:Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M180:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/m179-study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "M185:Architecture/Selected_Design_Iteration_2026-10-27/study.json",
+                                     "pass":  true,
+                                     "detail":  "Upstream source fingerprint is current."
+                                 },
+                                 {
+                                     "id":  "source_schemas",
+                                     "pass":  true,
+                                     "detail":  "M178, M180 and M185 have the expected retained source schemas."
+                                 },
+                                 {
+                                     "id":  "selected_d_baseline_current",
+                                     "pass":  true,
+                                     "detail":  "Selected-D remains at the protected source fingerprint."
+                                 },
+                                 {
+                                     "id":  "m06_b_unassigned",
+                                     "pass":  true,
+                                     "detail":  "Owner-selected east/pantry-side M-06/B remains only an unassigned search window."
+                                 },
+                                 {
+                                     "id":  "shell_test_40_by_42",
+                                     "pass":  true,
+                                     "detail":  "The bounded search uses the matching 40 x 42 ft envelope recorded in selected-D and the bath-first source."
+                                 },
+                                 {
+                                     "id":  "grid_is_analysis_resolution",
+                                     "pass":  true,
+                                     "detail":  "Quarter-foot spacing is explicitly a search resolution, not an architectural dimension."
+                                 },
+                                 {
+                                     "id":  "route_width_36in",
+                                     "pass":  true,
+                                     "detail":  "The swept corridor uses the source 36-in proxy width."
+                                 },
+                                 {
+                                     "id":  "start_and_goal_nodes_clear",
+                                     "pass":  true,
+                                     "detail":  "Both the fixed kitchen-opening node and nominal porch-door node clear the static no-go proxy set."
+                                 },
+                                 {
+                                     "id":  "living_start_inside_M01",
+                                     "pass":  true,
+                                     "detail":  "The route begins at M180â€™s point inside source M-01."
+                                 },
+                                 {
+                                     "id":  "opening_connector_clear",
+                                     "pass":  true,
+                                     "detail":  "Pinned living-to-opening connector has no positive-area intersection with modeled obstacle rectangles."
+                                 },
+                                 {
+                                     "id":  "opening_reservation_crossed",
+                                     "pass":  true,
+                                     "detail":  "Pinned connector crosses M178â€™s 6-ft opening reservation at the M180 source y-coordinate."
+                                 },
+                                 {
+                                     "id":  "goal_is_nominal_porch_door",
+                                     "pass":  true,
+                                     "detail":  "Route search ends at the nominal 5-ft porch-door reservation before extending 3 ft into the porch."
+                                 },
+                                 {
+                                     "id":  "search_completed_or_bounded",
+                                     "pass":  true,
+                                     "detail":  "Deterministic BFS terminates inside the finite shell-derived grid."
+                                 },
+                                 {
+                                     "id":  "route_result_serializable",
+                                     "pass":  true,
+                                     "detail":  "A found route has a start, an opening point and a porch terminus; a no-path result is also recorded explicitly."
+                                 },
+                                 {
+                                     "id":  "no_route_within_declared_search",
+                                     "pass":  true,
+                                     "detail":  "The exhaustive 0.25-ft grid search found no route within the bounded shell and modeled proxy set."
+                                 },
+                                 {
+                                     "id":  "incoming_families_hashes_recorded",
+                                     "pass":  true,
+                                     "detail":  "Every current Incoming RFA is recorded by filename and SHA256."
+                                 },
+                                 {
+                                     "id":  "m185_one_elbow_constraint_retained",
+                                     "pass":  true,
+                                     "detail":  "The preceding M185 result still shows no sampled single-elbow position clearing both limiting proxies."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "The grid spacing is an analysis resolution. No physical dimensions are created by this search.",
+                        "Rectangular proxies do not model wall thickness, physical door leaves, chair/stool motion, appliance-open states, occupants, privacy, finishes or tolerances.",
+                        "The west M-06 rectangle is a blocked diagnostic; east B is reserved only to protect its unassigned search option. Neither is a bath footprint.",
+                        "The assumed stool occupancy remains a 24-in-deep proxy, not actual selected family geometry.",
+                        "A path with no positive-area collision is not a usable, accessible, code-compliant or approved route. Minimum geometric gaps still require design review.",
+                        "The 13.5 x 14 ft M178 kitchen is an unapproved 189 sf candidate, 21 sf above the owner-directed target.",
+                        "No Revit or IFC geometry is changed or validated by this schematic route search.",
+                        "No code, accessibility, structural-safety, professional, permit or construction-readiness conclusion is made."
+                    ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="100%" height="100%" fill="white"/><text x="20" y="482" font-size="11" font-family="Arial">Proposal geometry from nominal product envelopes; door swing, tub use area, wall finish and service routes are not shown.</text><text x="40" y="28" font-size="16" font-family="Arial">M130-NE-19: 108 x 120 in</text>
+<rect x="40" y="72" width="324" height="360" fill="#fffdf7" stroke="#222" stroke-width="2"/>
+<rect x="130.75" y="315" width="63" height="57" fill="#f2d887" fill-opacity="0.42" stroke="#9b7623" stroke-width="1.5" stroke-dasharray="5 3"/><title>WC frontal 21 in screen</title>
+<text x="133.75" y="330" font-size="10" font-family="Arial">WC frontal 21 in screen</text>
+<rect x="40" y="298.5" width="90.75" height="90" fill="#aad5e8" fill-opacity="0.26" stroke="#397c97" stroke-width="1.5" stroke-dasharray="3 3"/><title>WC side 15 in CL band</title>
+<text x="43" y="313.5" font-size="10" font-family="Arial">WC side 15 in CL band</text>
+<rect x="40" y="315" width="90.75" height="57" fill="#ddd8cf" fill-opacity="1" stroke="#403b34" stroke-width="1.5" /><title>Toilet nominal body</title>
+<text x="43" y="330" font-size="10" font-family="Arial">Toilet nominal body</text>
+<rect x="40" y="217.5" width="58.5" height="72" fill="#c7e2cf" fill-opacity="1" stroke="#28623c" stroke-width="1.5" /><title>Tresham lavatory nominal body</title>
+<text x="43" y="232.5" font-size="10" font-family="Arial">Tresham lavatory nominal body</text>
+<rect x="112" y="72" width="180" height="96" fill="#cbd9f4" fill-opacity="1" stroke="#304d83" stroke-width="1.5" /><title>Entity bath nominal body</title>
+<text x="115" y="87" font-size="10" font-family="Arial">Entity bath nominal body</text>
+<line x1="139" y1="432" x2="265" y2="432" stroke="#a43b32" stroke-width="5"/><text x="139" y="450" font-size="10" font-family="Arial">3.5 ft nominal interface reservation</text>
+<text x="410" y="28" font-size="16" font-family="Arial">M130-NE-24: 120 x 108 in</text>
+<rect x="410" y="72" width="360" height="324" fill="#fffdf7" stroke="#222" stroke-width="2"/>
+<rect x="500.75" y="279" width="63" height="57" fill="#f2d887" fill-opacity="0.42" stroke="#9b7623" stroke-width="1.5" stroke-dasharray="5 3"/><title>WC frontal 21 in screen</title>
+<text x="503.75" y="294" font-size="10" font-family="Arial">WC frontal 21 in screen</text>
+<rect x="410" y="262.5" width="90.75" height="90" fill="#aad5e8" fill-opacity="0.26" stroke="#397c97" stroke-width="1.5" stroke-dasharray="3 3"/><title>WC side 15 in CL band</title>
+<text x="413" y="277.5" font-size="10" font-family="Arial">WC side 15 in CL band</text>
+<rect x="410" y="279" width="90.75" height="57" fill="#ddd8cf" fill-opacity="1" stroke="#403b34" stroke-width="1.5" /><title>Toilet nominal body</title>
+<text x="413" y="294" font-size="10" font-family="Arial">Toilet nominal body</text>
+<rect x="410" y="181.5" width="58.5" height="72" fill="#c7e2cf" fill-opacity="1" stroke="#28623c" stroke-width="1.5" /><title>Tresham lavatory nominal body</title>
+<text x="413" y="196.5" font-size="10" font-family="Arial">Tresham lavatory nominal body</text>
+<rect x="500" y="72" width="180" height="96" fill="#cbd9f4" fill-opacity="1" stroke="#304d83" stroke-width="1.5" /><title>Entity bath nominal body</title>
+<text x="503" y="87" font-size="10" font-family="Arial">Entity bath nominal body</text>
+<line x1="527" y1="396" x2="653" y2="396" stroke="#a43b32" stroke-width="5"/><text x="527" y="414" font-size="10" font-family="Arial">3.5 ft nominal interface reservation</text>
+</svg>

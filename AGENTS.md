@@ -19,6 +19,16 @@ GitHub repository `softnessasastrength/Forever_home`, working branch `design/vr-
 ## Revit
 Revit 2027 is authoritative; a working licensed Revit 2018 installation is a limited fallback. Revit cannot backward-save. Preserve RVT/RFA, IFC2x3, compatible DWG, PDF, schedules/CSV and tested backups. Do not assume IFC imports are native parametric elements.
 
+### Owner-authorized local RevitPilot use
+The owner has explicitly authorized coding agents working in this repository to manage its **per-user Revit 2027 RevitPilot add-in** for approved local project work. This authorization is limited to the Forever Home add-in registration with AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and a DLL built in the current checked-out repository's ignored `.local/revit-pilot/` directory. Before replacing the matching per-user manifest, verify its AddInId, verify the new manifest's assembly path resolves inside the current repository, compute and record that DLL's SHA256, and preserve the existing manifest under ignored `.local/revit-pilot/registration-backups/<timestamp>/`.
+
+After restarting Revit, an agent may choose **Load Once** only when the trust prompt identifies that exact, hash-checked project-local DLL. Never choose **Always Load**, change Revit/Windows-wide trust or security settings, bypass anti-malware, load an unrelated or unknown add-in, or overwrite a manifest with a different AddInId. If the prompt's product, path, or hash does not match the verified manifest/build, stop and ask the owner. This authorization does not permit installing unrelated software or modifying remote state.
+
+The owner has also authorized dismissing the Autodesk Revit in-app trial splash/introductory overlay when it obstructs project work. This permits only closing that visible overlay; it does not authorize changing license type, bypassing licensing, or changing Revit, Windows, browser, or security settings. Continue to apply the exact-DLL and **Load Once** conditions above independently.
+
+### Owner-authorized read-only family inspection
+For RFAs already present in `Revit/Family_Intake/Incoming` or quarantined under ignored `.local/revit-pilot/family-intake/candidates/` with their source URL and SHA256 recorded, agents may open the exact source file in Revit 2027 and inspect its views, family category/hosting, type names, displayed parameter values, formulas and geometry in Family Editor. Close without saving; never upgrade-overwrite or otherwise alter the source RFA. This authority permits inspection only: it does not approve the family, assign it to a room, place it in the owner-selected D model, or establish fit/clearance. A disposable derivative placement or test is permitted only when the task expressly calls for that test, with the source and selected-D baseline preserved.
+
 ## Task execution
 Before modifying files, inspect the relevant source documents and repository state. Define scope and acceptance criteria. Make minimal, reviewable changes; validate them; commit to the working branch; summarize results, verification, assumptions, and blockers.
 

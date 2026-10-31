@@ -1,0 +1,3 @@
+﻿"orientation","cross_section_axis_ft","cross_section_required_ft","cross_section_residual_in","appliance_run_axis_ft","appliance_run_required_ft","appliance_run_residual_in","both_fit"
+"cross-section-on-14ft-axis","14","13.5","6","12","12.5","-6","False"
+"cross-section-on-12ft-axis","12","13.5","-18","14","12.5","18","False"

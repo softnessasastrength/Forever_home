@@ -1,0 +1,133 @@
+﻿{
+    "schema":  "forever-home.m114-u03-west-offset-audit.v1",
+    "interpretation":  "A bounded room-block sensitivity search found 16 route-proxy candidates; none is a modeled or selected house layout.",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "hypothetical exploration only"
+              },
+    "search":  {
+                   "nodes_expanded":  810,
+                   "node_limit":  1200,
+                   "layouts_recorded":  141,
+                   "search_complete":  false,
+                   "root_seed_labels":  [
+                                            "west@0.0",
+                                            "west@0.5",
+                                            "west@1.0"
+                                        ],
+                   "route_tested":  141,
+                   "full_public_route_candidates":  16,
+                   "full_route_candidates_without_U03_hall_side_sample":  9,
+                   "U03_hall_side_sample_candidates":  7
+               },
+    "best_route_candidate":  {
+                                 "rectangles":  {
+                                                    "U-01":  {
+                                                                 "id":  "U-01",
+                                                                 "x_ft":  24.416666666666664,
+                                                                 "y_ft":  10.5,
+                                                                 "width_ft":  10,
+                                                                 "depth_ft":  16
+                                                             },
+                                                    "C-PRIVATE":  {
+                                                                      "id":  "C-PRIVATE",
+                                                                      "x_ft":  26.166666666666664,
+                                                                      "y_ft":  0,
+                                                                      "width_ft":  6.5,
+                                                                      "depth_ft":  10
+                                                                  },
+                                                    "U-02":  {
+                                                                 "id":  "U-02",
+                                                                 "x_ft":  9.6666666666666661,
+                                                                 "y_ft":  0,
+                                                                 "width_ft":  16,
+                                                                 "depth_ft":  9.6666666666666661
+                                                             },
+                                                    "U-03":  {
+                                                                 "id":  "U-03",
+                                                                 "x_ft":  0,
+                                                                 "y_ft":  0,
+                                                                 "width_ft":  9.1666666666666661,
+                                                                 "depth_ft":  13.666666666666666
+                                                             },
+                                                    "U-05":  {
+                                                                 "id":  "U-05",
+                                                                 "x_ft":  14.916666666666664,
+                                                                 "y_ft":  10.5,
+                                                                 "width_ft":  9,
+                                                                 "depth_ft":  10
+                                                             },
+                                                    "U-06":  {
+                                                                 "id":  "U-06",
+                                                                 "x_ft":  0,
+                                                                 "y_ft":  14.166666666666666,
+                                                                 "width_ft":  10,
+                                                                 "depth_ft":  12
+                                                             },
+                                                    "U-04":  {
+                                                                 "id":  "U-04",
+                                                                 "x_ft":  0,
+                                                                 "y_ft":  26.666666666666664,
+                                                                 "width_ft":  13.666666666666666,
+                                                                 "depth_ft":  8
+                                                             }
+                                                },
+                                 "public_room_samples":  [
+                                                             "U-01",
+                                                             "U-02",
+                                                             "U-04"
+                                                         ],
+                                 "U02_hall_side_samples":  [
+                                                               "north"
+                                                           ],
+                                 "U03_hall_side_samples":  [
+                                                               "east"
+                                                           ],
+                                 "status":  "generator-ranked test candidate only; not owner-selected"
+                             },
+    "source_hashes_sha256":  {
+                                 "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "search":  "ce60632abe0aba3aaf94133f63b9b656704b130fda2ced73bbd359f47d5b7741",
+                                 "checks":  "bb7a1b493fdd95aaaa97521455b46fb030dc9e781ba48618d0dca8b11be465e8",
+                                 "manifest":  "727a41204d7d75d631ef9ca47940937db13d00c260c2b544bd65c2e1e1dc9842",
+                                 "archive":  "751525ca7cc67f31ad82955c6d1aa1632cb415792b47db1c5118e2280634af9d",
+                                 "M37_generator":  "8b634e5ae8bfc1889ef5c13b49e8042b4fc0bef1326e190732aa881695cc9da2",
+                                 "audit_script":  "2d5209be47917ec3ec21fcdb550151941a7d9dc3286ac35af6b144ab743801a6"
+                             },
+    "counts":  {
+                   "U03_west_edge":  141,
+                   "U03_north_edge":  141,
+                   "U03_east_edge":  0,
+                   "U03_south_edge":  0,
+                   "U02_north_side_full_route":  16,
+                   "full_route_no_U03_hall_side":  9,
+                   "full_route_with_U03_hall_side":  7
+               },
+    "checks":  {
+                   "selected_D_fingerprint_matches_current_source":  true,
+                   "owner_proposal_and_program_fingerprints_match_current_sources":  true,
+                   "west_edge_spread_seed_parameters_match":  true,
+                   "owner_keeps_U03_private_route_only":  true,
+                   "generator_checks_pass":  true,
+                   "manifest_search_checks_archive_and_svg_hashes_match":  true,
+                   "SVG_parses_as_XML":  true,
+                   "archive_inventory_matches_search":  true,
+                   "all_room_blocks_within_hypothetical_shell":  true,
+                   "all_room_dimensions_match_selected_D_allowing_rotation":  true,
+                   "all_room_blocks_keep_half_foot_proxy_separation":  true,
+                   "all_six_required_private_and_JJ_links_have_contact_proxy":  true,
+                   "every_tested_U03_block_touches_west_shell_edge":  true,
+                   "route_records_reconstruct_from_side_samples":  true,
+                   "full_public_route_count_matches_search":  true,
+                   "every_full_public_route_candidate_has_north_U02_sample":  true,
+                   "U03_side_sample_count_matches_generator":  true,
+                   "best_candidate_is_full_route_and_on_west_edge":  true,
+                   "selected_D_file_unchanged":  true
+               },
+    "failed":  [
+
+               ]
+}

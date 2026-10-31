@@ -1,0 +1,420 @@
+﻿{
+    "milestone":  "M105",
+    "title":  "Roof-edge sensitivity across five route-ranked M78 room layouts",
+    "status":  "sample comparison only; no room move, shell or roof direction selected",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "owner-authorized hypothetical exploration case"
+              },
+    "source_hashes_sha256":  {
+                                 "m78_search":  "f23fae3a197108ee9099cdd8b3a28d58b6f32dee1e4c1f12537888f88c679467",
+                                 "m78_manifest":  "a7e4dede04d3fd5615546cbb7b6045df40929826bfc5f23e12d0109ffcd08269",
+                                 "m83_roof_options":  "8faf694bcd4ac229836ff49d7dbc35f482f90008e517ef032c5676709dceec16"
+                             },
+    "candidate_sampling":  "The five candidates are exactly M78 top_partial_public_access_layouts, sorted by the archived M78 rank. Each has sampled U-01/U-02/U-04 public hall reach, a north-side U-02 hall sample, and no sampled U-03 hall access. M78 evaluated 457 complete room packings; this retained top-five subset is not exhaustive.",
+    "results":  [
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-X-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-X-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.833333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.166667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-X-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  11,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-Y-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  6,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-Y-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.5,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-01",
+                        "roof_case_id":  "M83-Y-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-X-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1.333333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-X-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.166667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-X-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  2,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  11,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-Y-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  6.666667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-Y-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  8.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-02",
+                        "roof_case_id":  "M83-Y-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  10,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-X-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-X-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.833333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.166667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-X-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  11,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-Y-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.333333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  6.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-Y-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.416667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.916667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-03",
+                        "roof_case_id":  "M83-Y-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.5,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.5,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-X-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-X-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.833333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.166667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-X-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  11,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-Y-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  6.666667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-Y-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.833333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  8.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-04",
+                        "roof_case_id":  "M83-Y-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  10,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-X-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.666667,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  7.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-X-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.833333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  9.166667,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-X-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "X",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  11,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-Y-8:12",
+                        "pitch":  "8:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  0.888889,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  6.888889,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-Y-10:12",
+                        "pitch":  "10:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1.111111,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  8.611111,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    },
+                    {
+                        "candidate_id":  "M78-TOP-05",
+                        "roof_case_id":  "M83-Y-12:12",
+                        "pitch":  "12:12",
+                        "ridge_axis":  "Y",
+                        "u05_minimum_ideal_roof_rise_above_relative_eave_ft":  1.333333,
+                        "u05_maximum_ideal_roof_rise_above_relative_eave_ft":  10.333333,
+                        "u05_primary_bath_fixture_or_use_zone_checked":  false,
+                        "interpretation":  "Geometric roof-plane exposure over the whole M78 primary-bath block; not fixture headroom or clearance."
+                    }
+                ],
+    "candidate_summaries":  [
+                                {
+                                    "candidate_id":  "M78-TOP-01",
+                                    "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                                    "is_m78_best_candidate":  false,
+                                    "bounds_width_ft":  38.333333,
+                                    "bounds_depth_ft":  33.5,
+                                    "primary_bath_x_ft":  0,
+                                    "primary_bath_y_ft":  1,
+                                    "primary_bath_width_ft":  9,
+                                    "primary_bath_depth_ft":  10,
+                                    "primary_bath_area_sf":  90,
+                                    "public_reach_count":  3,
+                                    "u02_hall_sample_side":  "north north",
+                                    "u03_hall_sample_reachable":  false
+                                },
+                                {
+                                    "candidate_id":  "M78-TOP-02",
+                                    "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.0000,2.0000,10.0000,9.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                                    "is_m78_best_candidate":  true,
+                                    "bounds_width_ft":  38.333333,
+                                    "bounds_depth_ft":  32.5,
+                                    "primary_bath_x_ft":  0,
+                                    "primary_bath_y_ft":  2,
+                                    "primary_bath_width_ft":  10,
+                                    "primary_bath_depth_ft":  9,
+                                    "primary_bath_area_sf":  90,
+                                    "public_reach_count":  3,
+                                    "u02_hall_sample_side":  "north north",
+                                    "u03_hall_sample_reachable":  false
+                                },
+                                {
+                                    "candidate_id":  "M78-TOP-03",
+                                    "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:0.5000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                                    "is_m78_best_candidate":  false,
+                                    "bounds_width_ft":  38.333333,
+                                    "bounds_depth_ft":  33.5,
+                                    "primary_bath_x_ft":  0.5,
+                                    "primary_bath_y_ft":  1,
+                                    "primary_bath_width_ft":  9,
+                                    "primary_bath_depth_ft":  10,
+                                    "primary_bath_area_sf":  90,
+                                    "public_reach_count":  3,
+                                    "u02_hall_sample_side":  "north north",
+                                    "u03_hall_sample_reachable":  false
+                                },
+                                {
+                                    "candidate_id":  "M78-TOP-04",
+                                    "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.0000,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                                    "is_m78_best_candidate":  false,
+                                    "bounds_width_ft":  38.333333,
+                                    "bounds_depth_ft":  33.5,
+                                    "primary_bath_x_ft":  1,
+                                    "primary_bath_y_ft":  1,
+                                    "primary_bath_width_ft":  9,
+                                    "primary_bath_depth_ft":  10,
+                                    "primary_bath_area_sf":  90,
+                                    "public_reach_count":  3,
+                                    "u02_hall_sample_side":  "north north",
+                                    "u03_hall_sample_reachable":  false
+                                },
+                                {
+                                    "candidate_id":  "M78-TOP-05",
+                                    "m78_layout_key":  "C-PRIVATE:4.6667,28.0000,10.0000,6.5000|U-01:0.0000,11.5000,10.0000,16.0000|U-02:11.1667,17.8333,16.0000,9.6667|U-03:11.1667,8.1667,13.6667,9.1667|U-04:30.3333,17.8333,8.0000,13.6667|U-05:1.3333,1.0000,9.0000,10.0000|U-06:25.3333,5.3333,10.0000,12.0000",
+                                    "is_m78_best_candidate":  false,
+                                    "bounds_width_ft":  38.333333,
+                                    "bounds_depth_ft":  33.5,
+                                    "primary_bath_x_ft":  1.333333,
+                                    "primary_bath_y_ft":  1,
+                                    "primary_bath_width_ft":  9,
+                                    "primary_bath_depth_ft":  10,
+                                    "primary_bath_area_sf":  90,
+                                    "public_reach_count":  3,
+                                    "u02_hall_sample_side":  "north north",
+                                    "u03_hall_sample_reachable":  false
+                                }
+                            ],
+    "checks":  {
+                   "m78_search_matches_manifest":  true,
+                   "m83_binds_current_m78_and_selected_d":  true,
+                   "shell_is_hypothetical_38_333333_by_40":  true,
+                   "five_route_ranked_candidates_are_present":  true,
+                   "all_candidates_reach_required_public_rooms":  true,
+                   "all_candidates_preserve_u03_private_only_hall_access":  true,
+                   "all_candidates_give_u02_north_hall_sample":  true,
+                   "candidates_contain_seven_nonoverlapping_in_shell_room_blocks":  true,
+                   "room_block_areas_match_m78_program_dimensions":  true,
+                   "primary_bath_area_remains_90_sf":  true,
+                   "all_six_roof_cases_are_evaluated_per_candidate":  true,
+                   "comparison_svg_is_valid":  true,
+                   "selected_d_unchanged":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "Routes and room links are M78 sampled-grid/contact proxies, not actual doors, openings or clear circulation.",
+                        "U-05 checks the entire schematic bath rectangle against the roof plane; no bath fixture, use zone, 6 ft 8 in showerhead area or service route is represented.",
+                        "Heights are above an unassigned relative eave, not above a finished floor or ceiling datum.",
+                        "The candidate set includes only five ranked records from a bounded, incomplete 457-packing search; it is not an exhaustive optimization.",
+                        "The shell and all candidate positions remain proposals. Selected-D and Incoming RFAs are unchanged."
+                    ]
+}
