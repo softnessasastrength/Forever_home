@@ -24,7 +24,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/test_m37_upper_sui
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/audit_m113_u03_perimeter_search.ps1
 ```
 
-The generator passes **28/28** integrity checks. The search expanded 464/1,200 nodes and recorded 45 complete route-tested room-block arrangements. It hit its bound and is incomplete. The independent M113 audit passes **16/16** checks; two audit runs match byte-for-byte. The SVG parses as XML.
+The generator passes **28/28** integrity checks. The search expanded 464/1,200 nodes and recorded 45 complete route-tested room-block arrangements. It hit its bound and is incomplete. The independent M113 audit passes **17/17** checks; two audit runs match byte-for-byte. The SVG parses as XML.
 
 ## Result
 
@@ -40,15 +40,16 @@ The generator passes **28/28** integrity checks. The search expanded 464/1,200 n
 
 In this centered-edge/root order and bounded node allocation, only west-edge U-03 arrangements completed. The reachability counts were 17 with no required public-room side reached and 28 with one (U-01 or U-04); none reached U-02. A reachable U-03 side is merely a corridor grid sample, not a door or permission to create a shared-hall opening. No candidate clears the required route screen, so no layout is accepted.
 
-In the first archived arrangement, U-02 sits west of U-03 and outside the stair-side route proxy. M114 should vary U-03's position along the west edge and retain every required route/adjacency constraint before considering any layout further. This is a search hypothesis, not a dimension or design decision.
+In the first archived arrangement, U-02 sits west of U-03 and outside the stair-side route proxy. M114 follows this hypothesis by varying U-03's seed along the west edge while retaining the route/adjacency constraints. See the M114 package for that bounded follow-up; it still does not select a dimension or room arrangement.
 
 ## Evidence identity and limits
 
 - Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`.
+- The M37 generator used for this archive was SHA256 `5C0EBF020CA7D566DD1484B57CD6CA9FFD55ED26422B0054DD3AD4F9DC1EA13A`; the audit pins this historical generator fingerprint so later M37 improvements do not alter M113 replay evidence.
 - M37 search SHA256 `2A6F06FD83690D6E39A830B96848349AAC72E74778B19EFDC7457C000D50E752`; check report `EE27AB5E537316B240E0B5C1D1927D71B88A68FCA7C1CF2DD23D5A06D4D94870`; full candidate archive `81A1306B8D95EAE36C1FE232D43DEEBC86E98B31AA3FE1EAEB5DB29930227CD5`.
-- Independent audit `m113-audit.json` SHA256 `63CDB435ECFF396C47E0BC21E3515020297459336ED25140E15CE938930153DA`; summary SHA256 `6FFED3D6D19469141990A72C21C6048BC8F92C18383494A6BCF67E69FE89E560`.
+- Independent audit `m113-audit.json` SHA256 `3A535E33A1057C6091D9D241B4445BAB13AA0AC0782E283E1EB36F1123E3DB2E`; summary SHA256 `6FFED3D6D19469141990A72C21C6048BC8F92C18383494A6BCF67E69FE89E560`.
 - The generator archive does not model walls, actual openings, clearances, floor openings, landings, headroom, structure, MEP, finished dimensions, exterior grade, a qualifying yard/court, or a route to a public way. The hypothetical shell boundary is not an exterior wall. U-03 sleeping-room status and code applicability remain unresolved; see [M106](../M106_Upper_Suite_Sleeping_Room_Perimeter_2026-10-30/README.md).
-- `validate_upper_suite_candidate.ps1` is intentionally not a fit-for-purpose pass condition here: it requires a `best_candidate` satisfying every required public-room route, while M113 found none. The source-bound 16-check audit validates all 45 archived room blocks and reconstructs the sampled route counts instead.
+- `validate_upper_suite_candidate.ps1` is intentionally not a fit-for-purpose pass condition here: it requires a `best_candidate` satisfying every required public-room route, while M113 found none. The source-bound 17-check audit validates all 45 archived room blocks and reconstructs the sampled route counts instead.
 - A full default M78 byte-for-byte replay of the modified M37 generator was stopped after more than five minutes. A 100-node default-mode smoke run passed 28/28 with the same balanced search roots; the existing M78 artifacts were not changed. A complete default-output regression remains outstanding.
 
 No Revit, IFC, selected-D geometry, room dimensions, product family, or remote state was changed.

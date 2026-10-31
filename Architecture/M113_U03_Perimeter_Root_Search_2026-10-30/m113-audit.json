@@ -46,7 +46,7 @@
                                  "generator_checks":  "ee27ab5e537316b240e0b5c1d1927d71b88a68fca7c1cf2dd23d5a06d4d94870",
                                  "candidate_archive":  "81a1306b8d95eae36c1fe232d43deebc86e98b31aa3fe1eaeb5db29930227cd5",
                                  "M37_generator":  "5c0ebf020ca7d566dd1484b57cd6ca9ffd55ed26422b0054dd3ad4f9dc1ea13a",
-                                 "audit_script":  "547cad6fbb5cb144df7ff4245cf57af685bfc78b4284a74237ad3dee484f9fd8"
+                                 "audit_script":  "90c843512a3b903372d3f192a0033da1ef99f5b4019ebe6104111e072c7e01af"
                              },
     "checks":  {
                    "source_selected_D_hash_matches":  true,
@@ -54,6 +54,7 @@
                    "search_archive_checks_svg_and_manifest_hashes_match":  true,
                    "bounded_U03_only_four_edge_root_mode":  true,
                    "generator_integrity_checks_pass":  true,
+                   "M113_generator_hash_is_pinned":  true,
                    "SVG_parses_as_XML":  true,
                    "archive_count_matches_generator":  true,
                    "all_seven_source_room_blocks_present_inside_hypothetical_shell":  true,

@@ -6,6 +6,9 @@ param(
     [double]$ShellDepthOverrideFt = 0,
     [switch]$LandingAlignedRootSeeds,
     [switch]$U03PerimeterRootSeeds,
+    [ValidateSet('all','north','east','south','west')]
+    [string]$U03PerimeterSeedEdge = 'all',
+    [switch]$U03PerimeterSpreadSeeds,
     [switch]$EarlyPublicRoutePrune,
     [switch]$DeferredEarlyRouteChecks,
     [switch]$ExportAllRouteTestedCandidates,
@@ -56,17 +59,25 @@ $script:GridStepFt=1.0/6.0
 $script:NodeLimit=[Math]::Max(100,$NodeLimit)
 $script:UseLandingAlignedRootSeeds=($LandingAlignedRootSeeds.IsPresent -eq $true)
 $script:UseU03PerimeterRootSeeds=($U03PerimeterRootSeeds.IsPresent -eq $true)
+$script:UseU03PerimeterSpreadSeeds=($U03PerimeterSpreadSeeds.IsPresent -eq $true)
 $script:UseEarlyPublicRoutePrune=($EarlyPublicRoutePrune.IsPresent -eq $true)
 $script:UseDeferredEarlyRouteChecks=($DeferredEarlyRouteChecks.IsPresent -eq $true)
 if($script:UseEarlyPublicRoutePrune -and -not $script:UseLandingAlignedRootSeeds){throw 'Early public-route pruning requires -LandingAlignedRootSeeds so checked room goals remain in a fixed frame.'}
 if($script:UseDeferredEarlyRouteChecks -and -not $script:UseEarlyPublicRoutePrune){throw '-DeferredEarlyRouteChecks requires -EarlyPublicRoutePrune.'}
 if($script:UseU03PerimeterRootSeeds -and (-not $script:UseLandingAlignedRootSeeds -or $RootSearchScope -ne 'U-03-only')){throw '-U03PerimeterRootSeeds requires -LandingAlignedRootSeeds and -RootSearchScope U-03-only.'}
+if($script:UseU03PerimeterSpreadSeeds -and -not $script:UseU03PerimeterRootSeeds){throw '-U03PerimeterSpreadSeeds requires -U03PerimeterRootSeeds.'}
+if(-not $script:UseU03PerimeterRootSeeds -and $U03PerimeterSeedEdge -ne 'all'){throw '-U03PerimeterSeedEdge requires -U03PerimeterRootSeeds.'}
 $script:EarlyRouteCheckCount=0
 $script:EarlyRoutePruneRejects=0
 $script:EarlyRouteCheckpointSkips=0
 $script:AllSearchRoots=@('U-01','U-02','U-04')
 $script:SearchRoots=if($RootSearchScope -eq 'balanced'){@($script:AllSearchRoots)}else{@($RootSearchScope.Replace('-only',''))}
-$script:LandingSeedSides=if($script:UseU03PerimeterRootSeeds){@('north','east','south','west')}else{@('north','east_south_edge')}
+$script:LandingSeedSides=@('north','east_south_edge')
+if($script:UseU03PerimeterRootSeeds){
+    $edges=if($U03PerimeterSeedEdge -eq 'all'){@('north','east','south','west')}else{@($U03PerimeterSeedEdge)}
+    if($script:UseU03PerimeterSpreadSeeds){$script:LandingSeedSides=@(foreach($edge in $edges){foreach($fraction in @(0.0,0.5,1.0)){('{0}@{1}' -f $edge,$fraction.ToString('F1',[Globalization.CultureInfo]::InvariantCulture))}})}
+    else{$script:LandingSeedSides=$edges}
+}
 $script:AdditionalContactSamples=$AdditionalContactSamples
 $script:PublicDoorEdgeSamples=$PublicDoorEdgeSamples
 $script:PerRootOrientationNodeBudget=[Math]::Max(1,[Math]::Floor($script:NodeLimit/($script:SearchRoots.Count*2.0*$(if($script:UseLandingAlignedRootSeeds){$script:LandingSeedSides.Count}else{1}))))
@@ -336,22 +347,19 @@ foreach($rootId in $script:SearchRoots){
         if($script:UseLandingAlignedRootSeeds){$seedSides=$script:LandingSeedSides}
         foreach($seedSide in $seedSides){
             $script:RootNodeStart=$script:Nodes
-            if($seedSide -eq 'north'){
-                if($script:UseU03PerimeterRootSeeds){$rootX=$startX-$anchor.w/2.0;$rootY=0.0}
-                else{
-                    # Align the root's north-side goal sample with the source landing approach centre.
-                    $rootX=$startX-$anchor.w/2.0;$rootY=$startY-2.5-$anchor.d
-                }
-            }elseif($seedSide -eq 'east_south_edge'){
+            $seedParts=$seedSide -split '@';$seedEdge=$seedParts[0];$seedFraction=0.5
+            if($script:UseU03PerimeterRootSeeds -and $seedParts.Count -gt 1){$seedFraction=[double]::Parse($seedParts[1],[Globalization.CultureInfo]::InvariantCulture)}
+            if($script:UseU03PerimeterRootSeeds){
+                if($seedEdge -in @('north','south')){$rootX=$seedFraction*($script:ShellW-$anchor.w);$rootY=if($seedEdge -eq 'north'){0.0}else{$script:ShellD-$anchor.d}}
+                elseif($seedEdge -in @('east','west')){$rootX=if($seedEdge -eq 'east'){$script:ShellW-$anchor.w}else{0.0};$rootY=$seedFraction*($script:ShellD-$anchor.d)}
+                else{throw "Unsupported U-03 perimeter seed: $seedSide"}
+            }elseif($seedEdge -eq 'north'){
+                # Align the root's north-side goal sample with the source landing approach centre.
+                $rootX=$startX-$anchor.w/2.0;$rootY=$startY-2.5-$anchor.d
+            }elseif($seedEdge -eq 'east_south_edge'){
                 # Align the root's east-side goal sample one 4ft corridor width below the approach centre.
                 # Its corridor square then abuts the south edge of the reserved landing approach.
                 $rootX=$startX-2.5-$anchor.w;$rootY=($startY-4.0)-$anchor.d/2.0
-            }elseif($script:UseU03PerimeterRootSeeds -and $seedSide -eq 'east'){
-                $rootX=$script:ShellW-$anchor.w;$rootY=$startY-$anchor.d/2.0
-            }elseif($script:UseU03PerimeterRootSeeds -and $seedSide -eq 'south'){
-                $rootX=$startX-$anchor.w/2.0;$rootY=$script:ShellD-$anchor.d
-            }elseif($script:UseU03PerimeterRootSeeds -and $seedSide -eq 'west'){
-                $rootX=0.0;$rootY=$startY-$anchor.d/2.0
             }else{$rootX=0.0;$rootY=0.0}
             $rootBox=New-Box $rootId $rootX $rootY $anchor.w $anchor.d
             $seedInvalid=($rootX -lt -0.000001 -or $rootY -lt -0.000001 -or ($rootX+$anchor.w) -gt ($script:ShellW+0.000001) -or ($rootY+$anchor.d) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $rootBox $liftKeepout) -or ($seedSide -ne 'origin' -and (Test-BoxesOverlap $rootBox $script:StartApproach)))
@@ -430,12 +438,12 @@ $expectedObservedRootScope=@($script:SearchRoots|Sort-Object -Unique)
 $alignedRootSeeds=($script:RootSearchStats.Count -eq $expectedRootSeedRuns)
 if($script:UseLandingAlignedRootSeeds){
     foreach($seedRecord in $script:RootSearchStats){
-        if($script:UseU03PerimeterRootSeeds -and $seedRecord.seed -eq 'north'){$expectedX=$startX-$seedRecord.anchor_width_ft/2.0;$expectedY=0.0}
-        elseif($script:UseU03PerimeterRootSeeds -and $seedRecord.seed -eq 'east'){$expectedX=$script:ShellW-$seedRecord.anchor_width_ft;$expectedY=$startY-$seedRecord.anchor_depth_ft/2.0}
-        elseif($script:UseU03PerimeterRootSeeds -and $seedRecord.seed -eq 'south'){$expectedX=$startX-$seedRecord.anchor_width_ft/2.0;$expectedY=$script:ShellD-$seedRecord.anchor_depth_ft}
-        elseif($script:UseU03PerimeterRootSeeds -and $seedRecord.seed -eq 'west'){$expectedX=0.0;$expectedY=$startY-$seedRecord.anchor_depth_ft/2.0}
-        elseif($seedRecord.seed -eq 'north'){$expectedX=$startX-$seedRecord.anchor_width_ft/2.0;$expectedY=$startY-2.5-$seedRecord.anchor_depth_ft}
-        elseif($seedRecord.seed -eq 'east_south_edge'){$expectedX=$startX-2.5-$seedRecord.anchor_width_ft;$expectedY=($startY-4.0)-$seedRecord.anchor_depth_ft/2.0}
+        $seedParts=$seedRecord.seed -split '@';$seedEdge=$seedParts[0];$seedFraction=0.5
+        if($script:UseU03PerimeterRootSeeds -and $seedParts.Count -gt 1){$seedFraction=[double]::Parse($seedParts[1],[Globalization.CultureInfo]::InvariantCulture)}
+        if($script:UseU03PerimeterRootSeeds -and $seedEdge -in @('north','south')){$expectedX=$seedFraction*($script:ShellW-$seedRecord.anchor_width_ft);$expectedY=if($seedEdge -eq 'north'){0.0}else{$script:ShellD-$seedRecord.anchor_depth_ft}}
+        elseif($script:UseU03PerimeterRootSeeds -and $seedEdge -in @('east','west')){$expectedX=if($seedEdge -eq 'east'){$script:ShellW-$seedRecord.anchor_width_ft}else{0.0};$expectedY=$seedFraction*($script:ShellD-$seedRecord.anchor_depth_ft)}
+        elseif($seedEdge -eq 'north'){$expectedX=$startX-$seedRecord.anchor_width_ft/2.0;$expectedY=$startY-2.5-$seedRecord.anchor_depth_ft}
+        elseif($seedEdge -eq 'east_south_edge'){$expectedX=$startX-2.5-$seedRecord.anchor_width_ft;$expectedY=($startY-4.0)-$seedRecord.anchor_depth_ft/2.0}
         else{$alignedRootSeeds=$false;continue}
         $expectedBox=New-Box $seedRecord.root_room $expectedX $expectedY $seedRecord.anchor_width_ft $seedRecord.anchor_depth_ft
         $seedShouldReject=($expectedX -lt -0.000001 -or $expectedY -lt -0.000001 -or ($expectedX+$seedRecord.anchor_width_ft) -gt ($script:ShellW+0.000001) -or ($expectedY+$seedRecord.anchor_depth_ft) -gt ($script:ShellD+0.000001) -or (Test-BoxesOverlap $expectedBox $liftKeepout) -or (Test-BoxesOverlap $expectedBox $script:StartApproach))
@@ -480,6 +488,11 @@ if($script:UseEarlyPublicRoutePrune){
     $checks['early_route_rejections_do_not_exceed_route_checks']=($script:EarlyRoutePruneRejects -le $script:EarlyRouteCheckCount)
     if($script:UseDeferredEarlyRouteChecks){$checks['early_route_checkpoint_coverage_matches_node_visits']=(($script:EarlyRouteCheckCount+$script:EarlyRouteCheckpointSkips) -eq $script:Nodes)}
 }
+if($script:UseU03PerimeterRootSeeds){
+    $expectedSeedEdges=if($U03PerimeterSeedEdge -eq 'all'){@('north','east','south','west')}else{@($U03PerimeterSeedEdge)}
+    if($script:UseU03PerimeterSpreadSeeds){$expectedSeedLabels=@(foreach($edge in $expectedSeedEdges){foreach($fraction in @(0.0,0.5,1.0)){('{0}@{1}' -f $edge,$fraction.ToString('F1',[Globalization.CultureInfo]::InvariantCulture))}})}else{$expectedSeedLabels=$expectedSeedEdges}
+    $checks['U03_perimeter_seed_edge_and_fraction_controls_match_request']=(($script:LandingSeedSides -join ',') -eq ($expectedSeedLabels -join ',') -and $RootSearchScope -eq 'U-03-only')
+}
 $failed=@($checks.Keys|Where-Object{-not $checks[$_]})
 if($failed.Count -gt 0){throw "M37 source/search checks failed: $($failed -join ', ')"}
 
@@ -508,6 +521,11 @@ $report=[ordered]@{
     checks=$checks
     failures=$failed
     limitations=@('The tree search is deterministic but bounded by NodeLimit/LayoutLimit and samples five contact-alignment anchors; it is not an exhaustive proof that no layout exists.','A 0.5ft gap represents a nominal wall allowance, and a 3.5ft edge reservation is inherited from selected-D door-matrix data, not clear opening or door-swing geometry.','Room connection goals are sample points 2.5ft beyond each room-block side, a schematic reachability proxy rather than a door or specified clearance.','The hall search checks a 4ft swept square on a 2in translation grid. It does not model walls, doors, swings, landings beyond the source connector, headroom, floor openings, stairs, structure, services, furniture or fire/life-safety.','The lift keepout is a plan projection from the source reservation; verify actual shaft and floor opening in Revit.','No Revit, IFC, code, accessibility, structural or construction validation is made. A search candidate is a room-block concept only.','The revised private-route-only direction excludes a direct U-03 shared-hall door; actual private and public openings remain unmodeled. Corridor proximity to U-03 is not evidence of a doorway. No room sizes or selected-D baseline are edited.')
+}
+if($script:UseU03PerimeterRootSeeds){
+    $report.search['algorithm']='targeted U-03 root placement on the requested hypothetical shell edge(s), using center or spread along-edge fractions, then deterministic room placement and sampled public-route filtering'
+    $report.search['u03_perimeter_seed_edge']=$U03PerimeterSeedEdge
+    $report.search['u03_perimeter_spread_seeds']=$script:UseU03PerimeterSpreadSeeds
 }
 if($script:UseEarlyPublicRoutePrune){
     $report.search['early_public_route_pruning']= $true
@@ -566,6 +584,7 @@ $svg.Add('<text class="note" x="40" y="752">Not Revit walls, door swings, floor 
 $svg.Add('</svg>')
 $svg -join "`n"|Set-Content -LiteralPath $svgPath -Encoding utf8
 $manifest=[ordered]@{generator='Tools/test_m37_upper_suite_pack_and_route.ps1';source_fingerprints_sha256=$report.source_fingerprints_sha256;search_parameters=[ordered]@{node_limit=$script:NodeLimit;layout_limit=$script:LayoutLimit;root_search_scope=$RootSearchScope;u02_root_plan_variant=$U02RootPlanVariant;additional_contact_samples=$script:AdditionalContactSamples;public_door_edge_samples=$script:PublicDoorEdgeSamples;landing_aligned_root_seed_search=$script:UseLandingAlignedRootSeeds;shell_width_override_ft=$ShellWidthOverrideFt;shell_depth_override_ft=$ShellDepthOverrideFt};output_hashes_sha256=[ordered]@{search=(Get-FileHash $jsonPath -Algorithm SHA256).Hash.ToLowerInvariant();checks=(Get-FileHash $checkPath -Algorithm SHA256).Hash.ToLowerInvariant();svg=(Get-FileHash $svgPath -Algorithm SHA256).Hash.ToLowerInvariant()}}
+if($script:UseU03PerimeterRootSeeds){$manifest.search_parameters['u03_perimeter_root_seeds']=$true;$manifest.search_parameters['u03_perimeter_seed_edge']=$U03PerimeterSeedEdge;$manifest.search_parameters['u03_perimeter_spread_seeds']=$script:UseU03PerimeterSpreadSeeds}
 if($script:UseEarlyPublicRoutePrune){$manifest.search_parameters['early_public_route_pruning']=$true}
 if($script:UseDeferredEarlyRouteChecks){$manifest.search_parameters['deferred_early_route_checks']=$true}
 if($ExportAllRouteTestedCandidates){$manifest.optional_route_tested_candidate_archive=[ordered]@{file='all-route-tested-candidates.json';sha256=$routeCandidateArchiveHash;candidate_count=$tested.Count}}
