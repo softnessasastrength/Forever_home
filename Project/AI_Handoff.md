@@ -175,3 +175,7 @@ M180 corrects the route overlay's origin: M179 `(14.5,10)` was outside M-01, whi
 ### M181 sandbox checkpoint (2026-10-31)
 
 M181 applies an 18-in-radius Euclidean swept-path check to the social route and all source room/furniture proxies. The earlier orthogonal elbow clips the west M-06 search-window rectangle. A diagonal route candidate clears assigned static proxies with 0.60 in residual at the assumed stool envelope, 2 in at the dining table and 0.38 in to the west search-window boundary. This is too tight to validate operation; no chair movement, occupants, real door, thresholds or appliance-open states are modeled. Source M-02 extends beyond the reduced kitchen candidate; source room gaps are 6 in to M-01 and M-03, while candidate gaps are wider. M-06/B remains unassigned and selected-D unchanged. See M181 in PLAN.md/PROGRESS.md.
+
+### M182 sandbox checkpoint (2026-10-31)
+
+M182 tests a 36-in route from living, along the unassigned strip between pantry and east/pantry-side M-06/B, and through the dining south band to the porch. It clears assigned static room/furniture proxies with 4 in at either pantry/B edge, but overlaps 4.736 sf of the blocked west bath-search diagnostic, intrudes 2 in into residual source M-02 outside the reduced kitchen block, and requires a new south opening from M-01. This bypasses M181's 0.6-in stool and 2-in table pinch at the cost of adjacent unassigned corridor and unresolved B approach/services. It is not selected. B remains unassigned; selected-D unchanged. See M182 in PLAN.md/PROGRESS.md.

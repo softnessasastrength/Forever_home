@@ -1955,4 +1955,18 @@ Acceptance criteria:
 
 Status: Complete as a source-bound route refinement, not a plan selection. M180's orthogonal elbow clears the physical pantry proxy but its 36-in swept path conflicts with the west M-06 search-window rectangle by 5.96 in. A diagonal candidate clears assigned static room/furniture/wall rectangles with only 0.60 in at assumed stool occupancy, 2 in at the table, and 0.38 in at the west search-window boundary. Those margins are too small to validate furniture movement or a usable route. It passes 13/13 checks in the retained package and two independent replays; all three generated artifacts match byte-for-byte. M-06/B stays unassigned, selected-D unchanged. See `Architecture/M181_All_Room_Interface_Audit_2026-10-31/README.md`.
 
-Next: test documented alternatives for placing the two assumed island seats while preserving the 8 x 4 ft island and existing target dimensions; report whether route margins improve without inventing a product envelope or selecting the arrangement. If the bottleneck persists, identify the actual design choice needed before Revit authoring.
+M182 below compares a pantry-side bypass against the kitchen-side leg; the 44 in throat and new south opening remain unresolved.
+
+## M182 - Compare a pantry-side bypass route to the kitchen dogleg - 2026-10-31
+
+Acceptance criteria:
+
+- Bind M181 and current bath-first, selected-D and M-06 status sources.
+- Test a 36-in route from M-01 south to the porch, passing between the pantry block and east/pantry-side M-06/B search window.
+- Check all assigned room/furniture/wall proxies, blocked west search overlay, nominal door span, shell extents and source/candidate block spill.
+- Quantify both side margins in the unassigned throat and identify any needed opening or room reservation.
+- Emit deterministic PowerShell 5.1 JSON/CSV; replay twice and compare bytes. Keep M-06/B unassigned and selected-D unchanged.
+
+Status: Complete as an unapproved route comparison. A route through the unassigned 44-in strip between pantry and B clears modeled assigned blocks and furniture (13/13 checks, two byte-identical replays), leaving 4 in at each side. It avoids M181's stool/table bottleneck but overlaps the already-blocked west M-06 diagnostic window by 4.736 sf, intrudes 2 in into the source M-02 block outside the reduced kitchen, and requires a new south opening from M-01. This uses unassigned circulation adjacent to B and may constrain bath approach/door/services; it does not establish a usable route or fit. No layout/room selection, Revit/IFC edit or baseline change. See `Architecture/M182_Pantry_Bypass_Route_Audit_2026-10-31/README.md`.
+
+Next: use verified fixture family/product geometry plus a cited, jurisdiction-applicable clearance basis to test M-06/B approach and service options against the two circulation candidates. Until that evidence exists, leave B unassigned; flag the unmodeled M-01 south opening and room use for owner review.
