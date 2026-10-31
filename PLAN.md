@@ -51,6 +51,12 @@ Status: Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0
 
 **Current result:** `Tools/validate_architectural_bim_baseline.ps1` passes end-to-end at `.local/revalidation/architectural-bim-baseline-20261031T194357063Z/baseline-validation.json`: two 43/43 OwnerSelectedD runs, seven matching artifacts per run, three parseable SVGs per run, selected-D IFC **26/26**, zero errors, and protected source/RVT/IFC hashes unchanged. The RVT/IFC pair represents the documented 21-space study; the construction categories are intentionally empty. Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/validate_architectural_bim_baseline.ps1`. This is a reproducible room-study milestone, not a physical-house RVT or design/code/engineering approval.
 
+## M224 — Refresh Connecticut stair-code status and D-rise arithmetic
+
+**Acceptance:** recheck official Connecticut adoption/status pages and the 2022 CSBC residential amendment; distinguish its amended stair limit from the unamended model IRC; rerun the source-bound M112 comparison twice and require identical reports; do not choose a floor datum or author a stair.
+
+**Current result:** DAS still identifies the 2022 CSBC as current for permit applications from 2022-10-01 and says the expected 2026-code effective date is delayed pending LRRC approval. The CSBC amendment to 2021 IRC R311.7.5.1 sets an 8.25-in maximum riser; R311.7.5.2 sets a 9-in minimum tread. The generic 2021 IRC page itself says 7.75 in before Connecticut amendments. Two fresh M112 PowerShell 5.1 replays pass 11/11 and reproduce both outputs byte-for-byte. With the selected-D test datums, adjacent rise is 60 in: 7 risers require 8.5714 in each, 8 equal risers are 7.5 in, and the owner's half-story stair spec separately prefers six risers at 7.25 in within a 5–7 count range. No stair, floor datum, landing or section is selected. See `Architecture/M112_Stair_Rise_Code_Basis_2026-10-30/README.md`, `Research/Connecticut_Stair_Code_Research_2026-10-30.md`, and open CO-021. This remains a preliminary reference screen, not a compliance determination.
+
 ## Owner outcome — architect-reviewable native Revit model
 
 The intended end state is a coherent, documented **native Revit house model** and review packet that an architect can assess without reconstructing the design intent from disconnected sketches. It is a design-review handoff, not a claim of professional approval or permit readiness.

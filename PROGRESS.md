@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M224 — Refresh Connecticut stair basis and selected-D rise comparison
+
+- Rechecked current Connecticut DAS pages: 2022 CSBC still applies to applications filed from 2022-10-01; the expected 2026 code effective date is delayed pending LRRC approval. Official PDF text confirms the CT amendment to 2021 IRC R311.7.5.1 is 8.25 in maximum riser and R311.7.5.2 is 9 in minimum tread. The generic IRC text's 7.75 in is not the Connecticut amended value.
+- Replayed `Tools/analyze_m112_stair_rise_code_basis.ps1` twice to `.local/revalidation/M224-M112-a/` and `M224-M112-b/`. Both pass **11/11**; `stair-rise-options.json` and `checks.json` are byte-identical across runs (SHA256 `32D818FDEBA289EBF423EED7377F0B5A90EC772ECA679286A743EA68D2AF01AF` / `AE00F1DEDDBF8C912410BB8C467782CF798B0882E6C18E2B7CC8E3FBCD982D50`).
+- The source-bound arithmetic remains: 60 in adjacent-level rise in selected-D; seven equal risers would be 8.5714 in; eight are 7.5 in each. The separate owner-intent stair spec prefers six risers at 7.25 in and a 5–7 range. No actual floor datum, stair, landing, or section was authored. CO-021 remains open pending the owner's selected study direction and project-specific section inputs. No code-compliance, structural, professional, permit, or construction-readiness claim.
+
 ## M223 — One-command selected-D source and IFC validation
 
 - Added `Tools/validate_architectural_bim_baseline.ps1`, which writes only under ignored `.local/revalidation/`, replays `OwnerSelectedD` twice, enforces 43 passing geometry checks per replay, parses all three SVGs per run, compares seven artifact filenames and SHA256s, runs the existing selected-D IFC validator, and rechecks protected source/RVT/IFC hashes afterward.
