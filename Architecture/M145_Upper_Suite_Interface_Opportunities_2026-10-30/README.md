@@ -12,7 +12,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/analyze_m145_upper
 
 The script binds the two M132 room layouts, their 25-check report, M37 sampled route evidence, selected-D upper-door matrix, owner follow-up decision, and room program by SHA256. It checks six room-to-room boundaries per layout and emits JSON plus separate room-link and sampled-route CSVs. Output paths outside the repository are refused.
 
-Two isolated PowerShell 5.1 runs pass **13/13 checks** and produce byte-identical JSON/CSV artifacts. The report SHA256 is `12FEA4FC300E6200BD669240F7864EF598489029A8BC7E3F0D876414F78C9581`; the room-link CSV SHA256 is `B87BC966189A9C2343EE5ADF0ADCF5D673B6751079FED25B44BF8E102CD1F86B`; the route CSV SHA256 is `3FD7277B864607AFBBD5ECABD91633A0C0A0FBE2D654C6B19253B6E5A7696D65`.
+Two isolated PowerShell 5.1 runs pass **15/15 checks** and produce byte-identical JSON/CSV artifacts. The report SHA256 is `180C16C2BD24B9B4481CA7A9296F22D21964C8D7B0A962D8E00FE4FC02713E61`; the room-link CSV SHA256 is `B87BC966189A9C2343EE5ADF0ADCF5D673B6751079FED25B44BF8E102CD1F86B`; the route CSV SHA256 is `3FD7277B864607AFBBD5ECABD91633A0C0A0FBE2D654C6B19253B6E5A7696D65`.
 
 ## Owner-directed access graph screened
 

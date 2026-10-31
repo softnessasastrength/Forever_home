@@ -1557,7 +1557,7 @@ Acceptance criteria:
 - Generate source-hash-bound JSON/CSV; replay twice into isolated paths and require identical outputs.
 - Describe results as boundary opportunity arithmetic only; do not claim actual openings, door swing, approach, code, accessibility, service routing, Revit/IFC validation, or a selected plan.
 
-Status: Complete as a schematic interface screen. All six boundaries fit the source 3.5 ft reservation arithmetic in both layouts, but M130-NE-24 has exactly 3.5 ft U-01/C-PRIVATE contact and zero end margin; NE-19 leaves 1.5 ft per end there. NE-24 gains 1 ft at the U-01/U-05 bath interface. M37 sampled routes reach U-02 north and U-04 west in both, with no public-side U-03 sample. The 3.5 ft value is a reservation proxy, not a clear opening or door design. See M145 in `PROGRESS.md`.
+Status: Complete as a schematic interface screen. M132 passes 25/25, M37 route validation passes 4/4, and M145 passes 15/15; two isolated runs match all outputs. All six boundaries fit the source 3.5 ft reservation arithmetic in both layouts, but M130-NE-24 has exactly 3.5 ft U-01/C-PRIVATE contact and zero end margin; NE-19 leaves 1.5 ft per end there. NE-24 gains 1 ft at the U-01/U-05 bath interface. M37 sampled routes reach U-02 north and U-04 west in both, with no public-side U-03 sample. The 3.5 ft value is a reservation proxy, not a clear opening or door design. See M145 in `PROGRESS.md`.
 
 ## M146 - Reconfirm selected-D source generation and retained IFC pair
 

@@ -78,6 +78,7 @@ foreach ($route in $routes.results) { $candidateRouteMap[[string]$route.candidat
 $checks = [ordered]@{
     m132_source_layouts_pass_all_checks = ($m132Checks.check_count -eq 25 -and $m132Checks.passed_count -eq 25 -and @($m132Checks.failed).Count -eq 0)
     route_report_binds_exact_layout_artifact = ($routes.candidate_json_sha256 -eq $sourceHashes.m132_layouts)
+    m37_route_audit_passes_four_checks = ($routes.status -eq 'PASS' -and $routes.checks.check_count -eq 4 -and $routes.checks.passed_count -eq 4 -and @($routes.checks.failed).Count -eq 0)
     selected_d_door_reservations_have_one_consistent_value = ($doorWidths.Count -eq 1 -and [Math]::Abs($nominalReservationFt - 3.5) -lt $tolerance)
     superseded_u03_hall_entry_present_in_baseline_and_excluded = $obsoleteU03HallEntry
     owner_directs_no_u03_hall_entry = ($ownerDecision -match 'omit a direct U-03.*C-UPPER door' -and $ownerDecision -match 'U-03 remains private-route-only with no direct shared-hall door')
@@ -85,6 +86,7 @@ $checks = [ordered]@{
     owner_requires_direct_u02_hall_arrival = ($ownerDecision -match 'direct arrival from the upper shared hall to U-02')
     exact_two_m132_comparison_layouts_present = (@($layouts).Count -eq 2 -and @($layouts | Where-Object { $_.candidate_id -in $candidateIds }).Count -eq 2)
     contact_interfaces_have_complete_source_dimensions = $true
+    source_wall_band_is_preserved = $true
     six_room_links_checked_per_layout = $true
     private_and_guest_hall_route_samples_match_owner_choice = $true
     no_door_geometry_or_code_clearance_claim = $true
@@ -96,6 +98,8 @@ foreach ($candidateId in $candidateIds) {
     $candidates = @($layouts | Where-Object { $_.candidate_id -eq $candidateId })
     if ($candidates.Count -ne 1) { throw "Expected exactly one M132 layout for $candidateId." }
     $candidate = $candidates[0]
+    $wallBandFt = [double]$candidate.interface_wall_band_ft
+    if ([Math]::Abs($wallBandFt - 0.5) -gt $tolerance) { $checks.source_wall_band_is_preserved = $false }
     $roomList = @([pscustomobject]@{ id = [string]$candidate.u01.id; x = [double]$candidate.u01.x; y = [double]$candidate.u01.y; w = [double]$candidate.u01.w; d = [double]$candidate.u01.d })
     $roomList += [pscustomobject]@{ id = [string]$candidate.u05.id; x = [double]$candidate.u05.x; y = [double]$candidate.u05.y; w = [double]$candidate.u05.w; d = [double]$candidate.u05.d }
     foreach ($room in $candidate.other_rooms) { $roomList += [pscustomobject]@{ id = [string]$room.id; x = [double]$room.x; y = [double]$room.y; w = [double]$room.w; d = [double]$room.d } }
@@ -106,7 +110,7 @@ foreach ($candidateId in $candidateIds) {
     $roomMap = @{}
     foreach ($room in $roomList) { $roomMap[$room.id] = $room }
     foreach ($link in $expectedPrivateLinks) {
-        $contact = Get-Contact $roomMap[$link.room_a] $roomMap[$link.room_b] 0.5 $tolerance
+        $contact = Get-Contact $roomMap[$link.room_a] $roomMap[$link.room_b] $wallBandFt $tolerance
         if ($null -eq $contact) {
             $checks.contact_interfaces_have_complete_source_dimensions = $false
             throw "No 0.5 ft interface with positive contact found for $candidateId $($link.room_a)/$($link.room_b)."
@@ -122,7 +126,7 @@ foreach ($candidateId in $candidateIds) {
             reservation_basis = $link.reservation_basis
             wall_axis = $contact.wall_axis
             block_separation_ft = [double]$contact.separation_ft
-            nominal_wall_band_ft = 0.5
+            nominal_wall_band_ft = $wallBandFt
             shared_boundary_length_ft = [double]$contact.contact_length_ft
             comparison_reservation_ft = $nominalReservationFt
             centered_end_margin_ft = [Math]::Round($margin, 6)

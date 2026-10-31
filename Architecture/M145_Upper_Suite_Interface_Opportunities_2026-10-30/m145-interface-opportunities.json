@@ -22,6 +22,7 @@
     "checks":  {
                    "m132_source_layouts_pass_all_checks":  true,
                    "route_report_binds_exact_layout_artifact":  true,
+                   "m37_route_audit_passes_four_checks":  true,
                    "selected_d_door_reservations_have_one_consistent_value":  true,
                    "superseded_u03_hall_entry_present_in_baseline_and_excluded":  true,
                    "owner_directs_no_u03_hall_entry":  true,
@@ -29,6 +30,7 @@
                    "owner_requires_direct_u02_hall_arrival":  true,
                    "exact_two_m132_comparison_layouts_present":  true,
                    "contact_interfaces_have_complete_source_dimensions":  true,
+                   "source_wall_band_is_preserved":  true,
                    "six_room_links_checked_per_layout":  true,
                    "private_and_guest_hall_route_samples_match_owner_choice":  true,
                    "no_door_geometry_or_code_clearance_claim":  true,
