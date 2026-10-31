@@ -1,0 +1,180 @@
+{
+    "schema":  "forever-home-m227-selected-d-m06-a-hall-adjacency-v1",
+    "status":  "bounded room-block adjacency audit; no bath, door, approach, or route selected",
+    "source_sha256":  {
+                          "selected_d_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                      },
+    "owner_direction":  {
+                            "west_a_protected_for_m06":  true,
+                            "east_b_remains_unassigned":  true,
+                            "arrival_hall_edge_is_first_fit_intent":  true
+                        },
+    "west_a":  {
+                   "id":  "M06-A",
+                   "x_ft":  12,
+                   "y_ft":  16.166666666666668,
+                   "width_ft":  5.1666666666666679,
+                   "depth_ft":  11.416666666666664,
+                   "gross_area_sf":  58.99,
+                   "assigned":  false
+               },
+    "east_b":  {
+                   "id":  "M06-B",
+                   "gross_area_sf":  92.17,
+                   "assigned":  false
+               },
+    "public_hall":  {
+                        "id":  "M-05",
+                        "name":  "Front arrival / hall",
+                        "direct_exact_contact_with_west_a":  false,
+                        "direct_contact_within_half_foot_proxy":  false
+                    },
+    "exact_contacts":  [
+                           {
+                               "block_a":  "M-03",
+                               "block_b":  "M06-A",
+                               "axis":  "x",
+                               "gap_ft":  0,
+                               "projected_edge_ft":  11.416667,
+                               "relation":  "coincident room-block edges",
+                               "wall_or_opening_modeled":  false,
+                               "walkable_route_demonstrated":  false
+                           },
+                           {
+                               "block_a":  "M-04",
+                               "block_b":  "M06-B",
+                               "axis":  "x",
+                               "gap_ft":  0,
+                               "projected_edge_ft":  7,
+                               "relation":  "coincident room-block edges",
+                               "wall_or_opening_modeled":  false,
+                               "walkable_route_demonstrated":  false
+                           }
+                       ],
+    "contacts_with_up_to_half_foot_gap":  [
+                                              {
+                                                  "block_a":  "M-01",
+                                                  "block_b":  "M-03",
+                                                  "axis":  "y",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  11.333333,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-01",
+                                                  "block_b":  "M-05",
+                                                  "axis":  "x",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  12,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-01",
+                                                  "block_b":  "M06-A",
+                                                  "axis":  "y",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  4.666667,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-02",
+                                                  "block_b":  "M-04",
+                                                  "axis":  "y",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  5,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-02",
+                                                  "block_b":  "M-05",
+                                                  "axis":  "x",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  12,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-02",
+                                                  "block_b":  "M06-B",
+                                                  "axis":  "y",
+                                                  "gap_ft":  0.5,
+                                                  "projected_edge_ft":  12.333333,
+                                                  "relation":  "schematic gap proxy",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-03",
+                                                  "block_b":  "M06-A",
+                                                  "axis":  "x",
+                                                  "gap_ft":  0,
+                                                  "projected_edge_ft":  11.416667,
+                                                  "relation":  "coincident room-block edges",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              },
+                                              {
+                                                  "block_a":  "M-04",
+                                                  "block_b":  "M06-B",
+                                                  "axis":  "x",
+                                                  "gap_ft":  0,
+                                                  "projected_edge_ft":  7,
+                                                  "relation":  "coincident room-block edges",
+                                                  "wall_or_opening_modeled":  false,
+                                                  "walkable_route_demonstrated":  false
+                                              }
+                                          ],
+    "shortest_half_foot_topology_chain_from_hall_to_west_a":  [
+                                                                  "M-05",
+                                                                  "M-01",
+                                                                  "M06-A"
+                                                              ],
+    "topology_chain_edges":  [
+                                 {
+                                     "block_a":  "M-01",
+                                     "block_b":  "M-05",
+                                     "axis":  "x",
+                                     "gap_ft":  0.5,
+                                     "projected_edge_ft":  12,
+                                     "relation":  "schematic gap proxy",
+                                     "wall_or_opening_modeled":  false,
+                                     "walkable_route_demonstrated":  false
+                                 },
+                                 {
+                                     "block_a":  "M-01",
+                                     "block_b":  "M06-A",
+                                     "axis":  "y",
+                                     "gap_ft":  0.5,
+                                     "projected_edge_ft":  4.666667,
+                                     "relation":  "schematic gap proxy",
+                                     "wall_or_opening_modeled":  false,
+                                     "walkable_route_demonstrated":  false
+                                 }
+                             ],
+    "checks":  {
+                   "selected_d_source_hash_pinned":  true,
+                   "west_a_is_unassigned":  true,
+                   "east_b_is_unassigned":  true,
+                   "west_a_not_directly_adjacent_to_public_hall":  true,
+                   "no_exact_room_block_path_from_hall_to_west_a":  true,
+                   "west_a_touches_dining_block":  true,
+                   "half_foot_schematic_chain_runs_via_living":  true,
+                   "no_physical_door_or_route_claimed":  true
+               },
+    "interpretation":  "West A is not directly adjacent to M-05 in the selected-D room-block plan. It shares a coincident block edge with M-03 Dining. A shortest graph chain from M-05 to A uses two 0.5-ft room-block gaps via M-01 Living. These are topology observations only; gaps are not doors or walkable route widths.",
+    "limitations":  [
+                        "Selected-D main-room and search-window rectangles are schematic comparison blocks; no wall thickness, finish, opening, door leaf, swing, sill, or threshold is modeled.",
+                        "The 0.5-ft proximity threshold is an adjacency sensitivity only and is not a code width, circulation width, or door approach.",
+                        "No accessible or usable route, privacy, M-06 room geometry, fixture placement, service path, or code compliance is established.",
+                        "West A and east B remain unassigned; this analysis does not change or replace the owner-selected D source."
+                    ]
+}

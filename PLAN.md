@@ -15,6 +15,12 @@ Status: Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0
 
 **Current result:** the PowerShell 5.1 study places a toilet-only lower-bound proxy box inside gross west A in both orientations (2/2): 30 × 51.25 in and 30.25 × 40 in. Replays generated identical JSON. The source product is still predecessor 211AA104.020, not selected 610AA001.020 geometry. No lavatory/30-in center spacing, finish/wall thickness, door/swing, public-hall approach, plumbing route or full room fit is tested. A and B remain unassigned. See `Architecture/M226_M06_West_A_Clearance_Proxy_2026-10-31/README.md` and current code-source refresh in `Research/M06_Clearance_Basis_2026-10-30.md`.
 
+## M227 — Check west A adjacency to the selected-D public hall
+
+**Acceptance:** hash-pin selected-D; keep A and B unassigned; compare exact shared-edge adjacency and clearly separate it from a labeled 0.5-ft topology sensitivity; report M-05/A and A/room contacts; do not imply doors or a walkable route.
+
+**Current result:** two independent Windows PowerShell 5.1 replays pass **8/8** scope/source checks and reproduce JSON byte-for-byte. A (58.99 sf gross) has no exact M-05 edge or exact adjacency path; it does share 11.4167 ft with M-03 Dining. The shortest chain within a 0.5-ft proximity graph is M-05 → M-01 Living → A, with two 6-in gaps. These are block-topology sensitivities, not circulation. M-06's arrival/hall-edge intent therefore remains unresolved; A/B are unassigned pending owner direction and real route/door evidence. See `Architecture/M227_Selected_D_M06_A_Hall_Adjacency_2026-10-31/README.md`.
+
 ## M216 — Validate the isolated M-06 family host-probe report
 
 **Acceptance:** build the project-local RevitPilot DLL without installation; extend the independent PowerShell validator to distinguish unhosted source-family inspection from a one-instance synthetic-wall probe; require exact host identity, finite positive measured solids, consistent bounds, truthful connector counts, and explicit limits on service-route/code conclusions. Fixture tests must prove a valid report passes and malformed host/service claims fail. Do not register or load the DLL unless exact AddInId/path/hash conditions and Revit access are verified. Do not modify selected-D or assign M-06/B.

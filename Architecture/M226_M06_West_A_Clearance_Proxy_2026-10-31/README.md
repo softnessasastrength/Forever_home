@@ -33,7 +33,7 @@ These numbers do not describe the selected current SKU 610AA001.020. The manufac
 
 - Exact current-SKU toilet geometry, lavatory, or 30-in center-to-center spacing to an adjacent fixture.
 - Finished wall faces, wall thickness, rough-in, door leaf/swing, door operation, hall arrival/approach, privacy, or service routes.
-- Whether A actually adjoins the selected public arrival/hall approach, whether its gross gap can become a room, or whether B can be assigned.
+- Whether a usable public-hall route can reach A: [M227](../M227_Selected_D_M06_A_Hall_Adjacency_2026-10-31/README.md) finds no direct M-05 edge in selected D; its two-gap Living chain is topology only, not circulation. Whether A's gross gap can become a room or B can be assigned also remains open.
 - Project-specific code applicability, accessibility requirements, or code compliance.
 
 No selected-D source, RVT, IFC, RFA, room assignment, or remote state changed. Keep A and B unassigned until exact product geometry, applicable clearance basis, a real door/approach, and plausible service routing can be coordinated together. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows.

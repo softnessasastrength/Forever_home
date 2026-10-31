@@ -19,6 +19,13 @@ Updated: 2026-10-31
 - This does not establish 610AA001.020 geometry or a bathroom fit. Lavatory, 30-in adjacent-fixture spacing, wall build-up, actual door/swing, hall approach, privacy and water/waste/vent route are absent. West A and east B both remain unassigned. Selected-D, RVT/IFC and RFAs remain unchanged.
 - Exact code-source limits and the proxy report are documented in `Research/M06_Clearance_Basis_2026-10-30.md` and `Architecture/M226_M06_West_A_Clearance_Proxy_2026-10-31/README.md`.
 
+## M227 — Check west A adjacency to M-05 hall in selected D
+
+- Added `Tools/analyze_m227_selected_d_m06_a_hall_adjacency.ps1`, pinned to selected-D SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`. It verifies both A and B remain unassigned and distinguishes exact edge contact from a 0.5-ft schematic adjacency sensitivity.
+- Retained result and two isolated Windows PowerShell 5.1 replays pass **8/8** checks with identical report SHA256 `7B1E21F4C60553A8369B9E7E3D7B5B1770DAF5B2AD652F9D72CCBA9B3184E240`.
+- West A has no direct M-05 edge and no exact room-block path to the hall; it shares an 11.4167-ft edge with M-03 Dining. The closest topology chain is M-05 → M-01 Living → A across two 0.5-ft (6-in) schematic gaps. No doors or route widths are modeled, so no walkable route is proven.
+- This surfaces an unresolved tension between west-A protection and the earlier arrival/hall-edge first-fit intent. A question is pending on whether to hold A primary or compare a separate hall-edge proposal while retaining A. Both A and B remain unassigned; no selected-D/RVT/IFC/RFA or remote state changed.
+
 ## M224 — Refresh Connecticut stair basis and selected-D rise comparison
 
 - Rechecked current Connecticut DAS pages: 2022 CSBC still applies to applications filed from 2022-10-01; the expected 2026 code effective date is delayed pending LRRC approval. Official PDF text confirms the CT amendment to 2021 IRC R311.7.5.1 is 8.25 in maximum riser and R311.7.5.2 is 9 in minimum tread. The generic IRC text's 7.75 in is not the Connecticut amended value.
