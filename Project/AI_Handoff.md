@@ -1,11 +1,13 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-31 (M169 conditional eave threshold screen and retained IFC revalidation)
+Updated: 2026-10-31 (M170 BIM baseline revalidation after Revit refresh)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**M170, 2026-10-31:** after the Revit restart, the owner-selected-D PowerShell generator was replayed twice into ignored scratch directories. Both runs pass 43/43, parse all SVGs, and reproduce the seven output files byte-for-byte; selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The retained selected-D Revit/IFC2X3 pair passes 26/26; M78 passes 32/32; M83-A passes 21/21; M83-B passes 21/21 only when paired with the preserved exact `.0001.rvt` backup. Its primary RVT remains a different SHA256 and is not the IFC source; all files are preserved. The offline suite passes 49/49. Revit is still running behind the trial-introduction WebView with no model open and add-in load unverified. No trust setting, selected-D source, Incoming RFA, remote ref or history changed. M-06/B remains unassigned. See M170 in `PLAN.md` and `PROGRESS.md`.
 
 **M169, 2026-10-31:** the source-bound PowerShell screen compares all 96 M164 route-qualified candidate/axis rows at 12:12. Three runs pass 17/17 and reproduce identical JSON/CSV. Ridge X has two bedroom-capable room blocks at the conditional full-block 5 ft threshold in all 48 layouts; ridge Y has one in 24 and two in 24. The one-block ridge-Y cases are limited by U-03; U-04's own threshold is 4.166667 ft in 16 cases and 3.333334 ft in 8. These remain area-proxy arithmetic; no ridge, roof, room arrangement, elevation or code result is selected. Selected-D regenerates 43/43 and its retained IFC passes 26/26; retained M78 and M83 IFCs pass 32/32 and 21/21. Revit was restarted, but its trial-introduction overlay remains visible and the exact DLL load is not verified. The active M83-B primary RVT was saved before shutdown and no longer matches its export fingerprint; its untouched `.0001.rvt` does match and reproduces the previous 21/21 IFC report when validated as a separate scratch copy. All files, including `.0002.rvt`, are preserved. See M169 in `PLAN.md` and `PROGRESS.md`.
 
