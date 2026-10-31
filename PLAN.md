@@ -1390,4 +1390,29 @@ Acceptance criteria:
 - Do not create an account, enter credentials, contact support, generate a product project/spec, or download through a gated workflow.
 - Preserve the exact-SKU model as unresolved and keep M-06/B unassigned.
 
-Status: Complete as an unauthenticated source check. The linked ATS Digital Asset Library was not text-queryable beyond its JavaScript application shell, and public exact-SKU indexing returned no ATS family result. ATS's public FAQ documents its Revit download path through an authenticated Project/Spec workflow and support contact where the Revit link is absent. That FAQ does not establish the access policy for every Digital Asset Library object. No credentials or account actions were used; exact 610AA geometry remains unresolved.
+Status: Complete as an unauthenticated source check. The linked ATS Digital Asset Library is a JavaScript application. Its visible anonymous US-catalog Products search displayed **0 products** for exact SKU 610AA001.020. This confirms only the result of that public search, not global nonexistence. ATS's public FAQ documents its Revit download path through an authenticated Project/Spec workflow and support contact where the Revit link is absent. That FAQ does not establish the access policy for every Digital Asset Library object. No credentials or account actions were used; exact 610AA geometry remains unresolved.
+
+## M130 - Compare primary-bath roof exposure across U-03 privacy layouts
+
+Acceptance criteria:
+
+- Reuse the owner-authorized 38 1/3 x 40 ft shell solely as an exploration envelope; do not change selected-D.
+- Select only the 64 M115 northeast-corner room-block cases that retain sampled U-01/U-02/U-04 public reach, north-side U-02 arrival, and no sampled U-03 public-hall reach.
+- Check source room areas, shell containment and pairwise non-overlap for all seven room blocks in every candidate.
+- Evaluate the complete U-05 rectangle against all six M83 ideal roof planes; label outputs as relative roof exposure, not fixture headroom or code review.
+- Run twice under Windows PowerShell 5.1 and require identical output artifacts.
+
+Status: Complete. The new source-bound analyzer passes 15/15 checks for 64 layouts and 384 room-roof cases; two runs reproduce all four outputs byte-for-byte. Candidate position changes the relative roof-plane exposure over U-05. At 12:12, the sampled maximum minimum-rise case is 10 ft for M130-NE-24/ridge X and 8.166666 ft for M130-NE-19/ridge Y. Both are descriptive room-block comparisons; the eave/floor datum and actual fixtures are absent. See the M130 README and PROGRESS.md.
+
+## M131 - Furnish the upper-suite bath and test real circulation interfaces
+
+Acceptance criteria:
+
+- Start from M130's two ridge-axis comparison leaders only as study seeds; retain alternates and do not declare a preferred plan.
+- Use only product-backed fixture dimensions from public sources already available or obtained without gated access; mark missing dimensions instead of fabricating them.
+- Show door leaf/swing, approach area, fixture use envelopes, wall thickness assumptions and plausible service zones as explicit proposals.
+- Recheck sampled U-02 arrival, U-03 private-only topology and the Connecticut conditional ceiling/EERO screens after any proposed placement.
+- Do not assign M-06 or bathroom room B until exact product geometry, applicable clearance basis, door/approach and a plausible service route are all supported.
+- Keep this as source-bound 2D study geometry until an isolated Revit derivative can be safely validated; no selected-D baseline edits.
+
+Status: Planned. M130 demonstrates that U-05's roof exposure depends on its layout/orientation and the ridge axis. Exact selected Champion PRO geometry remains unavailable in the anonymous public lookup, and the Revit host prompt still requires a safe, exact-DLL match. The bath fit remains the next design study, with those evidence gates stated explicitly.

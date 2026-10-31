@@ -1,9 +1,13 @@
 # Forever Home — cross-agent handoff
 
-Updated: 2026-10-30 (M129 verification)
+Updated: 2026-10-30 (M130 verification)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
+
+## Latest continuation
+
+**M130, 2026-10-30:** the anonymous visible ATS Digital Asset Library US Products search returned 0 products for exact current SKU 610AA001.020; the 3195A101.020 predecessor query also showed 0. No result is claimed for 4225A104.020 because its visible query remained pending. M-06 and B remain unassigned. New `Tools/analyze_m130_upper_suite_roof_exposure.ps1` screens 64 M115 northeast privacy layouts and 384 combinations against the six M83 ideal roof planes. It passes 15/15 and reproduces all four outputs byte-identically in a second PowerShell 5.1 run. At 12:12 the highest sampled minimum U-05 roof-plane rise is 10 ft for M130-NE-24/ridge X and 8.166666 ft for M130-NE-19/ridge Y; these are relative to an unspecified eave, not headroom or clearance. Selected-D, RFAs, Revit, IFC and remote state are untouched. M131's next study is a proposal-only furnished bath/interface fit that must retain product, clearance, door/approach and service evidence gates. Revit M83 host validation remains held at the stale/mismatched unsigned-add-in prompt described below.
 
 ## Purpose
 Design a cozy, traditional New England home faithful within reason to the original shared vision. The project is personally meaningful; preserve warmth, character, comfort and intent while rigorously addressing engineering, safety, accessibility and buildability. A complete digital twin is a legitimate final product even if construction never occurs.
