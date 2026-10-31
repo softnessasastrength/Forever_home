@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M245 — RevitPilot build preflight
+
+- Built the checked-out C# source into a fresh ignored directory with `Tools/RevitPilot/build.ps1 -Dotnet .local/dotnet/dotnet.exe -BuildDirectory m244-isolated-build`. Build result: **0 errors**, **2 MSB3277 conflict-warning groups**.
+- Verified the generated manifest XML, authorized AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, and assembly path inside the checkout. New DLL SHA256: `DAA178628A94057B9DA6A3F66175FD2CE4F58F4F496E92192369A27C16C4B0EC`.
+- Existing per-user manifest hash `514F8C24B75E1594E1DAC9A4EB85855F3FCA703D23A922301C7B7F0A1CB168B6` still points to existing M234 DLL hash `FF5578C1CB386114260FBF08F59A421A7B04A24F3E2DFF3CF81CD6C4BE2B01BF`; no registration change was made. Revit remains listed running, but the supported UI bridge twice returned `Accessibility state unavailable`; no DLL was loaded and no model changed.
+- See `Architecture/M245_RevitPilot_CurrentBuild_Preflight_2026-10-31/README.md`. This build preflight is not evidence that a native house model was generated.
+
 ## M244 — Current-checkout selected-D and IFC replay
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M244-current-baseline` from the current sandbox checkout. It exits 0; both PowerShell geometry generations pass **43/43**, seven outputs match byte-for-byte, and all six generated plan SVGs parse.
