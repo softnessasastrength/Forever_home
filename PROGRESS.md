@@ -2134,3 +2134,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - **0/15** door positions find a route. The nearest point is 9.5 ft away at x=9 ft; the centered x=5.5-ft case is 12 ft away. All runs reach 5,296 nodes. The eastmost door is closer but still disconnected, so no position is selected.
 - The porch overlaps west diagnostic A by 0.402778 sf; A remains unassigned. Pantry-side B remains unassigned and protected. Selected-D, RVT, IFC and Incoming RFAs are unchanged; no code/accessibility/structural/construction claim follows.
 - Next: test the owner's preferred fully open kitchen/living connection while holding the rest of the layout fixed; retain the half-wall as a comparison.
+
+## M202 — Fully open kitchen/living route sensitivity — 2026-10-31
+
+- Added `Tools/search_m202_fully_open_kitchen_route.ps1` and `Architecture/M202_Fully_Open_Kitchen_Route_2026-10-31/`. The M186 route begins at the M180 point inside source M-01 living. Only the half-wall/return obstacles are removed; the best-gap M198 door sample (x=9 ft) is used.
+- Two independent Windows PowerShell 5.1 runs pass **7/7** M202 checks; both embedded M186 searches pass **29/29** and outputs match byte-for-byte. Hashes and reproduction commands are in the README.
+- No route is found after reaching 5,816 nodes; nearest reachable point remains 9.5 ft from the tested door. The 4.333-ft band between the 13.5-ft kitchen test and source living block remains unassigned and is not physically modeled. Fully opening this connection alone does not solve the route.
+- Both M-06 windows remain protected for this run; B remains unassigned. Selected-D, RVT, IFC and Incoming RFA sources are unchanged.
+- Next: test alternate A as a separately reported route trade-off while keeping B blocked and measuring all other proxies.

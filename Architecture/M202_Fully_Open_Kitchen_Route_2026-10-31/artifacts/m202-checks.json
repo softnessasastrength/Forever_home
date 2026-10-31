@@ -1,0 +1,42 @@
+{
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "route_starts_at_source_living_point",
+                      "pass":  true,
+                      "detail":  "The open-route search starts at the documented M180 point inside M-01."
+                  },
+                  {
+                      "id":  "halfwall_and_return_removed",
+                      "pass":  true,
+                      "detail":  "Both half-wall proxies are excluded from the route obstacles."
+                  },
+                  {
+                      "id":  "fixed_door_uses_best_M198_gap",
+                      "pass":  true,
+                      "detail":  "The door remains at the best-gap M198 sample and is not selected design."
+                  },
+                  {
+                      "id":  "all_M186_contract_checks_pass",
+                      "pass":  true,
+                      "detail":  "Generated full-shell search completed every source and route-contract check."
+                  },
+                  {
+                      "id":  "B_unassigned_and_protected",
+                      "pass":  true,
+                      "detail":  "Pantry-side M-06/B remains a modeled obstacle; any found route must clear it."
+                  },
+                  {
+                      "id":  "selected_D_hash_protected",
+                      "pass":  true,
+                      "detail":  "Selected-D source fingerprint remains unchanged."
+                  },
+                  {
+                      "id":  "open_connection_is_not_structurally_specified",
+                      "pass":  true,
+                      "detail":  "No opening span, header, beam or structural system is inferred."
+                  }
+              ]
+}

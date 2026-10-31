@@ -2103,7 +2103,18 @@ Acceptance criteria:
 - Bind source hashes and report route, closest reach and all changed assumptions. Keep the half-wall as a documented comparison; no opening span or structural detail is selected.
 - Preserve selected-D, RVT/IFC and Incoming RFA sources; pass independent deterministic PowerShell validation.
 
-Status: Planned from the owner's preference. M187 found that removing the half-wall alone did not restore its route; M202 tests the updated fixed dining/porch arrangement and is not expected to prove the full plan resolved.
+Status: Complete as one fixed-layout sensitivity. Two independent PowerShell 5.1 runs pass 7/7 checks and match byte-for-byte; M186 passes 29/29. Removing the half-wall/return and starting in living reaches 5,816 nodes but finds no route; nearest point is 9.5 ft from the best-gap door. The 4.333-ft band between the test kitchen and source M-01 remains unassigned and physically unmodeled. See `Architecture/M202_Fully_Open_Kitchen_Route_2026-10-31/README.md`.
+
+## M203 — Test alternate-A circulation trade-off with B protected — 2026-10-31
+
+Acceptance criteria:
+
+- Starting from M202's fully open sensitivity, relax only the west diagnostic M-06/A obstacle; preserve pantry-side B as a no-go and unassigned search window.
+- Keep the 189-sf kitchen, 8 × 4 ft island, M195 table/chair-use proxies, entry/pantry, 36-in route and best-gap porch door fixed.
+- If a route appears, report its overlap with A, unassigned travel, route length/turns and minimum gaps to island, assumed stools and chair-use zones. Explicitly state that A is consumed as circulation, not assigned as a bath.
+- Bind source hashes and replay deterministically. Do not modify selected-D, RVT/IFC or Incoming RFAs; do not claim usability or compliance.
+
+Status: Authorized trade-off sensitivity; no layout or room assignment selected.
 
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
