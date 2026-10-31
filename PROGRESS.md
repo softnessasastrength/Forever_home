@@ -8,6 +8,12 @@ Updated: 2026-10-31
 - Three isolated Windows PowerShell 5.1 runs pass **10/10**. `m233-checks.json` and the SVG reproduce byte-for-byte across all three and match retained M233 artifact hashes (`F3C51A710E69359AE6DF19695C6EA5C214D6B45F1793E045F44A0CC2FACDC151`; `7D3F97953783EDDB726761495F122851C289A4FFB0ED922F1FF76C39C5205113`). `git diff --check` passes.
 - Selected-D remains unchanged; the 6-in east translation remains an unselected room-block study, with 240 sf gross area, west A protected for research, east B unassigned, and M-06 unassigned. No doors, clear path, actual fixture fit, service route or code conclusion follows. The next physical-model gate remains a disposable Revit derivative; native Revit access is still blocked by the trial overlay's inaccessible nested WebView close target.
 
+## M237 — Fresh full baseline replay after the M233 source-pin repair
+
+- Ran `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M236-baseline` from this checkout; it exits 0.
+- Both selected-D regenerations pass **43/43** checks, each emits seven byte-identical artifacts, and all three SVGs in each replay parse. Retained IFC2X3 passes **26/26** with zero errors; protected selected-D/RVT/IFC hashes are unchanged. Report SHA256: `BBF9E544B0CB130658A2E2C6FF9CC1606E8885B58C38D0F9D292DF914873152F`.
+- This confirms the documented room-block/space-study baseline only. Native construction categories remain empty; no physical house or code/construction-readiness conclusion follows.
+
 ## M235 — Revalidate the selected-D geometry and IFC baseline
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
