@@ -36,7 +36,7 @@ Both independent M37 runs pass **31/31** generator checks and reproduce the same
 
 The 102 archived records include candidates that do not meet every public-side sample; the count of 41 is the narrower subset meeting all sampled route and private-side conditions. These are grid-sampled route proxies, not actual doors, circulation clear widths, egress routes or accessibility findings. All 102 candidates are distinct by normalized room-coordinate key. The bounded search does not prove that unobserved options are impossible.
 
-The roof sensitivity evaluates those 41 route-qualified candidates against all six existing M83 ideal 8:12, 10:12 and 12:12 gable planes on both ridge axes, plus the one retained M158 route-qualified baseline: **756 room/candidate/roof rows**, passing **12/12** source, geometry and area-median checks in two identical PowerShell runs. For the 41 expanded candidates, the lowest *worst-bedroom* conditional effective eave-ceiling threshold within each roof case is 5 ft, equal to the retained M158 route-qualified baseline in all six cases. Thus the expanded room search and steeper ideal pitches do not improve this study's controlling full-block/eave proxy. This is not a five-foot eave recommendation or an actual headroom result; floor/eave elevation, build-down and legal required floor area remain unknown. The conditional comparison is only a ranking aid within the stated proxy.
+The roof sensitivity evaluates those 41 route-qualified candidates against all six existing M83 ideal 8:12, 10:12 and 12:12 gable planes on both ridge axes, plus the one retained M158 route-qualified baseline: **756 room/candidate/roof rows**, passing **12/12** source, geometry and area-median checks in two identical PowerShell runs. For the 41 expanded candidates, the lowest *worst-bedroom* conditional effective eave-ceiling threshold within each roof case is 5 ft, equal to the retained M158 route-qualified baseline in all six cases. No candidate is free of bedroom-block contact with an ideal eave on either ridge axis. Thus the expanded room search and steeper ideal pitches do not improve this study's controlling full-block/eave proxy. This is not a five-foot eave recommendation or an actual headroom result; floor/eave elevation, build-down and legal required floor area remain unknown. The conditional comparison is only a ranking aid within the stated proxy.
 
 ## Evidence
 
@@ -49,10 +49,10 @@ The roof sensitivity evaluates those 41 route-qualified candidates against all s
 | M37 route-tested archive (ignored scratch) | `9ECDCAC64B404BCA21E07E663440703C7496E360BF80A8FCA6B4B5A885309CBE` |
 | Independent audit JSON | `880A8E33EA9737AB4269FC9CB053ECD8D8D2671F81BB5ADA654D03640DD41EAB` |
 | Independent audit CSV | `8AF8896C677CCC9D47E827EC11352C5B51BE8C8DFA3B810DBF72B2AE09C34245` |
-| Roof exposure JSON | `074A981A3C33AD3CB36103330A60A91E0D3131BEB84AE34422E863A03ABD74A0` |
+| Roof exposure JSON | `211D34BE82099B98F95E677E8F4D4C2E715966ABBD95262E75566C64228D62F2` |
 | Roof exposure CSV | `604EAD5956F507B5883E98322F3BF712D23FBB8D8F63E4D8E0DC57BE801990AD` |
 | Independent audit script | `Tools/audit_m163_expanded_m158_search.ps1` (SHA256 `C6025211F8D4A8E6ECCA2DE3ACBAB446C9D90B34184BD29B78AEFA113FC02FAF`) |
-| Roof exposure script | `Tools/analyze_m163_expanded_roof_exposure.ps1` (SHA256 `883A604570CE0969E98EA6FDF1262F5568C530725ADB55349787D6F03BD249CC`) |
+| Roof exposure script | `Tools/analyze_m163_expanded_roof_exposure.ps1` (SHA256 `D862E57B209F7F1F796145EB441A13B4A485FE430575EE7A2A8D97C2699E6D21`) |
 
 The detailed route audit tables and roof exposure tables are alongside this README. Full route-tested generator archives remain under ignored `.local/revalidation/M163-expanded/` and `M163-expanded-repeat/`; they do not replace or alter the retained M158 evidence. The roof analyzer binds those scratch archives to the tracked independent audit, the retained M158 route-qualified comparator, M83 roof options and selected-D source by SHA256.
 

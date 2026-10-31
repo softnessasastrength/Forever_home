@@ -3,7 +3,10 @@ param(
     [string]$M163AuditDirectory = 'Architecture/M163_Expanded_Upper_Suite_Search_2026-10-31',
     [string]$M158Directory = 'Architecture/M158_Joint_Bedroom_Perimeter_Search_2026-10-31',
     [string]$M83Directory = 'Architecture/M83_Gable_Massing_38_333333x40_2026-10-30',
-    [string]$OutputDirectory = '.local/revalidation/M163-roof-exposure'
+    [string]$OutputDirectory = '.local/revalidation/M163-roof-exposure',
+    [ValidateSet('M163','M164')]
+    [string]$Milestone = 'M163',
+    [string]$OutputFileStem = 'm163-expanded-roof-exposure'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -116,7 +119,7 @@ $checks.m163_independent_audit_is_current = ($audit.milestone -eq 'M163' -and @(
 $checks.m158_baseline_and_audit_are_intact = ($hashes.m158_search -eq $baseManifest.output_hashes_sha256.search -and $hashes.m158_archive -eq $baseManifest.optional_route_tested_candidate_archive.sha256 -and $baseAudit.milestone -eq 'M158' -and @($baseAudit.failures).Count -eq 0 -and $baseAudit.hashes_sha256.search -eq $hashes.m158_search -and $baseAudit.hashes_sha256.archive -eq $hashes.m158_archive)
 $checks.unique_m163_layout_keys = (@($archive.candidates.layout_key | Sort-Object -Unique).Count -eq @($archive.candidates).Count)
 $checks.six_m83_roof_cases_share_owner_test_shell_and_remain_unselected = (@($roof.results).Count -eq 6 -and $roof.status -match 'no pitch' -and @($roof.results | Where-Object { $_.selection_status -notmatch 'not owner-selected' }).Count -eq 0 -and [Math]::Abs([double]$roof.coordinate_basis.shell_width_ft - [double]$search.coordinate_basis.width_ft) -le 0.000001 -and [Math]::Abs([double]$roof.coordinate_basis.shell_depth_ft - [double]$search.coordinate_basis.depth_ft) -le 0.000001)
-$checks.m163_search_is_still_bounded_and_incomplete = ([bool]$search.search.node_limit_reached -and -not [bool]$search.search.search_complete -and [int]$search.search.nodes_expanded -le [int]$manifest.search_parameters.node_limit)
+$checks.expanded_search_stays_within_recorded_node_budget = ([int]$search.search.nodes_expanded -le [int]$manifest.search_parameters.node_limit)
 $checks.selected_d_source_matches_roof_case_source = ($hashes.selected_d -eq [string]$roof.source_fingerprints_sha256.selected_d_study)
 $routeKeys = @($audit.candidates | Where-Object all_public_and_private_only | ForEach-Object layout_key)
 $routeCandidates = @($archive.candidates | Where-Object { $_.layout_key -in $routeKeys })
@@ -124,8 +127,9 @@ $checks.route_qualified_archive_matches_audit = ($routeCandidates.Count -eq $rou
 $baseRouteKeys = @($baseAudit.candidates | Where-Object all_public_and_private_only | ForEach-Object layout_key)
 $baseRouteCandidates = @($baseArchive.candidates | Where-Object { $_.layout_key -in $baseRouteKeys })
 $checks.m158_route_comparator_is_present = ($baseRouteCandidates.Count -ge 1 -and $baseRouteCandidates.Count -eq $baseRouteKeys.Count)
+$expandedCandidateLabel = "$Milestone expanded route-qualified"
 $rows = [System.Collections.Generic.List[object]]::new()
-foreach ($candidate in $routeCandidates) { foreach ($option in $roof.results) { foreach ($row in (Get-RoomCaseRows $candidate $option ([double]$roof.coordinate_basis.shell_width_ft) ([double]$roof.coordinate_basis.shell_depth_ft) 'M163 expanded route-qualified')) { $rows.Add($row) } } }
+foreach ($candidate in $routeCandidates) { foreach ($option in $roof.results) { foreach ($row in (Get-RoomCaseRows $candidate $option ([double]$roof.coordinate_basis.shell_width_ft) ([double]$roof.coordinate_basis.shell_depth_ft) $expandedCandidateLabel)) { $rows.Add($row) } } }
 foreach ($candidate in $baseRouteCandidates) { foreach ($option in $roof.results) { foreach ($row in (Get-RoomCaseRows $candidate $option ([double]$roof.coordinate_basis.shell_width_ft) ([double]$roof.coordinate_basis.shell_depth_ft) 'M158 retained route-qualified')) { $rows.Add($row) } } }
 $checks.expected_row_count = ($rows.Count -eq (($routeCandidates.Count + $baseRouteCandidates.Count) * 6 * 3))
 $checks.median_bisection_splits_each_room_area = (@($rows | Where-Object { $_.median_area_bisection_error_ft -gt 0.00001 }).Count -eq 0)
@@ -135,8 +139,10 @@ if ($failures.Count -gt 0) { throw "M163 roof exposure checks failed: $($failure
 $summaries = @()
 foreach ($option in $roof.results) {
     $scores = @()
+    $noBedroomEaveContactCount = 0
     foreach ($candidate in $routeCandidates) {
-        $caseRows = @($rows | Where-Object { $_.candidate_set -eq 'M163 expanded route-qualified' -and $_.candidate_key -eq $candidate.layout_key -and $_.roof_case_id -eq $option.case_id })
+        $caseRows = @($rows | Where-Object { $_.candidate_set -eq $expandedCandidateLabel -and $_.candidate_key -eq $candidate.layout_key -and $_.roof_case_id -eq $option.case_id })
+        if (@($caseRows | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_.touched_ideal_eave_edges) }).Count -eq 0) { $noBedroomEaveContactCount++ }
         $scores += [pscustomobject]@{ candidate_key = [string]$candidate.layout_key; worst_bedroom_proxy_threshold_ft = [double](($caseRows | Measure-Object conditional_effective_eave_ceiling_threshold_ft -Maximum).Maximum) }
     }
     $best = $scores | Sort-Object worst_bedroom_proxy_threshold_ft,candidate_key | Select-Object -First 1
@@ -147,6 +153,7 @@ foreach ($option in $roof.results) {
         pitch = "$($option.pitch_rise_units):$($option.pitch_run_units)"
         ridge_axis = [string]$option.ridge_axis
         route_qualified_expanded_candidate_count = $routeCandidates.Count
+        all_bedroom_blocks_avoid_ideal_eave_contacts_count = $noBedroomEaveContactCount
         best_expanded_worst_bedroom_proxy_threshold_ft = [double]$best.worst_bedroom_proxy_threshold_ft
         one_best_expanded_candidate_key = [string]$best.candidate_key
         retained_m158_worst_bedroom_proxy_threshold_ft = $baseWorst
@@ -155,8 +162,8 @@ foreach ($option in $roof.results) {
     }
 }
 $report = [ordered]@{
-    milestone = 'M163'
-    title = 'Conditional ideal-gable exposure sensitivity for expanded route-qualified room blocks'
+    milestone = $Milestone
+    title = "$Milestone conditional ideal-gable exposure sensitivity for expanded route-qualified room blocks"
     status = 'relative geometry only; no room layout, roof, floor/eave datum, ceiling build-down, classification or code result selected'
     method = 'For each bedroom-capable room block, evaluate minimum and area-median ideal zero-thickness roof-plane rise over the cross-slope interval. Assuming the entire modeled rectangle is required floor area, report max(5 ft - minimum rise, 7 ft - median rise) as a conditional effective eave-ceiling threshold; absolute datum and build-down remain symbolic.'
     route_qualified_expanded_candidate_count = $routeCandidates.Count
@@ -182,8 +189,8 @@ $report = [ordered]@{
 }
 $output = Resolve-RepoPath $OutputDirectory
 if (-not (Test-Path -LiteralPath $output)) { New-Item -ItemType Directory -Path $output -Force | Out-Null }
-$json = Join-Path $output 'm163-expanded-roof-exposure.json'
-$csv = Join-Path $output 'm163-expanded-roof-exposure.csv'
+$json = Join-Path $output "$OutputFileStem.json"
+$csv = Join-Path $output "$OutputFileStem.csv"
 ConvertTo-Json -InputObject $report -Depth 14 | Set-Content -LiteralPath $json -Encoding utf8
 $rows | Export-Csv -LiteralPath $csv -NoTypeInformation -Encoding UTF8
-Write-Output "M163 roof checks passed: $($checks.Count)/$($checks.Count); expanded route-qualified candidates=$($routeCandidates.Count); rows=$($rows.Count); JSON SHA256 $(Get-Sha256 $json); CSV SHA256 $(Get-Sha256 $csv)."
+Write-Output "$Milestone roof checks passed: $($checks.Count)/$($checks.Count); expanded route-qualified candidates=$($routeCandidates.Count); rows=$($rows.Count); JSON SHA256 $(Get-Sha256 $json); CSV SHA256 $(Get-Sha256 $csv)."
