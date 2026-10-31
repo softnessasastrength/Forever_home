@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M235 — Revalidate the selected-D geometry and IFC baseline
+
+- Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
+- Both selected-D generations pass **43/43** geometry checks, each produces seven files with byte-identical hashes, and all three SVGs per run parse as XML. The retained RVT/IFC pair passes **26/26** checks with zero errors; IFC2X3 schema, levels, 21 spaces and their source-matching attributes pass.
+- Protected source, RVT and IFC hashes remain `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, `C6CED6ACD0E59E49EA0E9821153204FC81ED6CEDE2FCD4F4D7E387C0ACEFD6D0`, and `56251F4754567C78EBB657EC2B99894958C15EF73663F737742F3F36A8472F6F`. Report: `.local/revalidation/M235-baseline/baseline-validation.json`.
+- This validates the room-block source and retained space-study RVT/IFC only. Native construction categories are still empty; no physical building or compliance conclusion follows. See `Architecture/M235_Baseline_Revalidation_2026-10-31/README.md`.
+
 ## M234 — Repair RevitPilot parsing for the selected-D UTF-8 BOM
 
 - A live Revit M219 execution reached the authorized exact-path/hash prompt and Load Once was selected. The M219 command failed immediately because `ReadPinnedJson` passed selected-D's leading UTF-8 BOM to `System.Text.Json`; no output folder, RVT, or study manifest was created.
