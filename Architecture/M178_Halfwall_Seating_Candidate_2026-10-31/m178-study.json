@@ -1,0 +1,106 @@
+﻿{
+    "schema":  "forever-home-m178-halfwall-seating-candidate-v1",
+    "status":  "unapproved rotated kitchen/open-plan proposal",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Direction_D_Social_Route_Study_2026-10-27/study.json":  "23a59ff5539bc7a7d7a972d42e31ec21bf4a6bc3f4ea04d0fcb70f145d8bb618",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "program_targets":  {
+                            "kitchen_area_sf":  168,
+                            "dining_area_sf":  110
+                        },
+    "candidate":  {
+                      "kitchen_rect_ft":  [
+                                              0,
+                                              0,
+                                              13.5,
+                                              14
+                                          ],
+                      "kitchen_area_sf":  189,
+                      "kitchen_over_target_sf":  21,
+                      "cross_section":  {
+                                            "counter_depth_ft":  2,
+                                            "counter_island_aisle_ft":  3.5,
+                                            "island_width_ft":  4,
+                                            "island_halfwall_aisle_ft":  3.5,
+                                            "halfwall_thickness_ft":  0.5,
+                                            "total_ft":  13.5
+                                        },
+                      "perimeter_run_ft":  12.5,
+                      "island_rect_ft":  [
+                                             5.5,
+                                             3,
+                                             4,
+                                             8
+                                         ],
+                      "assumed_stool_rect_ft":  [
+                                                    5.5,
+                                                    11,
+                                                    4,
+                                                    2
+                                                ],
+                      "halfwall_rect_ft":  [
+                                               13,
+                                               0,
+                                               0.5,
+                                               7
+                                           ],
+                      "opening_length_ft":  6,
+                      "wall_return_ft":  1,
+                      "route_width_in":  36,
+                      "route_centerline_ft":  [
+                                                  [
+                                                      14.5,
+                                                      10
+                                                  ],
+                                                  [
+                                                      11.25,
+                                                      10
+                                                  ],
+                                                  [
+                                                      11.25,
+                                                      22.5
+                                                  ],
+                                                  [
+                                                      8.5,
+                                                      22.5
+                                                  ],
+                                                  [
+                                                      8.5,
+                                                      27.5
+                                                  ]
+                                              ],
+                      "route_aisle_margins_in":  [
+                                                     3,
+                                                     3
+                                                 ],
+                      "route_east_spill_past_dining_in":  21,
+                      "dining_rect_ft":  [
+                                             0,
+                                             14,
+                                             11,
+                                             10
+                                         ],
+                      "table_clearance_in":  {
+                                                 "west_in":  36,
+                                                 "east_in":  36,
+                                                 "south_in":  42,
+                                                 "north_in":  42
+                                             },
+                      "porch_rect_ft":  [
+                                            -0.5,
+                                            24.5,
+                                            12,
+                                            10
+                                        ]
+                  },
+    "conclusion":  "The rotated 13.5 x 14 ft test envelope carries the 12.5 ft run and 13.5 ft counter/aisle/island/aisle/wall section, with the island at 42 in from both counter and half-wall and a 36 in route through the 6 ft opening. The kitchen is +21 sf over its area target. Two 24 in stool proxies occupy the full 4 ft island end with no side allowance. Dining-route spill and all unverified conditions remain explicit; no layout is selected.",
+    "limitations":  [
+                        "Room block is unapproved; target areas do not approve its 13.5 x 14 ft shape.",
+                        "The assumed seating on the 4 ft island end is not confirmed by product geometry or owner selection.",
+                        "Route spills east of dining into unassigned adjacent space; pantry and other room conflicts are not evaluated.",
+                        "Appliance-open envelopes, occupied/pulled-back seating, physical door clear width, thresholds, shell fit, site, service routes, Revit and IFC are not validated.",
+                        "No code compliance, accessibility, structural safety, certification, permit approval or construction readiness is established."
+                    ]
+}
