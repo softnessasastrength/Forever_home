@@ -1,0 +1,408 @@
+{
+    "schema":  "forever-home-m197-kitchen-envelope-route-search-v1",
+    "status":  "pass",
+    "design_result":  "no_route_in_tested_width_samples",
+    "method":  "Quarter-foot kitchen-width samples from M178 width through source M-02 width; fixed 14-ft depth and one M195 rotated dining/porch arrangement; each uses the M186 full-shell 36-in route grid.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M192_Rotated_Dining_Candidate_2026-10-31/artifacts/m192-rotated-dining-candidate.json":  "f1bda1f5f6d4713a45c85fae04c6738f1c97f8ed1f7af838835fe6639dbe48a4",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Decisions/2026-10-31_Kitchen_Area_Priority.md":  "27f4eff0f92c1472527b37330a25c5f55d15e493c0b8f8bca7516726c068fa2c"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "kitchen_search":  {
+                           "minimum_width_ft":  13.5,
+                           "maximum_width_ft":  17.333333333333332,
+                           "sample_step_ft":  0.25,
+                           "depth_ft":  14,
+                           "area_target_sf":  168,
+                           "island_body_ft":  [
+                                                  8,
+                                                  4
+                                              ],
+                           "opening_width_ft":  6,
+                           "area_samples":  17,
+                           "first_route_passing_sample":  null,
+                           "samples":  [
+                                           {
+                                               "kitchen_width_ft":  13.5,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  189,
+                                               "area_over_168sf_target":  21,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  13.75,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  192.5,
+                                               "area_over_168sf_target":  24.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  14,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  196,
+                                               "area_over_168sf_target":  28,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  14.25,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  199.5,
+                                               "area_over_168sf_target":  31.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  14.5,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  203,
+                                               "area_over_168sf_target":  35,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  14.75,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  206.5,
+                                               "area_over_168sf_target":  38.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  15,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  210,
+                                               "area_over_168sf_target":  42,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  15.25,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  213.5,
+                                               "area_over_168sf_target":  45.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  15.5,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  217,
+                                               "area_over_168sf_target":  49,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  15.75,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  220.5,
+                                               "area_over_168sf_target":  52.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  16,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  224,
+                                               "area_over_168sf_target":  56,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  16.25,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  227.5,
+                                               "area_over_168sf_target":  59.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  16.5,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  231,
+                                               "area_over_168sf_target":  63,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5296,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  16.75,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  234.5,
+                                               "area_over_168sf_target":  66.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5292,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  17,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  238,
+                                               "area_over_168sf_target":  70,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5288,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  17.25,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  241.5,
+                                               "area_over_168sf_target":  73.5,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5283,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           },
+                                           {
+                                               "kitchen_width_ft":  17.333333333333332,
+                                               "kitchen_depth_ft":  14,
+                                               "kitchen_area_sf":  242.6667,
+                                               "area_over_168sf_target":  74.6667,
+                                               "island_ft":  [
+                                                                 8,
+                                                                 4
+                                                             ],
+                                               "opening_width_ft":  6,
+                                               "path_found":  false,
+                                               "route_length_ft":  null,
+                                               "route_turns":  null,
+                                               "reachable_nodes":  5238,
+                                               "nearest_door_manhattan_ft":  12,
+                                               "checks_passed":  29,
+                                               "checks_total":  29,
+                                               "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                           }
+                                       ]
+                       },
+    "route_contract":  {
+                           "width_in":  36,
+                           "grid_step_ft":  0.25,
+                           "test_shell_ft":  [
+                                                 40,
+                                                 42
+                                             ],
+                           "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                       },
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  6,
+                   "total":  6,
+                   "items":  [
+                                 {
+                                     "id":  "width_samples_span_m178_to_source_m02",
+                                     "pass":  true,
+                                     "detail":  "Quarter-foot cross-section increments reach, but do not exceed, the source M-02 width."
+                                 },
+                                 {
+                                     "id":  "every_embedded_m186_contract_passes",
+                                     "pass":  true,
+                                     "detail":  "Each generated full-shell search completed all source and route-contract checks."
+                                 },
+                                 {
+                                     "id":  "larger_island_preserved",
+                                     "pass":  true,
+                                     "detail":  "The 8 x 4 ft island source envelope is unchanged."
+                                 },
+                                 {
+                                     "id":  "B_unassigned",
+                                     "pass":  true,
+                                     "detail":  "Pantry-side M-06/B remains unassigned throughout the study."
+                                 },
+                                 {
+                                     "id":  "source_selected_d_unchanged",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source hash remains protected."
+                                 },
+                                 {
+                                     "id":  "sweep_is_explicitly_nonselecting",
+                                     "pass":  true,
+                                     "detail":  "Width samples are a bounded sensitivity, not selected architectural dimensions."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "Only kitchen width varies; depth, counter run, island, stool proxy, opening elevation, dining/table/chair proxies and porch door remain fixed.",
+                        "A first route-passing sample would be a minimum only along this one-dimensional quarter-foot sweep and this one dining arrangement, not a global minimum or approved dimension.",
+                        "The added cross-section is test envelope only; actual walls, appliances, furniture movement, doors, thresholds, site geometry, services and tolerances are not modeled.",
+                        "A route proxy does not establish code compliance, accessibility, structural adequacy, professional approval, permit approval or construction readiness.",
+                        "Revit, IFC, selected-D and Incoming RFA files are unchanged; M-06/B stays unassigned."
+                    ]
+}

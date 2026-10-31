@@ -2071,6 +2071,29 @@ Acceptance criteria:
 
 Status: Complete as a massing-direction record. The owner selected a single main gable with simpler porch roof. No pitch or structural specification is selected. See `Decisions/2026-10-31_Roofline_Concept.md`.
 
+## M197 — Sweep kitchen envelope width against the social route — 2026-10-31
+
+Acceptance criteria:
+
+- Sweep kitchen width from the M178 13.5-ft candidate through the documented source M-02 width, preserving 14-ft depth, the larger 8 × 4 ft island, 12.5-ft counter run, six-foot opening and other fixed proxies.
+- Re-run the M186 full-shell 36-in search at each sample while keeping dining/porch geometry and M-06/B protection constant.
+- Bind inputs by source hashes; report area ranking, nearest reachable point, path status and explicit limitations.
+- Reproduce all artifacts byte-for-byte in an independent PowerShell 5.1 run. Do not modify selected-D, RVT/IFC or Incoming RFAs.
+
+Status: Complete as a bounded one-axis sensitivity. **0/17** width samples from 13.5 to 17⅓ ft find a route; all embedded M186 checks pass 29/29, and M197 passes 6/6 in two byte-identical runs. Nearest reachable point remains `(4,14)` ft, 12 ft from the tested porch door. Kitchen widening alone did not solve the route and does not establish a minimum. Next: sweep dining/chair-use placement and door alignment in the authorized shell, preserve B and report alternate A separately. See `Architecture/M197_Kitchen_Envelope_Route_Search_2026-10-31/README.md`.
+
+## M198 — Sweep porch-door alignment against the dining approach — 2026-10-31
+
+Acceptance criteria:
+
+- Keep the porch test footprint at its documented 12 × 10 ft and the five-foot opening size; vary door center independently of dining within the porch face.
+- Keep the M178 13.5 × 14 ft kitchen, 8 × 4 ft island, M195 rotated table/chair/use proxies, 36-in route and M-06 windows fixed for the first door-only sensitivity.
+- Re-run M186 for every tested door center; report paths, nearest reachable points and any contact/overlap with alternate A. Keep pantry-side B clear and unassigned.
+- Bind inputs by source hash; reproduce JSON/checks/CSV byte-for-byte in independent PowerShell 5.1 runs. No selected-D, RVT/IFC or Incoming RFA changes.
+- Treat all door positions as sensitivity samples, not an owner-selected opening or code-compliant design.
+
+Status: Authorized for exploration. Owner directed the search to vary porch-door alignment independently of dining. Door center, final door type and actual clear width remain unselected.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:
