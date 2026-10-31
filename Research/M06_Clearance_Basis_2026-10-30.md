@@ -30,3 +30,7 @@ The project has not established the municipality, applicable permit/code path, a
 - Keep M-06 B unassigned until those gates pass together.
 
 No plan, selected-D source, fixture selection, or room assignment was changed by this research.
+
+## Status recheck - 2026-10-31
+
+Connecticut DAS's [current State Building Code regulations](https://portal.ct.gov/das/home/office-of-state-building-inspector/connecticut-state-building-code/regulations?language=en_US) were rechecked on 2026-10-31. The page continues to list the 2022 CSBC as current for permit applications filed from October 1, 2022, based on the 2021 International Codes, including the 2021 IRC. DAS's [code-adoption process page](https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process) still says the planned 2026 effective date is delayed while approval by the Legislative Regulation Review Committee is pending. The official 2022 CSBC PDF is an amendments document to the adopted model codes; it does not by itself establish the project's local applicability or replace review of the underlying adopted IRC provisions. The ICC's [2021 IRC plan-review material](https://www.iccsafe.org/wp-content/uploads/Day-3-2021-IRC-Performing-Residential-Plan-Reviews.pdf) depicts the 15-in / 30-in / 21-in fixture-spacing screen alongside R307.1 and P2705.1. The exact project jurisdiction, permit date, classification, accessibility scope and building-official interpretation are still unknown. Retain these values only as a provisional residential layout screen.
