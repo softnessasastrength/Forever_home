@@ -2226,6 +2226,17 @@ Acceptance criteria:
 - Preserve selected-D/RVT/IFC/RFAs/remote state; do not select a kitchen size or claim code/structural suitability.
 
 Status: Complete as a bounded depth/route sensitivity. Retained run and two independent PowerShell 5.1 replays pass 13/13 checks and reproduce JSON/checks/CSV byte-for-byte; all four embedded M186 runs pass 31/31. The 168.75-sf 12.5-ft case finds a route but the assumed stool-use block extends 6 in beyond the kitchen envelope. At 175.5 sf (13-ft depth), all source blocks fit but the stool proxy is tangent to the boundary; 182.25 sf (13.5-ft depth) leaves 6 in proxy margin. No kitchen size is selected and no product/code fit is established. See `Architecture/M212_Kitchen_Depth_Sweep_2026-10-31/README.md`.
+
+## M213 - Quarter-foot kitchen proxy-margin interpolation - 2026-10-31
+
+Acceptance criteria:
+
+- Recheck the 13.25-ft depth between M212's tangent 13-ft envelope and 13.5-ft envelope, retaining the 13.5-ft cross-section, 8 × 4 ft island, 12.5-ft run, 5.5-ft social shift, x=9-ft door and M211 3-in A search reserve.
+- Center the 12.5-ft casework run; quantify test area, difference from 168 sf and stool-use proxy margin; require a route and full M186 checks.
+- Bind source hashes and selected-D, preserve A/B and all source files, and reproduce retained JSON/checks/CSV byte-for-byte in two PowerShell runs.
+- State that 3 in is an analysis increment from the quarter-foot grid, not a product/code requirement. Do not select this dimension.
+
+Status: Complete as one bounded interpolation. Retained output and two independent PowerShell 5.1 replays pass 13/13 wrapper checks and reproduce JSON/checks/CSV byte-for-byte; its M186 route passes 31/31. The 13.25-ft depth gives a 178.875-sf envelope (+10.875 sf from program) and a 3-in proxy margin with a 33.5-ft route. The margin is a quarter-foot grid sensitivity, not product/code guidance. No kitchen size is selected. See `Architecture/M213_Kitchen_Margin_Sensitivity_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:

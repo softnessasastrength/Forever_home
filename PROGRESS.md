@@ -2214,3 +2214,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Retained plus two independent PowerShell 5.1 replays pass 13/13 wrapper checks and reproduce JSON/checks/CSV byte-for-byte. All four M186 runs pass 31/31 and find a route.
 - The 12.5-ft depth produces 168.75 sf but leaves 6 in of the assumed stool-use proxy outside. At 13 ft / 175.5 sf, the run/island/stool proxies fit with zero minimum margin. At 13.5 ft / 182.25 sf, the proxy margin is 6 in. The smaller cases are analytical envelopes, not selected room dimensions or fit-ready designs.
 - No kitchen size selected. Selected-D, RVT, IFC, Incoming RFA and remote state unchanged; M-06/B remains unassigned. No code, accessibility, structural, professional, permit or construction-readiness result follows. Hashes and assumptions are in the M212 README.
+
+## M213 - Quarter-foot kitchen proxy-margin interpolation - 2026-10-31
+
+- Added `Tools/search_m213_kitchen_margin_sensitivity.ps1` and `Architecture/M213_Kitchen_Margin_Sensitivity_2026-10-31/`. It tests a 13.25-ft depth between M212's 13- and 13.5-ft cases, retaining the island, casework, route and A/B protection.
+- Retained and two independent PowerShell 5.1 replays pass 13/13 wrapper checks and reproduce JSON/checks/CSV byte-for-byte; the M186 route passes 31/31.
+- At 13.25 × 13.5 ft, area is 178.875 sf (+10.875 sf vs program); the assumed stool-use proxy has 3 in edge margin and the route is 33.5 ft. This is a quarter-foot analysis sensitivity, not a product/code dimension. No kitchen size selected.
+- Selected-D, RVT, IFC, Incoming RFAs and remote state unchanged; M-06/B remains unassigned. No code, accessibility, structural, professional, permit or construction-readiness result follows.
