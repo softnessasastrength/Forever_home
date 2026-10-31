@@ -1927,4 +1927,18 @@ Status: Complete as an unapproved rotated cross-section and route proposal. The 
 
 Status: Complete as a route-overlay comparison. M178's straight east-aisle route intersects the M-04 pantry block in the unapproved bath-first alternative. A westward dogleg before the pantry's south edge clears all modeled pantry, furniture, island, cabinet and wall rectangles, passes the nominal porch door and reaches 3 ft into the porch. It passes 21/21 in the retained package and two identical scratch replays. The short connector spills 21 in east of the dining target below the pantry; the long leg uses dining's unseated east band and is tangent to the table edge. This remains an unapproved comparison, not a selected plan or whole-house fit. See `Architecture/M179_Pantry_Route_Clearance_Audit_2026-10-31/README.md`.
 
-Next: M180 should evaluate whether the 21 in connector spill and dining-edge route fit the actual shell and adjacent-room reservations, then compare the dogleg's table/chair operation and door approach. Retain the +21 sf kitchen trade-off. M-06/B remains unassigned pending exact fixture geometry, an applicable cited clearance basis, approach and service route. Do not alter selected-D or claim compliance.
+Completed by M180 below; the unassigned inter-room band and physical door/furniture operation remain open.
+
+## M180 - Trace the social route into the living block and shell - 2026-10-31
+
+Acceptance criteria:
+
+- Bind M179 and bath-first source fingerprints; establish whether the route actually begins inside source M-01.
+- Extend a 36 in coordinate route from within M-01 through the proposed living opening, around modeled blocks and into the nominal porch-door span.
+- Check modeled obstacle intersections, pantry separation, route/opening dimensions and route/porch extents against the hypothetical 40 x 42 ft test shell.
+- Emit deterministic JSON/CSV checks; replay twice in PowerShell 5.1 and require byte-identical results.
+- Preserve selected-D, incoming RFAs and M-06/B unassigned status. Make no room/layout selection or Revit/IFC edit.
+
+Status: Complete as an unapproved coordinate-overlay correction. M179's start `(14.5, 10)` was outside the translated M-01 living rectangle. M180 starts at `(19.5, 10)` inside it, then crosses a 4 ft 4 in unassigned band between candidate M-02 and M-01. The 36 in corridor clears all modeled obstacles with zero positive-area intersections, crosses the nominal 6 ft opening with 18 in margins, leaves a derived 6 in pantry gap, reaches the nominal porch-door span and fits the test-shell extent. It passes 12/12 checks in the retained package and two independent replays; all three artifacts match byte-for-byte. No physical opening, door operation, room assignment, services or whole-house fit is validated. See `Architecture/M180_Living_Shell_Route_Audit_2026-10-31/README.md`.
+
+Next: test the proposed connector against the actual adjoining room-block perimeter and door reservations with candidate-local coordinates, then decide what program occupies the 4 ft 4 in kitchen-to-living band. Keep M-06/B unassigned until fixture geometry, applicable cited clearance, approach and plausible service route all support it.
