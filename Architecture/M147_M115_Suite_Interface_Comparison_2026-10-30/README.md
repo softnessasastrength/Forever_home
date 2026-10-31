@@ -29,6 +29,8 @@ All 73 candidates contain the six expected 0.5 ft wall-band-separated room conta
 
 In the east+north group, the 3.5 ft minimum occurs at U-01/C-PRIVATE in 16 layouts, C-PRIVATE/U-02 in 10, U-03/U-06 in 20, U-06/U-04 in 20, and U-01/U-05 in two; U-02/U-03 remains at least 9.166667 ft. Counts overlap because a layout can have more than one boundary at the minimum. In the north+west group, only U-01/C-PRIVATE reaches the 3.5 ft minimum, in three layouts. This highlights a boundary-length tradeoff; it does not rank a preferred plan.
 
+For the specific U-01/C-PRIVATE pinch point, 48/64 east+north layouts have at least 6.5 ft of block contact: 32 match the M145 NE-19 comparison and 16 provide 10 ft. The other 16 have only 3.5 ft, matching the M145 NE-24 tight case. In the north+west group, six layouts provide 6.5 ft and three provide 3.5 ft. Thus many route-compatible arrangements preserve or improve the 6.5 ft contact, while the all-interface margin screen still finds zero reserve at some other boundary in 44 of the east+north cases. Candidate-level details and route-side samples are in the CSV files; none is selected.
+
 ## Limits
 
 - 38 1/3 x 40 ft is an exploration-only shell, and M115 is an incomplete bounded search.
