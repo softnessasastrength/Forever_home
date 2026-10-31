@@ -2048,6 +2048,19 @@ Acceptance criteria:
 
 Status: Complete as an owner-priority record and evidence refresh. The owner selected kitchen-area expansion over reducing the larger island. M178 passes 26/26 on both runs for a 13.5 × 14 ft / 189 sf test kitchen (+21 sf), 8 × 4 ft island and 42-in aisle proxies, but its assumed stool positions consume all 4 ft of the island end and its fixed route spills 21 in beyond dining. M186 passes 29/29 on both runs but finds no route through its bounded 40 × 42 ft arrangement: 5,299/23,088 nodes reached, nearest point 10 ft from the nominal porch door. This does not prove all layouts fail. M-06/B remains unassigned; selected-D remains unchanged. See `Decisions/2026-10-31_Kitchen_Area_Priority.md`.
 
+## M195 — Owner-directed minimum-area social layout search — 2026-10-31
+
+Acceptance criteria:
+
+- Search for the smallest kitchen test area that carries the larger 8 × 4 ft island and a continuous 36-in living-to-porch route; do not treat the existing 189-sf proposal as a limit or final dimension.
+- Allow dining and porch test footprints to move within the hypothetical 40 × 42 ft shell, preserving their documented 11 × 10 ft and 12 × 10 ft sizes for the first search.
+- Bind all room/furniture/product inputs to source files and SHA256; include half-wall, perimeter casework, island, two stool-use envelopes, dining table/chairs/use zones, porch openings and the adjacent fixed room blocks.
+- Keep pantry-side M-06/B unassigned and clear of route geometry. Report use of alternate A separately as a trade-off; do not model either search window as an assigned room.
+- Record search bounds/resolution, area ranking, margins, spill, and a fully reproducible path only when the swept route clears every included proxy. Re-run from fresh PowerShell 5.1 scratch directories and compare artifacts byte-for-byte.
+- Keep selected-D, source RVT/IFC and Incoming RFAs unchanged; no compliance, accessibility, structural, permit or construction-readiness claim.
+
+Status: In progress. Owner selected the minimum-area search and authorized dining/porch repositioning within the test shell. The M187 sensitivity baseline was replayed twice; both runs pass 14/14 and match all three summary artifacts byte-for-byte. It confirms that the existing 189-sf M178 case has no route while both diagnostic zones are obstacles. Removing only west A restores a 28.5-ft sampled path that remains clear of B but touches the island/stool proxies with zero minimum reserve and uses unassigned space; removing dining furniture instead gives a 54.5-ft path. Neither is a candidate. Next: vary dining/porch placement and kitchen envelope with a bounded search that keeps B protected, then compare alternate-A use as a separately labeled fallback trade-off.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:
