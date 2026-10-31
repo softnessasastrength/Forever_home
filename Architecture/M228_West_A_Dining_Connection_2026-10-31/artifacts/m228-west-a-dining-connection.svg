@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="636" height="664" viewBox="0 0 636 664">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="38" y="22" font-size="16" font-family="Arial" font-weight="bold">M228 - west-A access adjacency proposal (schematic)</text>
+<rect x="38" y="38" width="560" height="588" fill="none" stroke="#8b97a8" stroke-dasharray="5 4"/>
+<rect x="47.33" y="406.67" width="224" height="210" fill="#e8edf4" stroke="#27364b" stroke-width="1.5"/><text x="52.33" y="422.67" font-size="11" font-family="Arial">M-01 Living</text>
+<rect x="346" y="392.67" width="242.67" height="224" fill="#f5ead5" stroke="#27364b" stroke-width="1.5"/><text x="351" y="408.67" font-size="11" font-family="Arial">M-02 Kitchen</text>
+<rect x="518.67" y="287.67" width="70" height="98" fill="#e8e8e8" stroke="#27364b" stroke-width="1.5"/><text x="523.67" y="303.67" font-size="11" font-family="Arial">M-04 Pantry</text>
+<rect x="278.33" y="448.67" width="60.67" height="168" fill="#dce9f7" stroke="#27364b" stroke-width="1.5"/><text x="283.33" y="464.67" font-size="11" font-family="Arial">M-05 Hall</text>
+<rect x="206" y="239.83" width="72.33" height="159.83" fill="#e4f1e4" stroke="#27364b" stroke-width="1.5"/><text x="211" y="255.83" font-size="11" font-family="Arial">M-06 A (protected, unassigned)</text>
+<rect x="334.33" y="287.67" width="184.33" height="98" fill="#f3f3f3" stroke="#27364b" stroke-width="1.5"/><text x="339.33" y="303.67" font-size="11" font-family="Arial">M-06 B (unassigned)</text>
+<rect x="52" y="266.67" width="154" height="140" fill="#f9e4c8" stroke="#27364b" stroke-width="1.5"/><text x="57" y="282.67" font-size="11" font-family="Arial">M-03 dining proposal 11 x 10</text>
+<polyline points="320.33,476.67 306.33,476.67 306.33,214.17 173.33,214.17 173.33,147.67" fill="none" stroke="#2878b8" stroke-width="4" stroke-dasharray="7 4"/>
+<text x="38" y="644" font-size="11" font-family="Arial">M-01/M-05 still have a 6-in gap; no door, bath fit, or walkable route is established.</text>
+</svg>

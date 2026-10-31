@@ -2,6 +2,14 @@
 
 Updated: 2026-10-31
 
+## M228 - West A to living via the owner-directed dining study block
+
+- Added `Tools/analyze_m228_west_a_dining_connection.ps1` and a separate schematic proposal. It pins selected-D, the owner's 11 x 10 ft dining/movement direction, west-A protection, M215 and M186 coordinate-frame sources.
+- The derived dining rectangle `[1, 15.666667, 11, 10]` ft (110 sf) directly abuts west A over 9.5 ft and M-01 Living over 11 ft, with no overlap into A, B, the fixed room blocks, or the transformed M215 36-in porch-route corridor. Route separation from dining is 2.25 ft. A/B remain unassigned.
+- Reproduction: run the script to the retained `Architecture/M228_West_A_Dining_Connection_2026-10-31/artifacts/` directory and to `.local/revalidation/M228-replay-1/` and `-2/`. All three runs pass **12/12**; JSON/checks/SVG hashes match byte-for-byte (`F4AB50FD…119FF`, `4AE678CF…7743`, `3AD3A99E…FE42`); SVG parses as XML.
+- The M215 route uses the M186 local frame. M228 pins BathFirst M-02 origin `(0.666667, 0.666667)` ft and translates before comparing with selected-D global coordinates. The selected-D M-01/M-05 blocks still have a 0.5-ft gap across a 12-ft edge; no hall-to-bath opening, actual door, approach, privacy, fixture fit, or service routing is established. Candidate location and access are not selected.
+- Revit was observed at Home with no project open. The authorized AddInId, in-repository M219 DLL path/hash (`64396451…98B1A`) and preserved registration backup were verified before restart. Revit restarted to its trial splash, but Computer Use rejects interaction with the nested WebView target. The exact DLL prompt was not reached; no DLL was loaded and no RVT was generated. No selected-D, RVT/IFC, source RFA, or remote state changed.
+
 ## M225 — Exact-SKU public resource audit for M-06
 
 - Rechecked American Standard's public page for selected model 610AA001.020 and followed both linked PDF resources. The specification PDF identifies 211AA.104 (revised 2013), predecessor bowl 3195A.101 and tank 4225A.104; the installation guide identifies the older 211AA/211BA/211CA series. Neither resource provides exact 610AA assembly geometry.

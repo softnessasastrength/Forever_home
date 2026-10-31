@@ -1,0 +1,196 @@
+﻿{
+    "schema":  "forever-home-m228-west-a-dining-connection-v1",
+    "status":  "pass",
+    "candidate_status":  "derived schematic adjacency proposal; not selected; not a room assignment",
+    "source_sha256":  {
+                          "selected_d":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                          "dining_decision":  "da0ba56c557ca7ad141a6e207663d68ca99cb67a984d1df8c1ac1bafd6a693bf",
+                          "west_a_protection":  "a5cf98360b75314f4d3486f925e9d860465bb33d1ecfce9b0cbb39ce0eff853b",
+                          "m215":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1",
+                          "bath_first":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                          "m186_script":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732"
+                      },
+    "owner_directions":  {
+                             "west_A_protected":  true,
+                             "east_B_unassigned":  true,
+                             "dining_target_ft":  [
+                                                      11,
+                                                      10
+                                                  ],
+                             "dining_and_porch_movement_authorized":  true
+                         },
+    "source_room_blocks":  {
+                               "living":  {
+                                              "id":  "M-01",
+                                              "name":  "Living room",
+                                              "x":  0.66666666666666663,
+                                              "y":  0.66666666666666663,
+                                              "w":  16,
+                                              "h":  15
+                                          },
+                               "hall":  {
+                                            "id":  "M-05",
+                                            "name":  "Front arrival / hall",
+                                            "x":  17.166666666666668,
+                                            "y":  0.66666666666666663,
+                                            "w":  4.333333333333333,
+                                            "h":  12
+                                        },
+                               "west_A":  {
+                                              "id":  "M06-A",
+                                              "name":  "Protected west bath search window",
+                                              "x":  12,
+                                              "y":  16.166666666666668,
+                                              "w":  5.1666666666666679,
+                                              "h":  11.416666666666664
+                                          },
+                               "east_B":  {
+                                              "id":  "M06-B",
+                                              "name":  "Unassigned east bath search window",
+                                              "x":  21.166666666666668,
+                                              "y":  17.166666666666668,
+                                              "w":  13.166666666666668,
+                                              "h":  7
+                                          }
+                           },
+    "coordinate_frames":  {
+                              "selected_d":  "global plan coordinates from OwnerSelectedD",
+                              "m215_route":  "M186 local coordinates; translated to selected-D frame by adding the pinned BathFirst M-02 origin",
+                              "m215_origin_source_ft":  [
+                                                            0.66666666666666663,
+                                                            0.66666666666666663
+                                                        ]
+                          },
+    "dining_candidate":  {
+                             "rect_ft":  [
+                                             1,
+                                             15.666667,
+                                             11,
+                                             10
+                                         ],
+                             "area_sf":  110,
+                             "translation_from_M215_dining_ft":  [
+                                                                     0.333333,
+                                                                     -5
+                                                                 ],
+                             "contacts":  {
+                                              "west_A_to_dining":  {
+                                                                       "axis":  "x",
+                                                                       "edge_length_ft":  9.5
+                                                                   },
+                                              "dining_to_living":  {
+                                                                       "axis":  "y",
+                                                                       "edge_length_ft":  11
+                                                                   },
+                                              "living_to_hall":  null
+                                          },
+                             "overlaps":  [
+                                              {
+                                                  "with":  "M-02",
+                                                  "overlap_sf":  0
+                                              },
+                                              {
+                                                  "with":  "M-04",
+                                                  "overlap_sf":  0
+                                              },
+                                              {
+                                                  "with":  "M-05",
+                                                  "overlap_sf":  0
+                                              },
+                                              {
+                                                  "with":  "M06-A",
+                                                  "overlap_sf":  0
+                                              },
+                                              {
+                                                  "with":  "M06-B",
+                                                  "overlap_sf":  0
+                                              }
+                                          ],
+                             "m215_36in_route_minimum_separation_ft":  2.25,
+                             "m215_36in_route_overlap_sf_by_segment":  [
+                                                                           0,
+                                                                           0,
+                                                                           0,
+                                                                           0
+                                                                       ],
+                             "m215_36in_route_overlap_with_A_sf_by_segment":  [
+                                                                                  0,
+                                                                                  0,
+                                                                                  0,
+                                                                                  0
+                                                                              ],
+                             "m215_36in_route_overlap_with_B_sf_by_segment":  [
+                                                                                  0,
+                                                                                  0,
+                                                                                  0,
+                                                                                  0
+                                                                              ]
+                         },
+    "hall_interface":  {
+                           "living_hall_gap_ft":  0.5,
+                           "projected_edge_ft":  12,
+                           "direct_block_contact":  false,
+                           "actual_opening_or_walkable_route_modeled":  false
+                       },
+    "passed_checks":  12,
+    "total_checks":  12,
+    "checks":  [
+                   {
+                       "id":  "selected_D_source_hash_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "owner_dining_target_and_movement_source_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "west_A_protection_source_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M06_and_both_windows_stay_unassigned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "11x10_candidate_inside_40x42_test_shell",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "no_overlap_with_fixed_rooms_A_or_B",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_touches_protected_A_without_consuming_it",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_touches_living",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_dining",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_protected_A",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_unassigned_B",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "hall_link_explicitly_remains_unresolved",
+                       "pass":  true
+                   }
+               ],
+    "limitations":  [
+                        "This is room-block adjacency and overlap analysis only. It does not place walls, doors, jambs, swings, thresholds, furniture or privacy screens.",
+                        "A direct A-to-dining and dining-to-living contact does not prove an opening, public approach, or usable route through the half bath.",
+                        "The selected-D M-05/M-01 blocks remain separated by a 0.5-ft modeled gap; this report does not reinterpret that gap as a wall or doorway.",
+                        "The M215 path is stored in M186 local coordinates. This script translates it by the pinned BathFirst M-02 origin before comparing against selected-D global room blocks.",
+                        "The route comparison reuses only the M215 36-in swept corridor proxy. It does not establish code/accessibility adequacy, occupied movement, or a complete connected path from hall to bath.",
+                        "The 11 x 10 ft dining rectangle is the owner-directed study target and this position is a derived proposal. It does not alter selected-D or the M215 selected candidate.",
+                        "No M-06 fixture geometry, lavatory, applicable project-specific clearance, services, or room assignment is evaluated. A and B stay unassigned."
+                    ]
+}
