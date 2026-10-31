@@ -2094,6 +2094,17 @@ Acceptance criteria:
 
 Status: Authorized for exploration. Owner directed the search to vary porch-door alignment independently of dining. Door center, final door type and actual clear width remain unselected.
 
+## M199 — Record outdoor patio zone relationships — 2026-10-31
+
+Acceptance criteria:
+
+- Record separate dining and fire/lounge zones connected by a clear walking band.
+- Reserve a future fireplace area without selecting product, type, fuel or exact location.
+- Preserve a clear route toward a future pool without assigning pool position, dimensions or equipment.
+- Update the outdoor concept and handoff; make no site, grading, code or structural assumptions.
+
+Status: Complete as an adjacency decision. Patio sizing and site fit await survey/location information; see `Decisions/2026-10-31_Patio_Outdoor_Zones.md`.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:

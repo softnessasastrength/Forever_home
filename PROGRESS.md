@@ -2107,3 +2107,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - **0/17** widths find a route. The nearest reachable point remains `(4,14)` ft, 12 ft from the porch-door target. Reachable nodes decrease from 5,296 to 5,238 across the sweep, so additional kitchen width alone does not open the route. The result supports testing the dining/porch approach next, but does not rule out other social layouts.
 - Selected-D remains SHA256 `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`; no selected-D, RVT, IFC or Incoming RFA was changed. M-06/B remains unassigned. No code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
 - Next: sweep dining/table/chair-use placement and porch-door alignment within the authorized shell while protecting B and reporting alternate A as a separate trade-off. Retain kitchen dimensions as proposals only; the global minimum kitchen area remains unresolved.
+
+## M199 — Owner patio zone direction — 2026-10-31
+
+- Owner selected a patio dining zone and a separate fire/lounge zone linked by clear circulation. A future fireplace area is reserved, while type, fuel, product and exact location remain open.
+- Owner directed reserving a clear route toward a future pool; the pool position and dimensions remain unselected.
+- Updated `Architecture/Outdoor_Gathering_Concept_2026-10-31.md` and recorded the decision in `Decisions/2026-10-31_Patio_Outdoor_Zones.md`. The selected Adirondack model's source reference remains to be recovered.
+- No patio size, site placement, orientation, grade, route width, fireplace specification or pool specification was inferred. This is not a site-fitted plan or code/accessibility determination.
