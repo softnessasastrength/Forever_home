@@ -1,0 +1,23 @@
+{
+    "schema":  "forever-home.m06-west-a-hall-adjacency-sensitivity-checks.v1",
+    "result":  "pass",
+    "check_count":  15,
+    "checks":  {
+                   "selected_d_hash_matches":  true,
+                   "m228_report_hash_matches":  true,
+                   "m215_report_hash_matches":  true,
+                   "owner_A_primary_direction_hash_matches":  true,
+                   "owner_direction_keeps_west_A_primary":  true,
+                   "selected_d_m06_and_A_B_remain_unassigned":  true,
+                   "sensitivity_equals_measured_gap":  true,
+                   "moved_living_touches_hall_for_12_ft":  true,
+                   "moved_living_retains_dining_contact":  true,
+                   "dining_still_touches_A":  true,
+                   "no_overlap_with_hall_dining_A_B_kitchen_pantry":  true,
+                   "living_area_is_preserved":  true,
+                   "moved_living_inside_test_shell":  true,
+                   "no_overlap_with_M215_36_in_swept_porch_route":  true,
+                   "selected_d_source_was_not_edited":  true
+               },
+    "route_minimum_gap_to_moved_living_ft":  0.5
+}

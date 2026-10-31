@@ -2,10 +2,18 @@
 
 Updated: 2026-10-31
 
+## M232 — Test a hypothetical M-01 shift for an adjacency chain to west A
+
+- Recorded the owner's “Keep west A primary” direction in a separate addendum so the hash-pinned west-A protection decision remains unchanged.
+- Added `Tools/analyze_m232_west_a_hall_adjacency_sensitivity.ps1` and its source-bound JSON artifacts. The analysis translates M-01 east by its measured 0.5-ft gap to M-05, preserves 240 sf gross area, and tests adjacency through the M228 dining proposal to west A, plus overlaps against fixed blocks and the M215 36-in route proxy. Selected-D was not edited.
+- Retained run and two isolated Windows PowerShell 5.1 replays pass **15/15** and reproduce outputs byte-for-byte: `m232-checks.json` `441E800CD299335D8F9BDAE42B09A75BA29ABBB3022BE7F7427AE5307C7B11DF`; `m232-report.json` `DD324B1B88D73902A03E33144DD4F48694FBB6839DEC86BE1F5F69623EA7A180`.
+- The hypothetical blocks share edges M-05/M-01 12 ft, M-01/M228 dining 10.833333 ft, and dining/west A 9.5 ft. This is room-block adjacency only: it proves no door, opening, walkable path, bath fit, clearances, or plumbing route. The living shift exceeds prior dining/porch movement scope and remains unselected pending owner direction. A/B/M-06 remain unassigned. Revit remains unavailable through the supported CUA surface; no DLL was loaded or RVT generated.
+- Full method and limitations: `Architecture/M232_West_A_Hall_Adjacency_Sensitivity_2026-10-31/README.md`.
+
 ## M231 — Diagram two M230 same-wall envelope examples; confirm west A primary
 
 - Added `Tools/draw_m06_west_a_pair_envelopes.ps1` and an SVG generated solely from the hash-pinned M230 output. It depicts nominal Tresham and the widest source candidate (TOTO Clayton) as **unselected**, with west A's gross boundary, toilet/sink body rectangles, and the provisional spacing/depth-screen labels.
-- Owner clarified the unresolved access choice: **keep west A primary**. Recorded this in the M-06 decision log and M227/M228 reports. This sets search priority only; A's hall approach and door remain unresolved, and A/B/M-06 remain unassigned.
+- Owner clarified the unresolved access choice: **keep west A primary**. Recorded this in the separate M-06 search-priority addendum and M227/M228 reports. This sets search priority only; A's hall approach and door remain unresolved, and A/B/M-06 remain unassigned.
 - All three PowerShell 5.1 runs pass **8/8** checks, parse the SVG as XML, and reproduce both artifacts byte-for-byte: `m231-checks.json` `721C04AD8D6D21B80DC6CCF6EC17DF9B8DC15AAC2EF670133BD39ABD3352538B`; `m231-west-a-pair-envelopes.svg` `E57519854BDD0FBAE535C1F50367719971531657A380A9A131B653ECB3A205AA`. M230's 3.5-in gross reserve before walls/finishes is visually shown; no installed fit is claimed. See `Architecture/M231_West_A_Pair_Envelope_Diagram_2026-10-31/README.md`.
 
 ## M230 — Same-wall toilet/lavatory envelope comparison in protected west A
