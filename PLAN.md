@@ -1638,3 +1638,14 @@ Acceptance criteria:
 - Keep product geometry, actual wall faces, door/approach, accessibility scope, plumbing route and M-06 assignment explicitly unresolved.
 
 Status: Complete as a current research-basis snapshot plus screen replay. Connecticut DAS still lists the 2022 CSBC based on 2021 model codes as current; its 2026 code effective date is delayed pending legislative approval. Both M120 replays pass 14/14 and match the checked-in report/checks hashes. The preliminary 15/30/21 in screen remains a reference only; no local applicability or compliance determination is made. See Architecture/M154_CT_M06_Code_Basis_Recheck_2026-10-30/README.md and Research/M06_Toilet_Options_2026-10-27.md.
+## M155 - Search public sources for exact Champion PRO family and current assembly drawing
+
+Acceptance criteria:
+
+- Search the manufacturer page, current linked technical documents, RevitCity and BIMobject for the exact 610AA001.020 RFA or complete current-SKU plan/installation evidence.
+- Inspect public metadata only; do not enter credentials, create accounts, buy or download gated files, or bypass access controls.
+- Distinguish current-SKU evidence from predecessor (211AA) records and generic families.
+- Record what was checked, exact public findings, and the remaining product-geometry gate without treating search absence as proof that no file exists anywhere.
+- Keep M-06/B and any hall-edge alternative unassigned.
+
+Status: Complete as a bounded public-source search. The manufacturer page still links a 2013 211AA.104 predecessor spec and a 2019 211AA-series installation guide. RevitCity lists a generic “American Standard Toilet” entry from Revit 2011 with no model number and requires login to download. Exact-SKU searches found no public indexed RFA. No gated file was fetched or account used. See Architecture/M155_Champion_Pro_RFA_Public_Source_Check_2026-10-30/README.md; the current 610AA assembly remains unresolved.
