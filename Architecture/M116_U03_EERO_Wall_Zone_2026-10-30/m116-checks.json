@@ -1,0 +1,38 @@
+﻿{
+    "schema":  "forever-home.m116-u03-eero-wall-zone-checks.v1",
+    "passed":  20,
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "M115_archive_hash_matches_independent_audit":  true,
+                   "all_M115_audit_checks_pass":  true,
+                   "selected_D_hash_matches_archived_exploration":  true,
+                   "current_owner_private_only_direction_is_preserved":  true,
+                   "U03_program_remains_hybrid_bedroom_office":  true,
+                   "M115_privacy_subset_has_73_candidates":  true,
+                   "privacy_subset_reaches_all_three_public_room_samples":  true,
+                   "privacy_subset_keeps_sampled_north_side_U02_arrival":  true,
+                   "northeast_privacy_subset_has_64_candidates":  true,
+                   "northwest_privacy_subset_has_9_candidates":  true,
+                   "northeast_candidates_touch_north_and_east_test_edges":  true,
+                   "northwest_candidates_touch_north_and_west_test_edges":  true,
+                   "U03_room_blocks_match_source_dimensions_allowing_rotation":  true,
+                   "gross_U03_room_rectangle_is_125_28_sf_within_programmed_120_to_150_sf":  true,
+                   "gross_north_and_east_edge_arithmetic_is_110_and_164_inches":  true,
+                   "code_note_records_current_2022_basis_and_2026_delay":  true,
+                   "code_note_cites_EERO_requirements_and_open_limitations":  true,
+                   "minimum_area_arithmetic_is_consistent":  true,
+                   "grade_floor_exception_is_not_assumed":  true,
+                   "selected_D_baseline_remains_identical_to_M115_source":  true
+               },
+    "source_hashes_sha256":  {
+                                 "M115_archive":  "11360170f462fc28ffd50b71808de12180331121b0041c2da637458f1eda9fb1",
+                                 "M115_audit":  "986416f2831c5c83dfb8abe8aaf6dda65d42120314b8e121301cd71e401e56f8",
+                                 "selected_D":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_proposal":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "code_basis_note":  "674e5aed7994904568d81edd1c38a234e198f0fc1e3adc35c0693a002d6e21ac",
+                                 "analyzer":  "707ba7b20196b0fee8dd834be6e3ecd1754ab8fd22f0bdccba62a722f64693a0"
+                             }
+}
