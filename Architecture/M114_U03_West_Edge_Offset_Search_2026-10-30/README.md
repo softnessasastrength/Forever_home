@@ -29,7 +29,7 @@ The M37 generator passes **29/29** integrity checks. It expands 810/1,200 nodes,
 
 An exact second M37 run reproduced all five archived generator artifacts byte-for-byte: search, checks, manifest, full route-tested candidate archive and SVG. Two independent M114 audit runs also match byte-for-byte. The M113 audit JSON and summary match their checked-in replay artifacts.
 
-A 100-node balanced/default-root smoke run after the generator change passed **28/28**, reached 96 nodes, and retained roots U-01/U-02/U-04. This is a narrow default-mode regression check, not the full M78 output replay; that longer regression remains outstanding.
+A subsequent full M78 default-mode replay exposed a single provenance-only false field introduced by the U-03 opt-in mode. The generator now emits that field only when enabled. The exact M78 search, checks, SVG and manifest were replayed in ignored scratch with all four hashes matching the retained package, M37 passed 28/28, and the independent candidate validator passed 112/112. The M113, M114 and M115 archived audits also continue to pass 17/17, 19/19 and 21/21 respectively. See M118 in `PLAN.md` and `PROGRESS.md` for the replay record.
 
 ## Result
 

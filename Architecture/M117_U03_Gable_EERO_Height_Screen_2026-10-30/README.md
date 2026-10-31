@@ -32,8 +32,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/analyze_m117_u03_g
 
 The source-bound analyzer passes **19/19** checks. Two sequential runs reproduce all three outputs byte-for-byte:
 
-- `m117-report.json`: `6FF51001BCE1DB6B431DBAE782AA1A4F47B0F7306C147275361F01D9E940DBE2`
-- `m117-checks.json`: `FF8F4AC984AEB07641DC2A684CFDEC418A974E44278658C9BBB6FFCE0A8A8F42`
+- `m117-report.json`: `BF2A5598282D4ADDE0A11F851D2222B1152A202ADA4156829C65C2C21FA4EC6B`
+- `m117-checks.json`: `EEC9FD7CBDDF555E957C23844EB975E04BA0B176093E1B0CA967B5FD78FDC094`
 - `m117-cases.csv`: `F20E037831B18253A360898C8B3401FEAA8BE78EF4831C669835DCAC0B41660E`
 
 The report binds its M115 archive/audit, corrected M116 report, M83 roof options and manifest, selected-D and proposal sources, and generator/audit scripts by SHA256. Selected-D's source hash is preserved as `516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb`.
