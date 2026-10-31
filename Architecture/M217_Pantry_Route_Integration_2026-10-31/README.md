@@ -6,6 +6,8 @@
 
 The owner directed the next integrated search to protect west A for M-06 and separately authorized movement of the hypothetical M-04 block while preserving its 5 × 7 ft (35 sf) study footprint and use. East B remains unassigned. M217 tests that pantry block against the reproduced M215 36-in porch route, retaining M215's 3-in additional geometric reserve as an analysis threshold.
 
+**Source discrepancy:** the room-program / Direction D studies carry M-04 at 5 × 7 ft (35 sf), while `Architecture/Kitchen_Dining_Porch_Specs.md` specifies 5 × 6 ft (30 sf). This owner-authorized sensitivity follows the 5 × 7 ft room-block case without revising either source document; the pantry size remains unresolved between those records.
+
 The run regenerates the M213/M186 route source and M215's 0.5-ft north-shift social/porch candidate, then tests 58 pantry placements: three current/north named samples, three east-edge named samples, and a deduplicated quarter-foot sweep along x=13.5 ft from y=0 to the inherited 13.5-ft kitchen cross-section limit. That east-edge alignment is a study proxy, not verified adjacency or a selected coordinate. All blocks remain rectangles in a hypothetical 40 × 42 ft envelope.
 
 ## Result
