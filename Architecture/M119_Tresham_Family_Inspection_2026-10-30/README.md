@@ -37,3 +37,7 @@ This is a materially better geometry lead than the prior unmeasured Tresham prop
 4. Close the source without saving; recompute its hash and require the recorded digest.
 
 This is a manual read-only inspection record, not a scripted geometry or room-fit validation.
+
+## M120 disposable positive-solid intake follow-up (2026-10-30)
+
+A separate disposable Revit 2027.3 intake run at `.local/revit-pilot/family-intake/20261031T012424079Z/` measured the same source RFA without saving it. The manifest reports ten finish types, category `Plumbing Fixtures`, placement type `WorkPlaneBased`, and three positive-volume solids per type. `Fireclay-0-White` bounds are 24.0063 × 19.4998 × 34.625 in in family-symbol coordinates. This is more specific than the earlier Family Editor parameter display, but still does not establish the placed host/orientation, actual connector objects or installation clearances. The exact source digest remained `3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949`. Intake passed 155/155 automated integrity checks. M-06 remains unassigned; see [M120](../M120_M06_Current_Product_Envelope_Screen_2026-10-30/README.md).

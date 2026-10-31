@@ -1,0 +1,48 @@
+{
+  "schema": "forever-home.m120-m06-product-observations.v1",
+  "checked_on": "2026-10-30",
+  "selected_wc_sku": "610AA001.020",
+  "american_standard": {
+    "product_page": "https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring",
+    "infographic_url": "https://www.americanstandard-us.com/cdn/shop/files/239959_Champion_Infographic_610AA001_0001_MAR2024_CDNwebp.webp?v=1790749418&width=2000",
+    "infographic_sha256": "F09F6BFBCBB62F53828BD99E46F2351BB279E4C031980BBC5E35790E0FE86FBF",
+    "infographic_bytes": 133750,
+    "dimensions_in": {
+      "overall_width": 19.0,
+      "projection": 30.25,
+      "overall_height": 30.875,
+      "bowl_height": 16.5,
+      "seat_height": 17.0,
+      "rough_in": 12.0
+    },
+    "evidence_status": "manufacturer infographic callouts; image hash recorded; current linked spec download is predecessor paperwork",
+    "rfa_or_cad_for_exact_sku_verified": false
+  },
+  "tresham": {
+    "family_source": ".local/revit-pilot/family-intake/candidates/kohler-tresham-k-2844-4-0.rfa",
+    "source_sha256": "3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949",
+    "intake_run": ".local/revit-pilot/family-intake/20261031T012424079Z/intake-manifest.json",
+    "family_category": "Plumbing Fixtures",
+    "placement_type": "WorkPlaneBased",
+    "type_name": "Fireclay-0-White",
+    "type_count": 10,
+    "positive_volume_solid_count": 3,
+    "bounds_coordinate_frame": "family symbol positive-volume solids; not placed, hosted or oriented in the project",
+    "bounds_in": {
+      "width_x": 24.0063,
+      "depth_y": 19.4998,
+      "height_z": 34.625
+    },
+    "hosted_orientation_verified": false,
+    "connector_objects_verified": false,
+    "ada_claim": "manufacturer specification states product is not ADA compliant"
+  },
+  "screen_basis": {
+    "code_note": "Research/M06_Clearance_Basis_2026-10-30.md",
+    "wc_centerline_to_side_obstruction_in": 15.0,
+    "adjacent_fixture_centerline_spacing_in": 30.0,
+    "front_clearance_in": 21.0,
+    "applicability_determined": false
+  },
+  "scope": "Labelled rectangular plan-envelope screen only; not product approval, placed fit, a clearance polygon, code compliance or assignment."
+}
