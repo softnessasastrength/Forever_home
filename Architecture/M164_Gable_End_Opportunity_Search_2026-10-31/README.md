@@ -39,7 +39,7 @@ Two Windows PowerShell 5.1 runs pass **31/31** M37 checks and reproduce all five
 
 The independent M163 verifier, pointed at each M164 run, passes **16/16** checks twice. All 120 candidates preserve the three required outline contacts and keep U-03 off sampled public hall sides; **48/120** reach every sampled side for U-01/U-02/U-04. All 102 M163 coordinate keys reappear, with 18 additional unique layouts. The best M37 candidate passes **115/115** independent candidate checks.
 
-The roof analyzer passes **12/12** in repeated runs, returning **882** rows across 48 expanded route-qualified candidates, three bedroom-capable blocks, six ideal M83 gable cases, and one retained M158 route-qualified comparator. For each ridge axis and pitch, **0/48** candidates place all three bedroom-capable blocks on gable-end contacts while avoiding every ideal eave contact. The best expanded candidate's worst-bedroom conditional effective-eave threshold remains **5 ft** in all six cases, matching the M158 route-qualified comparator. These results do not show that no other arrangement exists, nor that any actual eave height or headroom is adequate.
+The roof analyzer passes **12/12** in repeated runs, returning **882** rows across 48 expanded route-qualified candidates, three bedroom-capable blocks, six ideal M83 gable cases, and one retained M158 route-qualified comparator. After M166 refreshed the M83 source fingerprint, this analysis was regenerated twice against the current M83 options; both outputs match byte-for-byte. For each ridge axis and pitch, **0/48** candidates place all three bedroom-capable blocks on gable-end contacts while avoiding every ideal eave contact. The best expanded candidate's worst-bedroom conditional effective-eave threshold remains **5 ft** in all six cases, matching the M158 route-qualified comparator. M168 further counts how many bedroom-capable blocks touch an ideal eave at 12:12: ridge X has two contacts in all 48 layouts, while ridge Y has one in 24 and two in 24. This orientation sensitivity does not show that any actual eave height or headroom is adequate; see the separate M168 report.
 
 | Roof case | M164 route-qualified layouts with all three bedroom blocks off ideal eaves | Best worst-bedroom conditional threshold | M158 comparator |
 |---|---:|---:|---:|
@@ -63,7 +63,7 @@ The conditional threshold assumes the entire schematic bedroom block is required
 | route-tested candidate archive | `C2FD422ADF8E6AF32770BB021B7D2191BD890F6037C36F403300AF51A35F28D5` |
 | independent route/perimeter audit JSON | `5A40BCB977C1B911F8AC744E2445077AA9D8EA39B181E93E335FFF44DB3F2B69` |
 | independent route/perimeter audit CSV | `FD56CE09AAB88D168B56351DDCC2392B81B12A26730A78CD61BCC9D079E35672` |
-| roof exposure JSON | `FDCE70E47F0F4036E422F030E8185BF571C218A8DAC04834B31258EE8E9BF906` |
+| roof exposure JSON (current M166 source refresh) | `F4A79EE7F2A9666D550A274F0579BAD37BD3F23EABB3E8A6CD205E50EFFBB593` |
 | roof exposure CSV | `8D62CCF6E9BEEDD412D67AA7DF02A3876A036F5A008CF5FF7831305049E44520` |
 
 Full M164 generator, audit and roof-analysis outputs remain under ignored `.local/revalidation/M164-*`; they do not replace M158/M163 source archives. The hashes above identify both repeated runs and the report results. No selected-D, Revit/IFC, Incoming RFA or remote file changed.

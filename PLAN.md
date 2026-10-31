@@ -1799,3 +1799,15 @@ Acceptance criteria:
 - Preserve the selected-D baseline, Incoming RFAs, Revit host derivative, and unassigned M-06 room; record remaining fit gates.
 
 Status: Complete as a public-source and read-only family recheck. The LIXIL Pro page lists white bowl SKU `3195A101.020` and a direct public Revit download, explicitly describing a bowl-only product with tank sold separately. The downloaded RFA (487,424 bytes; SHA256 `F301D2CB77F13269E21DC44FD6953946158034122BB3C10889FCBA9470846393`) exactly matches the already preserved Incoming file. The source-bound Revit 2027.3 intake report independently passes 101/101 and records three types; `3195A101.020` measures 13.9997 x 29.0628 x 17.0953 in from six positive-volume solids in symbol coordinates. A new read-only Family Editor 3D-view inspection was closed without saving; source hash remains unchanged. The complete 610AA assembly mapping, actual fit, applicable clearance, door/approach, lavatory and services remain open. M-06/B stays unassigned. See `Research/M06_Toilet_Options_2026-10-27.md` and M160.
+
+## M168 - Compare steep-gable ridge orientation by bedroom eave contacts
+
+Acceptance criteria:
+
+- Refresh M164's repeated roof-sensitivity report against current M83, M158, M164 audit/archive and selected-D fingerprints; require identical report artifacts across two runs.
+- For the 48 M164 route-qualified room-block proposals, count U-01, U-03 and U-04 ideal eave contacts for the steepest existing 12:12 case under both ridge axes.
+- Bind every candidate/ridge result to M164's independent route/perimeter audit and require exactly one row per bedroom-capable block.
+- Produce deterministic PowerShell JSON/CSV outputs twice and report distribution by number of bedroom-capable blocks at an ideal eave.
+- Label all candidates unselected; do not infer finished headroom, code outcome, wall/window/door design, or physical roof construction.
+
+Status: Complete as a comparative geometry diagnostic. Two current-source M164 roof replays pass 12/12 and reproduce identical 882-row JSON/CSV output; JSON SHA256 `F4A79EE7F2A9666D550A274F0579BAD37BD3F23EABB3E8A6CD205E50EFFBB593`, CSV `8D62CCF6E9BEEDD412D67AA7DF02A3876A036F5A008CF5FF7831305049E44520`. The new M168 PowerShell analyzer validates the current source fingerprints, M164's 120-layout audit, exact route-qualified candidate set, and per-room coverage; two runs pass 18/18 and match JSON/CSV byte-for-byte (`C509D41B8CF69DA5730F85DC0AB06F0C7584F05EDE88573152E19E8A3213F914` / `39AF18A6A700C55307760E103360A0E53B6536D86CEE71D4A9263B6051BCE5A6`). At 12:12, ridge X has two of three bedroom-capable blocks at an ideal eave in 48/48 layouts. Ridge Y has one in 24/48 (always U-03 at west) and two in 24/48 (U-03 and U-04 west). No case keeps all three off ideal eaves. No ridge, layout, roof, code result or headroom condition is selected. See `Architecture/M168_M164_Ridge_Orientation_Screen_2026-10-31/README.md`.
