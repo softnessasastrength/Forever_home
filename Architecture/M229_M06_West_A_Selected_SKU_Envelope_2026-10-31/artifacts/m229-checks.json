@@ -1,0 +1,22 @@
+{
+    "schema":  "forever-home.m06-west-a-selected-sku-envelope-checks.v1",
+    "result":  "pass",
+    "check_count":  14,
+    "checks":  {
+                   "selected_d_hash_matches_pinned_baseline":  true,
+                   "m120_observations_hash_matches_pinned_record":  true,
+                   "m120_screen_matches_selected_d_hash":  true,
+                   "selected_sku_is_owner_selected_610aa":  true,
+                   "infographic_source_digest_is_recorded":  true,
+                   "manufacturer_plan_width_is_positive":  true,
+                   "manufacturer_plan_projection_is_positive":  true,
+                   "current_sku_dimensions_are_19_by_30_25":  true,
+                   "preliminary_side_spacing_is_15_in":  true,
+                   "preliminary_front_spacing_is_21_in":  true,
+                   "code_applicability_remains_undetermined":  true,
+                   "west_a_and_east_b_remain_unassigned":  true,
+                   "both_plan_orientations_fit_the_gross_comparison_rectangle":  true,
+                   "no_exact_sku_cad_or_room_fit_claim":  true
+               },
+    "contained_orientation_count":  2
+}

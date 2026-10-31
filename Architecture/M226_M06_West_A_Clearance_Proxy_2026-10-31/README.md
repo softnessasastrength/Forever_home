@@ -37,3 +37,5 @@ These numbers do not describe the selected current SKU 610AA001.020. The manufac
 - Project-specific code applicability, accessibility requirements, or code compliance.
 
 No selected-D source, RVT, IFC, RFA, room assignment, or remote state changed. Keep A and B unassigned until exact product geometry, applicable clearance basis, a real door/approach, and plausible service routing can be coordinated together. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows.
+
+M229 supersedes the predecessor-only toilet-body evidence used in this historical screen for the selected 610AA001.020 plan-envelope comparison. See [M229](../M229_M06_West_A_Selected_SKU_Envelope_2026-10-31/README.md). M226's outputs remain a reproducible record of the predecessor-based test, not current-SKU geometry.

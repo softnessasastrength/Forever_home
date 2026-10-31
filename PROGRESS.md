@@ -2,6 +2,14 @@
 
 Updated: 2026-10-31
 
+## M229 — West A screen refreshed from the selected toilet's current-SKU plan callouts
+
+- Added `Tools/screen_m06_west_a_selected_sku_envelope.ps1`, bound to selected-D and M120 manufacturer observations. This corrects the evidence basis used by M226: the selected American Standard 610AA001.020 manufacturer infographic calls out a 19 × 30¼ in plan envelope, so the body need not be described as predecessor geometry for this plan-only screen. The official image was freshly fetched and its bytes match the recorded SHA256. The exact Revit family/CAD and complete current installation drawing remain unverified.
+- Under the documented provisional 15-in side-centerline and 21-in front-spacing screen, both orientations fit within west A's 62 × 137 in gross rectangle: 30 × 51¼ in at 0° and 30¼ × 40 in at 90°. This is a toilet-only gross containment calculation, not a room fit. West A and east B remain unassigned; no lavatory, door/approach, finished-face, rough-in or service routing is modeled.
+- Three Windows PowerShell 5.1 runs pass **14/14** each. Retained report/check hashes match two isolated replays byte-for-byte: `m229-report.json` `C22B03748EB81CD60C7E5095C517D86768B30A1951DD02A161CCBD1DF6D6CBBC`; `m229-checks.json` `77575C5482A3D02B9562DC198D52FB1BD4F2A0CCBAE3199AEE3E92C26ED46BE4`. Full protocol and limits: `Architecture/M229_M06_West_A_Selected_SKU_Envelope_2026-10-31/README.md`.
+- Revit host access remains blocked at the Autodesk introductory overlay: the supported CUA bridge listed Revit but returned no accessibility state for its window, so no UI action was sent. No DLL was loaded and no RVT generated. Selected-D, retained RVT/IFC, RFAs, and remote state were not modified.
+- Replayed `Tools/validate_architectural_bim_baseline.ps1` into `.local/revalidation/M229-baseline/`: two selected-D generations pass 43/43 each, seven artifacts match per run, three SVGs parse, and retained IFC validation passes 26/26 with zero errors. The script confirms selected-D/RVT/IFC source hashes remain unchanged and construction categories remain empty.
+
 ## M228 - West A to living via the owner-directed dining study block
 
 - Added `Tools/analyze_m228_west_a_dining_connection.ps1` and a separate schematic proposal. It pins selected-D, the owner's 11 x 10 ft dining/movement direction, west-A protection, M215 and M186 coordinate-frame sources.
