@@ -1558,3 +1558,14 @@ Acceptance criteria:
 - Describe results as boundary opportunity arithmetic only; do not claim actual openings, door swing, approach, code, accessibility, service routing, Revit/IFC validation, or a selected plan.
 
 Status: Complete as a schematic interface screen. All six boundaries fit the source 3.5 ft reservation arithmetic in both layouts, but M130-NE-24 has exactly 3.5 ft U-01/C-PRIVATE contact and zero end margin; NE-19 leaves 1.5 ft per end there. NE-24 gains 1 ft at the U-01/U-05 bath interface. M37 sampled routes reach U-02 north and U-04 west in both, with no public-side U-03 sample. The 3.5 ft value is a reservation proxy, not a clear opening or door design. See M145 in `PROGRESS.md`.
+
+## M146 - Reconfirm selected-D source generation and retained IFC pair
+
+Acceptance criteria:
+
+- Run the documented `OwnerSelectedD` PowerShell generator twice into separate ignored scratch folders; require 43/43 geometry checks, valid SVG XML, and all seven artifacts byte-identical across runs.
+- Confirm the selected-D source SHA256 remains unchanged.
+- Independently rerun the retained Revit 2027 IFC2X3 validator without overwriting its RVT or IFC; require all 26 checks true, no errors, clean schema validation, three storeys, and 21 source-bound spaces.
+- Record that this verifies a room-boundary/space study, not authored construction geometry or code compliance.
+
+Status: Complete. Both generation runs pass 43/43 and their seven output hashes match; all SVGs parse. The retained IFC report passes 26/26, with IFC2X3 schema clean and zero errors. Source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The IFC still has no walls, floors, stairs, doors, windows, roof, structure, services or fixtures. See M146 in `PROGRESS.md`.
