@@ -1,0 +1,57 @@
+{
+    "status":  "pass",
+    "passed":  10,
+    "total":  10,
+    "items":  [
+                  {
+                      "id":  "current_owner_sources_match_m172",
+                      "pass":  true,
+                      "detail":  "M172, kitchen specification, island decision and selected-D are fingerprinted."
+                  },
+                  {
+                      "id":  "m172_upstream_fingerprints_current",
+                      "pass":  true,
+                      "detail":  "Every upstream source fingerprint recorded by M172 still matches the repository."
+                  },
+                  {
+                      "id":  "selected_d_protected",
+                      "pass":  true,
+                      "detail":  "Selected-D source hash remains the protected baseline."
+                  },
+                  {
+                      "id":  "room_clear_dimensions_and_target",
+                      "pass":  true,
+                      "detail":  "Study uses the owner-directed 14 x 12 ft / 168 sf kitchen target."
+                  },
+                  {
+                      "id":  "perimeter_run_fits_14ft_axis",
+                      "pass":  true,
+                      "detail":  "The 12 ft 6 in source module run leaves 18 in total reserve along the 14 ft clear axis."
+                  },
+                  {
+                      "id":  "owner_reference_fails_bounded_room",
+                      "pass":  true,
+                      "detail":  "The 8 x 4 ft reference exceeds both the 12-ft clear cross-section and the 14-ft end-span when using the specified 42-in proxies."
+                  },
+                  {
+                      "id":  "7x3_island_fits_arithmetic",
+                      "pass":  true,
+                      "detail":  "A derived 7 x 3 ft test island fits the 14 x 12 ft clear rectangle exactly with 42-in proxies and a 24-in body plus 12-in overhang."
+                  },
+                  {
+                      "id":  "6x3_island_retains_one_foot_end_reserve",
+                      "pass":  true,
+                      "detail":  "A derived 6 x 3 ft test island leaves 12 in total end reserve; the cross-section remains exact."
+                  },
+                  {
+                      "id":  "shallow_body_candidate_rejected",
+                      "pass":  true,
+                      "detail":  "18-in cabinet body is not accepted as a fit because it conflicts with the documented 24-in body depth."
+                  },
+                  {
+                      "id":  "room_area_and_island_remain_proposals",
+                      "pass":  true,
+                      "detail":  "Only bounded alternatives are reported; no owner-selected dimensions or design status are changed."
+                  }
+              ]
+}

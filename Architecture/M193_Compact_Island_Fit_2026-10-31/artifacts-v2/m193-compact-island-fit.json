@@ -1,0 +1,182 @@
+{
+    "schema":  "forever-home-m193-compact-island-fit-v1",
+    "status":  "pass",
+    "design_result":  "two_candidate_island_sizes_fit_the_kitchen_clear_rectangle_arithmetically",
+    "method":  "Derive island envelope limits from the owner-directed 14 x 12 ft clear room, 24-in perimeter base, 42-in minimum aisle proxies, 12-in seating overhang and 12 ft 6 in perimeter run. Half-wall thickness is outside clear interior dimensions; the comparison places its room-facing surface at the room boundary. This is a plan arithmetic screen, not furniture/occupant verification.",
+    "source_fingerprints_sha256":  {
+                                       "Architecture/M172_Compact_Social_Space_Constraints_2026-10-31/m172-compact-social-space-constraints.json":  "140b742535376da59a8a89a06d5cfc10b95cee3c8aff5056f9a2dd95250b3b98",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Decisions/Kitchen_Island_Finish.md":  "f8295f451ae83b589ef7f05420f3fb1a661b6a4c70371a28fba347fb4bd56290",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+                                   },
+    "inputs":  {
+                   "kitchen_clear_dimensions_ft":  [
+                                                       14,
+                                                       12
+                                                   ],
+                   "kitchen_area_target_sf":  168,
+                   "perimeter_run_ft":  12.5,
+                   "counter_depth_ft":  2,
+                   "minimum_aisle_ft":  3.5,
+                   "halfwall_thickness_ft":  0.5,
+                   "room_dimensions_exclude_wall_thickness":  true,
+                   "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb"
+               },
+    "candidates":  [
+                       {
+                           "case":  "owner_reference_8x4",
+                           "island_length_ft":  8,
+                           "overall_depth_ft":  4,
+                           "cabinet_body_depth_ft":  0,
+                           "seating_overhang_ft":  0,
+                           "island_area_sf":  32,
+                           "area_reduction_vs_8x4_sf":  0,
+                           "quartz_length_ft":  6,
+                           "butcher_length_ft":  2,
+                           "clear_cross_section_ft":  13,
+                           "cross_section_including_wall_thickness_ft":  13.5,
+                           "cross_reserve_in":  -12,
+                           "end_clearance_span_ft":  15,
+                           "end_reserve_in":  -12,
+                           "perimeter_run_ft":  12.5,
+                           "perimeter_run_reserve_on_14ft_axis_in":  18,
+                           "halfwall_position_assumption":  "opposing-face",
+                           "body_depth_compatible":  false,
+                           "clear_room_fit":  false,
+                           "proposal_note":  "Owner reference dimensions; body/overhang decomposition is not assumed."
+                       },
+                       {
+                           "case":  "flex_7x3_keep_2ft_butcher",
+                           "island_length_ft":  7,
+                           "overall_depth_ft":  3,
+                           "cabinet_body_depth_ft":  2,
+                           "seating_overhang_ft":  1,
+                           "island_area_sf":  21,
+                           "area_reduction_vs_8x4_sf":  11,
+                           "quartz_length_ft":  5,
+                           "butcher_length_ft":  2,
+                           "clear_cross_section_ft":  12,
+                           "cross_section_including_wall_thickness_ft":  12.5,
+                           "cross_reserve_in":  0,
+                           "end_clearance_span_ft":  14,
+                           "end_reserve_in":  0,
+                           "perimeter_run_ft":  12.5,
+                           "perimeter_run_reserve_on_14ft_axis_in":  18,
+                           "halfwall_position_assumption":  "boundary-face",
+                           "body_depth_compatible":  true,
+                           "clear_room_fit":  true,
+                           "proposal_note":  "Derived limiting fit: 42-in end clearances use all 14 ft; 24-in body plus 12-in overhang and 42-in aisles use all 12 ft clear."
+                       },
+                       {
+                           "case":  "flex_6x3_keep_2ft_butcher",
+                           "island_length_ft":  6,
+                           "overall_depth_ft":  3,
+                           "cabinet_body_depth_ft":  2,
+                           "seating_overhang_ft":  1,
+                           "island_area_sf":  18,
+                           "area_reduction_vs_8x4_sf":  14,
+                           "quartz_length_ft":  4,
+                           "butcher_length_ft":  2,
+                           "clear_cross_section_ft":  12,
+                           "cross_section_including_wall_thickness_ft":  12.5,
+                           "cross_reserve_in":  0,
+                           "end_clearance_span_ft":  13,
+                           "end_reserve_in":  12,
+                           "perimeter_run_ft":  12.5,
+                           "perimeter_run_reserve_on_14ft_axis_in":  18,
+                           "halfwall_position_assumption":  "boundary-face",
+                           "body_depth_compatible":  true,
+                           "clear_room_fit":  true,
+                           "proposal_note":  "One foot more total end reserve than 7-ft case; less quartz length."
+                       },
+                       {
+                           "case":  "flex_7x2_5_shallow_body",
+                           "island_length_ft":  7,
+                           "overall_depth_ft":  2.5,
+                           "cabinet_body_depth_ft":  1.5,
+                           "seating_overhang_ft":  1,
+                           "island_area_sf":  17.5,
+                           "area_reduction_vs_8x4_sf":  14.5,
+                           "quartz_length_ft":  5,
+                           "butcher_length_ft":  2,
+                           "clear_cross_section_ft":  11.5,
+                           "cross_section_including_wall_thickness_ft":  12,
+                           "cross_reserve_in":  6,
+                           "end_clearance_span_ft":  14,
+                           "end_reserve_in":  0,
+                           "perimeter_run_ft":  12.5,
+                           "perimeter_run_reserve_on_14ft_axis_in":  18,
+                           "halfwall_position_assumption":  "boundary-face",
+                           "body_depth_compatible":  false,
+                           "clear_room_fit":  false,
+                           "proposal_note":  "Stress test only; 18-in body conflicts with documented 24-in base-depth input."
+                       }
+                   ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  10,
+                   "total":  10,
+                   "items":  [
+                                 {
+                                     "id":  "current_owner_sources_match_m172",
+                                     "pass":  true,
+                                     "detail":  "M172, kitchen specification, island decision and selected-D are fingerprinted."
+                                 },
+                                 {
+                                     "id":  "m172_upstream_fingerprints_current",
+                                     "pass":  true,
+                                     "detail":  "Every upstream source fingerprint recorded by M172 still matches the repository."
+                                 },
+                                 {
+                                     "id":  "selected_d_protected",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source hash remains the protected baseline."
+                                 },
+                                 {
+                                     "id":  "room_clear_dimensions_and_target",
+                                     "pass":  true,
+                                     "detail":  "Study uses the owner-directed 14 x 12 ft / 168 sf kitchen target."
+                                 },
+                                 {
+                                     "id":  "perimeter_run_fits_14ft_axis",
+                                     "pass":  true,
+                                     "detail":  "The 12 ft 6 in source module run leaves 18 in total reserve along the 14 ft clear axis."
+                                 },
+                                 {
+                                     "id":  "owner_reference_fails_bounded_room",
+                                     "pass":  true,
+                                     "detail":  "The 8 x 4 ft reference exceeds both the 12-ft clear cross-section and the 14-ft end-span when using the specified 42-in proxies."
+                                 },
+                                 {
+                                     "id":  "7x3_island_fits_arithmetic",
+                                     "pass":  true,
+                                     "detail":  "A derived 7 x 3 ft test island fits the 14 x 12 ft clear rectangle exactly with 42-in proxies and a 24-in body plus 12-in overhang."
+                                 },
+                                 {
+                                     "id":  "6x3_island_retains_one_foot_end_reserve",
+                                     "pass":  true,
+                                     "detail":  "A derived 6 x 3 ft test island leaves 12 in total end reserve; the cross-section remains exact."
+                                 },
+                                 {
+                                     "id":  "shallow_body_candidate_rejected",
+                                     "pass":  true,
+                                     "detail":  "18-in cabinet body is not accepted as a fit because it conflicts with the documented 24-in body depth."
+                                 },
+                                 {
+                                     "id":  "room_area_and_island_remain_proposals",
+                                     "pass":  true,
+                                     "detail":  "Only bounded alternatives are reported; no owner-selected dimensions or design status are changed."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "The 7 x 3 ft and 6 x 3 ft islands are derived study alternatives, not owner-approved dimensions or purchasable family geometry.",
+                        "The 7 x 3 case has zero arithmetic reserve at both clear axes; the 6 x 3 case has 12 in total end reserve but still zero cross-section reserve. Finish tolerances and actual wall/cabinet face locations are absent.",
+                        "The 5+2 ft and 4+2 ft quartz/butcher splits are proposal arithmetic that retains a 2-ft butcher segment; shop feasibility and seam/support are not assessed.",
+                        "Two stools remain required, but real stool width, side allowances and occupied movement were not tested.",
+                        "The half-wall is shown at the room boundary, with thickness outside clear dimensions; its location, opening, return, approach and route are not laid out.",
+                        "Dining table, chair pull-outs, living/porch route, appliance-open envelopes, doors, shell, adjacent rooms and M-06 are not tested in this milestone.",
+                        "No Revit or IFC geometry is changed. M-06/B remains unassigned.",
+                        "No code, accessibility, structural-safety, professional, permit or construction-readiness conclusion is made."
+                    ]
+}
