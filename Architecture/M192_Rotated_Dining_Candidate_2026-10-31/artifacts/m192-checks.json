@@ -1,0 +1,42 @@
+{
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "rotated_table_uses_documented_36x60_envelope",
+                      "pass":  true,
+                      "detail":  "Table plan envelope remains 36 x 60 in, rotated in plan."
+                  },
+                  {
+                      "id":  "four_chairs_keep_documented_18x20_envelopes",
+                      "pass":  true,
+                      "detail":  "Four chair body proxies remain 18 x 20 in."
+                  },
+                  {
+                      "id":  "pullout_zones_remain_in_11x10_dining_block",
+                      "pass":  true,
+                      "detail":  "Table, chair bodies and 36-in-from-table-edge use proxies remain within the M-03 test rectangle."
+                  },
+                  {
+                      "id":  "m186_grid_and_route_width_unchanged",
+                      "pass":  true,
+                      "detail":  "The established 0.25-ft grid and 36-in swept-route search are unchanged."
+                  },
+                  {
+                      "id":  "selected_d_preserved",
+                      "pass":  true,
+                      "detail":  "Owner-selected-D source fingerprint is unchanged."
+                  },
+                  {
+                      "id":  "m06_b_stays_unassigned",
+                      "pass":  true,
+                      "detail":  "The east/pantry-side M-06/B search window remains unassigned."
+                  },
+                  {
+                      "id":  "route_result_is_bounded_and_serializable",
+                      "pass":  true,
+                      "detail":  "Record either the candidate route or the no-path result from the bounded search."
+                  }
+              ]
+}

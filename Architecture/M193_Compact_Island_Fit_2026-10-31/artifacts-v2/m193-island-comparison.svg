@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="690" viewBox="0 0 1180 690"><style>text{font:14px Arial;fill:#302b25}.title{font-size:22px;font-weight:bold}.room{fill:#fbf8f1;stroke:#433c35;stroke-width:3}.counter{fill:#dfd0bb;stroke:#6a5844;stroke-width:2}.island{fill:#dce7db;stroke:#60745a;stroke-width:2}.aisle{fill:#9fc3d1;fill-opacity:.22;stroke:#54899b;stroke-dasharray:6 4}.wall{fill:#77685a}.open{fill:#dbe9ea;stroke:#3f7a82;stroke-dasharray:5 4}.label{font-size:12px}.small{font-size:11px;fill:#735c47}</style><text class="title" x="24" y="32">M193 â€” compact island envelopes inside 14 Ã— 12 ft clear kitchen</text>
+<rect class='room' x='60' y='-98' width='476' height='408'/><text class='label' x='64' y='-81'></text>
+<rect class='counter' x='85.5' y='242' width='425' height='68'/><text class='label' x='89.5' y='259'>12 ft 6 in perimeter run</text>
+<rect class='island' x='179' y='21' width='238' height='102'/><text class='label' x='183' y='38'>7 x 3 ft candidate</text>
+<rect class='aisle' x='60' y='123' width='476' height='119'/><text class='label' x='64' y='140'>42 in work aisle</text>
+<rect class='aisle' x='60' y='-98' width='476' height='119'/><text class='label' x='64' y='-81'>42 in to half-wall face</text>
+<rect class='wall' x='60' y='-115' width='238' height='17'/><text class='label' x='64' y='-98'></text>
+<rect class='open' x='298' y='-115' width='204' height='17'/><text class='label' x='302' y='-98'>6 ft living opening</text>
+<rect class='wall' x='502' y='-115' width='34' height='17'/><text class='label' x='506' y='-98'></text>
+<text x='60' y='350' class='title'>7 x 3 ft candidate</text><text x='60' y='372' class='small'>5 ft quartz + 2 ft butcher block; 0 in total island-end reserve</text><text x='60' y='398' class='small'>Half-wall thickness outside 12-ft clear room depth; schematic only.</text>
+<rect class='room' x='640' y='-98' width='476' height='408'/><text class='label' x='644' y='-81'></text>
+<rect class='counter' x='665.5' y='242' width='425' height='68'/><text class='label' x='669.5' y='259'>12 ft 6 in perimeter run</text>
+<rect class='island' x='776' y='21' width='204' height='102'/><text class='label' x='780' y='38'>6 x 3 ft candidate</text>
+<rect class='aisle' x='640' y='123' width='476' height='119'/><text class='label' x='644' y='140'>42 in work aisle</text>
+<rect class='aisle' x='640' y='-98' width='476' height='119'/><text class='label' x='644' y='-81'>42 in to half-wall face</text>
+<rect class='wall' x='640' y='-115' width='238' height='17'/><text class='label' x='644' y='-98'></text>
+<rect class='open' x='878' y='-115' width='204' height='17'/><text class='label' x='882' y='-98'>6 ft living opening</text>
+<rect class='wall' x='1082' y='-115' width='34' height='17'/><text class='label' x='1086' y='-98'></text>
+<text x='640' y='350' class='title'>6 x 3 ft candidate</text><text x='640' y='372' class='small'>4 ft quartz + 2 ft butcher block; 12 in total island-end reserve</text><text x='640' y='398' class='small'>Half-wall thickness outside 12-ft clear room depth; schematic only.</text>
+<text x="24" y="660" class="small">Blue bands are 42-in arithmetic proxies. Neither option includes dining, porch route, pull-outs, appliance-open geometry or site fit.</text></svg>

@@ -1,7 +1,22 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: Verified selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. M170's PowerShell generator replays pass 43/43 with seven byte-identical outputs; the retained matched selected-D Revit 2027.3 / IFC2X3 package passes 26/26 with zero errors, three storeys, 21 source-matching spaces and clean schema. M78/M83 derivatives remain separately validated; the M83-B primary/backup/export mismatch is preserved and only its exact `.0001.rvt`/IFC pair is a valid source match. M173 repairs the M18 living-to-porch schematic route at 29/29 and binds regenerated candidate/M19/M21 outputs. The route does not establish island-work access; its assumed stool-occupancy proxy leaves the test aisle 12 in short of the 36 in target. Regenerated candidate metadata, route study and downstream derived screens changed; no RVT/IFC or selected-D model changed. Revit 2027.3 is at Home with no model open and its RevitPilot load remains unverified. Upper-suite layouts and steep-gable roof cases remain exploratory. M-06/B remains unassigned. No native house walls, floors, stairs, doors, windows, roof, structure, MEP or fixtures are established, and no code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
+Status: Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`; two fresh PowerShell 5.1 runs pass 43/43 with seven byte-identical outputs. The retained matched selected-D Revit 2027.3 / IFC2X3 package passes 26/26 with zero errors, three storeys, 21 source-matching spaces and clean schema. M192 tests one rotated dining arrangement with four 36-in pull-out proxies; its 36-in route does not reach the porch (7/7 checks; 5,423 reachable grid nodes; nearest point 9 ft). M193 derives 7 x 3 ft and 6 x 3 ft island candidates that fit the 14 x 12 ft clear kitchen rectangle arithmetically with the documented 24-in base, 12-in overhang and 42-in aisle proxies (9/9 checks; byte-identical replay). Neither is an integrated kitchen/dining/porch layout; route, wall/opening placement, appliance operation, stool geometry and tolerance remain open. A non-scaled patio concept follows the specified porch exit without inventing site dimensions. User's end state is a coherent, native Revit house model and architect-review packet; today's IFC remains a 21-space room study with empty construction categories. Upper-suite layouts and steep-gable roof cases remain exploratory; M-06/B remains unassigned; Revit family host inspection is pending. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
+
+## Owner outcome — architect-reviewable native Revit model
+
+The intended end state is a coherent, documented **native Revit house model** and review packet that an architect can assess without reconstructing the design intent from disconnected sketches. It is a design-review handoff, not a claim of professional approval or permit readiness.
+
+Acceptance gates:
+
+1. **Resolved program and room blocks:** all owner-approved spaces are coordinated across lower, main and upper levels; area schedules expose variances; selected choices are separated from proposals and unresolved decisions.
+2. **Architectural geometry:** the RVT contains coordinated native levels, room-bounding walls, floor edges/openings, stairs/landings, doors, windows, roof mass/planes and exterior connections as each is designed. No major house element is represented only by a room-boundary box at handoff.
+3. **Fit and circulation:** product-backed kitchen, bath, furniture and door geometry is checked in context; the principal routes, approaches, thresholds and door swings are shown; unresolved dimensions remain explicitly labeled.
+4. **Review presentation:** reproducible plans, elevations, sections and 3D views; room/door/window/finish schedules where specified; a concise issue/trade-off register; clear views of lower/main/upper relationships and roof form.
+5. **BIM exchange and reproducibility:** cleanly saved RVT derivatives and backups, validated IFC export(s), source fingerprints, commands, logs and independent geometry checks reproduce from documented inputs.
+6. **Professional boundary:** structural design, site-specific code applicability, energy/HVAC, drainage, utilities, life-safety and permit decisions are identified for the appropriate licensed reviewers. The handoff makes no claim that those reviews are complete.
+
+The current selected-D RVT/IFC satisfies only the room/space schedule gate: its IFC has 21 spaces on three storeys but no authored construction categories. It is a validated baseline, not the architect-reviewable end state. The next step is to finish source-bound kitchen/open-plan candidates before authoring disposable native Revit wall/opening geometry.
 
 Upper-suite work remains exploratory. M157's exact command replays against current M37 source with identical package hashes; M158 retains two bounded joint-bedroom-outline room-block candidates, one meeting the sampled public/private route proxy. M159 shows at least two bedroom-capable room blocks at an ideal eave in every tested roof case. No upper-shell dimension, room layout, wall, opening, pitch, ridge, eave or house design is selected. M-06/B remains unassigned. M165 executed the six-option M83 Revit/IFC comparison twice with the exact manifest-bound local DLL; both IFC2X3 exports pass 21/21, and their normalized geometric bounds and areas match. Revit is currently at Home with no model open; the current add-in load is unverified. No code-compliance, structural-safety, certification, permit or construction-readiness claim is made.
 ## Repository safety baseline
@@ -2084,4 +2099,26 @@ Acceptance criteria:
 
 Status: Complete as a bounded sensitivity. All three layouts keep the table, chair bodies and pull-out proxies inside the dining target block, but **0/3** recover a route to the nominal porch door. The nearest reachable sampled points remain 10 ft away. This narrows the current table/chair/route arrangement; it does not prove other orientations or layouts impossible. Retained and independent runs pass 7/7 checks and their JSON/checks/CSV match byte-for-byte. See `Architecture/M191_Dining_Pullout_Placement_Search_2026-10-31/README.md`.
 
-Next: test alternative four-chair orientations and smaller compound table translations against the same pull-out and route constraints, then carry only a nonfragile candidate to isolated Revit wall/opening coordination. In parallel, complete the pending read-only Tauri family host inspection when Revit is safely accessible. Keep selected-D unchanged and M-06/B unassigned.
+## M192 — Rotate dining set while reserving chair-use zones — 2026-10-31
+
+Acceptance criteria:
+
+- Preserve the 36 × 60 in table and 18 × 20 in chair-body envelopes while testing a second table orientation.
+- Reserve four explicitly labeled 36-in-from-table-edge chair-use proxies and retain M186's quarter-foot grid and 36-in route width.
+- Bind source hashes, selected-D fingerprint and M-06/B status; emit reproducible JSON/checks/CSV/SVG and validate XML.
+- Reproduce all artifacts byte-for-byte in an independent PowerShell 5.1 run.
+
+Status: Complete as one bounded comparison. M192 passes 7/7 checks in the retained package and independent replay. Its single rotated arrangement reaches 5,423 route-grid nodes but finds no porch route; nearest reachable sample is 9 ft Manhattan distance from the nominal porch door. This rules out only this tested orientation/placement. M-06/B remains unassigned; selected-D and Revit/IFC are unchanged. See `Architecture/M192_Rotated_Dining_Candidate_2026-10-31/README.md`.
+
+## M193 — Fit flexible island candidates to the clear kitchen target — 2026-10-31
+
+Acceptance criteria:
+
+- Use the owner-directed 14 × 12 ft / 168 sf **clear** kitchen target and 12 ft 6 in perimeter run.
+- Keep the documented 24 in counter/body depth, 42 in aisle proxies, 12 in seating overhang and half-wall face relationship explicit; do not count wall thickness inside clear interior dimensions.
+- Test island envelopes derived from those constraints, record area/finish trade-offs, and reject any candidate that violates the documented body depth.
+- Bind source hashes; preserve selected-D; emit deterministic report, checks, CSV and plan SVG; pass an independent byte-identical PowerShell 5.1 replay and SVG parse.
+
+Status: Complete as arithmetic fit screening, not an integrated plan. Two independent scratch runs and the retained `artifacts-v2/` package pass 10/10; all four outputs match byte-for-byte. M193 also checks each upstream fingerprint recorded by M172. The 8 × 4 ft reference needs a 13 ft clear cross-section and 15 ft end span, so it fails the 14 × 12 ft clear rectangle. A 7 × 3 ft test island (5 ft quartz + 2 ft butcher block) fits exactly with zero reserve at either axis; a 6 × 3 ft test (4 ft quartz + 2 ft butcher block) adds 12 in total end reserve but still has zero cross-section reserve. Both retain 24 in body + 12 in overhang and the 42 in clearances. They are proposals; no stool, dining/porch route, appliance-open, wall placement or tolerance is checked. See `Architecture/M193_Compact_Island_Fit_2026-10-31/README.md`.
+
+Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documented 11 × 10 ft dining target, all four 36 in chair-use proxies, the full 36 in living-to-porch route, half-wall/opening geometry and 12 × 10 ft porch in one source-bound coordinate study. Compare at least the 7 × 3 and 6 × 3 island options. A candidate qualifies only if all required rectangles fit and the swept route reaches the porch without proxy intersections; record exact reserve/gaps and reject fragile zero-margin routes. The site-fitted patio remains a later exterior gate. Then carry a route-qualified candidate into disposable Revit wall/opening geometry. In parallel, complete the pending read-only Tauri family host inspection when Revit is safely accessible. Keep selected-D unchanged and M-06/B unassigned.

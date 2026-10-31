@@ -1,0 +1,154 @@
+{
+    "schema":  "forever-home-m192-rotated-dining-candidate-v1",
+    "status":  "pass",
+    "design_result":  "no_route_found_for_rotated_table_case",
+    "method":  "One unapproved 90-degree table orientation, two chairs along each long side and four 36-in-from-table-edge use-zone proxies; M186 search constraints, shell, start, porch-door target and route width remain unchanged.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Tools/search_m188_dining_set_placement.ps1":  "0bbcbca1132781ab18420c4f9a754af51507824b85d63a3bd01b1f973573fa67",
+                                       "Tools/search_m191_dining_placement_with_pullouts.ps1":  "2e9041f4cb0eb269f42e9c1cfeaf3fb464e17981cb1de36d4a36af4ac20a3380",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "dining_block_ft":  [
+                            0,
+                            14,
+                            11,
+                            10
+                        ],
+    "table_rect_ft":  {
+                          "x":  3.5,
+                          "y":  16.5,
+                          "w":  3,
+                          "d":  5
+                      },
+    "chair_body_rectangles_ft":  [
+                                     {
+                                         "x":  1.8333333333,
+                                         "y":  17,
+                                         "w":  1.6666666667,
+                                         "d":  1.5
+                                     },
+                                     {
+                                         "x":  1.8333333333,
+                                         "y":  19.5,
+                                         "w":  1.6666666667,
+                                         "d":  1.5
+                                     },
+                                     {
+                                         "x":  6.5,
+                                         "y":  17,
+                                         "w":  1.6666666667,
+                                         "d":  1.5
+                                     },
+                                     {
+                                         "x":  6.5,
+                                         "y":  19.5,
+                                         "w":  1.6666666667,
+                                         "d":  1.5
+                                     }
+                                 ],
+    "pullout_use_rectangles_ft":  [
+                                      {
+                                          "x":  0.5,
+                                          "y":  17,
+                                          "w":  3,
+                                          "d":  1.5
+                                      },
+                                      {
+                                          "x":  0.5,
+                                          "y":  19.5,
+                                          "w":  3,
+                                          "d":  1.5
+                                      },
+                                      {
+                                          "x":  6.5,
+                                          "y":  17,
+                                          "w":  3,
+                                          "d":  1.5
+                                      },
+                                      {
+                                          "x":  6.5,
+                                          "y":  19.5,
+                                          "w":  3,
+                                          "d":  1.5
+                                      }
+                                  ],
+    "route":  {
+                  "found":  false,
+                  "length_ft":  null,
+                  "turns":  null,
+                  "reachable_nodes":  5423,
+                  "nearest_porch_door_manhattan_ft":  9,
+                  "waypoints_ft":  [
+                                       {
+                                           "x":  19.5,
+                                           "y":  10
+                                       },
+                                       {
+                                           "x":  13.5,
+                                           "y":  10
+                                       },
+                                       {
+                                           "x":  8.5,
+                                           "y":  27.5
+                                       }
+                                   ],
+                  "minimum_edge_gap_by_obstacle":  [
+
+                                                   ],
+                  "unassigned_travel_ft":  0
+              },
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  7,
+                   "total":  7,
+                   "items":  [
+                                 {
+                                     "id":  "rotated_table_uses_documented_36x60_envelope",
+                                     "pass":  true,
+                                     "detail":  "Table plan envelope remains 36 x 60 in, rotated in plan."
+                                 },
+                                 {
+                                     "id":  "four_chairs_keep_documented_18x20_envelopes",
+                                     "pass":  true,
+                                     "detail":  "Four chair body proxies remain 18 x 20 in."
+                                 },
+                                 {
+                                     "id":  "pullout_zones_remain_in_11x10_dining_block",
+                                     "pass":  true,
+                                     "detail":  "Table, chair bodies and 36-in-from-table-edge use proxies remain within the M-03 test rectangle."
+                                 },
+                                 {
+                                     "id":  "m186_grid_and_route_width_unchanged",
+                                     "pass":  true,
+                                     "detail":  "The established 0.25-ft grid and 36-in swept-route search are unchanged."
+                                 },
+                                 {
+                                     "id":  "selected_d_preserved",
+                                     "pass":  true,
+                                     "detail":  "Owner-selected-D source fingerprint is unchanged."
+                                 },
+                                 {
+                                     "id":  "m06_b_stays_unassigned",
+                                     "pass":  true,
+                                     "detail":  "The east/pantry-side M-06/B search window remains unassigned."
+                                 },
+                                 {
+                                     "id":  "route_result_is_bounded_and_serializable",
+                                     "pass":  true,
+                                     "detail":  "Record either the candidate route or the no-path result from the bounded search."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "One proposal orientation only; no alternative offsets or chair locations were searched.",
+                        "The 36-in pull-out rectangle is a study interpretation, not a selected chair or occupant envelope.",
+                        "A route is a grid-screen candidate, not a physical opening, door-clear-width, threshold or occupied-use result.",
+                        "M-03, the kitchen, the 40 x 42-ft test shell and surrounding room blocks are unapproved comparisons.",
+                        "M-06/B remains unassigned; no Revit/IFC, selected-D, Incoming RFA or remote state is changed.",
+                        "No code-compliance, accessibility, structural-safety, professional, permit or construction-readiness conclusion is made."
+                    ]
+}
