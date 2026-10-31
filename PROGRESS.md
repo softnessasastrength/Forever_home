@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M220 — Fresh selected-D source and IFC baseline replay
+
+- Replayed `Tools/build_selected_house_schematic.ps1 -LayoutVariant OwnerSelectedD` under Windows PowerShell 5.1 into `.local/revalidation/resume-selected-d-20261031T1932-a/` and `-b/`. Each output passes all **43/43** geometry checks; all three plan SVGs parse; all seven output files match byte-for-byte. Checked-in selected-D `study.json` remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`.
+- Independently reran `Tools/RevitPilot/validate_selected_d_ifc.py` on `.local/revit-pilot/selected-d/20261030T002652845Z/`: **26/26** checks, status pass, zero errors, IFC2X3 schema clean, 3 storeys and 21 source-matched spaces. The report SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B` matches prior evidence. RVT SHA256 `C6CED6ACD0E59E49EAE0E9821153204FC81ED6CEDE2FCD4F4D7E387C0ACEFD6D0`; IFC SHA256 `56251F4754567C78EBB657EC2B99894958C15EF73663F737742F3F36A8472F6F`.
+- RevitPilot regression suite `python -m unittest discover -s Tools/RevitPilot/tests -v` passes **49/49**. The validation records `construction_categories_remain_empty=true`: source geometry and IFC are consistent as a 21-space room study, not as a complete architectural building model. No selected-D, RVT, IFC or remote source changed.
+
 **M219 follow-up (31 October):** Added `Tools/RevitPilot/validate_m218_revit_study.ps1` and its PowerShell 5.1 fixture runner. The runner passes **5/5** cases: it accepts a synthetic valid two-file manifest and rejects an altered RVT hash, missing swing alternative, selected-D scope claim and unexpected curve-count metadata. These fixtures are synthetic byte arrays; they verify only the manifest/file-integrity gate, not Revit geometry. The `node_repl` tool surface is now listed, but its `@oai/sky` native pipe failed twice and after the prescribed reconnect. Revit host execution remains pending; no DLL was loaded. The per-user registration now points to the exact hash-verified M219 build; the prior manifest is preserved at `.local/revit-pilot/registration-backups/20261031T193038052Z/ForeverHome.Pilot.addin` with SHA256 `7F7FECAE3E70972EBF561602E2EF8393414AE3E26D77D81512C4887E74865CB7`. See `Architecture/M219_Isolated_Pantry_Door_Revit_Study_2026-10-31/README.md` for the validator command and remaining gate.
 
 ## M219 — Revit-side pantry door comparison generator
