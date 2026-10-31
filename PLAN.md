@@ -2139,12 +2139,21 @@ Status: Complete. **0/3** positions find a route; all reach 5,940 nodes. The eas
 
 Acceptance criteria:
 
-- Only proceed if the owner confirms the unapproved M-04 test footprint may move; retain its 5 × 7 ft area and documented pantry function for the first comparison.
-- Keep the owner's preferred open kitchen/living connection, larger-island priority, current dining/chair-use geometry, M-06/A trade-off reporting and pantry-side B protection.
-- If authorized, test a bounded set of pantry placements, checking kitchen adjacency, pantry-door approach, B, route gaps and area/use trade-offs. No placement becomes selected by the search.
+- Compare the current modeled 5 × 7 ft pantry block with two north-of-kitchen positions; label this footprint as a test proxy because the separate kitchen specification says 5 × 6 ft.
+- Preserve pantry area/function, the open kitchen/living start, island, stool, M-06/B protection and east porch door. The 36-in shared-wall case may shift the 11 × 10 ft dining package within the already authorized hypothetical shell; report its boundary margin.
+- Report route, door-wall length, pantry and route use of unassigned A, room-block overlap, source fingerprints and deterministic replays. No placement becomes selected.
 
-Status: Authorized as a labeled sensitivity by the owner on 2026-10-31; the 5 × 7 ft test block may move while its area/function and B protection remain. No placement is selected.
+Status: Complete. Two independent PowerShell runs pass 6/6 wrapper checks; all six embedded M186 searches pass (29/29, 31/31 and 31/31). The current pantry position has no route (nearest point 9.5 ft); both north-edge cases produce a 28-ft, four-turn route. Together, pantry and route use 43.92 sf (74.5%) of the 58.99-sf west-A diagnostic window. The 36-in shared-wall case shifts dining 6 in west and leaves 2 in to the test-shell boundary. A nominal 30-in door has no wall-length reserve in the first north-edge case; the second does not establish rough-opening or swing fit. B remains unassigned. See `Architecture/M205_Pantry_Location_Sensitivity_2026-10-31/README.md`.
 
+## M206 — Compare documented 5 × 6 ft pantry target — 2026-10-31
+
+Acceptance criteria:
+
+- Repeat the current and north-edge pantry cases at the 5 × 6 ft size specified in `Architecture/Kitchen_Dining_Porch_Specs.md`; retain the same kitchen/living, dining, island, stool, door and B constraints.
+- Report route reachability, pantry/route overlap with A, dining boundary margin, kitchen shared-wall length and all modeled proxy conflicts.
+- Bind sources and reproduce outputs independently. Treat every placement as a sensitivity, not a design selection; do not change selected-D, RVT, IFC or RFAs.
+
+Status: Next authorized geometry sensitivity; no placement selected.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:

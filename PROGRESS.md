@@ -2158,3 +2158,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - **0/3** door samples find a route; all reach 5,940 nodes. Nearest approach is 9.5 ft at the east door and 12 ft at the west/center doors. The measured overlap with A is zero because no route reaches the door.
 - This does not establish that all door locations or dining layouts fail. It shows that door movement alone does not resolve the fixed pantry-side approach. M-04 remains pinned pending owner input; selected-D, RVT, IFC and Incoming RFA sources remain unchanged.
 - Next: run the owner-authorized M-04 pantry placement sensitivity, retain its 5 × 7 ft test area and function, and keep B unassigned.
+
+## M205 — M-04 pantry location sensitivity — 2026-10-31
+
+- Added `Tools/search_m205_pantry_location_sensitivity.ps1` and `Architecture/M205_Pantry_Location_Sensitivity_2026-10-31/`. Owner-authorized 5 × 7 ft schematic pantry relocation cases preserve the 11 × 10 ft dining target, except a labeled 6-in west dining shift in the 36-in shared-wall case. M-06/B remains protected.
+- **Source discrepancy found:** the route model's M-04 is 5 × 7 ft (35 sf); `Kitchen_Dining_Porch_Specs.md` specifies 5 × 6 ft (30 sf). This run preserves the authorized 5 × 7 proxy and labels the conflict; neither is selected.
+- Two independent PowerShell 5.1 runs pass 6/6 M205 checks. The three embedded route runs pass 29/29, 31/31 and 31/31, respectively; JSON/checks/CSV match byte-for-byte. The current pantry has no route (nearest point 9.5 ft). Both north-edge cases find a 28-ft four-turn route.
+- Passing cases use 43.92 sf (74.5%) of the 58.99-sf west-A diagnostic window between the moved pantry and route. The 36-in shared-wall case leaves 2 in between shifted dining and the hypothetical shell edge. Door opening, rough opening, swing and approach are not modeled. No design selected; B remains unassigned and selected-D/RVT/IFC/RFAs are unchanged.
+- Next: compare the documented 5 × 6 ft pantry target under the same fixed constraints. See `Architecture/M205_Pantry_Location_Sensitivity_2026-10-31/README.md`.
