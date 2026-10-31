@@ -2037,6 +2037,17 @@ Status: Complete as a bounded schematic search. PowerShell 5.1 retained generati
 
 Next: M187 isolates one proxy-relaxation at a time to measure which reservation constrains the bounded social route most. Treat relaxations strictly as sensitivities, not layout decisions; preserve the combined-constraint M186 no-route baseline, M-06/B unassigned, and selected-D.
 
+## M194 — Owner kitchen-area priority and revalidation — 2026-10-31
+
+Acceptance criteria:
+
+- Record the owner's choice to prioritize enlarging the kitchen test area over reducing the larger 8 × 4 ft island if the 14 × 12 ft target conflicts with it; do not convert the 13.5 × 14 ft candidate into a final dimension.
+- Reproduce M178's 8 × 4 ft island, 12.5 ft perimeter run, and 42-in aisle arithmetic in two empty PowerShell 5.1 scratch directories.
+- Reproduce M186's bounded 36-in route result in two empty scratch directories while preserving the 40 × 42 ft shell comparison and unassigned M-06/B region.
+- Update `PLAN.md`, `PROGRESS.md`, and `Project/AI_Handoff.md` with the route/spill/stool limits; leave selected-D, Revit, IFC, RFAs, and remote state unchanged.
+
+Status: Complete as an owner-priority record and evidence refresh. The owner selected kitchen-area expansion over reducing the larger island. M178 passes 26/26 on both runs for a 13.5 × 14 ft / 189 sf test kitchen (+21 sf), 8 × 4 ft island and 42-in aisle proxies, but its assumed stool positions consume all 4 ft of the island end and its fixed route spills 21 in beyond dining. M186 passes 29/29 on both runs but finds no route through its bounded 40 × 42 ft arrangement: 5,299/23,088 nodes reached, nearest point 10 ft from the nominal porch door. This does not prove all layouts fail. M-06/B remains unassigned; selected-D remains unchanged. See `Decisions/2026-10-31_Kitchen_Area_Priority.md`.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:
