@@ -2115,6 +2115,16 @@ Acceptance criteria:
 
 Status: Complete as a product-specific owner decision; no family geometry or house model changed. See `Decisions/2026-10-31_Tauri_Seat_Height_Exception.md` and `Research/M174_MiEN_Tauri_Counter_Stool_Family_Inspection_2026-10-31.md`.
 
+## M201 — Record preferred kitchen/living opening — 2026-10-31
+
+Acceptance criteria:
+
+- Record the owner's preference for a fully open kitchen/living connection, consistent with the existing specification's options.
+- Preserve the half-wall variant as a comparison until an integrated route/layout study supports a coordinated plan.
+- Do not invent an opening span or structural specification; preserve M-06/B unassigned and selected-D unchanged.
+
+Status: Complete as a layout preference. M187 shows that removing the half-wall alone did not restore a route. Further comparison is required; see `Decisions/2026-10-31_Kitchen_Living_Opening_Preference.md`.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:

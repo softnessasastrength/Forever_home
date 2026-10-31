@@ -2120,3 +2120,9 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Owner permits the MiEN Tauri's published 23.75-in seat height as a product-specific recorded exception to the kitchen specification's 24–26-in range. The general target remains unchanged; the Tauri is not selected.
 - Added `Decisions/2026-10-31_Tauri_Seat_Height_Exception.md` and updated the M174 family-inspection research note. The exact-hash quarantined RFA still requires its authorized read-only Revit inspection before any disposable fit test.
 - No family source, selected-D, RVT, IFC or remote state was changed. This height exception does not establish fit, occupied-use allowance, comfort, accessibility or compliance.
+
+## M201 — Owner kitchen/living opening preference — 2026-10-31
+
+- Owner prefers a fully open kitchen/living connection. The existing kitchen specification permits this as an alternative to the 42-in half-wall with six-foot opening; the general specification remains intact and the half-wall remains a comparison variant.
+- M187 found that removing only the half-wall/return did not restore a route. The preference therefore remains a search direction, not a route solution or coordinated opening.
+- Added `Decisions/2026-10-31_Kitchen_Living_Opening_Preference.md`. No wall, header, beam, selected-D, RVT or IFC geometry changed; no structural or code conclusion follows.
