@@ -2191,6 +2191,18 @@ Acceptance criteria:
 - Preserve selected-D, Revit, IFC, Incoming RFAs and remote state; no placement is selected.
 
 Status: Complete as a bounded reachability sensitivity. The retained eleven-case run and two independent PowerShell 5.1 replays pass 9/9 checks and reproduce JSON/checks/CSV byte-for-byte. Five shifts find a sampled route, first at 5.5 ft north; the 33.5-ft/four-turn path is tangent to A, and none of the passing routes has a 3-in proxy reserve. This is fragile reachability evidence, not a fit-ready layout. No placement is selected. See `Architecture/M209_Protected_AB_North_Placement_2026-10-31/README.md`.
+
+## M210 - Porch-door alignment after northward dining/porch shift - 2026-10-31
+
+Acceptance criteria:
+
+- Preserve west A and pantry-side B as obstacles; do not assign M-06.
+- Compare bounded porch-door center samples at the first and farthest northward offsets that passed M209; keep the dining/porch footprints, owner-preferred open kitchen/living connection, M178 island and all other proxies fixed per offset.
+- Bind all input source hashes and selected-D; emit JSON/checks/CSV with route gap, length, turns and A/B overlap.
+- Reject any case failing M186's complete 36-in route checks; label all inputs as hypothetical.
+- Reproduce retained artifacts in two independent Windows PowerShell 5.1 runs; preserve selected-D, Revit, IFC, Incoming RFAs and remote state.
+
+Status: Complete as a bounded sensitivity. Retained output and two independent Windows PowerShell 5.1 replays pass 11/11 wrapper checks and reproduce JSON/checks/CSV byte-for-byte. All fourteen cases pass M186's full route checks and report 0-ft route-edge gap to protected A; none reaches the 3-in proxy reserve. Door alignment changes route length but does not resolve the A bottleneck. No door position or layout is selected. See `Architecture/M210_Porch_Door_Alignment_2026-10-31/README.md`.
 ## M199 — Record outdoor patio zone relationships — 2026-10-31
 
 Acceptance criteria:
