@@ -1324,3 +1324,14 @@ Acceptance criteria:
 - Describe the result as offline regression evidence only; do not imply a Revit host run or generated IFC validation from unit tests.
 
 Status: Complete. `./.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v` passes **42/42** tests, including the M83 regeneration-order contract and selected-D IFC validator contracts. The separate M109 retained IFC validation and M83 PowerShell generator replay are recorded under M122. This suite does not launch Revit or produce/export geometry. See M123 in `PROGRESS.md`.
+
+## M124 - Reproduce selected-D geometry against the retained baseline
+
+Acceptance criteria:
+
+- Regenerate owner-selected D twice using the documented Windows PowerShell command into separate ignored output folders; each run must pass 43/43 and produce all seven documented artifacts.
+- Require both outputs to match each other and the retained M109 generation byte-for-byte; parse the plan SVGs and preserve the reported zero L-02/U-06 stacked overlap and TBD bath footprint.
+- Confirm the owner-selected source-study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB` and rerun independent IFC2X3 validation against the exact retained saved-RVT/export pair.
+- Keep the room-boundary model's limits explicit; do not imply coordinated building geometry, permit compliance or construction readiness.
+
+Status: Complete for the selected-D room-boundary baseline. Two fresh runs in `.local/revalidation/M124-selected-d/a/` and `/b/` each pass 43/43 and produce seven files byte-identical across both runs and to `.local/revalidation/M109-selected-d-a/`. SVG checks pass; L-02/U-06 open stacked overlap is 0 sf and bath footprint remains TBD. The source-study hash is unchanged. Independent validation of `.local/revit-pilot/selected-d/20261030T002652845Z/` passes 26/26, zero errors, IFC2X3 schema clean, three storeys and 21 spaces with exact source IDs, names, areas, levels and plan bounds. Report SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. This confirms reproducibility and export consistency for the documented room-boundary study only; it does not add physical walls, floors, stairs, openings, roof, framing or coordinated services. See M124 in `PROGRESS.md`.
