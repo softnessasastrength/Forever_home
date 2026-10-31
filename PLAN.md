@@ -1335,3 +1335,13 @@ Acceptance criteria:
 - Keep the room-boundary model's limits explicit; do not imply coordinated building geometry, permit compliance or construction readiness.
 
 Status: Complete for the selected-D room-boundary baseline. Two fresh runs in `.local/revalidation/M124-selected-d/a/` and `/b/` each pass 43/43 and produce seven files byte-identical across both runs and to `.local/revalidation/M109-selected-d-a/`. SVG checks pass; L-02/U-06 open stacked overlap is 0 sf and bath footprint remains TBD. The source-study hash is unchanged. Independent validation of `.local/revit-pilot/selected-d/20261030T002652845Z/` passes 26/26, zero errors, IFC2X3 schema clean, three storeys and 21 spaces with exact source IDs, names, areas, levels and plan bounds. Report SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. This confirms reproducibility and export consistency for the documented room-boundary study only; it does not add physical walls, floors, stairs, openings, roof, framing or coordinated services. See M124 in `PROGRESS.md`.
+
+## M125 - Bind the M83 regeneration and IFC route to current Autodesk API documentation
+
+Acceptance criteria:
+
+- Cite Autodesk API documentation for when `Document.Regenerate` refreshes changed elements and for the Revit IFC export API used by M83.
+- Cross-check the documented behavior against M83's `SetShape`/regenerate/bounds order and its `IFC2x3CV2` export option.
+- Keep documentation research distinct from runtime verification; do not mark M83 host/IFC completion based on references alone.
+
+Status: Complete as a documentation cross-check. Autodesk's API reference describes `Document.Regenerate` as updating document elements after changes and demonstrates reading modified element state only after regeneration. Autodesk's Revit 2027 IFC guide documents API export through `Document.Export(String, String, IFCExportOptions)`; `GableMassingCommand` sets `IFCVersion.IFC2x3CV2`. These sources support the documented API route, but M83 still requires the six-case Revit run and independent IFC validation. See M125 in `PROGRESS.md` and the M83 README.

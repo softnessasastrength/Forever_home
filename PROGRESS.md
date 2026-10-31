@@ -1529,3 +1529,9 @@ The next M-06 gate remains read-only Revit inspection of the quarantined exact-s
 - Selected-D source SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. The generator reports 0 sf open stacked L-02/U-06 overlap; bath footprint remains TBD.
 - Re-ran the independent validator: `.venv\Scripts\python.exe Tools\RevitPilot\validate_selected_d_ifc.py .local\revit-pilot\selected-d\20261030T002652845Z --report .local\revalidation\M124-selected-d-ifc.json`. It passes **26/26**, zero errors, IFC2X3 schema clean, three storeys and 21 matching spaces; the saved RVT and IFC share the recorded fingerprint. Report SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`.
 - This validates only the schematic room-boundary model and its export. No physical construction geometry, M-06 assignment, compliance, structural or construction-readiness claim follows. No source model or remote state changed.
+
+## M125 - Cross-check M83 regeneration and IFC APIs against Autodesk documentation - 2026-10-30
+
+- Added direct Autodesk API references to the M83 README. The `Document.Regenerate` API reference describes refreshing changed document elements and demonstrates reading updated element state after regeneration, supporting the code order `SetShape` → `Regenerate` → bounds query.
+- The Revit 2027 IFC export guide documents API export through `Document.Export(String, String, IFCExportOptions)`. Source inspection confirms the M83 command uses `IFCVersion.IFC2x3CV2`.
+- This confirms the documented API path only. Revit execution of the repair, six-option geometry, saved-RVT fingerprint and independent IFC validation are still outstanding. No model or remote state changed.
