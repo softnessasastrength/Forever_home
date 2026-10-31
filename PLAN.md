@@ -2037,6 +2037,63 @@ Status: Complete as a bounded schematic search. PowerShell 5.1 retained generati
 
 Next: M187 isolates one proxy-relaxation at a time to measure which reservation constrains the bounded social route most. Treat relaxations strictly as sensitivities, not layout decisions; preserve the combined-constraint M186 no-route baseline, M-06/B unassigned, and selected-D.
 
+## M194 — Owner kitchen-area priority and revalidation — 2026-10-31
+
+Acceptance criteria:
+
+- Record the owner's choice to prioritize enlarging the kitchen test area over reducing the larger 8 × 4 ft island if the 14 × 12 ft target conflicts with it; do not convert the 13.5 × 14 ft candidate into a final dimension.
+- Reproduce M178's 8 × 4 ft island, 12.5 ft perimeter run, and 42-in aisle arithmetic in two empty PowerShell 5.1 scratch directories.
+- Reproduce M186's bounded 36-in route result in two empty scratch directories while preserving the 40 × 42 ft shell comparison and unassigned M-06/B region.
+- Update `PLAN.md`, `PROGRESS.md`, and `Project/AI_Handoff.md` with the route/spill/stool limits; leave selected-D, Revit, IFC, RFAs, and remote state unchanged.
+
+Status: Complete as an owner-priority record and evidence refresh. The owner selected kitchen-area expansion over reducing the larger island. M178 passes 26/26 on both runs for a 13.5 × 14 ft / 189 sf test kitchen (+21 sf), 8 × 4 ft island and 42-in aisle proxies, but its assumed stool positions consume all 4 ft of the island end and its fixed route spills 21 in beyond dining. M186 passes 29/29 on both runs but finds no route through its bounded 40 × 42 ft arrangement: 5,299/23,088 nodes reached, nearest point 10 ft from the nominal porch door. This does not prove all layouts fail. M-06/B remains unassigned; selected-D remains unchanged. See `Decisions/2026-10-31_Kitchen_Area_Priority.md`.
+
+## M195 — Owner-directed minimum-area social layout search — 2026-10-31
+
+Acceptance criteria:
+
+- Search for the smallest kitchen test area that carries the larger 8 × 4 ft island and a continuous 36-in living-to-porch route; do not treat the existing 189-sf proposal as a limit or final dimension.
+- Allow dining and porch test footprints to move within the hypothetical 40 × 42 ft shell, preserving their documented 11 × 10 ft and 12 × 10 ft sizes for the first search.
+- Bind all room/furniture/product inputs to source files and SHA256; include half-wall, perimeter casework, island, two stool-use envelopes, dining table/chairs/use zones, porch openings and the adjacent fixed room blocks.
+- Keep pantry-side M-06/B unassigned and clear of route geometry. Report use of alternate A separately as a trade-off; do not model either search window as an assigned room.
+- Record search bounds/resolution, area ranking, margins, spill, and a fully reproducible path only when the swept route clears every included proxy. Re-run from fresh PowerShell 5.1 scratch directories and compare artifacts byte-for-byte.
+- Keep selected-D, source RVT/IFC and Incoming RFAs unchanged; no compliance, accessibility, structural, permit or construction-readiness claim.
+
+Status: In progress. Owner selected the minimum-area search and authorized dining/porch repositioning within the test shell. M187 sensitivities and the four-case M195 dining/porch/table search are reproducible; M195 passes 9/9 checks and all four embedded M186 searches pass 29/29 in three byte-identical PowerShell 5.1 runs. **0/4** M195 placements reach the porch with the 189-sf M178 kitchen and 8 × 4 ft island held fixed. The nearest reachable sample is 12–12.5 ft from the candidate door; B remains clear and unassigned. Some porch variants overlap alternate A by 0.403–1.007 sf. This is not an exhaustive search and has not found the minimum kitchen area. Next: vary the kitchen envelope/area and its opening relationship to circulation while retaining the larger-island priority; measure stool geometry when authorized Revit inspection is available. Keep A as a separately reported trade-off and B protected.
+
+## M196 — Owner roofline massing direction — 2026-10-31
+
+Acceptance criteria:
+
+- Record the owner's direction for one dominant traditional main gable with a simpler, subordinate porch roof.
+- Keep pitch, ridge/eave heights and orientation, roof assemblies, structure and site response unselected; identify prior pitch screens as geometric studies only.
+- Update the design handoff and plan; do not alter selected-D or roof geometry in Revit.
+
+Status: Complete as a massing-direction record. The owner selected a single main gable with simpler porch roof. No pitch or structural specification is selected. See `Decisions/2026-10-31_Roofline_Concept.md`.
+
+## M197 — Sweep kitchen envelope width against the social route — 2026-10-31
+
+Acceptance criteria:
+
+- Sweep kitchen width from the M178 13.5-ft candidate through the documented source M-02 width, preserving 14-ft depth, the larger 8 × 4 ft island, 12.5-ft counter run, six-foot opening and other fixed proxies.
+- Re-run the M186 full-shell 36-in search at each sample while keeping dining/porch geometry and M-06/B protection constant.
+- Bind inputs by source hashes; report area ranking, nearest reachable point, path status and explicit limitations.
+- Reproduce all artifacts byte-for-byte in an independent PowerShell 5.1 run. Do not modify selected-D, RVT/IFC or Incoming RFAs.
+
+Status: Complete as a bounded one-axis sensitivity. **0/17** width samples from 13.5 to 17⅓ ft find a route; all embedded M186 checks pass 29/29, and M197 passes 6/6 in two byte-identical runs. Nearest reachable point remains `(4,14)` ft, 12 ft from the tested porch door. Kitchen widening alone did not solve the route and does not establish a minimum. Next: sweep dining/chair-use placement and door alignment in the authorized shell, preserve B and report alternate A separately. See `Architecture/M197_Kitchen_Envelope_Route_Search_2026-10-31/README.md`.
+
+## M198 — Sweep porch-door alignment against the dining approach — 2026-10-31
+
+Acceptance criteria:
+
+- Keep the porch test footprint at its documented 12 × 10 ft and the five-foot opening size; vary door center independently of dining within the porch face.
+- Keep the M178 13.5 × 14 ft kitchen, 8 × 4 ft island, M195 rotated table/chair/use proxies, 36-in route and M-06 windows fixed for the first door-only sensitivity.
+- Re-run M186 for every tested door center; report paths, nearest reachable points and any contact/overlap with alternate A. Keep pantry-side B clear and unassigned.
+- Bind inputs by source hash; reproduce JSON/checks/CSV byte-for-byte in independent PowerShell 5.1 runs. No selected-D, RVT/IFC or Incoming RFA changes.
+- Treat all door positions as sensitivity samples, not an owner-selected opening or code-compliant design.
+
+Status: Authorized for exploration. Owner directed the search to vary porch-door alignment independently of dining. Door center, final door type and actual clear width remain unselected.
+
 ## M187 - Isolate route bottlenecks by one-at-a-time proxy relaxation
 
 Acceptance criteria:

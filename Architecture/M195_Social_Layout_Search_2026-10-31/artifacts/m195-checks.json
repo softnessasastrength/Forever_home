@@ -1,0 +1,52 @@
+{
+    "status":  "pass",
+    "passed":  9,
+    "total":  9,
+    "items":  [
+                  {
+                      "id":  "four_cases_tested",
+                      "pass":  true,
+                      "detail":  "Four declared, unapproved dining/porch/table placement sensitivities were evaluated."
+                  },
+                  {
+                      "id":  "source_fingerprints_bound",
+                      "pass":  true,
+                      "detail":  "M186, M178, M192, room/porch spec, selected-D, bath-window source and owner kitchen-area decision are fingerprinted."
+                  },
+                  {
+                      "id":  "selected_D_preserved",
+                      "pass":  true,
+                      "detail":  "Selected-D remains at the protected source hash."
+                  },
+                  {
+                      "id":  "original_8x4_island_retained",
+                      "pass":  true,
+                      "detail":  "The M178 8 x 4 ft island is retained in the full-shell route engine."
+                  },
+                  {
+                      "id":  "B_unassigned_and_clear",
+                      "pass":  true,
+                      "detail":  "Owner-priority pantry-side M-06/B remains unassigned and is not occupied by dining or porch footprints."
+                  },
+                  {
+                      "id":  "dining_furniture_and_use_zones_inside",
+                      "pass":  true,
+                      "detail":  "All table/chair bodies and the four 36-in use-zone proxies fit each translated 11 x 10 ft dining study block."
+                  },
+                  {
+                      "id":  "social_footprints_inside_shell",
+                      "pass":  true,
+                      "detail":  "The translated dining and 12 x 10 ft porch footprints stay inside the 40 x 42 ft shell test."
+                  },
+                  {
+                      "id":  "all_bounded_route_searches_completed",
+                      "pass":  true,
+                      "detail":  "Every generated M186 route run passes its source and finite-grid contract checks."
+                  },
+                  {
+                      "id":  "results_remain_sensitivity_only",
+                      "pass":  true,
+                      "detail":  "Even a path with positive geometric gap remains an unselected schematic candidate."
+                  }
+              ]
+}

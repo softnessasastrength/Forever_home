@@ -1,0 +1,37 @@
+{
+    "status":  "pass",
+    "passed":  6,
+    "total":  6,
+    "items":  [
+                  {
+                      "id":  "width_samples_span_m178_to_source_m02",
+                      "pass":  true,
+                      "detail":  "Quarter-foot cross-section increments reach, but do not exceed, the source M-02 width."
+                  },
+                  {
+                      "id":  "every_embedded_m186_contract_passes",
+                      "pass":  true,
+                      "detail":  "Each generated full-shell search completed all source and route-contract checks."
+                  },
+                  {
+                      "id":  "larger_island_preserved",
+                      "pass":  true,
+                      "detail":  "The 8 x 4 ft island source envelope is unchanged."
+                  },
+                  {
+                      "id":  "B_unassigned",
+                      "pass":  true,
+                      "detail":  "Pantry-side M-06/B remains unassigned throughout the study."
+                  },
+                  {
+                      "id":  "source_selected_d_unchanged",
+                      "pass":  true,
+                      "detail":  "Selected-D source hash remains protected."
+                  },
+                  {
+                      "id":  "sweep_is_explicitly_nonselecting",
+                      "pass":  true,
+                      "detail":  "Width samples are a bounded sensitivity, not selected architectural dimensions."
+                  }
+              ]
+}
