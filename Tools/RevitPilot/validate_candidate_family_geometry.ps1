@@ -30,7 +30,10 @@ function Add-Check([string]$Name, [bool]$Passed, [string]$Evidence) {
 if (!(Test-Path -LiteralPath $reportFull -PathType Leaf)) { throw "Report not found: $reportFull" }
 $report = Get-Content -LiteralPath $reportFull -Raw | ConvertFrom-Json
 
-Add-Check 'report_schema' ($report.schema -eq 'forever-home-candidate-family-geometry-v1') "schema=$($report.schema)"
+$geometrySchema = 'forever-home-candidate-family-geometry-v1'
+$hostProbeSchema = 'forever-home-candidate-family-host-probe-v1'
+$isHostProbe = $report.schema -eq $hostProbeSchema
+Add-Check 'report_schema' ($report.schema -eq $geometrySchema -or $isHostProbe) "schema=$($report.schema)"
 Add-Check 'report_status' ([string]$report.status -like 'pass;*') "status=$($report.status)"
 Add-Check 'report_in_local_revit_pilot' (Test-UnderDirectory $reportFull $localRoot) "report=$reportFull"
 Add-Check 'source_in_quarantine' (Test-UnderDirectory $sourceFull $candidateRoot) "source=$sourceFull"
@@ -46,8 +49,50 @@ $derivativeExists = Test-Path -LiteralPath $derivativeFull -PathType Leaf
 $derivativeHashMatches = $derivativeExists -and [string]::Equals((Get-FileHash -LiteralPath $derivativeFull -Algorithm SHA256).Hash, [string]$report.derivative.sha256, [StringComparison]::OrdinalIgnoreCase)
 Add-Check 'derivative_in_isolated_directory' ((Test-UnderDirectory $derivativeFull $derivativeRoot) -and $derivativeFull.EndsWith('.rvt', [StringComparison]::OrdinalIgnoreCase)) "derivative=$derivativeFull"
 Add-Check 'derivative_hash' $derivativeHashMatches "reported=$($report.derivative.sha256); exists=$derivativeExists"
-Add-Check 'project_scope_isolated' ($report.project_scope.derivative_type -eq 'new_imperial_project' -and $report.project_scope.selected_d_opened -eq $false -and [int]$report.project_scope.family_instances_placed -eq 0) "scope=$($report.project_scope | ConvertTo-Json -Compress)"
+$expectedInstanceCount = if ($isHostProbe) { 1 } else { 0 }
+$scopeValid = $report.project_scope.derivative_type -eq 'new_imperial_project' -and
+    $report.project_scope.selected_d_opened -eq $false -and
+    [int]$report.project_scope.family_instances_placed -eq $expectedInstanceCount
+if ($isHostProbe) { $scopeValid = $scopeValid -and $report.project_scope.synthetic_host_probe_only -eq $true }
+Add-Check 'project_scope_isolated' $scopeValid "scope=$($report.project_scope | ConvertTo-Json -Compress)"
 Add-Check 'family_metadata_present' (![string]::IsNullOrWhiteSpace([string]$report.family) -and ![string]::IsNullOrWhiteSpace([string]$report.category) -and ![string]::IsNullOrWhiteSpace([string]$report.placement_type)) "family=$($report.family); category=$($report.category); placement=$($report.placement_type)"
+
+if ($isHostProbe) {
+    $probe = $report.host_probe
+    $hostIdsMatch = $null -ne $probe -and
+        [long]$probe.host_element_id -gt 0 -and
+        [long]$probe.host_element_id -eq [long]$probe.instance_host_element_id -and
+        [long]$probe.host_element_id -eq [long]$probe.host_face_element_id
+    Add-Check 'synthetic_wall_host_identity' ($probe.status -like '*synthetic wall*' -and $hostIdsMatch) "probe_status=$($probe.status); host=$($probe.host_element_id); instance_host=$($probe.instance_host_element_id); host_face=$($probe.host_face_element_id)"
+
+    $instanceBounds = $probe.instance_bounds_project_in
+    $instanceBoundsValid = $null -ne $instanceBounds -and [int]$probe.positive_volume_solid_count -gt 0
+    if ($instanceBoundsValid) {
+        foreach ($axis in @('width_x','depth_y','height_z')) {
+            if ($null -eq $instanceBounds.$axis -or [double]::IsNaN([double]$instanceBounds.$axis) -or [double]::IsInfinity([double]$instanceBounds.$axis) -or [double]$instanceBounds.$axis -le 0) { $instanceBoundsValid = $false; break }
+        }
+        foreach ($side in @('min','max')) {
+            if ($null -eq $instanceBounds.$side -or @($instanceBounds.$side).Count -ne 3) { $instanceBoundsValid = $false; break }
+            foreach ($coordinate in @($instanceBounds.$side)) {
+                if ([double]::IsNaN([double]$coordinate) -or [double]::IsInfinity([double]$coordinate)) { $instanceBoundsValid = $false; break }
+            }
+        }
+        if ($instanceBoundsValid) {
+            $instanceBoundsValid = [math]::Abs(([double]$instanceBounds.max[0] - [double]$instanceBounds.min[0]) - [double]$instanceBounds.width_x) -le 0.001 -and
+                [math]::Abs(([double]$instanceBounds.max[1] - [double]$instanceBounds.min[1]) - [double]$instanceBounds.depth_y) -le 0.001 -and
+                [math]::Abs(([double]$instanceBounds.max[2] - [double]$instanceBounds.min[2]) - [double]$instanceBounds.height_z) -le 0.001
+        }
+    }
+    Add-Check 'synthetic_instance_has_finite_positive_solids_and_bounds' $instanceBoundsValid "solid_count=$($probe.positive_volume_solid_count); bounds=$($instanceBounds | ConvertTo-Json -Compress)"
+
+    $connectors = $probe.connectors
+    $connectorReportValid = $null -ne $connectors -and
+        [int]$connectors.count -eq @($connectors.connectors).Count -and
+        [int]$connectors.connected_connector_count -eq @($connectors.connectors | Where-Object { $_.is_connected -eq $true }).Count -and
+        $connectors.any_connectors_connected -eq ([int]$connectors.connected_connector_count -gt 0) -and
+        $connectors.external_service_network_modelled -eq $false
+    Add-Check 'connector_report_does_not_claim_service_network' $connectorReportValid "connector_inventory=$($connectors | ConvertTo-Json -Compress)"
+}
 
 $types = @($report.types)
 $typesValid = $types.Count -gt 0 -and [int]$report.type_count -eq $types.Count
@@ -73,7 +118,8 @@ Add-Check 'every_type_has_finite_positive_solid_bounds' $typesValid "types=$($ty
 $limitations = @($report.limitations)
 $limitationsText = $limitations -join ' '
 $noPlacementClaim = $limitationsText -match 'not placed' -or $limitationsText -match 'no instance was placed'
-$limitationsValid = $limitations.Count -ge 3 -and $noPlacementClaim -and $limitationsText -match 'code compliance'
+$hostProbeLimitations = !$isHostProbe -or ($limitationsText -match 'synthetic wall' -and $limitationsText -match 'service.route' -and $limitationsText -match 'code compliance')
+$limitationsValid = $limitations.Count -ge 3 -and ($noPlacementClaim -or $isHostProbe) -and $hostProbeLimitations -and $limitationsText -match 'code compliance'
 Add-Check 'limitations_explicit' $limitationsValid "limitation_count=$($limitations.Count)"
 
 $passedCount = @($checks | Where-Object passed).Count
