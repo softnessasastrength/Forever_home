@@ -1314,3 +1314,13 @@ Acceptance criteria:
 - Preserve the owner RFAs, selected-D and remote state; leave M-06 unassigned and room B unassigned.
 
 Status: Complete for these offline replay and public-source checks. The two fresh M83 runs each pass 13/13 and produce matching hashes for all four generated artifacts (JSON `8FAF694BCD4AC229836FF49D7DBC35F482F90008E517EF032C5676709DCEEC16`; checks `3F38BA0E3FCA9BCA3D4982F85EB9A8486017967A09899488FC92C1BC9772E32D`; SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`; manifest `D71EC4AC99DD47024F9337A1D695B589F3382EAD663D76AE7BA12AEFCB9B69A0`). The retained M109 selected-D IFC2X3 pair passes 26/26 with zero errors; rerun report SHA256 is `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. The focused M83 source contract tests pass 2/2. Public search rechecked the official 610AA001.020 page and identified its linked spec and install guide as predecessor 211AA documents; indexed RevitCity toilet downloads are account-gated. No exact-SKU freely accessible family was found in those sources; this bounded result does not prove none exists. M83 still lacks its actual Revit/IFC host run, and M-06 lacks a measured current toilet family and full fit evidence. Scratch outputs and the IFC report are in ignored `.local/revalidation/M122-M83/` and `.local/revalidation/M122-selected-d-ifc-rerun.json`. No model or remote state changed.
+
+## M123 - Run the complete offline RevitPilot regression suite
+
+Acceptance criteria:
+
+- Run all tests discoverable under `Tools/RevitPilot/tests` using the repository virtual environment.
+- Require a zero exit code and report the exact passing test count.
+- Describe the result as offline regression evidence only; do not imply a Revit host run or generated IFC validation from unit tests.
+
+Status: Complete. `./.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v` passes **42/42** tests, including the M83 regeneration-order contract and selected-D IFC validator contracts. The separate M109 retained IFC validation and M83 PowerShell generator replay are recorded under M122. This suite does not launch Revit or produce/export geometry. See M123 in `PROGRESS.md`.

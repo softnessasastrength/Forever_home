@@ -1515,3 +1515,9 @@ The next M-06 gate remains read-only Revit inspection of the quarantined exact-s
 - Re-ran the focused M83 source contract suite: **2/2** tests pass. These cover source ordering and level preservation, not Revit runtime geometry.
 - Rechecked the [official American Standard 610AA001.020 page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring). Its linked spec is explicitly for predecessor `211AA.104` (revised 2013) and its installation guide covers the `211AA` series (2019). A public indexed [RevitCity search for American Standard toilets](https://www.revitcity.com/downloads.php?action=search&keywords=American+standard+toilet) returns generic/older families whose download requires login or membership. Exact-SKU web searches returned no freely accessible 610AA001.020 RFA. This is a bounded public search only; no account or gated download was attempted, and it does not establish global nonexistence.
 - M-06 remains unassigned and B remains unassigned. Revit is still showing the old, mismatched `build-m83-level-safe` unsigned-add-in prompt. No trust choice was made; M83 host execution and IFC validation remain outstanding. Selected-D and all three owner-supplied Incoming RFAs remain unchanged; no remote state changed.
+
+## M123 - Run the complete offline RevitPilot regression suite - 2026-10-30
+
+- Ran `./.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v`: **42 tests passed**, zero failures/errors. Coverage includes the M83 `SetShape`/`Regenerate`/bounds ordering contract and selected-D IFC validator behavior.
+- This is offline test evidence. It did not launch Revit, create a host derivative, generate geometry, or export IFC. The M83 host/IFC run remains the active Revit-dependent gate.
+- No project model, selected-D source, IFC, Incoming RFA or remote state changed.
