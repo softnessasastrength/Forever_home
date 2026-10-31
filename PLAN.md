@@ -1545,3 +1545,16 @@ Acceptance criteria:
 - Preserve the distinction between clearance arithmetic and actual wall/finish, installed geometry, door/approach, privacy, plumbing connections and service routing. Do not assign M-06/B.
 
 Status: Complete as a gross-envelope sensitivity replay. Both PowerShell runs pass 14/14 checks and recalculate 16/16 research toilet/lavatory bounding-box pairs; each report/check file matches the checked-in M120 artifacts byte-for-byte. The result preserves the pantry-side first-search window at 124 x 84 in (72.33 sf), assignment false. No physical room fit or route is established. See M143 in `PROGRESS.md` and the M120 README.
+
+## M145 - Screen owner-directed upper-suite interface opportunities
+
+Acceptance criteria:
+
+- Use only the unchanged M132 M130-NE-19 and M130-NE-24 room-block comparisons; verify M132's 25 checks and exact M37 route-report binding.
+- Check shared-boundary lengths for U-01/C-PRIVATE, C-PRIVATE/U-02, U-02/U-03, U-03/U-06, U-06/U-04, and primary-only U-01/U-05 in both layouts.
+- Compare each contact against the source 3.5 ft nominal upper-door reservation. Explicitly label U-02/U-03 as a new owner-directed adjacency using only a source-derived comparison proxy; do not edit the selected-D matrix.
+- Preserve hall reach to U-01/U-02/U-04, U-03 private-route-only, both Jack-and-Jill links, and exclude the superseded U-03/C-UPPER door.
+- Generate source-hash-bound JSON/CSV; replay twice into isolated paths and require identical outputs.
+- Describe results as boundary opportunity arithmetic only; do not claim actual openings, door swing, approach, code, accessibility, service routing, Revit/IFC validation, or a selected plan.
+
+Status: Complete as a schematic interface screen. All six boundaries fit the source 3.5 ft reservation arithmetic in both layouts, but M130-NE-24 has exactly 3.5 ft U-01/C-PRIVATE contact and zero end margin; NE-19 leaves 1.5 ft per end there. NE-24 gains 1 ft at the U-01/U-05 bath interface. M37 sampled routes reach U-02 north and U-04 west in both, with no public-side U-03 sample. The 3.5 ft value is a reservation proxy, not a clear opening or door design. See M145 in `PROGRESS.md`.
