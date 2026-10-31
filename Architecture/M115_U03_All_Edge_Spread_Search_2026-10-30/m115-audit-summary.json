@@ -1,0 +1,22 @@
+﻿{
+    "route_reach_distribution":  {
+                                     "0":  2,
+                                     "1":  45,
+                                     "2":  204,
+                                     "3":  80
+                                 },
+    "full_public_route_candidates":  80,
+    "full_route_without_U03_hall_side_sample":  73,
+    "full_route_with_U03_hall_side_sample":  7,
+    "U03_shell_edge_contacts":  {
+                                    "north":  331,
+                                    "south":  0,
+                                    "west":  141,
+                                    "east":  181
+                                },
+    "U03_edge_pair_distribution":  {
+                                       "north":  9,
+                                       "east+north":  181,
+                                       "north+west":  141
+                                   }
+}

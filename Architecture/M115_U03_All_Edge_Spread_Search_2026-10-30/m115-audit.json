@@ -1,0 +1,154 @@
+﻿{
+    "schema":  "forever-home.m115-u03-all-edge-audit.v1",
+    "interpretation":  "A bounded room-block sensitivity search found route-proxy candidates on north shell edge positions; none is a modeled or selected house layout.",
+    "shell":  {
+                  "width_ft":  38.333333,
+                  "depth_ft":  40,
+                  "status":  "hypothetical exploration only"
+              },
+    "search":  {
+                   "nodes_expanded":  2830,
+                   "node_limit":  4800,
+                   "layouts_recorded":  331,
+                   "search_complete":  false,
+                   "root_seed_labels":  [
+                                            "north@0.0",
+                                            "north@0.5",
+                                            "north@1.0",
+                                            "east@0.0",
+                                            "east@0.5",
+                                            "east@1.0",
+                                            "south@0.0",
+                                            "south@0.5",
+                                            "south@1.0",
+                                            "west@0.0",
+                                            "west@0.5",
+                                            "west@1.0"
+                                        ],
+                   "root_seed_runs":  24,
+                   "route_tested":  331,
+                   "route_reach_distribution":  {
+                                                    "0":  2,
+                                                    "1":  45,
+                                                    "2":  204,
+                                                    "3":  80
+                                                },
+                   "full_public_route_candidates":  80,
+                   "full_route_candidates_without_U03_hall_side_sample":  73,
+                   "U03_hall_side_sample_candidates":  7
+               },
+    "U03_shell_edge_contacts":  {
+                                    "north":  331,
+                                    "south":  0,
+                                    "west":  141,
+                                    "east":  181
+                                },
+    "U03_edge_pair_distribution":  {
+                                       "north":  9,
+                                       "east+north":  181,
+                                       "north+west":  141
+                                   },
+    "best_route_candidate":  {
+                                 "rectangles":  {
+                                                    "U-01":  {
+                                                                 "id":  "U-01",
+                                                                 "x_ft":  2.1666663333333389,
+                                                                 "y_ft":  7,
+                                                                 "width_ft":  10,
+                                                                 "depth_ft":  16
+                                                             },
+                                                    "C-PRIVATE":  {
+                                                                      "id":  "C-PRIVATE",
+                                                                      "x_ft":  2.1666663333333389,
+                                                                      "y_ft":  0,
+                                                                      "width_ft":  10,
+                                                                      "depth_ft":  6.5
+                                                                  },
+                                                    "U-02":  {
+                                                                 "id":  "U-02",
+                                                                 "x_ft":  12.666666333333339,
+                                                                 "y_ft":  0,
+                                                                 "width_ft":  16,
+                                                                 "depth_ft":  9.6666666666666661
+                                                             },
+                                                    "U-03":  {
+                                                                 "id":  "U-03",
+                                                                 "x_ft":  29.166666333333339,
+                                                                 "y_ft":  0,
+                                                                 "width_ft":  9.1666666666666661,
+                                                                 "depth_ft":  13.666666666666666
+                                                             },
+                                                    "U-05":  {
+                                                                 "id":  "U-05",
+                                                                 "x_ft":  2.1666663333333389,
+                                                                 "y_ft":  23.5,
+                                                                 "width_ft":  10,
+                                                                 "depth_ft":  9
+                                                             },
+                                                    "U-06":  {
+                                                                 "id":  "U-06",
+                                                                 "x_ft":  18.666666333333339,
+                                                                 "y_ft":  10.166666666666666,
+                                                                 "width_ft":  10,
+                                                                 "depth_ft":  12
+                                                             },
+                                                    "U-04":  {
+                                                                 "id":  "U-04",
+                                                                 "x_ft":  29.166666333333339,
+                                                                 "y_ft":  18.666666666666664,
+                                                                 "width_ft":  8,
+                                                                 "depth_ft":  13.666666666666666
+                                                             }
+                                                },
+                                 "public_room_samples":  [
+                                                             "U-01",
+                                                             "U-02",
+                                                             "U-04"
+                                                         ],
+                                 "U02_hall_side_samples":  [
+                                                               "north"
+                                                           ],
+                                 "U03_hall_side_samples":  [
+
+                                                           ],
+                                 "status":  "generator-ranked test candidate only; not owner-selected"
+                             },
+    "source_hashes_sha256":  {
+                                 "selected_D_study":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "owner_followup_study":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                 "room_program":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca",
+                                 "search":  "d81c5e30d31057ac15c942bf2d6f34070ac564162fde0c3d908147a6c0beea0d",
+                                 "checks":  "9cf54baa5bbb7029ec8ab21b039c84c4be9db0865ba08a6d614d09ba3dc244a6",
+                                 "manifest":  "3eb88c2e0f70d791c2b7c91d6ef3b0d3b03655e1b4ec1946aae624482e7965b1",
+                                 "archive":  "11360170f462fc28ffd50b71808de12180331121b0041c2da637458f1eda9fb1",
+                                 "svg":  "ce926ef07970ec4a073e2a0a8e8256f7ea7978e563897dc862d39f5c8606d56d",
+                                 "M37_generator":  "8b634e5ae8bfc1889ef5c13b49e8042b4fc0bef1326e190732aa881695cc9da2",
+                                 "audit_script":  "19e2b3eb9a18a1911d5463c80dd5ed2dcf4ed6a3b7f1778ff268765e92a3e7e7"
+                             },
+    "checks":  {
+                   "selected_D_fingerprint_matches_current_source":  true,
+                   "proposal_and_program_fingerprints_match_current_sources":  true,
+                   "owner_keeps_U03_private_route_only":  true,
+                   "all_four_spread_seed_edges_and_scope_match":  true,
+                   "all_24_seed_runs_have_expected_coordinates":  true,
+                   "generator_integrity_checks_pass":  true,
+                   "manifest_search_checks_archive_and_svg_hashes_match":  true,
+                   "SVG_parses_as_XML":  true,
+                   "archive_inventory_matches_search":  true,
+                   "search_is_bounded_and_reports_incomplete":  true,
+                   "all_room_blocks_within_hypothetical_shell":  true,
+                   "all_room_dimensions_match_selected_D_allowing_rotation":  true,
+                   "all_room_blocks_keep_half_foot_proxy_separation":  true,
+                   "all_six_required_private_and_JJ_links_have_contact_proxy":  true,
+                   "route_records_reconstruct_from_side_samples":  true,
+                   "full_public_route_count_matches_search":  true,
+                   "every_full_public_route_candidate_has_north_U02_sample":  true,
+                   "U03_side_sample_count_matches_generator":  true,
+                   "all_route_tested_U03_blocks_touch_north_edge":  true,
+                   "privacy_screen_subset_count_matches_archive":  true,
+                   "selected_D_file_unchanged":  true
+               },
+    "failed":  [
+
+               ]
+}

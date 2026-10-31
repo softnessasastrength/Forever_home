@@ -1,0 +1,32 @@
+﻿{
+    "generator":  "Tools/test_m37_upper_suite_pack_and_route.ps1",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca"
+                                   },
+    "search_parameters":  {
+                              "node_limit":  4800,
+                              "layout_limit":  10000,
+                              "root_search_scope":  "U-03-only",
+                              "u02_root_plan_variant":  "guest-branch-first",
+                              "additional_contact_samples":  0,
+                              "public_door_edge_samples":  5,
+                              "landing_aligned_root_seed_search":  true,
+                              "shell_width_override_ft":  38.333333,
+                              "shell_depth_override_ft":  40,
+                              "u03_perimeter_root_seeds":  true,
+                              "u03_perimeter_seed_edge":  "all",
+                              "u03_perimeter_spread_seeds":  true
+                          },
+    "output_hashes_sha256":  {
+                                 "search":  "d81c5e30d31057ac15c942bf2d6f34070ac564162fde0c3d908147a6c0beea0d",
+                                 "checks":  "9cf54baa5bbb7029ec8ab21b039c84c4be9db0865ba08a6d614d09ba3dc244a6",
+                                 "svg":  "ce926ef07970ec4a073e2a0a8e8256f7ea7978e563897dc862d39f5c8606d56d"
+                             },
+    "optional_route_tested_candidate_archive":  {
+                                                    "file":  "all-route-tested-candidates.json",
+                                                    "sha256":  "11360170f462fc28ffd50b71808de12180331121b0041c2da637458f1eda9fb1",
+                                                    "candidate_count":  331
+                                                }
+}
