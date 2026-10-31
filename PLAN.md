@@ -1475,3 +1475,15 @@ Acceptance criteria:
 - Preserve direct U-02 hall arrival and U-03 private-only topology. Keep M-06/B and fixture locations unassigned.
 - Do not screen bath/shower headroom until exact family geometry and location are verified.
 - Generate reproducible source-bound evidence, identify what input would resolve the largest uncertainty, and make no selected-D, Revit, IFC or source-family changes.
+
+## M137 - Refresh selected-D source and retained IFC evidence
+
+Acceptance criteria:
+
+- Run the documented `OwnerSelectedD` generator twice into ignored scratch directories; require 43/43 checks per run, valid plan SVG XML and byte-identical outputs between runs.
+- Compare generated room geometry/check results with the checked-in derived package using semantic JSON comparison that ignores object key ordering; report source-fingerprint drift separately.
+- Rerun `Tools/RevitPilot/validate_selected_d_ifc.py` against the retained Revit/IFC pair; require all checks to pass, IFC2X3 schema validation clean, three expected storeys and source-matching spaces.
+- Keep the selected-D source and checked-in derived package unchanged. If their provenance fingerprints have drifted, document the cause and seek a separate design-baseline decision before refreshing tracked artifacts.
+- Record that room-space IFC validation is not a complete physical architectural model or construction/code approval.
+
+Status: Complete as a scratch regeneration and retained-export validation. The current source regenerated consistently in two isolated runs (43/43 each; all seven outputs byte-identical between runs), and selected-D checks/geometry are semantically equivalent to the checked-in derived package. Embedded fingerprints for `Requirements/Room_Program.md` and `Decisions/2026-10-27_Selected_Architectural_Direction_D.md` differ from the currently regenerated output; no tracked selected-D package was refreshed. The retained Revit/IFC2X3 pair passes 26/26 independent checks with zero errors. See M137 in `PROGRESS.md`.
