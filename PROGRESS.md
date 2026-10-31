@@ -2,6 +2,13 @@
 
 Updated: 2026-10-31
 
+## M223 — One-command selected-D source and IFC validation
+
+- Added `Tools/validate_architectural_bim_baseline.ps1`, which writes only under ignored `.local/revalidation/`, replays `OwnerSelectedD` twice, enforces 43 passing geometry checks per replay, parses all three SVGs per run, compares seven artifact filenames and SHA256s, runs the existing selected-D IFC validator, and rechecks protected source/RVT/IFC hashes afterward.
+- Command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/validate_architectural_bim_baseline.ps1` — **PASS**. Report: `.local/revalidation/architectural-bim-baseline-20261031T194357063Z/baseline-validation.json`.
+- Evidence: 43/43 checks in each replay; all seven artifact hashes match; all three plan SVGs parse; retained IFC passes **26/26**, zero errors, IFC2X3 schema clean, three storeys and 21 source-matching spaces. Protected selected-D study SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, RVT SHA256 `C6CED6ACD0E59E49EAE0E9821153204FC81ED6CEDE2FCD4F4D7E387C0ACEFD6D0`, IFC SHA256 `56251F4754567C78EBB657EC2B99894958C15EF73663F737742F3F36A8472F6F` remain unchanged.
+- This closes the repeatable room-space source/export validation gate only. Native construction categories remain empty, so physical house geometry and the architect-reviewable full-house model are still incomplete.
+
 ## M222 — Native geometry audit for pantry-door Revit studies
 
 - Extended `PantryDoorStudyCommand` to capture native tagged `Wall`/`ModelCurve` location endpoints, wall test heights, and unique markers before saving. It now stops on wrong native element counts or duplicate/missing markers.
