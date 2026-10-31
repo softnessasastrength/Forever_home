@@ -2047,3 +2047,15 @@ Acceptance criteria:
 Status: Complete as an unapproved placement sensitivity. Only the one-foot north translation restores a grid route (56.5 ft, seven turns); it has zero additional table-edge gap and traverses 6.5 ft of unassigned space. The result is too fragile to select. See `Architecture/M188_Dining_Set_Placement_2026-10-31/README.md`.
 
 Next: if owner accepts further schematic exploration, search small combined table offsets and alternative four-chair placement while enforcing the full 36-in chair-use envelope and a separate route. Then move to actual Revit wall/opening coordination only in a disposable derivative after exact local DLL verification.
+
+## M189 - Replace assumed counter-stool body with quarantined family geometry
+
+Acceptance criteria:
+
+- Inspect only the source-recorded MiEN Tauri `TAURI-STL-24-N-N.rfa` under quarantine; verify source SHA before and after.
+- Run the project-local Revit 2027 inspector into a new empty derivative directory, never opening or modifying selected-D and never placing a family instance.
+- Validate finite positive solid bounds, all type records, zero instances, derivative hash and explicit limitations; capture the Revit build and report hash.
+- Replace the assumed 24-in body proxy only after measured symbol bounds are available; retain a distinct occupied-use/pull-back assumption.
+- Record MiEN's published 23.75-in seat height against the owner's 24–26-in program target; do not round or alter the target silently. Keep M-06/B unassigned until actual fixture geometry, clearance, door/approach and services all pass together.
+
+Status: In progress. The inspector builds with zero errors and two reference-conflict warnings; the reproducible validator fixture runner passes 3/3 cases (valid report 11/11, wrong source hash rejected, incomplete solid bounds rejected). The exact Tauri request and hash-verified project-local DLL are prepared. Revit host execution is pending because the running window is not accessible through the current computer-use surface; no restart or load choice was made.
