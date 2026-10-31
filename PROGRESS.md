@@ -2,6 +2,12 @@
 
 Updated: 2026-10-31
 
+## M221 — M-06 manufacturer Revit-family crosswalk refresh
+
+- Checked the public American Standard current 610AA001.020 page and LIXIL Pro predecessor 211AA104.020 page. The current SKU page lists specification/installation resources but no public Revit link; the predecessor page does link a public RFA.
+- Retrieved that manufacturer RFA without signing in. It is 331,776 bytes and SHA256 `37D3E56962B81F4B0ACE3D36D25BAFC03B7DEE1232E7DE7BBF9B95E4B0B75F63`, exactly matching the preserved Incoming file. A second quarantined retrieval and `source-manifest.json` are under ignored `.local/revit-pilot/family-intake/candidates/m06-lixil-211aa-predecessor-20261031/`; no source RFA was modified. Existing read-only Revit 2027.3 inspection shows only seat type `5325.010`, not the toilet body, so the linked family cannot substantiate selected 610AA geometry.
+- Exact-SKU RFA/current assembled drawing remains unverified. Keep west A protected and east B unassigned pending product geometry, applicable clearance basis, real door/approach, and plausible service route. Details and URLs are in `Research/M221_M06_Manufacturer_RFA_Crosswalk_2026-10-31.md`.
+
 ## M220 — Fresh selected-D source and IFC baseline replay
 
 - Replayed `Tools/build_selected_house_schematic.ps1 -LayoutVariant OwnerSelectedD` under Windows PowerShell 5.1 into `.local/revalidation/resume-selected-d-20261031T1932-a/` and `-b/`. Each output passes all **43/43** geometry checks; all three plan SVGs parse; all seven output files match byte-for-byte. Checked-in selected-D `study.json` remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`.

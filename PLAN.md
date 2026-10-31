@@ -33,6 +33,12 @@ Status: Selected-D study SHA256 remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0
 
 **Current result:** Complete on 31 October. Replays `.local/revalidation/resume-selected-d-20261031T1932-a/` and `-b/` each pass 43/43 and emit seven byte-identical artifacts; all three SVGs parse. Checked-in source remains SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. Independent validation of retained package `.local/revit-pilot/selected-d/20261030T002652845Z/` passes **26/26**, zero errors, with the expected three storeys and 21 source-matched spaces; IFC2X3 schema is clean. Saved RVT SHA256 is `C6CED6ACD0E59E49EAE0E9821153204FC81ED6CEDE2FCD4F4D7E387C0ACEFD6D0`; IFC SHA256 is `56251F4754567C78EBB657EC2B99894958C15EF73663F737742F3F36A8472F6F`; validation report hash matches the retained result `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`. RevitPilot unit suite passes **49/49**. Native construction categories remain empty: this verifies a room-space study, not a full house model. Commands/results are recorded in `PROGRESS.md`.
 
+## M221 — Refresh the M-06 manufacturer family crosswalk
+
+**Acceptance:** review only public manufacturer pages for the selected toilet and predecessor family; do not sign in or create an account; verify any RFA source by hash against the preserved Incoming copy; do not assign B or represent a predecessor as the current complete fixture.
+
+**Current result:** Complete as a bounded source review. The American Standard 610AA001.020 page lists current product resources but no public Revit-family link. LIXIL Pro exposes a Revit file on the distinct predecessor 211AA104.020 product page; unauthenticated retrieval is SHA256 `37D3E56962B81F4B0ACE3D36D25BAFC03B7DEE1232E7DE7BBF9B95E4B0B75F63`, matching the preserved Incoming RFA exactly. Existing read-only Revit 2027.3 evidence identifies it as the elongated seat family `5325.010`, not the toilet body. No exact-SKU family or current assembled drawing was established. West A stays protected; east B stays unassigned. See `Research/M221_M06_Manufacturer_RFA_Crosswalk_2026-10-31.md`.
+
 ## Owner outcome — architect-reviewable native Revit model
 
 The intended end state is a coherent, documented **native Revit house model** and review packet that an architect can assess without reconstructing the design intent from disconnected sketches. It is a design-review handoff, not a claim of professional approval or permit readiness.
