@@ -1,0 +1,17 @@
+{
+    "schema":  "forever-home.m233-m01-six-inch-translation-diagram-checks.v1",
+    "result":  "pass",
+    "check_count":  10,
+    "checks":  {
+                   "selected_d_hash_matches":  true,
+                   "m228_hash_matches":  true,
+                   "m215_hash_matches":  true,
+                   "m232_hash_matches":  true,
+                   "owner_test_scope_recorded":  true,
+                   "move_is_exactly_six_inches":  true,
+                   "living_area_preserved":  true,
+                   "selected_d_unchanged":  true,
+                   "windows_remain_unassigned":  true,
+                   "svg_parses_as_xml":  true
+               }
+}
