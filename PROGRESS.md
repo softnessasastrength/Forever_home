@@ -14,6 +14,12 @@ Updated: 2026-10-31
 - Both selected-D regenerations pass **43/43** checks, each emits seven byte-identical artifacts, and all three SVGs in each replay parse. Retained IFC2X3 passes **26/26** with zero errors; protected selected-D/RVT/IFC hashes are unchanged. Report SHA256: `BBF9E544B0CB130658A2E2C6FF9CC1606E8885B58C38D0F9D292DF914873152F`.
 - This confirms the documented room-block/space-study baseline only. Native construction categories remain empty; no physical house or code/construction-readiness conclusion follows.
 
+## M238 — Refresh Connecticut code-edition status before design screening
+
+- Checked current official Connecticut DAS pages and the official amended 2022 CSBC PDF. DAS lists the 2022 CSBC as current and says the expected 2026 effective date is delayed pending Legislative Regulation Review Committee approval.
+- Confirmed that the 2022 IRC's 36-in yard-to-public-way path (R310.1 exception) and 36-in stair clear width (R311.7.1) are section-specific; they do not establish a general interior hallway width. M215 remains a geometric 36-in proxy.
+- Documented applicability limits and missing inputs in `Research/M238_Connecticut_Code_Status_2026-10-31.md`. No model or selected-D edits; no compliance conclusion.
+
 ## M235 — Revalidate the selected-D geometry and IFC baseline
 
 - Ran `Tools/validate_architectural_bim_baseline.ps1 -OutputDirectory .local/revalidation/M235-baseline` from the current checkout.
