@@ -1498,3 +1498,14 @@ Acceptance criteria:
 - Preserve the RVT, IFC, selected-D source, incoming RFA files and remote state.
 
 Status: Complete. Both fresh reports pass 32/32 and are byte-identical (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). The host derivative remains one level and seven room-space blocks with no modeled walls, floors, stairs, doors, windows, roof, structure, MEP or fixtures; see M138 in `PROGRESS.md`.
+
+## M139 - Prepare the M83 Revit host retry safely
+
+Acceptance criteria:
+
+- Rerun the complete offline RevitPilot suite and compile the M83 gable command using the existing repository-local .NET SDK; install no software.
+- Verify the current build's SHA256, its project-local manifest path/AddInId, and the per-user manifest path/AddInId. Do not replace registration or trust settings as part of this readiness check.
+- Inspect the live Revit prompt. Load Once is permitted only if the prompt identifies the current hash-verified project-local build; if it names a different build, leave it untouched and request owner direction.
+- Separate build readiness from actual Revit/IFC host validation and retain the host check as open until a matching prompt is accepted and the export validator passes.
+
+Status: Build readiness complete; host run remains open. The full offline suite passes 47/47. Rebuild completes with zero errors and two MSB3277 reference-version warnings. The current DLL SHA256 is `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`; its local manifest and the registered per-user manifest have the authorized AddInId and matching project-local assembly path. Revit still displays the older `build-m83-level-safe` DLL prompt (SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`), so no trust choice was made. See M139 in `PROGRESS.md`.

@@ -32,6 +32,13 @@ Status: Compact-Core C and owner-selected direction D remain preserved compatibi
 - The retained derivative is explicitly a room-boundary test: one `M78 Upper FF (Hypothetical Test)` level, seven spaces and a plan-only 38 1/3 x 40 ft envelope. It contains no native walls, floors, stairs, doors, windows, roof, structure, services or fixtures. No code or construction claim follows.
 - Selected-D, retained M78 RVT/IFC, all five incoming RFA files and remote refs are unchanged. The separate M83 gable host export still awaits resolution of Revit's stale-DLL prompt; the prompt's old DLL SHA differs from the authorized current manifest build.
 
+## M139 - M83 Revit host retry readiness - 2026-10-30
+
+- Ran the documented offline regression command `./.venv/Scripts/python.exe -m unittest discover -s Tools/RevitPilot/tests -v`: **47 tests pass**.
+- Rebuilt with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/RevitPilot/build.ps1 -BuildDirectory build-m83-regenerate-bounds-v1`. Existing local SDK restore was up-to-date; build completed with **0 errors and 2 MSB3277 reference-version conflict warnings**. No software was installed. Contract tests include `test_direct_shape_regenerates_before_bounds_validation`.
+- Current project-local DLL SHA256: `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`. The build-adjacent manifest and per-user `ForeverHome.Pilot.addin` both contain AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and resolve to this worktree's `build-m83-regenerate-bounds-v1/Release/net10.0-windows/RevitPilot.dll` path. The per-user manifest was not replaced; no trust/security settings changed.
+- Read-only UI inspection confirms Revit still prompts for `build-m83-level-safe/Release/net10.0-windows/RevitPilot.dll`, SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`. The prompt does not match the current registered build. No button was clicked. Per AGENTS.md, owner direction is required before dismissing/restarting around this mismatch; a successful host M83 RVT/IFC run is still unverified.
+
 ## M81 — M78 hypothetical upper-suite Revit/IFC milestone — 2026-10-30
 
 - Fixed JSON BOM handling in the new RevitPilot M78 command while retaining raw-byte SHA256 provenance. A Revit 2027.3.0.28 run created a separate model at `.local/revit-pilot/upper-suite/20261030T200906834Z/`; selected D and the Incoming RFAs were not edited.
