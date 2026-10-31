@@ -1532,3 +1532,14 @@ Acceptance criteria:
 - Keep M-06/B unassigned; record the public-source gate and any browser-session login assumption correction.
 
 Status: Complete as an anonymous source check. No exact 610AA listing was exposed. The broad search returned only an unidentified, Revit Architecture 2011 `Standard Toilet / American Standard Toilet` record with no model dimensions, while its page requires Login or Join to download. The active Edge profile was visibly logged out, and no sign-in or download occurred. The family is not a fit candidate. M133 was replayed twice after this research-note update and still passes 12/12; see its current source hash and outputs. See M142 in `Research/M06_Toilet_Options_2026-10-27.md` and `PROGRESS.md`.
+
+## M143 - Replay the pantry-side M-06 gross-envelope screen
+
+Acceptance criteria:
+
+- Replay `Tools/build_m120_m06_current_envelope_screen.ps1` twice to ignored scratch directories; require all checks and same-wall envelope calculations to pass and generated reports to match the checked-in M120 package byte-for-byte.
+- Confirm the study remains tied to the exact 610AA infographic, hash-recorded Tresham family-symbol evidence and named research sink candidates.
+- Report the 124 x 84 in/72.33 sf rectangle only as the owner-selected pantry-side gross search window, and keep its unassigned state explicit.
+- Preserve the distinction between clearance arithmetic and actual wall/finish, installed geometry, door/approach, privacy, plumbing connections and service routing. Do not assign M-06/B.
+
+Status: Complete as a gross-envelope sensitivity replay. Both PowerShell runs pass 14/14 checks and recalculate 16/16 research toilet/lavatory bounding-box pairs; each report/check file matches the checked-in M120 artifacts byte-for-byte. The result preserves the pantry-side first-search window at 124 x 84 in (72.33 sf), assignment false. No physical room fit or route is established. See M143 in `PROGRESS.md` and the M120 README.
