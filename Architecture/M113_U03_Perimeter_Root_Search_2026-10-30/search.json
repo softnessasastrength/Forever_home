@@ -1,0 +1,959 @@
+﻿{
+    "schema":  "forever-home.m37-upper-suite-pack-route.v2",
+    "title":  "M37 - upper-suite room packing and public-hall route search",
+    "status":  "bounded search found no candidate satisfying room contacts, lift keepout and required 4ft public routes to U-01, U-02 and U-04",
+    "source_fingerprints_sha256":  {
+                                       "selected_D_study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "owner_followup_study.json":  "0519c9f350c41fbc9f7ba1b6b926c2b26e40f17cb5eacc3c13d5acaaf2749537",
+                                       "Requirements/Room_Program.md":  "c0e65ecc2cd9db78e88bef178b381097386ea492dfb17122619ad480a0c553ca"
+                                   },
+    "search":  {
+                   "algorithm":  "targeted U-03 root placement on each hypothetical shell edge, then deterministic tree-attached room placement and sampled public-route filtering",
+                   "contact_sampling":  "Preserve the five legacy anchors; append the requested number of evenly spaced positions on each axis within the source 3.5ft door-reservation interval, snapped to the 1/6ft search grid.",
+                   "public_door_edge_samples":  5,
+                   "public_door_edge_sample_basis":  "Hall reachability is tested at evenly spaced goal points along each room side, with each point kept at least half the source door-reservation interval from side corners. These are route samples only, not door locations or openings.",
+                   "root_search_scope":  "U-03-only",
+                   "u02_root_plan_variant":  "guest-branch-first",
+                   "additional_contact_samples":  0,
+                   "landing_aligned_root_seed_search":  true,
+                   "u03_perimeter_root_seeds":  true,
+                   "landing_root_seed_sides":  [
+                                                   "north",
+                                                   "east",
+                                                   "south",
+                                                   "west"
+                                               ],
+                   "node_limit":  1200,
+                   "search_root_rooms":  "U-03",
+                   "per_root_orientation_node_budget":  150,
+                   "nodes_expanded":  464,
+                   "node_limit_reached":  true,
+                   "root_orientation_runs":  [
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  13.666666666666666,
+                                                     "anchor_depth_ft":  9.1666666666666661,
+                                                     "root_x_ft":  12.333333333333336,
+                                                     "root_y_ft":  0,
+                                                     "nodes_expanded":  150,
+                                                     "seed":  "north",
+                                                     "seed_rejected":  false
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  13.666666666666666,
+                                                     "anchor_depth_ft":  9.1666666666666661,
+                                                     "root_x_ft":  24.666666333333339,
+                                                     "root_y_ft":  25.416666666666668,
+                                                     "nodes_expanded":  0,
+                                                     "seed":  "east",
+                                                     "seed_rejected":  true
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  13.666666666666666,
+                                                     "anchor_depth_ft":  9.1666666666666661,
+                                                     "root_x_ft":  12.333333333333336,
+                                                     "root_y_ft":  30.833333333333336,
+                                                     "nodes_expanded":  0,
+                                                     "seed":  "south",
+                                                     "seed_rejected":  true
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  13.666666666666666,
+                                                     "anchor_depth_ft":  9.1666666666666661,
+                                                     "root_x_ft":  0,
+                                                     "root_y_ft":  25.416666666666668,
+                                                     "nodes_expanded":  150,
+                                                     "seed":  "west",
+                                                     "seed_rejected":  false
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  9.1666666666666661,
+                                                     "anchor_depth_ft":  13.666666666666666,
+                                                     "root_x_ft":  14.583333333333336,
+                                                     "root_y_ft":  0,
+                                                     "nodes_expanded":  150,
+                                                     "seed":  "north",
+                                                     "seed_rejected":  false
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  9.1666666666666661,
+                                                     "anchor_depth_ft":  13.666666666666666,
+                                                     "root_x_ft":  29.166666333333339,
+                                                     "root_y_ft":  23.166666666666668,
+                                                     "nodes_expanded":  7,
+                                                     "seed":  "east",
+                                                     "seed_rejected":  false
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  9.1666666666666661,
+                                                     "anchor_depth_ft":  13.666666666666666,
+                                                     "root_x_ft":  14.583333333333336,
+                                                     "root_y_ft":  26.333333333333336,
+                                                     "nodes_expanded":  0,
+                                                     "seed":  "south",
+                                                     "seed_rejected":  true
+                                                 },
+                                                 {
+                                                     "root_room":  "U-03",
+                                                     "anchor_width_ft":  9.1666666666666661,
+                                                     "anchor_depth_ft":  13.666666666666666,
+                                                     "root_x_ft":  0,
+                                                     "root_y_ft":  23.166666666666668,
+                                                     "nodes_expanded":  7,
+                                                     "seed":  "west",
+                                                     "seed_rejected":  false
+                                                 }
+                                             ],
+                   "layout_limit":  5000,
+                   "layouts_recorded":  45,
+                   "raw_complete_layouts":  65,
+                   "start_approach_translation_rejects":  0,
+                   "translations_tested":  45,
+                   "hall_route_searches":  45,
+                   "routes_with_clear_stair_approach":  45,
+                   "coordinate_grid_ft":  0.16666666666666666,
+                   "source_door_reservation_ft":  3.5,
+                   "search_complete":  false
+               },
+    "source_dimensions_ft":  {
+                                 "U-01":  {
+                                              "id":  "U-01",
+                                              "width_ft":  16,
+                                              "depth_ft":  10
+                                          },
+                                 "U-02":  {
+                                              "id":  "U-02",
+                                              "width_ft":  16,
+                                              "depth_ft":  9.6666666666666661
+                                          },
+                                 "U-03":  {
+                                              "id":  "U-03",
+                                              "width_ft":  13.666666666666666,
+                                              "depth_ft":  9.1666666666666661
+                                          },
+                                 "U-04":  {
+                                              "id":  "U-04",
+                                              "width_ft":  13.666666666666666,
+                                              "depth_ft":  8
+                                          },
+                                 "U-05":  {
+                                              "id":  "U-05",
+                                              "width_ft":  9,
+                                              "depth_ft":  10
+                                          },
+                                 "U-06":  {
+                                              "id":  "U-06",
+                                              "width_ft":  10,
+                                              "depth_ft":  12
+                                          },
+                                 "C-PRIVATE":  {
+                                                   "id":  "C-PRIVATE",
+                                                   "width_ft":  6.5,
+                                                   "depth_ft":  10
+                                               }
+                             },
+    "coordinate_basis":  {
+                             "shell_case":  "M76-derived 38.333333 x 40 ft hypothetical upper-shell test envelope; unselected proposal, owner-authorized exploration only",
+                             "width_ft":  38.333333,
+                             "depth_ft":  40,
+                             "selected_D_upper_frame_offset_ft":  6,
+                             "note":  "Owner-authorized exploration of a M76 sensitivity case only; not a selected or approved building dimension."
+                         },
+    "preserved_constraints":  [
+                                  "U-01 to primary-only U-05 through a nominal 3.5ft contact reservation",
+                                  "U-01 to C-PRIVATE to U-02",
+                                  "owner-directed U-02 to U-03 private route only; no direct U-03 to C-UPPER door",
+                                  "owner-required direct U-02 shared-hall arrival; actual opening remains unmodeled",
+                                  "U-04 retains independent guest shared-hall access",
+                                  "U-03 and U-04 each contact U-06 for Jack-and-Jill access",
+                                  "source 8x8ft lift reservation, clipped to its upper-wing projection",
+                                  "4ft-wide hall route from source upper landing to U-01, U-02 and U-04; sampled side goals do not establish doors"
+                              ],
+    "local_lift_keepout":  {
+                               "id":  "lift projected keepout (inside upper shell)",
+                               "x_ft":  21.166666666666668,
+                               "y_ft":  28,
+                               "width_ft":  8,
+                               "depth_ft":  8
+                           },
+    "reserved_stair_approach":  {
+                                    "id":  "reserved 4ft stair approach",
+                                    "x_ft":  17.166666666666668,
+                                    "y_ft":  28,
+                                    "width_ft":  4,
+                                    "depth_ft":  4
+                                },
+    "upper_landing_local":  {
+                                "id":  "upper stair landing",
+                                "x_ft":  17.166666666666668,
+                                "y_ft":  32,
+                                "width_ft":  4,
+                                "depth_ft":  4
+                            },
+    "route_access_counts_by_room":  {
+                                        "U-01":  8,
+                                        "U-02":  0,
+                                        "U-03":  45,
+                                        "U-04":  20
+                                    },
+    "route_cases_reaching_U01_U02_U04":  0,
+    "candidate_private_only":  null,
+    "top_partial_public_access_layouts":  [
+                                              {
+                                                  "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,0.1667,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,11.2500,8.0000,13.6667|U-05:27.0000,0.1667,10.0000,9.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                  "layout_bounds_ft":  {
+                                                                           "width":  37,
+                                                                           "depth":  34.416666666666671
+                                                                       },
+                                                  "translation_ft":  {
+                                                                         "x":  0,
+                                                                         "y":  0
+                                                                     },
+                                                  "rectangles":  {
+                                                                     "U-01":  {
+                                                                                  "id":  "U-01",
+                                                                                  "x_ft":  10.5,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  16,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "C-PRIVATE":  {
+                                                                                       "id":  "C-PRIVATE",
+                                                                                       "x_ft":  0,
+                                                                                       "y_ft":  1.9166666666666679,
+                                                                                       "width_ft":  10,
+                                                                                       "depth_ft":  6.5
+                                                                                   },
+                                                                     "U-02":  {
+                                                                                  "id":  "U-02",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  8.9166666666666679,
+                                                                                  "width_ft":  9.6666666666666661,
+                                                                                  "depth_ft":  16
+                                                                              },
+                                                                     "U-03":  {
+                                                                                  "id":  "U-03",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  25.416666666666668,
+                                                                                  "width_ft":  13.666666666666666,
+                                                                                  "depth_ft":  9.1666666666666661
+                                                                              },
+                                                                     "U-05":  {
+                                                                                  "id":  "U-05",
+                                                                                  "x_ft":  27,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  9
+                                                                              },
+                                                                     "U-06":  {
+                                                                                  "id":  "U-06",
+                                                                                  "x_ft":  10.166666666666666,
+                                                                                  "y_ft":  12.916666666666668,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  12
+                                                                              },
+                                                                     "U-04":  {
+                                                                                  "id":  "U-04",
+                                                                                  "x_ft":  20.666666666666664,
+                                                                                  "y_ft":  11.250000000000002,
+                                                                                  "width_ft":  8,
+                                                                                  "depth_ft":  13.666666666666666
+                                                                              }
+                                                                 },
+                                                  "public_rooms_reached":  [
+                                                                               "U-04"
+                                                                           ],
+                                                  "public_rooms_reached_count":  1,
+                                                  "hall_reachability":  {
+                                                                            "visited_cells":  7737,
+                                                                            "reachable_room_sides":  {
+                                                                                                         "U-01":  [
+
+                                                                                                                  ],
+                                                                                                         "U-02":  [
+
+                                                                                                                  ],
+                                                                                                         "U-03":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ],
+                                                                                                         "U-04":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ]
+                                                                                                     },
+                                                                            "required_public_rooms_reached":  false,
+                                                                            "u03_hall_side_reachable":  true
+                                                                        }
+                                              },
+                                              {
+                                                  "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,0.1667,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,11.2500,8.0000,13.6667|U-05:27.0000,0.1667,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                  "layout_bounds_ft":  {
+                                                                           "width":  36,
+                                                                           "depth":  34.416666666666671
+                                                                       },
+                                                  "translation_ft":  {
+                                                                         "x":  0,
+                                                                         "y":  0
+                                                                     },
+                                                  "rectangles":  {
+                                                                     "U-01":  {
+                                                                                  "id":  "U-01",
+                                                                                  "x_ft":  10.5,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  16,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "C-PRIVATE":  {
+                                                                                       "id":  "C-PRIVATE",
+                                                                                       "x_ft":  0,
+                                                                                       "y_ft":  1.9166666666666679,
+                                                                                       "width_ft":  10,
+                                                                                       "depth_ft":  6.5
+                                                                                   },
+                                                                     "U-02":  {
+                                                                                  "id":  "U-02",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  8.9166666666666679,
+                                                                                  "width_ft":  9.6666666666666661,
+                                                                                  "depth_ft":  16
+                                                                              },
+                                                                     "U-03":  {
+                                                                                  "id":  "U-03",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  25.416666666666668,
+                                                                                  "width_ft":  13.666666666666666,
+                                                                                  "depth_ft":  9.1666666666666661
+                                                                              },
+                                                                     "U-05":  {
+                                                                                  "id":  "U-05",
+                                                                                  "x_ft":  27,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  9,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "U-06":  {
+                                                                                  "id":  "U-06",
+                                                                                  "x_ft":  10.166666666666666,
+                                                                                  "y_ft":  12.916666666666668,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  12
+                                                                              },
+                                                                     "U-04":  {
+                                                                                  "id":  "U-04",
+                                                                                  "x_ft":  20.666666666666664,
+                                                                                  "y_ft":  11.250000000000002,
+                                                                                  "width_ft":  8,
+                                                                                  "depth_ft":  13.666666666666666
+                                                                              }
+                                                                 },
+                                                  "public_rooms_reached":  [
+                                                                               "U-04"
+                                                                           ],
+                                                  "public_rooms_reached_count":  1,
+                                                  "hall_reachability":  {
+                                                                            "visited_cells":  7527,
+                                                                            "reachable_room_sides":  {
+                                                                                                         "U-01":  [
+
+                                                                                                                  ],
+                                                                                                         "U-02":  [
+
+                                                                                                                  ],
+                                                                                                         "U-03":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ],
+                                                                                                         "U-04":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ]
+                                                                                                     },
+                                                                            "required_public_rooms_reached":  false,
+                                                                            "u03_hall_side_reachable":  true
+                                                                        }
+                                              },
+                                              {
+                                                  "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,0.1667,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,11.2500,8.0000,13.6667|U-05:27.0000,0.6667,10.0000,9.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                  "layout_bounds_ft":  {
+                                                                           "width":  37,
+                                                                           "depth":  34.416666666666671
+                                                                       },
+                                                  "translation_ft":  {
+                                                                         "x":  0,
+                                                                         "y":  0
+                                                                     },
+                                                  "rectangles":  {
+                                                                     "U-01":  {
+                                                                                  "id":  "U-01",
+                                                                                  "x_ft":  10.5,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  16,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "C-PRIVATE":  {
+                                                                                       "id":  "C-PRIVATE",
+                                                                                       "x_ft":  0,
+                                                                                       "y_ft":  1.9166666666666679,
+                                                                                       "width_ft":  10,
+                                                                                       "depth_ft":  6.5
+                                                                                   },
+                                                                     "U-02":  {
+                                                                                  "id":  "U-02",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  8.9166666666666679,
+                                                                                  "width_ft":  9.6666666666666661,
+                                                                                  "depth_ft":  16
+                                                                              },
+                                                                     "U-03":  {
+                                                                                  "id":  "U-03",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  25.416666666666668,
+                                                                                  "width_ft":  13.666666666666666,
+                                                                                  "depth_ft":  9.1666666666666661
+                                                                              },
+                                                                     "U-05":  {
+                                                                                  "id":  "U-05",
+                                                                                  "x_ft":  27,
+                                                                                  "y_ft":  0.66666666666666785,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  9
+                                                                              },
+                                                                     "U-06":  {
+                                                                                  "id":  "U-06",
+                                                                                  "x_ft":  10.166666666666666,
+                                                                                  "y_ft":  12.916666666666668,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  12
+                                                                              },
+                                                                     "U-04":  {
+                                                                                  "id":  "U-04",
+                                                                                  "x_ft":  20.666666666666664,
+                                                                                  "y_ft":  11.250000000000002,
+                                                                                  "width_ft":  8,
+                                                                                  "depth_ft":  13.666666666666666
+                                                                              }
+                                                                 },
+                                                  "public_rooms_reached":  [
+                                                                               "U-04"
+                                                                           ],
+                                                  "public_rooms_reached_count":  1,
+                                                  "hall_reachability":  {
+                                                                            "visited_cells":  7632,
+                                                                            "reachable_room_sides":  {
+                                                                                                         "U-01":  [
+
+                                                                                                                  ],
+                                                                                                         "U-02":  [
+
+                                                                                                                  ],
+                                                                                                         "U-03":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ],
+                                                                                                         "U-04":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ]
+                                                                                                     },
+                                                                            "required_public_rooms_reached":  false,
+                                                                            "u03_hall_side_reachable":  true
+                                                                        }
+                                              },
+                                              {
+                                                  "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,0.1667,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,11.2500,8.0000,13.6667|U-05:27.0000,1.1667,10.0000,9.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                  "layout_bounds_ft":  {
+                                                                           "width":  37,
+                                                                           "depth":  34.416666666666671
+                                                                       },
+                                                  "translation_ft":  {
+                                                                         "x":  0,
+                                                                         "y":  0
+                                                                     },
+                                                  "rectangles":  {
+                                                                     "U-01":  {
+                                                                                  "id":  "U-01",
+                                                                                  "x_ft":  10.5,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  16,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "C-PRIVATE":  {
+                                                                                       "id":  "C-PRIVATE",
+                                                                                       "x_ft":  0,
+                                                                                       "y_ft":  1.9166666666666679,
+                                                                                       "width_ft":  10,
+                                                                                       "depth_ft":  6.5
+                                                                                   },
+                                                                     "U-02":  {
+                                                                                  "id":  "U-02",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  8.9166666666666679,
+                                                                                  "width_ft":  9.6666666666666661,
+                                                                                  "depth_ft":  16
+                                                                              },
+                                                                     "U-03":  {
+                                                                                  "id":  "U-03",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  25.416666666666668,
+                                                                                  "width_ft":  13.666666666666666,
+                                                                                  "depth_ft":  9.1666666666666661
+                                                                              },
+                                                                     "U-05":  {
+                                                                                  "id":  "U-05",
+                                                                                  "x_ft":  27,
+                                                                                  "y_ft":  1.1666666666666679,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  9
+                                                                              },
+                                                                     "U-06":  {
+                                                                                  "id":  "U-06",
+                                                                                  "x_ft":  10.166666666666666,
+                                                                                  "y_ft":  12.916666666666668,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  12
+                                                                              },
+                                                                     "U-04":  {
+                                                                                  "id":  "U-04",
+                                                                                  "x_ft":  20.666666666666664,
+                                                                                  "y_ft":  11.250000000000002,
+                                                                                  "width_ft":  8,
+                                                                                  "depth_ft":  13.666666666666666
+                                                                              }
+                                                                 },
+                                                  "public_rooms_reached":  [
+                                                                               "U-04"
+                                                                           ],
+                                                  "public_rooms_reached_count":  1,
+                                                  "hall_reachability":  {
+                                                                            "visited_cells":  7527,
+                                                                            "reachable_room_sides":  {
+                                                                                                         "U-01":  [
+
+                                                                                                                  ],
+                                                                                                         "U-02":  [
+
+                                                                                                                  ],
+                                                                                                         "U-03":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ],
+                                                                                                         "U-04":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ]
+                                                                                                     },
+                                                                            "required_public_rooms_reached":  false,
+                                                                            "u03_hall_side_reachable":  true
+                                                                        }
+                                              },
+                                              {
+                                                  "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,0.1667,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,12.0833,8.0000,13.6667|U-05:27.0000,0.1667,10.0000,9.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                  "layout_bounds_ft":  {
+                                                                           "width":  37,
+                                                                           "depth":  34.416666666666671
+                                                                       },
+                                                  "translation_ft":  {
+                                                                         "x":  0,
+                                                                         "y":  0
+                                                                     },
+                                                  "rectangles":  {
+                                                                     "U-01":  {
+                                                                                  "id":  "U-01",
+                                                                                  "x_ft":  10.5,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  16,
+                                                                                  "depth_ft":  10
+                                                                              },
+                                                                     "C-PRIVATE":  {
+                                                                                       "id":  "C-PRIVATE",
+                                                                                       "x_ft":  0,
+                                                                                       "y_ft":  1.9166666666666679,
+                                                                                       "width_ft":  10,
+                                                                                       "depth_ft":  6.5
+                                                                                   },
+                                                                     "U-02":  {
+                                                                                  "id":  "U-02",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  8.9166666666666679,
+                                                                                  "width_ft":  9.6666666666666661,
+                                                                                  "depth_ft":  16
+                                                                              },
+                                                                     "U-03":  {
+                                                                                  "id":  "U-03",
+                                                                                  "x_ft":  0,
+                                                                                  "y_ft":  25.416666666666668,
+                                                                                  "width_ft":  13.666666666666666,
+                                                                                  "depth_ft":  9.1666666666666661
+                                                                              },
+                                                                     "U-05":  {
+                                                                                  "id":  "U-05",
+                                                                                  "x_ft":  27,
+                                                                                  "y_ft":  0.16666666666666785,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  9
+                                                                              },
+                                                                     "U-06":  {
+                                                                                  "id":  "U-06",
+                                                                                  "x_ft":  10.166666666666666,
+                                                                                  "y_ft":  12.916666666666668,
+                                                                                  "width_ft":  10,
+                                                                                  "depth_ft":  12
+                                                                              },
+                                                                     "U-04":  {
+                                                                                  "id":  "U-04",
+                                                                                  "x_ft":  20.666666666666664,
+                                                                                  "y_ft":  12.083333333333336,
+                                                                                  "width_ft":  8,
+                                                                                  "depth_ft":  13.666666666666666
+                                                                              }
+                                                                 },
+                                                  "public_rooms_reached":  [
+                                                                               "U-04"
+                                                                           ],
+                                                  "public_rooms_reached_count":  1,
+                                                  "hall_reachability":  {
+                                                                            "visited_cells":  7717,
+                                                                            "reachable_room_sides":  {
+                                                                                                         "U-01":  [
+
+                                                                                                                  ],
+                                                                                                         "U-02":  [
+
+                                                                                                                  ],
+                                                                                                         "U-03":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ],
+                                                                                                         "U-04":  [
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east",
+                                                                                                                      "east"
+                                                                                                                  ]
+                                                                                                     },
+                                                                            "required_public_rooms_reached":  false,
+                                                                            "u03_hall_side_reachable":  true
+                                                                        }
+                                              }
+                                          ],
+    "first_route_with_U03_hall_side_reachable":  {
+                                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,14.9167,13.6667,8.0000|U-05:27.0000,1.9167,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                                     "layout_bounds_ft":  {
+                                                                              "width":  36,
+                                                                              "depth":  32.666666666666671
+                                                                          },
+                                                     "translation_ft":  {
+                                                                            "x":  0,
+                                                                            "y":  0
+                                                                        },
+                                                     "rectangles":  {
+                                                                        "U-01":  {
+                                                                                     "id":  "U-01",
+                                                                                     "x_ft":  10.5,
+                                                                                     "y_ft":  1.9166666666666679,
+                                                                                     "width_ft":  16,
+                                                                                     "depth_ft":  10
+                                                                                 },
+                                                                        "C-PRIVATE":  {
+                                                                                          "id":  "C-PRIVATE",
+                                                                                          "x_ft":  0,
+                                                                                          "y_ft":  1.9166666666666679,
+                                                                                          "width_ft":  10,
+                                                                                          "depth_ft":  6.5
+                                                                                      },
+                                                                        "U-02":  {
+                                                                                     "id":  "U-02",
+                                                                                     "x_ft":  0,
+                                                                                     "y_ft":  8.9166666666666679,
+                                                                                     "width_ft":  9.6666666666666661,
+                                                                                     "depth_ft":  16
+                                                                                 },
+                                                                        "U-03":  {
+                                                                                     "id":  "U-03",
+                                                                                     "x_ft":  0,
+                                                                                     "y_ft":  25.416666666666668,
+                                                                                     "width_ft":  13.666666666666666,
+                                                                                     "depth_ft":  9.1666666666666661
+                                                                                 },
+                                                                        "U-05":  {
+                                                                                     "id":  "U-05",
+                                                                                     "x_ft":  27,
+                                                                                     "y_ft":  1.9166666666666679,
+                                                                                     "width_ft":  9,
+                                                                                     "depth_ft":  10
+                                                                                 },
+                                                                        "U-06":  {
+                                                                                     "id":  "U-06",
+                                                                                     "x_ft":  10.166666666666666,
+                                                                                     "y_ft":  12.916666666666668,
+                                                                                     "width_ft":  10,
+                                                                                     "depth_ft":  12
+                                                                                 },
+                                                                        "U-04":  {
+                                                                                     "id":  "U-04",
+                                                                                     "x_ft":  20.666666666666664,
+                                                                                     "y_ft":  14.916666666666668,
+                                                                                     "width_ft":  13.666666666666666,
+                                                                                     "depth_ft":  8
+                                                                                 }
+                                                                    },
+                                                     "public_rooms_reached":  [
+
+                                                                              ],
+                                                     "public_rooms_reached_count":  0,
+                                                     "hall_reachability":  {
+                                                                               "visited_cells":  5255,
+                                                                               "reachable_room_sides":  {
+                                                                                                            "U-01":  [
+
+                                                                                                                     ],
+                                                                                                            "U-02":  [
+
+                                                                                                                     ],
+                                                                                                            "U-03":  [
+                                                                                                                         "east",
+                                                                                                                         "east",
+                                                                                                                         "east",
+                                                                                                                         "east",
+                                                                                                                         "east"
+                                                                                                                     ],
+                                                                                                            "U-04":  [
+
+                                                                                                                     ]
+                                                                                                        },
+                                                                               "required_public_rooms_reached":  false,
+                                                                               "u03_hall_side_reachable":  true
+                                                                           }
+                                                 },
+    "best_candidate":  null,
+    "tested_route_samples":  [
+                                 {
+                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,14.9167,13.6667,8.0000|U-05:27.0000,1.9167,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                     "translation_ft":  {
+                                                            "x":  0,
+                                                            "y":  0
+                                                        },
+                                     "visited_cells":  5255,
+                                     "reachable_room_sides":  {
+                                                                  "U-01":  [
+
+                                                                           ],
+                                                                  "U-02":  [
+
+                                                                           ],
+                                                                  "U-03":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ],
+                                                                  "U-04":  [
+
+                                                                           ]
+                                                              },
+                                     "required_public_rooms_reached":  false,
+                                     "u03_hall_side_reachable":  true
+                                 },
+                                 {
+                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,16.9167,13.6667,8.0000|U-05:27.0000,1.9167,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                     "translation_ft":  {
+                                                            "x":  0,
+                                                            "y":  0
+                                                        },
+                                     "visited_cells":  5015,
+                                     "reachable_room_sides":  {
+                                                                  "U-01":  [
+
+                                                                           ],
+                                                                  "U-02":  [
+
+                                                                           ],
+                                                                  "U-03":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ],
+                                                                  "U-04":  [
+
+                                                                           ]
+                                                              },
+                                     "required_public_rooms_reached":  false,
+                                     "u03_hall_side_reachable":  true
+                                 },
+                                 {
+                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,12.9167,8.0000,13.6667|U-05:27.0000,1.9167,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                     "translation_ft":  {
+                                                            "x":  0,
+                                                            "y":  0
+                                                        },
+                                     "visited_cells":  7102,
+                                     "reachable_room_sides":  {
+                                                                  "U-01":  [
+
+                                                                           ],
+                                                                  "U-02":  [
+
+                                                                           ],
+                                                                  "U-03":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ],
+                                                                  "U-04":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ]
+                                                              },
+                                     "required_public_rooms_reached":  false,
+                                     "u03_hall_side_reachable":  true
+                                 },
+                                 {
+                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,12.9167,13.6667,8.0000|U-05:27.0000,1.9167,9.0000,10.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                     "translation_ft":  {
+                                                            "x":  0,
+                                                            "y":  0
+                                                        },
+                                     "visited_cells":  6275,
+                                     "reachable_room_sides":  {
+                                                                  "U-01":  [
+
+                                                                           ],
+                                                                  "U-02":  [
+
+                                                                           ],
+                                                                  "U-03":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ],
+                                                                  "U-04":  [
+
+                                                                           ]
+                                                              },
+                                     "required_public_rooms_reached":  false,
+                                     "u03_hall_side_reachable":  true
+                                 },
+                                 {
+                                     "layout_key":  "C-PRIVATE:0.0000,1.9167,10.0000,6.5000|U-01:10.5000,1.9167,16.0000,10.0000|U-02:0.0000,8.9167,9.6667,16.0000|U-03:0.0000,25.4167,13.6667,9.1667|U-04:20.6667,12.9167,8.0000,13.6667|U-05:27.0000,2.9167,10.0000,9.0000|U-06:10.1667,12.9167,10.0000,12.0000",
+                                     "translation_ft":  {
+                                                            "x":  0,
+                                                            "y":  0
+                                                        },
+                                     "visited_cells":  7102,
+                                     "reachable_room_sides":  {
+                                                                  "U-01":  [
+
+                                                                           ],
+                                                                  "U-02":  [
+
+                                                                           ],
+                                                                  "U-03":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ],
+                                                                  "U-04":  [
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east",
+                                                                               "east"
+                                                                           ]
+                                                              },
+                                     "required_public_rooms_reached":  false,
+                                     "u03_hall_side_reachable":  true
+                                 }
+                             ],
+    "first_translation_diagnostics":  [
+
+                                      ],
+    "checks":  {
+                   "selected_D_source_matches_owner_followup":  true,
+                   "all_six_upper_rooms_and_private_connector_come_from_selected_D":  true,
+                   "all_room_dimensions_match_selected_D":  true,
+                   "door_reservation_is_source_derived_3_5ft":  true,
+                   "owner_private_sequence_is_in_search_graph":  true,
+                   "hybrid_guest_JJ_is_in_search_graph":  true,
+                   "search_root_scope_matches_requested":  true,
+                   "each_root_plan_preserves_all_links_and_places_primary_bath_last":  true,
+                   "U02_root_plan_variant_matches_requested":  true,
+                   "additional_contact_sample_count_is_bounded":  true,
+                   "additional_contact_grid_step_is_one_sixth_ft":  true,
+                   "public_door_edge_sample_count_is_bounded":  true,
+                   "public_door_goal_points_reserve_source_contact":  true,
+                   "public_access_counts_match_reachability":  true,
+                   "partial_access_report_is_ranked_and_bounded":  true,
+                   "landing_aligned_root_seeds_follow_source_approach_sample":  true,
+                   "landing_seeded_room_boxes_remain_inside_shell_and_clear_of_obstacles":  true,
+                   "blocked_grid_matches_exact_clearance_predicate":  true,
+                   "upper_frame_offset_and_lift_projection_are_source_derived":  true,
+                   "upper_shell_dimensions_match_documented_case":  true,
+                   "stair_landing_start_is_source_derived":  true,
+                   "final_translations_reserve_source_stair_approach":  true,
+                   "search_is_deterministic_and_bounded":  true,
+                   "owner_revised_U03_private_route_only_matches_proposal":  true,
+                   "owner_required_U02_direct_shared_hall_arrival_matches_proposal":  true,
+                   "any_winner_reaches_all_required_public_rooms":  true,
+                   "route_summary_matches_tested_records":  true,
+                   "selected_D_file_unchanged_during_run":  true
+               },
+    "failures":  [
+
+                 ],
+    "limitations":  [
+                        "The tree search is deterministic but bounded by NodeLimit/LayoutLimit and samples five contact-alignment anchors; it is not an exhaustive proof that no layout exists.",
+                        "A 0.5ft gap represents a nominal wall allowance, and a 3.5ft edge reservation is inherited from selected-D door-matrix data, not clear opening or door-swing geometry.",
+                        "Room connection goals are sample points 2.5ft beyond each room-block side, a schematic reachability proxy rather than a door or specified clearance.",
+                        "The hall search checks a 4ft swept square on a 2in translation grid. It does not model walls, doors, swings, landings beyond the source connector, headroom, floor openings, stairs, structure, services, furniture or fire/life-safety.",
+                        "The lift keepout is a plan projection from the source reservation; verify actual shaft and floor opening in Revit.",
+                        "No Revit, IFC, code, accessibility, structural or construction validation is made. A search candidate is a room-block concept only.",
+                        "The revised private-route-only direction excludes a direct U-03 shared-hall door; actual private and public openings remain unmodeled. Corridor proximity to U-03 is not evidence of a doorway. No room sizes or selected-D baseline are edited."
+                    ]
+}

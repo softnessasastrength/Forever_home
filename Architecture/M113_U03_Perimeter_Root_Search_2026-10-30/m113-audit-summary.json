@@ -1,0 +1,19 @@
+﻿{
+    "U03_perimeter_contact_candidates":  45,
+    "U03_edge_distribution":  {
+                                  "north":  0,
+                                  "south":  0,
+                                  "west":  45,
+                                  "east":  0
+                              },
+    "route_reach_count_distribution":  {
+                                           "2":  0,
+                                           "3":  0,
+                                           "1":  28,
+                                           "0":  17
+                                       },
+    "U02_hall_sample_count":  0,
+    "U03_hall_side_sample_count":  45,
+    "all_required_public_rooms_count":  0,
+    "public_route_proxy":  "sampled 4 ft hall grid to U-01/U-02/U-04; not door or clearance geometry"
+}
