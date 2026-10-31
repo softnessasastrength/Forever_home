@@ -1,0 +1,72 @@
+﻿{
+    "status":  "pass",
+    "passed":  13,
+    "total":  13,
+    "checks":  [
+                   {
+                       "id":  "distance_kernel_parallel_case",
+                       "pass":  true,
+                       "detail":  "Synthetic vertical segment to rectangle distance equals 2 ft."
+                   },
+                   {
+                       "id":  "distance_kernel_intersection_case",
+                       "pass":  true,
+                       "detail":  "Synthetic segment crossing a rectangle returns zero distance."
+                   },
+                   {
+                       "id":  "distance_kernel_endpoint_case",
+                       "pass":  true,
+                       "detail":  "Synthetic separated endpoint-to-rectangle distance equals 1 ft."
+                   },
+                   {
+                       "id":  "m180_bound_sources_current",
+                       "pass":  true,
+                       "detail":  "M180 bath-first and selected-D input fingerprints still match their source files."
+                   },
+                   {
+                       "id":  "reduced_kitchen_inside_source_m02",
+                       "pass":  true,
+                       "detail":  "13.5 x 14 ft candidate is contained by source M-02 but leaves part of the source room block outside the kitchen candidate."
+                   },
+                   {
+                       "id":  "room_block_gaps_quantified",
+                       "pass":  true,
+                       "detail":  "Candidate and source room-block gaps are distinct and remain unassigned coordinate transitions."
+                   },
+                   {
+                       "id":  "old_route_intersects_west_m06_search",
+                       "pass":  true,
+                       "detail":  "M180 orthogonal route clips the blocked west M-06 search window under a 36 in rounded swept-path test."
+                   },
+                   {
+                       "id":  "revised_route_clears_assigned_static_proxies",
+                       "pass":  true,
+                       "detail":  "Revised centerline maintains positive Euclidean clearance after an 18 in radius buffer from assigned room and static furniture/wall proxies; the unassigned blocked west search-window overlay is reported separately."
+                   },
+                   {
+                       "id":  "stool_proxy_positive_but_tight",
+                       "pass":  true,
+                       "detail":  "Assumed stool proxy has positive clearance, but the remaining margin is below 1 in and does not account for chair movement or uncertainty."
+                   },
+                   {
+                       "id":  "west_m06_window_geometrically_cleared_but_tight",
+                       "pass":  true,
+                       "detail":  "Route clears the blocked west M-06 search-window boundary by less than 1 in; the margin is too small to treat as robust coordination."
+                   },
+                   {
+                       "id":  "approach_crosses_nominal_door_opening",
+                       "pass":  true,
+                       "detail":  "Route centerline reaches the nominal 5 ft porch-door span; physical leaf and clear opening remain unmodeled."
+                   },
+                   {
+                       "id":  "m06_b_unassigned",
+                       "pass":  true,
+                       "detail":  "M-06/B remains unassigned."
+                   },
+                   {
+                       "id":  "selected_d_unchanged",
+                       "pass":  true,
+                       "detail":  "Selected-D source fingerprint remains unchanged."
+                   }
+               ]
+}

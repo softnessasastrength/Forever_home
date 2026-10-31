@@ -171,3 +171,7 @@ M119 follow-up (2026-10-30): read-only Revit 2027.3 Family Editor inspection of 
 ### M180 sandbox checkpoint (2026-10-31)
 
 M180 corrects the route overlay's origin: M179 `(14.5,10)` was outside M-01, while M180 `(19.5,10)` lies inside its translated source block. The candidate path crosses a 4 ft 4 in unassigned gap between the candidate kitchen and M-01, then clears modeled obstacles and extends into the porch test rectangle. PowerShell 5.1 passes 12/12 checks in the retained package and two identical replays. This is unapproved source-coordinate geometry only; physical walls/openings, door operation, whole-house connectivity, services and layout are unresolved. Selected-D remains unchanged and M-06/B remains unassigned. See M180 in PLAN.md/PROGRESS.md.
+
+### M181 sandbox checkpoint (2026-10-31)
+
+M181 applies an 18-in-radius Euclidean swept-path check to the social route and all source room/furniture proxies. The earlier orthogonal elbow clips the west M-06 search-window rectangle. A diagonal route candidate clears assigned static proxies with 0.60 in residual at the assumed stool envelope, 2 in at the dining table and 0.38 in to the west search-window boundary. This is too tight to validate operation; no chair movement, occupants, real door, thresholds or appliance-open states are modeled. Source M-02 extends beyond the reduced kitchen candidate; source room gaps are 6 in to M-01 and M-03, while candidate gaps are wider. M-06/B remains unassigned and selected-D unchanged. See M181 in PLAN.md/PROGRESS.md.

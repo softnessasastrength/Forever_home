@@ -1942,3 +1942,17 @@ Acceptance criteria:
 Status: Complete as an unapproved coordinate-overlay correction. M179's start `(14.5, 10)` was outside the translated M-01 living rectangle. M180 starts at `(19.5, 10)` inside it, then crosses a 4 ft 4 in unassigned band between candidate M-02 and M-01. The 36 in corridor clears all modeled obstacles with zero positive-area intersections, crosses the nominal 6 ft opening with 18 in margins, leaves a derived 6 in pantry gap, reaches the nominal porch-door span and fits the test-shell extent. It passes 12/12 checks in the retained package and two independent replays; all three artifacts match byte-for-byte. No physical opening, door operation, room assignment, services or whole-house fit is validated. See `Architecture/M180_Living_Shell_Route_Audit_2026-10-31/README.md`.
 
 Next: test the proposed connector against the actual adjoining room-block perimeter and door reservations with candidate-local coordinates, then decide what program occupies the 4 ft 4 in kitchen-to-living band. Keep M-06/B unassigned until fixture geometry, applicable cited clearance, approach and plausible service route all support it.
+
+## M181 - Check the social route against all room interfaces - 2026-10-31
+
+Acceptance criteria:
+
+- Bind the M180 route, bath-first blocks, selected-D fingerprint and M-06 status.
+- Compare reduced candidate blocks with all source main-room rectangles and quantify candidate/source gaps to living and dining.
+- Evaluate the 36-in path using Euclidean segment-to-rectangle distances with an 18-in route radius, checking all static room/furniture/wall proxies and both M-06 search-window overlays.
+- Record the orthogonal-route conflict and test a clearly labeled diagonal transition without assigning a room or fixture.
+- Require deterministic PowerShell 5.1 outputs in two independent replays; preserve selected-D and Incoming RFAs.
+
+Status: Complete as a source-bound route refinement, not a plan selection. M180's orthogonal elbow clears the physical pantry proxy but its 36-in swept path conflicts with the west M-06 search-window rectangle by 5.96 in. A diagonal candidate clears assigned static room/furniture/wall rectangles with only 0.60 in at assumed stool occupancy, 2 in at the table, and 0.38 in at the west search-window boundary. Those margins are too small to validate furniture movement or a usable route. It passes 13/13 checks in the retained package and two independent replays; all three generated artifacts match byte-for-byte. M-06/B stays unassigned, selected-D unchanged. See `Architecture/M181_All_Room_Interface_Audit_2026-10-31/README.md`.
+
+Next: test documented alternatives for placing the two assumed island seats while preserving the 8 x 4 ft island and existing target dimensions; report whether route margins improve without inventing a product envelope or selecting the arrangement. If the bottleneck persists, identify the actual design choice needed before Revit authoring.
