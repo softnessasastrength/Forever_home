@@ -39,6 +39,14 @@ Status: Compact-Core C and owner-selected direction D remain preserved compatibi
 - Current project-local DLL SHA256: `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`. The build-adjacent manifest and per-user `ForeverHome.Pilot.addin` both contain AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and resolve to this worktree's `build-m83-regenerate-bounds-v1/Release/net10.0-windows/RevitPilot.dll` path. The per-user manifest was not replaced; no trust/security settings changed.
 - Read-only UI inspection confirms Revit still prompts for `build-m83-level-safe/Release/net10.0-windows/RevitPilot.dll`, SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`. The prompt does not match the current registered build. No button was clicked. Per AGENTS.md, owner direction is required before dismissing/restarting around this mismatch; a successful host M83 RVT/IFC run is still unverified.
 
+## M141 - Exact 610AA product-resource provenance - 2026-10-30
+
+- Rechecked the exact selected `610AA001.020` American Standard page and opened its manufacturer-linked technical resources. The separately named exact-product infographic labels 19 in width, 30-1/4 in projection, 30-7/8 in overall height, 17 in with seat, 16-1/2 in bowl height and 12 in rough-in. Downloaded that public image without authentication to ignored `.local/revalidation/M140-610AA-infographic.webp`, 133,750 bytes, SHA256 `F09F6BFBCBB62F53828BD99E46F2351BB279E4C031980BBC5E35790E0FE86FBF`.
+- The same product page's linked spec PDF is a revision-9/13 211AA predecessor-series sheet listing parts 211AA.104/3195A.101/4225A.104; its installation guide is for 211AA/211BA/211CA. Their nominal dimensions agree with the current infographic, but their component mapping is not evidence for current 610AA construction. Do not combine predecessor RFAs into the selected toilet.
+- The manufacturer product page displayed `Out of stock` at access time. This is a volatile page-level signal, not evidence of permanent discontinuation. The public page has no Revit-family link; exact-SKU native family/assembled solids remain unavailable in the reviewed public resources.
+- This strengthens M133's **nominal product-envelope** source while leaving physical solids, detailed assembly, clearances, actual door/approach, rough-in/service routing and room assignment open. M-06/B remains unassigned. No gated flow, sign-in, account, contact form or purchase was used.
+- Sources and scope are in the M141 section of `Research/M06_Toilet_Options_2026-10-27.md`. No selected-D source, Revit file, IFC, incoming RFA or remote state changed.
+
 ## M81 — M78 hypothetical upper-suite Revit/IFC milestone — 2026-10-30
 
 - Fixed JSON BOM handling in the new RevitPilot M78 command while retaining raw-byte SHA256 provenance. A Revit 2027.3.0.28 run created a separate model at `.local/revit-pilot/upper-suite/20261030T200906834Z/`; selected D and the Incoming RFAs were not edited.

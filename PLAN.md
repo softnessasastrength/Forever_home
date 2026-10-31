@@ -1509,3 +1509,15 @@ Acceptance criteria:
 - Separate build readiness from actual Revit/IFC host validation and retain the host check as open until a matching prompt is accepted and the export validator passes.
 
 Status: Build readiness complete; host run remains open. The full offline suite passes 47/47. Rebuild completes with zero errors and two MSB3277 reference-version warnings. The current DLL SHA256 is `042BD6A602B6E970A2E7FBFA9C1DC08C22580AD2015A9227DEA85F13B30D5EC3`; its local manifest and the registered per-user manifest have the authorized AddInId and matching project-local assembly path. Revit still displays the older `build-m83-level-safe` DLL prompt (SHA256 `660BF4511E1DC51BE4CA3C74C8E386DC948438025B36DFA96551F18F4D3D59DF`), so no trust choice was made. See M139 in `PROGRESS.md`.
+
+## M141 - Verify the exact 610AA public product resources
+
+Acceptance criteria:
+
+- Inspect only the selected SKU's public manufacturer product page, its directly linked technical resources and the distinctly labelled exact-SKU infographic; do not use authentication, create an account, contact sales or purchase anything.
+- Record which dimensions are directly labelled for 610AA001.020 and distinguish them from a predecessor-series technical sheet linked from the current page.
+- Do not infer a 610AA assembly from 211AA/3195A/4225A component numbers, or treat a generic/older RFA as the selected fixture.
+- Preserve the current nominal plan-envelope basis only to the strength of the exact-SKU image; retain exact current-family/physical-solids, applicable-clearance, door/approach and service-route gates.
+- Keep M-06/B unassigned and record any volatile availability display as dated and provisional.
+
+Status: Complete as a public source-provenance check. The exact 610AA infographic continues to support its 19 x 30 1/4 in plan envelope, 30 7/8 in overall height, 17 in height with seat and 12 in rough-in. The current product page's linked spec and installation PDFs describe the predecessor 211AA series, so their component mapping is not evidence for the current SKU. The manufacturer page displayed Out of stock when checked; this is not treated as discontinuation. No RFA is linked. See M141 in `Research/M06_Toilet_Options_2026-10-27.md` and `PROGRESS.md`.
