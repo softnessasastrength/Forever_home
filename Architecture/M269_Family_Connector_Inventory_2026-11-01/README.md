@@ -2,7 +2,7 @@
 
 Date: 2026-11-01
 Branch: `codex/house-design-sandbox` (local only)
-Status: **compiled; Revit runtime inspection pending**
+Status: **first Revit runtime inspection passed; shape-specific size correction compiled, runtime replay pending**
 
 ## Scope
 
@@ -25,8 +25,12 @@ Autodesk documents `ConnectorElement` as the base class for connector elements i
 - Candidate request targets only the quarantined KOHLER Tresham RFA with expected SHA256 `3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949` and a new ignored derivative path.
 - The per-user manifest was checked for AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`; new assembly path resolves inside this checkout. Previous manifest backup: `.local/revit-pilot/registration-backups/20261101T074145202/ForeverHome.Pilot.addin`. Full hashes and registration path are in ignored `registration-evidence.json` beside the DLL.
 
-## Runtime blocker and remaining checks
+## Runtime evidence and remaining checks
 
-Revit restarted, but its trial intro overlay blocks access to the unsigned-add-in prompt. The supported computer-use bridge refuses the overlay click because the surface belongs to an untargeted WebView child; after reselecting Revit, it also returned `Accessibility state unavailable`. The journal records a generic unsigned-file prompt without assembly identity. No trust choice was made and the family inspection command did not run. Do not use Load Once until the prompt itself identifies the exact path and the DLL SHA256 matches the value above.
+The owner cleared the visible Revit trial intro overlay. Revit 2027.3 started the exact manifest-registered M269 assembly from this worktree (`.local/revit-pilot/m269-family-connectors/Release/net10.0-windows/RevitPilot.dll`); the journal records the full assembly path, vendor `FHOM`, AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, and `NoError`. The agent did not click a trust choice. The command **Inspect quarantined family geometry** ran against the exact quarantined KOHLER source in a new disposable project.
 
-Once accessible, run **Inspect quarantined family geometry**. Then check that the report is tied to the exact source hash, that the connector count and geometry/domain fields are internally consistent, and that the source hash remains unchanged after the family is closed without saving. Keep the sink a candidate only; this inventory cannot establish connector alignment in a room, a constructible plumbing network, product fit, code compliance or M-06 assignment.
+Runtime report: `.local/revit-pilot/family-intake/derivatives/M269-Kohler-Tresham-Connector-Inspection-20261101/candidate-family-geometry.json`; report SHA256 `A9B396221B90FF54DE773CCB80C02E6D9B6B26CA81EEEFFA0A504F33DF60F3C2`; derivative RVT SHA256 `443358F1F004A78E9DF1CA80603845C94D22A1E6C84CF7CB91C2E440DE3259E6`. Inline report assertions passed 6/6: schema/status, source hash before/after/current, isolated-project/no-selected-D/no-instance scope, ten types with positive-volume geometry and finite positive bounds, a primary round sanitary piping connector with 5/8 in radius, and derivative file hash. The source hash is `3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949`; it was closed without saving and remains unchanged. No sink instance or service route was created.
+
+The first report also exposed a Revit API edge case: `ConnectorElement.Width` and `.Height` return `-12 in` for this round profile, where those dimensions do not apply. The code now emits radius only for round connectors and width/height only for rectangular connectors. That correction compiles in a separate, unregistered build at `.local/revit-pilot/m270-connector-dimensions/Release/net10.0-windows/RevitPilot.dll` (SHA256 `0B2FB3CF174CAE3D4D366DAE09426E51AD6F7D2E940FEEAA34CD38C8916A2E10`, 0 errors, 2 existing `MSB3277` warnings). The current Revit session still runs the M269 assembly; the corrected M270 report is not runtime-verified. If a Revit restart is needed, verify the exact path and hash at the trust prompt and use **Load Once** only for that build.
+
+Keep the sink a candidate only; this inventory cannot establish connector alignment in a room, a constructible plumbing network, product fit, code compliance or M-06 assignment. Preserve the M266 selected-D baseline and the locked Evolution RFA.

@@ -157,6 +157,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
             .OrderBy(connector => connector.Id.Value)
             .Select(connector =>
             {
+                var shape = connector.Shape;
                 Transform? coordinateSystem = null;
                 try { coordinateSystem = connector.CoordinateSystem; } catch { }
                 return new
@@ -167,7 +168,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                     domain = connector.Domain.ToString(),
                     system_classification = connector.SystemClassification.ToString(),
                     direction = connector.Direction.ToString(),
-                    shape = connector.Shape.ToString(),
+                    shape = shape.ToString(),
                     is_primary = connector.IsPrimary,
                     origin_family_in = PointInches(connector.Origin),
                     basis_x = coordinateSystem is null ? null : new[]
@@ -182,9 +183,9 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                     {
                         Math.Round(coordinateSystem.BasisZ.X, 6), Math.Round(coordinateSystem.BasisZ.Y, 6), Math.Round(coordinateSystem.BasisZ.Z, 6)
                     },
-                    radius_in = Inches(() => connector.Radius),
-                    width_in = Inches(() => connector.Width),
-                    height_in = Inches(() => connector.Height)
+                    radius_in = shape == ConnectorProfileType.Round ? Inches(() => connector.Radius) : null,
+                    width_in = shape == ConnectorProfileType.Rectangular ? Inches(() => connector.Width) : null,
+                    height_in = shape == ConnectorProfileType.Rectangular ? Inches(() => connector.Height) : null
                 };
             })
             .ToList();
