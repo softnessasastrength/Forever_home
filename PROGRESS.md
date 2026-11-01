@@ -1,3 +1,10 @@
+## M270 — Shape-aware family connector replay — 2026-11-01
+
+- Rebuilt `CandidateFamilyGeometryCommand` through the repository build path with **0 errors** and 2 existing `MSB3277` reference-conflict warnings. The exact project-local DLL is `.local/revit-pilot/m270-connector-dimensions-v2/Release/net10.0-windows/RevitPilot.dll` (SHA256 `7D42C49F92B7CB20FACCBB1840C097C7E47FFBDBD3BA89733A05EDE09A507975`); the authorized AddInId manifest was registered with a preserved backup under `.local/revit-pilot/registration-backups/20261101163828/`.
+- Revit 2027.3 ran the corrected command in a new disposable project after the visible trial overlay was dismissed. The quarantined KOHLER Cimarron RFA was measured without placement or host/service-network testing. Output: `.local/revit-pilot/family-intake/derivatives/20261101T220500Z-kohler-cimarron-m270/`.
+- `Tools/RevitPilot/validate_candidate_family_geometry.ps1` passes **11/11**. Report SHA256 `EA69870A6E3EC7A42ED636F4AE2F0E9FFF3DA18EFF3A353CE42CCCE8399250F2`; derivative RVT SHA256 `2D8648BD4C259A8D1612722DCD847EFE98D960E9F77A4AC3C4CF277B2A3B34FE`. The report contains one primary `DomainPiping` / `Sanitary` / `Round` connector with radius `0.625 in` and `null` width/height, confirming the API edge-case correction.
+- The source RFA remains hash-stable at `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`. Selected-D was never opened; no instance, service route, product approval, M-06 assignment, code-compliance conclusion or construction-readiness claim follows.
+
 ## M311 — Clear-height native-wall comparison command — 2026-11-01
 
 - Corrected the earlier M298/M299 vertical interpretation. The owner chose 8/9/10 ft as clear-ceiling alternatives and left the stair and floor-to-floor unresolved; their spaced 8/9/10-ft levels are historical and are not the active geometry basis.
