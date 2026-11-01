@@ -2779,3 +2779,11 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Status:** Complete as public-source research. KOHLER Pinoir K-2035-1 is a 22 x 18 in wall-mount basin with a pipe-hiding shroud, nominal 18 x 12 in bowl area. Under M230's same-wall 15/30/21-in screen, it leaves 6 in gross width and requires 51.25 in gross depth. This matches the 22-in Evolution proxy's gross width result and establishes no installed fit. The BIMobject listing advertises a Revit object but requires contact/login for download; no sign-in, account, or download was used. See `Research/M277_M06_Pinoir_Lavatory_Lead_2026-11-01.md`.
 
 **Next:** include Pinoir only if the owner wants a wall-mount-with-shroud type compared with pedestal and compact vanity options. Exact family geometry, finished faces, door/approach, services and project code applicability remain unresolved.
+
+## M278 - Revalidate reproducible geometry sources and current selected-D IFC export
+
+**Acceptance:** verify the local sandbox branch and preserve pre-existing local artifacts; rebuild and independently replay the current C# roof and M-06 envelope generators with deterministic output; validate the newest Revit 2027 selected-D IFC2X3 export against its source and record exact hashes, test totals, and limits. Do not edit selected-D, assign M-06, overwrite locked RFAs, bypass execution controls, or claim a complete architectural model.
+
+**Status:** Complete as a source-generator and room-boundary IFC checkpoint. M83 passes 13/13 in two byte-identical runs; M274 passes 15/15 in two byte-identical runs; the selected-D IFC validator passes 26/26 with no schema issues. PowerShell's Restricted policy blocked the full source-side baseline script without a bypass. See `Architecture/M278_Current_Pipeline_Revalidation_2026-11-01/README.md`.
+
+**Next:** advance from the verified 21-space boundary study toward native architectural elements in a disposable Revit derivative. The immediate gates are coordinated envelope/level decisions, accessible Revit UI for authorized family inspection, and owner answers for the kitchen/living support strategy, M-06 lavatory form and door study, and M-05 flexibility. Keep M-06/A/B unassigned and west A protected until product, finish, access, and service evidence agree.

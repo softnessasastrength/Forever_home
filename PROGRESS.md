@@ -2656,3 +2656,13 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - The BIMobject listing advertises a Revit object but requires contacting Kohler or logging in to download. No account was made and no gated file was retrieved. Exact RFA remains unavailable for host inspection.
 - Pinoir is an unselected proposal only. West A remains protected; M-06/A/B remain unassigned; selected-D/RVT/IFC and source RFAs were unchanged.
 - Evidence and limits: `Research/M277_M06_Pinoir_Lavatory_Lead_2026-11-01.md`.
+
+## M278 - Current source and IFC pipeline revalidation - 2026-11-01
+
+- Reconfirmed the worktree is `codex/house-design-sandbox`, 62 commits ahead of its tracking ref; it contains the pre-existing untracked M278 evidence directory and no other reported worktree changes at checkpoint start. No history or remote state was changed. The ignored Incoming Evolution RFA remains preserved at its recorded SHA256.
+- Rebuilt M83 with repository-local .NET 10.0.403: 0 warnings, 0 errors. Two executions each pass 13/13 and produce byte-identical roof-options JSON, checks, SVG and manifest. Hashes and replay instructions are recorded in the M278 README.
+- Rebuilt M274: 0 warnings, 0 errors. Two executions each pass 15/15 with byte-identical report/check outputs. The gross west-A Tresham comparison remains analytical only; no finished-face fit, access, door or plumbing route is established.
+- Validated the current Revit 2027.3 selected-D IFC2X3 export: 26/26 checks, zero errors and schema issues; 3 storeys and 21 source-matching spaces. Physical construction classes remain empty, so this is a room-boundary model, not a complete house. Exact source/RVT/IFC/report hashes are in `Architecture/M278_Current_Pipeline_Revalidation_2026-11-01/README.md`.
+- The full source-side PowerShell baseline script was blocked by Windows PowerShell's effective `Restricted` execution policy. No bypass or security change was attempted. Last complete dual generator + IFC source run remains M248; M278 does not claim that script passed.
+- Revit was at Home with no model open and the supported UI bridge could not bind to its window; no family inspection or disposable Revit derivative was created. Keep the Incoming Evolution RFA intact, west A protected, and M-06/A/B unassigned.
+- Next: move toward native walls, floors, doors, windows, stairs and roof only in a disposable Revit derivative after envelope/level coordination. The owner has been asked (answers pending) about kitchen/living support, M-06 lavatory/door alternatives, and M-05 flexibility. No architectural or code-compliance decision is inferred from this checkpoint.
