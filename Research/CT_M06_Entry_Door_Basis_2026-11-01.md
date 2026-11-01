@@ -1,6 +1,6 @@
 # Connecticut residential entry-door basis for M-06
 
-**Date:** 2026-11-01  
+**Date:** 2026-11-01
 **Status:** scoped code-text research; no door size, swing, room, or compliance determination selected.
 
 ## Finding
