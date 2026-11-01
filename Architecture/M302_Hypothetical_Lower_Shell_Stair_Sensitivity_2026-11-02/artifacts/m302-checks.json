@@ -1,0 +1,34 @@
+{
+  "passed": 7,
+  "total": 7,
+  "details": [
+    {
+      "id": "selected-D, M295 and authorization fingerprints match",
+      "pass": true
+    },
+    {
+      "id": "L-01 candidates preserve 250.5556 sf and clear fixed rooms",
+      "pass": true
+    },
+    {
+      "id": "L-turn pieces preserve inherited width, aggregate 7 tread runs and 4-ft turn platform proxy",
+      "pass": true
+    },
+    {
+      "id": "every placement has one reconciled outcome",
+      "pass": true
+    },
+    {
+      "id": "M-06 remains unassigned and protected",
+      "pass": true
+    },
+    {
+      "id": "all retained alternatives clear fixed rooms, both M-06 windows and same-area L-01",
+      "pass": true
+    },
+    {
+      "id": "no physical selection or code finding is emitted",
+      "pass": true
+    }
+  ]
+}

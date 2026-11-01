@@ -1,0 +1,1332 @@
+{
+  "schema": "forever-home-m302-l-turn-stair-envelope-screen-v1",
+  "status": "bounded spatial envelope fits found; no stair, landing access, room or level geometry selected",
+  "selected_d_edited": false,
+  "rvt_or_ifc_created": false,
+  "basis": {
+    "transition_in": 60,
+    "aggregate_risers": 8,
+    "aggregate_treads": 7,
+    "flight_width_ft": 4,
+    "run_ft": 6.416666666666667,
+    "turn_platform_proxy_ft": [
+      4,
+      4
+    ],
+    "split_assumption_tread_run_counts": [
+      3,
+      4
+    ],
+    "source": "M295 inherited comparison values; split is an unverified spatial assumption",
+    "not_a_stair_schedule": true
+  },
+  "source": {
+    "shell_ft": [
+      38.333333,
+      40
+    ],
+    "movable_L01": {
+      "id": "L-01",
+      "x_ft": 10.166666666666666,
+      "y_ft": 13,
+      "width_ft": 13.666666666666666,
+      "depth_ft": 18.333333333333332,
+      "area_sf": 250.55555555555551
+    },
+    "fixed_rooms": [
+      {
+        "id": "L-03",
+        "x_ft": 0.6666666666666666,
+        "y_ft": 0.6666666666666666,
+        "width_ft": 9,
+        "depth_ft": 10,
+        "area_sf": 90
+      },
+      {
+        "id": "L-04",
+        "x_ft": 0.6666666666666666,
+        "y_ft": 11.166666666666666,
+        "width_ft": 9,
+        "depth_ft": 8,
+        "area_sf": 72
+      },
+      {
+        "id": "L-05",
+        "x_ft": 0.6666666666666666,
+        "y_ft": 19.666666666666668,
+        "width_ft": 9,
+        "depth_ft": 11.666666666666666,
+        "area_sf": 105
+      },
+      {
+        "id": "L-07",
+        "x_ft": 26.333333333333332,
+        "y_ft": 0.6666666666666666,
+        "width_ft": 9,
+        "depth_ft": 11.5,
+        "area_sf": 103.5
+      },
+      {
+        "id": "L-06",
+        "x_ft": 17.333333333333332,
+        "y_ft": 0.6666666666666666,
+        "width_ft": 8,
+        "depth_ft": 8,
+        "area_sf": 64
+      },
+      {
+        "id": "C-LOWER",
+        "x_ft": 10.166666666666666,
+        "y_ft": 0.6666666666666666,
+        "width_ft": 6.666666666666667,
+        "depth_ft": 11.833333333333334,
+        "area_sf": 78.8888888888889
+      },
+      {
+        "id": "L-02",
+        "x_ft": 24.333333333333332,
+        "y_ft": 21.166666666666668,
+        "width_ft": 11,
+        "depth_ft": 10,
+        "area_sf": 110
+      }
+    ],
+    "C_LOWER": {
+      "id": "C-LOWER",
+      "x_ft": 10.166666666666666,
+      "y_ft": 0.6666666666666666,
+      "width_ft": 6.666666666666667,
+      "depth_ft": 11.833333333333334,
+      "area_sf": 78.8888888888889
+    },
+    "protected_M06_windows": [
+      {
+        "id": "M06-west_of_core",
+        "x_ft": 12,
+        "y_ft": 16.166666666666668,
+        "width_ft": 5.166666666666668,
+        "depth_ft": 11.416666666666664,
+        "area_sf": 58.986111111111114
+      },
+      {
+        "id": "M06-east_of_core",
+        "x_ft": 21.166666666666668,
+        "y_ft": 17.166666666666668,
+        "width_ft": 13.166666666666668,
+        "depth_ft": 7,
+        "area_sf": 92.16666666666667
+      }
+    ]
+  },
+  "search": {
+    "grid_ft": 0.25,
+    "L01_same_area_candidates": 5025,
+    "stair_placement_attempts": 303801450,
+    "rejected_by_shell": 0,
+    "rejected_by_fixed_rooms": 233104725,
+    "rejected_by_protected_M06_windows": 47958600,
+    "rejected_by_L01": 18888086,
+    "spatial_fits": 3850039,
+    "retained_options": [
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          21.16666667,
+          31.16666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.0833333333333357,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 21.16666667,
+            "y_ft": 34.83333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 23.91666667,
+            "y_ft": 34.83333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 23.91666667,
+            "y_ft": 31.16666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          23.91666667,
+          31.16666667
+        ],
+        "rotation_quadrants": 0,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.0833333333333357,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 23.91666667,
+            "y_ft": 31.16666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 23.91666667,
+            "y_ft": 33.91666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 27.91666667,
+            "y_ft": 33.91666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          23.91666667,
+          31.16666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.0833333333333357,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 27.91666667,
+            "y_ft": 31.16666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 23.91666667,
+            "y_ft": 31.16666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 23.91666667,
+            "y_ft": 35.16666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          23.91666667,
+          31.16666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.0833333333333357,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 27.58333333666667,
+            "y_ft": 35.16666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 27.58333333666667,
+            "y_ft": 31.16666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 23.91666667,
+            "y_ft": 31.16666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          2.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 6.333333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.333333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 2.6666666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          2.91666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 6.583333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.583333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 2.9166666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.16666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 6.833333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.833333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.1666666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 3.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.41666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.083333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 7.083333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.4166666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 3.41666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.16666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 6.16666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 3.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.66666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.333333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 7.333333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.6666666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 3.66666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.41666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 6.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.91666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.91666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 3.91666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.91666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.91666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.583333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 7.583333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 3.9166666699999997,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          3.91666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 3.91666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.66666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 6.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.16666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 8.16666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 4.16666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.16666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.16666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 7.833333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 7.833333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.16666667,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.16666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 4.16666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 6.91666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 6.91666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 8.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 4.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.41666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 8.083333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 8.083333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.41666667,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.41666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 3,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 4.41666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 7.16666667,
+            "y_ft": 35.08333333666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 7.16666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 1,
+        "stair_proxy_bounds_ft": [
+          6.75,
+          7.666666666666666
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 8.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 2.75,
+            "depth_ft": 4,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 4.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.66666667,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 3.6666666666666665,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      },
+      {
+        "L01": {
+          "id": "L-01",
+          "x_ft": 10.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332,
+          "area_sf": 250.55555555555551
+        },
+        "L01_move_metric_ft": 0.08333333333333393,
+        "shape": "L-turn spatial proxy (3\u002B4 aggregate tread-run split)",
+        "origin_ft": [
+          4.66666667,
+          31.41666667
+        ],
+        "rotation_quadrants": 2,
+        "stair_proxy_bounds_ft": [
+          7.666666666666666,
+          6.75
+        ],
+        "minimum_gap_to_L01_ft": 0.16666666666666785,
+        "pieces": [
+          {
+            "id": "flight-A",
+            "x_ft": 8.333333336666666,
+            "y_ft": 35.41666667,
+            "width_ft": 4,
+            "depth_ft": 2.75,
+            "area_sf": 11
+          },
+          {
+            "id": "turn-platform",
+            "x_ft": 8.333333336666666,
+            "y_ft": 31.41666667,
+            "width_ft": 4,
+            "depth_ft": 4,
+            "area_sf": 16
+          },
+          {
+            "id": "flight-B",
+            "x_ft": 4.66666667,
+            "y_ft": 31.41666667,
+            "width_ft": 3.6666666666666665,
+            "depth_ft": 4,
+            "area_sf": 14.666666666666666
+          }
+        ]
+      }
+    ]
+  },
+  "inputs_sha256": {
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "m295": "65A84006158D4352D282D3FA32EDBA3E93F327D31584F19B6C1C9C5BD081CE04",
+    "authorization": "4FE329F356C6C9F4C9AF30C843F961E12ED901F937E3320A717CE4AB40C6FEA4"
+  },
+  "checks": {
+    "passed": 7,
+    "total": 7,
+    "details": [
+      {
+        "id": "selected-D, M295 and authorization fingerprints match",
+        "pass": true
+      },
+      {
+        "id": "L-01 candidates preserve 250.5556 sf and clear fixed rooms",
+        "pass": true
+      },
+      {
+        "id": "L-turn pieces preserve inherited width, aggregate 7 tread runs and 4-ft turn platform proxy",
+        "pass": true
+      },
+      {
+        "id": "every placement has one reconciled outcome",
+        "pass": true
+      },
+      {
+        "id": "M-06 remains unassigned and protected",
+        "pass": true
+      },
+      {
+        "id": "all retained alternatives clear fixed rooms, both M-06 windows and same-area L-01",
+        "pass": true
+      },
+      {
+        "id": "no physical selection or code finding is emitted",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "This is a spatial blocking proxy only. It does not establish stair code geometry or constructability.",
+    "The 3\u002B4 tread-run split is an explicit layout hypothesis, not a verified flight/riser schedule; stair flight conventions may require different run allocation.",
+    "The inherited 4-ft landing dimension is represented once as a 4x4-ft internal turning-platform proxy. End landings, doors, headroom, floor opening, rails, guards, structure, finishes, tolerances and approaches are omitted.",
+    "No landing-to-C-LOWER route, door/approach or continuity beyond C-LOWER is tested; no option is selected.",
+    "The screen uses the 36x32-ft comparison shell, fixed rooms other than same-area L-01 and protected unassigned M-06 search windows.",
+    "No CT code compliance, accessibility, structural safety, professional approval, permit or construction readiness is established."
+  ]
+}

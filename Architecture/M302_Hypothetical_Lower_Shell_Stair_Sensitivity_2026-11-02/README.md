@@ -28,7 +28,7 @@ $a='.local/revalidation/m302-replay1'; $b='.local/revalidation/m302-replay2'; 'm
 [xml]$svg=Get-Content (Join-Path $a 'm302-options.svg') -Raw
 ```
 
-The generator pins selected-D, M295 and this authorization. It refuses nonempty output folders and uses the 38.333333 × 40 ft shell values in code. Successful replays: `.local/revalidation/m302-run3/` and `run4/`.
+The generator pins selected-D, M295 and this authorization. It refuses nonempty output folders and uses the 38.333333 × 40 ft shell values in code. Successful replays: `.local/revalidation/m302-run3/` and `run4/`. The canonical report, checks and SVG are retained under this study folder in `artifacts/` for review and downstream reproducibility.
 
 ## Artifact hashes
 
