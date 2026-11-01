@@ -1,10 +1,18 @@
+## M300 — L-01 move/reshape stair-route screen — 2026-11-02
+
+- Owner direction: move/reshape L-01 and keep the full 60-in stair comparison. Preserved L-01's prior source-area target of 250.5556 sf; fixed L-02, C-LOWER, the other rooms and the 36 × 32 ft shell. M-06 windows stayed protected, west A protected and B unassigned.
+- Added source-pinned C#/.NET 10 `Tools/M300Generator` plus scoped authorization `Decisions/2026-11-02_M300_L01_Move_Stair_Route_Study_Authorization.md`. Build: 0 warnings/errors. Two replays pass 14/14; all report/check/SVG artifacts match byte-for-byte; SVG parses as XML. Evidence: `.local/revalidation/m300-run2/` and `run3/`; full procedure and hashes: `Architecture/M300_L01_Same_Area_Stair_Route_Study_2026-11-02/README.md`.
+- All 1,098 same-area L-01 candidates were tested. With L-01 omitted for maximum stair space, 16,892 full-rise stair placements yielded 131 envelopes. Only 10 candidate/stair pairs did not overlap; both ends of each were searched (20 BFS runs) and all stopped immediately with no path. No landing interface or 36-in route passed. Moving L-01 alone also does not resolve the inherited full-rise layout screen.
+- Selected-D/RVT/IFC/families/remotes remain unchanged; no physical geometry selected. This remains a bounded rectangle/grid study, not a code, accessibility or structural conclusion.
+- **Next:** compare alternate stair/level arrangements that preserve the 60-in transition and current room blocks as labeled analysis-only proposals.
+
 ## M297 — L-02 move/reshape stair-route screen — 2026-11-02
 
 - Added `Tools/M297Generator`, a source-pinned package-free C#/.NET 10 screen for L-02 same-area (110-sf) move/reshape options while L-01, C-LOWER, other rooms and the shell remain fixed. It inherits M295's 4 × 14.4167-ft full-rise comparison, protects both unassigned M-06 search windows and uses M215's 36-in precedent only.
 - Build succeeds with 0 warnings/errors. Two independent runs pass 14/14 checks; JSON/check/SVG outputs are byte-identical and SVG parses as XML. Evidence: `.local/revalidation/m297-run5/` and `run6/`; source, basis, results and reproduction: `Architecture/M297_L02_Same_Area_Stair_Route_Study_2026-11-02/README.md`.
 - Result: 4,761 same-area L-02 placements are available on the 0.25-ft study grid. More decisively, after omitting L-02 entirely to maximize open floor area, all 16,892 full-size stair placements are rejected: 16,272 by fixed lower rooms, 600 by protected M-06 windows, 20 by C-LOWER overlap outside an end landing. Zero stair envelopes survive; no route search or physical geometry can follow. Thus moving L-02 alone cannot resolve the full-rise screen while the other constraints remain.
 - Selected-D, RVT/IFC, RFAs and remotes remain untouched. M-06/A/B stay unassigned, west A protected. This bounded negative screen does not prove overall impossibility or establish code/accessibility/structural conclusions.
-- **Next design gate:** authorize a separate same-area L-01 move/reshape study, or compare a different stair/level arrangement.
+- **Follow-up:** owner chose an L-01 move/reshape study while retaining the 60-in stair; M300 is recorded above and also found no route. Next compare alternate stair/level arrangements while preserving current rooms as analysis-only proposals.
 
 ## M299 — First runtime-verified native Revit wall objects — 2026-11-02
 
@@ -61,7 +69,7 @@
 - RevitPilot build succeeded against the installed Revit 2027 API with 0 errors and 2 MSB3277 Microsoft.VisualBasic 10.0/10.1 reference-conflict warnings. DLL SHA256: `86F3440736FE6D47F679E0F670194AAC2C307BAFD225564BC952AB800FAFE5EB`. The authorized per-user manifest AddInId and repository-local assembly path/hash were verified; no manifest replacement was needed.
 - Revit 2027.3 loaded the ribbon and ran the command in a fresh disposable project; no trust prompt appeared and no trust choice was made. Successful run: `.local/revit-pilot/walkthrough-shell/20261101T170505234Z/`. JSON and PowerShell checks confirmed selected-D source hash `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, saved RVT hash `7E6B632C89DF3808A9B595B4D56237D7B9987CE04BC3DE0718D804E45FC24483`, 9 levels, cases 8/9/10 ft, 21 distinct source IDs across 63 records, 828 vertical curves, and zero native walls/floors/stairs/roofs. Reopened the RVT and visually checked the named isometric view; Revit was closed before the independent RVT hash check.
 - Selected-D source/RVT/IFC are unchanged. The study remains an analysis wireframe, not a physical or construction model. Skylight count/location/product/roof opening are unselected. Evidence and replay procedure: `Architecture/Walkthrough_Shell_Wireframe_Study_2026-11-02/README.md`.
-- M297 subsequently completed the same-area L-02 route study and found no full-size stair envelope even with L-02 entirely omitted. See the M297 entry above; the next input is whether to relax L-01 or compare another stair/level arrangement.
+- M297 and M300 subsequently tested same-area moves of each lower flex room and found no full-rise route. See their entries above; next compare alternate stair/level arrangements while preserving the current room blocks as analytical proposals.
 
 ## M292 — M270 runtime attempt stopped at untargetable Revit intro overlay — 2026-11-01
 
