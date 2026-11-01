@@ -1,3 +1,10 @@
+## M314 — Provisional native main-floor plate comparison — 2026-11-01
+
+- Added a narrowly scoped RevitPilot command that reopens the hash-pinned M313 candidate, verifies its source RVT hash and 42-wall inventory, and writes a disposable derivative with three native floor plates. The exact project-local DLL is `.local/revit-pilot/main-floor-floor-plate-v1/Release/net10.0-windows/RevitPilot.dll` (SHA256 `67FA2BEF7E15D4B3A585A2F81750878E9C922BBA0B7C6E86201E05D3C20E0A1B`); the authorized AddInId manifest backup is `.local/revit-pilot/registration-backups/20261101170605/`.
+- Revit 2027.3 ran the command in a disposable blank project after **Load Once**. Output: `.local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/` with saved RVT SHA256 `9EAC7B3DA7EBCF4E00C8CF52D72C41A8346006EF2FFB49479686B587175E0CB1`.
+- `floor-plate-manifest.json` records three 40 × 42 ft / 1,680 sf profiles, 42 preserved walls, and the Revit template floor type as a placeholder. `Tools/RevitPilot/validate_main_floor_floor_plate.ps1` passes **5/5** (schema, saved-model hash, count, profile areas, and wall preservation).
+- The plates are explicitly provisional and unselected. No selected-D edit, M-06/B assignment, opening/door finding, stair/section resolution, code-compliance claim, structural claim, professional approval, or construction-readiness claim follows.
+
 ## M313 — Native main-floor candidate runtime, reopen audit, and IFC gate — 2026-11-01
 
 - Built the tracked Pilot change with **0 errors** and 2 existing `MSB3277` reference-conflict warnings. The exact project-local DLL is `.local/revit-pilot/main-floor-candidate-ifc-v4/Release/net10.0-windows/RevitPilot.dll` (SHA256 `F4BCC73E771DA832EDB17542AF127DDA45154B3022F8F754FACE2B9E3B974F44`). The per-user manifest kept the authorized AddInId and a timestamped backup; Revit was loaded with **Load Once** only.

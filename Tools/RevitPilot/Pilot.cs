@@ -52,6 +52,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
         panel.AddItem(new PushButtonData("FHAuditMainFloorCandidateVisible", "Audit main-floor\nRVT",
             Assembly.GetExecutingAssembly().Location, typeof(AuditMainFloorCandidateCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateFloorPlate", "Add provisional\nfloor plates",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateFloorPlateCommand).FullName!));
         // Keep the active disposable study reachable on narrower Revit ribbon widths.
         panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
             Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
