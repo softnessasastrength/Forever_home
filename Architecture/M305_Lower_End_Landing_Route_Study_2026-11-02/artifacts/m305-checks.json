@@ -1,0 +1,30 @@
+{
+  "passed": 6,
+  "total": 6,
+  "details": [
+    {
+      "id": "M304/M302/M295/M215/M305 source fingerprints match",
+      "pass": true
+    },
+    {
+      "id": "M295 4-ft flight width and 4-ft landing-depth references are retained",
+      "pass": true
+    },
+    {
+      "id": "all nine same-area M304 room pairs and both protected windows are screened",
+      "pass": true
+    },
+    {
+      "id": "every passing landing stays within shell and clears fixed rooms, moved rooms, windows and other stair pieces",
+      "pass": true
+    },
+    {
+      "id": "every passing 36-in route starts at the landing exterior and reaches C-LOWER without collisions",
+      "pass": true
+    },
+    {
+      "id": "no selected design, physical stair, code or safety result is emitted",
+      "pass": true
+    }
+  ]
+}

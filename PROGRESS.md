@@ -1,3 +1,11 @@
+## M305 — Lower end-landing and route refinement — 2026-11-02
+
+- Refined all nine M304 room/stair samples, checking both flight ends with an inherited 4 × 4 ft landing proxy and a 36-in swept route proxy to fixed C-LOWER. The hypothetical 38⅓ × 40 ft shell (+33.1%) remains unselected; L-01/L-02 source areas, fixed rooms, C-LOWER and both protected M-06 windows were preserved.
+- `Tools/M305Generator` builds on repository-local .NET 10 with **0 warnings, 0 errors**. Two independent runs pass **6/6**, reproduce JSON/check/SVG byte-for-byte, and the SVG parses as XML. Canonical outputs and exact replay commands/hashes: `Architecture/M305_Lower_End_Landing_Route_Study_2026-11-02/README.md` and `artifacts/`.
+- Of 18 lower ends, 8 landing footprints fit and **6** retain a route proxy to C-LOWER (23.5–26 ft, 1,890 nodes total, no node-cap hits). These are related flight-A variants from M304 samples 1–6, clustered in one north-west band—not six independent layout solutions.
+- This is a bounded block study, not a stair, code, access or design finding. Actual stair/riser/run, upper landing, section/headroom/opening, doors/approach, tolerances, route beyond C-LOWER, MEP and shell selection remain open. Selected-D, Revit, IFC, families and remote state were unchanged; the incoming Evolution RFA SHA256 remains `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`.
+- **Next:** use the six clustered options for an upper-end and section sensitivity against inherited floor/ceiling references. Keep geometry unselected until the complete stair section and circulation are reconciled; then create a disposable Revit walkthrough derivative for visual critique.
+
 ## M304 — Joint L-01/L-02 route study — 2026-11-02
 
 - Owner chose the larger shell sensitivity plus joint same-area L-01/L-02 movement. The 38.333333 × 40 ft test remains unselected (+381.33 sf / +33.1% over 36 × 32 ft); C-LOWER and all other rooms remain fixed; both M-06 windows protected/unassigned, west A protected and B unassigned.
