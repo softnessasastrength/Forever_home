@@ -1,3 +1,10 @@
+## M317 — M-06 public candidate evidence replay — 2026-11-01
+
+- Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.
+- The independent replay passes **8/8**: source presence/hash stability, no authentication, isolated scope, positive symbol geometry, sanitary connector, unselected status, and preserved M-06/B non-assignment.
+- Evidence remains tied to source RFA SHA256 `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`; the report confirms two positive-volume solids and one primary round sanitary connector with radius 0.625 in.
+- No Selected-D, Revit source, M-06 window, B assignment, door/approach, service route, code interpretation, or remote state changed.
+
 ## M316 — Section/stair constraint register — 2026-11-01
 
 - Added `Architecture/M316_Section_Stair_Constraint_Register_2026-11-01/README.md` as a source-linked gate before native stair geometry.
