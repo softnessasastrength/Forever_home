@@ -1,0 +1,68 @@
+{
+  "schema": "forever-home-m289-checks-v1",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "details": [
+    {
+      "id": "selected-D and M285/M215 inputs are fingerprint-pinned",
+      "pass": true
+    },
+    {
+      "id": "owner explicitly authorized joint same-area L-01 and C-LOWER analysis",
+      "pass": true
+    },
+    {
+      "id": "M285 stair envelope dimensions are used unchanged",
+      "pass": true
+    },
+    {
+      "id": "all generated L-01 and C-LOWER candidates preserve their exact source areas",
+      "pass": true
+    },
+    {
+      "id": "all L-01 and C-LOWER candidates clear fixed same-level rooms and shell margin",
+      "pass": true
+    },
+    {
+      "id": "all C-LOWER candidates avoid both protected M-06 search windows",
+      "pass": true
+    },
+    {
+      "id": "all selected route stair envelopes clear fixed rooms, paired L-01 and protected M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "every reported joint pair keeps L-01 and C-LOWER disjoint",
+      "pass": true
+    },
+    {
+      "id": "reported route/interface endpoints contact their same-area C-LOWER target",
+      "pass": true
+    },
+    {
+      "id": "reported positive-length route proxies clear fixed rooms, paired L-01 and both M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "reported positive-gap alternatives have a strictly positive measured block separation",
+      "pass": true
+    },
+    {
+      "id": "reported route centerlines are orthogonal and remain shell bounded",
+      "pass": true
+    },
+    {
+      "id": "route width uses the M215 36-in study precedent only",
+      "pass": true
+    },
+    {
+      "id": "M-06 footprint, position and service route remain unassigned",
+      "pass": true
+    },
+    {
+      "id": "no candidate selected and no code, structure or construction claim",
+      "pass": true
+    }
+  ]
+}
