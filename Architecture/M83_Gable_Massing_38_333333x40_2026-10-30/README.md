@@ -1,24 +1,26 @@
 # M83 — steep-gable massing comparison
 
-Status: **six Revit/IFC comparison options are planned on a hypothetical upper-shell outline; no pitch, ridge direction, roof datum, assembly, or building dimension is selected.** The owner requested a steep traditional gable and selected Connecticut as the research jurisdiction. The M76/M78 38.333333 × 40 ft envelope is only an owner-authorized comparison test; it is 33.1% larger than the selected-D 36 × 32 ft upper test wing and is not a proposed building size.
+Status: **six source comparisons and a current Revit/IFC2X3 run exist on a hypothetical upper-shell outline; no house pitch, ridge direction, roof datum, assembly, or building dimension is technically selected.** On 2026-11-01 the owner named 12:12 the visual favorite for continued comparison; 8:12 and 10:12 remain available. This is not a feasibility, structural, or code approval. Connecticut is the research jurisdiction. The M76/M78 38.333333 × 40 ft envelope is only an owner-authorized comparison test; it is 33.1% larger than the selected-D 36 × 32 ft upper test wing and is not a proposed building size.
 
 ## Reproduce the source geometry
 
-From the repository root in Windows PowerShell 5.1:
+The source generator is a package-free .NET 10 C# console tool. From the repository root:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_m83_gable_massing_options.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_m83_gable_massing_options.ps1 -OutputDirectory '.local/revalidation/M83-a'
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/build_m83_gable_massing_options.ps1 -OutputDirectory '.local/revalidation/M83-b'
+$env:DOTNET_CLI_HOME = '.local/dotnet-home'
+.local/dotnet/dotnet.exe build Tools/M83Generator/M83Generator.csproj -c Release --ignore-failed-sources
+.local/dotnet/dotnet.exe run --no-build --project Tools/M83Generator/M83Generator.csproj -c Release --no-launch-profile -- 'Architecture/M83_Gable_Massing_38_333333x40_2026-10-30'
+.local/dotnet/dotnet.exe run --no-build --project Tools/M83Generator/M83Generator.csproj -c Release --no-launch-profile -- '.local/revalidation/M83-a'
+.local/dotnet/dotnet.exe run --no-build --project Tools/M83Generator/M83Generator.csproj -c Release --no-launch-profile -- '.local/revalidation/M83-b'
 ```
 
-The generator binds the archived M78 search, its manifest, current selected-D study, M38 pitch options and manifest, and Connecticut roof-research note by SHA256. It emits six combinations of the documented 8:12, 10:12 and 12:12 comparisons and two ridge directions. Each option keeps the same 38.333333 × 40 ft projected outline. The script records relative eave rise and idealized two-plane area, with no overhang or thickness.
+The generator binds the archived M78 search, its manifest, current selected-D study, M38 pitch options and manifest, and Connecticut roof-research note by SHA256. It emits six combinations of the documented 8:12, 10:12 and 12:12 comparisons and two ridge directions. Each option keeps the same 38.333333 × 40 ft projected outline. It records relative eave rise and idealized two-plane area, with no overhang or thickness. `Tools/build_m83_gable_massing_options.ps1` remains a Windows PowerShell 5.1 wrapper for this C# source generator.
 
 The 50 ft diagram offsets separate all six options inside one comparison document. They are not building coordinates. A local z=0 reference is not a wall plate or floor level. The options are open, zero-thickness surfaces and do not include gable walls, framing, roof build-up or drainage.
 
 ## Revit 2027 and IFC2X3 host run
 
-1. Build an isolated local pilot using `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/RevitPilot/build.ps1 -BuildDirectory 'build-m83'`.
+1. Build an isolated local pilot using `Tools/RevitPilot/build.ps1 -BuildDirectory 'build-m83'` under the repository's configured PowerShell policy.
 2. Verify the per-user manifest retains AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, its assembly path is inside this worktree, and record the DLL SHA256. Back up the current manifest under ignored `.local/revit-pilot/registration-backups/<timestamp>/` before replacing it.
 3. Restart Revit 2027. For the exact verified project-local DLL only, select **Load Once** at its trust prompt. Do not enable Always Load or change global trust settings.
 4. In Revit, run **Add-Ins → Forever Home Pilot → Build M83 gable massing options**. The command creates a separate blank project at `.local/revit-pilot/roof-massing/<timestamp>/`, saves the RVT first, then exports IFC2X3 and checks that the saved RVT fingerprint did not change during export.
@@ -37,9 +39,24 @@ Autodesk documents `TessellatedShapeBuilder` as a way to build connected planar 
 - No roof loads, snow drift, wind design, structure, member sizing, fire performance, insulation, ventilation, egress, attic/headroom, drainage or construction details are evaluated.
 - IFC validation covers schema, saved-model/export lineage, six generic proxy entities, world-coordinate bounding extents, and triangulated surface areas. It cannot establish professional approval, code compliance, structural safety or construction readiness.
 
-## Source refresh after later Connecticut research
+## Earlier source refresh (2026-10-31)
 
-After the 2026-10-31 Connecticut adoption-status recheck, the four M83 artifacts were regenerated. Three PowerShell 5.1 runs (the checked-in destination and two isolated outputs) pass **13/13** checks and match byte-for-byte: `roof-options.json` SHA256 `39A54E0660F2C206634B4D0921F015870FA0DF4A39A71CFE7EA71799AB383550`, `checks.json` `0498973FE03FF7D80EE4CCCCBEEC99995AE6AC1C757FAC96D479D8CE9C20DFD6`, `manifest.json` `B51B8CB7B9617D6DDF2BB905B763ED0684E65114D6DA9AC93AAC5809D39F422B`, and unchanged SVG `9C5EA4DBBB297A530463774C610CE8D1C81E18E7FA1135A414BCDBC632981219`. Geometry remains the same six hypothetical comparisons; only source provenance changed. The current official statewide code-adoption status is recorded in the bound research note.
+After the 2026-10-31 Connecticut adoption-status recheck, the four M83 artifacts were regenerated. Three PowerShell 5.1 runs passed 13/13 checks and matched byte-for-byte. Those historical hashes are retained in Git history; the next section records the current C# generation.
+
+## Current source refresh and deterministic generation (2026-11-01)
+
+The current research note changed after the 2026-10-31 artifacts were generated. The C# generator was built with the repository-local .NET 10.0.403 SDK (0 warnings, 0 errors) and run twice into separate ignored directories. Both runs passed **13/13** and all four outputs matched byte-for-byte. A line-ending defect in the first C# output pass was corrected; generated text now uses UTF-8 without BOM and normalized LF. The checked-in artifacts were regenerated; current hashes are:
+
+- `checks.json`: `AA933972997934D6005E85651CB08C871B037BF003BFFFD76964BB2AB2F618F8`
+- `manifest.json`: `3483A5C481BCD990CFE134253092A58E68849BF9FC14BFABF72A5DE1D706066A`
+- `roof-options.json`: `06CB5B290BD31D866C5EB45DF0A688C5CD1184A9C1DED6CD6435E5011A7E6248`
+- `roof-options.svg`: `856BEDCA1DEB995E866000D6D668291983EFEB0646DDA93FD23CA69C857C1D05`
+
+The updated manifest binds Connecticut research SHA256 `D77510CA50A463E57B49EA5B18193416FA7C6461DF79CD8695D2931B1B0A84BF`. The new geometry data keep the six prior hypothetical cases and source dimensions. They still contain no selected roof, absolute eave datum, thickness, overhang or full roof assembly. Source generation did not open or modify selected-D.
+
+## Current Revit 2027.3 disposable comparison and IFC2X3 validation (2026-11-01)
+
+RevitPilot generated `.local/revit-pilot/roof-massing/20261101T130016669Z/` from a separate blank project. The saved RVT SHA256 is `B9AABF42209405030677B75ED0BA0FC5FE311B9B92632654898D415EEDC72AE`; the IFC2X3 SHA256 is `EFF2F2AFE7F2917763213964DC60CD7F46D5C9C07C85FC49A538BFCA527DCF12`. The independent validator passes **21/21**. Revit reports six generic mesh surfaces, zero positive-volume solids, one level, and zero native roof/wall/floor/door/window/stair elements. The IFC checks cover export lineage, schema, proxy identity, bounds and triangulated surface area. This disposable comparison validates software output only, not a house roof design.
 
 ## Revit bounds-evaluation repair and M165 host validation
 

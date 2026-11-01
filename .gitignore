@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .local/
 Tools/RevitPilot/obj/
+Tools/M83Generator/bin/
+Tools/M83Generator/obj/

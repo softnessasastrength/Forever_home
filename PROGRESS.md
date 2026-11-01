@@ -1,3 +1,10 @@
+## M271 — Regenerate M83 source options and validate Revit/IFC2X3 — 2026-11-01
+
+- Replaced the PowerShell-policy-blocked source generator with package-free `Tools/M83Generator` C#/.NET 10 and a PowerShell 5.1 launcher that respects the configured execution policy. Build: **0 warnings, 0 errors**. Three source runs pass 13/13; two separate ignored output directories produce byte-identical JSON, manifest and SVG files. Output uses UTF-8 without BOM and normalized line endings; `git diff --check` passes.
+- Revit 2027.3 generated `.local/revit-pilot/roof-massing/20261101T130016669Z/`. Saved RVT SHA256 `B9AABF42209405030677B75ED0BA0FC5FE311B9B92632654898D415EEDC72AE0`; IFC2X3 SHA256 `EFF2F2AFE7F2917763213964DC60CD7F46D5C9C07C85FC49A538BFCA527DCF12`. The independent roof-massing IFC validator passes **21/21**.
+- Model contains six generic open-surface mesh options and one level; zero roofs, walls, floors, doors, windows or stairs. The hypothetical 38.333333 × 40 ft shell and six 8:12/10:12/12:12 ridge-axis comparisons remain unselected; no roof assembly, loads or house dimension was invented. Selected-D and protected RFAs were not opened or modified. This is not a code, structural-safety or construction-readiness determination.
+- Next: runtime-verify M270's shape-specific connector report on the exact hash-checked DLL in a fresh disposable family derivative, then continue the owner-selected patio/kitchen study using documented inputs; M-06/B remain unassigned pending explicit fit and service evidence.
+
 ## M269 — Run read-only family `ConnectorElement` inventory in Revit — 2026-11-01
 
 - Extended `CandidateFamilyGeometryCommand` to inspect `ConnectorElement`s in the hash-pinned source FamilyDocument and report domain, system classification, direction, shape, origin, coordinate axes, and dimensions. It does not create or place connector or family elements, and keeps these objects distinct from type-parameter flags. Autodesk's Revit API reference identifies `ConnectorElement` as a family connector element and documents those properties: https://help.autodesk.com/cloudhelp/2026/ENU/Revit-API-MainReference/files/html/cd7d7579-1058-e8ca-d55a-c3a914843667.htm
@@ -14,7 +21,7 @@
 ## M268 — M83 Revit replay correctly stopped on stale provenance — 2026-11-01
 
 - Revit 2027.3 refused **Build M83 gable massing options** before creating a document: the current `Research/Connecticut_Roof_Code_Research_2026-10-28.md` SHA256 is `D77510CA50A463E57B49EA5B18193416FA7C6461DF79CD8695D2931B1B0A84BF`, but M83's source manifest expects `6A456D2879922F4012BD15B7AECBEF06676055DCE5E28092E86BCCF075E807FE`. The source note was subsequently updated in commits `bde5a23` and `288076e`.
-- The command failed closed; no roof comparison derivative or source change resulted. Do not alter the M83 fingerprint by hand or choose a stale option. Next regenerate M83 outputs from current documented inputs and replay their checks before trying Revit again. PowerShell execution policy remains `Restricted`; no override was used.
+- The command failed closed; no roof comparison derivative or source change resulted. Do not alter the M83 fingerprint by hand or choose a stale option. M271 subsequently regenerated the M83 outputs from current documented inputs and passed source checks plus Revit/IFC2X3 validation. PowerShell execution policy remains `Restricted`; no override was used.
 
 ## M267 — Inspect a public KOHLER Tresham lavatory family — 2026-11-01
 
