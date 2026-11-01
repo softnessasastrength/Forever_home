@@ -1,12 +1,12 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M257 route endpoint audit; local sandbox only)
+Updated: 2026-10-31 (M258 source-pin replay; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
 
-**Current checkpoint — M258, 2026-10-31:** Local sandbox `codex/house-design-sandbox`, initially clean and 36 commits ahead of its local tracking ref; no remote state changed. A stale M232 pin for the committed M-06 A-priority decision blocked reproduction. The decision still says “Keep west A primary”; only the script fingerprint was corrected. Refreshed dependent source hashes/artifacts through M233, M241–M243 and M256–M257. Replays passed twice with identical outputs: M232 15/15, M233 10/10, M241 12/12, M242 13/13, M243 14/14, M256 21/21, M257 13/13. Current hashes/results and commands are in `PROGRESS.md`, `PLAN.md`, and study READMEs.
+**Current checkpoint — M258, 2026-10-31:** Local sandbox `codex/house-design-sandbox` at `2fe887e`; preflight was clean and 36 commits ahead, now 37 ahead of its local tracking ref; no remote state changed. A stale M232 pin for the committed M-06 A-priority decision blocked reproduction. The decision still says “Keep west A primary”; only the script fingerprint was corrected. Refreshed dependent source hashes/artifacts through M233, M241–M243 and M256–M257. Replays passed twice with identical outputs: M232 15/15, M233 10/10, M241 12/12, M242 13/13, M243 14/14, M256 21/21, M257 13/13. Current hashes/results and commands are in `PROGRESS.md`, `PLAN.md`, and study READMEs.
 
 Fresh selected-D baseline: two 43/43 geometry runs, seven matching generated files per replay, three parseable SVGs per replay, retained IFC2X3 validation 26/26 with zero errors. Selected-D/RVT/IFC remain hash-stable (`516D6D17…E2BB72BB`, `C6CED6AC…0ACEFD6D0`, `56251F47…A8472F6F`). Incoming locked Evolution family remains present and unchanged at SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. No Revit process was running, and no model/RFA/IFC was modified.
 
