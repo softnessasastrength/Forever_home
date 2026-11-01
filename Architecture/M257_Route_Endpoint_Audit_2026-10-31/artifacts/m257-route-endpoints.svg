@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="920" viewBox="0 0 1030 920">
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#24323a}.title{font-size:24px;font-weight:700}.room-label{font-size:13px;font-weight:600}.note{font-size:13px}.small{font-size:11px}.shell{fill:#fbfaf7;stroke:#33444d;stroke-width:3}.route{fill:none;stroke:#48a4cf;stroke-opacity:.46;stroke-width:54;stroke-linecap:round;stroke-linejoin:round}.centerline{fill:none;stroke:#12668d;stroke-width:2;stroke-dasharray:7 5}.living{fill:#b6d8c0;stroke:#315d41}.hall{fill:#dddfe2;stroke:#505b62}.kitchen{fill:#f2d1a4;stroke:#875722}.dining{fill:#f2e1a6;stroke:#897118}.porch{fill:#d4c2e8;stroke:#604d80}.reserve{fill:#fff;fill-opacity:.35;stroke:#a34e48;stroke-width:2;stroke-dasharray:8 5}.pantry{fill:#ead6c9;stroke:#785542}</style>
+<text x="70" y="30" class="title">M257 â€” route endpoint audit</text>
+<rect x="70" y="52" width="720" height="756" class="shell" />
+<rect x="91" y="526" width="288" height="270" fill="#b6d8c0" stroke="#315d41" stroke-width="2" />
+<text x="93.16" y="661" class="room-label">M-01 living +6 in</text>
+<rect x="379" y="580" width="78" height="216" fill="#dddfe2" stroke="#505b62" stroke-width="2" />
+<text x="381.16" y="688" class="room-label">M-05 hall</text>
+<rect x="457" y="508" width="312" height="288" fill="#f2d1a4" stroke="#875722" stroke-width="2" />
+<text x="459.16" y="652" class="room-label">M-02 kitchen -6 in</text>
+<rect x="88" y="346" width="198" height="180" fill="#f2e1a6" stroke="#897118" stroke-width="2" />
+<text x="90.16" y="436" class="room-label">M228 dining proposal</text>
+<rect x="286" y="311.5" width="93" height="205.5" fill="#fff" stroke="#a34e48" stroke-width="2" stroke-dasharray="8 5" />
+<text x="288.16" y="414.25" class="room-label">A protected</text>
+<rect x="451" y="373" width="237" height="126" fill="#fff" stroke="#a34e48" stroke-width="2" stroke-dasharray="8 5" />
+<text x="453.16" y="436" class="room-label">B unassigned</text>
+<rect x="73" y="67" width="216" height="180" fill="#d4c2e8" stroke="#604d80" stroke-width="2" />
+<text x="75.16" y="157" class="room-label">M215 porch test block</text>
+<polyline class="route" points="424,616 415,616 415,278.5 244,278.5 244,193" />
+<polyline class="centerline" points="424,616 415,616 415,278.5 244,278.5 244,193" />
+<circle cx="424" cy="616" r="7" fill="#a5342f" stroke="white" stroke-width="2" />
+<circle cx="244" cy="193" r="7" fill="#604d80" stroke="white" stroke-width="2" />
+<text x="820" y="100" class="note" font-weight="700">Route start</text>
+<text x="820" y="122" class="note">Inside M-05 Hall</text>
+<text x="820" y="144" class="note">Not inside M-01 Living</text>
+<text x="820" y="185" class="note" font-weight="700">Route endpoint</text>
+<text x="820" y="207" class="note">Inside porch test block</text>
+<text x="820" y="250" class="note" font-weight="700">Measured study gaps</text>
+<text x="820" y="272" class="note">6 in to moved living block</text>
+<text x="820" y="294" class="note">4 in to moved kitchen block</text>
+<text x="820" y="336" class="note">36 in route proxy</text>
+<text x="820" y="358" class="note">33 ft 6 in long</text>
+<text x="820" y="400" class="note" font-weight="700">No physical opening</text>
+<text x="820" y="422" class="note">or doorway is modeled.</text>
+<text x="70" y="850" class="small">Source-bound room-block coordinates; schematic, not a wall or door plan. A/B remain unassigned; M-06 remains TBD.</text>
+</svg>

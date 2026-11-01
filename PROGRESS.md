@@ -1,3 +1,10 @@
+## M257 — Audit the M256 route endpoints — 2026-10-31
+
+- Added `Tools/audit_m257_living_to_porch_route_endpoints.ps1`, which pins selected-D, M215, M228, M243 and the M256 report; transforms the route into the selected-D coordinate frame; and checks its start/end points against M-05, M-01 and the porch test block.
+- Two Windows PowerShell 5.1 runs pass **13/13** and reproduce report/check/SVG byte-for-byte: report `B6CCE5A46DF3344A859032C8BE5D8AF6D4F71FB812255FF3643C69BAA24DA905`, checks `F7A07AA0D526435771F236DB7BABCFDD2CA34EA20C1CB2553F62C6B260741D31`, SVG `F8588918FD0803B2DDC13BEDFB40DC7331F38338EF99289CCF6E0B63956D59AD`.
+- The 33.5-ft / 36-in corridor starts inside M-05 at `(19.6667, 10.6667)` ft and ends inside the porch test block at `(9.6667, 34.1667)` ft. Its start cap is 12 in from M-01 and 4 in from shifted M-02; the whole route is closest to M-01 at 6 in. It is therefore a hall-to-porch proxy. No door/opening connects it to M-01, so it is not a verified living-to-porch route.
+- Added the source-bound schematic `Architecture/M257_Route_Endpoint_Audit_2026-10-31/artifacts/m257-route-endpoints.svg`. Selected-D, retained RVT/IFC and RFAs remain unchanged; no Revit run occurred. Exact Adirondack family/product still is not present in the repo or Downloads. Two owner inputs are pending: whether to study a hall/topology change for the fully open connection, and the source/asset for the already-selected chair.
+
 ## M256 — Integrate living, kitchen and porch-route sensitivities — 2026-10-31
 
 - Added `Tools/verify_m256_living_kitchen_route_integration.ps1`, pinned to selected-D, M215, M228, M232, M242 and M243 report hashes. The M-01 +6 in east test, M-02 -6 in west kitchen candidate and route-start -6 in variant compose in the same coordinate frame.

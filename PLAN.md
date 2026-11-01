@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks with source and derivative hashes verified; M255 retired the dimensionally inconsistent RevitCity 22366 vanity; M256 integrates the owner-directed M-01 move with the kitchen and porch-route sensitivities (21/21, two identical replays). M-06/A/B remain unassigned, native construction geometry is still absent, and the preferred direct living/kitchen opening is not demonstrated by the integrated block arrangement.
+Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks; M255 archived a dimensionally inconsistent vanity; M256 integrated the living/kitchen/route sensitivities (21/21); M257 found the route begins in M-05 Hall, not M-01 Living. Native construction geometry is still absent, and the preferred fully open living/kitchen connection and a verified living-to-porch route remain unresolved.
+
+## M257 — Audit the route endpoints against the changed living block
+
+**Acceptance:** pin selected-D, M215, M228, M243 and the M256 report; transform the six-inch route-start variant to selected-D coordinates; check start/end points against M-05, M-01 and the porch block; measure the route gaps to M-01/M-02; generate a parseable, source-bound SVG; pass all checks in two byte-identical PowerShell 5.1 runs; make no model edits.
+
+**Result:** `Tools/audit_m257_living_to_porch_route_endpoints.ps1` passes 13/13 twice with byte-identical report/check/SVG outputs (report `b6cce5a4…4da905`, checks `f7a07aa0…741d31`, SVG `f8588918…6d59ad`). The 33.5-ft / 36-in corridor begins at `(19.6667, 10.6667)` ft inside M-05 and ends at `(9.6667, 34.1667)` ft in the porch test block. Its start cap is 12 in from M-01 and 4 in from the shifted M-02; the swept route's closest edge is 6 in from M-01. Therefore it is a continuous hall-to-porch proxy, not a verified living-to-porch route; no door or opening exists in the model. See `Architecture/M257_Route_Endpoint_Audit_2026-10-31/README.md` and its SVG.
+
+**Next gate:** owner direction is pending on whether to study an M-05 topology change for the requested open connection. Keep the selected-D, native walls, doors and IFC untouched. Exact Adirondack source/asset is also still missing; no substitute is authorized.
 
 ## M256 — Integrate living, kitchen and porch-route sensitivities
 

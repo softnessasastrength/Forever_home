@@ -1,0 +1,21 @@
+{
+    "schema":  "forever-home.m257-route-endpoint-audit-checks.v1",
+    "result":  "pass",
+    "check_count":  13,
+    "checks":  {
+                   "all_input_fingerprints_match":  true,
+                   "m243_six_inch_variant_selected":  true,
+                   "route_width_remains_36_in":  true,
+                   "route_start_is_inside_M05_hall_block":  true,
+                   "route_start_is_not_inside_M01_living_block":  true,
+                   "route_start_cap_remains_twelve_in_clear_of_M01":  true,
+                   "route_swept_path_remains_six_in_clear_of_M01":  true,
+                   "route_start_cap_remains_four_in_clear_of_M02":  true,
+                   "route_endpoint_is_inside_porch_test_block":  true,
+                   "route_waypoints_are_orthogonal":  true,
+                   "continuous_swept_route_reaches_porch":  true,
+                   "selected_d_hash_unchanged":  true,
+                   "no_physical_opening_or_door_claimed":  true,
+                   "svg_parses_as_xml":  true
+               }
+}
