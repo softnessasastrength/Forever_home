@@ -1,0 +1,120 @@
+{
+  "schema": "forever-home-m280-checks-v1",
+  "status": "pass",
+  "passed": 28,
+  "total": 28,
+  "checks": [
+    {
+      "id": "input report/provenance/catalog hashes match retained pins",
+      "pass": true
+    },
+    {
+      "id": "candidate source SHA256 unchanged in Revit before and after inspection",
+      "pass": true
+    },
+    {
+      "id": "inspection is Revit 2027.3 and selected-D was not opened",
+      "pass": true
+    },
+    {
+      "id": "no candidate instance was placed in the Revit derivative",
+      "pass": true
+    },
+    {
+      "id": "family is a Plumbing Fixtures WorkPlaneBased family",
+      "pass": true
+    },
+    {
+      "id": "only the generic type-catalog placeholder was loaded",
+      "pass": true
+    },
+    {
+      "id": "two positive-volume solids yielded finite symbol bounds",
+      "pass": true
+    },
+    {
+      "id": "measured overall envelope is within 0.5 in of published overall dimensions",
+      "pass": true
+    },
+    {
+      "id": "type catalog includes all three faucet-configuration SKUs",
+      "pass": true
+    },
+    {
+      "id": "catalog contains the pinned 21 non-empty rows",
+      "pass": true
+    },
+    {
+      "id": "generic symbol metadata identifies K-2362-1-0 / Cimarron",
+      "pass": true
+    },
+    {
+      "id": "one round primary sanitary connector is measured at 0.625 in radius",
+      "pass": true
+    },
+    {
+      "id": "supply connector geometry is not inferred from text parameters",
+      "pass": true
+    },
+    {
+      "id": "no external service network is reported",
+      "pass": true
+    },
+    {
+      "id": "candidate remains unselected and M-06 remains unassigned",
+      "pass": true
+    },
+    {
+      "id": "the source download is documented as public and unauthenticated",
+      "pass": true
+    },
+    {
+      "id": "provenance source URLs are carried into the result",
+      "pass": true
+    },
+    {
+      "id": "family hash before equals hash after",
+      "pass": true
+    },
+    {
+      "id": "bounds remain symbol-local and unhosted",
+      "pass": true
+    },
+    {
+      "id": "limitations prohibit fit/compliance/construction claims",
+      "pass": true
+    },
+    {
+      "id": "pinned Incoming-family intake manifest is from Revit 2027.3",
+      "pass": true
+    },
+    {
+      "id": "preserved Evolution RFA hash matches its intake report",
+      "pass": true
+    },
+    {
+      "id": "Evolution has three measured faucet-configuration symbols",
+      "pass": true
+    },
+    {
+      "id": "each Evolution symbol has three solids and the pinned envelope",
+      "pass": true
+    },
+    {
+      "id": "all Evolution type descriptions explicitly say Basin only",
+      "pass": true
+    },
+    {
+      "id": "Evolution pedestal-option text is recorded without treating it as proof of a complete assembly",
+      "pass": true
+    },
+    {
+      "id": "Evolution was tested only on a synthetic disposable wall",
+      "pass": true
+    },
+    {
+      "id": "Evolution synthetic host, instance and face IDs match",
+      "pass": true
+    }
+  ]
+}
