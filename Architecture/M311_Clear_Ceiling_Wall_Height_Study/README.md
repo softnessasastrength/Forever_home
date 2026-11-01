@@ -1,7 +1,7 @@
 # M311 — Clear-ceiling wall-height comparison
 
 Date: 2026-11-01
-Status: **command build verified; Revit runtime pending**
+Status: **runtime generated and independently validated**
 
 ## Selected inputs
 
@@ -21,11 +21,18 @@ Build result on 2026-11-01: **0 errors; 2 MSB3277 reference-version conflict war
 
 The per-user registration was checked against the authorized AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`; the assembly path resolves inside this checkout to the hash above. Prior registration was preserved at `.local/revit-pilot/registration-backups/20261101T133836441/`. Revit was restarted. No trust-wide option was changed and no **Always Load** choice was made.
 
-## Runtime and verification — pending
+## Runtime and verification
 
-The computer-use bridge repeatedly failed with `foreground window did not report a process id` while opening a blank Revit project. No M311 command execution occurred and no RVT or model manifest exists yet. Do not cite this report as evidence that native geometry has been generated.
+The corrected project-local build was loaded once in Revit 2027.3 after verifying the exact in-checkout assembly path and SHA256 `AA04ADF764F260D3D014F32D243C97A24107C56C1C94E25E491AE399AA530B07`. The command generated `.local/revit-pilot/clear-ceiling-wall-height/20261101T213134039Z/` with three RVTs and per-model manifests. The main 40 × 42 ft plan was reopened in Revit and visually inspected: three side-by-side native wall rectangles are visible for the 8/9/10-ft comparison cases. The two 36 × 32 ft derivatives are independently checked from their saved manifests and RVT hashes by the validator below; no selected-D file was opened.
 
-After a controllable Revit project window is available, run **Forever Home Pilot → Build clear-height wall comparison**. The command writes a timestamped run under ignored `.local/revit-pilot/clear-ceiling-wall-height/`. Verify `comparison-index.json`, all three per-model JSON files, saved RVT hashes, twelve wall instances and one local level per file, exact 8/9/10-ft case values, and zero floors/ceilings/doors/windows/stairs/roofs. Reopen and inspect each saved isometric view; the saved hashes should remain unchanged after closing Revit.
+The independent validator is reproducible from the repository root:
+
+```powershell
+./Tools/RevitPilot/validate_clear_height_wall_study.ps1 `
+  -StudyDirectory '.local/revit-pilot/clear-ceiling-wall-height/20261101T213134039Z'
+```
+
+Result: **4/4** checks passed (schema/status, selected-D source pin, three cases, and all per-model manifests/RVT hashes, wall/level counts, 8/9/10-ft values and empty construction categories). The saved RVTs were hash-checked after Revit closed. This command-recorded inventory plus representative visual inspection is not an independent geometric reopen of every file.
 
 ## Baseline validation
 
