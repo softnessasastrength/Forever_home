@@ -2763,3 +2763,11 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Status:** Complete as a public-source check. The current product page links a 2013 211AA-series specification and a 2019 211AA/211BA/211CA installation guide; neither is an exact-SKU Revit or CAD file. Public BIMobject/RevitCity exact-SKU searches returned no listing. The dated recheck is appended to `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.
 
 **Next:** keep the selected toilet as its documented plan proxy until an exact-SKU family/drawing is supplied or becomes publicly available; do not substitute the predecessor components.
+
+## M276 - Establish the CT residential door-width boundary for the M-06 entry study
+
+**Acceptance:** verify the CT adoption path and 2021 IRC R311.2 text from primary sources; distinguish the required dwelling egress door from an ordinary interior powder-room door; do not invent a powder-room door size; record project applicability and accessibility limits; retain west-A protection and leave M-06/A/B unassigned.
+
+**Status:** Complete as scoped code-text research. The cited IRC requires a 32-in clear width and 78-in clear height for the required dwelling egress door, while saying other doors need not meet those dimensions. This does not establish a minimum size for the M-06 interior door under every potentially applicable provision and does not resolve accessibility or project code applicability. See `Research/CT_M06_Entry_Door_Basis_2026-11-01.md`.
+
+**Next:** use the owner's door-approach preference to compare only explicitly sourced or owner-selected door/opening inputs against fixture clearances and the hall/dining approach. Keep door geometry hypothetical until dimensions and the approach basis are established; no room assignment follows.

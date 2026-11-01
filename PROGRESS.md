@@ -2641,3 +2641,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Public exact-SKU BIMobject and RevitCity index searches returned no listing. No login, account, live chat, purchase, or gated download was used. This does not prove that an exact family is unavailable through an unindexed or professional channel.
 - Keep the M120 19 x 30.25 in current-SKU infographic envelope as a labeled 2D proxy. Do not use predecessor-series dimensions or combine predecessor RFAs. M-06/A/B remain unassigned; west A stays protected.
 - Sources and dated findings are appended to `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.
+
+## M276 - CT residential M-06 entry-door code-text boundary - 2026-11-01
+
+- Checked Connecticut DAS's adopted 2022 CSBC/2021 IRC path and the 2021 IRC R311.2 text. The required dwelling egress door has a 32-in clear-width and 78-in clear-height minimum; the provision says other doors need not meet those dimensions.
+- This does not set an interior powder-room door minimum across all potentially applicable requirements, nor establish the project's accessibility/code path. No M-06 door width or swing was selected or fabricated.
+- M-06/A/B remain unassigned; west A remains protected. The door/approach comparison awaits explicit door input and actual route/finished-wall evidence; fixture spacing remains a separate screen.
+- Research note: `Research/CT_M06_Entry_Door_Basis_2026-11-01.md`. Primary sources: CT DAS adoption page/PDF and ICC 2021 IRC R311.2 chapter.
