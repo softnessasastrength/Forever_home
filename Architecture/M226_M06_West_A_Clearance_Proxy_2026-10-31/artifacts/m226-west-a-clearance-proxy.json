@@ -1,0 +1,83 @@
+{
+    "schema":  "forever-home-m06-west-a-predecessor-clearance-proxy-v1",
+    "status":  "bounded proxy screen; not a bathroom fit or code-compliance result",
+    "selected_d_study_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "predecessor_envelope_report":  "M06_Champion_PRO_Predecessor_Envelope_Screen_2026-10-28.json",
+    "predecessor_envelope_report_sha256":  "fc64e326bd9b9155e1bce7ee3831bed8399ca730f01dc657808ff394c0a3abbd",
+    "owner_selected_target_sku":  "610AA001.020",
+    "proxy_predecessor_sku":  "211AA104.020",
+    "exact_target_sku_geometry_verified":  false,
+    "current_code_screen":  {
+                                "jurisdiction":  "Connecticut; project municipality, permit timing and occupancy confirmation remain open",
+                                "code_basis":  "2022 CSBC / adopted 2021 IRC, sections R307.1 and P2705.1, preliminary residential spacing screen",
+                                "side_centerline_clearance_in":  15,
+                                "front_clearance_in":  21,
+                                "adjacent_fixture_center_to_center_in":  30,
+                                "adjacent_fixture_tested":  false,
+                                "p2705_1_door_window_operation_checked":  false,
+                                "source_ct_current_code":  "https://portal.ct.gov/das/home/office-of-state-building-inspector/connecticut-state-building-code/regulations?language=en_US",
+                                "source_ct_adopted_code":  "https://portal.ct.gov/-/media/DAS/Office-of-State-Building-Inspector/2022-State-Codes/2022-CSBC-Final.pdf",
+                                "source_irc_r307_1":  "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+                                "source_irc_p2705_1":  "https://codes.iccsafe.org/content/IRC2021P2/chapter-27-plumbing-fixtures"
+                            },
+    "protected_window":  {
+                             "id":  "west_of_core",
+                             "label":  "West A / dining-side search window",
+                             "gross_width_in":  62,
+                             "gross_depth_in":  137,
+                             "gross_area_sf":  58.99,
+                             "remains_unassigned":  true
+                         },
+    "east_window":  {
+                        "id":  "east_of_core",
+                        "label":  "East B / pantry-side search window",
+                        "gross_area_sf":  92.17,
+                        "remains_unassigned":  true
+                    },
+    "orientations":  [
+                         {
+                             "rotation_deg":  0,
+                             "predecessor_body_width_in":  19,
+                             "predecessor_body_depth_in":  30.25,
+                             "required_toilet_only_width_in":  30,
+                             "required_toilet_body_plus_front_strip_depth_in":  51.25,
+                             "side_clearance_centerline_to_each_side_in":  15,
+                             "front_clearance_in":  21,
+                             "contained_in_gross_west_a":  true,
+                             "remaining_gross_width_in":  32,
+                             "remaining_gross_depth_in":  85.75,
+                             "assumption":  "Rectangular predecessor toilet envelope centered between hypothetical opposing sides; minimum front strip begins at its nominal front edge."
+                         },
+                         {
+                             "rotation_deg":  90,
+                             "predecessor_body_width_in":  30.25,
+                             "predecessor_body_depth_in":  19,
+                             "required_toilet_only_width_in":  30.25,
+                             "required_toilet_body_plus_front_strip_depth_in":  40,
+                             "side_clearance_centerline_to_each_side_in":  15,
+                             "front_clearance_in":  21,
+                             "contained_in_gross_west_a":  true,
+                             "remaining_gross_width_in":  31.75,
+                             "remaining_gross_depth_in":  97,
+                             "assumption":  "Rectangular predecessor toilet envelope centered between hypothetical opposing sides; minimum front strip begins at its nominal front edge."
+                         }
+                     ],
+    "evaluated":  {
+                      "predecessor_body_plus_side_and_front_screen_only":  true,
+                      "complete_room_fit":  false,
+                      "selected_610aa_geometry":  false,
+                      "lavatory_or_adjacent_fixture":  false,
+                      "door_or_swing_and_hall_approach":  false,
+                      "finished_wall_faces_or_rough_in":  false,
+                      "drain_vent_water_or_service_route":  false,
+                      "m06_room_assignment":  false,
+                      "selected_d_or_ifc_modified":  false
+                  },
+    "limitations":  [
+                        "A is a gross 5.1667 x 11.4167 ft room-block gap, not a verified room or clear interior dimension.",
+                        "The 19 x 30.25 in body proxy is predecessor 211AA series data and is not verified for target SKU 610AA001.020.",
+                        "The screen excludes the lavatory and 30-in center-to-center check, real door and swing, hall approach, finished-face tolerances, plumbing route and services.",
+                        "The screen does not show that west A adjoins the required public hall approach or that either window can be assigned.",
+                        "The 15-in / 21-in values are preliminary 2021 IRC spacing checks under the Connecticut 2022 CSBC; municipality, permit path, occupancy and any applicable accessibility scope require confirmation."
+                    ]
+}

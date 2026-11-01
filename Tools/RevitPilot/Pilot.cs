@@ -60,6 +60,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
             Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
+            Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
             Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGeometryQa", "Run geometry\nQA",

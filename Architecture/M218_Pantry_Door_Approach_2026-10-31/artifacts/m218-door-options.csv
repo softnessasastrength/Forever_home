@@ -1,0 +1,7 @@
+﻿"position","swing_into","opening_start_y_ft","approach_obstacle_overlap_sf","swing_obstacle_overlap_sf","swing_approach_overlap_sf","swing_route_overlap_area_sum_sf","passes_static_proxy_screen","limitation"
+"lower","kitchen","1.25","0","0","6.25","0","True","Door swing occupies part of the assumed kitchen-side approach while open."
+"lower","pantry","1.25","0","0","0","0","True","Shelving/storage conflict is not modeled."
+"center","kitchen","2.875","0","0","6.25","0","True","Door swing occupies part of the assumed kitchen-side approach while open."
+"center","pantry","2.875","0","0","0","0","True","Shelving/storage conflict is not modeled."
+"upper","kitchen","5.75","0","0","6.25","0","True","Door swing occupies part of the assumed kitchen-side approach while open."
+"upper","pantry","5.75","0","0","0","0","True","Shelving/storage conflict is not modeled."

@@ -1,0 +1,20 @@
+{
+    "schema":  "forever-home.m243-route-start-sensitivity-checks.v1",
+    "result":  "pass",
+    "check_count":  14,
+    "checks":  {
+                   "selected_d_hash_matches":  true,
+                   "m242_candidate_hash_matches":  true,
+                   "M215_result_matches_pinned_replay":  true,
+                   "M228_coordinate_frame_hash_matches":  true,
+                   "route_generator_hash_matches":  true,
+                   "upstream_geometry_generators_pinned":  true,
+                   "source_route_contract_passed":  true,
+                   "baseline_route_overlaps_shifted_kitchen_by_two_inches":  true,
+                   "three_in_start_move_clears_but_is_under_reserve":  true,
+                   "six_in_start_move_meets_three_in_proxy_reserve":  true,
+                   "path_after_start_is_unchanged":  true,
+                   "endpoint_caps_are_checked":  true,
+                   "selected_d_unchanged":  true
+               }
+}

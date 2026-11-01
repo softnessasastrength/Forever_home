@@ -1,0 +1,36 @@
+{
+    "schema":  "forever-home-m217-checks-v1",
+    "status":  "pass",
+    "passed":  7,
+    "total":  7,
+    "items":  [
+                  {
+                      "id":  "selected_D_fingerprint_unchanged",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "M215_source_route_passes",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "M186_source_contract_passes",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "fixed_samples_plus_quarter_foot_kitchen_edge_sweep",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "all_candidates_report_A_B_and_route_tests",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "at_least_one_candidate_passes_all_screens",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "B_remains_unassigned",
+                      "pass":  true
+                  }
+              ]
+}

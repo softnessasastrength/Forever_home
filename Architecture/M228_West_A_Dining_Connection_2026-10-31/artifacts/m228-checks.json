@@ -1,0 +1,55 @@
+﻿{
+    "schema":  "forever-home-m228-checks-v1",
+    "passed":  12,
+    "total":  12,
+    "checks":  [
+                   {
+                       "id":  "selected_D_source_hash_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "owner_dining_target_and_movement_source_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "west_A_protection_source_pinned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M06_and_both_windows_stay_unassigned",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "11x10_candidate_inside_40x42_test_shell",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "no_overlap_with_fixed_rooms_A_or_B",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_touches_protected_A_without_consuming_it",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "dining_touches_living",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_dining",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_protected_A",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "M215_swept_route_does_not_cross_unassigned_B",
+                       "pass":  true
+                   },
+                   {
+                       "id":  "hall_link_explicitly_remains_unresolved",
+                       "pass":  true
+                   }
+               ]
+}

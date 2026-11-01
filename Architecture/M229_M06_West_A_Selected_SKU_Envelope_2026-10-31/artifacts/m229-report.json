@@ -1,0 +1,75 @@
+{
+    "schema":  "forever-home.m06-west-a-selected-sku-envelope.v1",
+    "status":  "bounded gross-rectangle screen; no room assignment or installed fit established",
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "m120_observations_sha256":  "6cf5ff8d772c792ae7e12fca132126d7a5ce88ac98874ef4e4ce4778a0ac4a60",
+    "selected_sku":  "610AA001.020",
+    "plan_envelope_source":  "American Standard manufacturer infographic; digest recorded in M120 observations",
+    "plan_envelope_source_sha256":  "F09F6BFBCBB62F53828BD99E46F2351BB279E4C031980BBC5E35790E0FE86FBF",
+    "current_sku_plan_dimensions_in":  {
+                                           "width":  19,
+                                           "projection":  30.25
+                                       },
+    "exact_sku_rfa_or_cad_verified":  false,
+    "code_screen":  {
+                        "basis":  "2022 CSBC / adopted 2021 IRC R307.1 and P2705.1; provisional one-family spacing screen",
+                        "side_centerline_min_in":  15,
+                        "front_clear_strip_in":  21,
+                        "local_applicability_determined":  false
+                    },
+    "west_a":  {
+                   "gross_width_in":  62,
+                   "gross_depth_in":  137,
+                   "gross_area_sf":  58.99,
+                   "remains_unassigned":  true
+               },
+    "east_b_remains_unassigned":  true,
+    "orientation_count":  2,
+    "contained_orientation_count":  2,
+    "orientations":  [
+                         {
+                             "rotation_deg":  0,
+                             "selected_sku_plan_body_width_in":  19,
+                             "selected_sku_plan_body_projection_in":  30.25,
+                             "required_body_plus_side_spacing_width_in":  30,
+                             "required_body_plus_front_strip_depth_in":  51.25,
+                             "centerline_to_each_side_obstruction_screen_in":  15,
+                             "front_clear_strip_screen_in":  21,
+                             "contained_in_gross_west_a":  true,
+                             "remaining_gross_width_in":  32,
+                             "remaining_gross_depth_in":  85.75,
+                             "assumption":  "Rectangular current-SKU manufacturer infographic plan envelope; centered WC centerline for side-spacing proxy; front strip begins at nominal fixture projection."
+                         },
+                         {
+                             "rotation_deg":  90,
+                             "selected_sku_plan_body_width_in":  30.25,
+                             "selected_sku_plan_body_projection_in":  19,
+                             "required_body_plus_side_spacing_width_in":  30.25,
+                             "required_body_plus_front_strip_depth_in":  40,
+                             "centerline_to_each_side_obstruction_screen_in":  15,
+                             "front_clear_strip_screen_in":  21,
+                             "contained_in_gross_west_a":  true,
+                             "remaining_gross_width_in":  31.75,
+                             "remaining_gross_depth_in":  97,
+                             "assumption":  "Rectangular current-SKU manufacturer infographic plan envelope; centered WC centerline for side-spacing proxy; front strip begins at nominal fixture projection."
+                         }
+                     ],
+    "evaluated":  {
+                      "current_selected_sku_manufacturer_plan_envelope":  true,
+                      "exact_sku_3d_family_or_cad":  false,
+                      "complete_fixture_pair_or_lavatory":  false,
+                      "actual_room_walls_or_finished_faces":  false,
+                      "door_swing_or_hall_approach":  false,
+                      "water_waste_vent_or_service_route":  false,
+                      "code_applicability_or_compliance":  false,
+                      "room_assignment":  false,
+                      "selected_d_or_ifc_modified":  false
+                  },
+    "limitations":  [
+                        "The 19 x 30.25 in dimensions are current-SKU manufacturer infographic plan callouts; no exact-SKU RFA/CAD or complete current installation drawing was verified.",
+                        "A is a 62 x 137 in gross room-block gap, not finished clear interior dimensions or an established room.",
+                        "The 15 in / 21 in values are provisional residential spacing screens; project-specific applicability and accessibility scope are undetermined.",
+                        "The lavatory, adjacent-fixture spacing, actual door and operation, arrival route, finished walls, privacy and plumbing/services are not included.",
+                        "Containment of the toilet-only screen does not establish that A can be assigned or that M-06 fits."
+                    ]
+}

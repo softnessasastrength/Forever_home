@@ -1,0 +1,287 @@
+{
+    "schema":  "forever-home-m218-pantry-door-approach-v1",
+    "status":  "pass",
+    "study":  "Three 30-in pantry opening positions and two assumed swing directions tested against the M217 y=1.25-ft pantry proposal and reproduced M215 route.",
+    "source_fingerprints":  {
+                                "selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                "m217_sha256":  "7e436b9a7d805e2803a1148fbd2bdacad017f86b7d444f7cbe77cbde30226853",
+                                "m215_sha256":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1",
+                                "m215_checks_passed":  12,
+                                "m186_checks_passed":  31
+                            },
+    "inputs":  {
+                   "pantry_rect_ft":  [
+                                          13.5,
+                                          1.25,
+                                          5,
+                                          7
+                                      ],
+                   "pantry_size_source_conflict":  "room studies 5x7 ft; kitchen specification 5x6 ft",
+                   "nominal_opening_width_ft":  2.5,
+                   "door_leaf_width_assumption_ft":  2.5,
+                   "approach_proxy_ft":  [
+                                             3,
+                                             3
+                                         ],
+                   "test_shell_outer_ft":  [
+                                               40,
+                                               42
+                                           ],
+                   "location_status":  "proposal only"
+               },
+    "results":  [
+                    {
+                        "position":  "lower",
+                        "swing_into":  "kitchen",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  1.25,
+                                             "end_y_ft":  3.75,
+                                             "center_y_ft":  2.5
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  1,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  11,
+                                                                 "y":  1.25,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  6.25,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Door swing occupies part of the assumed kitchen-side approach while open."
+                    },
+                    {
+                        "position":  "lower",
+                        "swing_into":  "pantry",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  1.25,
+                                             "end_y_ft":  3.75,
+                                             "center_y_ft":  2.5
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  1,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  13.5,
+                                                                 "y":  1.25,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  0,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Shelving/storage conflict is not modeled."
+                    },
+                    {
+                        "position":  "center",
+                        "swing_into":  "kitchen",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  2.875,
+                                             "end_y_ft":  5.375,
+                                             "center_y_ft":  4.125
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  2.625,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  11,
+                                                                 "y":  2.875,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  6.25,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Door swing occupies part of the assumed kitchen-side approach while open."
+                    },
+                    {
+                        "position":  "center",
+                        "swing_into":  "pantry",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  2.875,
+                                             "end_y_ft":  5.375,
+                                             "center_y_ft":  4.125
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  2.625,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  13.5,
+                                                                 "y":  2.875,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  0,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Shelving/storage conflict is not modeled."
+                    },
+                    {
+                        "position":  "upper",
+                        "swing_into":  "kitchen",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  5.75,
+                                             "end_y_ft":  8.25,
+                                             "center_y_ft":  7
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  5.5,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  11,
+                                                                 "y":  5.75,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  6.25,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Door swing occupies part of the assumed kitchen-side approach while open."
+                    },
+                    {
+                        "position":  "upper",
+                        "swing_into":  "pantry",
+                        "door_opening":  {
+                                             "width_ft":  2.5,
+                                             "start_y_ft":  5.75,
+                                             "end_y_ft":  8.25,
+                                             "center_y_ft":  7
+                                         },
+                        "assumed_approach_rect_ft":  {
+                                                         "x":  10.5,
+                                                         "y":  5.5,
+                                                         "width":  3,
+                                                         "depth":  3
+                                                     },
+                        "assumed_30in_swing_sweep_bbox_ft":  {
+                                                                 "x":  13.5,
+                                                                 "y":  5.75,
+                                                                 "width":  2.5,
+                                                                 "depth":  2.5
+                                                             },
+                        "approach_obstacle_overlap_area_sum_sf":  0,
+                        "approach_route_overlap_area_sum_sf":  0,
+                        "swing_obstacle_overlap_area_sum_sf":  0,
+                        "swing_route_overlap_area_sum_sf":  0,
+                        "swing_approach_overlap_sf":  0,
+                        "checks":  {
+                                       "30in_opening_fits_7ft_pantry_edge":  true,
+                                       "36in_approach_proxy_clear_of_modeled_obstacles":  true,
+                                       "swing_proxy_clear_of_modeled_obstacles":  true,
+                                       "B_unassigned_and_clear":  true,
+                                       "protected_A_unchanged":  true
+                                   },
+                        "passes_static_proxy_screen":  true,
+                        "limitation":  "Shelving/storage conflict is not modeled."
+                    }
+                ],
+    "checks":  {
+                   "passed":  6,
+                   "total":  6,
+                   "items":  [
+                                 {
+                                     "id":  "M217_candidate_fingerprint_and_pass_status",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "M215_M186_source_contracts",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "three_positions_both_swing_directions_tested",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "every_case_reports_five_boolean_checks",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "kitchen_swing_overlap_with_approach_reported",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "M06_B_remains_unassigned",
+                                     "pass":  true
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "The 2 ft 6 in value is a documented nominal pantry-door reservation; equating it to a door leaf width is an explicit screening assumption.",
+                        "A 30 x 30 in rectangle bounds an assumed 90-degree door swing; it is not an exact swept arc, hinge/jamb model, rough opening or selected door.",
+                        "The 36 x 36 in kitchen-side approach is an analytical proxy, not a code or accessibility determination.",
+                        "A pantry swing has no shelf, storage or human-body model; a kitchen swing overlaps its assumed approach while open.",
+                        "Wall construction, finished clear width, thresholds, kitchen workflow, actual opening location and MEP services remain unresolved. M-06 B stays unassigned. No code, accessibility, structural, professional, permit or construction-readiness conclusion follows."
+                    ]
+}

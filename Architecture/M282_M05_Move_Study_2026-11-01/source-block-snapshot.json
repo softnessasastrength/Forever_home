@@ -1,0 +1,21 @@
+{
+  "schema": "forever-home-m282-m05-move-source-snapshot-v1",
+  "source_m256_report_sha256": "8124B2B232B14132D575350EB2A4A6A6AB998583E2B68D24E1099C449EC39AE0",
+  "source_selected_d_sha256": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+  "coordinate_frame": "Selected-D main-shell coordinates; M-01 and M-02 use M256's +6 in east / -6 in west test translations; M-03, M-04, M-05, A and B use their documented Selected-D source coordinates.",
+  "shell_ft": [40, 42],
+  "rooms": [
+    { "id": "M-01-living-M256-east-6in", "x": 1.166667, "y": 0.666667, "w": 16, "d": 15, "area_sf": 240 },
+    { "id": "M-02-kitchen-M256-west-6in", "x": 21.5, "y": 0.6666666666666666, "w": 17.333333333333332, "d": 16, "area_sf": 277.333333 },
+    { "id": "M-03-dining-source", "x": 0.6666666666666666, "y": 16.166666666666668, "w": 11.333333333333334, "d": 14, "area_sf": 158.666667 },
+    { "id": "M-04-pantry-source-5x7", "x": 34.333333333333336, "y": 17.166666666666668, "w": 5, "d": 7, "area_sf": 35 },
+    { "id": "M-05-entry-hall-source", "x": 17.166666666666668, "y": 0.6666666666666666, "w": 4.333333333333333, "d": 12, "area_sf": 52 },
+    { "id": "protected-A", "x": 12, "y": 16.166666666666668, "w": 5.166666666666668, "d": 11.416666666666664, "area_sf": 58.99 },
+    { "id": "unassigned-B", "x": 21.166666666666668, "y": 17.166666666666668, "w": 13.166666666666668, "d": 7, "area_sf": 92.17 }
+  ],
+  "study_limits": [
+    "M-06 A and B are source search-window reservations, not bathroom footprints.",
+    "The fixed rectangle screen has no wall thickness, door, approach, furniture, route, services, porch, or site geometry.",
+    "M256's M-01/M-02 shifts are a prior schematic comparison; selected-D remains unchanged."
+  ]
+}

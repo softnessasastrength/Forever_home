@@ -1,0 +1,37 @@
+{
+    "status":  "pass",
+    "passed":  6,
+    "total":  6,
+    "items":  [
+                  {
+                      "id":  "six_spec_size_pantry_cases_tested",
+                      "pass":  true,
+                      "detail":  "All six door/pantry combinations retain the specified 5 x 6 ft block."
+                  },
+                  {
+                      "id":  "M186_contract_passes_or_rejects_start_gate",
+                      "pass":  true,
+                      "detail":  "Each M186 search either passes its full contract or is explicitly rejected because the pantry blocks the fixed route start/goal gate before grid expansion."
+                  },
+                  {
+                      "id":  "A_and_B_remain_protected",
+                      "pass":  true,
+                      "detail":  "A remains a route obstacle and has zero pantry/route overlap; B remains an obstacle and unassigned."
+                  },
+                  {
+                      "id":  "selected_D_hash_protected",
+                      "pass":  true,
+                      "detail":  "Selected-D source fingerprint remains unchanged."
+                  },
+                  {
+                      "id":  "pantry_and_dining_proxy_overlap_reported",
+                      "pass":  true,
+                      "detail":  "All tested east-edge pantry footprints remain outside the fixed dining room block."
+                  },
+                  {
+                      "id":  "documented_pantry_size_used",
+                      "pass":  true,
+                      "detail":  "All test rectangles use the 5 x 6 ft (30 sf) kitchen specification; the 5 x 7 ft M04 source mismatch remains disclosed."
+                  }
+              ]
+}

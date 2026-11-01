@@ -1,0 +1,77 @@
+{
+    "schema":  "forever-home.m241-living-kitchen-interface.v1",
+    "status":  "pass; schematic room-block interface analysis only",
+    "owner_direction":  "Test the six-inch east translation of M-01; analysis only",
+    "source_hashes_sha256":  {
+                                 "selected_d":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m228":  "f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff",
+                                 "m232":  "41adf2b56df9a6b2ff318dc98609dd1dd9636445bb1c6dcdce0c864c05100651",
+                                 "owner_decision":  "ef07fc60f94ec61a62a0cae486fbd18be040a02c1659fa1be35f341be369ec99"
+                             },
+    "selected_d_modified":  false,
+    "room_blocks_ft":  {
+                           "source_living":  [
+                                                 0.66666666666666663,
+                                                 0.66666666666666663,
+                                                 16,
+                                                 15
+                                             ],
+                           "moved_living":  [
+                                                1.166667,
+                                                0.666667,
+                                                16,
+                                                15
+                                            ],
+                           "hall":  [
+                                        17.166666666666668,
+                                        0.66666666666666663,
+                                        4.333333333333333,
+                                        12
+                                    ],
+                           "kitchen":  [
+                                           22,
+                                           0.66666666666666663,
+                                           17.333333333333332,
+                                           16
+                                       ],
+                           "m228_dining_proposal":  [
+                                                        1,
+                                                        15.666667,
+                                                        11,
+                                                        10
+                                                    ]
+                       },
+    "measured_interfaces":  {
+                                "source":  {
+                                               "living_to_hall_gap_ft":  0.5,
+                                               "living_hall_shared_edge_ft":  0,
+                                               "living_to_kitchen_x_gap_ft":  5.333333,
+                                               "hall_to_kitchen_gap_ft":  0.5,
+                                               "living_to_dining_shared_edge_ft":  11
+                                           },
+                                "moved":  {
+                                              "living_to_hall_gap_ft":  0,
+                                              "living_hall_shared_edge_ft":  12,
+                                              "living_to_kitchen_x_gap_ft":  4.833333,
+                                              "hall_to_kitchen_gap_ft":  0.5,
+                                              "living_to_dining_shared_edge_ft":  10.833333
+                                          },
+                                "change":  {
+                                               "living_to_hall_gap_change_ft":  -0.5,
+                                               "living_to_hall_shared_edge_change_ft":  12,
+                                               "living_to_kitchen_gap_change_ft":  -0.5,
+                                               "living_to_dining_shared_edge_change_ft":  -0.166667
+                                           }
+                            },
+    "interpretation":  [
+                           "The east translation closes the source six-inch M-01/M-05 room-block gap and creates a 12-ft shared block edge with M-05.",
+                           "The move reduces the horizontal M-01/M-02 gap from 5 ft 4 in to 4 ft 10 in, but does not create a direct living/kitchen shared edge. M-05 remains between those blocks, and the M-05/M-02 gap remains 6 in.",
+                           "The M228 dining block remains a proposal and keeps positive edge adjacency with moved M-01; this is not a physical opening, door, or walkable-route finding.",
+                           "These are unassigned gaps between schematic room blocks, not measured wall thicknesses, openings, or clearances. A fully open kitchen/living connection cannot be confirmed or rejected from these rectangles alone."
+                       ],
+    "limitations":  [
+                        "No walls, wall thicknesses, openings, doors, furniture, fixtures, circulation width, service routes or construction tolerances are modeled.",
+                        "No room, kitchen size, M-06 assignment or door/opening is selected. A and B remain unassigned.",
+                        "No code-compliance, accessibility, structural, professional, permit or construction-readiness conclusion follows."
+                    ]
+}

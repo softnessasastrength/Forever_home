@@ -1,0 +1,576 @@
+{
+    "schema":  "forever-home-m198-porch-door-alignment-v1",
+    "status":  "pass",
+    "design_result":  "no_route_in_tested_door_positions",
+    "method":  "Fifteen half-foot porch-door center samples across the available 12-ft porch face; M178 kitchen and M195 rotated dining/table/chair-use proxies stay fixed; each runs M186 full-shell 36-in quarter-foot BFS.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M195_Social_Layout_Search_2026-10-31/artifacts/m195-social-layout-search.json":  "c9c15b8a3523a8b04dc6256186ee147e7cd4865bd22f5c0cd34ea8da5e4118cc",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Decisions/2026-10-31_Kitchen_Area_Priority.md":  "27f4eff0f92c1472527b37330a25c5f55d15e493c0b8f8bca7516726c068fa2c"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "fixed_layout":  {
+                         "kitchen_dimensions_ft":  [
+                                                       13.5,
+                                                       14
+                                                   ],
+                         "kitchen_area_sf":  189,
+                         "island_dimensions_ft":  [
+                                                      8,
+                                                      4
+                                                  ],
+                         "dining_dimensions_ft":  [
+                                                      11,
+                                                      10
+                                                  ],
+                         "porch_dimensions_ft":  [
+                                                     12,
+                                                     10
+                                                 ],
+                         "door_width_ft":  5,
+                         "M06_A_porch_overlap_sf":  0.402778,
+                         "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                     },
+    "door_search":  {
+                        "minimum_center_x_ft":  2,
+                        "maximum_center_x_ft":  9,
+                        "step_ft":  0.5,
+                        "sample_count":  15,
+                        "first_route_passing_sample":  null,
+                        "samples":  [
+                                        {
+                                            "door_center_x_ft":  2,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  2,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  12,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  2.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  2.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  3,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  3,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  3.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  3.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  10.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  4,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  4,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  10.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  4.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  4.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  5.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  5.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  12,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  6,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  6,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  12.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  6.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  6.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  12,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  7,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  7,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  7.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  7.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  11,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  8,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  8,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  10.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  8.5,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  8.5,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  10,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        },
+                                        {
+                                            "door_center_x_ft":  9,
+                                            "door_width_ft":  5,
+                                            "porch_rect_ft":  [
+                                                                  -0.5,
+                                                                  24.5,
+                                                                  12,
+                                                                  10
+                                                              ],
+                                            "path_found":  false,
+                                            "route_length_ft":  null,
+                                            "route_turns":  null,
+                                            "route_waypoints_ft":  [
+                                                                       {
+                                                                           "x":  19.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  13.5,
+                                                                           "y":  10
+                                                                       },
+                                                                       {
+                                                                           "x":  9,
+                                                                           "y":  27.5
+                                                                       }
+                                                                   ],
+                                            "reachable_nodes":  5296,
+                                            "nearest_to_door_ft":  9.5,
+                                            "checks_passed":  29,
+                                            "checks_total":  29,
+                                            "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                        }
+                                    ]
+                    },
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  7,
+                   "total":  7,
+                   "items":  [
+                                 {
+                                     "id":  "all_15_finite_door_positions_tested",
+                                     "pass":  true,
+                                     "detail":  "All half-foot positions with a five-foot opening fully inside the 12-ft porch face were tested."
+                                 },
+                                 {
+                                     "id":  "every_embedded_m186_contract_passes",
+                                     "pass":  true,
+                                     "detail":  "Every generated full-shell route search passes its source and route-contract checks."
+                                 },
+                                 {
+                                     "id":  "fixed_kitchen_and_dining_inputs",
+                                     "pass":  true,
+                                     "detail":  "Kitchen remains the 189-sf M178 study with its 8 x 4 ft island; door position is the only intended variable."
+                                 },
+                                 {
+                                     "id":  "B_unassigned",
+                                     "pass":  true,
+                                     "detail":  "Pantry-side M-06/B remains unassigned in all cases."
+                                 },
+                                 {
+                                     "id":  "alternate_A_porch_tradeoff_reported",
+                                     "pass":  true,
+                                     "detail":  "Porch overlaps alternate A by 0.402778 sf; A remains an unassigned diagnostic option, not a room."
+                                 },
+                                 {
+                                     "id":  "selected_D_hash_protected",
+                                     "pass":  true,
+                                     "detail":  "Selected-D fingerprint remains unchanged."
+                                 },
+                                 {
+                                     "id":  "door_locations_remain_sensitivities",
+                                     "pass":  true,
+                                     "detail":  "No tested opening position is recorded as selected design."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "Door centers are sensitivity samples, not owner-selected architecture; five-foot opening size is inherited from the route study and remains unapproved.",
+                        "Kitchen, dining, chair-use zones, stool proxy, half-wall, entry, pantry and M-06 windows remain fixed rectangular proxies.",
+                        "A route found by this grid would still need exact physical walls, doors, thresholds, furniture movement, appliances, site connection and professional review.",
+                        "The porch footprint overlaps alternate A; no bath is assigned there. Pantry-side B remains unassigned and protected.",
+                        "Revit, IFC, selected-D and Incoming RFAs are unchanged. No code, accessibility, structural, permit or construction-readiness conclusion follows."
+                    ]
+}

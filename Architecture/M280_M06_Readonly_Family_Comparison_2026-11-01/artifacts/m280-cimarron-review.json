@@ -1,0 +1,122 @@
+{
+  "schema": "forever-home-m280-cimarron-family-envelope-review-v1",
+  "disposition": "unselected candidate; generic catalog placeholder measured in isolated Revit 2027.3 project",
+  "inputs": {
+    "quarantined_rfa_sha256": "3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979",
+    "provenance_sha256": "82133CF3197A3C356AAB14991F31235A295931AD2523E9BCD837886EDE370F32",
+    "type_catalog_sha256": "EE860F106785099CD20061460AE59FEF297EEA8606CA249CD8194C4F435177C1",
+    "revit_measurement_report_sha256": "66F4F70E16870CA488B9AB5FF4AD99B383B942D7E8CA7F0ACD7A2C6F2A716CE6",
+    "incoming_family_intake_sha256": "315C7A6897AA233D5D827EEB08615F6CC67AE7AC43F1103EB8581AED2C7A22A2",
+    "evolution_incoming_rfa_sha256": "39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA",
+    "source_rfa_before_and_after_match": true,
+    "selected_d_opened": false,
+    "source_family_instances_placed": 0
+  },
+  "product": {
+    "manufacturer": "KOHLER",
+    "name": "Cimarron pedestal bathroom sink",
+    "model_metadata_on_generic_symbol": "K-2362-1-0",
+    "type_catalog_placeholder": "Not a Type-See Type Catalog",
+    "family_type_catalog_nonempty_rows": 21,
+    "catalog_model_variants": [
+      "K-2362-1-0",
+      "K-2362-4-0",
+      "K-2362-8-0"
+    ],
+    "published_nominal_overall_dimensions_in": [
+      22.75,
+      18.875,
+      34.5
+    ],
+    "revit_symbol_solid_bounds_in": [
+      22.8758,
+      18.8761,
+      34.6256
+    ],
+    "measured_minus_published_in": [
+      0.1258,
+      0.0011,
+      0.1256
+    ],
+    "positive_volume_solid_count": 2,
+    "family_parameter_ada_compliant": "No",
+    "source_product_url": "https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/cimarron-pedestal-bathroom-sink-with-single-faucet-hole-2362-1?skuId=2362-1-0",
+    "official_spec_url": "https://resources.kohler.com/onlinecatalog/pdf/1020683_4.pdf",
+    "official_roughing_in_url": "https://resources.kohler.com/onlinecatalog/pdf/1020683_1.pdf",
+    "public_family_source_url": "https://techcomm.kohler.com/techcomm/cad/Sink-Pedestal-Lavatory-KOHLER-Cimarron-K-2362.zip"
+  },
+  "family_connector_inventory": {
+    "count": 1,
+    "primary": true,
+    "domain": "DomainPiping",
+    "classification": "Sanitary",
+    "shape": "Round",
+    "radius_in": 0.625,
+    "origin_family_in": [
+      0,
+      1.3125,
+      26.8125
+    ],
+    "supply_connector_objects_observed": 0,
+    "external_service_network_tested": false
+  },
+  "incoming_evolution_candidate": {
+    "status": "owner-supplied Incoming family; read-only symbol inventory plus synthetic-host probe in disposable RVT",
+    "family": "american-standard-evolution-0467004.020",
+    "type_count": 3,
+    "types": [
+      {
+        "type": "0467.100",
+        "bounds_in": [
+          22,
+          34.25,
+          17.5052
+        ],
+        "description": "Evolution 22\u0022 pedestal sink. Basin only. Center hole only.",
+        "pedestal_option_parameter": "Yes"
+      },
+      {
+        "type": "0467.400",
+        "bounds_in": [
+          22,
+          34.25,
+          17.5052
+        ],
+        "description": "Evolution 22\u0022 pedestal sink. Basin only. 4\u0022 centers.",
+        "pedestal_option_parameter": "Yes"
+      },
+      {
+        "type": "0467.800",
+        "bounds_in": [
+          22,
+          34.25,
+          17.5052
+        ],
+        "description": "Evolution 22\u0022 pedestal sink. Basin only. 8\u0022 centers.",
+        "pedestal_option_parameter": "Yes"
+      }
+    ],
+    "synthetic_wall_host_bounds_in": [
+      22,
+      17.5052,
+      34.25
+    ],
+    "connector_inventory_status": "not recorded in this family-intake report",
+    "source_sha256": "39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA"
+  },
+  "checks": {
+    "passed": 28,
+    "total": 28,
+    "status": "pass"
+  },
+  "limits": [
+    "Revit loaded one generic type-catalog placeholder, not all 21 catalog rows as separate measurable symbols; exact faucet/finish type geometry correspondence remains to be verified.",
+    "The loaded symbol Model metadata says K-2362-1-0, while the generic type name says Not a Type-See Type Catalog; do not treat this alone as exact catalog-type selection.",
+    "The family has one sanitary connector object. Hot/cold labels are parameters, not observed supply connector objects; no service network was modeled.",
+    "Symbol bounds are an axis-aligned envelope from positive-volume solids; they do not establish actual installed fit, faucet/use clearances, finished-room dimensions, door/swing/approach, or plumbing route.",
+    "The family parameter ADA Compliant = No is metadata only; no code applicability or compliance determination follows.",
+    "The Incoming Evolution family\u0027s three type descriptions say basin only while a Pedestal Option parameter says Yes; a complete pedestal assembly is not established.",
+    "The Evolution synthetic-host probe did not record connector inventory; no water, drain or vent route is demonstrated.",
+    "The west-A opening, room boundaries, selected fixture combination and M-06 placement remain unassigned. This is not a design or construction approval."
+  ]
+}

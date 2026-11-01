@@ -1,0 +1,19 @@
+{
+    "schema":  "forever-home.m241-living-kitchen-interface-checks.v1",
+    "result":  "pass",
+    "check_count":  12,
+    "checks":  {
+                   "selected_d_hash_matches":  true,
+                   "m228_hash_matches":  true,
+                   "m232_hash_matches":  true,
+                   "owner_direction_hash_matches":  true,
+                   "owner_authorized_translation_exactly_six_inches":  true,
+                   "moved_living_area_preserved":  true,
+                   "source_living_hall_gap_is_six_inches":  true,
+                   "move_closes_living_hall_gap":  true,
+                   "living_kitchen_gap_remains_positive":  true,
+                   "hall_kitchen_gap_is_unchanged":  true,
+                   "moved_living_dining_edge_is_positive":  true,
+                   "selected_d_unchanged":  true
+               }
+}

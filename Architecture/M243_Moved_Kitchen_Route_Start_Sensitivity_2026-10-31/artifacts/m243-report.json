@@ -1,0 +1,379 @@
+{
+    "schema":  "forever-home.m243-route-start-sensitivity.v1",
+    "status":  "pass; analysis-only path adjustment; not selected",
+    "source_hashes_sha256":  {
+                                 "selected_d":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m242":  "e20bfc8f4666971ce76783b82ade14377ea3f3dc0c11806a19cb85f794edeafc",
+                                 "m215_script":  "8a63ade035b7a6ab95b79823badf6185c875cf4b2ca15dce24fb5b0661c88d23",
+                                 "m213_script":  "f6d527ae6814c901a1cdbc62e220a1fe3ca287c576d35d4ba6518f2f64cd1ada",
+                                 "m186_script":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                 "m228":  "f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff",
+                                 "m215_report":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1"
+                             },
+    "candidate_kitchen_translation_west_ft":  0.5,
+    "route_width_in":  36,
+    "route_grid_step_ft":  0.25,
+    "candidate_route_start_old_ft":  [
+                                         19.5,
+                                         10
+                                     ],
+    "variants":  [
+                     {
+                         "start_shift_west_in":  0,
+                         "start_ft":  [
+                                          19.5,
+                                          10
+                                      ],
+                         "route_waypoints_ft":  [
+                                                    {
+                                                        "x":  19.5,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  33.5
+                                                    }
+                                                ],
+                         "route_length_ft":  34,
+                         "route_rectangles_count":  9,
+                         "candidate_kitchen_edge_clearance_in":  -2,
+                         "minimum_clearance_all_obstacles_in":  0,
+                         "proxy_intersections":  [
+                                                     {
+                                                         "route_rect":  "route-start-cap",
+                                                         "obstacle":  "candidate-kitchen-west-6in",
+                                                         "overlap_sf":  0.5
+                                                     }
+                                                 ],
+                         "obstacle_clearances":  [
+                                                     {
+                                                         "obstacle":  "M-05-entry",
+                                                         "minimum_route_edge_gap_ft":  13.333333
+                                                     },
+                                                     {
+                                                         "obstacle":  "M-04-pantry-5x6-A-B-clear",
+                                                         "minimum_route_edge_gap_ft":  2.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "west_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "perimeter-run-depth-test",
+                                                         "minimum_route_edge_gap_ft":  15
+                                                     },
+                                                     {
+                                                         "obstacle":  "island",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "assumed-stool-use-proxy",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "rotated-36x60-table",
+                                                         "minimum_route_edge_gap_ft":  1.952562
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-west-of-door",
+                                                         "minimum_route_edge_gap_ft":  1
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-east-of-door",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "candidate-kitchen-west-6in",
+                                                         "minimum_route_edge_gap_ft":  0
+                                                     }
+                                                 ]
+                     },
+                     {
+                         "start_shift_west_in":  3,
+                         "start_ft":  [
+                                          19.25,
+                                          10
+                                      ],
+                         "route_waypoints_ft":  [
+                                                    {
+                                                        "x":  19.25,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  33.5
+                                                    }
+                                                ],
+                         "route_length_ft":  33.75,
+                         "route_rectangles_count":  9,
+                         "candidate_kitchen_edge_clearance_in":  1,
+                         "minimum_clearance_all_obstacles_in":  1,
+                         "proxy_intersections":  [
+
+                                                 ],
+                         "obstacle_clearances":  [
+                                                     {
+                                                         "obstacle":  "M-05-entry",
+                                                         "minimum_route_edge_gap_ft":  13.583333
+                                                     },
+                                                     {
+                                                         "obstacle":  "M-04-pantry-5x6-A-B-clear",
+                                                         "minimum_route_edge_gap_ft":  2.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "west_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "perimeter-run-depth-test",
+                                                         "minimum_route_edge_gap_ft":  15
+                                                     },
+                                                     {
+                                                         "obstacle":  "island",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "assumed-stool-use-proxy",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "rotated-36x60-table",
+                                                         "minimum_route_edge_gap_ft":  1.952562
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-west-of-door",
+                                                         "minimum_route_edge_gap_ft":  1
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-east-of-door",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "candidate-kitchen-west-6in",
+                                                         "minimum_route_edge_gap_ft":  0.083333
+                                                     }
+                                                 ]
+                     },
+                     {
+                         "start_shift_west_in":  6,
+                         "start_ft":  [
+                                          19,
+                                          10
+                                      ],
+                         "route_waypoints_ft":  [
+                                                    {
+                                                        "x":  19,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  10
+                                                    },
+                                                    {
+                                                        "x":  18.5,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  28.75
+                                                    },
+                                                    {
+                                                        "x":  9,
+                                                        "y":  33.5
+                                                    }
+                                                ],
+                         "route_length_ft":  33.5,
+                         "route_rectangles_count":  9,
+                         "candidate_kitchen_edge_clearance_in":  4,
+                         "minimum_clearance_all_obstacles_in":  3,
+                         "proxy_intersections":  [
+
+                                                 ],
+                         "obstacle_clearances":  [
+                                                     {
+                                                         "obstacle":  "M-05-entry",
+                                                         "minimum_route_edge_gap_ft":  13.833333
+                                                     },
+                                                     {
+                                                         "obstacle":  "M-04-pantry-5x6-A-B-clear",
+                                                         "minimum_route_edge_gap_ft":  2.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "west_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east_of_core",
+                                                         "minimum_route_edge_gap_ft":  0.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "perimeter-run-depth-test",
+                                                         "minimum_route_edge_gap_ft":  15
+                                                     },
+                                                     {
+                                                         "obstacle":  "island",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "assumed-stool-use-proxy",
+                                                         "minimum_route_edge_gap_ft":  7.5
+                                                     },
+                                                     {
+                                                         "obstacle":  "rotated-36x60-table",
+                                                         "minimum_route_edge_gap_ft":  1.952562
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  6.189709
+                                                     },
+                                                     {
+                                                         "obstacle":  "west-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.828302
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-1-use-36in",
+                                                         "minimum_route_edge_gap_ft":  4.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "east-chair-2-use-36in",
+                                                         "minimum_route_edge_gap_ft":  1.75
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-west-of-door",
+                                                         "minimum_route_edge_gap_ft":  1
+                                                     },
+                                                     {
+                                                         "obstacle":  "porch-wall-east-of-door",
+                                                         "minimum_route_edge_gap_ft":  0.25
+                                                     },
+                                                     {
+                                                         "obstacle":  "candidate-kitchen-west-6in",
+                                                         "minimum_route_edge_gap_ft":  0.333333
+                                                     }
+                                                 ]
+                     }
+                 ],
+    "interpretation":  [
+                           "With the 6-in west kitchen translation from M242, the fixed M215 start cap overlaps the candidate kitchen block by 2 in. Moving the route start west by 3 in removes overlap but leaves only 1 in clearance to the kitchen, below the M215 study reserve.",
+                           "A 6-in start adjustment, on the existing 0.25-ft grid, gives 4 in clearance to the moved kitchen and a 3-in minimum gap to the full pinned obstacle set. The 33.5-ft centerline retains the rest of M215\u0027s path and clears the checked proxies.",
+                           "The adjusted route and kitchen remain unselected schematic comparisons. The 3-in gap is an M215 analytical screen, not a code or accessibility requirement. The route does not define a door/opening or verify physical wall/finish clearance."
+                       ],
+    "limitations":  [
+                        "Route search is limited to this single M215 path with two route-start sensitivities; it is not an exhaustive reroute search.",
+                        "The kitchen shift and route start are unselected proxies. Quarter-foot is an existing M186 analysis resolution, not a design dimension.",
+                        "No room, wall, door, furniture, fixture, service or selected-D geometry changed. West A remains protected; B and M-06 remain unassigned.",
+                        "No code-compliance, accessibility, structural, professional, permit or construction-readiness conclusion follows."
+                    ]
+}

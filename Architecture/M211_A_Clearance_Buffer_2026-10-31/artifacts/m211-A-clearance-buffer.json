@@ -1,0 +1,763 @@
+{
+    "schema":  "forever-home-m211-protected-A-clearance-buffer-v1",
+    "status":  "pass",
+    "design_result":  "routes_found_with_at_least_3in_proxy_gap_to_original_A_edge",
+    "method":  "At north offsets 5.5 and 6.5 ft, hold the five-foot porch door at x=9 ft. Test 0, 3, 6 and 12 in analytical eastward expansions of the protected west-A route obstacle. The added buffer applies only to the route-search no-go zone; the source M-06 window dimensions and assignment do not change. Retain the 5 x 6 ft pantry, M178 8 x 4 ft island, chair-use proxies, owner-preferred open kitchen/living connection and protected A/B obstacles.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M192_Rotated_Dining_Candidate_2026-10-31/artifacts/m192-rotated-dining-candidate.json":  "f1bda1f5f6d4713a45c85fae04c6738f1c97f8ed1f7af838835fe6639dbe48a4",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Architecture/M207_Pantry_Edge_Sensitivity_2026-10-31/artifacts-v4/m207-pantry-location-sensitivity.json":  "a5fd9a9207de25e6ca65e22257a99d90533d43528070c8540c03c0a261e9b8b6",
+                                       "Decisions/2026-10-31_Kitchen_Area_Priority.md":  "da0ba56c557ca7ad141a6e207663d68ca99cb67a984d1df8c1ac1bafd6a693bf",
+                                       "Decisions/2026-10-31_Kitchen_Living_Opening_Preference.md":  "f65bce6919ef7de4db370e5ac9c63bfc113717a6b896b93362d41a67ba975c1c",
+                                       "Decisions/2026-10-31_M06_West_A_Protection.md":  "a5cf98360b75314f4d3486f925e9d860465bb33d1ecfce9b0cbb39ce0eff853b"
+                                   },
+    "protected_selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "owner_protected_A_sha256":  "a5cf98360b75314f4d3486f925e9d860465bb33d1ecfce9b0cbb39ce0eff853b",
+    "kitchen_test":  {
+                         "source":  "M178",
+                         "area_sf":  189,
+                         "dimensions_ft":  [
+                                               13.5,
+                                               14
+                                           ],
+                         "island_dimensions_ft":  [
+                                                      8,
+                                                      4
+                                                  ],
+                         "program_target_sf":  168,
+                         "status":  "unapproved comparison only; area held at the 189-sf M178 test"
+                     },
+    "route_contract":  {
+                           "width_in":  36,
+                           "grid_step_ft":  0.25,
+                           "test_shell_ft":  [
+                                                 40,
+                                                 42
+                                             ],
+                           "kitchen_living_connection":  "fully_open_owner_preference",
+                           "M06_A_protected":  true,
+                           "M06_B_status":  "Unassigned room-block gap only; not a bath footprint.",
+                           "M06_B_kept_clear":  true
+                       },
+    "candidate_placements":  [
+                                 {
+                                     "case":  "north5_5_Areserve0",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  19.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  30,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  21,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  30
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  5.5,
+                                     "analytical_A_reserve_ft":  0,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  33.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  33
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6386,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0,
+                                     "protected_A_reserve_at_least_3in":  false,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north5_5_Areserve0_25",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  19.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  30,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  21,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  30
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  5.5,
+                                     "analytical_A_reserve_ft":  0.25,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  33.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.25,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.25,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  33
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6329,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0.25,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north5_5_Areserve0_5",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  19.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  30,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  21,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  30
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  5.5,
+                                     "analytical_A_reserve_ft":  0.5,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  33.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.5,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  33
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6272,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0.5,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north5_5_Areserve1",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  19.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  30,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  21,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  30
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  5.5,
+                                     "analytical_A_reserve_ft":  1,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  33.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  19,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  19,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  33
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6179,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  1,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north6_5_Areserve0",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  20.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  31,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  22,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  31
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  6.5,
+                                     "analytical_A_reserve_ft":  0,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  34.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  34
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6871,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0,
+                                     "protected_A_reserve_at_least_3in":  false,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north6_5_Areserve0_25",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  20.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  31,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  22,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  31
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  6.5,
+                                     "analytical_A_reserve_ft":  0.25,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  34.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.25,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.25,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  34
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6814,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0.25,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north6_5_Areserve0_5",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  20.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  31,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  22,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  31
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  6.5,
+                                     "analytical_A_reserve_ft":  0.5,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  34.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  18.5,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  34
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6757,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  0.5,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 },
+                                 {
+                                     "case":  "north6_5_Areserve1",
+                                     "dining_rect_ft":  {
+                                                            "x":  0,
+                                                            "y":  20.5,
+                                                            "w":  11,
+                                                            "d":  10
+                                                        },
+                                     "porch_rect_ft":  {
+                                                           "x":  -0.5,
+                                                           "y":  31,
+                                                           "w":  12,
+                                                           "d":  10
+                                                       },
+                                     "table_rect_ft":  {
+                                                           "x":  3,
+                                                           "y":  22,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                     "porch_door_center_ft":  [
+                                                                  9,
+                                                                  31
+                                                              ],
+                                     "door_opening_inside_porch_face":  true,
+                                     "north_shift_ft":  6.5,
+                                     "analytical_A_reserve_ft":  1,
+                                     "dining_area_sf":  110,
+                                     "porch_area_sf":  120,
+                                     "pantry_rect_ft":  [
+                                                            13.5,
+                                                            0,
+                                                            5,
+                                                            6
+                                                        ],
+                                     "chair_count":  4,
+                                     "chair_use_zone_count":  4,
+                                     "furniture_and_use_zones_inside_dining":  true,
+                                     "social_footprints_inside_test_shell":  true,
+                                     "A_window_dining_overlap_sf":  0,
+                                     "A_window_porch_overlap_sf":  0,
+                                     "B_window_dining_overlap_sf":  0,
+                                     "B_window_porch_overlap_sf":  0,
+                                     "route_found":  true,
+                                     "route_length_ft":  34.5,
+                                     "route_turns":  4,
+                                     "route_waypoints_ft":  [
+                                                                {
+                                                                    "x":  19.5,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  19,
+                                                                    "y":  10
+                                                                },
+                                                                {
+                                                                    "x":  19,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  28.5
+                                                                },
+                                                                {
+                                                                    "x":  9,
+                                                                    "y":  34
+                                                                }
+                                                            ],
+                                     "reachable_nodes":  6666,
+                                     "nearest_to_porch_door_ft":  0,
+                                     "minimum_modeled_obstacle_gap_ft":  0,
+                                     "protected_A_expanded_boundary_gap_ft":  0,
+                                     "protected_A_original_boundary_gap_ft":  1,
+                                     "protected_A_reserve_at_least_3in":  true,
+                                     "route_nonfragile":  false,
+                                     "m186_checks_passed":  31,
+                                     "m186_checks_total":  31,
+                                     "M06_A_protected":  true,
+                                     "M06_B_status":  "Unassigned room-block gap only; not a bath footprint."
+                                 }
+                             ],
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  12,
+                   "total":  12,
+                   "items":  [
+                                 {
+                                     "id":  "eight_A_reserve_cases_tested",
+                                     "pass":  true,
+                                     "detail":  "Eight cases tested 0, 3, 6 and 12 in A-buffer sensitivities at north offsets 5.5 and 6.5 ft; door center x=9 ft was held."
+                                 },
+                                 {
+                                     "id":  "all_door_openings_fit_porch_face",
+                                     "pass":  true,
+                                     "detail":  "Each nominal five-foot opening lies wholly within its translated porch face, and the generated porch wall segments move with that opening."
+                                 },
+                                 {
+                                     "id":  "protected_A_clearance_reported",
+                                     "pass":  true,
+                                     "detail":  "Every found route reports its reconstructed gap to the unexpanded owner-protected west-A boundary."
+                                 },
+                                 {
+                                     "id":  "source_fingerprints_bound",
+                                     "pass":  true,
+                                     "detail":  "M186, M178, M192, room/porch spec, selected-D, bath-window source, M207 pantry study and owner area/open-connection/A-protection decisions are fingerprinted."
+                                 },
+                                 {
+                                     "id":  "A_reserve_input_values",
+                                     "pass":  true,
+                                     "detail":  "The 0, 3, 6 and 12 in values expand only the route-search obstacle; they do not change bath geometry or assign M-06."
+                                 },
+                                 {
+                                     "id":  "selected_D_preserved",
+                                     "pass":  true,
+                                     "detail":  "Selected-D remains at the protected source hash."
+                                 },
+                                 {
+                                     "id":  "original_8x4_island_retained",
+                                     "pass":  true,
+                                     "detail":  "The M178 8 x 4 ft island is retained in the full-shell route engine."
+                                 },
+                                 {
+                                     "id":  "A_and_B_protected_and_clear",
+                                     "pass":  true,
+                                     "detail":  "Owner-protected A and unassigned B remain clear of moved dining/porch blocks; route search keeps both as obstacles."
+                                 },
+                                 {
+                                     "id":  "dining_furniture_and_use_zones_inside",
+                                     "pass":  true,
+                                     "detail":  "All table/chair bodies and the four 36-in use-zone proxies fit each translated 11 x 10 ft dining study block."
+                                 },
+                                 {
+                                     "id":  "social_footprints_inside_shell",
+                                     "pass":  true,
+                                     "detail":  "The translated dining and 12 x 10 ft porch footprints stay inside the 40 x 42 ft shell test."
+                                 },
+                                 {
+                                     "id":  "all_bounded_route_searches_completed",
+                                     "pass":  true,
+                                     "detail":  "Every generated M186 route run passes its source and finite-grid contract checks."
+                                 },
+                                 {
+                                     "id":  "results_remain_sensitivity_only",
+                                     "pass":  true,
+                                     "detail":  "Even a path with positive geometric gap remains an unselected schematic candidate."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "Only eight A-buffer/offset combinations are sampled; no exhaustive placement or minimum-area proof is claimed.",
+                        "Dining and porch footprints are translated as blocks; rough openings, door leaf/swing, thresholds, enclosure and weather detailing are not modeled.",
+                        "The 24-in stool depth remains an assumption; chair/stool-use rectangles are proxies, not measured product or occupant geometry.",
+                        "Door center x=9 ft is held; opening and wall-segment alignment is modeled, but product, threshold and operation are not.",
+                        "The kitchen remains the unapproved 13.5 x 14 ft M178 proposal; appliance-open envelopes, services and site fit are untested.",
+                        "Revit, IFC, selected-D and Incoming RFAs are unchanged. No code, accessibility, structural, professional, permit or construction-readiness result is established."
+                    ]
+}

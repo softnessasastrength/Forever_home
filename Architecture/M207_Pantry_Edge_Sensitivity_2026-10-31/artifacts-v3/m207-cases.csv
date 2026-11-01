@@ -1,0 +1,7 @@
+"case","pantry_rect_ft","dining_shift_x_ft","dining_west_margin_to_test_shell_ft","kitchen_north_wall_shared_length_ft","door_swing_modeled","pantry_A_overlap_sf","route_A_union_overlap_sf","combined_pantry_route_A_union_overlap_sf","pantry_dining_zone_overlap_sf","pantry_kitchen_zone_overlap_sf","path_found","route_length_ft","route_turns","reachable_nodes","nearest_to_door_ft","checks_passed","checks_total","M06_B_status"
+"current","System.Object[]","0","0.666667","0","False","28","0","28.0000000000002","0","0","False",,,"6006","4","29","29","Unassigned room-block gap only; not a bath footprint."
+"north_edge_30in","System.Object[]","0","0.666667","2.5","False","21","17.75","38.75","0","0","True","28","4","5843","0","31","31","Unassigned room-block gap only; not a bath footprint."
+"north_edge_36in","System.Object[]","-0.5","0.166667","3","False","18.75","20","38.75","0","0","True","28","4","5917","0","31","31","Unassigned room-block gap only; not a bath footprint."
+"east_edge_south","System.Object[]","0","0.666667","6","False","0","8.75","8.75","0","0","True","28","4","5959","0","31","31","Unassigned room-block gap only; not a bath footprint."
+"east_edge_mid","System.Object[]","0","0.666667","6","False","0","0","0","0","0","False",,,"0",,"28","29","Unassigned room-block gap only; not a bath footprint."
+"east_edge_north","System.Object[]","0","0.666667","6","False","0","0","0","0","0","False",,,"0",,"28","29","Unassigned room-block gap only; not a bath footprint."

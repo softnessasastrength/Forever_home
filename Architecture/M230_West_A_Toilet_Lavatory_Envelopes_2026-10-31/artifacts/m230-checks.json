@@ -1,0 +1,33 @@
+{
+    "schema":  "forever-home.m06-west-a-toilet-lavatory-pair-checks.v1",
+    "result":  "pass",
+    "check_count":  16,
+    "checks":  {
+                   "selected_d_hash_matches_pinned_baseline":  true,
+                   "m120_input_hash_matches_pinned_source":  true,
+                   "sink_pair_hash_matches_pinned_source":  true,
+                   "owner_protection_direction_hash_matches":  true,
+                   "owner_direction_protects_west_a":  true,
+                   "selected_d_m06_remains_unassigned":  true,
+                   "both_search_windows_remain_unassigned":  true,
+                   "target_toilet_is_610aa001_020":  true,
+                   "current_sku_plan_envelope_is_19_by_30_25":  true,
+                   "all_sink_inputs_are_research_only":  true,
+                   "all_16_sink_orientation_cases_are_present":  true,
+                   "side_spacing_basis_is_provisional_15_in":  true,
+                   "center_spacing_basis_is_provisional_30_in":  true,
+                   "front_spacing_basis_is_provisional_21_in":  true,
+                   "all_body_rectangles_pass_pair_spacing_and_nonoverlap":  true,
+                   "no_rfa_room_or_compliance_claim":  true
+               },
+    "west_a":  {
+                   "gross_width_in":  62.000000000000014,
+                   "gross_depth_in":  136.99999999999997,
+                   "gross_area_sf":  58.99
+               },
+    "cases":  16,
+    "side_spacing_pass_count":  16,
+    "body_nonoverlap_count":  16,
+    "gross_containment_count":  16,
+    "narrowest_case_remaining_width_in":  3.5
+}

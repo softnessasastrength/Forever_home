@@ -1,0 +1,32 @@
+{
+    "schema":  "forever-home-m218-checks-v1",
+    "status":  "pass",
+    "passed":  6,
+    "total":  6,
+    "items":  [
+                  {
+                      "id":  "M217_candidate_fingerprint_and_pass_status",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "M215_M186_source_contracts",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "three_positions_both_swing_directions_tested",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "every_case_reports_five_boolean_checks",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "kitchen_swing_overlap_with_approach_reported",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "M06_B_remains_unassigned",
+                      "pass":  true
+                  }
+              ]
+}

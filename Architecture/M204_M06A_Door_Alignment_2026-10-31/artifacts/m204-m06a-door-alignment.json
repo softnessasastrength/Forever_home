@@ -1,0 +1,553 @@
+{
+    "schema":  "forever-home-m204-m06a-door-alignment-v1",
+    "status":  "pass",
+    "design_result":  "no_route_in_west_center_east_A_tradeoff_samples",
+    "method":  "Three porch-door center samples with fully open kitchen/living start and west diagnostic A released; B, pantry, entry, island, stool, dining and chair-use proxies remain.",
+    "source_fingerprints_sha256":  {
+                                       "Tools/search_m186_public_route.ps1":  "c882822e69a5f4408b487c176c570af4e132300de2d3aee9a5287322591f0732",
+                                       "Architecture/M178_Halfwall_Seating_Candidate_2026-10-31/m178-study.json":  "e49487e62ce1a17cdfa055a5386524db378077213e5db7435a841723a47614c0",
+                                       "Architecture/M187_Route_Sensitivity_2026-10-31/artifacts/m187-route-sensitivity.json":  "a0b85796769921f54f7657ba63bbbabca4a539011a586f391ea88d19c5a7d904",
+                                       "Architecture/M195_Social_Layout_Search_2026-10-31/artifacts/m195-social-layout-search.json":  "c9c15b8a3523a8b04dc6256186ee147e7cd4865bd22f5c0cd34ea8da5e4118cc",
+                                       "Architecture/M198_Porch_Door_Alignment_2026-10-31/artifacts/m198-porch-door-alignment.json":  "e9c5967e8fd22cac98e0726154d6f73815df7086d4df860a32fa659ce4b7900c",
+                                       "Architecture/M202_Fully_Open_Kitchen_Route_2026-10-31/artifacts/m202-fully-open-kitchen-route.json":  "67d555f1f392e2e1e12c78a361c65d124cfd365e442490e6a03fa8031e4b3c0a",
+                                       "Architecture/M203_M06A_Circulation_Tradeoff_2026-10-31/artifacts/m203-m06a-circulation-tradeoff.json":  "008f253c86c82c8523300a03f608a01e6e134831d6a34dc0fe9d744150bb2ac1",
+                                       "Architecture/Kitchen_Dining_Porch_Specs.md":  "64f84367a84e6447fb7357f3b002604bfd14bafb18089039366860062c4c1091",
+                                       "Architecture/Selected_Design_Iteration_2026-10-27/study.json":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                       "Architecture/Direction_D_BathFirst_Adjacency_Study_2026-10-27/study.json":  "07f4ead3c2d52f0df4e7da7dcde7310dfbef1f333a0b8f46853873ecb2231d50",
+                                       "Decisions/2026-10-31_Kitchen_Area_Priority.md":  "27f4eff0f92c1472527b37330a25c5f55d15e493c0b8f8bca7516726c068fa2c",
+                                       "Decisions/2026-10-31_Kitchen_Living_Opening_Preference.md":  "f65bce6919ef7de4db370e5ac9c63bfc113717a6b896b93362d41a67ba975c1c"
+                                   },
+    "selected_d_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+    "M06_A_status":  "Released only for circulation sensitivity; unassigned, not a bath.",
+    "M06_B_status":  "Unassigned room-block gap only; not a bath footprint.",
+    "door_samples":  [
+                         {
+                             "door_center_x_ft":  2,
+                             "path_found":  false,
+                             "route_length_ft":  null,
+                             "route_turns":  null,
+                             "waypoints_ft":  [
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  2,
+                                                      "y":  27.5
+                                                  }
+                                              ],
+                             "reachable_nodes":  5940,
+                             "nearest_to_door_ft":  12,
+                             "checks_passed":  29,
+                             "checks_total":  29,
+                             "M06_B_status":  "Unassigned room-block gap only; not a bath footprint.",
+                             "modeled_obstacles":  [
+                                                       {
+                                                           "id":  "M-05-entry",
+                                                           "x":  34.333333333333336,
+                                                           "y":  0,
+                                                           "w":  4.333333333333333,
+                                                           "d":  12
+                                                       },
+                                                       {
+                                                           "id":  "M-04-pantry",
+                                                           "x":  11.833333333333334,
+                                                           "y":  16.5,
+                                                           "w":  5,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "east_of_core",
+                                                           "x":  20.5,
+                                                           "y":  16.5,
+                                                           "w":  13.166666666666668,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "perimeter-run",
+                                                           "x":  0,
+                                                           "y":  0.75,
+                                                           "w":  2,
+                                                           "d":  12.5
+                                                       },
+                                                       {
+                                                           "id":  "island",
+                                                           "x":  5.5,
+                                                           "y":  3,
+                                                           "w":  4,
+                                                           "d":  8
+                                                       },
+                                                       {
+                                                           "id":  "assumed-stool-use-proxy",
+                                                           "x":  5.5,
+                                                           "y":  11,
+                                                           "w":  4,
+                                                           "d":  2
+                                                       },
+                                                       {
+                                                           "id":  "rotated-36x60-table",
+                                                           "x":  3.5,
+                                                           "y":  15.5,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1",
+                                                           "x":  1.8333333333,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2",
+                                                           "x":  1.8333333333,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-west-of-door",
+                                                           "x":  -0.5,
+                                                           "y":  24.5,
+                                                           "w":  0,
+                                                           "d":  0.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-east-of-door",
+                                                           "x":  4.5,
+                                                           "y":  24.5,
+                                                           "w":  7,
+                                                           "d":  0.5
+                                                       }
+                                                   ],
+                             "route_rectangles_ft":  [
+
+                                                     ],
+                             "centerline_zone_lengths_ft":  {
+                                                                "dining_ft":  0,
+                                                                "living_ft":  0,
+                                                                "unassigned_ft":  0,
+                                                                "porch_ft":  0,
+                                                                "kitchen_ft":  0
+                                                            },
+                             "minimum_edge_gap_by_obstacle":  [
+
+                                                              ],
+                             "M06_A_route_union_overlap_sf":  0,
+                             "M06_A_status":  "Released only for this circulation sensitivity; not an assigned bathroom."
+                         },
+                         {
+                             "door_center_x_ft":  5.5,
+                             "path_found":  false,
+                             "route_length_ft":  null,
+                             "route_turns":  null,
+                             "waypoints_ft":  [
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  5.5,
+                                                      "y":  27.5
+                                                  }
+                                              ],
+                             "reachable_nodes":  5940,
+                             "nearest_to_door_ft":  12,
+                             "checks_passed":  29,
+                             "checks_total":  29,
+                             "M06_B_status":  "Unassigned room-block gap only; not a bath footprint.",
+                             "modeled_obstacles":  [
+                                                       {
+                                                           "id":  "M-05-entry",
+                                                           "x":  34.333333333333336,
+                                                           "y":  0,
+                                                           "w":  4.333333333333333,
+                                                           "d":  12
+                                                       },
+                                                       {
+                                                           "id":  "M-04-pantry",
+                                                           "x":  11.833333333333334,
+                                                           "y":  16.5,
+                                                           "w":  5,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "east_of_core",
+                                                           "x":  20.5,
+                                                           "y":  16.5,
+                                                           "w":  13.166666666666668,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "perimeter-run",
+                                                           "x":  0,
+                                                           "y":  0.75,
+                                                           "w":  2,
+                                                           "d":  12.5
+                                                       },
+                                                       {
+                                                           "id":  "island",
+                                                           "x":  5.5,
+                                                           "y":  3,
+                                                           "w":  4,
+                                                           "d":  8
+                                                       },
+                                                       {
+                                                           "id":  "assumed-stool-use-proxy",
+                                                           "x":  5.5,
+                                                           "y":  11,
+                                                           "w":  4,
+                                                           "d":  2
+                                                       },
+                                                       {
+                                                           "id":  "rotated-36x60-table",
+                                                           "x":  3.5,
+                                                           "y":  15.5,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1",
+                                                           "x":  1.8333333333,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2",
+                                                           "x":  1.8333333333,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-west-of-door",
+                                                           "x":  -0.5,
+                                                           "y":  24.5,
+                                                           "w":  3.5,
+                                                           "d":  0.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-east-of-door",
+                                                           "x":  8,
+                                                           "y":  24.5,
+                                                           "w":  3.5,
+                                                           "d":  0.5
+                                                       }
+                                                   ],
+                             "route_rectangles_ft":  [
+
+                                                     ],
+                             "centerline_zone_lengths_ft":  {
+                                                                "dining_ft":  0,
+                                                                "living_ft":  0,
+                                                                "unassigned_ft":  0,
+                                                                "porch_ft":  0,
+                                                                "kitchen_ft":  0
+                                                            },
+                             "minimum_edge_gap_by_obstacle":  [
+
+                                                              ],
+                             "M06_A_route_union_overlap_sf":  0,
+                             "M06_A_status":  "Released only for this circulation sensitivity; not an assigned bathroom."
+                         },
+                         {
+                             "door_center_x_ft":  9,
+                             "path_found":  false,
+                             "route_length_ft":  null,
+                             "route_turns":  null,
+                             "waypoints_ft":  [
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  19.5,
+                                                      "y":  10
+                                                  },
+                                                  {
+                                                      "x":  9,
+                                                      "y":  27.5
+                                                  }
+                                              ],
+                             "reachable_nodes":  5940,
+                             "nearest_to_door_ft":  9.5,
+                             "checks_passed":  29,
+                             "checks_total":  29,
+                             "M06_B_status":  "Unassigned room-block gap only; not a bath footprint.",
+                             "modeled_obstacles":  [
+                                                       {
+                                                           "id":  "M-05-entry",
+                                                           "x":  34.333333333333336,
+                                                           "y":  0,
+                                                           "w":  4.333333333333333,
+                                                           "d":  12
+                                                       },
+                                                       {
+                                                           "id":  "M-04-pantry",
+                                                           "x":  11.833333333333334,
+                                                           "y":  16.5,
+                                                           "w":  5,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "east_of_core",
+                                                           "x":  20.5,
+                                                           "y":  16.5,
+                                                           "w":  13.166666666666668,
+                                                           "d":  7
+                                                       },
+                                                       {
+                                                           "id":  "perimeter-run",
+                                                           "x":  0,
+                                                           "y":  0.75,
+                                                           "w":  2,
+                                                           "d":  12.5
+                                                       },
+                                                       {
+                                                           "id":  "island",
+                                                           "x":  5.5,
+                                                           "y":  3,
+                                                           "w":  4,
+                                                           "d":  8
+                                                       },
+                                                       {
+                                                           "id":  "assumed-stool-use-proxy",
+                                                           "x":  5.5,
+                                                           "y":  11,
+                                                           "w":  4,
+                                                           "d":  2
+                                                       },
+                                                       {
+                                                           "id":  "rotated-36x60-table",
+                                                           "x":  3.5,
+                                                           "y":  15.5,
+                                                           "w":  3,
+                                                           "d":  5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1",
+                                                           "x":  1.8333333333,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2",
+                                                           "x":  1.8333333333,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  1.6666666667,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-1-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "west-chair-2-use-36in",
+                                                           "x":  0.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-1-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  16,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "east-chair-2-use-36in",
+                                                           "x":  6.5,
+                                                           "y":  18.5,
+                                                           "w":  3,
+                                                           "d":  1.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-west-of-door",
+                                                           "x":  -0.5,
+                                                           "y":  24.5,
+                                                           "w":  7,
+                                                           "d":  0.5
+                                                       },
+                                                       {
+                                                           "id":  "porch-wall-east-of-door",
+                                                           "x":  11.5,
+                                                           "y":  24.5,
+                                                           "w":  0,
+                                                           "d":  0.5
+                                                       }
+                                                   ],
+                             "route_rectangles_ft":  [
+
+                                                     ],
+                             "centerline_zone_lengths_ft":  {
+                                                                "dining_ft":  0,
+                                                                "living_ft":  0,
+                                                                "unassigned_ft":  0,
+                                                                "porch_ft":  0,
+                                                                "kitchen_ft":  0
+                                                            },
+                             "minimum_edge_gap_by_obstacle":  [
+
+                                                              ],
+                             "M06_A_route_union_overlap_sf":  0,
+                             "M06_A_status":  "Released only for this circulation sensitivity; not an assigned bathroom."
+                         }
+                     ],
+    "first_route_sample":  null,
+    "checks":  {
+                   "status":  "pass",
+                   "passed":  6,
+                   "total":  6,
+                   "items":  [
+                                 {
+                                     "id":  "three_door_positions_tested",
+                                     "pass":  true,
+                                     "detail":  "West, centered and east five-foot door positions were tested."
+                                 },
+                                 {
+                                     "id":  "every_M186_contract_passes",
+                                     "pass":  true,
+                                     "detail":  "All generated full-shell route searches pass their contract checks."
+                                 },
+                                 {
+                                     "id":  "A_tradeoff_is_explicit",
+                                     "pass":  true,
+                                     "detail":  "A is released only as a route sensitivity and never assigned as a bathroom."
+                                 },
+                                 {
+                                     "id":  "B_remains_unassigned",
+                                     "pass":  true,
+                                     "detail":  "Pantry-side B remains unassigned and blocked in all route cases."
+                                 },
+                                 {
+                                     "id":  "selected_D_hash_protected",
+                                     "pass":  true,
+                                     "detail":  "Selected-D source fingerprint remains unchanged."
+                                 },
+                                 {
+                                     "id":  "door_positions_not_selected",
+                                     "pass":  true,
+                                     "detail":  "All tested centers remain sensitivity samples; no final door position is selected."
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "Only west, centered and east door positions are sampled; this is not an exhaustive door placement search.",
+                        "A is an unassigned search option used as a separate circulation-versus-future-bath trade-off; B remains protected.",
+                        "The existing 5-ft opening, room, furniture, stool-use, route and site geometries are proxies.",
+                        "The kitchen/living band, physical doors/walls, thresholds, pantry openings, furniture movement and site conditions are not coordinated.",
+                        "A path would not establish code, accessibility, structural, professional, permit or construction readiness. Revit, IFC, selected-D and Incoming RFA files are unchanged."
+                    ]
+}

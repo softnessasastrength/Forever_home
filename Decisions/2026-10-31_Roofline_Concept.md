@@ -13,6 +13,10 @@ Use one dominant traditional main gable with a visually subordinate, simpler roo
 - The tested 8:12, 10:12 and 12:12 cases in the upper-suite studies are geometric comparisons only. They are not owner selections or structural recommendations.
 - Site, municipality, permit date and actual applicable code path remain unknown. Connecticut remains the research jurisdiction.
 
+## Owner visual preference — 2026-11-01
+
+The owner prefers carrying **12:12 as the visual favorite** into the next comparative study, based on the steep-roof direction. This is a visual preference only: it does not select a roof pitch for the house, establish feasibility, or provide structural/code approval. Keep the 8:12 and 10:12 cases available for comparison until a coordinated house-scale study is reviewed.
+
 ## Next study
 
 After the main room layout and shell are coordinated, compare roof elevations and sections for the single-gable massing; carry a secondary cross-gable only if the plan benefits from it. A qualified architect/engineer must resolve roof geometry and structure for the actual site.

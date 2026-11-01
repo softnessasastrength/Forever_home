@@ -1,0 +1,14 @@
+{
+    "schema":  "forever-home.m06-west-a-pair-envelope-diagram-checks.v1",
+    "result":  "pass",
+    "checks":  {
+                   "m230_report_hash_matches":  true,
+                   "report_is_expected_schema":  true,
+                   "all_source_pair_cases_present":  true,
+                   "west_a_remains_unassigned":  true,
+                   "m06_is_not_assigned":  true,
+                   "unselected_tresham_example_found":  true,
+                   "widest_example_found_with_3_5_in_margin":  true,
+                   "svg_parses_as_xml":  true
+               }
+}

@@ -1,0 +1,62 @@
+{
+    "status":  "pass",
+    "passed":  11,
+    "total":  11,
+    "items":  [
+                  {
+                      "id":  "fourteen_door_cases_tested",
+                      "pass":  true,
+                      "detail":  "Fourteen door-center cases at north shifts 5.5 and 6.5 ft were evaluated, with x centers 6.0 through 9.0 ft in 0.5-ft steps."
+                  },
+                  {
+                      "id":  "all_door_openings_fit_porch_face",
+                      "pass":  true,
+                      "detail":  "Each nominal five-foot opening lies wholly within its translated porch face, and the generated porch wall segments move with that opening."
+                  },
+                  {
+                      "id":  "protected_A_clearance_reported",
+                      "pass":  true,
+                      "detail":  "Every passing route reports its gap to protected west A; no tested door/offset case has the 3-in proxy reserve."
+                  },
+                  {
+                      "id":  "source_fingerprints_bound",
+                      "pass":  true,
+                      "detail":  "M186, M178, M192, room/porch spec, selected-D, bath-window source, M207 pantry study and owner area/open-connection/A-protection decisions are fingerprinted."
+                  },
+                  {
+                      "id":  "selected_D_preserved",
+                      "pass":  true,
+                      "detail":  "Selected-D remains at the protected source hash."
+                  },
+                  {
+                      "id":  "original_8x4_island_retained",
+                      "pass":  true,
+                      "detail":  "The M178 8 x 4 ft island is retained in the full-shell route engine."
+                  },
+                  {
+                      "id":  "A_and_B_protected_and_clear",
+                      "pass":  true,
+                      "detail":  "Owner-protected A and unassigned B remain clear of moved dining/porch blocks; route search keeps both as obstacles."
+                  },
+                  {
+                      "id":  "dining_furniture_and_use_zones_inside",
+                      "pass":  true,
+                      "detail":  "All table/chair bodies and the four 36-in use-zone proxies fit each translated 11 x 10 ft dining study block."
+                  },
+                  {
+                      "id":  "social_footprints_inside_shell",
+                      "pass":  true,
+                      "detail":  "The translated dining and 12 x 10 ft porch footprints stay inside the 40 x 42 ft shell test."
+                  },
+                  {
+                      "id":  "all_bounded_route_searches_completed",
+                      "pass":  true,
+                      "detail":  "Every generated M186 route run passes its source and finite-grid contract checks."
+                  },
+                  {
+                      "id":  "results_remain_sensitivity_only",
+                      "pass":  true,
+                      "detail":  "Even a path with positive geometric gap remains an unselected schematic candidate."
+                  }
+              ]
+}

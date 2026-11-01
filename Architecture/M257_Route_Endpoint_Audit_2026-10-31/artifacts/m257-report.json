@@ -1,0 +1,72 @@
+{
+    "schema":  "forever-home.m257-route-endpoint-audit.v1",
+    "status":  "pass; endpoint connectivity is only schematic and no physical door/opening is established",
+    "source_hashes_sha256":  {
+                                 "selected_d":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                 "m215":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1",
+                                 "m228":  "f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff",
+                                 "m243":  "e2b25a46d7d17a5b6f97184aeb8a20286bc0f79b4a9b90ca0c5a0b920d28c8ad",
+                                 "m256":  "8124b2b232b14132d575350eb2a4a6a6ab998583e2b68d24e1099c449ec39ae0"
+                             },
+    "route":  {
+                  "waypoints_global_ft":  [
+                                              {
+                                                  "x":  19.666666666666668,
+                                                  "y":  10.666666666666666
+                                              },
+                                              {
+                                                  "x":  19.166666666666668,
+                                                  "y":  10.666666666666666
+                                              },
+                                              {
+                                                  "x":  19.166666666666668,
+                                                  "y":  29.416666666666668
+                                              },
+                                              {
+                                                  "x":  9.6666666666666661,
+                                                  "y":  29.416666666666668
+                                              },
+                                              {
+                                                  "x":  9.6666666666666661,
+                                                  "y":  34.166666666666664
+                                              }
+                                          ],
+                  "width_in":  36,
+                  "length_ft":  33.5,
+                  "start":  {
+                                "point_ft":  [
+                                                 19.666667,
+                                                 10.666667
+                                             ],
+                                "inside_M05_hall":  true,
+                                "inside_M01_living":  false,
+                                "start_cap_edge_gaps_in":  {
+                                                               "M01_living":  12,
+                                                               "M02_kitchen":  4
+                                                           }
+                            },
+                  "end":  {
+                              "point_ft":  [
+                                               9.666667,
+                                               34.166667
+                                           ],
+                              "inside_porch_test_block":  true
+                          },
+                  "minimum_swept_edge_gaps_in":  {
+                                                     "M01_living":  6,
+                                                     "M02_kitchen":  4
+                                                 },
+                  "inferred_living_to_route_connection":  "not established; the centerline begins inside M-05 and the swept route remains 6 in clear of the M-01 block",
+                  "physical_door_or_opening_modelled":  false
+              },
+    "interpretation":  [
+                           "The 33.5-ft swept corridor is continuous from its start point in M-05 to its endpoint inside the porch test block.",
+                           "The corridor does not begin inside M-01 Living. Its 6-in gap from that room block is separation, not a doorway, clear opening or proof of connection.",
+                           "A route to/from the living room requires actual adjacency/opening design and a new coordination check. This report therefore does not call the existing candidate a verified living-to-porch route."
+                       ],
+    "limitations":  [
+                        "All locations are transformed room-block study coordinates; walls, door leaves, openings, thresholds, finishes, site/grade, occupied movement, and construction geometry are absent.",
+                        "The 36-in route width is an inherited analysis proxy, not a code or accessibility finding. M-06/A/B assignments remain unchanged."
+                    ],
+    "selected_d_modified":  false
+}

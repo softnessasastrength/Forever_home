@@ -1,0 +1,22 @@
+{
+  "schema": "forever-home.m274-checks.v1",
+  "status": "pass",
+  "check_count": 15,
+  "checks": {
+    "all_ten_family_types_have_positive_solids_and_equal_plan_bounds": true,
+    "both_orientations_add_front_clearance_strip": true,
+    "both_orientations_keep_centerline_spacing_screen": true,
+    "both_orientations_keep_nonoverlapping_body_envelopes": true,
+    "both_orientations_keep_side_centerline_screens": true,
+    "both_orientations_remain_gross_contained": true,
+    "east_b_remains_unassigned": true,
+    "family_source_hash_before_and_after_matches": true,
+    "family_was_inspected_in_separate_derivative": true,
+    "m230_and_m269_input_hashes_match_pinned_evidence": true,
+    "no_access_service_or_project_compliance_claim": true,
+    "selected_d_fingerprint_matches_pinned_baseline": true,
+    "selected_d_was_not_opened_or_modified": true,
+    "source_rfa_current_hash_matches_revit_inspection": true,
+    "west_a_remains_unassigned": true
+  }
+}

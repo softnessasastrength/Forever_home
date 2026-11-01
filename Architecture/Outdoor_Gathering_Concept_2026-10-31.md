@@ -4,9 +4,9 @@
 
 ## Concept
 
-Continue the house's documented social sequence from dining through the 12 × 10 ft three-season porch, then through its specified 3 × 3 ft minimum exterior landing to a patio. Keep a clear walking band from that exit across the patio. Place the future outdoor-fireplace conversation area to one side of that band, with the owner's already-selected Adirondack model when its exact reference or asset can be recovered. Let a separate branch lead toward the future pool area so pool traffic does not pass through the hearth seating group.
+Continue the house's documented social sequence from dining through the 12 × 10 ft three-season porch, then through its specified 3 × 3 ft minimum exterior landing to a patio. The owner selected distinct dining and fire/lounge zones connected by a clear walking band. Reserve space for a future outdoor fireplace without selecting its type, fuel, product or exact location. Include a clear branch toward a future pool so pool traffic does not pass through the lounge seating group. Use the already-selected Adirondack model when its exact reference or asset can be recovered.
 
-This is an adjacency proposal, not a placement. No patio dimensions, pool position, fireplace type, fuel, wall, paving, boundary, grade, furniture count or compass orientation is assigned. The porch specification says site determines the exterior steps and the building program defers seating count, clearances and pool/fire relationships until the site is known.
+This is an owner-selected adjacency direction, not a site placement. No patio dimensions, pool position, fireplace type, fuel, wall, paving, boundary, grade, furniture count or compass orientation is assigned. The porch specification says site determines the exterior steps and the building program defers seating count, clearances and pool/fire relationships until the site is known. See `Decisions/2026-10-31_Patio_Outdoor_Zones.md`.
 
 ## House connection
 
@@ -25,8 +25,9 @@ Minimum landing (3 × 3 ft)
       │
       ├── clear patio walking band ───────► garden / yard
       │
-      ├── patio conversation area
-      │      └── selected Adirondack model + future fireplace (side-by-side study)
+      ├── patio dining zone
+      ├── separate fire/lounge zone (fireplace space reserved; type undecided)
+      │      └── selected Adirondack model, once its reference is recovered
       │
       └── separate future route ─────────► pool area
 ```

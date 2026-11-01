@@ -1,0 +1,1525 @@
+{
+    "schema":  "forever-home-m217-pantry-route-integration-v1",
+    "status":  "pass",
+    "study":  "Six named placements plus a deduplicated quarter-foot east-edge sweep (58 total) for the hypothetical 5 x 7 ft M-04 pantry block, tested against the reproduced M215 36-in porch route.",
+    "source_fingerprints":  {
+                                "selected_D_sha256":  "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+                                "m215_sha256":  "f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1",
+                                "m215_status":  "pass",
+                                "m215_route_width_in":  36,
+                                "m215_route_length_ft":  34,
+                                "m186_checks_passed":  31,
+                                "m186_checks_total":  31
+                            },
+    "dimensions_and_status":  {
+                                  "pantry_width_ft":  5,
+                                  "pantry_depth_ft":  7,
+                                  "pantry_area_sf":  35,
+                                  "status":  "owner-authorized hypothetical test envelope; no location selected"
+                              },
+    "reservations":  {
+                         "west_A":  "protected; modeled using the M186 expanded west-of-core obstacle",
+                         "east_B":  "unassigned; modeled using the M186 east-of-core obstacle",
+                         "route_width_in":  36,
+                         "additional_route_gap_ft":  0.25,
+                         "test_shell_ft":  [
+                                               40,
+                                               42
+                                           ],
+                         "shell_test":  "outer coordinate envelope only; wall thickness and inside face are unresolved",
+                         "sweep":  "x=13.5 ft east-edge proxy; y=0 through the inherited 13.5-ft kitchen cross-section at 0.25-ft increments, deduplicated against named samples"
+                     },
+    "placements":  [
+                       {
+                           "placement":  "current",
+                           "rect_ft":  {
+                                           "x":  11.8333333333,
+                                           "y":  16.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  34.41666667,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  34.41666667,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  0.166667,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "north_edge_30in",
+                           "rect_ft":  {
+                                           "x":  11,
+                                           "y":  14,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  25.66666667,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  25.66666667,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  1,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "north_edge_36in",
+                           "rect_ft":  {
+                                           "x":  10.5,
+                                           "y":  14,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  22.91666667,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  22.91666667,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  1.5,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_south",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  0,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  1.5,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_mid",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  4,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  5.25,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_north",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  8,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  12,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_0_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  0.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  1.25,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_y_0_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  0.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  1,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_y_0_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  0.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  0.75,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_y_1_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  1,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  0.5,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_y_1_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  1.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  0.25,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  true
+                                      },
+                           "passes_all_screen_checks":  true,
+                           "disposition":  "retained route-clear sample; no room or placement selected"
+                       },
+                       {
+                           "placement":  "east_edge_y_1_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  1.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_1_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  1.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0.375,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_2_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  2,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  0.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_2_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  2.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  1.125,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_2_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  2.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  1.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_2_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  2.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  1.875,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_3_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  3,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  2.25,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_3_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  3.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  3,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_3_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  3.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  3.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_3_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  3.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  4.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_4_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  4.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  6,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_4_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  4.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  6.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_4_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  4.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  7.125,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_5_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  7.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_5_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  5.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  7.875,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_5_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  5.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  8.25,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_5_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  5.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  8.625,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_6_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  6,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  9,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_6_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  6.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  9.375,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_6_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  6.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  9.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_6_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  6.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  10.125,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_7_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  7,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_7_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  7.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  10.875,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_7_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  7.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  11.25,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_7_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  7.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  11.625,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_8_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  8.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  12.375,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_8_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  8.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  true,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  true,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_8_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  8.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  0.8125,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  0.8125,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_9_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  9,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  1.625,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  1.625,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_9_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  9.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  2.4375,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  2.4375,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_9_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  9.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  3.25,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  3.25,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_9_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  9.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  4.0625,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  4.0625,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_10_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  10,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  4.875,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  4.875,
+                           "route_overlap_area_sum_sf":  12.75,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_10_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  10.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  5.6875,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  5.6875,
+                           "route_overlap_area_sum_sf":  12.375,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_10_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  10.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  6.5,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  6.5,
+                           "route_overlap_area_sum_sf":  12,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_10_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  10.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  7.3125,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  7.3125,
+                           "route_overlap_area_sum_sf":  11.625,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_11_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  11,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  8.125,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  8.125,
+                           "route_overlap_area_sum_sf":  11.25,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_11_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  11.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  8.9375,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  8.9375,
+                           "route_overlap_area_sum_sf":  10.875,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_11_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  11.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  9.75,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  9.75,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_11_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  11.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  10.5625,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  10.5625,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_12_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  12,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  11.375,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  11.375,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_12_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  12.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  12.1875,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  12.1875,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_12_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  12.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  13,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  13,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_12_75",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  12.75,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  13.8125,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  13.8125,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_13_00",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  13,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  14.625,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  14.625,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_13_25",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  13.25,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  15.4375,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  15.4375,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       },
+                       {
+                           "placement":  "east_edge_y_13_50",
+                           "rect_ft":  {
+                                           "x":  13.5,
+                                           "y":  13.5,
+                                           "width":  5,
+                                           "height":  7
+                                       },
+                           "area_sf":  35,
+                           "protected_A_overlap_sf":  16.25,
+                           "unassigned_B_overlap_sf":  0,
+                           "other_M186_obstacle_overlap_area_sum_sf":  16.25,
+                           "route_overlap_area_sum_sf":  10.5,
+                           "minimum_gap_to_36in_route_ft":  0,
+                           "checks":  {
+                                          "preserved_5x7_35sf":  true,
+                                          "within_hypothetical_shell":  true,
+                                          "does_not_overlap_protected_A":  false,
+                                          "does_not_overlap_unassigned_B":  true,
+                                          "does_not_overlap_other_M186_obstacles":  false,
+                                          "avoids_36in_M215_route_with_3in_extra_gap":  false
+                                      },
+                           "passes_all_screen_checks":  false,
+                           "disposition":  "fails at least one protected-area, route or shell screen"
+                       }
+                   ],
+    "checks":  {
+                   "passed":  7,
+                   "total":  7,
+                   "items":  [
+                                 {
+                                     "id":  "selected_D_fingerprint_unchanged",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "M215_source_route_passes",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "M186_source_contract_passes",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "fixed_samples_plus_quarter_foot_kitchen_edge_sweep",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "all_candidates_report_A_B_and_route_tests",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "at_least_one_candidate_passes_all_screens",
+                                     "pass":  true
+                                 },
+                                 {
+                                     "id":  "B_remains_unassigned",
+                                     "pass":  true
+                                 }
+                             ]
+               },
+    "limitations":  [
+                        "This is a 58-point bounded location sample, not an exhaustive floor-plan search or selected pantry design.",
+                        "A rectangle does not establish a room boundary, shelves, door/opening, approach, kitchen workflow, or plumbing/service route.",
+                        "The 3-in separation beyond the 36-in route is an analytical reserve inherited from M215, not a code or accessibility determination.",
+                        "M-06 B remains unassigned; west A is protected as a no-use reservation in this study.",
+                        "Selected-D, RVT, IFC, Incoming RFAs and remote state are unchanged; no code, accessibility, structural, professional, permit or construction-readiness conclusion follows."
+                    ]
+}

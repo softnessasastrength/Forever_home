@@ -1,0 +1,2 @@
+"result","route_found","route_length_ft","turns","nearest_to_door_ft","A_union_overlap_sf","route_centerline_inside_A_ft","minimum_proxy_gap_ft","unassigned_travel_ft","M06_B_status"
+"no_route_even_with_A_released","False",,,"9.5","0","0",,"0","Unassigned room-block gap only; not a bath footprint."

@@ -1,0 +1,107 @@
+{
+  "schema": "forever-home.m274-measured-tresham-envelope-screen.v1",
+  "status": "bounded gross-room-block sensitivity; Tresham unselected; no bathroom assignment or installed fit established",
+  "inputs_sha256": {
+    "m230_report": "1859CED601E1982D41BAEE58A191F2766771729921FBCD8AC3A59DC590B0E686",
+    "m269_family_report": "A9B396221B90FF54DE773CCB80C02E6D9B6B26CA81EEEFFA0A504F33DF60F3C2",
+    "selected_d_study": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB"
+  },
+  "source_family_sha256": "3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949",
+  "selected_d_sha256": "516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb",
+  "room": {
+    "label": "west A",
+    "gross_width_in": 62,
+    "gross_depth_in": 137,
+    "gross_area_sf": 58.99,
+    "remains_unassigned": true
+  },
+  "toilet": {
+    "sku": "610AA001.020",
+    "plan_width_in": 19,
+    "plan_projection_in": 30.25,
+    "exact_sku_rfa_cad_verified": false
+  },
+  "lavatory_candidate": {
+    "family": "Sink-Pedestal_Lavatory_4in_cc-Kohler-Tresham-2844-4",
+    "category": "Plumbing Fixtures",
+    "selected": false,
+    "type_count": 10,
+    "measured_symbol_bounds_plan_width_in": 24.1319,
+    "measured_symbol_bounds_plan_depth_in": 19.5626,
+    "coordinate_frame": "unplaced axis-aligned family-symbol bounds; not installed orientation"
+  },
+  "screening_basis": {
+    "source": "2022 CSBC / adopted 2021 IRC R307.1 and P2705.1; project applicability undetermined",
+    "wc_centerline_to_side_boundary_in": 15,
+    "wc_to_adjacent_fixture_centerline_in": 30,
+    "front_clear_strip_in": 21,
+    "code_compliance": false
+  },
+  "cases": [
+    {
+      "rotation_deg": 0,
+      "measured_symbol_bounds_plan_width_in": 24.1319,
+      "measured_symbol_bounds_plan_depth_in": 19.5626,
+      "assumed_plan_body_width_along_shared_wall_in": 24.1319,
+      "assumed_plan_body_depth_from_shared_line_in": 19.5626,
+      "toilet_centerline_from_left_reference_in": 15,
+      "lavatory_centerline_from_left_reference_in": 45,
+      "sink_centerline_to_left_boundary_in": 45,
+      "sink_centerline_to_right_boundary_in": 17,
+      "wc_centerline_to_nearest_lav_body_edge_in": 17.93405,
+      "body_rectangles_nonoverlap": true,
+      "required_gross_width_in": 57.066,
+      "required_gross_depth_in_including_front_strip": 51.25,
+      "remaining_gross_width_in": 4.934,
+      "remaining_gross_depth_in": 85.75,
+      "contained_in_gross_west_a": true,
+      "sink_centerline_clear_of_both_gross_side_boundaries": true,
+      "wc_side_centerline_screen_pass": true,
+      "centerline_spacing_screen_pass": true,
+      "front_strip_added_in": 21,
+      "room_assignment": "unassigned",
+      "assumption": "Axis-aligned family-symbol bounds are treated as a rectangular plan envelope, their bounding-box midpoint is used as a provisional lavatory centerline, and the envelope is rotated 0/90 degrees; installed orientation and origin-to-product-center relationship are not verified."
+    },
+    {
+      "rotation_deg": 90,
+      "measured_symbol_bounds_plan_width_in": 24.1319,
+      "measured_symbol_bounds_plan_depth_in": 19.5626,
+      "assumed_plan_body_width_along_shared_wall_in": 19.5626,
+      "assumed_plan_body_depth_from_shared_line_in": 24.1319,
+      "toilet_centerline_from_left_reference_in": 15,
+      "lavatory_centerline_from_left_reference_in": 45,
+      "sink_centerline_to_left_boundary_in": 45,
+      "sink_centerline_to_right_boundary_in": 17,
+      "wc_centerline_to_nearest_lav_body_edge_in": 20.2187,
+      "body_rectangles_nonoverlap": true,
+      "required_gross_width_in": 54.7813,
+      "required_gross_depth_in_including_front_strip": 51.25,
+      "remaining_gross_width_in": 7.2187,
+      "remaining_gross_depth_in": 85.75,
+      "contained_in_gross_west_a": true,
+      "sink_centerline_clear_of_both_gross_side_boundaries": true,
+      "wc_side_centerline_screen_pass": true,
+      "centerline_spacing_screen_pass": true,
+      "front_strip_added_in": 21,
+      "room_assignment": "unassigned",
+      "assumption": "Axis-aligned family-symbol bounds are treated as a rectangular plan envelope, their bounding-box midpoint is used as a provisional lavatory centerline, and the envelope is rotated 0/90 degrees; installed orientation and origin-to-product-center relationship are not verified."
+    }
+  ],
+  "findings": [
+    "Both measured-bound orientations fit the 62 x 137 in gross west-A comparison rectangle under the inherited same-wall assumptions.",
+    "Measured 0-degree width leaves 4.9341 in of gross width, versus 5.0000 in in M230\u0027s nominal 24-in Tresham plan proxy; this 0.0659-in change does not establish a finished-face reserve.",
+    "The 90-degree case leaves 7.2187 in of gross width under the same bounding-box abstraction.",
+    "These values do not include finished wall assemblies, a verified family origin-to-product-center relationship, installed orientation, faucet/use zone, door leaf/swing, hall approach, or a plumbing route."
+  ],
+  "evaluated": {
+    "actual_room_fit": false,
+    "fixture_selection": false,
+    "door_and_approach": false,
+    "water_waste_vent_service": false,
+    "project_code_applicability": false,
+    "room_assignment": false,
+    "selected_d_modified": false
+  },
+  "check_count": 15,
+  "passed_check_count": 15
+}

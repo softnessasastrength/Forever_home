@@ -1,0 +1,15 @@
+{
+  "schema": "forever-home-m279-m186-obstacle-snapshot-v1",
+  "source_report": "M186 route source used by the retained M215 0.5-ft north-shift comparison",
+  "source_report_sha256": "871B876F15F0950D68EF4667D89D37B63155E24B868D7C04E6D6E0B3C6C45684",
+  "source_check_status": "pass",
+  "source_check_count": 31,
+  "selected_d_sha256": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+  "pantry_scope": "M215 inherited 5x6-ft M-04 proxy; other repository records specify a different pantry size.",
+  "obstacles": [
+    { "id": "M-05-entry", "x": 34.333333333333336, "y": 0.0, "w": 4.333333333333333, "d": 12.0 },
+    { "id": "M-04-pantry-5x6-A-B-clear", "x": 13.5, "y": 0.0, "w": 5.0, "d": 6.0 },
+    { "id": "west_of_core", "x": 11.333333333333334, "y": 15.500000000000002, "w": 5.416666666666668, "d": 11.416666666666664 },
+    { "id": "east_of_core", "x": 20.5, "y": 16.5, "w": 13.166666666666668, "d": 7.0 }
+  ]
+}

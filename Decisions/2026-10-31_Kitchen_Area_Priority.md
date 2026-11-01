@@ -26,3 +26,7 @@ The independent M186 quarter-foot search preserves the 40 × 42 ft test shell, M
 4. Advance only route-qualified geometry to a disposable Revit derivative. No selected-D source, RVT, IFC, or Incoming RFA is authorized for modification by this decision.
 
 This direction is not a code, accessibility, structural, professional, permit, or construction-readiness determination.
+
+## Owner follow-up — protect west window A
+
+On 2026-10-31, the owner directed the next integrated layout search to **protect west diagnostic window A for M-06**. Keep A clear of pantry and circulation geometry in the primary search; show any A-consuming route only as a separate rejected trade-off. Continue to protect pantry-side B as an unassigned search window. This does not assign a bathroom or select its geometry. See `Decisions/2026-10-31_M06_West_A_Protection.md`.

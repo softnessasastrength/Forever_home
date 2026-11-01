@@ -1,0 +1,154 @@
+{
+  "schema": "forever-home-m282-m05-move-envelope-screen-v1",
+  "status": "pass; analysis-only fixed-footprint translation screen; no location selected",
+  "source_hashes_sha256": {
+    "source_block_snapshot": "12145EBDF1C065804179242750ABE3D80917F8F23B8DA71B256495B387122910",
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "m05_study_authorization": "24182CC002ACCD2F661FE2AD14CA7B11B7AFE6770B741572DBDFD8D5FF5417BE",
+    "m06_west_A_protection": "A5CF98360B75314F4D3486F925E9D860465BB33D1ECFCE9B0CBB39CE0EFF853B"
+  },
+  "method": "Translate only the source M05 4.333 x 12-ft / 52-sf block on a quarter-foot grid along the south, north, and east edges of the 40 x 42-ft shell; hold M01/M02 at the M256 6-in comparison positions, M03/M04 at selected-D source blocks, and A/B as protected/unassigned rectangles. Do not infer doors, route, or entry function from block contact.",
+  "geometry": {
+    "shell_ft": [
+      40,
+      42
+    ],
+    "living_ft": {
+      "Id": "M-01-living-M256-east-6in",
+      "X": 1.166667,
+      "Y": 0.666667,
+      "W": 16,
+      "D": 15
+    },
+    "kitchen_ft": {
+      "Id": "M-02-kitchen-M256-west-6in",
+      "X": 21.5,
+      "Y": 0.6666666666666666,
+      "W": 17.333333333333332,
+      "D": 16
+    },
+    "dining_ft": {
+      "Id": "M-03-dining-source",
+      "X": 0.6666666666666666,
+      "Y": 16.166666666666668,
+      "W": 11.333333333333334,
+      "D": 14
+    },
+    "pantry_ft": {
+      "Id": "M-04-pantry-source-5x7",
+      "X": 34.333333333333336,
+      "Y": 17.166666666666668,
+      "W": 5,
+      "D": 7
+    },
+    "M05_source": {
+      "original": {
+        "Id": "M-05-entry-hall-source",
+        "X": 17.166666666666668,
+        "Y": 0.6666666666666666,
+        "W": 4.333333333333333,
+        "D": 12
+      },
+      "area_sf": 52
+    },
+    "protected_A": {
+      "Id": "protected-A",
+      "X": 12,
+      "Y": 16.166666666666668,
+      "W": 5.166666666666668,
+      "D": 11.416666666666664
+    },
+    "unassigned_B": {
+      "Id": "unassigned-B",
+      "X": 21.166666666666668,
+      "Y": 17.166666666666668,
+      "W": 13.166666666666668,
+      "D": 7
+    },
+    "living_to_kitchen_unassigned_band_ft": 4.333333
+  },
+  "result": {
+    "source_row_clear_positions_count": 1,
+    "source_row_clear_positions": [
+      {
+        "X": 17.166666666666668,
+        "Y": 0.6666666666666666
+      }
+    ],
+    "north_edge_clear_positions_count": 95,
+    "north_edge_example": {
+      "Id": "north-edge envelope example",
+      "X": 12,
+      "Y": 30,
+      "W": 4.333333333333333,
+      "D": 12,
+      "Area": 52,
+      "MinimumBlockGapToM04In": 227.0595,
+      "EntrySideRelation": "Relocates from the current source-side band to north shell edge",
+      "Limitation": "Exterior contact is not an entry door, approach, or verified preservation of front-entry use."
+    },
+    "east_edge_clear_positions_count": 24,
+    "east_edge_example": {
+      "Id": "east-edge envelope example",
+      "X": 35.666666666666664,
+      "Y": 24.25,
+      "W": 4.333333333333333,
+      "D": 12,
+      "Area": 52,
+      "MinimumBlockGapToM04In": 1,
+      "EntrySideRelation": "Relocates from the current source-side band to east shell edge",
+      "Limitation": "Only 1 in from source 5 x 7 M04; exterior contact is not an entry door or verified approach."
+    },
+    "examples": [
+      {
+        "Id": "current source-row block",
+        "X": 17.166666666666668,
+        "Y": 0.6666666666666666,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52,
+        "MinimumBlockGapToM04In": 163.1931,
+        "EntrySideRelation": "Source-side relation retained; front orientation is presumed from the room label",
+        "Limitation": "M05 remains in the 4 ft 4 in band between M01 and M02; no direct connection."
+      },
+      {
+        "Id": "north-edge envelope example",
+        "X": 12,
+        "Y": 30,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52,
+        "MinimumBlockGapToM04In": 227.0595,
+        "EntrySideRelation": "Relocates from the current source-side band to north shell edge",
+        "Limitation": "Exterior contact is not an entry door, approach, or verified preservation of front-entry use."
+      },
+      {
+        "Id": "east-edge envelope example",
+        "X": 35.666666666666664,
+        "Y": 24.25,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52,
+        "MinimumBlockGapToM04In": 1,
+        "EntrySideRelation": "Relocates from the current source-side band to east shell edge",
+        "Limitation": "Only 1 in from source 5 x 7 M04; exterior contact is not an entry door or verified approach."
+      }
+    ],
+    "direct_room_adjacency_after_move": false,
+    "east_example_minimum_block_gap_to_M04_in": 0.9999999999999858,
+    "M06_A_or_B_assigned": false,
+    "entry_and_route_checked": false
+  },
+  "checks": {
+    "passed": 15,
+    "total": 15,
+    "status": "pass"
+  },
+  "limitations": [
+    "The north/east examples preserve the source footprint/area and touch a test-shell edge, but they change its presumed front-side relationship; the actual front, exterior door, entry approach and weather/threshold needs are not documented here.",
+    "M05 translation alone does not make M01/M02 share an edge; their 4.333-ft block gap remains unassigned. No large opening or fully open room connection is shown.",
+    "The east example has a 1-in plan-envelope gap to M04; no reserve is established. M04 is 5 x 7 ft from the selected-D source; other studies also use a 5 x 6 ft proxy.",
+    "The screen checks static room/A/B rectangles only. It does not check a circulation route, M-06 fixture/door clearance, site fit, porch, wall assembly, structure, utilities, or actual occupant use.",
+    "Reshaping M05, moving M01/M02, or selecting a new entry location remains a separate design choice. Selected-D/RVT/IFC/source RFAs are unchanged. No compliance, structural, professional, permit, or construction-readiness conclusion follows."
+  ]
+}
