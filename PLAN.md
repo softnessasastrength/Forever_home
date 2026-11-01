@@ -2740,3 +2740,14 @@ Status: Complete as arithmetic fit screening, not an integrated plan. Two indepe
 
 Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documented 11 × 10 ft dining target, all four 36 in chair-use proxies, the full 36 in living-to-porch route, half-wall/opening geometry and 12 × 10 ft porch in one source-bound coordinate study. Compare at least the 7 × 3 and 6 × 3 island options. A candidate qualifies only if all required rectangles fit and the swept route reaches the porch without proxy intersections; record exact reserve/gaps and reject fragile zero-margin routes. The site-fitted patio remains a later exterior gate. Then carry a route-qualified candidate into disposable Revit wall/opening geometry. In parallel, complete the pending read-only Tauri family host inspection when Revit is safely accessible. Keep selected-D unchanged and M-06/B unassigned.
 - Next: run the owner-authorized M-04 pantry placement sensitivity, retain its 5 Ã— 7 ft test area and function, and keep B unassigned.
+## M273 — Establish a Connecticut residential fixture-clearance screening basis — 2026-11-01
+
+**Acceptance:** verify current CT code adoption and the relevant 2021 IRC residential provisions from primary sources; distinguish the IRC path from commercial IPC/IBC assumptions; record only clearance values and door/window constraints directly supported by the adopted text; label the result as a schematic screening basis, not code compliance; keep M-06/A/B unassigned and west A protected.
+
+**Status:** Complete. The note `Research/CT_M06_Fixture_Clearance_Basis_2026-11-01.md` records 15-in center-to-side-obstruction, 30-in fixture center-to-center, 21-in forward clearance, and door/window non-interference provisions, with CT/ICC sources and project applicability limits.
+
+## M274 — Re-screen M-06 fixture envelopes against cited residential clearances
+
+**Acceptance:** use only hash-pinned product geometry or explicitly labeled plan-envelope proxies; apply the M273 2021 IRC screening dimensions to finished-face references; include door opening, swing, and arrival approach as distinct checks; record whether a plausible supply/drain/vent path is supported by evidence or remains unknown; bind the selected-D and product/source hashes; preserve selected-D, west-A protection, B-unassigned status, and all source RFAs; produce deterministic outputs and an independent replay; do not assign a bathroom, claim compliance, or promote a candidate without exact fit, access, and service evidence.
+
+**Status:** Not started. The exact selected toilet family and selected lavatory are not yet evidenced, so initial comparisons must retain proxy labels and cannot establish a fit. A door/approach and service route remain required inputs.
