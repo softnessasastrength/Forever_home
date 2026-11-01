@@ -3106,3 +3106,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Result: **13/13** checks pass with zero errors: export completion, matching saved-RVT lineage, IFC hash/schema, 21 spaces on three storeys, decoded product geometry, four 4 × 2 ft casework modules, and the generic 8 × 4 ft countertop placeholder at the documented thickness.
 - This validates the isolated furnishing derivative only. It does not promote the island into selected-D, establish perimeter/appliance clearances, resolve openings/services, or imply code, structural or construction approval.
 
+## M322 — Consolidated verified-BIM acceptance gate — 2026-11-01
+
+- Added `Tools/validate_verified_bim_milestone.ps1` and a reproduction note to the verified-milestone handoff.
+- The consolidated gate passes **6/6**: selected-D baseline, M318 wall/plate chain, M317 public M-06 candidate evidence, M320 M-06 gross envelope, M321 kitchen IFC, and M83 roof-comparison IFC.
+- This is an evidence-chain acceptance check. It does not select building geometry or close the unresolved stair/section, openings, assemblies, structure, MEP, service-route, site, code, or professional-review gates.
+

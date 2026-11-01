@@ -7,6 +7,7 @@ M319 freshly rechecks the protected selected-D baseline: two 43/43 source replay
 M320 replays the current-SKU M-06 plan-envelope screen under the configured PowerShell host without an execution-policy override: 14/14 integrity checks pass and all 16 research toilet/lavatory boxes remain contained in the gross B window. This remains gross arithmetic only; B is not assigned.
 M321 independently revalidates the retained isolated M-02 kitchen-island IFC2x3 export against its Revit audit and selected-D source: 13/13 checks pass with matching RVT/IFC lineage, 21 spaces on three storeys, four casework modules, and the generic countertop placeholder. This remains a furnishing-study derivative, not selected-D building geometry.
 The consolidated handoff is `Architecture/Verified_BIM_Milestone_2026-11-01.md`; it cross-references the verified gates, reproduction commands, and remaining limitations for a fresh Codex/Revit 2027 session.
+The handoff now has a machine-readable acceptance command, `Tools/validate_verified_bim_milestone.ps1`, which checks the current evidence chain without opening or modifying Selected-D.
 
 ## M321 — M-02 kitchen island IFC recheck
 
