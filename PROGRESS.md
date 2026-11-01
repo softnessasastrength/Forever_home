@@ -1,3 +1,10 @@
+## M292 — M270 runtime attempt stopped at untargetable Revit intro overlay — 2026-11-01
+
+- Verified RevitPilot AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, manifest assembly path within this checkout, and exact M270 DLL SHA256 `0B2FB3CF174CAE3D4D366DAE09426E51AD6F7D2E940FEEAA34CD38C8916A2E10` before launch. Pinned KOHLER Cimarron candidate RFA SHA256 remains `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`.
+- Revit 2027.3 reached Home with a visible introductory trial overlay. Computer Use could not target the overlay because the click point belongs to an untargetable `msedgewebview2.exe` child; the one documented retry after activating Revit and refreshing the screenshot was rejected identically. No trust prompt, **Load Once**, Revit command, family inspection or derivative occurred.
+- Restored the original candidate request from the ignored backup and confirmed both files hash to `F998042F834BC99F8331B6BCC66FFD6ACEE3DE06B248B2471504160D42A7F876`; the derivative output folder was not created. Selected-D and family source files were not modified. No policy, licensing, trust or security setting changed.
+- M270 runtime verification remains pending a targetable overlay close or supported bridge. Full record: `Architecture/M269_Family_Connector_Inventory_2026-11-01/README.md`; plan gate: M292 in `PLAN.md`.
+
 ## M291 — Fresh selected-D source and IFC baseline replay — 2026-11-01
 
 - Re-ran `Tools/validate_architectural_bim_baseline.ps1` directly under the current LocalMachine `RemoteSigned` policy; machine/user/process/current-user scopes were observed as `Undefined`. No policy override or trust change.
