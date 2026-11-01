@@ -1,0 +1,111 @@
+{
+  "schema": "forever-home-m307-integrated-two-ended-stair-screen-v1",
+  "status": "no joint option found within inherited sample and candidate caps; not proof of impossibility",
+  "selected_d_edited": false,
+  "rvt_or_ifc_created": false,
+  "basis": {
+    "shell_ft": [
+      38.333333,
+      40
+    ],
+    "shell_status": "hypothetical/unselected",
+    "route_width_in": 36,
+    "landing_ft": [
+      4,
+      4
+    ],
+    "perimeter_margin_in": 8,
+    "L01_area_sf": 250.55555555555551,
+    "L02_area_sf": 110,
+    "stair_sample_limit": 24,
+    "L01_sample_limit": 600,
+    "L02_sample_limit": 2000,
+    "route_node_limit": 2500,
+    "not_a_code_finding": true
+  },
+  "search": {
+    "stair_samples": 24,
+    "L01_candidates_generated": 3825,
+    "L02_candidates_generated": 104659,
+    "L01_candidate_cap_per_corridor": 600,
+    "L02_candidates_sampled_per_corridor": 2000,
+    "landing_end_tests": 96,
+    "both_landing_pairs_passing": 4,
+    "lower_route_attempts": 4,
+    "lower_routes_passing": 1,
+    "route_node_cap_hits": 0,
+    "route_nodes_visited": 729,
+    "room_pairs_tested": 0,
+    "corridors": [
+      {
+        "sample": 1,
+        "routed_flight": "flight-A",
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 17.16666667,
+          "y_ft": 34.83333333666667,
+          "width_ft": 4,
+          "depth_ft": 4,
+          "area_sf": 16
+        },
+        "upper_landing": {
+          "id": "landing",
+          "x_ft": 23.91666667,
+          "y_ft": 27.16666667,
+          "width_ft": 4,
+          "depth_ft": 4,
+          "area_sf": 16
+        },
+        "route_length_ft": 29.5,
+        "L01_candidates_clear": 0
+      }
+    ],
+    "joint_layouts_found": 0,
+    "ranked_options": []
+  },
+  "inputs_sha256": {
+    "m302": "73D8ACDC85DF307ADF9782444281C3C7144A30C67DDF7D2F8CACD46F715BF03A",
+    "m215": "F2F6A66DEDA2A9C48A991E36B986683FE1F5B1C1D361FBF3E43BE2A2E1A053B1",
+    "m295": "65A84006158D4352D282D3FA32EDBA3E93F327D31584F19B6C1C9C5BD081CE04",
+    "authorization": "9D695B9E05204514D76974E230E90AAEEE6A4A901A1281D2E54C572ADDEF2C3C"
+  },
+  "checks": {
+    "passed": 6,
+    "total": 6,
+    "details": [
+      {
+        "id": "M302/M215/M295/M307 source fingerprints match",
+        "pass": true
+      },
+      {
+        "id": "24 stair samples, both protected M-06 windows, and inherited dimensions are retained",
+        "pass": true
+      },
+      {
+        "id": "all screened landings fit the shell and clear fixed rooms, windows and stair pieces",
+        "pass": true
+      },
+      {
+        "id": "all reported room pairs preserve source room areas",
+        "pass": true
+      },
+      {
+        "id": "every reported 36-in route clears both landings, rooms, stair pieces and fixed obstacles",
+        "pass": true
+      },
+      {
+        "id": "no selected-D, Revit, IFC, family, or compliance result is emitted",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "The search is bounded to the first 24 retained M302 stair/L-01 samples, 600 movement-spread L-01 candidates, 2,000 movement-spread L-02 candidates per corridor, and the stated route-node cap.",
+    "Only the first compatible L-02 is retained for each sampled L-01/corridor; the result is not an exhaustive layout ranking.",
+    "Each end landing is an inherited 4x4-ft rectangle proxy; the L-turn is a 3\u002B4 aggregate tread-run envelope, not a stair schedule.",
+    "The lower route is a 36-in swept plan proxy to C-LOWER only; no upper-floor route, door/approach, headroom, opening or code basis is checked.",
+    "Wall/finish thickness, tolerance, rails/guards, structure, MEP, site and beyond-C-LOWER circulation are not modeled.",
+    "The larger shell is hypothetical/unselected; no selected-D, Revit, IFC, family or remote state changed.",
+    "No code, accessibility, structural, professional, permit or construction-readiness conclusion follows."
+  ]
+}

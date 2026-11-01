@@ -1,3 +1,11 @@
+## M307 — Integrated stair, two-landings and lower-route search — 2026-11-02
+
+- M306 showed that sequentially sampled options do not include a pair of usable end-landing footprints. M307 therefore checked both 4 × 4 ft landing proxies and the lower route together across the first 24 retained M302 stair envelopes before same-area room sampling.
+- `Tools/M307Generator` builds with **0 warnings, 0 errors**. Two independent runs pass **6/6** and reproduce JSON/check/SVG byte-for-byte; SVG parses.
+- Of 96 end placements, 4 paired landing layouts clear the fixed blocks. One supports a 29.5-ft route proxy to C-LOWER when movable rooms are omitted. Yet **zero** of the 3,825 generated same-area L-01 candidates clear that one stair/landing/route corridor; hence no L-02 pairing can complete the sample. No route node caps were hit. This covers only 24 of M302's 3,850,039 spatial fits and leaves the other rooms fixed; it is not proof of impossibility.
+- Shell remains hypothetical/unselected (+33.1% area). Selected-D, Revit, IFC, families and remote state unchanged. Real stair, upper route, doors/approach, section/headroom/opening and area trade-offs remain unresolved.
+- **Next:** a broader search needs a design constraint to relax. Candidate axes are moving another room, changing the stair/level relationship, or testing a larger shell sensitivity. Ask owner before making one of those trade-offs; keep physical stair geometry unselected.
+
 ## M306 — Two-ended stair landing footprint screen — 2026-11-02
 
 - Checked all nine retained M304 room/stair layouts for the opposite-end 4 × 4 ft landing proxy and paired the result with M305's lower landing/route outcome. The 38⅓ × 40 ft shell, 8-in margin, L-01/L-02 areas, fixed rooms, C-LOWER and both M-06 windows stay as previously modeled; shell is still unselected.
