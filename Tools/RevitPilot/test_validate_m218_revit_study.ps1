@@ -57,7 +57,7 @@ function WriteFixture([string]$Name, [scriptblock]$Mutation = {}) {
             selected_d='516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
             m215='f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
             m217='7e436b9a7d805e2803a1148fbd2bdacad017f86b7d444f7cbe77cbde30226853'
-            m218='946aaf98fc44fa67cd5546168feecd896d4c36543bc097553c75c7389385a3d43'
+            m218='946aaf98fc44fa67cd5546168fecd896d4c36543bc097553c75c7389385a3d43'
         }
         files=@(
             [pscustomobject]@{ swing_into='kitchen'; file_name=[IO.Path]::GetFileName($kitchen); sha256=(Get-FileHash $kitchen -Algorithm SHA256).Hash; bytes=(Get-Item $kitchen).Length; wall_count=13; model_curve_count=48; walls=$wallsArray; model_curves=$curvesArray }
