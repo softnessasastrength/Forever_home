@@ -1,3 +1,9 @@
+## M301 — L-turn stair spatial-envelope screen — 2026-11-02
+
+- Carried forward the owner's “move/reshape L-01, keep the 60-in stair” direction. Added an explicitly hypothetical L-turn blocking proxy with 3+4 aggregate tread-run split and one 4 × 4 ft internal platform; this is not a stair schedule or code geometry. Kept selected-D unchanged, L-01 at 250.5556 sf, other rooms/C-LOWER fixed, 36 × 32 ft shell, M-06 windows protected, west A protected, B unassigned.
+- `Tools/M301Generator` builds with **0 warnings, 0 errors**. Two independent replays pass **7/7** and match JSON/check/SVG byte-for-byte; SVG parses. Evidence `.local/revalidation/m301-run3/` and `run4/`; report and assumptions: `Architecture/M301_Alternative_Stair_Envelope_Study_2026-11-02/README.md`.
+- 71 same-area L-01 blocks clear fixed rooms/circulation. Across all rotation and grid placements, 2,964,960 L-turn proxies were evaluated: 2,389,860 collide with fixed rooms, 554,581 with protected M-06 windows, 20,519 with L-01; **zero fit**. This only rejects the tested footprint hypothesis within the 36 × 32 ft shell; no access route or stair details were tested.
+- Selected-D, Revit, IFC, RFAs and remotes remain unchanged. **Next:** compare the owner-documented hypothetical 38⅓ × 40 ft shell sensitivity with lower room blocks held fixed. Keep that shell unselected; if it fits, test access and reconcile an actual flight/riser layout before any Revit stair.
 ## M300 — L-01 move/reshape stair-route screen — 2026-11-02
 
 - Owner direction: move/reshape L-01 and keep the full 60-in stair comparison. Preserved L-01's prior source-area target of 250.5556 sf; fixed L-02, C-LOWER, the other rooms and the 36 × 32 ft shell. M-06 windows stayed protected, west A protected and B unassigned.
