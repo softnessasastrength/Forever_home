@@ -25,3 +25,11 @@ The next evidence that can close this source gap without gated access is an owne
 - [M253 exact-SKU family search](../Architecture/M253_M06_Current_SKU_BIM_Refresh_2026-10-31/README.md) — prior public catalog search and current-product 2D-envelope evidence.
 
 This channel research does not establish code compliance, accessibility, structural safety, professional approval, permit readiness or construction readiness.
+
+## Manufacturer and public-catalog recheck — 2026-11-01
+
+The current [American Standard 610AA001.020 product page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring) still identifies the selected complete toilet, but its visible Resource section links only a spec sheet and installation guide. The linked [spec sheet](https://lixil.cdn.celum.cloud/167631_as_us_bath_spec__211A%20(7076)_0_original.pdf) is marked Revised 9/13, identifies 211AA.104 / bowl 3195A.101 / tank 4225A.104, and gives nominal 30-1/4 x 19 in dimensions for that documented series. The linked [installation guide](https://lixil.cdn.celum.cloud/173349_as_us_bath_install__211A__211B__211C%20(4513)_0_original.pdf) is a 2019 guide for 211AA/211BA/211CA series. Neither linked document supplies an exact 610AA001.020 family or exact-SKU CAD/BIM model.
+
+Exact-SKU searches of the public BIMobject and RevitCity indexes again returned no listing for `610AA001.020`; the manufacturer page itself had no direct Revit-family link. This is only a public-index result and does not prove no family exists behind a professional specification workflow or elsewhere unindexed. No login, account, live chat, purchase, or gated download was attempted. Retain the M120 19 x 30.25 in current-SKU manufacturer infographic as a plan proxy only; do not replace it with the older 211AA-series dimensions or predecessor RFAs.
+
+The source finding remains unchanged: obtain an exact-SKU family/drawing from a public source or from the owner before using 3D product geometry. Current house study still requires a selected lavatory, finished-face geometry, door/approach, applicable code path, and plausible plumbing route before assigning M-06/A/B.

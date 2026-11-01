@@ -2634,3 +2634,10 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Against gross west A (62 x 137 in), measured 0-degree symbol bounds leave 4.9341 in gross width; 90-degree axes leave 7.2187 in. Both add 21 in ahead of the deeper body. These are bounding-box sensitivities, not finished-face reserves or installed fit results.
 - Tresham remains unselected; the toilet remains a 19 x 30.25 in plan proxy. Door/swing/approach, faucet use zone, wall assemblies and plumbing route are not modeled. Selected-D/RVT/IFC and source RFA were not modified. M-06/A/B remain unassigned; west A is protected.
 - Evidence and rerun commands: `Architecture/M274_Measured_Tresham_Envelope_Screen_2026-11-01/README.md`. Next: obtain exact current-SKU toilet geometry if available and develop a distinct door/approach comparison; do not assign M-06 before product, clearance, access and service evidence agree.
+
+## M275 - Recheck public exact-SKU toilet family availability - 2026-11-01
+
+- Rechecked the current American Standard product page and both publicly linked technical PDFs. The page identifies selected complete SKU 610AA001.020 but links a 2013 211AA-series spec and a 2019 211AA/211BA/211CA installation guide; neither is an exact-SKU family or CAD model.
+- Public exact-SKU BIMobject and RevitCity index searches returned no listing. No login, account, live chat, purchase, or gated download was used. This does not prove that an exact family is unavailable through an unindexed or professional channel.
+- Keep the M120 19 x 30.25 in current-SKU infographic envelope as a labeled 2D proxy. Do not use predecessor-series dimensions or combine predecessor RFAs. M-06/A/B remain unassigned; west A stays protected.
+- Sources and dated findings are appended to `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.

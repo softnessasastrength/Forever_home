@@ -2755,3 +2755,11 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Limits:** toilet dimensions remain a plan proxy, Tresham remains unselected, and its symbol axes are not installed orientation. Door/swing/approach, finished assemblies, faucet use zone, and services remain unmodeled. M-06/A/B stay unassigned. No compliance determination follows.
 
 **Next:** obtain exact-SKU toilet geometry if it is publicly accessible or owner-supplied; separately review Tresham plan orientation and door/approach alternatives without assigning the bath. Resolve any service route only from available project data or a labeled engineering placeholder.
+
+## M275 — Recheck public exact-SKU Revit availability for selected M-06 toilet
+
+**Acceptance:** inspect the current manufacturer product page and its linked documents; search public BIM indexes for exact SKU `610AA001.020` without authentication, account creation, purchase, or gated access; distinguish exact current-SKU materials from predecessor-series documentation; retain the current plan proxy and keep M-06/A/B unassigned.
+
+**Status:** Complete as a public-source check. The current product page links a 2013 211AA-series specification and a 2019 211AA/211BA/211CA installation guide; neither is an exact-SKU Revit or CAD file. Public BIMobject/RevitCity exact-SKU searches returned no listing. The dated recheck is appended to `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.
+
+**Next:** keep the selected toilet as its documented plan proxy until an exact-SKU family/drawing is supplied or becomes publicly available; do not substitute the predecessor components.
