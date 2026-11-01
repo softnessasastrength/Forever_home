@@ -7,8 +7,9 @@
 The package-free C#/.NET 10 generator is `Tools/M280Generator`. From the repository root, after building with the repository's approved .NET 10 SDK:
 
 ```powershell
-dotnet build Tools/M280Generator/M280Generator.csproj
-dotnet run --project Tools/M280Generator/M280Generator.csproj -- ".local/revit-pilot/family-intake/derivatives/20261101T135547430Z-kohler-cimarron-readonly/candidate-family-geometry.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362-provenance.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362/type-catalog.txt" ".local/revit-pilot/family-intake/20261101T135818230Z/intake-manifest.json" ".local/revalidation/m280-replay"
+.local/dotnet/dotnet.exe build Tools/M280Generator/M280Generator.csproj --configuration Release --output .local/revalidation/m280-build --ignore-failed-sources
+.local/dotnet/dotnet.exe .local/revalidation/m280-build/M280Generator.dll ".local/revit-pilot/family-intake/derivatives/20261101T135547430Z-kohler-cimarron-readonly/candidate-family-geometry.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362-provenance.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362/Sink-Pedestal-Lavatory-KOHLER-Cimarron-K-2362.txt" ".local/revit-pilot/family-intake/20261101T135818230Z/intake-manifest.json" ".local/revalidation/m280-replay-a"
+.local/dotnet/dotnet.exe .local/revalidation/m280-build/M280Generator.dll ".local/revit-pilot/family-intake/derivatives/20261101T135547430Z-kohler-cimarron-readonly/candidate-family-geometry.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362-provenance.json" ".local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362/Sink-Pedestal-Lavatory-KOHLER-Cimarron-K-2362.txt" ".local/revit-pilot/family-intake/20261101T135818230Z/intake-manifest.json" ".local/revalidation/m280-replay-b"
 ```
 
 The generator pins the Revit report, candidate provenance, 21-row type catalog, incoming-family intake manifest, and source RFA fingerprints; it refuses output outside the repository. Its retained run passed **28/28** checks. Two independent outputs have matching SHA256 values:
@@ -18,7 +19,7 @@ The generator pins the Revit report, candidate provenance, 21-row type catalog, 
 | `m280-cimarron-review.json` | `9A7EDC06229CF8D75993A829D54DDAC3E2F88647F323CDD364B48AF041178C6E` |
 | `m280-checks.json` | `88DF16C49C99C3941B416FEEABD44E633F1C29FC00F2C2AC8EA3F2770885A0B9` |
 
-The checked-in artifacts are copies of those retained outputs. The report includes its input hashes and generator check results. Compare two clean output directories byte-for-byte to verify determinism.
+The checked-in artifacts are copies of those retained outputs. The report includes its input hashes and generator check results. Rebuild with the repository-local .NET 10.0.403 SDK and compare the two clean output directories byte-for-byte to verify determinism. Verified build: 0 warnings, 0 errors; both replays pass 28/28.
 
 ## Evidence
 
@@ -35,7 +36,7 @@ The Cimarron is an **unselected proposal**. No room/door/approach fit, finished-
 ## Source files and public references
 
 - Revit geometry report: ignored `.local/revit-pilot/family-intake/derivatives/20261101T135547430Z-kohler-cimarron-readonly/candidate-family-geometry.json` (SHA256 `66F4F70E16870CA488B9AB5FF4AD99B383B942D7E8CA7F0ACD7A2C6F2A716CE6`).
-- Candidate provenance: ignored `.local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362-provenance.json`.
+- Candidate provenance and type-catalog sidecar: ignored `.local/revit-pilot/family-intake/candidates/kohler-cimarron-k2362-provenance.json` and `Sink-Pedestal-Lavatory-KOHLER-Cimarron-K-2362.txt`.
 - Public family archive: `https://techcomm.kohler.com/techcomm/cad/Sink-Pedestal-Lavatory-KOHLER-Cimarron-K-2362.zip`.
 - Manufacturer product page: `https://www.kohler.com/en/products/bathroom-sinks/shop-bathroom-sinks/cimarron-pedestal-bathroom-sink-with-single-faucet-hole-2362-1?skuId=2362-1-0`.
 - Manufacturer specification: `https://resources.kohler.com/onlinecatalog/pdf/1020683_4.pdf`; roughing-in sheet: `https://resources.kohler.com/onlinecatalog/pdf/1020683_1.pdf`.
