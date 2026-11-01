@@ -12,7 +12,7 @@ $checks=New-Object System.Collections.Generic.List[object]
 function QuoteArg([string]$value) { return '"' + $value.Replace('"','\"') + '"' }
 function InvokeValidator([string]$Name,[string]$Report,[string]$Hash,[int]$ExpectedExit,[string]$ExpectedText) {
     $psi=New-Object System.Diagnostics.ProcessStartInfo
-    $psi.FileName=(Get-Command powershell.exe).Source
+    $psi.FileName=(Get-Process -Id $PID).Path
     $psi.Arguments=('-NoProfile -ExecutionPolicy Bypass -File {0} -ReportPath {1} -ExpectedSourcePath {2} -ExpectedSourceSHA256 {3}' -f (QuoteArg $validator),(QuoteArg $Report),(QuoteArg $source),(QuoteArg $Hash))
     $psi.UseShellExecute=$false
     $psi.CreateNoWindow=$true
@@ -38,10 +38,11 @@ function NewHostProbeFixture([string]$Name) {
     $report.status='pass; synthetic host-probe validator fixture only'
     $report.project_scope.family_instances_placed=1
     $report.project_scope|Add-Member -NotePropertyName synthetic_host_probe_only -NotePropertyValue $true
-    $report.limitations=@($report.limitations)+@(
+    $report.limitations=@(
+        'This synthetic-host probe places one instance on a test wall only in a disposable derivative; no house placement or service-route fit is established.',
         'The synthetic wall-face center is an orientation probe, not an installation height or room placement.',
         'The project contains no door, approach, finished-room boundaries, plumbing network, or service route.',
-        'A family connector inventory does not establish connector alignment, constructible piping, code applicability, or fixture fit.'
+        'A family connector inventory does not establish connector alignment, constructible piping, code compliance, or fixture fit.'
     )
     $report|Add-Member -NotePropertyName host_probe -NotePropertyValue ([pscustomobject]@{
         status='pass; exact type placed on synthetic wall in a disposable project'
