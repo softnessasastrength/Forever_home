@@ -463,6 +463,9 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                 limitations = new[]
                 {
                     "The family-symbol bounds are a product envelope only; per-solid bounding boxes may overstate the exact projected outline.",
+                    request.vertical_wall_host_probe
+                        ? "One instance was placed only on the synthetic test wall in the disposable derivative; no instance was placed in the house model."
+                        : "No instance was placed; this report measures family-symbol geometry only in a disposable derivative.",
                     "A synthetic-host probe uses a test wall and provides no bathroom, door, approach, or service-route fit.",
                     "Family type parameters, connector objects, and geometric bounds do not establish product selection or code compliance."
                 }
