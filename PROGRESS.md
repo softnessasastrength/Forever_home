@@ -1,3 +1,10 @@
+## M290 — Partition residual C-LOWER geometry — 2026-11-01
+
+- Built a source-pinned C#/.NET 10 analysis of the two owner-facing M289 alternatives. It partitions the exact residual after subtracting M289's stair and 36-in swept-route rectangle proxies; it does not call the remaining area usable circulation.
+- Build: **0 warnings, 0 errors**. Two independent runs pass **9/9 checks**, reproduce the report/checks/SVG byte-for-byte and parse the SVG as XML. Both representative cases leave one edge-connected residual component. Minimum-change option: 78.4306 sf remains from 78.8889 sf C-LOWER after 0.4583 sf proxy occupation; 9.25-ft, two-turn path and 0-in L-01 gap. Higher-change option: 74.3889 sf remains after 4.5000 sf proxy occupation; 0.25-ft straight connector and 26.644-in L-01 gap. This tests only the abstract rectangles, not room function or clearances.
+- Source M289 SHA256: `00000094823867028C728501AFA26B88A569376AB920B4AFAF00FC7F4ECCD4D1`. Output hashes and reproduction commands: `Architecture/M290_Circulation_Residual_Partition_2026-11-01/README.md`. No Revit, IFC, selected-D or M-06 changes.
+- Owner preference among least change/tangency, greater separation/more reshape, or parallel comparison is pending. No stair/layout selection; M-06/A/B remain unassigned and west A protected.
+
 ## M286 — Lower flex-living / stair-envelope study — 2026-11-01
 
 - Owner authorized an analysis-only move/reshape screen and chose to preserve L-01's source area, 250.5556 sf. New source-bound C#/.NET 10 generator build: **0 warnings, 0 errors**. Two fresh runs pass **13/13 checks**, reproduce all three artifacts byte-for-byte, and parse the plan SVG.
