@@ -3118,3 +3118,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The replay checks the selected-D −5/0/+5 ft levels and two 60-in transitions, DD-013's 6 × 7¼-in / 43½-in study basis, and explicit absence of native stair/opening claims.
 - Result: the source-bound gate is designed to keep the conflict visible; no floor assembly, landing, headroom, route, structural support or code conclusion is inferred.
 
+## M324 — Split-rise section sensitivity — 2026-11-01
+
+- Added `Tools/analyze_split_rise_section.ps1` and `Architecture/M323_Split_Rise_Section_Study_2026-11-01/README.md`.
+- The source-bound arithmetic compares the 60-in Selected-D baseline, a 4+4 equal-riser split retaining eight 7½-in risers, and a labelled DD-013 6+2 remainder sensitivity. The replay passes **5/5**.
+- No native stair was created or selected. A real Revit stair remains conditional on floor assembly, landing/opening, headroom, route, wall thickness, structural support and applicable-code inputs.
+
