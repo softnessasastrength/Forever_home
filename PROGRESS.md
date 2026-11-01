@@ -1,3 +1,9 @@
+## M302 — Hypothetical lower-shell stair sensitivity — 2026-11-02
+
+- Reused the owner-documented 38.333333 × 40 ft shell strictly as a lower-plan sensitivity; no selected-D/RVT/IFC dimensions changed. The hypothetical rectangle has 1,533.33 sf versus 1,152 sf for the 36 × 32 ft comparison: +381.33 sf (+33.1%). All source room positions, C-LOWER and protected M-06 windows stay fixed; same-area L-01 motion is allowed.
+- `Tools/M302Generator` builds with **0 warnings, 0 errors**. Two final independent replays pass **7/7 checks**, match JSON/check/SVG byte-for-byte and parse SVG. Evidence: `.local/revalidation/m302-run3/` and `run4/`; README: `Architecture/M302_Hypothetical_Lower_Shell_Stair_Sensitivity_2026-11-02/README.md`.
+- Search tested 5,025 same-area L-01 positions and 303,801,450 rotated stair/L-01 combinations. 3,850,039 clear blocks and protected windows. Least-L-01-movement examples put the spatial stair proxy in the added north band near y=31.17 ft with about a 1-in gap to L-01. End landings and route/access are omitted, so this is spatial fit evidence only.
+- The larger lower shell is unselected and increases tested plan area by one-third; any preference requires owner review. Next test route/access on labeled sample options before any Revit stair. No code or construction claim.
 ## M301 — L-turn stair spatial-envelope screen — 2026-11-02
 
 - Carried forward the owner's “move/reshape L-01, keep the 60-in stair” direction. Added an explicitly hypothetical L-turn blocking proxy with 3+4 aggregate tread-run split and one 4 × 4 ft internal platform; this is not a stair schedule or code geometry. Kept selected-D unchanged, L-01 at 250.5556 sf, other rooms/C-LOWER fixed, 36 × 32 ft shell, M-06 windows protected, west A protected, B unassigned.
