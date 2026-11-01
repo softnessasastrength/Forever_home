@@ -1,3 +1,11 @@
+## M295 — Full 60-in stair fit against same-area lower room options — 2026-11-01
+
+- The owner authorized a source-bound full-transition comparison. Used the selected-D source's inherited 8 × 7.5-in riser / 7 × 11-in tread / 4-ft width / 4-ft landing references. The stair box is 4 × 14.4167 ft; the nominal riser is below the CT published 8¼-in maximum. No compliance conclusion follows.
+- Generator `Tools/M295Generator`: .NET 10 Release build **0 warnings, 0 errors**. Two independent replays pass **19/19** each, match JSON/checks/SVG hashes byte-for-byte, and parse the SVG.
+- Search: 1,208 same-area L-01 candidates; 2,912 same-area C-LOWER candidates; 6,707 compatible pairs; 1,640 full-size stair envelopes; 5,065 lower-landing interfaces; **0** independent 36-in straight/dogleg path proxies to C-LOWER. In the minimum-block-change reference, rooms remain at source placement; stair landing intersects 15.3333 sf of C-LOWER, leaving 55.5417 sf outside the stair/path union. That is an interface occupying the circulation block, not a separate route or usable-area finding.
+- Full-rise plan box is 48.5 in longer than M285's half-story envelope. Details, inputs, pinned output hashes and reproduction commands: `Architecture/M295_Full_Rise_Stair_Fit_Study_2026-11-01/README.md`. Owner authorization: `Decisions/2026-11-01_M295_Full_Rise_Stair_Comparison_Authorization.md`.
+- No selected-D, RVT, IFC, RFA, Revit or remote state changed. Further screening needs an explicit constraint relaxation: combine landing with C-LOWER, move another same-area room, or compare a different vertical/flight arrangement. M-06/A/B stay unassigned; west A stays protected.
+
 ## M294 — Owner prefers minimum-change lower stair analysis reference — 2026-11-01
 
 - The owner prefers M289's least-layout-change dogleg and accepts its schematic tangent contact for continued analysis. The preference is recorded in `Decisions/2026-11-01_M294_Lower_Stair_Analysis_Reference_Preference.md` and M294 in `PLAN.md`.

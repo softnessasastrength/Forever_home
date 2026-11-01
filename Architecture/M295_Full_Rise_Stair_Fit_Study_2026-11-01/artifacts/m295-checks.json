@@ -1,0 +1,84 @@
+{
+  "schema": "forever-home-m295-checks-v1",
+  "status": "pass",
+  "passed": 19,
+  "total": 19,
+  "details": [
+    {
+      "id": "selected-D, M285, M215, M289 and M294 inputs are fingerprint-pinned",
+      "pass": true
+    },
+    {
+      "id": "owner explicitly authorized a full 60-in stair comparison with joint same-area room movement",
+      "pass": true
+    },
+    {
+      "id": "inherited 8 x 7.5-in full-rise stair meets the cited 8.25-in numerical ceiling",
+      "pass": true
+    },
+    {
+      "id": "inherited 7 x 11-in tread count and 4-ft width/landing references match source",
+      "pass": true
+    },
+    {
+      "id": "M294 minimum-change analytical reference remains source-pinned and tangent",
+      "pass": true
+    },
+    {
+      "id": "full 60-in stair envelope dimensions derive from selected-D comparison inputs",
+      "pass": true
+    },
+    {
+      "id": "all generated L-01 and C-LOWER candidates preserve their exact source areas",
+      "pass": true
+    },
+    {
+      "id": "all L-01 and C-LOWER candidates clear fixed same-level rooms and shell margin",
+      "pass": true
+    },
+    {
+      "id": "all C-LOWER candidates avoid both protected M-06 search windows",
+      "pass": true
+    },
+    {
+      "id": "all selected route stair envelopes clear fixed rooms, paired L-01 and protected M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "every reported joint pair keeps L-01 and C-LOWER disjoint",
+      "pass": true
+    },
+    {
+      "id": "full-rise bounded search distinguishes landing interfaces from continuous swept routes",
+      "pass": true
+    },
+    {
+      "id": "reported route/interface endpoints contact their same-area C-LOWER target",
+      "pass": true
+    },
+    {
+      "id": "reported positive-length route proxies clear fixed rooms, paired L-01 and both M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "reported positive-gap alternatives have a strictly positive measured block separation",
+      "pass": true
+    },
+    {
+      "id": "reported route centerlines are orthogonal and remain shell bounded",
+      "pass": true
+    },
+    {
+      "id": "route width uses the M215 36-in study precedent only",
+      "pass": true
+    },
+    {
+      "id": "M-06 footprint, position and service route remain unassigned",
+      "pass": true
+    },
+    {
+      "id": "no physical candidate selected and no code, structure or construction claim",
+      "pass": true
+    }
+  ]
+}
