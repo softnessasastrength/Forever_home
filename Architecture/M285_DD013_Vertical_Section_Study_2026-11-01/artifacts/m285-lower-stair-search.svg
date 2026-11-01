@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="361" viewBox="0 0 1580 361">
+<style>text{font:11px Arial,sans-serif}.title{font-weight:bold;font-size:13px}.room{fill:#dce8ed;stroke:#24566c}.circulation{fill:#f1d9d9;stroke:#9a3030;stroke-dasharray:3 2}.stair{fill:#f5e5b8;stroke:#7c5d11;stroke-width:2}.shell{fill:none;stroke:#222;stroke-width:2}</style>
+<text class="title" x="0" y="22">east-west — candidate (12.417, 9.667) ft</text>
+<rect class="shell" x="0" y="35" width="324" height="288"/>
+<rect class="room" x="6" y="227" width="81" height="90"/>
+<text x="8" y="239">L-03</text>
+<rect class="room" x="6" y="150.5" width="81" height="72"/>
+<text x="8" y="162.5">L-04</text>
+<rect class="room" x="6" y="41" width="81" height="105"/>
+<text x="8" y="53">L-05</text>
+<rect class="room" x="237" y="213.5" width="81" height="103.5"/>
+<text x="239" y="225.5">L-07</text>
+<rect class="room" x="156" y="245" width="72" height="72"/>
+<text x="158" y="257">L-06</text>
+<rect class="room" x="91.5" y="41" width="123" height="165"/>
+<text x="93.5" y="53">L-01</text>
+<rect class="room" x="219" y="42.5" width="99" height="90"/>
+<text x="221" y="54.5">L-02</text>
+<rect class="circulation" x="91.5" y="210.5" width="60" height="106.5"/>
+<text x="93.5" y="222.5">C-LOWER</text>
+<rect class="stair" x="111.75" y="207.5" width="93.375" height="28.5"/>
+<text x="113.75" y="219.5">6 risers + 2 landings</text>
+<text x="0" y="337">Room-block gap: 2 in; circulation overlap: 12.514 sf.</text>
+<text class="title" x="402" y="22">east-west — candidate (12.417, 9.667) ft</text>
+<rect class="shell" x="402" y="35" width="324" height="288"/>
+<rect class="room" x="408" y="227" width="81" height="90"/>
+<text x="410" y="239">L-03</text>
+<rect class="room" x="408" y="150.5" width="81" height="72"/>
+<text x="410" y="162.5">L-04</text>
+<rect class="room" x="408" y="41" width="81" height="105"/>
+<text x="410" y="53">L-05</text>
+<rect class="room" x="639" y="213.5" width="81" height="103.5"/>
+<text x="641" y="225.5">L-07</text>
+<rect class="room" x="558" y="245" width="72" height="72"/>
+<text x="560" y="257">L-06</text>
+<rect class="room" x="493.5" y="41" width="123" height="165"/>
+<text x="495.5" y="53">L-01</text>
+<rect class="room" x="621" y="42.5" width="99" height="90"/>
+<text x="623" y="54.5">L-02</text>
+<rect class="circulation" x="493.5" y="210.5" width="60" height="106.5"/>
+<text x="495.5" y="222.5">C-LOWER</text>
+<rect class="stair" x="513.75" y="207.5" width="93.375" height="28.5"/>
+<text x="515.75" y="219.5">6 risers + 2 landings</text>
+<text x="402" y="337">Room-block gap: 2 in; circulation overlap: 12.514 sf.</text>
+<text class="title" x="804" y="22">north-south — candidate (12.417, 2.417) ft</text>
+<rect class="shell" x="804" y="35" width="324" height="288"/>
+<rect class="room" x="810" y="227" width="81" height="90"/>
+<text x="812" y="239">L-03</text>
+<rect class="room" x="810" y="150.5" width="81" height="72"/>
+<text x="812" y="162.5">L-04</text>
+<rect class="room" x="810" y="41" width="81" height="105"/>
+<text x="812" y="53">L-05</text>
+<rect class="room" x="1041" y="213.5" width="81" height="103.5"/>
+<text x="1043" y="225.5">L-07</text>
+<rect class="room" x="960" y="245" width="72" height="72"/>
+<text x="962" y="257">L-06</text>
+<rect class="room" x="895.5" y="41" width="123" height="165"/>
+<text x="897.5" y="53">L-01</text>
+<rect class="room" x="1023" y="42.5" width="99" height="90"/>
+<text x="1025" y="54.5">L-02</text>
+<rect class="circulation" x="895.5" y="210.5" width="60" height="106.5"/>
+<text x="897.5" y="222.5">C-LOWER</text>
+<rect class="stair" x="915.75" y="207.875" width="28.5" height="93.375"/>
+<text x="917.75" y="219.875">6 risers + 2 landings</text>
+<text x="804" y="337">Room-block gap: 2.5 in; circulation overlap: 31.931 sf.</text>
+<text class="title" x="1206" y="22">east-west — candidate (24.917, 16.917) ft</text>
+<rect class="shell" x="1206" y="35" width="324" height="288"/>
+<rect class="room" x="1212" y="227" width="81" height="90"/>
+<text x="1214" y="239">L-03</text>
+<rect class="room" x="1212" y="150.5" width="81" height="72"/>
+<text x="1214" y="162.5">L-04</text>
+<rect class="room" x="1212" y="41" width="81" height="105"/>
+<text x="1214" y="53">L-05</text>
+<rect class="room" x="1443" y="213.5" width="81" height="103.5"/>
+<text x="1445" y="225.5">L-07</text>
+<rect class="room" x="1362" y="245" width="72" height="72"/>
+<text x="1364" y="257">L-06</text>
+<rect class="room" x="1297.5" y="41" width="123" height="165"/>
+<text x="1299.5" y="53">L-01</text>
+<rect class="room" x="1425" y="42.5" width="99" height="90"/>
+<text x="1427" y="54.5">L-02</text>
+<rect class="circulation" x="1297.5" y="210.5" width="60" height="106.5"/>
+<text x="1299.5" y="222.5">C-LOWER</text>
+<rect class="stair" x="1430.25" y="142.25" width="93.375" height="28.5"/>
+<text x="1432.25" y="154.25">6 risers + 2 landings</text>
+<text x="1206" y="337">Room-block gap: 13 in; circulation overlap: 0 sf.</text>
+</svg>

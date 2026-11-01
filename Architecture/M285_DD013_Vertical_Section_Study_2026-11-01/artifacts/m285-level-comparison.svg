@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440">
+<style>text{font:13px Arial,sans-serif}.title{font-weight:bold;font-size:16px}.source{stroke:#24566c;stroke-width:3}.study{stroke:#ad6a00;stroke-width:3}.datum{stroke:#555;stroke-dasharray:5 4}.note{font-size:11px}</style>
+<text class="title" x="35" y="28">Vertical datum comparison — no walls, floors, or stair modeled</text>
+<text class="title" x="100" y="55">selected-D source</text>
+<line class="datum" x1="110" y1="330" x2="700" y2="330"/>
+<line class="source" x1="190" y1="30" x2="190" y2="630"/>
+<line class="source" x1="182" y1="30" x2="198" y2="30"/>
+<line class="source" x1="182" y1="630" x2="198" y2="630"/>
+<text x="204" y="34">+60 in</text><text x="204" y="634">−60 in</text>
+<text class="title" x="450" y="55">DD-013 owner-selected study</text>
+<line class="datum" x1="110" y1="330" x2="700" y2="330"/>
+<line class="study" x1="540" y1="112.5" x2="540" y2="547.5"/>
+<line class="study" x1="532" y1="112.5" x2="548" y2="112.5"/>
+<line class="study" x1="532" y1="547.5" x2="548" y2="547.5"/>
+<text x="554" y="116.5">+43.5 in</text><text x="554" y="551.5">−43.5 in</text>
+<text x="24" y="185">Main FF datum</text><text class="note" x="35" y="420">DD-013: 6 × 7¼ in = 43½ in per half-story. Selected-D remains 60 in. Study only; not a code determination or approved level change.</text>
+</svg>
