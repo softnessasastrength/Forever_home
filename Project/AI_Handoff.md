@@ -1,10 +1,12 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M264 selected M-06 Revit channel research; local sandbox only)
+Updated: 2026-10-31 (M265 selected-D IFC revalidation; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
+
+**Current checkpoint — M265/M264/M263/M262, 2026-10-31 local:** Clean tracked sandbox `codex/house-design-sandbox`, 46 commits ahead of its tracking ref; no remote changes or history rewrites. M265's retained selected-D IFC2X3 export passes the source-pinned IFC validator 26/26 twice, zero errors and byte-identical reports (SHA256 `449B98D7720BB10DCD53BA999A99AA6DD207950783C43EB3CFCA0800085C079B`). This is only an IFC re-audit of the retained 21-space room-boundary study, not a fresh geometry-generation or Revit run. Revit currently displays its introductory trial overlay; its visible close control is in an untargeted WebView child, so the supported UI bridge could not act on it. No add-in trust prompt, Load Once, Revit command, save or model edit occurred. The project-local RevitPilot manifest/DLL path and SHA were read-only verified. M-06/A/B remain unassigned, west A protected. Preserve the selected-D baseline and incoming Evolution RFA. Full evidence/commands: `Architecture/M265_Selected_D_IFC_Revalidation_2026-10-31/README.md`.
 
 **Current checkpoint — M264/M263/M262, 2026-10-31 local:** Local sandbox `codex/house-design-sandbox`; no push, merge or remote state change. M264 confirms the public manufacturer pathway for selected M-06 toilet `610AA001.020` leads to ATS Spec Tool, whose public instructions require a logged-in project/spec for Revit download. No exact-SKU public family was indexed and no gated access was used. The M06 toilet remains a 2D plan proxy; A/B/M-06 remain unassigned and west A protected. M263's fresh M78 upper-suite Revit 2027.3 RVT/IFC2X3 derivative passes 32/32 twice; its source candidate passes 112/112 with sampled direct U-02 hall access/private-only U-03. M262 family intake passes 79/79 twice; RFAs remain hash-stable. See `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md` and M262/M263 records.
 
