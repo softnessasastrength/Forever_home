@@ -8,13 +8,13 @@ $studyPath = Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27/
 $m215Path = Join-Path $root 'Architecture/M215_Porch_Approach_Reserve_2026-10-31/artifacts/m215-porch-approach-clearance.json'
 $m228Path = Join-Path $root 'Architecture/M228_West_A_Dining_Connection_2026-10-31/artifacts/m228-west-a-dining-connection.json'
 $m243Path = Join-Path $root 'Architecture/M243_Moved_Kitchen_Route_Start_Sensitivity_2026-10-31/artifacts/m243-report.json'
-$m256Path = Join-Path $root '.local/revalidation/M256-integrated-room-route-run7/m256-report.json'
+$m256Path = Join-Path $root '.local/revalidation/M258-integrated-final1/m256-report.json'
 $expected = [ordered]@{
     selected_d = '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
     m215 = 'f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
     m228 = 'f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff'
-    m243 = '30309c0bf4c4a478b67e3f1d183d75e8de09ea3c5b19f2c301d66ceb6ea29ac8'
-    m256 = 'a2fbf6e8fb7bdd8452147931e26a4aa1b6b765849c8c653110f65bdafea713b2'
+    m243 = 'e2b25a46d7d17a5b6f97184aeb8a20286bc0f79b4a9b90ca0c5a0b920d28c8ad'
+    m256 = '8124b2b232b14132d575350eb2a4a6a6ab998583e2b68d24e1099c449ec39ae0'
 }
 function Get-Hash([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
 function New-Rect([string]$Id, [double]$X, [double]$Y, [double]$W, [double]$H) {

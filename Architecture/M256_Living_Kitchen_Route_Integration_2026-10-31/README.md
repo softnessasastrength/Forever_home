@@ -12,7 +12,7 @@ M256 composes three existing, source-pinned studies: the owner-directed 6 in eas
 
 | Artifact | SHA256 |
 |---|---|
-| M256 report | `a2fbf6e8fb7bdd8452147931e26a4aa1b6b765849c8c653110f65bdafea713b2` |
+| M256 report | `8124b2b232b14132d575350eb2a4a6a6ab998583e2b68d24e1099c449ec39ae0` |
 | M256 checks | `76b94025373aa8e0ad2efafb39af9c08cba47b2115ff66e99ffcd3c52b7d5be0` |
 | Generator | `2650890a5c93e08d1a34c74112008702b9005dc5cf3d2c371879b0eb42cdd96d` |
 

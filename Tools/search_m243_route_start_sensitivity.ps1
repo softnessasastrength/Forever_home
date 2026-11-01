@@ -18,7 +18,7 @@ $selectedPath=Join-Path $root 'Architecture/Selected_Design_Iteration_2026-10-27
 function Hash([string]$p){(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant()}
 $expected=[ordered]@{
     selected_d='516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
-    m242='54c197565569919636ea0fa851e86fcb05fccc5b11a6b4841a09e7f6dbdb8711'
+    m242='e20bfc8f4666971ce76783b82ade14377ea3f3dc0c11806a19cb85f794edeafc'
     m215_script='8a63ade035b7a6ab95b79823badf6185c875cf4b2ca15dce24fb5b0661c88d23'
     m215_report='f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
     m228='f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff'

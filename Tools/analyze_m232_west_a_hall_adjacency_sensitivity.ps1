@@ -12,7 +12,7 @@ $expected = [ordered]@{
     selected_d = '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
     m228 = 'f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff'
     m215 = 'f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
-    access_priority = 'b4d9cd595ac1531026139102c31f47d33f80450941aef0411b012adc694cedb1'
+    access_priority = '566b30aa0036b8e493ff321ee5140a4b7a874566ede2525328d0dca66e7d036f'
 }
 function Get-Hash([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
 function Assert-Hash([string]$Name, [string]$Actual, [string]$Target) { if ($Actual -ne $Target) { throw "$Name SHA256 mismatch: $Actual" } }

@@ -25,7 +25,7 @@ All three runs pass **15/15** checks. Retained outputs and both replays are byte
 | Artifact | SHA256 |
 |---|---|
 | `m232-checks.json` | `441E800CD299335D8F9BDAE42B09A75BA29ABBB3022BE7F7427AE5307C7B11DF` |
-| `m232-report.json` | `DD324B1B88D73902A03E33144DD4F48694FBB6839DEC86BE1F5F69623EA7A180` |
+| `m232-report.json` | `41ADF2B56DF9A6B2FF318DC98609DD1DD9636445BB1C6DCDCE0C864C05100651` |
 
 The 0.5-ft east translation yields 12 ft of M-05/M-01 shared block edge. With M228's unselected dining proposal retained, M-01 shares 10.833333 ft with dining, and dining shares 9.5 ft with west A. The moved living block keeps its 240 sf gross area, does not overlap the screened room blocks or any M215 36-in route swept rectangle, and remains 0.5 ft from the nearest route proxy.
 

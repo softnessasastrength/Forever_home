@@ -8,7 +8,7 @@
 
 | Artifact | SHA256 |
 |---|---|
-| Report | `b6cce5a46df3344a859032c8be5d8af6d4f71fb812255ff3643c69baa24da905` |
+| Report | `ef82eb34d8826ce4b2fa7d84082da0a5c627ac2b0e52290cf03757a3b2e932e4` |
 | Checks | `f7a07aa0d526435771f236db7babcfdd2ca34ea20c1cb2553f62c6b260741d31` |
 | SVG | `f8588918fd0803b2ddc13bedfb40dc7331f38338ef99289ccf6e0b63956d59ad` |
 | Generator | `db888bd1ac0e3d13e9a5994a62c9d18f74a36c307dcb3aecf423c2b3b535393c` |
@@ -24,7 +24,7 @@ The SVG makes the gap and route endpoints explicit:
 From the repository root in Windows PowerShell 5.1, first generate M256's pinned report, then run M257 twice:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/verify_m256_living_kitchen_route_integration.ps1 -OutputDirectory .local/revalidation/M256-integrated-room-route-run7
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/verify_m256_living_kitchen_route_integration.ps1 -OutputDirectory .local/revalidation/M258-integrated-final1
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/audit_m257_living_to_porch_route_endpoints.ps1 -OutputDirectory .local/revalidation/M257-endpoint-run2
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/audit_m257_living_to_porch_route_endpoints.ps1 -OutputDirectory .local/revalidation/M257-endpoint-run3
 ```

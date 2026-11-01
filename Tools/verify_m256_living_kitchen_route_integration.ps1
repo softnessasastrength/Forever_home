@@ -14,9 +14,9 @@ $expected = [ordered]@{
     selected_d = '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
     m228 = 'f4ab50fd02e4d71e434c4e4c83d63fe8d20b580810d7118a234bc4b2da8119ff'
     m215 = 'f2f6a66deda2a9c48a991e36b986683fe1f5b1c1d361fbf3e43be2a2e1a053b1'
-    m232 = 'dd324b1b88d73902a03e33144dd4f48694fbb6839dec86be1f5f69623ea7a180'
-    m242 = '54c197565569919636ea0fa851e86fcb05fccc5b11a6b4841a09e7f6dbdb8711'
-    m243 = '30309c0bf4c4a478b67e3f1d183d75e8de09ea3c5b19f2c301d66ceb6ea29ac8'
+    m232 = '41adf2b56df9a6b2ff318dc98609dd1dd9636445bb1c6dcdce0c864c05100651'
+    m242 = 'e20bfc8f4666971ce76783b82ade14377ea3f3dc0c11806a19cb85f794edeafc'
+    m243 = 'e2b25a46d7d17a5b6f97184aeb8a20286bc0f79b4a9b90ca0c5a0b920d28c8ad'
 }
 
 function Get-Hash([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }

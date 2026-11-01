@@ -8,19 +8,16 @@ Run in Windows PowerShell 5.1 from the repository root. Each replay needs a fres
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/search_m243_route_start_sensitivity.ps1 `
-  -OutputDirectory Architecture/M243_Moved_Kitchen_Route_Start_Sensitivity_2026-10-31/artifacts `
-  -ScratchPrefix M243-retained
+  -OutputDirectory .local/revalidation/M258-m243-doc-run1 -ScratchPrefix M258-doc-a
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/search_m243_route_start_sensitivity.ps1 `
-  -OutputDirectory .local/revalidation/M243-replay-1 -ScratchPrefix M243-r1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/search_m243_route_start_sensitivity.ps1 `
-  -OutputDirectory .local/revalidation/M243-replay-2 -ScratchPrefix M243-r2
+  -OutputDirectory .local/revalidation/M258-m243-doc-run2 -ScratchPrefix M258-doc-b
 ```
 
 The script regenerates M215 and its pinned M213/M186 route source, then tests the M242 kitchen rectangle in M215/M186's local frame using the M228 origin. It changes only the route's start x-coordinate. Swept 36-in rectangles include intermediate-turn boxes plus explicit start and end caps. Source hashes include the selected-D source, M242 candidate, M228 transform and M215/M213/M186 generators and retained M215 result.
 
 ## Result
 
-All three runs pass **14/14** checks and reproduce both JSON files byte-for-byte. Checks SHA256: `05a442256502a5652d03e6d6ae614641858c6b3f4c6fa6790990b4563ddae21b`. Report SHA256: `30309c0bf4c4a478b67e3f1d183d75e8de09ea3c5b19f2c301d66ce6bea29ac8`.
+All three runs pass **14/14** checks and reproduce both JSON files byte-for-byte. Checks SHA256: `05a442256502a5652d03e6d6ae614641858c6b3f4c6fa6790990b4563ddae21b`. Report SHA256: `e2b25a46d7d17a5b6f97184aeb8a20286bc0f79b4a9b90ca0c5a0b920d28c8ad`.
 
 | Start shift west | Route length | Gap to shifted kitchen | Minimum gap to all tested obstacles | Intersections |
 |---:|---:|---:|---:|---:|

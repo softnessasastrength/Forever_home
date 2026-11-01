@@ -16,7 +16,7 @@ The PowerShell 5.1 script pins selected-D, M215 route, M228 coordinate-frame ori
 
 ## Result
 
-All three runs pass **13/13** checks; report/check JSON match byte-for-byte. Checks SHA256: `44b68032dd98186920373ac4bd4b82fd204c15bc979094a44ab877d81eb0c5b3`. Report SHA256: `54c197565569919636ea0fa851e86fcb05fccc5b11a6b4841a09e7f6dbdb8711`.
+All three runs pass **13/13** checks; report/check JSON match byte-for-byte. Checks SHA256: `44b68032dd98186920373ac4bd4b82fd204c15bc979094a44ab877d81eb0c5b3`. Report SHA256: `e20bfc8f4666971ce76783b82ade14377ea3f3dc0c11806a19cb85f794edeafc`.
 
 | Measure | Selected-D M-02 block | Candidate M-02, 6 in west |
 |---|---:|---:|
