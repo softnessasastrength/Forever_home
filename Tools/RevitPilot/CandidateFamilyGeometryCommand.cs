@@ -149,6 +149,56 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
         Math.Round(point.X * 12, 4), Math.Round(point.Y * 12, 4), Math.Round(point.Z * 12, 4)
     };
 
+    private static object InspectFamilyConnectors(Document familyDocument)
+    {
+        var connectorElements = new FilteredElementCollector(familyDocument)
+            .OfClass(typeof(ConnectorElement))
+            .Cast<ConnectorElement>()
+            .OrderBy(connector => connector.Id.Value)
+            .Select(connector =>
+            {
+                Transform? coordinateSystem = null;
+                try { coordinateSystem = connector.CoordinateSystem; } catch { }
+                return new
+                {
+                    element_id = connector.Id.Value,
+                    unique_id = connector.UniqueId,
+                    category = connector.Category?.Name,
+                    domain = connector.Domain.ToString(),
+                    system_classification = connector.SystemClassification.ToString(),
+                    direction = connector.Direction.ToString(),
+                    shape = connector.Shape.ToString(),
+                    is_primary = connector.IsPrimary,
+                    origin_family_in = PointInches(connector.Origin),
+                    basis_x = coordinateSystem is null ? null : new[]
+                    {
+                        Math.Round(coordinateSystem.BasisX.X, 6), Math.Round(coordinateSystem.BasisX.Y, 6), Math.Round(coordinateSystem.BasisX.Z, 6)
+                    },
+                    basis_y = coordinateSystem is null ? null : new[]
+                    {
+                        Math.Round(coordinateSystem.BasisY.X, 6), Math.Round(coordinateSystem.BasisY.Y, 6), Math.Round(coordinateSystem.BasisY.Z, 6)
+                    },
+                    basis_z = coordinateSystem is null ? null : new[]
+                    {
+                        Math.Round(coordinateSystem.BasisZ.X, 6), Math.Round(coordinateSystem.BasisZ.Y, 6), Math.Round(coordinateSystem.BasisZ.Z, 6)
+                    },
+                    radius_in = Inches(() => connector.Radius),
+                    width_in = Inches(() => connector.Width),
+                    height_in = Inches(() => connector.Height)
+                };
+            })
+            .ToList();
+
+        return new
+        {
+            status = connectorElements.Count == 0 ? "no_family_connector_elements" : "family_connector_elements_measured",
+            source_document_is_family = familyDocument.IsFamilyDocument,
+            count = connectorElements.Count,
+            connectors = connectorElements,
+            project_instances_or_service_network_tested = false
+        };
+    }
+
     private static object PlaceOnVerticalTestWall(Document target, FamilySymbol symbol)
     {
         var wallType = new FilteredElementCollector(target).OfClass(typeof(WallType)).Cast<WallType>()
@@ -333,6 +383,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
             string? familyCategory;
             string placementType;
             Family loadedFamily;
+            object familyConnectors;
             using (var familyDocument = app.OpenDocumentFile(familyPath))
             {
                 var sourceFamily = familyDocument.OwnerFamily
@@ -346,6 +397,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                     : revitFamilyName;
                 familyCategory = sourceFamily.FamilyCategory?.Name;
                 placementType = sourceFamily.FamilyPlacementType.ToString();
+                familyConnectors = InspectFamilyConnectors(familyDocument);
                 loadedFamily = familyDocument.LoadFamily(target)
                     ?? throw new InvalidOperationException("FamilyDocument.LoadFamily(target) returned no family.");
             }
@@ -405,6 +457,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                 placement_type = placementType,
                 type_count = types.Count,
                 types,
+                family_connectors = familyConnectors,
                 host_probe = hostProbe,
                 limitations = new[]
                 {
