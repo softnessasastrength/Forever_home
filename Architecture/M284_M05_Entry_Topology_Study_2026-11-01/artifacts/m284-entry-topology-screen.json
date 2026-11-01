@@ -1,0 +1,345 @@
+{
+  "schema": "forever-home-m284-entry-topology-screen-v1",
+  "status": "pass; analysis-only; no layout or entry orientation selected",
+  "method": "Quarter-foot translations of M01/M02 retain source orientations, dimensions, areas, and Y coordinate; connected candidates share the full M01 east edge with M02 west edge. M03/M04 and protected-A/unassigned-B rectangles stay fixed. Front M05 candidates stay on its source Y row; north/east candidates touch the corresponding test-shell edge. Select minimum sum of block-origin translation, then minimum maximum block translation, with stable coordinate tie-breaks. Positive overlap is tested with a 0.000001-ft per-axis tolerance; this filters the source\u0027s approximately 0.000004-sf floating-point edge sliver between M01 and M05.",
+  "source_hashes_sha256": {
+    "m282_snapshot": "12145EBDF1C065804179242750ABE3D80917F8F23B8DA71B256495B387122910",
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "m05_move_authorization": "24182CC002ACCD2F661FE2AD14CA7B11B7AFE6770B741572DBDFD8D5FF5417BE",
+    "m05_topology_scope": "7D41C06605A45A52C9EF8C8CD1DE83A9CAD33F1C271D5B1CD0905968B73696E3",
+    "m06_west_a_protection": "A5CF98360B75314F4D3486F925E9D860465BB33D1ECFCE9B0CBB39CE0EFF853B"
+  },
+  "shell_ft": [
+    40,
+    42
+  ],
+  "source_blocks": {
+    "living": {
+      "Id": "M-01-living-M256-east-6in",
+      "X": 1.166667,
+      "Y": 0.666667,
+      "W": 16,
+      "D": 15,
+      "Area": 240
+    },
+    "kitchen": {
+      "Id": "M-02-kitchen-M256-west-6in",
+      "X": 21.5,
+      "Y": 0.6666666666666666,
+      "W": 17.333333333333332,
+      "D": 16,
+      "Area": 277.3333333333333
+    },
+    "dining": {
+      "Id": "M-03-dining-source",
+      "X": 0.6666666666666666,
+      "Y": 16.166666666666668,
+      "W": 11.333333333333334,
+      "D": 14,
+      "Area": 158.66666666666669
+    },
+    "pantry": {
+      "Id": "M-04-pantry-source-5x7",
+      "X": 34.333333333333336,
+      "Y": 17.166666666666668,
+      "W": 5,
+      "D": 7,
+      "Area": 35
+    },
+    "M05": {
+      "Id": "M-05-entry-hall-source",
+      "X": 17.166666666666668,
+      "Y": 0.6666666666666666,
+      "W": 4.333333333333333,
+      "D": 12,
+      "Area": 52
+    },
+    "protected_A": {
+      "Id": "protected-A",
+      "X": 12,
+      "Y": 16.166666666666668,
+      "W": 5.166666666666668,
+      "D": 11.416666666666664,
+      "Area": 58.986111111111114
+    },
+    "unassigned_B": {
+      "Id": "unassigned-B",
+      "X": 21.166666666666668,
+      "Y": 17.166666666666668,
+      "W": 13.166666666666668,
+      "D": 7,
+      "Area": 92.16666666666667
+    }
+  },
+  "outcomes": {
+    "baseline": {
+      "id": "path-1-source-baseline",
+      "description": "Current M01/M02/M05 blocks; no shared-edge kitchen/living connection",
+      "selected": false,
+      "living": {
+        "Id": "M-01-living-M256-east-6in",
+        "X": 1.166667,
+        "Y": 0.666667,
+        "W": 16,
+        "D": 15,
+        "Area": 240
+      },
+      "kitchen": {
+        "Id": "M-02-kitchen-M256-west-6in",
+        "X": 21.5,
+        "Y": 0.6666666666666666,
+        "W": 17.333333333333332,
+        "D": 16,
+        "Area": 277.3333333333333
+      },
+      "entry": {
+        "Id": "M-05-entry-hall-source",
+        "X": 17.166666666666668,
+        "Y": 0.6666666666666666,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52
+      },
+      "living_translation_ft": [
+        0,
+        0
+      ],
+      "kitchen_translation_ft": [
+        0,
+        0
+      ],
+      "entry_translation_ft": [
+        0,
+        0
+      ],
+      "total_translation_ft": 0,
+      "living_kitchen_shared_edge_ft": 0,
+      "entry_gap_to_M04_in": 163.193,
+      "entry_gap_to_protected_A_in": 42,
+      "entry_gap_to_unassigned_B_in": 54,
+      "static_positive_area_overlap": false,
+      "entry_door_approach_and_service_route_verified": false
+    },
+    "front_south": {
+      "id": "path-2-south-entry-room-move",
+      "description": "Presumed south/front-side M05 row; M01/M02 translated to share an edge",
+      "selected": false,
+      "living": {
+        "Id": "M-01-living-M256-east-6in",
+        "X": 5.41666667,
+        "Y": 0.666667,
+        "W": 16,
+        "D": 15,
+        "Area": 240
+      },
+      "kitchen": {
+        "Id": "M-02-kitchen-M256-west-6in",
+        "X": 21.416666669999998,
+        "Y": 0.6666666666666666,
+        "W": 17.333333333333332,
+        "D": 16,
+        "Area": 277.3333333333333
+      },
+      "entry": {
+        "Id": "M-05-entry-hall-source",
+        "X": 0.91666667,
+        "Y": 0.6666666666666666,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52
+      },
+      "living_translation_ft": [
+        4.25,
+        0
+      ],
+      "kitchen_translation_ft": [
+        -0.083333,
+        0
+      ],
+      "entry_translation_ft": [
+        -16.25,
+        0
+      ],
+      "total_translation_ft": 20.583333,
+      "living_kitchen_shared_edge_ft": 15,
+      "entry_gap_to_M04_in": 353.153,
+      "entry_gap_to_protected_A_in": 91.241,
+      "entry_gap_to_unassigned_B_in": 198.487,
+      "static_positive_area_overlap": false,
+      "entry_door_approach_and_service_route_verified": false
+    },
+    "north_rear_edge": {
+      "id": "path-3-north-edge-entry",
+      "description": "North/rear test-shell edge; M01/M02 translated to share an edge",
+      "selected": false,
+      "living": {
+        "Id": "M-01-living-M256-east-6in",
+        "X": 1.41666667,
+        "Y": 0.666667,
+        "W": 16,
+        "D": 15,
+        "Area": 240
+      },
+      "kitchen": {
+        "Id": "M-02-kitchen-M256-west-6in",
+        "X": 17.41666667,
+        "Y": 0.6666666666666666,
+        "W": 17.333333333333332,
+        "D": 16,
+        "Area": 277.3333333333333
+      },
+      "entry": {
+        "Id": "M-05-entry-hall-source",
+        "X": 17.25,
+        "Y": 30,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52
+      },
+      "living_translation_ft": [
+        0.25,
+        0
+      ],
+      "kitchen_translation_ft": [
+        -4.083333,
+        0
+      ],
+      "entry_translation_ft": [
+        0.083333,
+        29.333333
+      ],
+      "total_translation_ft": 33.75,
+      "living_kitchen_shared_edge_ft": 15,
+      "entry_gap_to_M04_in": 168.253,
+      "entry_gap_to_protected_A_in": 29.017,
+      "entry_gap_to_unassigned_B_in": 70,
+      "static_positive_area_overlap": false,
+      "entry_door_approach_and_service_route_verified": false
+    },
+    "east_side_edge": {
+      "id": "path-3-east-edge-entry",
+      "description": "East-side test-shell edge; M01/M02 translated to share an edge",
+      "selected": false,
+      "living": {
+        "Id": "M-01-living-M256-east-6in",
+        "X": 1.41666667,
+        "Y": 0.666667,
+        "W": 16,
+        "D": 15,
+        "Area": 240
+      },
+      "kitchen": {
+        "Id": "M-02-kitchen-M256-west-6in",
+        "X": 17.41666667,
+        "Y": 0.6666666666666666,
+        "W": 17.333333333333332,
+        "D": 16,
+        "Area": 277.3333333333333
+      },
+      "entry": {
+        "Id": "M-05-entry-hall-source",
+        "X": 35.666666666666664,
+        "Y": 0.75,
+        "W": 4.333333333333333,
+        "D": 12,
+        "Area": 52
+      },
+      "living_translation_ft": [
+        0.25,
+        0
+      ],
+      "kitchen_translation_ft": [
+        -4.083333,
+        0
+      ],
+      "entry_translation_ft": [
+        18.5,
+        0.083333
+      ],
+      "total_translation_ft": 22.916666,
+      "living_kitchen_shared_edge_ft": 15,
+      "entry_gap_to_M04_in": 53,
+      "entry_gap_to_protected_A_in": 225.754,
+      "entry_gap_to_unassigned_B_in": 55.362,
+      "static_positive_area_overlap": false,
+      "entry_door_approach_and_service_route_verified": false
+    },
+    "valid_connected_room_pair_positions": 20,
+    "all_candidates_selected": false
+  },
+  "checks": {
+    "passed": 15,
+    "total": 15,
+    "status": "pass",
+    "details": [
+      {
+        "id": "source snapshot hash is pinned",
+        "pass": true
+      },
+      {
+        "id": "selected-D source hash is pinned and unchanged",
+        "pass": true
+      },
+      {
+        "id": "three-path owner scope is recorded",
+        "pass": true
+      },
+      {
+        "id": "M01 source area and footprint preserved",
+        "pass": true
+      },
+      {
+        "id": "M02 source area and footprint preserved",
+        "pass": true
+      },
+      {
+        "id": "M05 source area and footprint preserved",
+        "pass": true
+      },
+      {
+        "id": "source baseline remains separate and non-adjacent",
+        "pass": true
+      },
+      {
+        "id": "front candidate creates positive shared-edge opportunity",
+        "pass": true
+      },
+      {
+        "id": "north candidate creates positive shared-edge opportunity",
+        "pass": true
+      },
+      {
+        "id": "east candidate creates positive shared-edge opportunity",
+        "pass": true
+      },
+      {
+        "id": "all candidate blocks remain in test shell",
+        "pass": true
+      },
+      {
+        "id": "all candidate blocks avoid positive-area overlap with fixed M03/M04/A/B",
+        "pass": true
+      },
+      {
+        "id": "west A and B are not assigned or consumed",
+        "pass": true
+      },
+      {
+        "id": "no entry door, approach, route, or service fit is claimed",
+        "pass": true
+      },
+      {
+        "id": "selected-D baseline source file remains unchanged",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "South/front/north/east labels refer only to the schematic coordinate axes; no site orientation or exterior fa\u00E7ade is verified.",
+    "A zero-width shared boundary is only a room-block adjacency opportunity. No wall, opening span, header, structural support, door, approach, or continuous route is modeled.",
+    "Static rectangles omit wall thickness, furniture, occupant use, porch, site, utilities, and full clearance rules. A positive rectangle gap is not a required clearance standard.",
+    "M05 north/east contact is a shell-edge sensitivity, not an exterior entry design. No weather protection, landing, threshold, door swing, or egress is checked.",
+    "M-06/A/B are not assigned. Protected west A and unassigned B remain reserved rectangles only.",
+    "No dimensions or areas change in source selected-D; these positions are unselected analysis outputs only. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows."
+  ]
+}

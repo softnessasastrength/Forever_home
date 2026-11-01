@@ -1,0 +1,68 @@
+{
+  "schema": "forever-home-m284-checks-v1",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "id": "source snapshot hash is pinned",
+      "pass": true
+    },
+    {
+      "id": "selected-D source hash is pinned and unchanged",
+      "pass": true
+    },
+    {
+      "id": "three-path owner scope is recorded",
+      "pass": true
+    },
+    {
+      "id": "M01 source area and footprint preserved",
+      "pass": true
+    },
+    {
+      "id": "M02 source area and footprint preserved",
+      "pass": true
+    },
+    {
+      "id": "M05 source area and footprint preserved",
+      "pass": true
+    },
+    {
+      "id": "source baseline remains separate and non-adjacent",
+      "pass": true
+    },
+    {
+      "id": "front candidate creates positive shared-edge opportunity",
+      "pass": true
+    },
+    {
+      "id": "north candidate creates positive shared-edge opportunity",
+      "pass": true
+    },
+    {
+      "id": "east candidate creates positive shared-edge opportunity",
+      "pass": true
+    },
+    {
+      "id": "all candidate blocks remain in test shell",
+      "pass": true
+    },
+    {
+      "id": "all candidate blocks avoid positive-area overlap with fixed M03/M04/A/B",
+      "pass": true
+    },
+    {
+      "id": "west A and B are not assigned or consumed",
+      "pass": true
+    },
+    {
+      "id": "no entry door, approach, route, or service fit is claimed",
+      "pass": true
+    },
+    {
+      "id": "selected-D baseline source file remains unchanged",
+      "pass": true
+    }
+  ]
+}
