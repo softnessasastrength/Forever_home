@@ -1,3 +1,10 @@
+## M315 — Provisional floor-plate IFC2x3 export gate — 2026-11-01
+
+- Added a RevitPilot export command for the M314 derivative. The exact project-local DLL is `.local/revit-pilot/main-floor-floor-plate-ifc-v2/Release/net10.0-windows/RevitPilot.dll` (SHA256 `443C9793C9141DC330331C313055490EBCABF7C836B6810A3D3DC88B6BD98A4F`); manifest backup: `.local/revit-pilot/registration-backups/20261101170914/`.
+- Revit 2027.3 exported the M314 derivative through the IFC2x3 API after **Load Once**. IFC: `.local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/ifc2x3/FH_Main_Floor_Candidate_21_with_provisional_plates.ifc`; 225,716 bytes; SHA256 `B6F5AB90CDD907485F6D3BE8CFA4611108EAD3ED2FCFC87D48B2CCBDE98179C2`.
+- `Tools/RevitPilot/validate_main_floor_floor_plate_ifc.ps1` passes **6/6**: manifest hash, non-empty output, STEP header, IFC2X3 schema, 42 `IFCWALL` entities, and 3 `IFCSLAB` entities.
+- This remains disposable export evidence. The template floor type is not selected, and no Selected-D edit, M-06/B assignment, stair/section resolution, opening/door conclusion, code-compliance claim, structural claim, professional approval, or construction-readiness claim follows.
+
 ## M314 — Provisional native main-floor plate comparison — 2026-11-01
 
 - Added a narrowly scoped RevitPilot command that reopens the hash-pinned M313 candidate, verifies its source RVT hash and 42-wall inventory, and writes a disposable derivative with three native floor plates. The exact project-local DLL is `.local/revit-pilot/main-floor-floor-plate-v1/Release/net10.0-windows/RevitPilot.dll` (SHA256 `67FA2BEF7E15D4B3A585A2F81750878E9C922BBA0B7C6E86201E05D3C20E0A1B`); the authorized AddInId manifest backup is `.local/revit-pilot/registration-backups/20261101170605/`.
