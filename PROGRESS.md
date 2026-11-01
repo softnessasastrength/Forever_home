@@ -3138,3 +3138,13 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Extended `Tools/validate_verified_bim_milestone.ps1` with the M325 native stair validator output and added the M325 RVT/IFC evidence to `Architecture/Verified_BIM_Milestone_2026-11-01.md`.
 - The consolidated gate now covers the existing six evidence gates plus the disposable native stair gate; it remains an evidence-chain check, not a selected design or professional approval.
 
+## M327 — Compact-core native house derivative audit/export — 2026-11-01
+
+- Rebuilt the existing compact-core candidate in Revit 2027.3 using the exact current-worktree RevitPilot DLL (`0B7680062A56808FEECE876AE9C5E6AFA48F63EE45101129632ED6F4B6AC4163`; AddInId unchanged; prior registration manifests preserved under ignored `.local/revit-pilot/registration-backups/`). The run is disposable and does not open or modify Selected-D.
+- Study: `.local/revit-pilot/compact-core/20261101T230538811Z/`; saved RVT SHA256 `b451ec48c7ff054e059fdad75ba69ba4362c48f0fa25483171553bf3e426a420`.
+- Read-only native audit: `.local/revit-pilot/audits/20261101T231446339Z/`; Revit 2027.3 build 27.3.0.28, three levels at -5/0/+5 ft, 17 enclosed rooms, 78 walls, five nominal doors, two native stairs, three floors, zero native warnings.
+- Geometry QA: `.local/revit-pilot/geometry-qa/20261101T231509294Z/`; zero issues, errors and warnings. It checks native room enclosure, duplicate wall centerlines, stair risers/elevations, door hosts, floor markers/areas/types, required study markers and warning inventory.
+- Configured exports: `.local/revit-pilot/exports/20261101T231519726Z/`; IFC2x3, six DWG/PCP plan files, PDF review packet and room CSV all non-empty. IFC2x3 SHA256 `d715aa2c69e4eb384da219f3b5db92f20c57c9a531c2458ff7e96ecb9a0120ba`.
+- Independent validation: `validate_compact_manifest.py` passes; `validate_compact_ifc.py` reports **PASS with open coordination findings**, no errors, clean IFC2X3 schema, matching three storeys/17 spaces, matching room CSV and decoded physical geometry. One informational `IfcAnnotation` decode exception remains; physical-product decode failures are zero.
+- Findings retained rather than hidden: provisional room-area variances, and the upper stair-to-floor bounding-box gap of 5.625 ft. These are compact-core review issues, not Selected-D edits. No roof, selected floor assemblies, clear opening/swing/accessibility, structural/MEP, code, permit or construction-readiness claim follows.
+

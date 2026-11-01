@@ -16,6 +16,7 @@ This is the current local-sandbox handoff for the Forever Home architectural BIM
 | M-06 envelope screen | M320 | Current-SKU plan proxy plus research lavatories: 14/14 checks and 16/16 gross containment pairs. B remains unassigned. |
 | M-02 island furnishing IFC | M321 | Isolated Revit 2027.3 furnishing derivative passes IFC2x3 validation 13/13 with matching audit/export lineage. |
 | Native split-rise stair study | M325 | Disposable Revit 2027.3 derivative contains two native stairs with four risers each across 0/2.5/5 ft datums; RVT hash and IFC2x3 stair export pass 15/15. |
+| Compact-core native house derivative | M327 | Disposable Revit 2027.3 candidate audit records 17 rooms/78 walls/5 nominal doors/2 native stairs/3 floors with zero warnings; geometry QA has 0 issues; IFC2x3/DWG/PDF/CSV exports are non-empty and independent IFC validation passes with no errors. |
 | Offline RevitPilot contracts | Current checked-in test suite | 49/49 tests pass; RevitPilot build completes with zero errors and the repository's existing Autodesk reference-conflict warnings. |
 
 ## Reproduction commands
@@ -42,6 +43,14 @@ python Tools/RevitPilot/validate_kitchen_island_ifc.py `
 pwsh -NoProfile -File Tools/RevitPilot/validate_m324_native_stair_ifc.ps1 `
   -StudyDirectory .local/revit-pilot/split-rise-native-stair/20261101T225749874Z
 
+python Tools/RevitPilot/validate_compact_manifest.py `
+  .local/revit-pilot/compact-core/20261101T230538811Z/study-manifest.json
+
+python Tools/RevitPilot/validate_compact_ifc.py `
+  .local/revit-pilot/exports/20261101T231519726Z `
+  .local/revit-pilot/compact-core/20261101T230538811Z `
+  --report .local/revit-pilot/exports/20261101T231519726Z/ifc-validation.json
+
 pwsh -NoProfile -File Tools/validate_verified_bim_milestone.ps1
 ```
 
@@ -51,6 +60,7 @@ The Revit-dependent runs require Revit 2027/2027.3 and the exact hash-verified p
 
 - Selected-D remains a 21-space room-boundary study, not a finished house model.
 - Native wall, floor and stair candidates are disposable comparisons; wall types, layered floor assemblies, openings, doors, stairs, roof assemblies, structure, MEP, finishes and site geometry are not selected.
+- The M327 compact-core derivative is a valid native coordination test, not the selected house: it retains provisional floor types, generic nominal doors and a documented upper-stair landing gap.
 - The stair/section and floor-to-floor relationship remains unresolved. The 8–10 ft values are clear-height study alternatives, not storey spacing.
 - M-06 exact current-SKU family geometry, finished-face clearance, door/approach, and a plausible water/waste/vent service route remain unproven. Keep A protected and B unassigned.
 - Kitchen/living/dining/pantry openings and furniture routes remain schematic; the isolated M-02 furnishing derivative is not a whole-house coordination result.

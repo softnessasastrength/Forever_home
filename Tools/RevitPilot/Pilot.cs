@@ -12,6 +12,22 @@ namespace ForeverHome.Pilot;
 
 internal sealed record SavedModelFingerprint(string algorithm, string sha256, string file_name, long bytes);
 
+internal static class WorkspaceLocator
+{
+    internal static string Find(Assembly assembly)
+    {
+        var directory = new DirectoryInfo(Path.GetDirectoryName(assembly.Location)!);
+        while (directory is not null)
+        {
+            if (Directory.Exists(Path.Combine(directory.FullName, "Project")) &&
+                Directory.Exists(Path.Combine(directory.FullName, "Tools")))
+                return directory.FullName;
+            directory = directory.Parent!;
+        }
+        throw new DirectoryNotFoundException("Could not locate the Forever_home workspace from the loaded project-local RevitPilot assembly.");
+    }
+}
+
 internal static class SavedModelIdentity
 {
     internal static SavedModelFingerprint Capture(Document doc)
@@ -48,6 +64,12 @@ public class App : IExternalApplication
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
         panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
             Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactAuditVisible", "Audit active\ncompact core",
+            Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactQaVisible", "QA active\ncompact core",
+            Assembly.GetExecutingAssembly().Location, typeof(GeometryQaCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactExportVisible", "Export compact\ncore IFC",
+            Assembly.GetExecutingAssembly().Location, typeof(ManifestExportCommand).FullName!));
         // Keep the current main-floor validation gates visible even when Revit
         // compresses the panel into a narrow ribbon strip.
         panel.AddItem(new PushButtonData("FHMainFloorCandidateIfcVisible", "Export main-floor\nIFC",
@@ -182,8 +204,7 @@ public class IslandCountertopTestCommand : IExternalCommand
             if (!string.Equals(doc.Title, ExpectedTitle, StringComparison.Ordinal))
                 throw new InvalidOperationException($"This test is restricted to '{ExpectedTitle}', not '{doc.Title}'. No elements were changed.");
             var before = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string studyPath = Path.Combine(root, "Architecture", "Selected_Design_Iteration_2026-10-27", "study.json");
             using var studyDoc = JsonDocument.Parse(File.ReadAllText(studyPath).TrimStart('\uFEFF'));
             var study = studyDoc.RootElement;
@@ -343,8 +364,7 @@ public class ApiAuditCommand : IExternalCommand
         try
         {
             var modelFingerprint = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string output = Path.Combine(root, ".local", "revit-pilot", "audits",
                 DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
@@ -496,8 +516,7 @@ public class ManifestExportCommand : IExternalCommand
 
         try
         {
-            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
-            string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string manifestDirectory = Path.Combine(root, "Tools", "RevitPilot");
             var matchingManifests = Directory.GetFiles(manifestDirectory, "export-manifest*.json")
                 .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
@@ -723,8 +742,7 @@ public class GeometryQaCommand : IExternalCommand
         try
         {
             var modelFingerprint = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string output = Path.Combine(root, ".local", "revit-pilot", "geometry-qa",
                 DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
@@ -2022,7 +2040,13 @@ public class CompactCoreCommand : IExternalCommand
         try
         {
             var doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
-            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            var workspace = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!);
+            while (workspace is not null &&
+                   !(Directory.Exists(Path.Combine(workspace.FullName, "Project")) &&
+                     Directory.Exists(Path.Combine(workspace.FullName, "Tools"))))
+                workspace = workspace.Parent;
+            if (workspace is null) throw new DirectoryNotFoundException("Could not locate the Forever_home workspace from the loaded project-local RevitPilot assembly.");
+            string root = workspace.FullName;
             string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
             var configPath = Path.Combine(root, "Tools", "RevitPilot", "compact-study-config.json");

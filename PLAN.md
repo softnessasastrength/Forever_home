@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-01 (M325 native split-rise stair host gate)
+Updated: 2026-11-01 (M327 compact-core native house derivative audit/export)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -12,11 +12,21 @@ The consolidated acceptance replay now passes 7/7, including the M325 native spl
 The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
+M327 now replays the existing compact-core generator in Revit 2027.3, then audits, QA-checks, and exports the resulting disposable native house candidate. The resulting RVT/IFC chain is valid for further design review, but the compact-core brief remains a test arrangement: three provisional floor plates, generic wall/floor types, no roof or MEP, and an explicitly open upper stair-to-floor landing gap. Selected-D is not edited or promoted.
+
 ## M325 — Disposable native split-rise stair host gate
 
 **Acceptance:** run the exact hash-checked project-local RevitPilot build in Revit 2027.3; create two native `Stairs` elements spanning 0 → 2.5 → 5 ft with four positive-riser runs each; save and reopen the disposable RVT; export IFC2x3; pass `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1`; preserve Selected-D and record the no-promotion limitation.
 
 **Current state:** `Tools/RevitPilot/SplitRiseNativeStairCommand.cs` compiles with 0 errors and 2 pre-existing MSB3277 warnings. The registered per-user manifest points only to the current-worktree build, AddInId is unchanged, the prior manifest is backed up under `.local/revit-pilot/registration-backups/20261101T225142990Z/`, and the DLL SHA256 is `C19B468F54B9079D2A8F70E6315024F0410134A37E03565041C8585F19C9FC3D`. Revit 2027.3 host execution completed in a disposable project; the latest study at `.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/` passes the validator 15/15, including two native stair elements, four risers per flight, 0/2.5/5 ft levels, a saved RVT hash, and IFC2x3 stair entities. Selected-D remains untouched.
+
+## M327 — Compact-core native house derivative audit/export
+
+**Acceptance:** regenerate the existing `Tools/RevitPilot/compact-study-config.json` candidate in Revit 2027.3 without opening or editing Selected-D; use the exact current-worktree RevitPilot DLL; run the read-only native audit and geometry QA; export IFC2x3/DWG/PDF/room CSV; validate the retained manifest and IFC lineage; record all open area and stair-coordination findings.
+
+**Result:** study `.local/revit-pilot/compact-core/20261101T230538811Z/` regenerated successfully. The saved RVT fingerprint is `b451ec48c7ff054e059fdad75ba69ba4362c48f0fa25483171553bf3e426a420`. Audit `.local/revit-pilot/audits/20261101T231446339Z/` records Revit 2027.3, three levels, 17 enclosed rooms, 78 walls, five nominal doors, two native stairs, three floors and zero native warnings. Geometry QA `.local/revit-pilot/geometry-qa/20261101T231509294Z/` passes with zero issues/errors/warnings. Export `.local/revit-pilot/exports/20261101T231519726Z/` produced non-empty IFC2x3, DWG, PDF and room CSV; IFC validation passes with schema/lineage/space/area/geometry checks and no errors. IFC SHA256 is `d715aa2c69e4eb384da219f3b5db92f20c57c9a531c2458ff7e96ecb9a0120ba`.
+
+**Open findings:** the disposable C arrangement has provisional room-area variances (including M-02 above its preliminary range, M-06 below the proposed 9 × 10 ft target, and L-02/U-01/U-03/U-04/U-05/U-06 below their study references) and a 5.625 ft upper stair-to-floor plan gap. These are review gates, not selected-D changes. The compact-core candidate has no roof, selected floor assemblies, clear-opening/swing/accessibility validation, structural/MEP coordination or code approval.
 
 ## M321 — M-02 kitchen island IFC recheck
 
