@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M260 refreshes Connecticut roof-code research against the current DAS adoption notice and 2022 CSBC: design wind/snow values are municipality-specific, and 12:12 is the upper slope in one bounded prescriptive truss path, not a global roof limit. M259's disposable Revit 2027.3 M83 RVT/IFC comparison passes 21/21 three times, while the selected-D baseline passes two 43/43 generations and retained IFC2x3 validation 26/26 with zero errors. Native house construction geometry remains absent; M-05 topology and the fully open kitchen/living connection remain unresolved.
+Status: M261's public catalog scan found multiple non-equivalent Adirondack families, but none can be identified as the owner's selected model; no download or placement was made. M260 records municipality-specific Connecticut roof inputs and the bounded scope of the 12:12 prescriptive truss provision. M259's disposable Revit 2027.3 M83 RVT/IFC comparison passes 21/21 three times, while the selected-D baseline passes two 43/43 generations and retained IFC2x3 validation 26/26 with zero errors. Native house construction geometry remains absent; M-05 topology and the fully open kitchen/living connection remain unresolved.
+
+## M261 — Recover the already-selected Adirondack chair source
+
+**Acceptance:** search public catalog/manufacturer records and local project/download areas without signing in, creating accounts, paying, or changing the selected furniture decision; distinguish catalog candidates from the owner-selected item; document exactly what evidence and input are required to inspect/fit the selected family; do not download, place, or substitute an unidentified model.
+
+**Result:** three distinct RevitCity Adirondack records and two manufacturer resource listings were found, none uniquely matches the owner's selection. RevitCity's three detail pages require login/join for downloads; no gate was crossed. A read-only recursive filename scan of Downloads and repository family intake found no Adirondack-named RFA/RVT/IFC/ZIP. No candidate was downloaded or placed. Evidence and links are in `Research/M261_Adirondack_Family_Source_Check_2026-10-31.md`.
+
+**Next gate:** owner supplies the exact selected model's URL, RevitCity object page, filename, or identifying screenshot. Once identified, follow the repository's source URL/SHA256 intake and read-only Revit family inspection workflow; any placement remains a disposable derivative. Independently, M-05 topology still requires owner direction, and patio sizing still requires site information.
 
 ## M260 — Bound the steep-gable study with Connecticut roof-code inputs
 

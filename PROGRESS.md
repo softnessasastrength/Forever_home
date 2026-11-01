@@ -1,3 +1,9 @@
+## M261 — Identify the selected Adirondack source without substituting — 2026-10-31
+
+- Public catalogs expose several non-equivalent candidates: three RevitCity object records (2010 Popular Mechanics-based chair; 2012 “larger than average” chair; and a 2014 chair/table pair) and manufacturer resource listings from NewTechWood and Loll Contract. RevitCity pages require login/join to download. No sign-in, account creation, gated download, purchase, or placement was attempted.
+- Recursive read-only scan of `C:\Users\brand\Downloads` and the repository family-intake trees found no Adirondack-named RFA/RVT/IFC/ZIP. None of the public candidates can be identified as the model previously selected by the owner; do not substitute. Sources, URLs and procedure are documented in `Research/M261_Adirondack_Family_Source_Check_2026-10-31.md`.
+- Needed to continue: exact selected item URL/object page, downloaded filename, or an identifying screenshot. Then record source URL and SHA256 and inspect that exact family read-only under `AGENTS.md`; placement stays in a disposable derivative. Patio dimensions and site fit remain unresolved.
+
 ## M260 — Refresh Connecticut roof-code input research — 2026-10-31
 
 - Checked the official DAS adoption notice and the 2022 Connecticut State Building Code with Errata #1 (amendments to 2021 IRC). DAS still reports the 2026 code effective date delayed pending Legislative Regulation Review Committee approval. CSBC IRC Table R301.2 points to Appendix AY for municipality-specific ground-snow and wind values; wind exposure is site-specific. Sample rows only: Hartford 30 psf / 120 mph, Goshen 40 psf / 115 mph. These are not assigned to the project.
