@@ -2648,3 +2648,11 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - This does not set an interior powder-room door minimum across all potentially applicable requirements, nor establish the project's accessibility/code path. No M-06 door width or swing was selected or fabricated.
 - M-06/A/B remain unassigned; west A remains protected. The door/approach comparison awaits explicit door input and actual route/finished-wall evidence; fixture spacing remains a separate screen.
 - Research note: `Research/CT_M06_Entry_Door_Basis_2026-11-01.md`. Primary sources: CT DAS adoption page/PDF and ICC 2021 IRC R311.2 chapter.
+
+## M277 - Public Pinoir M-06 lavatory lead - 2026-11-01
+
+- Verified KOHLER Pinoir K-2035-1 nominal 22 x 18 in overall dimensions and 18 x 12 in bowl area. It is wall-mounted with a pipe-hiding shroud, not a vanity or pedestal. The manufacturer says ADA compliance depends on installation to its specified requirements; no project applicability or compliance is inferred.
+- Reusing the M230 same-wall plan screen gives 6 in gross west-A width reserve and 51.25 in gross depth requirement. That matches the 22-in Evolution envelope sensitivity and does not establish finished or installed fit.
+- The BIMobject listing advertises a Revit object but requires contacting Kohler or logging in to download. No account was made and no gated file was retrieved. Exact RFA remains unavailable for host inspection.
+- Pinoir is an unselected proposal only. West A remains protected; M-06/A/B remain unassigned; selected-D/RVT/IFC and source RFAs were unchanged.
+- Evidence and limits: `Research/M277_M06_Pinoir_Lavatory_Lead_2026-11-01.md`.

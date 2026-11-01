@@ -2771,3 +2771,11 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Status:** Complete as scoped code-text research. The cited IRC requires a 32-in clear width and 78-in clear height for the required dwelling egress door, while saying other doors need not meet those dimensions. This does not establish a minimum size for the M-06 interior door under every potentially applicable provision and does not resolve accessibility or project code applicability. See `Research/CT_M06_Entry_Door_Basis_2026-11-01.md`.
 
 **Next:** use the owner's door-approach preference to compare only explicitly sourced or owner-selected door/opening inputs against fixture clearances and the hall/dining approach. Keep door geometry hypothetical until dimensions and the approach basis are established; no room assignment follows.
+
+## M277 - Research a compact traditional lavatory alternative for M-06
+
+**Acceptance:** verify product dimensions and configuration from the current manufacturer product/spec; inspect the public Revit listing without signing in or creating an account; compare only its nominal plan envelope against the pinned M230 gross-A arrangement; label the result as an unselected product lead; keep west A protected and M-06/A/B unassigned.
+
+**Status:** Complete as public-source research. KOHLER Pinoir K-2035-1 is a 22 x 18 in wall-mount basin with a pipe-hiding shroud, nominal 18 x 12 in bowl area. Under M230's same-wall 15/30/21-in screen, it leaves 6 in gross width and requires 51.25 in gross depth. This matches the 22-in Evolution proxy's gross width result and establishes no installed fit. The BIMobject listing advertises a Revit object but requires contact/login for download; no sign-in, account, or download was used. See `Research/M277_M06_Pinoir_Lavatory_Lead_2026-11-01.md`.
+
+**Next:** include Pinoir only if the owner wants a wall-mount-with-shroud type compared with pedestal and compact vanity options. Exact family geometry, finished faces, door/approach, services and project code applicability remain unresolved.
