@@ -1,8 +1,8 @@
 {
   "schema": "forever-home-m285-checks-v1",
   "status": "pass",
-  "passed": 14,
-  "total": 14,
+  "passed": 17,
+  "total": 17,
   "checks": [
     {
       "id": "selected-D source is hash-pinned and unchanged",
@@ -53,7 +53,19 @@
       "pass": true
     },
     {
+      "id": "both selected-D unassigned M-06 search windows are preserved",
+      "pass": true
+    },
+    {
+      "id": "reported examples avoid M-06 windows, including protected B",
+      "pass": true
+    },
+    {
       "id": "selected-D source file remains unchanged",
+      "pass": true
+    },
+    {
+      "id": "selected-D M-06 footprint, position, and service route remain unassigned",
       "pass": true
     },
     {

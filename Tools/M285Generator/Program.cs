@@ -22,7 +22,7 @@ internal static class Program
     {
         public double Area => W * D;
     }
-    private sealed record Candidate(string Orientation, double X, double Y, double W, double D, double ManhattanFromLegacyFt, double MinimumRoomGapIn, double CirculationOverlapSf);
+    private sealed record Candidate(string Orientation, double X, double Y, double W, double D, double ManhattanFromLegacyFt, double MinimumRoomGapIn, double CirculationOverlapSf, double ProtectedSearchOverlapSf, double MinimumProtectedWindowGapIn, string[] OverlappedProtectedWindows);
 
     private static int Main(string[] args)
     {
@@ -89,10 +89,20 @@ internal static class Program
             var rooms = blocks.Where(b => b.Kind == "room").ToArray();
             var circulation = blocks.Where(b => b.Kind == "circulation").ToArray();
             Require(rooms.Length == 7 && circulation.Length == 1, "Unexpected lower-level room/circulation inventory.");
+            var mainBath = study["selection"]?["main_public_bath"] ?? throw new InvalidDataException("Selected-D M-06 record is missing.");
+            Require(Text(mainBath["id"]) == "M-06" && Text(mainBath["footprint"]) == "TBD" && Text(mainBath["position"]) == "TBD" && Text(mainBath["service_route"]) == "TBD",
+                "Selected-D M-06 must remain unassigned with footprint, position, and service route unresolved.");
+            var searchWindows = study["selection"]?["main_public_bath"]?["search_windows"]?.AsArray() ?? throw new InvalidDataException("Selected-D M-06 search windows are missing.");
+            var protectedWindows = searchWindows.Select(w => new Rect("M06-" + Text(w?["id"]), Text(w?["label"]) ?? "Unassigned M-06 search window", "protected-search-window",
+                Num(w?["x"]), Num(w?["y"]), Num(w?["w"]), Num(w?["d"]))).ToArray();
+            Require(protectedWindows.Length == 2 && protectedWindows.All(w => w.Area > 0) && protectedWindows.All(w =>
+                Text(searchWindows.Single(j => "M06-" + Text(j?["id"]) == w.Id)?["status"])?.StartsWith("Unassigned", StringComparison.Ordinal) == true),
+                "Expected the two source-defined unassigned M-06 search windows to remain protected.");
             var shell = study["shells"]?["rear_lower"]?.AsArray() ?? throw new InvalidDataException("Selected-D lower shell is missing.");
             double shellW = Num(shell[0]);
             double shellD = Num(shell[1]);
             bool Overlap(Rect a, Rect b) => Math.Min(a.X + a.W, b.X + b.W) - Math.Max(a.X, b.X) > 1e-6 && Math.Min(a.Y + a.D, b.Y + b.D) - Math.Max(a.Y, b.Y) > 1e-6;
+            double OverlapArea(Rect a, Rect b) => Math.Max(0, Math.Min(a.X + a.W, b.X + b.W) - Math.Max(a.X, b.X)) * Math.Max(0, Math.Min(a.Y + a.D, b.Y + b.D) - Math.Max(a.Y, b.Y));
             double GapFt(Rect a, Rect b)
             {
                 double dx = Math.Max(0, Math.Max(a.X - b.X - b.W, b.X - a.X - a.W));
@@ -113,17 +123,24 @@ internal static class Program
                 double gap = rooms.Min(r => GapFt(footprint, r));
                 const double legacyX = 12.5, legacyY = 28.0;
                 double circulationOverlap = circulation.Sum(r =>
-                    Math.Max(0, Math.Min(footprint.X + footprint.W, r.X + r.W) - Math.Max(footprint.X, r.X)) *
-                    Math.Max(0, Math.Min(footprint.Y + footprint.D, r.Y + r.D) - Math.Max(footprint.Y, r.Y)));
-                candidates.Add(new Candidate(orientation, x, y, w, d, Math.Abs(x - legacyX) + Math.Abs(y - legacyY), Math.Round(gap * 12, 3), Math.Round(circulationOverlap, 3)));
+                    OverlapArea(footprint, r));
+                var windowOverlaps = protectedWindows.Where(r => OverlapArea(footprint, r) > 1e-6).ToArray();
+                double protectedOverlap = protectedWindows.Sum(r => OverlapArea(footprint, r));
+                double protectedGap = protectedWindows.Min(r => GapFt(footprint, r)) * 12;
+                candidates.Add(new Candidate(orientation, x, y, w, d, Math.Abs(x - legacyX) + Math.Abs(y - legacyY), Math.Round(gap * 12, 3), Math.Round(circulationOverlap, 3), Math.Round(protectedOverlap, 3), Math.Round(protectedGap, 3), windowOverlaps.Select(r => r.Id).ToArray()));
             }
             Require(candidates.Count > 0, "The M285 lower-level shell has no room-block-clear stair envelope; review dimensions and source geometry.");
-            var examples = new[] { candidates.OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Orientation).ThenBy(c => c.Y).ThenBy(c => c.X).First(),
-                candidates.Where(c => c.Orientation == "east-west").OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First(),
-                candidates.Where(c => c.Orientation == "north-south").OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First() };
-            var maximumRoomGap = candidates.OrderByDescending(c => c.MinimumRoomGapIn).ThenBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First();
-            var maximumGapWithoutCirculationOverlap = candidates.Where(c => c.CirculationOverlapSf <= 1e-6)
+            var protectedCandidates = candidates.Where(c => c.ProtectedSearchOverlapSf <= 1e-6).ToArray();
+            Require(protectedCandidates.Length > 0, "Every room-clear stair envelope overlaps an unassigned M-06 search window.");
+            var examples = new[] { protectedCandidates.OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Orientation).ThenBy(c => c.Y).ThenBy(c => c.X).First(),
+                protectedCandidates.Where(c => c.Orientation == "east-west").OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First(),
+                protectedCandidates.Where(c => c.Orientation == "north-south").OrderBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First() };
+            var maximumRoomGap = protectedCandidates.OrderByDescending(c => c.MinimumRoomGapIn).ThenBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).First();
+            var maximumGapWithoutCirculationOverlap = protectedCandidates.Where(c => c.CirculationOverlapSf <= 1e-6)
                 .OrderByDescending(c => c.MinimumRoomGapIn).ThenBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).FirstOrDefault()
+                ?? throw new InvalidDataException("The search found no envelope outside the circulation block.");
+            var maximumWindowGapWithoutCirculationOverlap = protectedCandidates.Where(c => c.CirculationOverlapSf <= 1e-6)
+                .OrderByDescending(c => c.MinimumProtectedWindowGapIn).ThenBy(c => c.ManhattanFromLegacyFt).ThenBy(c => c.Y).ThenBy(c => c.X).FirstOrDefault()
                 ?? throw new InvalidDataException("The search found no envelope outside the circulation block.");
             var svgExamples = examples.Append(maximumGapWithoutCirculationOverlap).ToArray();
 
@@ -141,7 +158,10 @@ internal static class Program
                 ["room-clear lower-level stair envelope candidates found"] = candidates.Count > 0,
                 ["all searched envelopes avoid positive-area overlap with lower rooms"] = true,
                 ["circulation overlap is measured independently from room-block clearance"] = examples.All(c => c.CirculationOverlapSf >= 0) && candidates.All(c => c.CirculationOverlapSf >= 0),
+                ["both selected-D unassigned M-06 search windows are preserved"] = protectedWindows.Length == 2 && protectedCandidates.All(c => c.ProtectedSearchOverlapSf <= 1e-6),
+                ["reported examples avoid M-06 windows, including protected B"] = examples.All(c => c.OverlappedProtectedWindows.Length == 0) && maximumGapWithoutCirculationOverlap.OverlappedProtectedWindows.Length == 0,
                 ["selected-D source file remains unchanged"] = Hash(sourcePath) == SelectedDHash,
+                ["selected-D M-06 footprint, position, and service route remain unassigned"] = Text(mainBath["footprint"]) == "TBD" && Text(mainBath["position"]) == "TBD" && Text(mainBath["service_route"]) == "TBD",
                 ["no room relocation, Revit stair, opening, route, or compliance result is claimed"] = true
             };
             Require(checks.Values.All(v => v), "M285 acceptance checks failed.");
@@ -152,17 +172,18 @@ internal static class Program
                 status = "pass; analysis-only section basis and lower-level stair-envelope screen; no location selected",
                 owner_selected_basis = new { preferred_risers = preferredRisers, preferred_riser_in = preferredRiserIn, total_rise_in = riseIn, proposed_study_levels_ft = new[] { -riseIn / 12.0, 0.0, riseIn / 12.0 }, selected_d_edited = false },
                 selected_d_current = new { levels_ft = new[] { lowerZ, mainZ, upperZ }, adjacent_deltas_in = new[] { lowerToMainIn, mainToUpperIn }, comparison_risers = sourceRisers, comparison_riser_in = sourceRiserIn, comparison_treads = sourceRisers - 1, rise_ft = sourceRisers * sourceRiserIn / 12.0 },
+                unassigned_m06 = new { id = Text(mainBath["id"]), footprint = Text(mainBath["footprint"]), position = Text(mainBath["position"]), service_route = Text(mainBath["service_route"]) },
                 CT_screen = new { published_max_riser_in = ctMaxRiserIn, preferred_riser_numeric_margin_in = ctMaxRiserIn - preferredRiserIn, project_code_compliance_determined = false },
                 riser_alternatives = riserAlternatives,
-                plan_envelope = new { lower_shell_ft = new[] { shellW, shellD }, preferred_stair_width_ft = WidthFt, tread_run_ft = TreadRunFt, landing_depth_ft = LandingFt, total_envelope_length_ft = EnvelopeLengthFt, search_grid_ft = Grid, lower_room_blocks_screened = rooms.Length, lower_circulation_blocks_not_treated_as_obstacles = circulation.Length, collision_tolerance_ft_per_axis = 1e-6 },
-                placement_search = new { clear_envelope_count = candidates.Count, candidates_with_at_least_6in_block_gap = candidates.Count(c => c.MinimumRoomGapIn >= 6), candidates_with_at_least_12in_block_gap = candidates.Count(c => c.MinimumRoomGapIn >= 12), candidates_without_circulation_overlap = candidates.Count(c => c.CirculationOverlapSf <= 1e-6), maximum_sampled_room_block_gap = maximumRoomGap.MinimumRoomGapIn, maximum_gap_candidate = maximumRoomGap, maximum_gap_candidate_without_circulation_overlap = maximumGapWithoutCirculationOverlap, closest_to_legacy_origin = examples[0], closest_east_west = examples[1], closest_north_south = examples[2], selected = false },
+                plan_envelope = new { lower_shell_ft = new[] { shellW, shellD }, preferred_stair_width_ft = WidthFt, tread_run_ft = TreadRunFt, landing_depth_ft = LandingFt, total_envelope_length_ft = EnvelopeLengthFt, search_grid_ft = Grid, lower_room_blocks_screened = rooms.Length, unassigned_m06_search_windows_protected = protectedWindows, lower_circulation_blocks_not_treated_as_obstacles = circulation.Length, collision_tolerance_ft_per_axis = 1e-6 },
+                placement_search = new { room_clear_candidate_count = candidates.Count, candidates_overlapping_protected_m06_window = candidates.Count(c => c.ProtectedSearchOverlapSf > 1e-6), protected_window_overlap_counts = protectedWindows.Select(w => new { window_id = w.Id, candidate_count = candidates.Count(c => c.OverlappedProtectedWindows.Contains(w.Id, StringComparer.Ordinal)) }).ToArray(), candidates_preserving_both_m06_windows = protectedCandidates.Length, candidates_with_at_least_6in_block_gap = protectedCandidates.Count(c => c.MinimumRoomGapIn >= 6), candidates_with_at_least_12in_block_gap = protectedCandidates.Count(c => c.MinimumRoomGapIn >= 12), candidates_with_at_least_6in_m06_window_gap = protectedCandidates.Count(c => c.MinimumProtectedWindowGapIn >= 6), candidates_with_at_least_12in_m06_window_gap = protectedCandidates.Count(c => c.MinimumProtectedWindowGapIn >= 12), candidates_without_circulation_overlap = protectedCandidates.Count(c => c.CirculationOverlapSf <= 1e-6), maximum_sampled_room_block_gap = maximumRoomGap.MinimumRoomGapIn, maximum_gap_candidate = maximumRoomGap, maximum_gap_candidate_without_circulation_overlap = maximumGapWithoutCirculationOverlap, maximum_m06_window_gap_without_circulation_overlap = maximumWindowGapWithoutCirculationOverlap, closest_to_legacy_origin = examples[0], closest_east_west = examples[1], closest_north_south = examples[2], selected = false },
                 source_hashes_sha256 = hashes,
                 checks = new { passed = checks.Count(v => v.Value), total = checks.Count, status = "pass", details = checks.Select(v => new { id = v.Key, pass = v.Value }).ToArray() },
                 limitations = new[]
                 {
                     "The DD-013 43.5-in rise is the owner's selected study basis, not a final floor elevation or approved stair placement.",
                     "The 60-in selected-D levels and B-derived eight-riser plan remain unchanged source comparisons; the 15-in floor-assembly value is only a planning placeholder.",
-                    "The scan uses room rectangles, a 0.25-ft grid and the preferred clear width/landing/tread references. It ignores wall thickness, doors, furniture, structural support, headroom, transitions, and connection to a continuous route.",
+                    "The scan uses room rectangles, the selected-D unassigned M-06 search windows as protected zones, a 0.25-ft grid and the preferred clear width/landing/tread references. It ignores wall thickness, doors, furniture, structural support, headroom, transitions, and connection to a continuous route.",
                     "A rectangle-clear candidate may still have zero gap to a room block; its nearest block gap is reported, not treated as a required clearance. Overlap with the source circulation block is measured separately because it may require reshaping circulation or changing the stair envelope.",
                     "No Revit stair, floor opening, wall, room move, code finding, professional approval, or construction-readiness result is produced."
                 }
@@ -171,7 +192,7 @@ internal static class Program
             Directory.CreateDirectory(output);
             WriteJson(Path.Combine(output, "m285-vertical-section-screen.json"), report);
             WriteJson(Path.Combine(output, "m285-checks.json"), checkFile);
-            File.WriteAllText(Path.Combine(output, "m285-lower-stair-search.svg"), MakeSvg(rooms, circulation, svgExamples, shellW, shellD), new UTF8Encoding(false));
+            File.WriteAllText(Path.Combine(output, "m285-lower-stair-search.svg"), MakeSvg(rooms, circulation, protectedWindows, svgExamples, shellW, shellD), new UTF8Encoding(false));
             File.WriteAllText(Path.Combine(output, "m285-level-comparison.svg"), MakeSectionSvg(), new UTF8Encoding(false));
             Console.WriteLine($"M285 {checks.Count}/{checks.Count} checks passed; clear stair envelopes={candidates.Count}; no placement selected.");
             return 0;
@@ -181,14 +202,14 @@ internal static class Program
         catch (Exception ex) { Console.Error.WriteLine($"M285 FAILED: {ex}"); return 1; }
     }
 
-    private static string MakeSvg(Rect[] rooms, Rect[] circulation, Candidate[] examples, double shellW, double shellD)
+    private static string MakeSvg(Rect[] rooms, Rect[] circulation, Rect[] protectedWindows, Candidate[] examples, double shellW, double shellD)
     {
         const double scale = 9, pad = 25, panelGap = 28;
         double pw = shellW * scale + 2 * pad, ph = shellD * scale + 48;
         double width = pw * examples.Length + panelGap * (examples.Length - 1), height = ph + 25;
         var s = new StringBuilder();
         s.AppendLine($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(width)}\" height=\"{F(height)}\" viewBox=\"0 0 {F(width)} {F(height)}\">");
-        s.AppendLine("<style>text{font:11px Arial,sans-serif}.title{font-weight:bold;font-size:13px}.room{fill:#dce8ed;stroke:#24566c}.circulation{fill:#f1d9d9;stroke:#9a3030;stroke-dasharray:3 2}.stair{fill:#f5e5b8;stroke:#7c5d11;stroke-width:2}.shell{fill:none;stroke:#222;stroke-width:2}</style>");
+        s.AppendLine("<style>text{font:11px Arial,sans-serif}.title{font-weight:bold;font-size:13px}.room{fill:#dce8ed;stroke:#24566c}.circulation{fill:#f1d9d9;stroke:#9a3030;stroke-dasharray:3 2}.protected{fill:#f7d9f0;stroke:#83366e;stroke-dasharray:3 2}.stair{fill:#f5e5b8;stroke:#7c5d11;stroke-width:2}.shell{fill:none;stroke:#222;stroke-width:2}</style>");
         for (int i = 0; i < examples.Length; i++)
         {
             var c = examples[i]; double ox = i * (pw + panelGap), oy = 22;
@@ -206,6 +227,12 @@ internal static class Program
                 double x = ox + hall.X * scale, y = sy + (shellD - hall.Y - hall.D) * scale;
                 s.AppendLine($"<rect class=\"circulation\" x=\"{F(x)}\" y=\"{F(y)}\" width=\"{F(hall.W*scale)}\" height=\"{F(hall.D*scale)}\"/>");
                 s.AppendLine($"<text x=\"{F(x+2)}\" y=\"{F(y+12)}\">{SecurityElement.Escape(hall.Id)}</text>");
+            }
+            foreach (var window in protectedWindows)
+            {
+                double x = ox + window.X * scale, y = sy + (shellD - window.Y - window.D) * scale;
+                s.AppendLine($"<rect class=\"protected\" x=\"{F(x)}\" y=\"{F(y)}\" width=\"{F(window.W*scale)}\" height=\"{F(window.D*scale)}\"/>");
+                s.AppendLine($"<text x=\"{F(x+2)}\" y=\"{F(y+12)}\">{SecurityElement.Escape(window.Id)} protected</text>");
             }
             double sx = ox + c.X * scale, stairY = sy + (shellD - c.Y - c.D) * scale;
             s.AppendLine($"<rect class=\"stair\" x=\"{F(sx)}\" y=\"{F(stairY)}\" width=\"{F(c.W*scale)}\" height=\"{F(c.D*scale)}\"/>");
