@@ -1,3 +1,13 @@
+## M299 — First runtime-verified native Revit wall objects — 2026-11-02
+
+- Built `Tools/RevitPilot` with `Tools/RevitPilot/build.ps1 -BuildDirectory native-wall-shell`: 0 errors, 2 MSB3277 reference-conflict warnings; final local DLL SHA256 `1C60CF4A1DF8EAF78CB2D3071F46C233F410ED3E9CB6357A4F88DD9975585A78`.
+- Revit 2027.3 generated the disposable model at `.local/revit-pilot/native-wall-shell/20261101T172354034Z/`. It contains 36 native Basic Walls across 9 levels in 8/9/10-ft interval comparison cases. Deterministic template type `Wall 1`, 8 in thick, is recorded as an unselected placeholder.
+- PowerShell verified source/basis/RVT fingerprints and 36 manifest records, plus zero doors, windows, floors, stairs, or roofs. The saved RVT reopened and its named isometric comparison view was inspected. Saved RVT SHA256 `75D3D0400AAFAD33870217BFB2CD88337C574DD789F657C8313E997BBFB02453`.
+- The project-local AddInId/path/hash and **Load Once** workflow were checked; the prior per-user manifest is preserved at `.local/revit-pilot/registration-backups/20261101T121331269/`. Failed/partial run directories remain intact as debugging evidence. Selected-D source/RVT/IFC and remote state remain unchanged.
+- Evidence and limitations: `Architecture/Native_Wall_Shell_Study_2026-11-02/README.md`. This is a native perimeter-wall massing comparison, not a coordinated design or construction model.
+- To keep upcoming Revit materials aligned with the GitHub renders without inheriting superseded objects, added `Architecture/Render_to_Model_Reference_Map.md`. It maps current room finish cues to approved decisions/schedule, flags the old TV/faux-fire and island-range imagery as superseded, and leaves the unsupported exterior palette unselected. M299 remains intentionally uncolored.
+- **Next:** execute already-authorized M297 analysis-only same-area L-02 move/reshape stair-route study; keep selected-D, Revit, IFC, room assignments, M-06/A/B and west-A protection unchanged.
+
 ## M295 — Full 60-in stair fit against same-area lower room options — 2026-11-01
 
 - The owner authorized a source-bound full-transition comparison. Used the selected-D source's inherited 8 × 7.5-in riser / 7 × 11-in tread / 4-ft width / 4-ft landing references. The stair box is 4 × 14.4167 ft; the nominal riser is below the CT published 8¼-in maximum. No compliance conclusion follows.
@@ -29,6 +39,13 @@
 - Selected-D, RVT/IFC, family files, room assignments and remote state remain unchanged. M-06/A/B stay unassigned; west A is protected. No Revit UI work was required.
 - Evidence, artifact hashes and replay commands: `Architecture/M296_Landing_Circulation_Integration_Study_2026-11-01/README.md`.
 - **Next:** choose whether to permit an analysis-only same-area L-02 move/reshape, or compare a different stair/vertical arrangement. No further relaxation or physical geometry is selected by M296.
+
+## M299 — First native Revit wall-shell comparison — 2026-11-02
+
+- In response to the owner's request to move from room wireframes toward actual walls, added `Tools/RevitPilot/NativeWallShellStudyCommand.cs` and a dedicated ribbon command. Scope is a separate disposable massing comparison based on pinned selected-D shell envelopes/plan offsets and the already authorized 8/9/10-ft interval cases.
+- The command uses the first basic wall type by stable name sort from the blank Imperial Multi-discipline template, records its type and width, and labels this as unselected placeholder geometry. No wall assembly is invented or promoted to project selection. Only exterior shell walls are planned; openings, internal partitions, floors, stairs, roof, structure and MEP are omitted.
+- Initial RevitPilot build: 0 errors, 2 MSB3277 reference-conflict warnings. DLL SHA256 `D7924308837BCBE2C1FBDD9E737FDE04E164C93A909FCD3A510337C4761B7EC3`. Before launch, verified the authorized AddInId, workspace-local path, exact hash and preserved the prior manifest at `.local/revit-pilot/registration-backups/20261101T121331269/`.
+- **Runtime/result validation pending.** The working branch remains local; selected-D/RVT/IFC and remote state are unchanged.
 
 ## M298 — Runtime-verify source-derived 8–10 ft walkthrough room-volume wireframe — 2026-11-02
 
