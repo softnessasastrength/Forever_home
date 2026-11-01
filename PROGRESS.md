@@ -20,6 +20,16 @@
 - Added `Research/CT_Stair_Geometry_Checklist_2026-11-01.md`: official CT adoption/current-code reference and residential stair dimensional screening separated from project applicability and actual geometry. The 38-in width and 10½-in tread values remain nominal owner inputs; landing values are depth only; landing width, headroom, doors, finish geometry, guards, rails, and structure remain unverified. The 43½-in preferred stair rise still differs by 16½ in from each 60-in selected-D test level transition; neither datum changed.
 - Full reproduction and detailed evidence: `Architecture/M293_CT_Stair_Reproducibility_2026-11-01/README.md`. No selected-D source, Revit model, IFC, RFA, remote branch, or Revit UI was modified. M-06/A/B remain unassigned; west A protected.
 
+## M296 — Integrate full-rise stair landing with lower circulation — 2026-11-01
+
+- The owner authorized an analysis-only test of treating M295's least-change full 60-in stair landing and C-LOWER as a combined circulation zone. Authorization: `Decisions/2026-11-01_M296_Stair_Landing_Circulation_Integration_Authorization.md`.
+- Added source-pinned package-free C#/.NET 10 `Tools/M296Generator`. Build succeeds with 0 warnings/errors. Two runs pass 9/9 and reproduce JSON, checks and SVG byte-for-byte; SVG parses as XML.
+- M295's landing overlap is 15.3333 sf; the complete stair envelope overlaps 18.8472 sf of C-LOWER. The C-LOWER area outside that stair footprint is 60.0417 sf. At the stair band, west bypass = 21 in and east bypass = 0 in. This does not meet M215's 36-in project screening precedent.
+- The landing/C-LOWER rectangles touch as one proposed zone, but the geometry fails the provisional route-width screen past the stair. This is not a determination about actual doors, openings, code, accessibility, or ultimate feasibility.
+- Selected-D, RVT/IFC, family files, room assignments and remote state remain unchanged. M-06/A/B stay unassigned; west A is protected. No Revit UI work was required.
+- Evidence, artifact hashes and replay commands: `Architecture/M296_Landing_Circulation_Integration_Study_2026-11-01/README.md`.
+- **Next:** choose whether to permit an analysis-only same-area L-02 move/reshape, or compare a different stair/vertical arrangement. No further relaxation or physical geometry is selected by M296.
+
 ## M292 — M270 runtime attempt stopped at untargetable Revit intro overlay — 2026-11-01
 
 - Verified RevitPilot AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, manifest assembly path within this checkout, and exact M270 DLL SHA256 `0B2FB3CF174CAE3D4D366DAE09426E51AD6F7D2E940FEEAA34CD38C8916A2E10` before launch. Pinned KOHLER Cimarron candidate RFA SHA256 remains `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`.

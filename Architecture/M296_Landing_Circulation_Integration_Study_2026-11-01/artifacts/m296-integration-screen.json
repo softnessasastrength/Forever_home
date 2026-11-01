@@ -1,0 +1,50 @@
+{
+  "schema": "forever-home-m296-landing-circulation-integration-v1",
+  "status": "pass; landing/C-LOWER integration measured geometrically; no usable route or design selected",
+  "selected_d_edited": false,
+  "source_hash": "65A84006158D4352D282D3FA32EDBA3E93F327D31584F19B6C1C9C5BD081CE04",
+  "authorization_hash": "C2A69B83F77652E0F8F3FBF1B687A578D98C4F878932B9D9900454305B983092",
+  "basis": {
+    "inherited_full_rise": {
+      "risers": 8,
+      "riser_in": 7.5,
+      "transition_in": 60
+    },
+    "route_width_in": 36,
+    "route_width_source": "M215 project screening precedent only"
+  },
+  "source_option": {
+    "connection": "lower-landing interface",
+    "l01_change_ft": 0,
+    "circulation_change_ft": 0,
+    "c_lower": {
+      "x_ft": 10.166666666666666,
+      "y_ft": 0.6666666666666666,
+      "width_ft": 6.666666666666667,
+      "depth_ft": 11.833333333333334,
+      "area_sf": 78.8888888888889
+    },
+    "stair": {
+      "x_ft": 11.91666667,
+      "y_ft": 8.66666667,
+      "width_ft": 14.416666666666668,
+      "depth_ft": 4,
+      "right_ft": 26.33333333666667,
+      "top_ft": 12.66666667
+    }
+  },
+  "integration_screen": {
+    "landing_overlap_sf_from_M295": 15.333333320000001,
+    "full_stair_footprint_overlap_with_c_lower_sf": 18.847222193055554,
+    "c_lower_area_outside_full_stair_footprint_sf": 60.04166669583334,
+    "west_side_bypass_width_in": 21.000000040000003,
+    "east_side_bypass_width_in": 0,
+    "maximum_side_bypass_width_in": 21.000000040000003,
+    "c_lower_band_south_of_stair_in": 96.00000004,
+    "c_lower_band_north_of_stair_in": 0,
+    "full_stair_spans_entire_c_lower_width_at_its_y_band": false,
+    "route_36in_screen_passes_side_bypass": false
+  },
+  "conclusion": "The landing overlaps C-LOWER, so the rectangles form one proposed zone. The full stair footprint also blocks 18.8472 sf of C-LOWER; the remaining area outside that stair footprint is 60.0417 sf. At the stair band the west-side bypass is 21 in and the stair runs to or beyond the east C-LOWER edge, leaving no east bypass. The west gap is below the 36-in project screening precedent. This is a geometric pinch-point result, not a finding about actual doors, wall openings, code, accessibility, or whether an integrated circulation design can work.",
+  "limitations": "Axis-aligned study rectangles only; no walls, doors, openings, door swings, approach, finish thickness, tolerance, headroom, floor opening, structure, or continuation beyond C-LOWER. Landing overlap and complete stair-footprint overlap are distinct measures. Not a selected design or code-compliance result. M-06/A/B remain unassigned; west A remains protected."
+}

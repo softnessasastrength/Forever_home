@@ -1,0 +1,16 @@
+{
+  "schema": "forever-home-m296-checks-v1",
+  "passed": 9,
+  "total": 9,
+  "checks": {
+    "M295 report and owner authorization hashes are pinned": true,
+    "source option is the zero-movement full-rise lower landing interface": true,
+    "C-LOWER area remains the source 78.8889 square feet": true,
+    "landing-overlap metric remains 15.3333 square feet": true,
+    "stair footprint intersection is calculated independently of landing overlap": true,
+    "stair footprint leaves a 21-inch west gap and no east bypass": true,
+    "neither side gap reaches the inherited 36-inch route screen": true,
+    "selected-D source report remains explicitly unedited": true,
+    "the output describes geometric analysis only": true
+  }
+}
