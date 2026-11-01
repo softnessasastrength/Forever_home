@@ -3129,7 +3129,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Added `Tools/RevitPilot/SplitRiseNativeStairCommand.cs`, a narrowly scoped Revit 2027 API command that creates two native `Stairs` elements for the documented 4+4 split-rise comparison (0 → 2.5 → 5 ft; four risers per flight), saves a disposable RVT, and exports IFC2x3. It does not open or modify Selected-D.
 - Build completed with **0 errors** and the repository’s two pre-existing `MSB3277` reference-conflict warnings. Exact build: `.local/revit-pilot/build-m325-native-stair-visible/Release/net10.0-windows/RevitPilot.dll`; SHA256 `C19B468F54B9079D2A8F70E6315024F0410134A37E03565041C8585F19C9FC3D`.
 - The authorized AddInId remains unchanged. The prior per-user manifest is preserved at `.local/revit-pilot/registration-backups/20261101T225142990Z/`. The validator is `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1`.
-- **Host gate passed:** Revit 2027.3 created the native stair study at `.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/`. The validator passes **14/14**: manifest/schema, disposable status, two native stairs, two four-riser flights, 0/2.5/5 ft levels, 60 in total rise, RVT presence/hash, and non-empty IFC2x3 with stair entities.
+- **Host gate passed:** Revit 2027.3 created the native stair study at `.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/`. The validator passes **15/15**: manifest/schema, disposable status, two native stairs, two four-riser flights, 0/2.5/5 ft levels, 60 in total rise, RVT presence/hash, and non-empty IFC2x3 with stair entities.
 - The native result remains analysis-only. It does not establish a landing slab, opening, headroom, route, wall thickness, structural support, code compliance, or professional/construction approval.
 - Selected-D, M-06, B, remote state, and existing history remain unchanged. No code-compliance, structural, professional, or construction-readiness conclusion follows.
+
+## M326 — Consolidated gate refresh with native stair evidence — 2026-11-01
+
+- Extended `Tools/validate_verified_bim_milestone.ps1` with the M325 native stair validator output and added the M325 RVT/IFC evidence to `Architecture/Verified_BIM_Milestone_2026-11-01.md`.
+- The consolidated gate now covers the existing six evidence gates plus the disposable native stair gate; it remains an evidence-chain check, not a selected design or professional approval.
 
