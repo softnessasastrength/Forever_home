@@ -2,7 +2,7 @@
 
 Date: 2026-11-02
 
-Status: **command compiled; Revit runtime not verified; no RVT created by this command yet.**
+Status: **runtime verified in Revit 2027.3; disposable comparison RVT created and reopened for visual inspection.**
 
 ## Owner-selected study inputs
 
@@ -12,12 +12,14 @@ The study uses bottom/top room rectangles and vertical corner model curves to sh
 
 ## Implementation and validation state
 
-`Tools/RevitPilot/WalkthroughShellStudyCommand.cs` adds a separate Revit command and an isometric comparison view. It creates a new project document, removes only the new template's seed levels, creates exactly nine labeled comparison datums, generates the source-derived room/shell outlines, and saves under ignored `.local/revit-pilot/walkthrough-shell/<timestamp>/`. The checked-in selected-D source is read-only.
+`Tools/RevitPilot/WalkthroughShellStudyCommand.cs` adds a separate Revit command and an isometric comparison view. It creates a new project document, reuses that template's single seed level and creates the other eight labeled comparison datums, generates the source-derived room/shell outlines, then closes the disposable document before hashing it. Outputs are saved under ignored `.local/revit-pilot/walkthrough-shell/<timestamp>/`. The checked-in selected-D source is read-only.
 
-The RevitPilot compiles against the installed Revit 2027 API with **0 errors and 2 existing reference-conflict warnings**. Final project-local assembly SHA256: `4218E9C1A84943E30255CDBBBB95099F6B36AC77B6D0F89EC802E9C0D37800FD`. The authorized per-user manifest keeps AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, points inside this checkout to that exact DLL, and its prior manifest was preserved under ignored `.local/revit-pilot/registration-backups/20261101T163813099Z/`.
+The RevitPilot compiles against the installed Revit 2027 API with **0 errors and 2 MSB3277 reference-conflict warnings** (Microsoft.VisualBasic 10.0 versus 10.1 through Revit references). Project-local assembly SHA256: `86F3440736FE6D47F679E0F670194AAC2C307BAFD225564BC952AB800FAFE5EB`. The authorized per-user manifest keeps AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and points inside this checkout to that exact DLL. This run did not replace the manifest.
 
-Revit restarted to Home, but no trust prompt identifying the final DLL appeared. Therefore the new command was **not run**, no wireframe RVT/report exists, and no Revit geometry/runtime behavior is claimed. Continue only if Revit exposes the trust prompt for the exact project-local path/hash; choose Load Once only in that case. Never use Always Load or broad trust/security changes.
+Revit 2027.3 loaded the authorized ribbon and ran the command in a new Imperial Multi-discipline template document. No trust prompt appeared in this session, so no trust choice was made. Run `20261101T170505234Z` produced `FH_Walkthrough_Shell_Study.rvt` and a JSON manifest. Manifest checks passed: selected-D source SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB` matches; saved-RVT SHA256 `7E6B632C89DF3808A9B595B4D56237D7B9987CE04BC3DE0718D804E45FC24483` matches; exactly 9 levels; 63 records representing all 21 source space IDs across 8/9/10-ft cases; 828 vertical corner model curves; zero walls, floors, stairs, or roofs. The RVT was reopened in Revit and the named isometric comparison view was visually checked. Revit was closed before the independent RVT hash check.
+
+Reproduction: build with the local SDK using `& '.local/dotnet/dotnet.exe' build 'Tools/RevitPilot/RevitPilot.csproj' -c Release -p:BaseOutputPath='<absolute-checkout>\.local\revit-pilot\walkthrough-shell\' -clp:ErrorsOnly`; verify the per-user manifest AddInId/path and DLL SHA256; in Revit 2027.3 create a new Imperial Multi-discipline project and run **Forever Home Pilot → Build walkthrough shell study**. Parse the generated JSON with PowerShell `ConvertFrom-Json`; use `Get-FileHash` to confirm source/RVT hashes; assert 9 levels, case values `[8,9,10]`, 21 distinct IDs/63 records, 828 curves and zero native building elements; reopen the RVT and inspect its named 3D view.
 
 ## Open requirements before a real walkthrough
 
-The source has no actual door/window openings, floor assemblies, stair geometry, roof assembly, or MEP. The material schedule records living-room skylights with diffuse light and TV-glare avoidance, but location, size, product and roof openings are not designed. The first wireframe command is an inspection scaffold only; it is not a navigable finished-house model or an architect-review package.
+The source has no actual door/window openings, floor assemblies, stair geometry, roof assembly, or MEP. The material schedule records living-room skylights with diffuse light and TV-glare avoidance, but count, location, size, product and roof openings are not designed. The wireframe command is an inspection scaffold only; it is not a navigable finished-house model or an architect-review package. It does not validate code, clearances, structure, or construction readiness.

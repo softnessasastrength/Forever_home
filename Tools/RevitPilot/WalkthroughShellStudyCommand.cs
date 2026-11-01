@@ -25,7 +25,7 @@ public sealed class WalkthroughShellStudyCommand : IExternalCommand
             string sourcePath = Path.Combine(root, SourceRelative.Replace('/', Path.DirectorySeparatorChar));
             byte[] sourceBytes = File.ReadAllBytes(sourcePath);
             string sourceHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(sourceBytes));
-            using JsonDocument study = JsonDocument.Parse(sourceBytes);
+            using JsonDocument study = JsonDocument.Parse(File.ReadAllText(sourcePath).TrimStart('\uFEFF'));
             JsonElement rootJson = study.RootElement;
             JsonElement offsets = rootJson.GetProperty("plan_frame_offsets_ft");
             JsonElement plans = rootJson.GetProperty("plans");
@@ -48,8 +48,14 @@ public sealed class WalkthroughShellStudyCommand : IExternalCommand
             using (Transaction tx = new(doc, "Build labeled walkthrough shell study wireframes"))
             {
                 tx.Start();
-                ElementId[] templateLevels = new FilteredElementCollector(doc).OfClass(typeof(Level)).ToElementIds().ToArray();
-                if (templateLevels.Length > 0) doc.Delete(templateLevels);
+                Level[] templateLevels = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
+                    .OrderBy(level => level.Elevation).ToArray();
+                if (templateLevels.Length != 1)
+                    throw new InvalidOperationException($"Expected the imperial project template's single seed level; found {templateLevels.Length}.");
+                // Reuse the template's undeletable level/view pair for the first comparison case.
+                // All changes are confined to this new disposable document.
+                templateLevels[0].Elevation = 0;
+                templateLevels[0].Name = "8-ft Lower Study Datum";
                 foreach (var variant in new[] { (label: "8 ft proxy", interval: 8.0, offset: 0.0), (label: "9 ft proxy", interval: 9.0, offset: 50.0), (label: "10 ft proxy", interval: 10.0, offset: 100.0) })
                 {
                     double xCase = variant.offset;
@@ -57,8 +63,13 @@ public sealed class WalkthroughShellStudyCommand : IExternalCommand
                     foreach (var spec in new[] { (key: "lower", name: "Lower"), (key: "main", name: "Main"), (key: "upper", name: "Upper") })
                     {
                         double elevation = spec.key switch { "lower" => 0, "main" => variant.interval, _ => variant.interval * 2 };
-                        Level level = Level.Create(doc, elevation);
-                        level.Name = $"{variant.interval:0}-ft {spec.name} Study Datum";
+                        Level level;
+                        if (variant.interval == 8.0 && spec.key == "lower") level = templateLevels[0];
+                        else
+                        {
+                            level = Level.Create(doc, elevation);
+                            level.Name = $"{variant.interval:0}-ft {spec.name} Study Datum";
+                        }
                         levels[spec.key] = level;
                     }
 
@@ -103,12 +114,17 @@ public sealed class WalkthroughShellStudyCommand : IExternalCommand
                 tx.Commit();
             }
 
-            doc.Regenerate();
             int actualLevelCount = new FilteredElementCollector(doc).OfClass(typeof(Level)).GetElementCount();
             if (actualLevelCount != 9) throw new InvalidOperationException($"Expected exactly nine study levels; found {actualLevelCount}.");
-            if (comparisonView is not null) data.Application.ActiveUIDocument.ActiveView = comparisonView;
+            if (comparisonView is not null && data.Application.ActiveUIDocument is UIDocument activeUiDoc && activeUiDoc.Document.Equals(doc))
+                activeUiDoc.ActiveView = comparisonView;
             string rvt = Path.Combine(output, "FH_Walkthrough_Shell_Study.rvt");
             doc.SaveAs(rvt, new SaveAsOptions());
+            // Revit retains an exclusive handle to saved documents until they are closed.
+            // Close this disposable derivative before hashing it for the manifest.
+            doc.Close(false);
+            doc = null;
+            string savedRvtHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(rvt)));
             string manifest = Path.Combine(output, "walkthrough-shell-manifest.json");
             using (FileStream fs = File.Create(manifest))
                 JsonSerializer.Serialize(fs, new
@@ -118,8 +134,9 @@ public sealed class WalkthroughShellStudyCommand : IExternalCommand
                     source = SourceRelative,
                     source_sha256 = sourceHash,
                     saved_rvt = Path.GetFileName(rvt),
-                    saved_rvt_sha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(rvt))),
+                    saved_rvt_sha256 = savedRvtHash,
                     floor_interval_cases_ft = new[] { 8, 9, 10 },
+                    template_levels_reused = 1,
                     source_level_datums_replaced_in_this_derivative_only = true,
                     horizontal_case_offsets_ft = new[] { 0, 50, 100 },
                     plan_shells_ft = new { main = new[] { shellMainW, shellMainD }, rear_wings = new[] { shellRearW, shellRearD } },
