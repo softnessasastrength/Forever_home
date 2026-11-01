@@ -24,3 +24,5 @@ Both runs pass **26/26** checks with zero errors. Reports are byte-identical, SH
 ## Limits
 
 The model has three levels and 21 room-boundary spaces, but zero walls, doors, floors or stairs. No native roof, windows, fixtures or service network was authored. The exported IFC is a verifiable space-study deliverable, not a complete house model. The PS geometry replay was not run in this increment because the effective Windows PowerShell policy is `Restricted`; no execution-policy override was used. Prior source-generation replay evidence remains recorded in M262/M258.
+
+**Subsequent validation:** M283 and the 2026-11-01 follow-up replay in `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md` reran both source geometry and IFC validation successfully using the then-current policy configuration; that follow-up did not modify the RVT/IFC or selected-D source.

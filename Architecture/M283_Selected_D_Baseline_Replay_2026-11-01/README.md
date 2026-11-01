@@ -58,3 +58,15 @@ Both replays produced these same hashes:
 This verifies reproducible room-block source geometry and the retained space-study RVT/IFC only. The RVT has three levels and 21 spaces, but no physical walls, doors, windows, floors, stairs, roof, plumbing, MEP, or structural elements. It is not the full architectural model. The check does not establish code compliance, accessibility, structural safety, professional approval, or construction readiness. M-06 remains unassigned and B remains a search reservation pending product, applicable clearance, door/approach, and service evidence.
 
 The original M278 checkpoint correctly recorded that its baseline-script attempt was blocked under the then-unchanged `Restricted` policy. M283 supersedes that operational limitation by documenting a process-scoped local-script run; it does not alter M278's historical result.
+
+## Follow-up replay without policy override — 2026-11-01
+
+The full baseline command was run again from this worktree using the effective existing policy (`RemoteSigned` at `LocalMachine`; `MachinePolicy`, `UserPolicy`, `Process`, and `CurrentUser` are `Undefined`). No execution-policy setting was changed. The command regenerated selected-D into fresh ignored scratch folders and revalidated the retained M266 Revit 2027.3 RVT/IFC2X3 pair:
+
+```powershell
+.\Tools\validate_architectural_bim_baseline.ps1 `
+  -ExportDirectory '.local/revit-pilot/selected-d/20261101T122301834Z' `
+  -OutputDirectory '.local/revalidation/resume-validation-20261101T-current'
+```
+
+Result: two replays, 43/43 geometry checks each, seven generated files per replay identical byte-for-byte, three parseable SVGs per replay, retained IFC validation 26/26 with zero errors, and protected source/RVT/IFC hashes unchanged. The ignored summary report SHA256 is `F4A856D37A85827520A3E07EDF983347B131F34131A1C8FEE1A0B865B3842248`; its IFC report SHA256 remains `0AC0CDEA6D2589F6145C7F425BC99372C1DDD84C278173A597F6B3F3AE228FA9`. The saved model is still a 21-space room-boundary study with no native house construction categories.

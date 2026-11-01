@@ -1,0 +1,56 @@
+{
+  "schema": "forever-home-m288-checks-v1",
+  "status": "pass",
+  "passed": 12,
+  "total": 12,
+  "details": [
+    {
+      "id": "selected-D and M285/M215 inputs are fingerprint-pinned",
+      "pass": true
+    },
+    {
+      "id": "owner explicitly authorized both analysis-only alternatives",
+      "pass": true
+    },
+    {
+      "id": "M285 stair envelope dimensions are used unchanged",
+      "pass": true
+    },
+    {
+      "id": "all stair envelopes clear L-01, other source rooms and protected M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "all generated C-LOWER alternatives preserve exact source area",
+      "pass": true
+    },
+    {
+      "id": "all C-LOWER alternatives clear fixed rooms, L-01, M-06 and shell margin",
+      "pass": true
+    },
+    {
+      "id": "all reported landing interfaces or 36-in dogleg paths touch their C-LOWER target",
+      "pass": true
+    },
+    {
+      "id": "all reported routes clear fixed rooms and both M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "route starts align each source-grid landing-end phase and centerlines have no diagonal snaps",
+      "pass": true
+    },
+    {
+      "id": "route width uses the M215 36-in study precedent only",
+      "pass": true
+    },
+    {
+      "id": "M-06 footprint, position and service route remain unassigned",
+      "pass": true
+    },
+    {
+      "id": "no candidate selected and no code, structure or construction claim",
+      "pass": true
+    }
+  ]
+}
