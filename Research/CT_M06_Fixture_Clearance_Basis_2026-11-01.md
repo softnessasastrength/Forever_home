@@ -11,7 +11,7 @@ Connecticut DAS currently identifies the 2022 Connecticut State Building Code (C
 
 The 2021 IRC R307.1 directs fixture spacing to Figure R307.1 and Section P2705.1. The corresponding P2705.1 provisions state, for water closets and lavatories:
 
-- Keep each fixture center at least **15 in** from a side wall, partition, vanity, or other stated obstruction.
+- Keep each water-closet or lavatory center at least **15 in** from any side wall, partition, or vanity.
 - Keep adjacent fixture centers at least **30 in** apart.
 - Provide at least **21 in** in front of a water closet or lavatory to a wall, fixture, or door.
 - Locate piping, fixtures, and equipment so they do not interfere with operation of windows or doors.

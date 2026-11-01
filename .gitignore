@@ -5,3 +5,6 @@ __pycache__/
 Tools/RevitPilot/obj/
 Tools/M83Generator/bin/
 Tools/M83Generator/obj/
+
+Tools/M274Generator/bin/
+Tools/M274Generator/obj/
