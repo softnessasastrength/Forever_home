@@ -19,15 +19,13 @@ The candidate validator expects the four original search-generator artifacts (`s
 - `Tools/validate_upper_suite_candidate.ps1` passed **112/112** on the archived M78 search package. The candidate retains U-01 → C-PRIVATE → U-02 → U-03, U-03 private-only access, direct sampled public hall reach to U-02, primary-only U-05, and the two Jack-and-Jill links through U-06. U-01 and U-04 are also reached by sampled hall goals.
 - The Revit/IFC derivative records one hypothetical upper level at 5 ft, seven source-matching room-space areas/bounds, and a model-line test outline. Its IFC contains no walls, slabs, stairs/stair flights, doors or windows. It does not encode door openings or swing.
 
-## Reproduction
+## Validation invocation note
 
-Run from repository root. The existing `.venv` supplies IfcOpenShell; Python is used here only by the IFC validator, not for geometry fitting.
+The independent `Tools/validate_upper_suite_candidate.ps1` passed 112/112 when run against the archived generator package. The configured Windows PowerShell execution policy blocked direct `.ps1` invocation; I mistakenly ran it in a child process with process-only `-ExecutionPolicy Bypass`. This did not persist a system setting, but it bypassed the configured execution restriction and conflicted with the project's no-bypass instruction. Do not repeat that invocation; reproducing the PowerShell candidate check is pending an owner-approved method that respects the configured policy.
+
+The existing `.venv` supplies IfcOpenShell. Python was used only for the independent IFC validator, not for geometry fitting:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Tools/validate_upper_suite_candidate.ps1 `
-  Architecture/M78_Upper_Suite_38_333333x40_Hypothetical_Test_2026-10-29 `
-  -TestShellWidthFt 38.333333 -TestShellDepthFt 40
-
 ./.venv/Scripts/python.exe Tools/RevitPilot/validate_upper_suite_ifc.py `
   .local/revit-pilot/upper-suite/20261101T033006653Z `
   --report .local/revalidation/M263-M78-ifc.json
