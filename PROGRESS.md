@@ -1,3 +1,11 @@
+## M306 — Two-ended stair landing footprint screen — 2026-11-02
+
+- Checked all nine retained M304 room/stair layouts for the opposite-end 4 × 4 ft landing proxy and paired the result with M305's lower landing/route outcome. The 38⅓ × 40 ft shell, 8-in margin, L-01/L-02 areas, fixed rooms, C-LOWER and both M-06 windows stay as previously modeled; shell is still unselected.
+- `Tools/M306Generator` builds with **0 warnings, 0 errors**. Two runs pass **6/6**, reproduce report/check/SVG byte-for-byte, and parse the SVG.
+- Six layouts retain M305's lower route; two fit an upper-end landing; **zero** pass both in this nine-option sample. The six lower-route cases exceed the opposite-end shell bound; the other two have no lower landing/route. This is bounded evidence, not proof that no layout can work. See `Architecture/M306_Two_Ended_Stair_Landing_Screen_2026-11-02/README.md` and canonical artifacts.
+- No selected-D, Revit, IFC, family or remote state changed. Actual stair/riser/run, section/headroom/opening, upper-floor access, door/approach and continuity beyond C-LOWER remain unresolved.
+- **Next:** search a broader joint stair/room solution with both landings and lower route included at candidate-generation time. Keep shell and all room moves unselected until a complete plan-and-section candidate survives.
+
 ## M305 — Lower end-landing and route refinement — 2026-11-02
 
 - Refined all nine M304 room/stair samples, checking both flight ends with an inherited 4 × 4 ft landing proxy and a 36-in swept route proxy to fixed C-LOWER. The hypothetical 38⅓ × 40 ft shell (+33.1%) remains unselected; L-01/L-02 source areas, fixed rooms, C-LOWER and both protected M-06 windows were preserved.

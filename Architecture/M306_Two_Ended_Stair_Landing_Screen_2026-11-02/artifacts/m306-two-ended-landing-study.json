@@ -1,0 +1,400 @@
+{
+  "schema": "forever-home-m306-two-ended-stair-landing-screen-v1",
+  "status": "no sampled layout combines the M305 lower route with a clear opposite-end landing; not proof of impossibility",
+  "selected_d_edited": false,
+  "rvt_or_ifc_created": false,
+  "basis": {
+    "shell_ft": [
+      38.333333,
+      40
+    ],
+    "shell_status": "hypothetical/unselected",
+    "inherited_landing_ft": [
+      4,
+      4
+    ],
+    "perimeter_margin_in": 8,
+    "C_LOWER_fixed": true,
+    "M06_windows_protected": 2
+  },
+  "search": {
+    "M304_layouts": 9,
+    "M305_lower_landing_and_route_passes": 6,
+    "opposite_end_landings_clear": 2,
+    "layouts_passing_both_ends": 0,
+    "options": [
+      {
+        "M304_sample": 1,
+        "M302_sample": 8,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 10.16666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 3.4166666699999997,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 2,
+        "M302_sample": 11,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 10.41666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 3.6666666699999997,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 3,
+        "M302_sample": 14,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 10.66666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 3.9166666699999997,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 4,
+        "M302_sample": 17,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 10.91666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 4.16666667,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 5,
+        "M302_sample": 20,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 11.16666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 4.41666667,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 6,
+        "M302_sample": 23,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.16666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.666666666666666,
+          "depth_ft": 18.333333333333332
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 21.66666667,
+          "y_ft": 31.74712644,
+          "width_ft": 14.5,
+          "depth_ft": 7.586206896551724
+        },
+        "lower_landing": {
+          "id": "landing",
+          "x_ft": 11.41666667,
+          "y_ft": 31.416666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "lower_landing_fits": true,
+        "lower_route_found": true,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 4.66666667,
+          "y_ft": 39.08333333666666,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy exceeds shell or perimeter margin",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 7,
+        "M302_sample": 1,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 20.91666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.75,
+          "depth_ft": 18.222222222222218
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 10.41666667,
+          "y_ft": 21.16666667,
+          "width_ft": 7,
+          "depth_ft": 15.714285714285714
+        },
+        "lower_landing": null,
+        "lower_landing_fits": false,
+        "lower_route_found": false,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 23.91666667,
+          "y_ft": 27.16666667,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": false,
+        "upper_landing_status": "4x4 upper end-landing proxy overlaps screened block(s)",
+        "upper_landing_blockers": [
+          "L-01"
+        ],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 8,
+        "M302_sample": 4,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 23.66666667,
+          "y_ft": 12.91666667,
+          "width_ft": 13.75,
+          "depth_ft": 18.222222222222218
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 9.91666667,
+          "y_ft": 23.41666667,
+          "width_ft": 8.25,
+          "depth_ft": 13.333333333333334
+        },
+        "lower_landing": null,
+        "lower_landing_fits": false,
+        "lower_route_found": false,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 19.91666667,
+          "y_ft": 31.166666669999998,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": true,
+        "upper_landing_status": "4x4 upper end-landing proxy clears sampled room/window/stair blocks",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      },
+      {
+        "M304_sample": 9,
+        "M302_sample": 1,
+        "L01": {
+          "id": "L-01",
+          "x_ft": 27.91666667,
+          "y_ft": 12.95906433,
+          "width_ft": 9.5,
+          "depth_ft": 26.37426900584795
+        },
+        "L02": {
+          "id": "L-02",
+          "x_ft": 9.91666667,
+          "y_ft": 23.41666667,
+          "width_ft": 8.25,
+          "depth_ft": 13.333333333333334
+        },
+        "lower_landing": null,
+        "lower_landing_fits": false,
+        "lower_route_found": false,
+        "upper_landing": {
+          "id": "upper-landing",
+          "x_ft": 23.91666667,
+          "y_ft": 27.16666667,
+          "width_ft": 4,
+          "depth_ft": 4
+        },
+        "upper_landing_fits": true,
+        "upper_landing_status": "4x4 upper end-landing proxy clears sampled room/window/stair blocks",
+        "upper_landing_blockers": [],
+        "both_ends_pass": false
+      }
+    ]
+  },
+  "inputs_sha256": {
+    "m304": "007F7959EF9900F944236C509989CC267DD5C4D08DFF191E712CC9D0679880F9",
+    "m302": "73D8ACDC85DF307ADF9782444281C3C7144A30C67DDF7D2F8CACD46F715BF03A",
+    "m295": "65A84006158D4352D282D3FA32EDBA3E93F327D31584F19B6C1C9C5BD081CE04",
+    "m305": "795FA1E4991785B409A92CD4A697AC719610B577166602D9E8D7FD3306BECCF8",
+    "authorization": "7342A8D93EC91622398DBEAEE2439B031E8C5AE25E1364478A7DC861CDAC38B3"
+  },
+  "checks": {
+    "passed": 6,
+    "total": 6,
+    "details": [
+      {
+        "id": "M302/M304/M295/M305/M306 fingerprints match",
+        "pass": true
+      },
+      {
+        "id": "hypothetical shell and inherited 4x4-ft landing references are retained",
+        "pass": true
+      },
+      {
+        "id": "all nine M304 room/stair layouts are paired with their M305 flight-A result",
+        "pass": true
+      },
+      {
+        "id": "upper landing checks include shell margin, rooms, windows, stair pieces and lower landing",
+        "pass": true
+      },
+      {
+        "id": "joint result is exactly the intersection of the lower-route and upper-landing predicates",
+        "pass": true
+      },
+      {
+        "id": "no selected-D, RVT, IFC, family, or compliance result is emitted",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "Only the nine retained M304 room/stair samples are checked; this does not expand the joint candidate search.",
+    "Both ends use the inherited 4x4-ft rectangle as a spatial proxy, not a designed or code-checked landing.",
+    "The lower-route result is inherited from M305; M306 checks the opposite landing footprint only and no upstairs path.",
+    "The L-turn remains an unverified 3\u002B4 aggregate tread-run proxy; actual risers, run, stair type, headroom, opening, rails/guards and structure remain unresolved.",
+    "Doors, finished walls, approach, circulation beyond C-LOWER, upper room access, services and site conditions are not modeled.",
+    "The 38.333333x40-ft shell and all room moves remain hypothetical/unselected; no selected-D, RVT, IFC, family or remote state changed.",
+    "No code, accessibility, structural safety, professional, permit or construction-readiness conclusion follows."
+  ]
+}
