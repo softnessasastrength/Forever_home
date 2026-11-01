@@ -46,6 +46,9 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        // Keep the active disposable study reachable on narrower Revit ribbon widths.
+        panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
+            Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompatibilityPilot", "Run compatibility\npilot",
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
         panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
@@ -70,8 +73,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
             Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
-            Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
             Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGeometryQa", "Run geometry\nQA",

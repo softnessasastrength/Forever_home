@@ -49,6 +49,12 @@ M222 extends the production validator beyond this original file/hash/count gate.
 
 ## Current status and limitations
 
+### 2026-11-01 runtime repair checkpoint
+
+The current-source command was repaired after disposable Revit exposed API differences in Revit 2027: Levels do not expose the expected instance-comments marker, `ModelCurve` is not accepted as a direct native collector class, and model curves do not expose a writable ordinary marker parameter. The repaired v6 build narrows from `CurveElement` and records curve markers in a command-side in-memory map for the generated manifest audit. Build: 0 errors, 2 existing MSB3277 reference-conflict warning groups; DLL SHA256 `12FEB8CC6CEFB1E9970F480E30457C9E787A729D32DFF62E012EE707861F5495`. The exact AddInId/path were verified and prior registration bytes preserved under `.local/revit-pilot/registration-backups/`.
+
+Revit displayed the exact project-local unsigned-add-in prompt and the owner-authorized **Load Once** action was used. The v6 run has not yet produced the two RVTs or `m218-revit-study-manifest.json`; this remains a runtime checkpoint, not native geometry verification. Signing the DLL would not by itself suppress the prompt without a trusted publisher certificate, and installing trust material is outside current authorization.
+
 The original M219 build succeeded with 0 errors and 2 MSB3277 reference-resolution warning groups (`Microsoft.VisualBasic`, `System.Drawing`); DLL SHA256 was `643964517CFC4E87D1DCEC75C0050BFF40B1BD4C5D26403DB165F6848CA98B1A`. The exact manifest/AddInId/path/hash and preserved registration backup were verified. Revit displayed a Load Once prompt for that precise project-local DLL, and the owner-authorized one-time load was used. The command then failed before creating output because selected-D `study.json` has a UTF-8 BOM and `ReadPinnedJson` passed the marker directly to `System.Text.Json`.
 
 M234 repairs the parser while keeping the SHA256 check over the original bytes. The rebuilt current-source DLL is `.local/revit-pilot/build-m232-bom-fix/Release/net10.0-windows/RevitPilot.dll`, SHA256 `FF5578C1CB386114260FBF08F59A421A7B04A24F3E2DFF3CF81CD6C4BE2B01BF`; its per-user manifest retains the authorized AddInId and exact in-repository path. Prior registration bytes are preserved at `.local/revit-pilot/registration-backups/20261031T203854666Z/ForeverHome.Pilot.addin` (SHA256 `FF9881DF0A46DCA759E5DF8A8D7977A513E5ECF112E06C5C6ACE8FC4A57BBAA8`). Build: 0 errors, 2 MSB3277 warning groups. Existing validator fixture suite passes 7/7.
