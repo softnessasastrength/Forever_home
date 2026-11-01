@@ -1,3 +1,10 @@
+## M263 — Validate owner-directed M78 upper-suite Revit/IFC output — 2026-10-31
+
+- While navigating the Revit ribbon for M262, the adjacent `Build upper-suite test study` command was also activated. It produced a separate ignored derivative at `.local/revit-pilot/upper-suite/20261101T033006653Z/` from the already owner-authorized/pinned M78 search and selected-D inputs. This was not a selected-D edit or a chosen house dimension; source and remote state remain untouched.
+- The M78 source candidate independently passes `Tools/validate_upper_suite_candidate.ps1` **112/112** against the checked-in package. It preserves the owner's private-only U-03 route and direct sampled hall reach to U-02, plus the documented private suite and Jack-and-Jill graph.
+- The new Revit 2027.3 derivative records one hypothetical upper level at 5 ft, seven source-matching spaces and a model-line envelope. Its IFC2X3 export passes `Tools/RevitPilot/validate_upper_suite_ifc.py` **32/32** twice; independent reports are byte-identical (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). RVT hash `38C2F50F91ACF303E716DEE6EB45104B31E80230E8EB77B088E6D89941782166`; IFC hash `6D5E2F4B3328E561FDD8994B906627D4DBEB48EFA3A89E7CB626EA45617704EC`.
+- The output includes no walls, slabs, stairs, doors or windows. Sampled grid reach is not an actual door or clearance, the search is bounded/incomplete, and the 38⅓ × 40 ft shell remains hypothetical. See `Architecture/M263_M78_Upper_Suite_RVT_IFC_Refresh_2026-10-31/README.md`. No compliance, accessibility, structural, professional, permit or construction-readiness conclusion follows.
+
 ## M262 — Revit family-intake replay and current BIM baseline — 2026-10-31
 
 - Verified the clean local branch `codex/house-design-sandbox` (41 commits ahead of its tracking ref). The authorized per-user RevitPilot manifest carried AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, pointed inside this checkout, and resolved to DLL SHA256 `C26F2C7DB0EE61A63139224253306E0B406C97A2DDE37C7A87ADCF43BB8E0974`; path/hash were checked before startup and **Load Once** was selected. No trust-wide setting changed.

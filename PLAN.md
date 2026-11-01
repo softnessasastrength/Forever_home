@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M262 replays the Revit 2027.3 incoming family intake on four unchanged sources; its independent validator passes 79/79 twice with identical output and a successful Evolution vertical-host orientation probe. The selected-D baseline again passes two 43/43 generations and retained IFC2X3 26/26 with zero errors. These are family-measurement and room-boundary-baseline checks, not a complete house model. M-06 products/fit, M-05 topology, and the fully open kitchen/living connection remain unresolved.
+Status: M263 freshly validates the owner-authorized hypothetical 38⅓ × 40 ft M78 upper-suite RVT/IFC derivative: IFC validation passes 32/32 twice with byte-identical reports, while the source search candidate passes 112/112. M262's Revit 2027.3 incoming family intake passes 79/79 twice; the selected-D baseline again passes two 43/43 generations and retained IFC2X3 26/26 with zero errors. These are room-space and family-measurement validations, not a complete house model. M-06 products/fit, M-05 topology, and the fully open kitchen/living connection remain unresolved.
+
+## M263 — Revalidate the owner-directed M78 upper-suite RVT/IFC comparison
+
+**Acceptance:** preserve selected-D and the source search package; verify the owner-directed 38⅓ × 40 ft M78 search candidate against its source package, including direct sampled hall reach to U-02 and private-only U-03; independently validate a newly generated disposable Revit 2027.3 RVT/IFC2X3 derivative twice; confirm source/RVT/IFC lineage, seven spaces and areas/bounds, schema validity, absence of unintended construction elements, and unchanged baseline. Record that the adjacent Revit command was activated during ribbon navigation; keep all output isolated.
+
+**Result:** the separate derivative `.local/revit-pilot/upper-suite/20261101T033006653Z/` contains a one-level/five-foot, seven-space M78 room-boundary study and model-line envelope. Its source M78 candidate passes **112/112** checks, preserving U-02's direct sampled hall arrival and U-03's private-only access. The independent Revit-generated IFC2X3 validator passes **32/32** twice with byte-identical reports (SHA256 `90A86A2C56B8C2197DD5AD98BB86C416A7926980564FFE01AF209D61581164DF`). RVT SHA256 `38C2F50F91ACF303E716DEE6EB45104B31E80230E8EB77B088E6D89941782166`; IFC SHA256 `6D5E2F4B3328E561FDD8994B906627D4DBEB48EFA3A89E7CB626EA45617704EC`. The output was created by the adjacent ribbon command during M262 navigation; it consumed only the already-authorized source comparison and wrote ignored local files. Evidence: `Architecture/M263_M78_Upper_Suite_RVT_IFC_Refresh_2026-10-31/README.md`.
+
+**Limits/next:** the source search is bounded and incomplete. Its hall routes are sampled geometry, not doors or clearances. The RVT/IFC contains spaces and an outline only; walls, doors, stairs, roof, structure and services are absent. This is not a selected shell or an architectural building model. Continue source-bound coordination; no code, accessibility, structural-safety, professional, permit, or construction-readiness conclusion follows.
 
 ## M262 — Replay incoming family measurements and refresh the selected-D/IFC baseline
 
