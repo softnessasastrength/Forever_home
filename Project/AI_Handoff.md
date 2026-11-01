@@ -1,12 +1,14 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M258 source-pin replay; local sandbox only)
+Updated: 2026-10-31 (M259 fresh Revit M83 RVT/IFC and selected-D baseline revalidation; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
 
-**Current checkpoint — M258, 2026-10-31:** Local sandbox `codex/house-design-sandbox` at `2fe887e`; preflight was clean and 36 commits ahead, now 37 ahead of its local tracking ref; no remote state changed. A stale M232 pin for the committed M-06 A-priority decision blocked reproduction. The decision still says “Keep west A primary”; only the script fingerprint was corrected. Refreshed dependent source hashes/artifacts through M233, M241–M243 and M256–M257. Replays passed twice with identical outputs: M232 15/15, M233 10/10, M241 12/12, M242 13/13, M243 14/14, M256 21/21, M257 13/13. Current hashes/results and commands are in `PROGRESS.md`, `PLAN.md`, and study READMEs.
+**Current checkpoint — M259, 2026-10-31 (local):** Local sandbox `codex/house-design-sandbox`; no push, merge or remote state change. The M83 PowerShell source builder passes 13/13 twice, with four byte-identical outputs matching the checked-in package. Revit 2027.3 used the exact hash-verified worktree-local RevitPilot DLL and **Load Once** to generate a disposable M83 RVT/IFC2X3 pair at `.local/revit-pilot/roof-massing/20261101T030907380Z/`; its independent validation passes 21/21 twice with byte-identical reports and zero schema issues. This is six open mesh comparisons on the hypothetical 38.333333 × 40 ft shell; it contains no native roofs or other construction elements and is not a roof design. The fresh selected-D baseline passes two 43/43 runs, seven identical artifacts and three valid SVGs per run; retained IFC2X3 passes 26/26 with zero errors. Protected source/RVT/IFC and incoming Evolution RFA hashes are unchanged. No selected-D edit occurred.
+
+M-01 +6 in east and M-02 -6 in west remain unselected block sensitivities. M256's route still starts in M-05, and a 4 ft 4 in band remains between living and kitchen; the preferred fully open connection is unproven. M-06/A/B remain unassigned with west A protected. Owner direction is pending on whether a separate M-05 study may compare fixed and moved/reshaped alternatives while preserving entry/mudroom use. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows. See M259 in `PLAN.md`, `PROGRESS.md` and its README.
 
 Fresh selected-D baseline: two 43/43 geometry runs, seven matching generated files per replay, three parseable SVGs per replay, retained IFC2X3 validation 26/26 with zero errors. Selected-D/RVT/IFC remain hash-stable (`516D6D17…E2BB72BB`, `C6CED6AC…0ACEFD6D0`, `56251F47…A8472F6F`). Incoming locked Evolution family remains present and unchanged at SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. No Revit process was running, and no model/RFA/IFC was modified.
 
