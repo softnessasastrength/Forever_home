@@ -1,3 +1,10 @@
+## M291 — Fresh selected-D source and IFC baseline replay — 2026-11-01
+
+- Re-ran `Tools/validate_architectural_bim_baseline.ps1` directly under the current LocalMachine `RemoteSigned` policy; machine/user/process/current-user scopes were observed as `Undefined`. No policy override or trust change.
+- Two source generations pass **43/43** each; seven generated files match byte-for-byte, six plan SVGs parse across both runs, and the retained IFC2X3 validation passes **26/26** with zero errors. Baseline summary SHA256 `1F97BBE2BF598AA8DF100DCC94240429BF8FC30C92C6DA9314A76A89EED3AF07`; IFC report SHA256 `0AC0CDEA6D2589F6145C7F425BC99372C1DDD84C278173A597F6B3F3AE228FA9`.
+- Selected-D source/RVT/IFC hashes remain `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, `6073D5F1174B4009AB7EE17F430E0F788687FDBD64BA755C381E08BD0C58FC05`, and `E3B3C22C1CC58CEB8A1A7884CD122D90FD2337F372C2E9CD1CF293E4772ED999`. The Evolution RFA remains unchanged at `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. Output and detailed limitation statement: `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md`.
+- This validates the current reproducible 21-space room-boundary model and IFC lineage only. Native architectural construction geometry remains incomplete; no code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
+
 ## M290 — Partition residual C-LOWER geometry — 2026-11-01
 
 - Built a source-pinned C#/.NET 10 analysis of the two owner-facing M289 alternatives. It partitions the exact residual after subtracting M289's stair and 36-in swept-route rectangle proxies; it does not call the remaining area usable circulation.

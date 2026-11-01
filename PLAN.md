@@ -1,7 +1,7 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-11-01
-Status: The selected-D baseline regenerates in Revit 2027.3 and its retained IFC2X3 passes 26/26, but it remains a 21-space room-boundary study, not a complete house. M289's owner-authorized joint same-area lower stair study is followed by M290's exact residual-area partition: both representative stair/path options leave one connected abstract C-LOWER residual component (78.4306 sq ft and 74.3889 sq ft). The owner preference between minimum change/tangency, greater separation/more reshape, or keeping both in parallel is pending. Native walls, openings, floors, stairs, roof assembly, MEP and exact selected toilet family remain open. M-06 and B stay unassigned; west A stays protected. M-05 topology and the fully open kitchen/living connection remain unresolved.
+Status: M291 freshly revalidated the selected-D source-to-IFC workflow: two 43/43 source runs, seven identical outputs per run, all six SVGs parse, and retained IFC2X3 passes 26/26 with zero errors and unchanged source/RVT/IFC hashes. This remains a 21-space room-boundary study, not a complete house. M289's owner-authorized joint same-area lower stair study is followed by M290's exact residual-area partition: both representative stair/path options leave one connected abstract C-LOWER residual component (78.4306 sq ft and 74.3889 sq ft). The owner preference between minimum change/tangency, greater separation/more reshape, or keeping both in parallel is pending. Native walls, openings, floors, stairs, roof assembly, MEP and exact selected toilet family remain open. M-06 and B stay unassigned; west A stays protected. M-05 topology and the fully open kitchen/living connection remain unresolved.
 
 ## M272 — Diagram porch-to-patio relationships without inventing a site plan
 
@@ -2881,3 +2881,11 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Status:** Complete as an analysis-only exact rectangle partition. The package-free C#/.NET 10 generator builds with 0 warnings/errors; two runs pass 9/9 checks and reproduce all outputs byte-for-byte; the SVG parses as XML. Both M289 examples leave one edge-connected residual component: 78.4306 sq ft after a 0.4583-sq-ft proxy occupation in the minimum-change option; 74.3889 sq ft after 4.5 sq ft in the higher-change positive-gap option. These connected components remain geometric residuals, not established usable circulation or room space. Details, hashes and reproduction commands: `Architecture/M290_Circulation_Residual_Partition_2026-11-01/README.md`.
 
 **Next gate:** owner preference among minimum-change/tangent geometry, larger separation with more room reshaping, or parallel comparison is pending. No geometry is selected or authorized for Revit; preserve selected-D and keep M-06/A/B unassigned.
+
+## M291 — Repeat selected-D source and IFC baseline validation — 2026-11-01
+
+**Acceptance:** run the documented baseline validator from the current checkout without changing PowerShell policy; require two independent 43-check geometry runs with seven matching artifacts each, parse every SVG, validate the retained IFC2X3 against all 21 spaces/three storeys and export lineage, and confirm selected-D/RVT/IFC hashes remain unchanged.
+
+**Status:** Complete. Direct invocation under existing LocalMachine `RemoteSigned` policy passes. Both geometry replays pass 43/43; seven files match byte-for-byte; six plan SVGs parse; the IFC validator passes 26/26 with zero errors. Selected-D source/RVT/IFC hashes are unchanged. Detailed evidence and exact commands: `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md` (current-checkout replay section).
+
+**Limit:** this repeats validation of the existing 21-space room-boundary study and its IFC2X3 export. It does not supply native walls, floors, stairs, doors, windows, roof, MEP or fixture geometry. Do not claim code, accessibility, structural, professional, permit or construction readiness.

@@ -70,3 +70,11 @@ The full baseline command was run again from this worktree using the effective e
 ```
 
 Result: two replays, 43/43 geometry checks each, seven generated files per replay identical byte-for-byte, three parseable SVGs per replay, retained IFC validation 26/26 with zero errors, and protected source/RVT/IFC hashes unchanged. The ignored summary report SHA256 is `F4A856D37A85827520A3E07EDF983347B131F34131A1C8FEE1A0B865B3842248`; its IFC report SHA256 remains `0AC0CDEA6D2589F6145C7F425BC99372C1DDD84C278173A597F6B3F3AE228FA9`. The saved model is still a 21-space room-boundary study with no native house construction categories.
+
+## Current-checkout replay — 2026-11-01 16:00 UTC
+
+Repeated the direct baseline command from this checkout using the existing `RemoteSigned` LocalMachine execution policy; all other scopes remain `Undefined`. No execution-policy override or trust change was made. Fresh ignored output is `.local/revalidation/architectural-bim-baseline-20261101T160036041Z/`.
+
+Two selected-D generations pass **43/43** checks each; all seven output files match byte-for-byte and each run's three plan SVGs parse as XML. The retained IFC2X3 passes **26/26** checks with zero errors. The report hashes are baseline summary `1F97BBE2BF598AA8DF100DCC94240429BF8FC30C92C6DA9314A76A89EED3AF07` and IFC report `0AC0CDEA6D2589F6145C7F425BC99372C1DDD84C278173A597F6B3F3AE228FA9` (same IFC report as the previous validation). Source, saved RVT and IFC hashes remain `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, `6073D5F1174B4009AB7EE17F430E0F788687FDBD64BA755C381E08BD0C58FC05`, and `E3B3C22C1CC58CEB8A1A7884CD122D90FD2337F372C2E9CD1CF293E4772ED999`. Incoming Evolution RFA remains SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`.
+
+This is still the selected-D 21-space room-boundary RVT/IFC; wall, slab, door, window, stair, roof, fixture and MEP categories remain absent. No project geometry or incoming family was changed.
