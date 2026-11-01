@@ -1,3 +1,10 @@
+## M272 — Add a source-dimensioned patio adjacency diagram — 2026-11-01
+
+- Turned the existing patio decision into a readable plan diagram: exact 12 × 10 ft porch, specified minimum 3 × 3 ft landing, route band, separate dining and fire/lounge zones, unlocated fireplace reserve, and a pool route that branches before the lounge.
+- Kept the porch exit side unspecified and all exterior footprint, orientation, route width, furniture and site position undimensioned. The graphic explicitly says not to scale and not site-fitted beyond the two cited footprints.
+- Reproducible Windows PowerShell 5.1 XML/label/ratio checks pass: 10 required labels/caveats, porch/landing ratio, four paths. See `Architecture/M272_Patio_Adjacency_Study_2026-11-01/README.md` and SVG.
+- Next: M270 Revit runtime replay is pending owner help with the visible trial overlay and trust prompt. Once available, verify only if the exact DLL path is identified. Patio dimensioning still needs site survey/house placement and the recovered Adirondack asset.
+
 ## M271 — Regenerate M83 source options and validate Revit/IFC2X3 — 2026-11-01
 
 - Replaced the PowerShell-policy-blocked source generator with package-free `Tools/M83Generator` C#/.NET 10 and a PowerShell 5.1 launcher that respects the configured execution policy. Build: **0 warnings, 0 errors**. Three source runs pass 13/13; two separate ignored output directories produce byte-identical JSON, manifest and SVG files. Output uses UTF-8 without BOM and normalized line endings; `git diff --check` passes.

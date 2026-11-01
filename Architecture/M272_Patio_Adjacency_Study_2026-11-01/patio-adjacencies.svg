@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680" role="img" aria-labelledby="title desc">
+  <title id="title">M272 porch-connected patio adjacency study</title>
+  <desc id="desc">A non-site-fitted diagram. A dimensioned 12 by 10 foot porch connects through a minimum 3 by 3 foot landing to a walking band. A separate dining zone and separate fire lounge flank the route. A future pool route branches before the lounge. Exterior zones are not to scale.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#405a49"/></marker>
+    <style>
+      text{font-family:Segoe UI,Arial,sans-serif;fill:#302b25}.title{font-size:28px;font-weight:700}.sub{font-size:16px;fill:#625c53}.label{font-size:18px;font-weight:600}.small{font-size:14px}.tiny{font-size:12px}.porch{fill:#f2e7d5;stroke:#695c4c;stroke-width:3}.landing{fill:#e5edf2;stroke:#557081;stroke-width:3}.route{fill:none;stroke:#405a49;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.routebranch{fill:none;stroke:#405a49;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.zone{fill:#f4efe7;stroke:#887764;stroke-width:2;stroke-dasharray:9 6}.fire{fill:#fbf4e8;stroke:#ad7041;stroke-width:2;stroke-dasharray:6 5}.divider{stroke:#c9c0b5;stroke-width:1}.tag{fill:#fffdf9;stroke:#b8ac9c;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="1120" height="680" fill="#fbfaf7"/>
+  <text class="title" x="40" y="48">Porch-connected patio · relationship study</text>
+  <text class="sub" x="40" y="77">Owner-directed adjacency · exterior boundary, sizes, orientation and site position remain open</text>
+
+  <text class="small" x="40" y="127">HOUSE / PORCH SIDE</text>
+  <rect class="porch" x="50" y="155" width="240" height="200" rx="4"/>
+  <text class="label" x="170" y="238" text-anchor="middle">THREE-SEASON</text>
+  <text class="label" x="170" y="264" text-anchor="middle">PORCH</text>
+  <text class="small" x="170" y="292" text-anchor="middle">12 × 10 ft · 120 sf</text>
+  <text class="tiny" x="170" y="318" text-anchor="middle">specified room footprint</text>
+
+  <path d="M290 255 H350" stroke="#625c53" stroke-width="3" stroke-dasharray="5 5"/>
+  <rect class="tag" x="300" y="174" width="106" height="47" rx="6"/>
+  <text class="tiny" x="353" y="194" text-anchor="middle">PORCH EXIT</text>
+  <text class="tiny" x="353" y="210" text-anchor="middle">side open</text>
+  <rect class="landing" x="350" y="225" width="60" height="60" rx="3"/>
+  <text class="tiny" x="380" y="247" text-anchor="middle">MIN.</text>
+  <text class="tiny" x="380" y="263" text-anchor="middle">3 × 3 ft</text>
+
+  <path class="route" d="M410 255 H1055"/>
+  <text class="label" x="680" y="230" text-anchor="middle">CLEAR PATIO WALKING BAND</text>
+  <text class="small" x="680" y="295" text-anchor="middle">connect porch / landing to garden; width and exact alignment await site + door review</text>
+  <text class="small" x="1060" y="210" text-anchor="end">GARDEN / YARD</text>
+
+  <rect class="zone" x="480" y="356" width="245" height="168" rx="14"/>
+  <text class="label" x="602" y="397" text-anchor="middle">PATIO DINING</text>
+  <text class="small" x="602" y="426" text-anchor="middle">separate social zone</text>
+  <text class="small" x="602" y="454" text-anchor="middle">size + furniture open</text>
+  <text class="tiny" x="602" y="489" text-anchor="middle">not to scale</text>
+
+  <rect class="zone" x="785" y="356" width="285" height="168" rx="14"/>
+  <text class="label" x="927" y="392" text-anchor="middle">FIRE / LOUNGE</text>
+  <text class="small" x="927" y="420" text-anchor="middle">separate from dining + route</text>
+  <rect class="fire" x="815" y="441" width="225" height="58" rx="8"/>
+  <text class="small" x="927" y="466" text-anchor="middle">future fireplace reserve</text>
+  <text class="tiny" x="927" y="486" text-anchor="middle">size + location unassigned</text>
+
+  <path class="routebranch" d="M445 255 V580 H1050"/>
+  <text class="label" x="710" y="558" text-anchor="middle">FUTURE POOL ROUTE</text>
+  <text class="small" x="710" y="614" text-anchor="middle">branches before lounge; pool location and route width open</text>
+  <text class="small" x="1060" y="602" text-anchor="end">POOL AREA · FUTURE</text>
+
+  <line class="divider" x1="40" y1="640" x2="1080" y2="640"/>
+  <text class="tiny" x="40" y="661">Exterior is diagrammatic, not to scale or site-fitted. No dimension, compass direction, grade, door swing, threshold, code or accessibility result is implied.</text>
+</svg>
