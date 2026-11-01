@@ -30,6 +30,15 @@
 - Evidence, artifact hashes and replay commands: `Architecture/M296_Landing_Circulation_Integration_Study_2026-11-01/README.md`.
 - **Next:** choose whether to permit an analysis-only same-area L-02 move/reshape, or compare a different stair/vertical arrangement. No further relaxation or physical geometry is selected by M296.
 
+## M298 — Compile source-derived 8–10 ft walkthrough room-volume wireframe — 2026-11-02
+
+- Owner authorized a visibly labeled 8–10 ft ceiling comparison with re-spaced study floors. Added `Tools/RevitPilot/WalkthroughShellStudyCommand.cs` and a ribbon command. It reads selected-D's source-pinned room blocks, plan offsets and documented shell envelopes; builds separate 8/9/10-ft interval comparison cases; and writes a disposable model plus a geometry/fingerprint manifest. The study is a wireframe scaffold, not actual walls, floors, stairs, openings, roof or MEP.
+- RevitPilot build succeeded against the installed Revit 2027 API with 0 errors and 2 existing reference-conflict warnings. Final DLL SHA256: `4218E9C1A84943E30255CDBBBB95099F6B36AC77B6D0F89EC802E9C0D37800FD`. The per-user manifest's AddInId and assembly path/hash were checked; previous manifest preserved at `.local/revit-pilot/registration-backups/20261101T163813099Z/`.
+- Revit was restarted to Home. No trust prompt identifying the final DLL appeared. The command was not executed; no RVT/report or runtime geometry verification exists yet. Do not infer successful add-in load from the manifest alone.
+- Selected-D source hash remains `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`. No selected-D or retained IFC change. Project remains local; no remote state changed.
+- Evidence and limitations: `Architecture/Walkthrough_Shell_Wireframe_Study_2026-11-02/README.md`. The material schedule has a living-skylight intent (diffuse, avoid projector glare), but locations/product/roof openings remain undesigned.
+- **Next:** runtime-test only if Revit presents the exact-path/hash prompt, then build toward actual walls/openings/floors/stairs/roof using resolved dimensions. Separately continue the authorized M297 L-02 same-area route study. Keep M-06/A/B unassigned until their required fit/route evidence exists.
+
 ## M292 — M270 runtime attempt stopped at untargetable Revit intro overlay — 2026-11-01
 
 - Verified RevitPilot AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, manifest assembly path within this checkout, and exact M270 DLL SHA256 `0B2FB3CF174CAE3D4D366DAE09426E51AD6F7D2E940FEEAA34CD38C8916A2E10` before launch. Pinned KOHLER Cimarron candidate RFA SHA256 remains `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`.
