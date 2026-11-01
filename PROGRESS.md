@@ -3124,3 +3124,11 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The source-bound arithmetic compares the 60-in Selected-D baseline, a 4+4 equal-riser split retaining eight 7½-in risers, and a labelled DD-013 6+2 remainder sensitivity. The replay passes **5/5**.
 - No native stair was created or selected. A real Revit stair remains conditional on floor assembly, landing/opening, headroom, route, wall thickness, structural support and applicable-code inputs.
 
+## M325 — Disposable native split-rise stair host gate — 2026-11-01
+
+- Added `Tools/RevitPilot/SplitRiseNativeStairCommand.cs`, a narrowly scoped Revit 2027 API candidate that creates two native `Stairs` elements for the documented 4+4 split-rise comparison (0 → 2.5 → 5 ft; four risers per flight), saves a disposable RVT, and requests IFC2x3 export. It does not open or modify Selected-D.
+- Build completed with **0 errors** and the repository’s two pre-existing `MSB3277` reference-conflict warnings. Exact build: `.local/revit-pilot/build-m324-native-stair/Release/net10.0-windows/RevitPilot.dll`; SHA256 `7EC7694892E257586180F838FAC13D1A7F6C9CF8819E2F863A4DE50AE7CB4EB9`.
+- The authorized AddInId remains unchanged. The previous per-user manifest is preserved at `.local/revit-pilot/registration-backups/20261101T222844306Z/`. The validator is `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1`.
+- **Blocked at host gate:** Revit 2027.3 launches, but its embedded trial overlay is not receiving computer-use input in the current session; no native stair RVT/IFC output exists yet. This is a tooling/UI blocker, not evidence that the stair geometry failed.
+- Selected-D, M-06, B, remote state, and existing history remain unchanged. No code-compliance, structural, professional, or construction-readiness conclusion follows.
+

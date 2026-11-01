@@ -89,6 +89,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(GeometryQaCommand).FullName!));
         panel.AddItem(new PushButtonData("FHManifestExports", "Run manifest\nexports",
             Assembly.GetExecutingAssembly().Location, typeof(ManifestExportCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
+            Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIslandCountertopTest", "Build M-02\ncountertop test",
             Assembly.GetExecutingAssembly().Location, typeof(IslandCountertopTestCommand).FullName!));
         return Result.Succeeded;
