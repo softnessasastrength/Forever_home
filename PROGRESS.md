@@ -2701,3 +2701,12 @@ M180 below checks the source-coordinate origin and test-shell extents. Physical 
 - Independent PowerShell review rechecked the two examples against the six blocks and shell. Selected-D/RVT/IFC/source RFAs are unchanged; no M-06 room/fixture assignment or route fit follows.
 - Revit status in response to owner's question: process 26820 reports `Responding = True` and is minimized; its title is `FH_Family_Intake_Study - Floor Plan: Level 1`. This chunk was headless code/review work; Revit was not manipulated.
 - Next owner choice: must the main entry remain on the presumed front/source side, may M-05 move to a side/rear entry, or should a separate study move M-01/M-02 as well? Do not advance an alternate entry location until door/approach and route evidence are available.
+
+## M283 - Selected-D source-to-IFC baseline replay - 2026-11-01
+
+- Re-ran the documented selected-D source generator twice into ignored `.local/revalidation/` outputs. Both runs passed 43/43 geometry checks and reproduced all seven output files byte-for-byte; all three SVGs per run parsed as XML.
+- Validated the retained Revit 2027.3 IFC2X3 baseline against source, saved RVT, and export records. The validator passed 26/26 checks with zero errors or schema issues and matched all 21 source spaces across three storeys. Selected-D source, RVT, and IFC hashes remained unchanged.
+- PowerShell persisted execution-policy scopes remain `Undefined`; the effective default remains `Restricted`. The single test invocation used `RemoteSigned` at `Process` scope only, and that setting expired with the process. No persistent Windows or Revit trust settings changed.
+- This closes the source-generator reproducibility gap left open at M278. It does not add architectural construction elements: the Revit model remains a room-boundary study with empty physical construction categories. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows.
+- Evidence, exact hashes, and reproduction command: `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md`.
+- **Next:** progress toward native house geometry in an isolated derivative, beginning only with source-defined envelopes and explicitly identified template placeholders; resolve the M282 entry-side gate before claiming a kitchen/living opening or selecting an M-05 placement. Preserve M-06/B unassigned until product, applicable clearance, door/approach, and service evidence support a fit.
