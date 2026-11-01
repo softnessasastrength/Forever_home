@@ -3112,3 +3112,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The consolidated gate passes **6/6**: selected-D baseline, M318 wall/plate chain, M317 public M-06 candidate evidence, M320 M-06 gross envelope, M321 kitchen IFC, and M83 roof-comparison IFC.
 - This is an evidence-chain acceptance check. It does not select building geometry or close the unresolved stair/section, openings, assemblies, structure, MEP, service-route, site, code, or professional-review gates.
 
+## M323 — Section/stair constraint replay gate — 2026-11-01
+
+- Added `Tools/validate_section_stair_gate.ps1` and linked it from the M316 register.
+- The replay checks the selected-D −5/0/+5 ft levels and two 60-in transitions, DD-013's 6 × 7¼-in / 43½-in study basis, and explicit absence of native stair/opening claims.
+- Result: the source-bound gate is designed to keep the conflict visible; no floor assembly, landing, headroom, route, structural support or code conclusion is inferred.
+

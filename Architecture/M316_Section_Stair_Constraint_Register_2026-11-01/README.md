@@ -4,6 +4,8 @@ Date: 2026-11-01
 
 Status: **coordination gate recorded; no stair or level geometry selected.** This register consolidates existing owner directions and source-based screens before any native stair placement. It introduces no new architectural dimensions.
 
+The machine-checkable replay is `Tools/validate_section_stair_gate.ps1`; it validates the selected-D 60 in comparison, DD-013 43½ in study basis, and explicit absence of native stair/opening claims.
+
 ## Fixed inputs carried forward
 
 | Item | Value | Evidence |

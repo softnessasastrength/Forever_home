@@ -8,6 +8,7 @@ M320 replays the current-SKU M-06 plan-envelope screen under the configured Powe
 M321 independently revalidates the retained isolated M-02 kitchen-island IFC2x3 export against its Revit audit and selected-D source: 13/13 checks pass with matching RVT/IFC lineage, 21 spaces on three storeys, four casework modules, and the generic countertop placeholder. This remains a furnishing-study derivative, not selected-D building geometry.
 The consolidated handoff is `Architecture/Verified_BIM_Milestone_2026-11-01.md`; it cross-references the verified gates, reproduction commands, and remaining limitations for a fresh Codex/Revit 2027 session.
 The handoff now has a machine-readable acceptance command, `Tools/validate_verified_bim_milestone.ps1`, which checks the current evidence chain without opening or modifying Selected-D.
+The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 
 ## M321 — M-02 kitchen island IFC recheck
 
