@@ -1,3 +1,10 @@
+## M316 — Section/stair constraint register — 2026-11-01
+
+- Added `Architecture/M316_Section_Stair_Constraint_Register_2026-11-01/README.md` as a source-linked gate before native stair geometry.
+- It consolidates the existing Selected-D 40 × 42 / 36 × 32 ft envelopes, 8/9/10-ft clear-height study, 60-in stored comparison transition, DD-013 43½-in reference, M295 full-rise comparison, 36-in route precedent, and the M-06/A/B assignment protections. No dimension was invented and no geometry was selected.
+- The gate requires a coherent floor-to-floor relationship, floor/opening/landing/headroom section, actual door/approach checks, and an applicable Connecticut interpretation before a disposable native stair is attempted. M295's two-run 19/19 screen remains evidence, not a selected stair.
+- No Revit, IFC, Selected-D, M-06, A, B, remote, or history state was changed by this documentation milestone.
+
 ## M315 — Provisional floor-plate IFC2x3 export gate — 2026-11-01
 
 - Added a RevitPilot export command for the M314 derivative. The exact project-local DLL is `.local/revit-pilot/main-floor-floor-plate-ifc-v2/Release/net10.0-windows/RevitPilot.dll` (SHA256 `443C9793C9141DC330331C313055490EBCABF7C836B6810A3D3DC88B6BD98A4F`); manifest backup: `.local/revit-pilot/registration-backups/20261101170914/`.
