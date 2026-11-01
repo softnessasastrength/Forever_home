@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "route_cases": 2,
+  "swept_patches": 581,
+  "route_sha256": "59710CF56117976C3495B0D9DF7D9F2B72C1FF27933D5FBDF9ED48F55270E02D",
+  "method": "Independent intersection-area sum over verified disjoint rooms; every segment and turn square checked",
+  "limitations": "Same schematic input proxies; no door, furniture completeness, code or construction validation"
+}
