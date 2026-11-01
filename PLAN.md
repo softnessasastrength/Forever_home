@@ -1,9 +1,16 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-01 (M319 selected-D baseline acceptance recheck)
+Updated: 2026-11-01 (M320 M-06 envelope recheck)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
+M320 replays the current-SKU M-06 plan-envelope screen under the configured PowerShell host without an execution-policy override: 14/14 integrity checks pass and all 16 research toilet/lavatory boxes remain contained in the gross B window. This remains gross arithmetic only; B is not assigned.
+
+## M320 — M-06 current-product envelope recheck
+
+**Acceptance:** reproduce the source-bound M120 screen without bypassing the configured execution policy; require 14/14 checks, 16/16 contained research pairs, current-SKU geometry still marked unverified, and no M-06 assignment.
+
+**Result:** `.local/revalidation/M320-m120-current-envelope-pwsh/` passes the gate. Door/approach, finished-face clearances, service routing, exact current-SKU family geometry, and local applicability remain open.
 
 ## M319 — Selected-D baseline acceptance recheck
 

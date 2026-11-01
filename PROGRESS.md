@@ -3094,3 +3094,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Result: **2 × 43/43** deterministic source checks; seven generated artifacts per replay match byte-for-byte; three SVGs per replay parse as XML; retained IFC2X3 passes **26/26** with zero errors; protected selected-D source, RVT and IFC SHA256 fingerprints remain unchanged.
 - This revalidates the room-space/IFC baseline only. Native construction categories remain empty; no stair, opening, roof, structure, MEP, code, professional or construction-readiness conclusion follows.
 
+## M320 — M-06 current-product envelope recheck — 2026-11-01
+
+- Replayed `Tools/build_m120_m06_current_envelope_screen.ps1` with the configured PowerShell host and no execution-policy override into ignored `.local/revalidation/M320-m120-current-envelope-pwsh/`.
+- Result: **14/14** checks pass; **16/16** research toilet/lavatory bounding-box pairs remain contained in the gross B window; the report retains exact current-SKU geometry as unverified and M-06 as unassigned.
+- This is gross-envelope arithmetic only. It does not establish wall-face fit, a door or hall approach, privacy, plumbing/vent/service routing, accessibility, local code applicability, product approval, or construction readiness.
+
