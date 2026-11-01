@@ -1,0 +1,121 @@
+{
+  "schema": "forever-home-m281-owner-priority-layout-evidence-crosswalk-v1",
+  "status": "pass; bounded evidence reconciliation only; no layout selected",
+  "inputs_sha256": {
+    "m213_report": "893EDCC4E0B836E83DE2516EB834F55B5CADF08BD8E8B75B1F737C833BF5F303",
+    "m279_report": "5F15A39116AD56C6B53CAC502427460DAC2727853C9334F0096ADBF9B30D1431",
+    "m279_obstacle_snapshot": "03E6D2BACC6A6167105651747869CB82AFB16515FADF691CFE8CE7695F1A1DA7",
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB"
+  },
+  "owner_priority_case": {
+    "source": "M213 full-shell route search",
+    "kitchen_envelope_ft": [
+      13.5,
+      13.25
+    ],
+    "area_sf": 178.875,
+    "area_over_168sf_target": 10.875,
+    "island_ft": [
+      8,
+      4
+    ],
+    "route_ft": 33.5,
+    "turns": 4,
+    "original_A_boundary_gap_ft": 0.25,
+    "minimum_obstacle_gap_ft": 0,
+    "nonfragile": false,
+    "route_check_count": 31,
+    "dining_ft": {
+      "x": 0,
+      "y": 19.5,
+      "w": 11,
+      "d": 10
+    },
+    "porch_ft": {
+      "x": -0.5,
+      "y": 30,
+      "w": 12,
+      "d": 10
+    },
+    "pantry_5x6_ft": [
+      13.5,
+      0,
+      5,
+      6
+    ],
+    "B_status": "Unassigned room-block gap only; not a bath footprint."
+  },
+  "compact_orientation_cases": [
+    {
+      "id": "axis-14x12-7x3",
+      "island_axis_ft": [
+        7,
+        3
+      ],
+      "island_long_axis_ft": 7,
+      "pantry_overlap_sf": 3,
+      "fixed_block_screen_pass": false,
+      "inherited_route_overlay_pass": true,
+      "kitchen_to_dining_band_ft": 8,
+      "disposition": "fails one or more inherited block screens; unselected"
+    },
+    {
+      "id": "axis-14x12-6x3",
+      "island_axis_ft": [
+        6,
+        3
+      ],
+      "island_long_axis_ft": 6,
+      "pantry_overlap_sf": 3,
+      "fixed_block_screen_pass": false,
+      "inherited_route_overlay_pass": true,
+      "kitchen_to_dining_band_ft": 8,
+      "disposition": "fails one or more inherited block screens; unselected"
+    },
+    {
+      "id": "axis-12x14-3x7",
+      "island_axis_ft": [
+        3,
+        7
+      ],
+      "island_long_axis_ft": 7,
+      "pantry_overlap_sf": 0,
+      "fixed_block_screen_pass": true,
+      "inherited_route_overlay_pass": true,
+      "kitchen_to_dining_band_ft": 6,
+      "disposition": "clears listed fixed-block overlay; kitchen-dining band remains unassigned; unselected"
+    },
+    {
+      "id": "axis-12x14-3x6",
+      "island_axis_ft": [
+        3,
+        6
+      ],
+      "island_long_axis_ft": 6,
+      "pantry_overlap_sf": 0,
+      "fixed_block_screen_pass": true,
+      "inherited_route_overlay_pass": true,
+      "kitchen_to_dining_band_ft": 6,
+      "disposition": "clears listed fixed-block overlay; kitchen-dining band remains unassigned; unselected"
+    }
+  ],
+  "interpretation": {
+    "preferred_lead": "M213 is the owner-aligned next study lead because it preserves the 8 x 4 ft island, small-area search, fully-open preference, shifted dining/porch, and protected-A/B route constraints.",
+    "separate_methods": "M213 is a full-shell sampled route search; M279 overlays four compact-island rectangles and an inherited route. Their route gaps and pass labels are not interchangeable.",
+    "pantry_conflict": "Both screens currently use a 5 x 6 ft pantry proxy while another source records 5 x 7 ft. Recheck both before promotion; M-04 is not assigned by this report.",
+    "m05": "M-05 remains fixed in the M213/M279 source geometry. The owner has since authorized a separate analysis-only move/reshape study; location, entry orientation, and function fit remain unverified.",
+    "compact_case_count_passing_bounded_screens": 2
+  },
+  "checks": {
+    "passed": 15,
+    "total": 15,
+    "status": "pass"
+  },
+  "limitations": [
+    "M213 is one sampled route-qualified case, not a global minimum or a selected kitchen dimension; it has zero minimum modeled obstacle gap and is explicitly flagged fragile.",
+    "The original west-A gap is 3 in only to the M06-A boundary; the route touches another expanded search obstacle. This is proxy geometry, not an M-06 fixture or code clearance.",
+    "M279\u0027s compact-island cases do not implement the owner\u0027s 8 x 4 ft island priority. The two reports use different coordinate/screening contracts and cannot be combined into one verified plan.",
+    "Pantry size is inconsistent across project records. Door/approach, appliances, exact cabinetry/stool geometry, wall openings, finishes, tolerance, site fit, and services remain unresolved.",
+    "M-05 relocation is not assumed. Selected-D, RVT, IFC, and source RFAs remain untouched. No code-compliance, accessibility, structural, professional, permit, or construction-readiness conclusion follows."
+  ]
+}

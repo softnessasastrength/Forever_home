@@ -2805,3 +2805,17 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Limits:** neither product is selected or assigned; bounds are not room fit. Finished-face, door/approach, faucet-use, and supply/drain/vent checks remain open. Do not infer code compliance from family metadata or the cited clearance screen.
 
 **Next:** continue the integrated kitchen/dining/porch study using the owner's 8 × 4 ft island priority, then resolve the M-05 topology needed for the fully open kitchen/living connection. Keep M-06 unassigned pending exact product/type, applicable clearance, entry/approach, and service evidence.
+
+## M281 - Reconcile owner-priority kitchen screens - 2026-11-01
+
+**Acceptance:** hash-bind M213's full-shell 8 × 4 ft kitchen/route screen and M279's compact-island fixed-block screen; compare their scope and route contracts without treating them as interchangeable; confirm the priority case and its fragility; preserve selected-D and M-06/A/B status; produce deterministic evidence and independent validation.
+
+**Status:** Complete. Repository-local .NET 10.0.403 build has 0 warnings/errors; two runs pass 15/15 and match report/check outputs. M213 remains the owner-aligned study lead: 178.875 sf with the 8 × 4 ft island and a sampled 33.5-ft route, but 0-in minimum obstacle gap and `nonfragile = false`. M279's two fixed-block/route overlay passes use only compact 6/7 × 3 ft islands and cannot replace the owner-priority case. The 5 × 6 vs 5 × 7 pantry discrepancy remains. See `Architecture/M281_Owner_Priority_Evidence_Crosswalk_2026-11-01/README.md`.
+
+## M282 - M-05 move-only envelope study - 2026-11-01
+
+**Acceptance:** use the owner's analysis-only authorization; preserve the documented M-05 4 ft 4 in × 12 ft / 52 sf block for initial translations; use the 40 × 42 ft test shell, M256-shifted M-01/M-02 blocks, source M-03/M-04, and protected-A/unassigned-B rectangles; test shell containment and positive-area overlaps on a quarter-foot grid; explicitly disclose changed entry-side relation, door/approach and route limits; preserve selected-D/RVT/IFC/RFAs; build and produce deterministic outputs.
+
+**Status:** Complete as a static-block move screen. Build has 0 warnings/errors; two runs pass 15/15 and reproduce report/check outputs. Exactly one source-row position passes the fixed block screen: current M-05. The screen identifies 95 north-edge and 24 east-edge translations that preserve its 52 sf and avoid M-01/M-02/M-03/M-04/A/B. North example `(12, 30)` ft; east example `(35.6667, 24.25)` ft. The east case is 1 in from the source 5 × 7 pantry block. Neither alternative verifies a door or approach; both change the presumed front-side relationship. M-05 translation alone leaves the 4 ft 4 in gap between M-01 and M-02 and does not demonstrate a fully open connection. See `Architecture/M282_M05_Move_Study_2026-11-01/README.md` and the authorization in `Decisions/2026-11-01_M05_Move_Reshape_Study_Authorization.md`.
+
+**Next owner gate:** identify whether the main entry must remain on the presumed front/south side, may move to a side/rear side, or whether M-01/M-02 may also move in a separate comparison. Before a Revit derivative, decide the entry orientation and examine actual door/approach plus the M-01/M-02 opening. Keep all current positions as unselected analytical alternatives.

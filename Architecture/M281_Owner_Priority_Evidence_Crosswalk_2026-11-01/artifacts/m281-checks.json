@@ -1,0 +1,68 @@
+{
+  "schema": "forever-home-m281-checks-v1",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "id": "source M213 report SHA256 pinned",
+      "pass": true
+    },
+    {
+      "id": "source M279 report SHA256 pinned",
+      "pass": true
+    },
+    {
+      "id": "M279 obstacle snapshot SHA256 pinned",
+      "pass": true
+    },
+    {
+      "id": "selected-D fingerprint pinned",
+      "pass": true
+    },
+    {
+      "id": "M213 schema/status valid",
+      "pass": true
+    },
+    {
+      "id": "M279 schema/status valid",
+      "pass": true
+    },
+    {
+      "id": "M279 obstacle provenance binds selected-D",
+      "pass": true
+    },
+    {
+      "id": "owner-priority M213 candidate is 13.5 x 13.25 ft / 178.875 sf",
+      "pass": true
+    },
+    {
+      "id": "owner-priority 8 x 4 ft island retained",
+      "pass": true
+    },
+    {
+      "id": "fully-open preference and B-unassigned constraint retained",
+      "pass": true
+    },
+    {
+      "id": "33.5-ft four-turn route is source-bound",
+      "pass": true
+    },
+    {
+      "id": "route records 3-in original-A gap and zero minimum obstacle gap",
+      "pass": true
+    },
+    {
+      "id": "M279 alternatives remain compact 6/7 x 3 sensitivities",
+      "pass": true
+    },
+    {
+      "id": "M279 pantry is a separate 5 x 6 proxy",
+      "pass": true
+    },
+    {
+      "id": "comparison does not conflate different screening methods",
+      "pass": true
+    }
+  ]
+}

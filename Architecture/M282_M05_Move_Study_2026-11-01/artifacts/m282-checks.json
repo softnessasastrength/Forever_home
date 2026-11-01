@@ -1,0 +1,68 @@
+{
+  "schema": "forever-home-m282-checks-v1",
+  "status": "pass",
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "id": "source snapshot and M256 checkpoint fingerprints pinned",
+      "pass": true
+    },
+    {
+      "id": "selected-D source fingerprint unchanged",
+      "pass": true
+    },
+    {
+      "id": "owner authorized separate analysis-only M05 study",
+      "pass": true
+    },
+    {
+      "id": "west-A protection instruction pinned",
+      "pass": true
+    },
+    {
+      "id": "M05 source envelope preserves documented 52-sf area and 4.333 x 12-ft geometry",
+      "pass": true
+    },
+    {
+      "id": "40 x 42-ft test shell retained",
+      "pass": true
+    },
+    {
+      "id": "M256 living/kitchen blocks retain 4.333-ft gap",
+      "pass": true
+    },
+    {
+      "id": "only one source-row placement passes fixed room/A/B block screen and it is the source position",
+      "pass": true
+    },
+    {
+      "id": "north-edge example remains inside shell and clears fixed room/A/B blocks",
+      "pass": true
+    },
+    {
+      "id": "east-edge example remains inside shell and clears fixed room/A/B blocks",
+      "pass": true
+    },
+    {
+      "id": "north candidate changes presumed entry side",
+      "pass": true
+    },
+    {
+      "id": "east candidate is only 1 in from M04 source envelope",
+      "pass": true
+    },
+    {
+      "id": "M05 move alone does not change 4.333-ft room-block gap",
+      "pass": true
+    },
+    {
+      "id": "no door, route, entry approach, or M06 assignment is claimed",
+      "pass": true
+    },
+    {
+      "id": "selected-D is not modified",
+      "pass": true
+    }
+  ]
+}
