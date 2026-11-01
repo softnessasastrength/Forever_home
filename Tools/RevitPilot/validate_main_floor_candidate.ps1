@@ -26,6 +26,6 @@ foreach($wall in $m.native_wall_inventory){
  }}
 }
 $status=if($deviations.Count-eq0-and$collisions.Count-eq0){'pass'}else{'fail'}
-[ordered]@{status=$status;manifest_sha256=(Get-FileHash (Join-Path $dir 'manifest.json')).Hash;saved_rvt_sha256=$m.saved_rvt_sha256;native_wall_count=42;curve_deviations=$deviations;route_bound_collisions=$collisions;comparisons=$tested;limitations='Native axis-aligned wall bounds are conservative; collision requires diagnosis. No reopened inventory, door clear width/swing, IFC, code or construction approval.'}|ConvertTo-Json -Depth 8|Set-Content $Output
+[ordered]@{status=$status;manifest_sha256=(Get-FileHash (Join-Path $dir 'manifest.json')).Hash;saved_rvt_sha256=$m.saved_rvt_sha256;native_wall_count=42;curve_deviations=$deviations;route_bound_collisions=$collisions;comparisons=$tested;limitations='Native axis-aligned wall bounds are conservative; collision requires diagnosis. No reopened inventory, door clear width/swing, code or construction approval; IFC integrity is validated separately.'}|ConvertTo-Json -Depth 8|Set-Content $Output
 Write-Output "$status : $($deviations.Count) curve deviations; $($collisions.Count) route/wall bound collisions; $tested comparisons"
 if($status-ne'pass'){throw 'Native candidate validation failed; inspect output evidence'}
