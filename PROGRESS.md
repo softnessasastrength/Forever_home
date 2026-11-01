@@ -1,3 +1,18 @@
+## M286 — Lower flex-living / stair-envelope study — 2026-11-01
+
+- Owner authorized an analysis-only move/reshape screen and chose to preserve L-01's source area, 250.5556 sf. New source-bound C#/.NET 10 generator build: **0 warnings, 0 errors**. Two fresh runs pass **13/13 checks**, reproduce all three artifacts byte-for-byte, and parse the plan SVG.
+- Search: 74 same-area L-01 rectangles, 1,393 M285 stair envelopes clear of fixed rooms and projected M-06 windows, 24,996 compatible room/stair pairs. The unchanged L-01 already pairs with 644 envelopes. Of those, 80 avoid positive-area overlap with C-LOWER; the best L-01/stair gap is 13 in, but that stair is 97 in from C-LOWER. The smallest positive overlap alternative uses 2.597 sf of C-LOWER and leaves only 2 in to L-01. A reshaped same-area option gives 36.144 in room/stair gap while its stair envelope occupies 27.667 sf of C-LOWER. No layout selected; these are rectangle sensitivities, not access/clearance proof.
+- The owner directed M287 to prioritize a stair connection to lower arrival/circulation. See the M286 README and M287 authorization in `Decisions/`.
+
+## M287 — Lower stair arrival/circulation screen — 2026-11-01
+
+- Source-bound C#/.NET 10 generator builds with 0 warnings/errors. Two independent runs pass 10/10 checks, reproduce JSON/checks/SVG byte-for-byte, and parse SVG as XML. Selected-D source remains at SHA256 `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`.
+- Search tests 74 same-area L-01 candidates, 1,393 stair envelopes, and 103,082 pairs. 33,754 pairs have a lower landing intersecting C-LOWER; the best-ranked current-L-01 example occupies 2.597 sf of circulation. No explicit 36-in swept path reaches C-LOWER from a non-overlapping landing while clearing fixed rooms and protected M-06 windows. These are rectangular options only, not a stair or route design.
+- The fixed-block constraints now have a measurable conflict: a landing can meet C-LOWER only by occupying its reserved area in this search; no straight path survives the current obstacles. Next requires authorization to compare a specified constraint relaxation, such as moving/reshaping C-LOWER or a dogleg circulation path. M-06 remains unassigned; no Revit/IFC work occurred. See `Architecture/M287_Lower_Stair_Arrival_Study_2026-11-01/README.md`.
+
+## Primary-bath design direction — 2026-11-01
+
+- Owner identifies the MGM Springfield full-suite bathroom as the visual precedent and confirms the publicly available Deluxe Garden Suite bathroom image as a match. Owner selects a **separate tub plus separate tiled rain shower** for Bath-Primary. The current 9 × 10 ft envelope remains unchanged and needs a product-geometry fit study; no model or dimensions are inferred from the photo. See `Decisions/2026-11-01_Primary_Bath_MGM_Springfield_Shower_Reference.md` and `Architecture/Bathrooms_Specs.md`.
 ## M285 correction — protect both unassigned M-06 windows — 2026-11-01
 
 - Corrected the analysis-only stair envelope scan to read the two source-defined unassigned M-06 search windows, require footprint/position/service route remain TBD, and exclude positive-area intrusion from displayed examples. The lower stair SVG now visibly marks protected A and B.

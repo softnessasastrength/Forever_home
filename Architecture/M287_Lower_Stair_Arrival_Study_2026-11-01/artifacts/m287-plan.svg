@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="388" viewBox="0 0 1280 388"><style>text{font:10px Arial}.room{fill:#dce8ed;stroke:#24566c}.circ{fill:#f1d9d9;stroke:#9a3030}.win{fill:#f7d9f0;stroke:#83366e;stroke-dasharray:3 2}.flex{fill:#bfd6a6;fill-opacity:.75;stroke:#386527;stroke-width:2}.stair{fill:#f5e5b8;stroke:#7c5d11;stroke-width:2}.landing{fill:#f4b183;fill-opacity:.8;stroke:#9a4512;stroke-width:2}.path{fill:#a8c9f0;fill-opacity:.65;stroke:#174f94;stroke-width:2}.shell{fill:none;stroke:#222;stroke-width:2}</style>
+<text x="24" y="16">M287 alternative 1; east-west, lower end west; landing interface</text>
+<rect class="room" x="30.6667" y="281.3333" width="90" height="100"/>
+<text x="32.6667" y="292.3333">L-03</text>
+<rect class="room" x="30.6667" y="196.3333" width="90" height="80"/>
+<text x="32.6667" y="207.3333">L-04</text>
+<rect class="room" x="30.6667" y="74.6667" width="90" height="116.6667"/>
+<text x="32.6667" y="85.6667">L-05</text>
+<rect class="room" x="287.3333" y="266.3333" width="90" height="115"/>
+<text x="289.3333" y="277.3333">L-07</text>
+<rect class="room" x="197.3333" y="301.3333" width="80" height="80"/>
+<text x="199.3333" y="312.3333">L-06</text>
+<rect class="circ" x="125.6667" y="263" width="66.6667" height="118.3333"/>
+<text x="127.6667" y="274">C-LOWER</text>
+<rect class="room" x="267.3333" y="76.3333" width="110" height="100"/>
+<text x="269.3333" y="87.3333">L-02</text>
+<rect class="win" x="144" y="112.1667" width="51.6667" height="114.1667"/>
+<text x="146" y="123.1667">M06-west_of_core protected</text>
+<rect class="win" x="235.6667" y="146.3333" width="131.6667" height="70"/>
+<text x="237.6667" y="157.3333">M06-east_of_core protected</text>
+<rect class="flex" x="125.6667" y="74.6667" width="136.6667" height="183.3333"/>
+<text x="127.6667" y="85.6667">L-01 same area</text>
+<rect class="stair" x="183.1667" y="259.6667" width="103.75" height="31.6667"/>
+<text x="185.1667" y="270.6667">stair envelope</text>
+<rect class="landing" x="183.1667" y="259.6667" width="30" height="31.6667"/>
+<text x="185.1667" y="270.6667">lower landing</text>
+<rect class="shell" x="24" y="68" width="360" height="320"/>
+<text x="460" y="16">M287 alternative 2; east-west, lower end west; landing interface</text>
+<rect class="room" x="466.6667" y="281.3333" width="90" height="100"/>
+<text x="468.6667" y="292.3333">L-03</text>
+<rect class="room" x="466.6667" y="196.3333" width="90" height="80"/>
+<text x="468.6667" y="207.3333">L-04</text>
+<rect class="room" x="466.6667" y="74.6667" width="90" height="116.6667"/>
+<text x="468.6667" y="85.6667">L-05</text>
+<rect class="room" x="723.3333" y="266.3333" width="90" height="115"/>
+<text x="725.3333" y="277.3333">L-07</text>
+<rect class="room" x="633.3333" y="301.3333" width="80" height="80"/>
+<text x="635.3333" y="312.3333">L-06</text>
+<rect class="circ" x="561.6667" y="263" width="66.6667" height="118.3333"/>
+<text x="563.6667" y="274">C-LOWER</text>
+<rect class="room" x="703.3333" y="76.3333" width="110" height="100"/>
+<text x="705.3333" y="87.3333">L-02</text>
+<rect class="win" x="580" y="112.1667" width="51.6667" height="114.1667"/>
+<text x="582" y="123.1667">M06-west_of_core protected</text>
+<rect class="win" x="671.6667" y="146.3333" width="131.6667" height="70"/>
+<text x="673.6667" y="157.3333">M06-east_of_core protected</text>
+<rect class="flex" x="561.6667" y="74.6667" width="136.6667" height="183.3333"/>
+<text x="563.6667" y="85.6667">L-01 same area</text>
+<rect class="stair" x="619.1667" y="262.1667" width="103.75" height="31.6667"/>
+<text x="621.1667" y="273.1667">stair envelope</text>
+<rect class="landing" x="619.1667" y="262.1667" width="30" height="31.6667"/>
+<text x="621.1667" y="273.1667">lower landing</text>
+<rect class="shell" x="460" y="68" width="360" height="320"/>
+<text x="896" y="16">M287 alternative 3; east-west, lower end west; landing interface</text>
+<rect class="room" x="902.6667" y="281.3333" width="90" height="100"/>
+<text x="904.6667" y="292.3333">L-03</text>
+<rect class="room" x="902.6667" y="196.3333" width="90" height="80"/>
+<text x="904.6667" y="207.3333">L-04</text>
+<rect class="room" x="902.6667" y="74.6667" width="90" height="116.6667"/>
+<text x="904.6667" y="85.6667">L-05</text>
+<rect class="room" x="1159.3333" y="266.3333" width="90" height="115"/>
+<text x="1161.3333" y="277.3333">L-07</text>
+<rect class="room" x="1069.3333" y="301.3333" width="80" height="80"/>
+<text x="1071.3333" y="312.3333">L-06</text>
+<rect class="circ" x="997.6667" y="263" width="66.6667" height="118.3333"/>
+<text x="999.6667" y="274">C-LOWER</text>
+<rect class="room" x="1139.3333" y="76.3333" width="110" height="100"/>
+<text x="1141.3333" y="87.3333">L-02</text>
+<rect class="win" x="1016" y="112.1667" width="51.6667" height="114.1667"/>
+<text x="1018" y="123.1667">M06-west_of_core protected</text>
+<rect class="win" x="1107.6667" y="146.3333" width="131.6667" height="70"/>
+<text x="1109.6667" y="157.3333">M06-east_of_core protected</text>
+<rect class="flex" x="997.6667" y="74.6667" width="136.6667" height="183.3333"/>
+<text x="999.6667" y="85.6667">L-01 same area</text>
+<rect class="stair" x="1055.1667" y="269.6667" width="103.75" height="31.6667"/>
+<text x="1057.1667" y="280.6667">stair envelope</text>
+<rect class="landing" x="1055.1667" y="269.6667" width="30" height="31.6667"/>
+<text x="1057.1667" y="280.6667">lower landing</text>
+<rect class="shell" x="896" y="68" width="360" height="320"/>
+<text x="10" y="383">Analysis only; 36-in project precedent; schematic path is not code, access, or full-route proof.</text></svg>

@@ -1,0 +1,48 @@
+{
+  "schema": "forever-home-m287-checks-v1",
+  "status": "pass",
+  "passed": 10,
+  "total": 10,
+  "details": [
+    {
+      "id": "selected-D input unchanged and hash-pinned",
+      "pass": true
+    },
+    {
+      "id": "M285 six-riser envelope dimensions match pinned study",
+      "pass": true
+    },
+    {
+      "id": "M215 report pins the 36-in precedent, not a code conclusion",
+      "pass": true
+    },
+    {
+      "id": "authorization hash and analysis-only scope match",
+      "pass": true
+    },
+    {
+      "id": "all L-01 candidates preserve the source area",
+      "pass": true
+    },
+    {
+      "id": "all candidate stairs avoid fixed rooms and protected M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "landing interfaces touch C-LOWER or swept paths touch C-LOWER and clear other fixed rooms, L-01 and M-06 windows",
+      "pass": true
+    },
+    {
+      "id": "circulation occupation by stair and path is separately reported",
+      "pass": true
+    },
+    {
+      "id": "M-06 footprint, position and service route remain TBD",
+      "pass": true
+    },
+    {
+      "id": "no candidate selected; no code, access, structural or construction claim",
+      "pass": true
+    }
+  ]
+}

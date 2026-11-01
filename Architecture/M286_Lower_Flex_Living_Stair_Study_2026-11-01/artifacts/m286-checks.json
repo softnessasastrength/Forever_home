@@ -1,0 +1,60 @@
+{
+  "schema": "forever-home-m286-checks-v1",
+  "status": "pass",
+  "passed": 13,
+  "total": 13,
+  "details": [
+    {
+      "id": "selected-D source hash is unchanged",
+      "pass": true
+    },
+    {
+      "id": "M285 source report is hash-pinned",
+      "pass": true
+    },
+    {
+      "id": "M285 basis is hash-pinned",
+      "pass": true
+    },
+    {
+      "id": "owner authorization is hash-pinned",
+      "pass": true
+    },
+    {
+      "id": "owner authorized a same-area lower L-01 move/reshape study",
+      "pass": true
+    },
+    {
+      "id": "all L-01 candidates preserve source area within numeric tolerance",
+      "pass": true
+    },
+    {
+      "id": "all L-01 candidates remain inside the lower shell margin",
+      "pass": true
+    },
+    {
+      "id": "all candidate L-01 rooms avoid fixed rooms and circulation",
+      "pass": true
+    },
+    {
+      "id": "all paired stair envelopes avoid fixed rooms and M-06 windows; circulation overlap is measured separately",
+      "pass": true
+    },
+    {
+      "id": "all paired stair envelopes avoid the reshaped L-01 block",
+      "pass": true
+    },
+    {
+      "id": "source L-01 position and shape remain represented in the comparison",
+      "pass": true
+    },
+    {
+      "id": "M-06 remains unassigned and the two search windows remain reportable",
+      "pass": true
+    },
+    {
+      "id": "no candidate is selected and no code/route/buildability claim is made",
+      "pass": true
+    }
+  ]
+}
