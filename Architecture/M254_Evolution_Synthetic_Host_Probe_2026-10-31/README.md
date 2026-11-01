@@ -1,6 +1,6 @@
 # M254 — Quarantined Evolution sink synthetic-host probe
 
-**Status:** partial. Revit produced an isolated hosted geometry report and RVT on 2026-10-31. The first report failed two validator checks; after tightening the validator's wording check, it passes 13/14, with the empty `Family.Name` field remaining. A code fix was built and loaded once, but the owner interrupted the Revit UI sequence before that build's command was run. Do not represent the patched build as runtime-validated.
+**Status:** synthetic-host probe complete; product and room-fit approval remain open. On 2026-11-01 UTC, the patched RevitPilot build reran the isolated test and its independent validator passed 14/14. This is evidence about the quarantined family in a synthetic fixture only, not a bathroom fit, code finding, or product selection.
 
 ## Scope and safety
 
@@ -23,12 +23,18 @@ The report lists three round piping connectors (one 1-1/4 in radius and two 3/8 
 
 The documented validator initially returned **12/14**. `family_metadata_present` failed because Revit reported an empty `OwnerFamily.Name`; `limitations_explicit` failed because the validator demanded the literal phrase “synthetic wall,” while the report accurately said “synthetic-host probe” and “test wall.” The latter was a validator wording defect, not missing limitation evidence.
 
-The validator now checks for both `synthetic-host` and `test wall`, along with the service-route and code-compliance limitations. Against the unchanged raw report it returns **13/14**; only the missing family identity remains. `CandidateFamilyGeometryCommand.cs` now falls back to the RFA filename stem when Revit supplies a blank owner-family name and records `family_name_source` so that fallback is visible.
+The validator checks for both `synthetic-host` and `test wall`, along with the service-route and code-compliance limitations. The first-run report returned **13/14** after the wording repair; the patched runtime report now passes **14/14**. `CandidateFamilyGeometryCommand.cs` now falls back to the RFA filename stem when Revit supplies a blank owner-family name and records `family_name_source` so that fallback is visible.
 
 The patched source built in a fresh ignored directory with **0 errors and 2 existing MSB3277 reference-conflict warning groups**. DLL SHA256: `C26F2C7DB0EE61A63139224253306E0B406C97A2DDE37C7A87ADCF43BB8E0974`. Its generated manifest uses authorized AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and resolves inside this checkout. The prior per-user registration was preserved at `.local/revit-pilot/registration-backups/20261031T221431/ForeverHome.Pilot.addin`, SHA256 `F62A7B32E4C94411CAE3C55162AFD198026363EBEF2450A1D5EE516FC1D71436`. The current manifest hash is `8C6646E1C85E7C2E6F3A812B9493705233A7513B8D80EF600B4B7CC2A4F23259`.
 
-The exact local DLL was shown in Revit's unsigned-add-in prompt, independently matched to the current manifest and SHA256, and **Load Once** was selected. Revit's journal records `NoError` for `ForeverHome.Pilot.addin`. The new request is staged beside that DLL for the same source and type, with output path `.local/revit-pilot/family-intake/derivatives/M254-evolution-synthetic-host-probe-20261031-rerun/`. The output directory did not yet exist at checkpoint. The owner interrupted the UI sequence after the blank `Template1` project opened and before the command ran. Therefore the patched report and a final 14/14 result remain outstanding.
+The exact local DLL was shown in Revit's unsigned-add-in prompt, independently matched to the current manifest and SHA256, and **Load Once** was selected. Revit's journal records `NoError` for `ForeverHome.Pilot.addin`. The new request is staged beside that DLL for the same source and type, with output path `.local/revit-pilot/family-intake/derivatives/M254-evolution-synthetic-host-probe-20261031-rerun/`. The output directory did not yet exist at checkpoint. The staged command then completed in Revit 2027.3: it opened the quarantined source, placed only type `0467.400` on a synthetic vertical wall in a new Imperial project, saved the derivative, and left selected-D unopened. After the derivative was closed and Revit exited to release file handles, the independent validator passed **14/14**. The report identifies the filename fallback with `family_name_source=source_filename_fallback`.
 
+## Patched Revit rerun evidence
+
+- Report: `.local/revit-pilot/family-intake/derivatives/M254-evolution-synthetic-host-probe-20261031-rerun/candidate-family-geometry.json`, SHA256 `7E5FA0349D31C9480A876719A0D446E44C20881C7B07F0EA9A77A5238C1460F7`.
+- Disposable RVT: `.local/revit-pilot/family-intake/derivatives/M254-evolution-synthetic-host-probe-20261031-rerun/FH_Candidate_Family_Geometry.rvt`, SHA256 `E5A4311C9C44BABE0F024A6397B100B562AE77A5F40F9FBE2BC02358CD861D74`.
+- Source RFA before/after and independent post-close SHA256: `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`.
+- The report records three positive-volume solids for each of three types, matching synthetic host IDs, finite instance bounds `17.568 x 22.1256 x 34.3128 in`, and three unconnected piping connectors. None establish an installed fixture, room fit, clearances, approach, applicable Connecticut requirements, or service routing.
 ## Reproduction commands
 
 Build command used:

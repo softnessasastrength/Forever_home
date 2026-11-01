@@ -1,3 +1,10 @@
+## M254 — Patched Evolution synthetic-host probe completed — 2026-11-01
+
+- Reopened Revit 2027.3 with the hash-verified local RevitPilot build and ran the staged request in a new disposable Imperial project. Only quarantined type `0467.400` was placed, on its synthetic vertical test wall; selected-D was not opened.
+- The filename fallback repaired the empty `OwnerFamily.Name` report field. `Tools/RevitPilot/validate_candidate_family_geometry.ps1` passes **14/14** when supplied the quarantined source path and expected source SHA256.
+- Verified report SHA256 `7E5FA0349D31C9480A876719A0D446E44C20881C7B07F0EA9A77A5238C1460F7`, derivative RVT SHA256 `E5A4311C9C44BABE0F024A6397B100B562AE77A5F40F9FBE2BC02358CD861D74`, and source SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. The source remained hash-stable before and after the run.
+- This is host/orientation evidence only. It does not establish product completeness, room fit, door/approach, Connecticut requirements, or services. Keep M-06/A/B unassigned. Revit was closed after the derivative was saved to release the locked files.
+- Next: continue the owner-authorized schematic kitchen/dining/porch integration and outdoor patio adjacency studies. House shell and patio site dimensions remain proposals/TBD; do not invent them. Native architectural construction categories and architect-review coordination remain outstanding.
 # Implementation progress
 
 Updated: 2026-10-31
