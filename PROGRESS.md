@@ -1,3 +1,9 @@
+## M260 — Refresh Connecticut roof-code input research — 2026-10-31
+
+- Checked the official DAS adoption notice and the 2022 Connecticut State Building Code with Errata #1 (amendments to 2021 IRC). DAS still reports the 2026 code effective date delayed pending Legislative Regulation Review Committee approval. CSBC IRC Table R301.2 points to Appendix AY for municipality-specific ground-snow and wind values; wind exposure is site-specific. Sample rows only: Hartford 30 psf / 120 mph, Goshen 40 psf / 115 mph. These are not assigned to the project.
+- IRC R802.10.2.1 bounds one prescriptive truss-framing path to 3:12–12:12 pitch plus width, length, height, wind and snow criteria. It is not a universal pitch cap. Thus 14:12 is outside that specific route, not established as prohibited; 12:12 satisfies only its slope term. The hypothetical M83 38.333333 × 40 ft envelope exceeds that provision's 36-ft span-parallel width limit in either axis, so no applicability claim is made. The complete sourced note is `Research/Connecticut_Roof_Code_Research_2026-10-28.md`.
+- No geometry, structural inputs, pitch, roof covering or code outcome was selected. Site/town, permit timing, applicable code path, roof covering/manufacturer system, final spans, adjoining roof relationships and professional structural design remain outstanding. This research is not a compliance or safety determination.
+
 ## M259 — Refresh M83 Revit/IFC host evidence and revalidate the house baseline — 2026-10-31
 
 - Verified the clean local sandbox branch `codex/house-design-sandbox` before work (38 commits ahead of its tracking ref); no remote operation occurred. The per-user RevitPilot manifest retained AddInId `096B0D51-8883-4B3D-BD31-E9622201E785`, pointed inside this worktree, and resolved to DLL SHA256 `C26F2C7DB0EE61A63139224253306E0B406C97A2DDE37C7A87ADCF43BB8E0974`. Revit 2027.3 displayed that exact project-local path; **Load Once** was used. No trust-wide setting changed.

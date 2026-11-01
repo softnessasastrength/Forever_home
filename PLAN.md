@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M259 replays the documented M83 roof-option source twice, creates a fresh disposable Revit 2027.3 RVT/IFC comparison, and passes its independent IFC validator 21/21 twice with identical reports. The selected-D baseline also passes two 43/43 generations and retained IFC2x3 validation 26/26 with zero errors; protected source/RVT/IFC and the locked Evolution RFA remain unchanged. Native house construction geometry is still absent; M-05 topology and the fully open kitchen/living connection remain unresolved.
+Status: M260 refreshes Connecticut roof-code research against the current DAS adoption notice and 2022 CSBC: design wind/snow values are municipality-specific, and 12:12 is the upper slope in one bounded prescriptive truss path, not a global roof limit. M259's disposable Revit 2027.3 M83 RVT/IFC comparison passes 21/21 three times, while the selected-D baseline passes two 43/43 generations and retained IFC2x3 validation 26/26 with zero errors. Native house construction geometry remains absent; M-05 topology and the fully open kitchen/living connection remain unresolved.
+
+## M260 — Bound the steep-gable study with Connecticut roof-code inputs
+
+**Acceptance:** verify the latest official Connecticut adoption status and adopted 2022 CSBC text; identify which roof inputs are municipality/site-specific and any scoped pitch limits that affect the existing 8:12–14:12 studies; distinguish a prescriptive framing provision from a universal roof rule; record evidence and outstanding owner/professional inputs; do not generate structural loads, select a pitch, or edit geometry.
+
+**Result:** DAS still reports the anticipated 2026 code effective date delayed pending review. The 2022 CSBC's Appendix AY lists municipality-specific wind and ground-snow values, and the residential code's R301.2 directs to that table; wind exposure is site-specific. As examples only, Hartford is listed at 30 psf ground snow / 120 mph ultimate wind, and Goshen at 40 psf / 115 mph. IRC R802.10.2.1 limits its particular prescriptive truss path to 3:12–12:12 and additional span/height/load conditions; this is not a universal pitch cap. The 14:12 M38 option falls outside that particular path's pitch range, while the hypothetical M83 shell exceeds its 36-ft truss-span-parallel width bound whichever axis is used as the span. Full analysis and official source links are in `Research/Connecticut_Roof_Code_Research_2026-10-28.md`. No project load, roof pitch, or code conclusion was selected.
+
+**Next gate:** keep roof configurations conceptual pending town/site, filing date/code path, covering system, roof/wall datums, span, adjacent-roof context and professional load/framing design. M-05 fixed-versus-move/reshape study remains gated on owner direction; preserve entry/mudroom use. M-06/A/B assignment, wall/opening assemblies and service routes remain unresolved.
 
 ## M259 — Refresh the Revit 2027 M83 host export and selected-D baseline
 
