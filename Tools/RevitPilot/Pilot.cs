@@ -46,6 +46,12 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        // Keep the current main-floor validation gates visible even when Revit
+        // compresses the panel into a narrow ribbon strip.
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateIfcVisible", "Export main-floor\nIFC",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHAuditMainFloorCandidateVisible", "Audit main-floor\nRVT",
+            Assembly.GetExecutingAssembly().Location, typeof(AuditMainFloorCandidateCommand).FullName!));
         // Keep the active disposable study reachable on narrower Revit ribbon widths.
         panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
             Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));

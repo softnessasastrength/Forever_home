@@ -1,3 +1,11 @@
+## M313 — Native main-floor candidate runtime, reopen audit, and IFC gate — 2026-11-01
+
+- Built the tracked Pilot change with **0 errors** and 2 existing `MSB3277` reference-conflict warnings. The exact project-local DLL is `.local/revit-pilot/main-floor-candidate-ifc-v4/Release/net10.0-windows/RevitPilot.dll` (SHA256 `F4BCC73E771DA832EDB17542AF127DDA45154B3022F8F754FACE2B9E3B974F44`). The per-user manifest kept the authorized AddInId and a timestamped backup; Revit was loaded with **Load Once** only.
+- Revit 2027.3 generated the disposable native candidate at `.local/revit-pilot/main-floor-candidate/20261101T215346325Z/`: **42 walls**, **252 model curves**, source-input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, and saved RVT SHA256 `2206449F0EE56AE3E084F159648F44D4F9EA15D98E98650DEF9219DBB7931F60`.
+- The read-only reopen command wrote `.local/revalidation/main-floor-candidate-reopened-inventory.json`. It records one local-zero level, 42 walls, 252 curves, zero floors/doors/roofs/stairs, and all source/count/category assertions pass.
+- Revit exported `ifc2x3/FH_Main_Floor_Candidate_21.ifc` with **216,661 bytes** and SHA256 `15C21E507BF49552A1F205290D8F876DEE57883C26BF63AA6AF6E0D14DBC2944`. `Tools/RevitPilot/validate_main_floor_candidate_ifc.ps1` passes the manifest hash, non-empty file, ISO-10303-21 header, IFC2X3 schema, and wall-entity checks.
+- This evidence is a disposable unselected comparison only. No Selected-D edit, M-06/B assignment, door/clear-width finding, service-route conclusion, code-compliance claim, structural claim, professional approval, or construction-readiness claim follows. Floors, openings, stairs, roof, structure, MEP, physical finishes, and selected wall types remain open.
+
 ## M270 — Shape-aware family connector replay — 2026-11-01
 
 - Rebuilt `CandidateFamilyGeometryCommand` through the repository build path with **0 errors** and 2 existing `MSB3277` reference-conflict warnings. The exact project-local DLL is `.local/revit-pilot/m270-connector-dimensions-v2/Release/net10.0-windows/RevitPilot.dll` (SHA256 `7D42C49F92B7CB20FACCBB1840C097C7E47FFBDBD3BA89733A05EDE09A507975`); the authorized AddInId manifest was registered with a preserved backup under `.local/revit-pilot/registration-backups/20261101163828/`.
