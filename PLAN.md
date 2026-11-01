@@ -3125,3 +3125,5 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 - Reopened-inventory replay guard (2026-11-02): `Tools/RevitPilot/validate_reopened_candidate_inventory.ps1` rechecks the report schema, source hash record, expected 42-wall/252-curve counts and zero unapproved building categories. The current output passes; it remains evidence for the comparison derivative only.
 
 - M218 analytical replay (2026-11-01): two fresh PowerShell runs reproduce all three retained M218 artifacts byte-for-byte and pass 6/6 checks. The native M219 command is prepared and hash-pinned, but its Revit runtime remains a separate pending gate; do not describe the static replay as native RVT evidence.
+
+- Selected-D regression replay (2026-11-01): `Tools/validate_architectural_bim_baseline.ps1` passes two 43/43 geometry runs, six SVG parses, seven matching artifacts per run and the retained IFC2x3 validator 26/26. The source/RVT/IFC fingerprints remain unchanged. The next architectural gate remains native assemblies/openings in disposable derivatives, not edits to selected-D.
