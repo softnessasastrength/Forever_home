@@ -56,6 +56,10 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateIfc", "Export main-floor\ncandidate IFC",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidate", "Build main-floor\ncandidate comparison",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateCommand).FullName!));
         panel.AddItem(new PushButtonData("FHUpperSuiteTest", "Build upper-suite\ntest study",
             Assembly.GetExecutingAssembly().Location, typeof(UpperSuiteComparisonCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGableMassing", "Build M83 gable\nmassing options",
