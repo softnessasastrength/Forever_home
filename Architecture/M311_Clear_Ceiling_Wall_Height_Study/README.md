@@ -1,6 +1,6 @@
 # M311 — Clear-ceiling wall-height comparison
 
-Date: 2026-11-01  
+Date: 2026-11-01
 Status: **command build verified; Revit runtime pending**
 
 ## Selected inputs
