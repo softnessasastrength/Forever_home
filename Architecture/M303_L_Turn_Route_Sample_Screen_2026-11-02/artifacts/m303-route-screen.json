@@ -1,0 +1,838 @@
+{
+  "schema": "forever-home-m303-l-turn-route-sample-screen-v1",
+  "status": "no sampled 36-in route proxy from the retained M302 flight ends reaches C-LOWER; this is a bounded sample, not impossibility",
+  "selected_d_edited": false,
+  "rvt_or_ifc_created": false,
+  "basis": {
+    "shell_ft": [
+      38.333333,
+      40
+    ],
+    "route_width_in": 36,
+    "route_width_source": "M215 project route screen only",
+    "sample_count": 24,
+    "flight_end_start_offset_ft": 1.5,
+    "grid_ft": 0.25,
+    "not_a_code_finding": true
+  },
+  "search": {
+    "options_tested": 24,
+    "flight_end_attempts": 48,
+    "route_passes": 0,
+    "route_failures": 48,
+    "total_nodes_visited": 20907,
+    "attempts": [
+      {
+        "option": 1,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          21.16666667,
+          36.83333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 1712,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 1,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          25.91666667,
+          31.16666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 2,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          25.91666667,
+          31.16666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 2,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          31.58333333666667,
+          35.91666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 360,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 3,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          30.66666667,
+          33.16666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 544,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 3,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          25.91666667,
+          38.83333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 4,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          29.58333333666667,
+          37.91666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 4,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          23.91666667,
+          33.16666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 2044,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 5,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          8.333333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 5,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          2.6666666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 6,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          8.583333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 6,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          2.9166666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 7,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          8.833333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 7,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          3.1666666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 8,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.16666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2446,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 8,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          5.41666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 9,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          9.083333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 9,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          3.4166666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 144,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 10,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          3.41666667,
+          37.08333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 90,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 10,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          8.16666667,
+          31.41666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 11,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.41666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2423,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 11,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          5.66666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 12,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          9.333333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 12,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          3.6666666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 167,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 13,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          3.66666667,
+          37.08333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 113,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 13,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          8.41666667,
+          31.41666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 14,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.66666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2400,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 14,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          5.91666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 15,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          9.583333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 15,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          3.9166666699999997,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 190,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 16,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          3.91666667,
+          37.08333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 136,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 16,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          8.66666667,
+          31.41666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 17,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.91666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2377,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 17,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          6.16666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 18,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          9.833333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 18,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          4.16666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 213,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 19,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          4.16666667,
+          37.08333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 159,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 19,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          8.91666667,
+          31.41666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 20,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          11.16666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2354,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 20,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          6.41666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 21,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.083333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 21,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          4.41666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 236,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 22,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          4.41666667,
+          37.08333333666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 182,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 22,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          9.16666667,
+          31.41666667
+        ],
+        "outward_direction": [
+          0,
+          -1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 23,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          11.41666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          1,
+          0
+        ],
+        "nodes_visited": 2331,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 23,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          6.66666667,
+          39.08333333666666
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 24,
+        "flight_end": "flight-A",
+        "entry_ft": [
+          10.333333336666666,
+          38.16666667
+        ],
+        "outward_direction": [
+          0,
+          1
+        ],
+        "nodes_visited": 1,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      },
+      {
+        "option": 24,
+        "flight_end": "flight-B",
+        "entry_ft": [
+          4.66666667,
+          33.41666667
+        ],
+        "outward_direction": [
+          -1,
+          0
+        ],
+        "nodes_visited": 259,
+        "route_found": false,
+        "route_length_ft": 0,
+        "centerline_points_ft": null
+      }
+    ]
+  },
+  "inputs_sha256": {
+    "m302": "73D8ACDC85DF307ADF9782444281C3C7144A30C67DDF7D2F8CACD46F715BF03A",
+    "m215": "F2F6A66DEDA2A9C48A991E36B986683FE1F5B1C1D361FBF3E43BE2A2E1A053B1",
+    "authorization": "5E7EB7F555553B3F3BEC8918397FD5D052D90739E92FC730F8514D5CF722EF13"
+  },
+  "checks": {
+    "passed": 6,
+    "total": 6,
+    "details": [
+      {
+        "id": "M302 report, M215 route precedent and M303 authorization fingerprints match",
+        "pass": true
+      },
+      {
+        "id": "exactly 24 M302 retained options and both protected windows are screened",
+        "pass": true
+      },
+      {
+        "id": "all route nodes use orthogonal quarter-foot increments from tested flight ends",
+        "pass": true
+      },
+      {
+        "id": "passing route centerlines continuously reach fixed C-LOWER with a 36-in swept proxy",
+        "pass": true
+      },
+      {
+        "id": "every reported route buffer stays inside the shell and clears fixed rooms, candidate L-01, M-06 windows and stair components",
+        "pass": true
+      },
+      {
+        "id": "no physical stair, door, approach or compliance result is selected",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "Only the first 24 M302 retained spatial fits (ranked by L-01 movement) are sampled; other M302 fits are not route-tested.",
+    "Flight endpoints are inferred from the two proxy run rectangles opposite their internal platform. M302 omits end landings and actual flight/riser geometry.",
+    "A 36-in orthogonal grid buffer is a project screening precedent, not a door, landing, approach, accessibility or code-compliant route.",
+    "No doors, swings, clear floor spaces, opening/headroom, beyond-C-LOWER connectivity, wall thickness, finishes, structure or services are modeled.",
+    "Shell is an unselected 38.333333\u00D740-ft sensitivity; no selected-D, Revit, IFC, family or remote files changed.",
+    "No code compliance, accessibility, structural safety, professional approval, permit or construction-readiness conclusion follows."
+  ]
+}

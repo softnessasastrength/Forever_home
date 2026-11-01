@@ -1,0 +1,30 @@
+{
+  "passed": 6,
+  "total": 6,
+  "details": [
+    {
+      "id": "M302 report, M215 route precedent and M303 authorization fingerprints match",
+      "pass": true
+    },
+    {
+      "id": "exactly 24 M302 retained options and both protected windows are screened",
+      "pass": true
+    },
+    {
+      "id": "all route nodes use orthogonal quarter-foot increments from tested flight ends",
+      "pass": true
+    },
+    {
+      "id": "passing route centerlines continuously reach fixed C-LOWER with a 36-in swept proxy",
+      "pass": true
+    },
+    {
+      "id": "every reported route buffer stays inside the shell and clears fixed rooms, candidate L-01, M-06 windows and stair components",
+      "pass": true
+    },
+    {
+      "id": "no physical stair, door, approach or compliance result is selected",
+      "pass": true
+    }
+  ]
+}

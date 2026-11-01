@@ -1,3 +1,9 @@
+## M303 — Route screen for sampled M302 spatial fits — 2026-11-02
+
+- Tested both outer flight ends of the first 24 M302 retained options (ranked by L-01 movement) using M215's 36-in project route precedent. The optimistic start is 18 in outside each proxy run edge because M302 has no end landing. Fixed C-LOWER, all source room blocks, same-area L-01 options and both protected M-06 windows remain in the screen.
+- .NET 10 build: **0 warnings, 0 errors**. Two independent runs pass **6/6 checks**, match JSON/check/SVG byte-for-byte and parse SVG. Reproduction and hashes: `Architecture/M303_L_Turn_Route_Sample_Screen_2026-11-02/README.md`; evidence `.local/revalidation/m303-run2/` and `run3/`.
+- 48 flight-end attempts visited 20,907 nodes; **zero** 36-in proxy routes reach C-LOWER. This tests only 24 of M302's 3,850,039 spatial fits. Larger shell alone did not solve circulation in these samples; not an impossibility result.
+- Selected-D/RVT/IFC/families/remotes unchanged. Shell remains hypothetical, +33.1% plan area. Next: bounded joint same-area L-01/L-02 move around the larger shell with C-LOWER/M-06 protected; no physical stair until route and real flight geometry resolve.
 ## M302 — Hypothetical lower-shell stair sensitivity — 2026-11-02
 
 - Reused the owner-documented 38.333333 × 40 ft shell strictly as a lower-plan sensitivity; no selected-D/RVT/IFC dimensions changed. The hypothetical rectangle has 1,533.33 sf versus 1,152 sf for the 36 × 32 ft comparison: +381.33 sf (+33.1%). All source room positions, C-LOWER and protected M-06 windows stay fixed; same-area L-01 motion is allowed.
