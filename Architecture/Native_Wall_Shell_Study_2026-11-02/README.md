@@ -2,7 +2,7 @@
 
 Date: 2026-11-02
 
-Status: **runtime verified in Revit 2027.3; saved comparison RVT reopened and visually inspected. All geometry belongs to a disposable derivative.**
+Status: **historical M299 derivative; runtime verified in Revit 2027.3 and preserved. Superseded for active vertical design by the owner's later direction to treat 8/9/10 ft as clear-ceiling alternatives and leave floor-to-floor spacing unresolved.**
 
 ## Scope
 
@@ -33,3 +33,7 @@ The walls are intentionally uncolored. Before assigning Revit finishes or appear
 ## Validation record
 
 This is a native perimeter-wall massing check, not the house model. The successful derivative remains ignored under `.local`; no source RVT/IFC export was modified. Before treating it as architectural design, resolve exterior dimensions, wall assembly, openings/door positions, floor assemblies, stair route/section, roof and site orientation with the owner/design team. No code, clearance, structural, accessibility, professional, permit, or construction-readiness review is established.
+
+## Supersession note
+
+The owner later clarified that 8, 9 and 10 ft refer to clear-ceiling alternatives, not floor-to-floor intervals. Therefore the three 8/9/10-ft level-spacing cases in this historical M299 RVT must not be used as building elevations or as the active vertical design. Its original evidence remains intact. The replacement command and separate runtime record are tracked under `Architecture/M311_Clear_Ceiling_Wall_Height_Study/README.md`.

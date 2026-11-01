@@ -54,7 +54,7 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(SelectedDCommand).FullName!));
         panel.AddItem(new PushButtonData("FHWalkthroughShellStudy", "Build walkthrough\nshell study",
             Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build native wall\nshell study",
+        panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHUpperSuiteTest", "Build upper-suite\ntest study",
             Assembly.GetExecutingAssembly().Location, typeof(UpperSuiteComparisonCommand).FullName!));

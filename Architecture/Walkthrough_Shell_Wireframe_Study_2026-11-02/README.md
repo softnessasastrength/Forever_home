@@ -2,7 +2,7 @@
 
 Date: 2026-11-02
 
-Status: **runtime verified in Revit 2027.3; disposable comparison RVT created and reopened for visual inspection.**
+Status: **historical M298 wireframe; runtime verified in Revit 2027.3 and preserved. The 8/9/10-ft vertical-spacing interpretation is superseded by the owner's later clear-ceiling direction; do not use these levels as active building datums.**
 
 ## Owner-selected study inputs
 
@@ -23,3 +23,7 @@ Reproduction: build with the local SDK using `& '.local/dotnet/dotnet.exe' build
 ## Open requirements before a real walkthrough
 
 The source has no actual door/window openings, floor assemblies, stair geometry, roof assembly, or MEP. The material schedule records living-room skylights with diffuse light and TV-glare avoidance, but count, location, size, product and roof openings are not designed. The wireframe command is an inspection scaffold only; it is not a navigable finished-house model or an architect-review package. It does not validate code, clearances, structure, or construction readiness.
+
+## Supersession note
+
+The owner later clarified that 8, 9 and 10 ft are clear-ceiling alternatives and left floor-to-floor spacing unresolved. M298's spaced 8/9/10-ft datums therefore remain historical wireframe evidence only. The active geometry basis and replacement comparison are tracked in `Architecture/Dimension_Register.md` and [`M311 clear-ceiling comparison`](../M311_Clear_Ceiling_Wall_Height_Study/README.md).
