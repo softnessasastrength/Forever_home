@@ -329,6 +329,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
             var app = data.Application.Application;
             target = app.NewProjectDocument(UnitSystem.Imperial);
             string familyName;
+            string familyNameSource;
             string? familyCategory;
             string placementType;
             Family loadedFamily;
@@ -336,7 +337,13 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
             {
                 var sourceFamily = familyDocument.OwnerFamily
                     ?? throw new InvalidOperationException("The opened RFA has no owner family.");
-                familyName = sourceFamily.Name;
+                var revitFamilyName = sourceFamily.Name;
+                familyNameSource = string.IsNullOrWhiteSpace(revitFamilyName)
+                    ? "source_filename_fallback"
+                    : "Revit OwnerFamily.Name";
+                familyName = string.IsNullOrWhiteSpace(revitFamilyName)
+                    ? Path.GetFileNameWithoutExtension(familyPath)
+                    : revitFamilyName;
                 familyCategory = sourceFamily.FamilyCategory?.Name;
                 placementType = sourceFamily.FamilyPlacementType.ToString();
                 loadedFamily = familyDocument.LoadFamily(target)
@@ -393,6 +400,7 @@ public sealed class CandidateFamilyGeometryCommand : IExternalCommand
                 source = new { path = familyPath, sha256_before = sourceHashBefore, sha256_after = sourceHashAfter },
                 derivative = new { path = studyPath, sha256 = Sha256(studyPath) },
                 family = familyName,
+                family_name_source = familyNameSource,
                 category = familyCategory,
                 placement_type = placementType,
                 type_count = types.Count,

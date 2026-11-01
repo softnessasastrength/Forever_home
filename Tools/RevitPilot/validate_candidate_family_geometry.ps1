@@ -118,7 +118,7 @@ Add-Check 'every_type_has_finite_positive_solid_bounds' $typesValid "types=$($ty
 $limitations = @($report.limitations)
 $limitationsText = $limitations -join ' '
 $noPlacementClaim = $limitationsText -match 'not placed' -or $limitationsText -match 'no instance was placed'
-$hostProbeLimitations = !$isHostProbe -or ($limitationsText -match 'synthetic wall' -and $limitationsText -match 'service.route' -and $limitationsText -match 'code compliance')
+$hostProbeLimitations = !$isHostProbe -or ($limitationsText -match 'synthetic-host' -and $limitationsText -match 'test wall' -and $limitationsText -match 'service.route' -and $limitationsText -match 'code compliance')
 $limitationsValid = $limitations.Count -ge 3 -and ($noPlacementClaim -or $isHostProbe) -and $hostProbeLimitations -and $limitationsText -match 'code compliance'
 Add-Check 'limitations_explicit' $limitationsValid "limitation_count=$($limitations.Count)"
 

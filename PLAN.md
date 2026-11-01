@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M253 found no public exact-SKU Revit family for 610AA001.020. The current manufacturer page links predecessor 211AA-series PDFs; the selected-SKU infographic provides only a 19 x 30-1/4 in plan envelope. M252 isolated predecessor-bowl report passed 7/7 checks, with external source-file validation pending due to the Revit lock and Restricted PowerShell policy. M-06/A/B remain unassigned.
+Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 produced an isolated Evolution-family synthetic-host RVT, but its raw report currently validates 13/14 after a validator wording repair; the remaining empty `OwnerFamily.Name` field has a compiled source-filename fallback that has not yet been rerun in Revit. M-06/A/B remain unassigned.
+
+## M254 — Inspect the quarantined Evolution lavatory on a synthetic vertical host
+
+**Acceptance:** use the exact hash-pinned quarantined RFA and exact Revit 2027 project-local RevitPilot build; place only type `0467.400` on an explicitly synthetic wall in a new disposable project; record host identity, axes, positive-volume solids, bounds, and connector inventory; verify source and derivative hashes; pass the independent validator; never open selected-D or assign M-06/A/B.
+
+**Result:** the first Revit run produced a disposable RVT and hash-pinned report. It measured three solid types and a vertical-host instance with finite 17.568 x 22.1256 x 34.3128 in project-axis bounds; host IDs matched and three piping connectors remained unconnected. The first validator run failed 2/14: one real report omission (empty Revit family name) and one overly literal validator phrase. The validator now recognizes the report's explicit `synthetic-host` / `test wall` limitations and the unchanged raw report passes 13/14. The Revit command now falls back to the source filename stem for a blank `OwnerFamily.Name` and reports that provenance. That build compiles with 0 errors/2 MSB3277 warning groups, has a verified local manifest/AddInId/hash, and was loaded once. The owner interrupted Revit before the patched command ran, so a corrected report and 14/14 validation remain outstanding. See `Architecture/M254_Evolution_Synthetic_Host_Probe_2026-10-31/README.md`.
+
+Do not treat symbol parameters or bounding boxes as proof that the discontinued combo is approved, fully modeled, installed, or suitable for M-06. The synthetic wall has no bathroom, door, approach, finished clearances, or service network. Keep west A protected, B unassigned, and M-06 unassigned until product geometry, applicable Connecticut requirements, access route, and service routing are jointly supported.
 
 ## M253 — Refresh the selected M-06 toilet's exact-SKU public BIM evidence
 
