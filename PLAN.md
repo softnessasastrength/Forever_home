@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-10-31
-Status: M263 freshly validates the owner-authorized hypothetical 38⅓ × 40 ft M78 upper-suite RVT/IFC derivative: IFC validation passes 32/32 twice with byte-identical reports, while the source search candidate passes 112/112. M262's Revit 2027.3 incoming family intake passes 79/79 twice; the selected-D baseline again passes two 43/43 generations and retained IFC2X3 26/26 with zero errors. These are room-space and family-measurement validations, not a complete house model. M-06 products/fit, M-05 topology, and the fully open kitchen/living connection remain unresolved.
+Status: M264 confirms the public manufacturer pathway for the selected M-06 toilet's Revit family leads to ATS Spec Tool; ATS documents a logged-in project/spec requirement for downloads. No account or gated access was used, and no public exact-SKU family was indexed. M263 freshly validates the owner-authorized hypothetical 38⅓ × 40 ft M78 upper-suite RVT/IFC derivative: IFC validation passes 32/32 twice with byte-identical reports, while the source search candidate passes 112/112. M262's Revit 2027.3 incoming family intake passes 79/79 twice; the selected-D baseline again passes two 43/43 generations and retained IFC2X3 26/26 with zero errors. These are room-space and family-measurement validations, not a complete house model. M-06 products/fit, M-05 topology, and the fully open kitchen/living connection remain unresolved.
+
+## M264 — Establish the public Revit-family delivery path for M-06's selected SKU
+
+**Acceptance:** inspect public manufacturer/ATS records for the exact selected `610AA001.020` family; identify whether a direct public Revit download is available; respect no-account/no-login/no-paid-access rules; distinguish the complete selected SKU from predecessor component families; document what exact evidence would be needed before a Revit fit study; leave M-06/A/B unassigned.
+
+**Result:** the American Standard product page publicly identifies the selected complete toilet and links specifications/installation documents and imagery, but no direct Revit family. LIXIL identifies ATS as its Revit/BIM channel. ATS's public help says a Revit link is listed on the product page when available and that downloading requires a logged-in project/spec; no exact-SKU public index result was found. No sign-in, project creation, live-chat contact or gated download was attempted. The M262-measured 3195A101 file is a predecessor bowl and the separate 211AA104 file is only a seat; they must not be combined or scaled into a fabricated current-SKU assembly. See `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.
+
+**Limits/next:** the exact family may exist behind the gated workflow or may not be indexed; this public-only search cannot distinguish those cases. Continue with owner-provided manufacturer geometry or another genuinely public exact-SKU family. The toilet remains a labeled 2D proxy pending source evidence; selected lavatory, finished faces, door/approach, applicable clearance basis and services remain unresolved. M-06/A/B stay unassigned, west A protected. No code, accessibility, structural, professional, permit, or construction-readiness conclusion follows.
 
 ## M263 — Revalidate the owner-directed M78 upper-suite RVT/IFC comparison
 

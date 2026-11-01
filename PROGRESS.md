@@ -1,3 +1,9 @@
+## M264 — Trace the public manufacturer Revit route for the selected M-06 toilet — 2026-10-31
+
+- Rechecked the official American Standard `610AA001.020` product page and its visible technical resources. It identifies the complete toilet, but publishes no direct exact-SKU Revit download. LIXIL identifies ATS Spec Tool as its public Revit/BIM channel. ATS's own FAQ says downloads require logging in and creating a project/spec; no exact-SKU indexed family result was located.
+- No account, credentials, gated page, chat request or download was used. The 3195A101 family remains a predecessor bowl and the 211AA104 RFA is a seat-only family; neither can be combined or scaled into a fabricated 610AA001.020 assembly.
+- M-06/A/B remain unassigned and west A protected. The selected toilet remains a labeled 2D plan proxy until exact manufacturer geometry is provided or publicly accessible. Remaining fit gates: selected lavatory, finished faces, door/approach, applicable project clearance basis and plausible plumbing route. Sourced findings: `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md`.
+
 ## M263 — Validate owner-directed M78 upper-suite Revit/IFC output — 2026-10-31
 
 - While navigating the Revit ribbon for M262, the adjacent `Build upper-suite test study` command was also activated. It produced a separate ignored derivative at `.local/revit-pilot/upper-suite/20261101T033006653Z/` from the already owner-authorized/pinned M78 search and selected-D inputs. This was not a selected-D edit or a chosen house dimension; source and remote state remain untouched.

@@ -1,12 +1,12 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-10-31 (M262 Revit incoming family-intake replay; local sandbox only)
+Updated: 2026-10-31 (M264 selected M-06 Revit channel research; local sandbox only)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
 
 ## Latest continuation
 
-**Current checkpoint — M263/M262, 2026-10-31 local:** Local sandbox `codex/house-design-sandbox`; no push, merge or remote state change. A fresh M78 upper-suite Revit 2027.3 RVT/IFC2X3 derivative passes independent IFC validation 32/32 twice with identical reports; its source search candidate passes 112/112 and retains direct sampled U-02 hall reach/private-only U-03. M262's incoming family-intake validator passes 79/79 twice, and the Evolution 0467.400 disposable vertical-host orientation probe passed. Source RFAs remain hash-stable. Evidence/limits: `Architecture/M263_M78_Upper_Suite_RVT_IFC_Refresh_2026-10-31/README.md` and `Architecture/M262_Incoming_Family_Intake_2026-10-31/README.md`.
+**Current checkpoint — M264/M263/M262, 2026-10-31 local:** Local sandbox `codex/house-design-sandbox`; no push, merge or remote state change. M264 confirms the public manufacturer pathway for selected M-06 toilet `610AA001.020` leads to ATS Spec Tool, whose public instructions require a logged-in project/spec for Revit download. No exact-SKU public family was indexed and no gated access was used. The M06 toilet remains a 2D plan proxy; A/B/M-06 remain unassigned and west A protected. M263's fresh M78 upper-suite Revit 2027.3 RVT/IFC2X3 derivative passes 32/32 twice; its source candidate passes 112/112 with sampled direct U-02 hall access/private-only U-03. M262 family intake passes 79/79 twice; RFAs remain hash-stable. See `Research/M264_M06_Exact_SKU_Revit_Channel_2026-10-31.md` and M262/M263 records.
 
 The selected-D baseline was refreshed: two 43/43 geometry generations, seven identical outputs per replay, three parseable SVGs per replay, retained IFC2X3 validation 26/26 with zero errors, and protected selected-D/RVT/IFC hashes unchanged. Selected-D remains a 21-space room-boundary study with construction categories empty; neither it nor any family was assigned to M-06. Revit is closed. The saved family-intake study and report are ignored local evidence. Direct PowerShell execution was restricted; a process-only policy bypass was mistakenly used for the PowerShell validators. No persistent setting changed, but do not repeat it; the PowerShell checks await an owner-approved method respecting the configured policy.
 
