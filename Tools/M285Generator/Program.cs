@@ -50,7 +50,7 @@ internal static class Program
             var hashes = new Dictionary<string, string>(StringComparer.Ordinal)
             {
                 ["selected_d"] = Hash(sourcePath), ["DD013_stairs_spec"] = Hash(stairsPath),
-                ["CT_stair_research"] = Hash(ctPath), ["owner_section_basis"] = Hash(basisPath)
+                ["CT_stair_research"] = HashNormalizedText(ctPath), ["owner_section_basis"] = Hash(basisPath)
             };
             Require(hashes["selected_d"] == SelectedDHash, "Selected-D changed; M285 is fail-closed.");
             Require(hashes["DD013_stairs_spec"] == StairsSpecHash, "DD-013 source changed; review before replay.");
@@ -272,6 +272,11 @@ internal static class Program
     private static string FindRoot() { for (var d = new DirectoryInfo(Environment.CurrentDirectory); d is not null; d = d.Parent) if (File.Exists(Path.Combine(d.FullName, "AGENTS.md")) && (Directory.Exists(Path.Combine(d.FullName, ".git")) || File.Exists(Path.Combine(d.FullName, ".git")))) return d.FullName; throw new DirectoryNotFoundException("Repository root with AGENTS.md was not found."); }
     private static string Resolve(string root, string path) => Path.GetFullPath(Path.IsPathRooted(path) ? path : Path.Combine(root, path));
     private static string Hash(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path)));
+    private static string HashNormalizedText(string path)
+    {
+        string text = File.ReadAllText(path).Replace("\r\n", "\n", StringComparison.Ordinal).Replace("\r", "\n", StringComparison.Ordinal);
+        return Convert.ToHexString(SHA256.HashData(new UTF8Encoding(false).GetBytes(text)));
+    }
     private static JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(path)) ?? throw new InvalidDataException($"Invalid JSON: {path}");
     private static string? Text(JsonNode? n) => n is null ? null : n is JsonValue v && v.TryGetValue<string>(out var s) ? s : n.ToJsonString();
     private static double Num(JsonNode? n) => n is null ? throw new InvalidDataException("Required number is missing.") : double.Parse(n.ToJsonString(), CultureInfo.InvariantCulture);
