@@ -3088,3 +3088,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The validator independently binds the M314 floor derivative to the byte-identical M313 saved RVT, checks both saved-RVT hashes, 42-wall preservation, three 40 × 42 ft / 1,680 sf plates, the recorded 0/60/120 ft display offsets, and explicit unselected status.
 - This is a provenance/inventory gate for a disposable Revit 2027.3 comparison. It does not select a floor assembly, infer floor-to-floor spacing, add doors/stairs/roof/structure/MEP, assign M-06/B, or establish code, structural, professional or construction readiness.
 
+## M319 — Selected-D baseline acceptance recheck — 2026-11-01
+
+- Ran `Tools/validate_architectural_bim_baseline.ps1` into ignored `.local/revalidation/architectural-bim-baseline-20261101T-recheck/`.
+- Result: **2 × 43/43** deterministic source checks; seven generated artifacts per replay match byte-for-byte; three SVGs per replay parse as XML; retained IFC2X3 passes **26/26** with zero errors; protected selected-D source, RVT and IFC SHA256 fingerprints remain unchanged.
+- This revalidates the room-space/IFC baseline only. Native construction categories remain empty; no stair, opening, roof, structure, MEP, code, professional or construction-readiness conclusion follows.
+
