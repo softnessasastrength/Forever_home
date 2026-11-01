@@ -18,6 +18,7 @@ This note keeps Revit materials, room geometry and visible furnishings aligned w
 | Area | Model direction | Evidence |
 |---|---|---|
 | Main interior walls | Warm cream / soft butter eggshell (W-01); interior ceilings soft white (W-02) | `Architecture/Material_Schedule.md`; living concept rendering |
+| Living daylight | Skylights are desired for diffuse light while avoiding TV glare; count, orientation, product, roof opening and exact placement remain unselected | `Architecture/Material_Schedule.md` V-03; living concept rendering (intent only) |
 | Porch | Soft white/cream paint; optional 36-in beadboard wainscot and soft-white beadboard/V-groove ceiling | `Architecture/Material_Schedule.md`; detailed kitchen/dining/porch rendering |
 | Kitchen perimeter | Warm ivory/cream shaker cabinets, not stark white | `Decisions/Kitchen_Autumn_Palette.md`; detailed kitchen rendering |
 | Kitchen island | Muted sage/olive with brown-gray undertone; no bright mint or vivid green | `Decisions/Kitchen_Autumn_Palette.md` (newer owner direction takes precedence over the image's all-cream island) |

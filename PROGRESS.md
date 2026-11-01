@@ -1,3 +1,11 @@
+## M297 — L-02 move/reshape stair-route screen — 2026-11-02
+
+- Added `Tools/M297Generator`, a source-pinned package-free C#/.NET 10 screen for L-02 same-area (110-sf) move/reshape options while L-01, C-LOWER, other rooms and the shell remain fixed. It inherits M295's 4 × 14.4167-ft full-rise comparison, protects both unassigned M-06 search windows and uses M215's 36-in precedent only.
+- Build succeeds with 0 warnings/errors. Two independent runs pass 14/14 checks; JSON/check/SVG outputs are byte-identical and SVG parses as XML. Evidence: `.local/revalidation/m297-run5/` and `run6/`; source, basis, results and reproduction: `Architecture/M297_L02_Same_Area_Stair_Route_Study_2026-11-02/README.md`.
+- Result: 4,761 same-area L-02 placements are available on the 0.25-ft study grid. More decisively, after omitting L-02 entirely to maximize open floor area, all 16,892 full-size stair placements are rejected: 16,272 by fixed lower rooms, 600 by protected M-06 windows, 20 by C-LOWER overlap outside an end landing. Zero stair envelopes survive; no route search or physical geometry can follow. Thus moving L-02 alone cannot resolve the full-rise screen while the other constraints remain.
+- Selected-D, RVT/IFC, RFAs and remotes remain untouched. M-06/A/B stay unassigned, west A protected. This bounded negative screen does not prove overall impossibility or establish code/accessibility/structural conclusions.
+- **Next design gate:** authorize a separate same-area L-01 move/reshape study, or compare a different stair/level arrangement.
+
 ## M299 — First runtime-verified native Revit wall objects — 2026-11-02
 
 - Built `Tools/RevitPilot` with `Tools/RevitPilot/build.ps1 -BuildDirectory native-wall-shell`: 0 errors, 2 MSB3277 reference-conflict warnings; final local DLL SHA256 `1C60CF4A1DF8EAF78CB2D3071F46C233F410ED3E9CB6357A4F88DD9975585A78`.
@@ -6,7 +14,7 @@
 - The project-local AddInId/path/hash and **Load Once** workflow were checked; the prior per-user manifest is preserved at `.local/revit-pilot/registration-backups/20261101T121331269/`. Failed/partial run directories remain intact as debugging evidence. Selected-D source/RVT/IFC and remote state remain unchanged.
 - Evidence and limitations: `Architecture/Native_Wall_Shell_Study_2026-11-02/README.md`. This is a native perimeter-wall massing comparison, not a coordinated design or construction model.
 - To keep upcoming Revit materials aligned with the GitHub renders without inheriting superseded objects, added `Architecture/Render_to_Model_Reference_Map.md`. It maps current room finish cues to approved decisions/schedule, flags the old TV/faux-fire and island-range imagery as superseded, and leaves the unsupported exterior palette unselected. M299 remains intentionally uncolored.
-- **Next:** execute already-authorized M297 analysis-only same-area L-02 move/reshape stair-route study; keep selected-D, Revit, IFC, room assignments, M-06/A/B and west-A protection unchanged.
+- **Next:** resolve the stair constraint after M297 found no full-rise envelope even with L-02 omitted; then continue from shell to supported partitions/openings. Use `Architecture/Render_to_Model_Reference_Map.md` before adding colors/materials; M299 itself is intentionally uncolored. Keep selected-D, Revit baseline, IFC, room assignments, M-06/A/B and west-A protection unchanged until separately authorized.
 
 ## M295 — Full 60-in stair fit against same-area lower room options — 2026-11-01
 
@@ -45,7 +53,7 @@
 - In response to the owner's request to move from room wireframes toward actual walls, added `Tools/RevitPilot/NativeWallShellStudyCommand.cs` and a dedicated ribbon command. Scope is a separate disposable massing comparison based on pinned selected-D shell envelopes/plan offsets and the already authorized 8/9/10-ft interval cases.
 - The command uses the first basic wall type by stable name sort from the blank Imperial Multi-discipline template, records its type and width, and labels this as unselected placeholder geometry. No wall assembly is invented or promoted to project selection. Only exterior shell walls are planned; openings, internal partitions, floors, stairs, roof, structure and MEP are omitted.
 - Initial RevitPilot build: 0 errors, 2 MSB3277 reference-conflict warnings. DLL SHA256 `D7924308837BCBE2C1FBDD9E737FDE04E164C93A909FCD3A510337C4761B7EC3`. Before launch, verified the authorized AddInId, workspace-local path, exact hash and preserved the prior manifest at `.local/revit-pilot/registration-backups/20261101T121331269/`.
-- **Runtime/result validation pending.** The working branch remains local; selected-D/RVT/IFC and remote state are unchanged.
+- Runtime result is recorded in the M299 completion entry near the top of this log. Its first add-in attempt saved the RVT but produced a zero-byte manifest; that run and the separate build-bootstrap failure are retained in ignored `.local` evidence. The corrected runtime passes.
 
 ## M298 — Runtime-verify source-derived 8–10 ft walkthrough room-volume wireframe — 2026-11-02
 
@@ -53,7 +61,7 @@
 - RevitPilot build succeeded against the installed Revit 2027 API with 0 errors and 2 MSB3277 Microsoft.VisualBasic 10.0/10.1 reference-conflict warnings. DLL SHA256: `86F3440736FE6D47F679E0F670194AAC2C307BAFD225564BC952AB800FAFE5EB`. The authorized per-user manifest AddInId and repository-local assembly path/hash were verified; no manifest replacement was needed.
 - Revit 2027.3 loaded the ribbon and ran the command in a fresh disposable project; no trust prompt appeared and no trust choice was made. Successful run: `.local/revit-pilot/walkthrough-shell/20261101T170505234Z/`. JSON and PowerShell checks confirmed selected-D source hash `516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB`, saved RVT hash `7E6B632C89DF3808A9B595B4D56237D7B9987CE04BC3DE0718D804E45FC24483`, 9 levels, cases 8/9/10 ft, 21 distinct source IDs across 63 records, 828 vertical curves, and zero native walls/floors/stairs/roofs. Reopened the RVT and visually checked the named isometric view; Revit was closed before the independent RVT hash check.
 - Selected-D source/RVT/IFC are unchanged. The study remains an analysis wireframe, not a physical or construction model. Skylight count/location/product/roof opening are unselected. Evidence and replay procedure: `Architecture/Walkthrough_Shell_Wireframe_Study_2026-11-02/README.md`.
-- **Next:** continue the already authorized same-area L-02 route study and then develop native architectural geometry without promoting template defaults or study envelopes to selected design decisions. Keep M-06/A/B unassigned until fit/route evidence exists.
+- M297 subsequently completed the same-area L-02 route study and found no full-size stair envelope even with L-02 entirely omitted. See the M297 entry above; the next input is whether to relax L-01 or compare another stair/level arrangement.
 
 ## M292 — M270 runtime attempt stopped at untargetable Revit intro overlay — 2026-11-01
 
