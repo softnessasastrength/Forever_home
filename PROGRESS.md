@@ -1,3 +1,16 @@
+## M310 — Selected-D dimensional basis — 2026-11-02
+
+- Owner directed: “let's resolve dimensions first; Selected D is fine.” Recorded Selected-D as the current envelope basis: main plate 40 × 42 ft; rear-level envelopes 36 × 32 ft.
+- M302/M309's 38⅓ × 40 ft lower-shell expansion is now historical sensitivity evidence, not the active design path. It adds 33.1% to the lower test plate and did not yield a joint stair/room option in the tested sample.
+- This direction accepts the schematic envelopes for continued layout work; it does not settle site fit, gross/conditioned area, assemblies, or every interior room dimension. Later explicit decisions remain in force; room moves/resizes must remain visible proposals until reviewed.
+- **Next:** create a source-linked dimension register from Selected-D and current decisions, then build a disposable Revit geometry derivative with verified wall/floor/stair status. Selected-D source stays untouched.
+
+## M309 — Wider-sample integrated stair, two-landings and route — 2026-11-02
+
+- Used M308's 118 spatial representatives from the 3,850,039 M302 block fits. .NET 10 build **0 warnings, 0 errors**; two independent runs pass **6/6**, reproduce report/check/SVG byte-for-byte and parse.
+- 52 landing pairs clear fixed blocks; 29 include the lower 36-in route to C-LOWER, with 3 node-cap hits. Across 1,546,000 room-pair checks, two corridors admit L-01 candidates but no same-area L-02 pair; **zero** full layout options pass. Bounded to the spatial sample and movement caps.
+- Evidence/replay/hashes: `Architecture/M309_Wide_Sample_Integrated_Stair_Search_2026-11-02/README.md`. No model, Revit, IFC, family or remote state changed. Owner subsequently directed use of Selected-D dimensions; this expanded-shell screen is superseded for active geometry.
+
 ## M307 — Integrated stair, two-landings and lower-route search — 2026-11-02
 
 - M306 showed that sequentially sampled options do not include a pair of usable end-landing footprints. M307 therefore checked both 4 × 4 ft landing proxies and the lower route together across the first 24 retained M302 stair envelopes before same-area room sampling.
