@@ -1,7 +1,15 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-01
-Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks with source and derivative hashes verified; M255 retired the dimensionally inconsistent RevitCity 22366 vanity while preserving its source and evidence. M-06/A/B remain unassigned and the room fit, door/approach, applicable CT basis, and service path remain unverified.
+Updated: 2026-10-31
+Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks with source and derivative hashes verified; M255 retired the dimensionally inconsistent RevitCity 22366 vanity; M256 integrates the owner-directed M-01 move with the kitchen and porch-route sensitivities (21/21, two identical replays). M-06/A/B remain unassigned, native construction geometry is still absent, and the preferred direct living/kitchen opening is not demonstrated by the integrated block arrangement.
+
+## M256 — Integrate living, kitchen and porch-route sensitivities
+
+**Acceptance:** pin the selected-D, M215 route/shell, M228 coordinate transform, M232 owner-directed living test, M242 kitchen shift and M243 route sensitivity; combine the 6 in east M-01 move, 6 in west M-02 move and 6 in west route-start adjustment; verify room-block bounds, hallway contacts, 36 in swept route, overlaps against M-01/M-02 and A/B reservations, and unchanged M-06 assignment; reproduce byte-identical reports in two PowerShell 5.1 runs; rerun selected-D/IFC baseline validation. Do not edit selected-D or imply physical wall/door clearance.
+
+**Result:** `Tools/verify_m256_living_kitchen_route_integration.ps1` passes 21/21 in two isolated replays; report/check hashes match (`a2fbf6e8…ea713b2`, `76b94025…7d5be0`). The integrated room blocks retain M-01 240 sf and M-02 277.333 sf gross. Both abut M-05 along 12 ft; the 33.5 ft route proxy has zero modeled overlap, 6 in to moved living, 4 in to moved kitchen and 3 in minimum to the existing M243 obstacle set. A/B reservations remain clear and M-06 remains TBD. The blocks do not share a direct edge; M-05 intervenes and part of the 4 ft 4 in horizontal separation remains unassigned. Consequently this comparison does not demonstrate the owner's preferred fully open living/kitchen connection. Fresh baseline replay passes 2 × 43/43, seven byte-identical files per replay, three valid SVGs per replay and retained IFC2X3 26/26 with zero errors; selected-D/RVT/IFC hashes remain protected. No M256 RVT/IFC was authored because physical walls, openings, elevations and assemblies remain unspecified and the house-layout preference is unresolved. See `Architecture/M256_Living_Kitchen_Route_Integration_2026-10-31/README.md`.
+
+**Next gate:** owner direction is needed before a separate study moves or reshapes M-05 to seek a direct living/kitchen connection. Continue unrelated source-dimensioned site/patio and upper-shell coordination without treating this sensitivity as a selected layout.
 
 ## M255 — Retire the dimensionally inconsistent RevitCity vanity
 

@@ -1,3 +1,12 @@
+## M256 — Integrate living, kitchen and porch-route sensitivities — 2026-10-31
+
+- Added `Tools/verify_m256_living_kitchen_route_integration.ps1`, pinned to selected-D, M215, M228, M232, M242 and M243 report hashes. The M-01 +6 in east test, M-02 -6 in west kitchen candidate and route-start -6 in variant compose in the same coordinate frame.
+- Two Windows PowerShell 5.1 runs pass **21/21** and reproduce outputs byte-for-byte: report SHA256 `A2FBF6E8FB7BDD8452147931E26A4AA1B6B765849C8C653110F65BDAFEA713B2`; checks SHA256 `76B94025373AA8E0AD2EFAFB39AF9C08CBA47B2115FF66E99FFCD3C52B7D5BE0`.
+- M-01 remains 240 sf gross; M-02 remains 277.333 sf gross. Both abut M-05 over 12 ft. The 36 in route proxy is 33.5 ft, with no modeled overlap, 6 in to M-01, 4 in to M-02 and 3 in minimum to the previously checked proxy set. West A and east B remain clear; M-06 remains unassigned.
+- Important design gap: the room blocks do not share an edge. M-05 intervenes across a 4 ft 4 in band, so the owner-preferred fully open living/kitchen connection is not demonstrated. The remaining block-model gap is partly unassigned. This is analysis only; no wall, door/opening, service, or native Revit geometry was added.
+- Fresh `Tools/validate_architectural_bim_baseline.ps1` replay passes two 43/43 room-block runs, seven matching outputs per run, three parseable SVGs per run and retained IFC2X3 **26/26** with zero errors. Report `.local/revalidation/M256-baseline/baseline-validation.json`, SHA256 `EC7190C778E05930C81DA427E7AE54E156A65636DC8B011A504F60ED01F23E62`. Selected-D, retained RVT/IFC hashes remain unchanged. Revit was not running/targetable; no host work occurred. Incoming Evolution RFA remains present at SHA256 `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`.
+- Next: owner direction is needed before moving or reshaping M-05 to seek a direct connection. Keep native construction categories explicitly outstanding; do not infer physical dimensions from room-block gaps. See `Architecture/M256_Living_Kitchen_Route_Integration_2026-10-31/README.md`.
+
 ## M255 — Retire dimensionally inconsistent vanity family — 2026-11-01
 
 - Moved the RevitCity 22366 vanity RFA intact from `Revit/Family_Intake/Incoming/` to `Revit/Family_Intake/Rejected/` under the owner-authorized dimensional rejection direction. Its SHA256 remains `3524AFC61B87377AA0809F18F6FA21C56343E22BFB9A9053CD91B9085629D154`.
@@ -16,6 +25,8 @@
 Updated: 2026-10-31
 
 ## M254 — Evolution family synthetic-host inspection and baseline revalidation
+
+> Historical first-run checkpoint: superseded by the completed patched rerun in the M254 entry above and the current handoff. The initial probe and 13/14 intermediate validator results are preserved as evidence; they are not the final M254 status.
 
 - Revalidated the documented selected-D geometry and retained IFC export with `Tools/validate_architectural_bim_baseline.ps1`. Report `.local/revalidation/architectural-bim-baseline-20261101T022059469Z/baseline-validation.json` passes two deterministic replays, **43/43** checks each, seven matching files per replay, three parseable SVGs each, and retained IFC2x3 **26/26** with zero schema errors. Source/RVT/IFC hashes remained unchanged (`516D6D17…72BB`, `C6CED6AC…D6D0`, `56251F47…72F6`); report SHA256 `E9822D78EEF30351C21713F4C3EC9394215801301C8D3EE6850B8EC297934684`.
 - Ran the first M254 Evolution face-host probe in a new Imperial Revit 2027.3 project. The exact quarantine source hash before/after is `39715206F24DE4B909E37324CE352BBA3AF348BCA259B7A9C0CE335ED2DDC3EA`. Type `0467.400` placed on a 10 x 10 ft synthetic test wall; host/instance/host-face IDs agree; the report records three positive-volume solids and finite project bounds 17.568 x 22.1256 x 34.3128 in. It lists three unconnected piping connectors and no modeled service network. No owner project, selected-D, bathroom, or room assignment was involved.
