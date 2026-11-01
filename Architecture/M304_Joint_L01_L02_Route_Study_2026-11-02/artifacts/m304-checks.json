@@ -1,0 +1,34 @@
+{
+  "passed": 7,
+  "total": 7,
+  "details": [
+    {
+      "id": "M302/M215/M304 fingerprints and hypothetical shell values match",
+      "pass": true
+    },
+    {
+      "id": "all L-02 candidates preserve 110 sf and clear fixed rooms/C-LOWER",
+      "pass": true
+    },
+    {
+      "id": "all generated L-01 candidates preserve 250.5556 sf and clear fixed blocks",
+      "pass": true
+    },
+    {
+      "id": "M-06 windows remain unassigned/protected in the pinned M302 source",
+      "pass": true
+    },
+    {
+      "id": "every passing option keeps L-01/L-02/stair clear of fixed blocks and each other",
+      "pass": true
+    },
+    {
+      "id": "reported route paths have a valid 36-in swept footprint to C-LOWER",
+      "pass": true
+    },
+    {
+      "id": "all room movement preserves source areas; no physical selection/code finding",
+      "pass": true
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+## M304 — Joint L-01/L-02 route study — 2026-11-02
+
+- Owner chose the larger shell sensitivity plus joint same-area L-01/L-02 movement. The 38.333333 × 40 ft test remains unselected (+381.33 sf / +33.1% over 36 × 32 ft); C-LOWER and all other rooms remain fixed; both M-06 windows protected/unassigned, west A protected and B unassigned.
+- `Tools/M304Generator` builds cleanly with **0 warnings, 0 errors**. Two 7/7 replays match JSON/check/SVG byte-for-byte; SVG parses. Canonical artifacts and replay instructions: `Architecture/M304_Joint_L01_L02_Route_Study_2026-11-02/README.md`; `.local/revalidation/m304-run9/` and `run10/`.
+- An optimistic first pass finds 12 corridors among 48 stair flight ends with L-01/L-02 omitted. The joint pass generates 116,548 L-01 and 334,671 L-02 same-area options; movement-spread sampling checks up to 1,000/5,000 per corridor. Of 32,074 tested room/stair combinations, **9** retain both room areas and a 36-in route proxy to C-LOWER. The least-movement sample moves L-01 east about 10 ft and reshapes L-02 to 14.5 × 7.586 ft; route proxy ~34 ft. This is not a usable stair or approved plan; endpoint landings, doors, actual flight/riser convention and route beyond C-LOWER remain open.
+- Next: owner review the +33.1% shell premium before any disposable Revit arrangement; separately resolve end landing, door/approach and beyond-C-LOWER route. No selected-D/Revit/IFC/family/remote changes.
 ## M303 — Route screen for sampled M302 spatial fits — 2026-11-02
 
 - Tested both outer flight ends of the first 24 M302 retained options (ranked by L-01 movement) using M215's 36-in project route precedent. The optimistic start is 18 in outside each proxy run edge because M302 has no end landing. Fixed C-LOWER, all source room blocks, same-area L-01 options and both protected M-06 windows remain in the screen.
