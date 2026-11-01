@@ -1,10 +1,17 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-01 (M320 M-06 envelope recheck)
+Updated: 2026-11-01 (M321 kitchen island IFC recheck)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
 M320 replays the current-SKU M-06 plan-envelope screen under the configured PowerShell host without an execution-policy override: 14/14 integrity checks pass and all 16 research toilet/lavatory boxes remain contained in the gross B window. This remains gross arithmetic only; B is not assigned.
+M321 independently revalidates the retained isolated M-02 kitchen-island IFC2x3 export against its Revit audit and selected-D source: 13/13 checks pass with matching RVT/IFC lineage, 21 spaces on three storeys, four casework modules, and the generic countertop placeholder. This remains a furnishing-study derivative, not selected-D building geometry.
+
+## M321 — M-02 kitchen island IFC recheck
+
+**Acceptance:** validate the retained Revit audit/export pair and selected-D source; require IFC2x3 integrity, matching saved-model lineage, 21-space/three-storey inventory, four measured modules, and the documented countertop placeholder.
+
+**Result:** `.local/revalidation/M321-kitchen-island-ifc-final.json` passes 13/13 with zero errors. Countertop finish split, perimeter clearances, appliances, openings, services, and final kitchen placement remain unresolved.
 
 ## M320 — M-06 current-product envelope recheck
 

@@ -3100,3 +3100,9 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Result: **14/14** checks pass; **16/16** research toilet/lavatory bounding-box pairs remain contained in the gross B window; the report retains exact current-SKU geometry as unverified and M-06 as unassigned.
 - This is gross-envelope arithmetic only. It does not establish wall-face fit, a door or hall approach, privacy, plumbing/vent/service routing, accessibility, local code applicability, product approval, or construction readiness.
 
+## M321 — M-02 kitchen island IFC recheck — 2026-11-01
+
+- Re-ran `Tools/RevitPilot/validate_kitchen_island_ifc.py` against the retained Revit 2027.3 audit, IFC2x3 export, and selected-D source into `.local/revalidation/M321-kitchen-island-ifc-final.json`.
+- Result: **13/13** checks pass with zero errors: export completion, matching saved-RVT lineage, IFC hash/schema, 21 spaces on three storeys, decoded product geometry, four 4 × 2 ft casework modules, and the generic 8 × 4 ft countertop placeholder at the documented thickness.
+- This validates the isolated furnishing derivative only. It does not promote the island into selected-D, establish perimeter/appliance clearances, resolve openings/services, or imply code, structural or construction approval.
+
