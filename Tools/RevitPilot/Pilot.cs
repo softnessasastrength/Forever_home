@@ -46,6 +46,8 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
+            Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
         // Keep the current main-floor validation gates visible even when Revit
         // compresses the panel into a narrow ribbon strip.
         panel.AddItem(new PushButtonData("FHMainFloorCandidateIfcVisible", "Export main-floor\nIFC",
@@ -89,8 +91,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(GeometryQaCommand).FullName!));
         panel.AddItem(new PushButtonData("FHManifestExports", "Run manifest\nexports",
             Assembly.GetExecutingAssembly().Location, typeof(ManifestExportCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
-            Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIslandCountertopTest", "Build M-02\ncountertop test",
             Assembly.GetExecutingAssembly().Location, typeof(IslandCountertopTestCommand).FullName!));
         return Result.Succeeded;
