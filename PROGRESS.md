@@ -1,3 +1,9 @@
+## M255 — Retire dimensionally inconsistent vanity family — 2026-11-01
+
+- Moved the RevitCity 22366 vanity RFA intact from `Revit/Family_Intake/Incoming/` to `Revit/Family_Intake/Rejected/` under the owner-authorized dimensional rejection direction. Its SHA256 remains `3524AFC61B87377AA0809F18F6FA21C56343E22BFB9A9053CD91B9085629D154`.
+- Revit 2027.3 inspection reports six types, all with a 35.4331 in solid width despite type labels spanning 3–4 ft; Family Editor shows the same 2 ft 11 111/256 in width parameter on the 3-ft and 4-ft types. Root cause not audited; no family edits or placements were made.
+- Updated Incoming/Rejected readmes, intake manifest and RevitCity intake notes. No replacement sink was selected; Tresham remains an unapproved candidate and M-06/A/B remain unassigned. Selected-D, RVT, IFC and Evolution RFA were untouched.
+- Next: advance a source-dimensioned house layout toward a disposable native Revit derivative; do not assign walls, openings, assemblies or service routes whose inputs remain unspecified.
 ## M254 — Patched Evolution synthetic-host probe completed — 2026-11-01
 
 - Reopened Revit 2027.3 with the hash-verified local RevitPilot build and ran the staged request in a new disposable Imperial project. Only quarantined type `0467.400` was placed, on its synthetic vertical test wall; selected-D was not opened.

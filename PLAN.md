@@ -1,8 +1,13 @@
 # Architectural BIM pipeline plan
 
 Updated: 2026-11-01
-Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks with source and derivative hashes verified. This completes only a quarantined-family geometry probe; M-06/A/B remain unassigned and the room fit, door/approach, applicable CT basis, and service path remain unverified.
+Status: The selected-D schematic/IFC baseline replays consistently: two 43/43 runs, seven matching files per run, three parseable SVGs, and retained IFC2x3 validation 26/26 with zero errors. M254 patched Revit 2027 synthetic-host rerun passes 14/14 independent checks with source and derivative hashes verified; M255 retired the dimensionally inconsistent RevitCity 22366 vanity while preserving its source and evidence. M-06/A/B remain unassigned and the room fit, door/approach, applicable CT basis, and service path remain unverified.
 
+## M255 — Retire the dimensionally inconsistent RevitCity vanity
+
+**Acceptance:** verify the recorded Revit 2027.3 dimensional mismatch against the intake evidence; move the unchanged user-supplied RFA out of Incoming and preserve it in Rejected; record source URL, SHA256, test run and reason; leave M-06/A/B unassigned and select no replacement.
+
+**Result:** the 22366 source RFA was moved from Incoming to Rejected after its six measured types showed one 35.4331 in width despite 3–4 ft labels; Family Editor inspection also found matching 2 ft 11 111/256 in width parameters on the 3 ft and 4 ft types. SHA256 remained `3524AFC61B87377AA0809F18F6FA21C56343E22BFB9A9053CD91B9085629D154`. Inventory and disposition notes now point to the archived copy. This rejects a faulty family definition, not the vanity product category. Tresham remains an inspected, unapproved study candidate; no M-06 replacement or room assignment follows. See `Revit/Family_Intake/Rejected/README.md` and `Revit/Family_Intake/RevitCity_Family_Intake.md`.
 ## M254 — Inspect the quarantined Evolution lavatory on a synthetic vertical host
 
 **Acceptance:** use the exact hash-pinned quarantined RFA and exact Revit 2027 project-local RevitPilot build; place only type `0467.400` on an explicitly synthetic wall in a new disposable project; record host identity, axes, positive-volume solids, bounds, and connector inventory; verify source and derivative hashes; pass the independent validator; never open selected-D or assign M-06/A/B.
