@@ -3236,6 +3236,14 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The contract validates source identity and preserves the owner-selected Champion `610AA001.020` as intent only; it explicitly leaves finished-face clearances, door/approach, service route and B assignment false.
 - This is a preparation contract, not a Revit placement or product selection. No Revit restart was required.
 
+## M344 — Native M-06 proxy setup runtime verified — 2026-11-02
+
+- Built and registered the exact project-local RevitPilot DLL through the authorized per-user AddInId; each replacement preserved the prior manifest under `.local/revit-pilot/registration-backups/`. Final runtime DLL SHA256: `1ADCFD5CABC0916C447D08EE454C5CACC3E60DB961F4CA888F316837707A18EA`.
+- After exact path/hash verification and owner-authorized **Load Once**, Revit 2027.3 created `.local/revit-pilot/m06-proxy-study/20261102T122827829Z/` containing a native four-wall 158 × 84 in disposable harness, a TOTO Nexus toilet proxy and the measured Evolution lavatory evidence family.
+- Native run saved `FH_M06_Proxy_Setup.rvt` and exported `FH_M06_Proxy_Setup.ifc` as IFC2x3CV2. `Tools/validate_m06_proxy_study.ps1` passes **15/15** checks: manifest lineage, source hashes, two unselected instances, four IFC wall entities, proxy product strings, RVT/IFC hashes and all gates explicitly false.
+- Revit placement required vertical-face regeneration, orientation correction for the north wall and lock-tolerant hashing. These are runtime repairs, not design changes. Champion PRO `610AA001.020` remains owner intent only; room B remains unassigned; Selected-D is untouched.
+- This is a validated native proxy comparison, not a selected fixture, room assignment, code/accessibility approval, services route, structural conclusion or construction-ready model.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
