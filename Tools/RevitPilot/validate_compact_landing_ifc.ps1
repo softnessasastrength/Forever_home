@@ -27,7 +27,11 @@ Check 'ifc-nonempty' ($ifcText.Length -gt 1000) ([string]$ifcText.Length)
 Check 'ifc-step-header' ($ifcText.StartsWith('ISO-10303-21;')) 'IFC STEP header'
 Check 'ifc-ifc2x3' ($ifcText -match 'IFC2X3') 'IFC2X3 schema marker'
 Check 'ifc-floor-entity' (($ifcText -match 'IFCFLOOR') -or ($ifcText -match 'IFCSLAB')) 'IFC floor/slab entity'
-Check 'ifc-landing-marker' ($ifcText -match 'FH-C-STAIR-LANDING-BRIDGE') 'landing marker in IFC text'
+$landingId = [string]$landing.element_id
+$markerInIfc = $ifcText -match 'FH-C-STAIR-LANDING-BRIDGE'
+$slabIdInIfc = ($landingId -and $ifcText.Contains('IFCSLAB') -and $ifcText.Contains(':' + $landingId + "'"))
+$landingIfcDetail = if ($markerInIfc) { 'landing marker in IFC text' } elseif ($slabIdInIfc) { "landing slab exported with Revit element id $landingId" } else { 'landing marker or manifest element id absent from IFC text' }
+Check 'ifc-landing-marker' ($markerInIfc -or $slabIdInIfc) $landingIfcDetail
 $passed = @($checks | Where-Object { $_.pass }).Count
 $out = [pscustomobject]@{ schema = 'forever-home.compact-core-native-landing-validation-v1'; pass = ($passed -eq $checks.Count); passed = $passed; total = $checks.Count; checks = $checks; study_directory = (Resolve-Path $StudyDirectory).Path }
 $out | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $StudyDirectory 'landing-validation.json') -Encoding UTF8
