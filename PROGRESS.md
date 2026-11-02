@@ -3279,3 +3279,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Build used the authorized AddInId and exact project-local DLL SHA256 `EECD3536A91F2E6106DC766073257E998ADA8525AA207576A831ADBAE3D7D164`; prior manifests remain backed up under `.local/revit-pilot/registration-backups/`; Revit trust prompt was answered **Load Once**.
 - Extended `Tools/run_verified_bim_sequence.ps1` with M348 and `Tools/validate_verified_bim_milestone.ps1` with the consolidated M348 gate. No Selected-D, M-06 assignment, B assignment, source RFA or remote state changed. No code, accessibility, structural, professional, permit or construction-readiness claim follows.
 
+## M349 — Integrated candidate-21 main-floor assembly — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeIntegratedMainFloorAssemblyCommand.cs` and `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1`. The command fingerprints the existing candidate-21 JSON, creates 8/9/10-ft comparison cases, and hosts nominal D-01/D-02/D-03/D-04 door families in native wall segments.
+- Revit 2027.3 runtime succeeded with the corrected wall-join guard. Output `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/` contains three generic RFA proxies, one RVT and one IFC2x3 export. The independent validator passes **7/7**: candidate input hash, three cases, 57 native walls, 12 unselected door records, RVT/IFC hashes, IFC2x3 schema, `IFCDOOR` and `IFCWALL` entities.
+- The exact project-local DLL SHA256 was `BB78D1C618544D3966A5EEFF65213AF94AA57FA3849509C8152CFF799263817E`; previous registration was backed up under `.local/revit-pilot/registration-backups/`; Revit loaded it with **Load Once**. Six non-fatal wall-overlap warnings were acknowledged; no Revit errors remained.
+- Extended the replay and consolidated validators with M349. No Selected-D, M-06/B assignment, source RFA or remote state changed. This is a coordinated comparison derivative, not code/accessibility/structural/MEP/professional/permit/construction approval.
+

@@ -3337,3 +3337,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** these are source-backed nominal comparison assemblies, not selected products or approved construction assemblies. Wall type, floor, frame, swing, threshold, clear width, weathering, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
 
+## M349 — Integrated candidate-21 main-floor assembly
+
+**Acceptance:** use the source-fingerprinted candidate-21 main-floor envelope in a disposable Revit 2027 derivative; add the documented D-01/D-02/D-03/D-04 nominal assemblies as native hosted doors across the 8, 9 and 10 ft clear-ceiling comparison cases; export RVT and IFC2x3; validate 57 walls, 12 doors, three unselected cases, source lineage and IFC wall/door entities. Preserve Selected-D.
+
+**Status:** runtime verified in Revit 2027.3 with the exact project-local DLL SHA256 `BB78D1C618544D3966A5EEFF65213AF94AA57FA3849509C8152CFF799263817E` and owner-authorized **Load Once**. Output `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` passes **7/7**. Revit issued six non-fatal wall-overlap warnings; the command explicitly disallowed wall joins and completed the IFC export. IFC contains `IFCDOOR`, `IFCWALL`, and IFC2X3 schema markers.
+
+**Limitations:** candidate-21 room blocks, host wall type, floor, ceiling, door frame/swing/threshold/clear width, furniture, route, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. This is a coordinated comparison derivative, not a selected house model; M-06/B and Selected-D are unchanged.
+

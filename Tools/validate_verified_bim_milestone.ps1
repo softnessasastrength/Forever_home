@@ -8,6 +8,7 @@ param(
     [string]$NativeOpeningStudyDirectory = '.local/revit-pilot/main-floor-openings/20261102T125705634Z',
     [string]$DocumentedDoorStudyDirectory = '.local/revit-pilot/documented-door-study/20261102T133842605Z',
     [string]$DocumentedOpeningAssemblyDirectory = '.local/revit-pilot/documented-opening-assembly/20261102T135857068Z',
+    [string]$IntegratedMainFloorAssemblyDirectory = '.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z',
     [string]$MainFloorCoordinationReport = '.local/revalidation/main-floor-chain-20261102/coordination.json'
 )
 
@@ -36,6 +37,7 @@ $m06Proxy = Read-Json (Join-Path $M06ProxyStudyDirectory 'm06-proxy-study-manife
 $m346Openings = Read-Json (Join-Path $NativeOpeningStudyDirectory 'opening-study-manifest.json')
 $m347Doors = Read-Json (Join-Path $DocumentedDoorStudyDirectory 'documented-door-study-manifest.json')
 $m348Assembly = Read-Json (Join-Path $DocumentedOpeningAssemblyDirectory 'documented-opening-assembly-manifest.json')
+$m349Assembly = Read-Json (Join-Path $IntegratedMainFloorAssemblyDirectory 'integrated-main-floor-assembly-manifest.json')
 $mainFloorCoordination = Read-Json $MainFloorCoordinationReport
 
 Add-Check 'selected_d_baseline' ($baseline.status -eq 'pass' -and $baseline.replay_count -eq 2 -and $baseline.geometry_check_count_per_replay -eq 43 -and $baseline.ifc_checks_passed -eq 26 -and $baseline.protected_inputs_unchanged) '2 x 43 source replay; retained IFC 26/26; protected inputs unchanged'
@@ -51,6 +53,7 @@ Add-Check 'm344_native_m06_proxy' ($m06Proxy.schema -eq 'forever-home-m06-proxy-
 Add-Check 'm346_native_main_floor_openings' ($m346Openings.schema -eq 'forever-home-main-floor-opening-study-v1' -and $m346Openings.status -match '^disposable native opening comparison' -and @($m346Openings.cases).Count -eq 2 -and @($m346Openings.cases | Where-Object { $_.wall_count -eq 11 -and @($_.apertures).Count -eq 3 -and @($_.apertures | Where-Object { $_.selected -ne $false }).Count -eq 0 -and $_.saved_rvt_sha256.Length -eq 64 -and $_.ifc_sha256.Length -eq 64 }).Count -eq 2) 'M346 native front/rear/pantry opening comparison remains disposable and unselected'
 Add-Check 'm347_documented_door_study' ($m347Doors.schema -eq 'forever-home-documented-door-study-v1' -and $m347Doors.status -eq 'disposable nominal door-family comparison; not selected-D' -and @($m347Doors.cases).Count -eq 2 -and @($m347Doors.cases | Where-Object { $_.wall_count -eq 8 -and $_.door_count -eq 4 -and @($_.door_records).Count -eq 4 -and @($_.door_records | Where-Object { $_.selected -ne $false }).Count -eq 0 -and $_.saved_rvt_sha256.Length -eq 64 -and $_.ifc_sha256.Length -eq 64 }).Count -eq 2) 'M347 documented nominal D-01/D-02/D-03/D-04 family comparison remains disposable and unselected'
 Add-Check 'm348_documented_opening_assembly' ($m348Assembly.schema -eq 'forever-home-documented-opening-assembly-v1' -and $m348Assembly.status -eq 'disposable documented opening assembly comparison; not selected-D' -and @($m348Assembly.cases).Count -eq 2 -and @($m348Assembly.cases | Where-Object { $_.wall_count -eq 16 -and $_.door_count -eq 4 -and $_.opening_count -eq 4 -and @($_.door_records).Count -eq 4 -and @($_.door_records | Where-Object { $_.selected -ne $false -or $_.opening_modeled -ne $true }).Count -eq 0 -and $_.saved_rvt_sha256.Length -eq 64 -and $_.ifc_sha256.Length -eq 64 }).Count -eq 2) 'M348 documented nominal openings use native host segments and remain disposable and unselected'
+Add-Check 'm349_integrated_main_floor_assembly' ($m349Assembly.schema -eq 'forever-home-integrated-main-floor-assembly-v1' -and $m349Assembly.status -eq 'disposable integrated assembly comparison; not selected-D' -and @($m349Assembly.cases).Count -eq 3 -and $m349Assembly.wall_count -eq 57 -and $m349Assembly.door_count -eq 12 -and @($m349Assembly.cases | Where-Object { $_.wall_count -eq 19 -and $_.door_count -eq 4 -and $_.selected -eq $false -and @($_.door_records).Count -eq 4 -and @($_.door_records | Where-Object { $_.selected -ne $false -or $_.opening_modeled -ne $true }).Count -eq 0 }).Count -eq 3 -and $m349Assembly.saved_rvt_sha256.Length -eq 64 -and $m349Assembly.ifc_sha256.Length -eq 64) 'M349 integrated candidate-21 main-floor assembly remains disposable and unselected'
 Add-Check 'main_floor_coordination_chain' ($mainFloorCoordination.schema -eq 'forever-home-main-floor-coordination-chain-v1' -and $mainFloorCoordination.passed -eq 9 -and $mainFloorCoordination.total -eq 9) 'native wall/plate provenance and profile gate'
 
 $outPath = if ([IO.Path]::IsPathRooted($Output)) { [IO.Path]::GetFullPath($Output) } else { [IO.Path]::GetFullPath((Join-Path $repo $Output)) }
