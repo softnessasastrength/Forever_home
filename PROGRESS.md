@@ -3224,6 +3224,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Replayed the sequence successfully: **6/6** steps pass, including the **53/53** offline suite.
 - A fresh `dotnet build` could not run in this shell because no .NET SDK is installed; no source conclusion is inferred from that environment limitation.
 
+## M342 — Public exact-SKU M-06 recheck — 2026-11-02
+
+- Rechecked the American Standard product page and anonymous Home Depot/Wayfair listings for `610AA001.020`.
+- The pages identify the product and dimensions but expose no current-SKU BIM/RFA asset; no account, credential, purchase or gated download was used.
+- Appended the bounded search and source links to `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md`; B remains unassigned.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

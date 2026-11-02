@@ -26,3 +26,7 @@ Get-ChildItem Revit/Family_Intake/Incoming,.local/revit-pilot/family-intake/cand
 M-06/B remains unassigned. Product geometry, finished-face clearance, door/approach, service routing and room assignment remain open. A disposable native fixture study may proceed only after the owner supplies an exact current-SKU asset/drawing or explicitly authorizes a labelled proxy.
 
 This audit is not a code-compliance, accessibility, structural, professional, permit or construction-readiness determination.
+
+## Public-source recheck
+
+An anonymous public search on 2026-11-02 rechecked the exact SKU against the [American Standard product page](https://www.americanstandard-us.com/products/champion-r-pro-two-piece-1-28-gpf-4-8-lpf-chair-height-elongated-toilet-with-seat-and-wax-ring), [Home Depot listing](https://www.homedepot.com/p/331941303) and [Wayfair listing](https://www.wayfair.com/home-improvement/pdp/american-standard-champion-pro-two-piece-toilet-with-slow-close-seat-wax-ring-chair-height-white-asd13048.html). These pages identify the product and publish/repeat plan dimensions, but expose no anonymous current-SKU RFA or complete BIM download. No account, credential, purchase or gated download was attempted. This bounded search does not prove global non-availability.
