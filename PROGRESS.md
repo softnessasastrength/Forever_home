@@ -3193,6 +3193,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Report: `.local/revalidation/m06-coordination-gate-m336.json`; status is `screen-valid-but-fit-blocked`.
 - Product geometry, finished-face clearance, door/approach, service route and room assignment remain explicitly false. B stays unassigned; no Revit restart or model edit was required.
 
+## M337 — Consolidated M-06 boundary gate — 2026-11-02
+
+- Extended `Tools/validate_verified_bim_milestone.ps1` to require the M336 source-pinned, `screen-valid-but-fit-blocked` report.
+- Consolidated replay passes **9/9**. The green result proves evidence integrity and unresolved-status discipline; it does not prove an M-06 fit.
+- No Revit restart, Selected-D edit, family mutation, remote operation or unrelated worktree staging occurred.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

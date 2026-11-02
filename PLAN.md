@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M336 M-06 coordination evidence contract)
+Updated: 2026-11-02 (M337 consolidated M-06 coordination gate)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -11,6 +11,7 @@ The handoff now has a machine-readable acceptance command, `Tools/validate_verif
 The consolidated acceptance replay now passes 7/7, including the M325 native split-rise stair RVT/IFC gate; this remains evidence-chain validation rather than selected-design approval.
 M335 adds the verified M218/M219 native pantry-door comparison to the consolidated gate. The two swing derivatives pass their 9/9 integrity checks without opening or modifying Selected-D. This is the current opening gate; no other opening or assembly is selected.
 M336 adds a reproducible M-06 coordination evidence contract. It confirms the pinned Selected-D source, verified lavatory-family evidence, current-SKU toilet infographic envelope, and preliminary Connecticut screening note while explicitly keeping product/clearance/door/approach/service/assignment gates false. This is the correct pre-fit state; no Revit restart is required.
+M337 folds the M336 contract into the machine-checked verified-BIM gate. The consolidated replay now proves the evidence chain and the unresolved M-06 boundary together; a green gate must not be read as a bathroom-fit approval.
 The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
@@ -27,6 +28,12 @@ M327 now replays the existing compact-core generator in Revit 2027.3, then audit
 **Acceptance:** confirm the pinned Selected-D source, verified lavatory-family evidence, current-SKU infographic envelope and cited preliminary clearance note; explicitly report product geometry, finished-face clearance, door/approach, service route and room assignment as unresolved until supported together.
 
 **Result:** `Tools/validate_m06_coordination_gate.ps1` passes its evidence contract and writes `.local/revalidation/m06-coordination-gate-m336.json` with status `screen-valid-but-fit-blocked`. No fixture is assigned and no Revit state is changed.
+
+## M337 — Consolidated M-06 boundary gate
+
+**Acceptance:** require the M336 report to be source-pinned, screen-valid and explicitly fit-blocked, with product geometry, door/approach, service route and assignment still false.
+
+**Result:** `Tools/validate_verified_bim_milestone.ps1` now includes this boundary check and passes **9/9**. This strengthens the handoff without promoting B or claiming code compliance.
 
 ## M325 — Disposable native split-rise stair host gate
 

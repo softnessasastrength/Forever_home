@@ -71,6 +71,10 @@ The Revit-dependent runs require Revit 2027/2027.3 and the exact hash-verified p
 ## Repository safety
 
 Work remains on the local sandbox branch. No remote state was changed, no history was rewritten, and unrelated existing worktree edits remain preserved and unstaged.
+
+## M337 consolidated M-06 boundary checkpoint
+
+`Tools/validate_verified_bim_milestone.ps1` now includes the M336 M-06 coordination contract and passes **9/9**. The additional check requires the pinned source and evidence screens to be valid while product geometry, finished-face clearance, door/approach, service route and room assignment remain unresolved. This is deliberate evidence discipline, not a bathroom-fit or code-compliance result.
 ## M333 native roof-shell study checkpoint
 
 The disposable native roof study is now host-verified. `NativeRoofShellStudyCommand` created three side-by-side 40 × 42 ft `FootPrintRoof` elements from the documented 8:12, 10:12 and 12:12 options, exported IFC2x3, and saved an RVT. Because Revit retains the SaveAs handle during the command, `Tools/RevitPilot/finalize_native_roof_hash.ps1` records the RVT hash only after Revit closes. The final derivative is `.local/revit-pilot/native-roof-shell/20261102T041843122Z/`; RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`, validation **13/13**. This is a comparative roof shell only; it does not select pitch, assembly, framing, drainage, code path or structure.
