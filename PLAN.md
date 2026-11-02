@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M361 — Disposable F-01 engineered-oak finish-cue command
+
+**Acceptance:** add a project-local RevitPilot command that creates one native floor surface using the owner-approved F-01 engineered-oak display material, records an explicit display-only/unselected manifest, and exports IFC2x3. Build must pass before any Revit runtime attempt; Selected-D must remain untouched.
+
+**Result:** `Tools/RevitPilot/NativeFinishCueStudyCommand.cs` and `Tools/RevitPilot/validate_f01_finish_cue.ps1` are present. The exact project-local build `finish-cue-v1` compiles with **0 errors** and the two existing MSB3277 warning groups; DLL SHA256 is `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`. The ribbon registration uses the authorized AddInId and repository-local path; the prior manifest is preserved under `.local/revit-pilot/registration-backups/20261102-144408313/`.
+
+**Runtime status:** Revit 2027.3 launched, but its visible trial WebView again failed to report a foreground process to the supported UI bridge. The command has **not** been run; no RVT/IFC output is claimed. Resume with **Load Once** only after the prompt identifies this exact hash-checked DLL.
+
+**Limits:** the command is a visual finish cue, not a selected floor type or structural/installation specification. Product, plank, wear layer, substrate, thickness, acoustics, moisture and code performance remain open.
+
 ## M360 — Owner-approved F-01 finish basis
 
 **Acceptance:** record the owner’s engineered-oak direction as the F-01 main social-floor finish, preserve the existing material-code and render-to-model references, and keep product, thickness, substrate, installation and structural floor assembly unresolved.

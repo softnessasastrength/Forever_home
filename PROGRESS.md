@@ -3360,3 +3360,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Owner approved **engineered oak** for F-01 in the main kitchen, dining, living and hall areas.
 - Added `Decisions/2026-11-02_F-01_Engineered_Oak_Selection.md` as the superseding owner direction while preserving the fingerprinted `Architecture/Material_Schedule.md` source used by retained validators.
 - No Revit, Selected-D, IFC, Evolution RFA or remote state changed. The next authorized implementation is a disposable labelled material-cue study, not promotion of a structural floor assembly.
+## M361 — Disposable F-01 engineered-oak finish-cue command — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeFinishCueStudyCommand.cs`, a separate native study command that will create one F-01 display floor with material name `FH-F-01-EngHardwood-OakWarm | DISPLAY ONLY | owner-selected finish direction`; it explicitly records `assembly_selected=false` and leaves Selected-D untouched.
+- Added `Tools/RevitPilot/validate_f01_finish_cue.ps1` and ribbon registration. Build `finish-cue-v1` completed with **0 errors** and the existing 2 MSB3277 warning groups; DLL SHA256 `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`.
+- Per-user manifest AddInId/path were verified and the prior manifest was backed up at `.local/revit-pilot/registration-backups/20261102-144408313/`.
+- Runtime remains pending: Revit's trial WebView did not expose a foreground process to the supported UI bridge. No finish-cue RVT/IFC was generated or claimed. Selected-D, the Evolution RFA and remote state remain unchanged.

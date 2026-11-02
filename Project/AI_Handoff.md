@@ -4,7 +4,7 @@
 
 Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; verify the current commit with `git log`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
 
-M360 is the latest design-input milestone: the owner approved engineered oak for F-01 in the main kitchen, dining, living and hall areas. M359's 53/53 offline suite and M358's 13/13 native opening comparison remain green; M-06 remains explicitly fit-blocked. Product/build-up details, Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected. See `docs/CODEX_HANDOFF.md` for the next labelled material-cue study.
+M361 is the latest implementation milestone: the owner-approved F-01 engineered-oak finish-cue command builds with 0 errors (DLL SHA256 `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`), but Revit runtime is pending because the trial WebView blocked the supported UI bridge. M-06 remains explicitly fit-blocked; Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected.
 Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
