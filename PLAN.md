@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M374 — Headless Revit automation research
+
+**Status:** research complete; no third-party bridge installed.
+
+**Result:** `Research/Revit_Headless_Automation_GitHub_Review_2026-11-02.md` compares Autodesk APS Design Automation, RevitBatchProcessor and several public MCP bridges. APS is the supported true-headless route; local bridges still require a running Revit session and add another trust surface.
+
+**Next:** if desired, refactor the existing RevitPilot geometry routines into a UI-neutral core so the same deterministic studies can later run as desktop commands or an APS AppBundle. This is preparatory work only and does not require cloud credentials.
+
 ## M373 — Draft M-06 and primary-bath coordination inputs
 
 **Status:** complete as a reversible documentation gate; native geometry remains the next study.

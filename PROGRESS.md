@@ -3440,3 +3440,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Recorded the next disposable-study preferences: M-06 at the entry/hall edge, door swinging into the bath, same-wet-wall fixture relationship, and lower-MEP route target. West A and east B remain protected/unassigned; all M-06 fit gates remain false.
 - Recorded U-05 as the source 9 × 10 ft study block with a separate tub beside a tiled, black-grid-glass rain shower, based on the owner-approved MGM Springfield reference. No product, compartment, code or construction conclusion is implied.
 - `Tools/validate_m373_draft_coordination.ps1` is the reproducible contract check. No Selected-D, existing RVT/IFC, remote branch or Revit session state was changed.
+## M374 — Headless Revit automation research — 2026-11-02
+
+- Reviewed Autodesk APS Design Automation and public GitHub projects including RevitBatchProcessor, `revit-mcp`, AEC Model Bridge, `rvt-mcp`, RevitCortex and a Revit 2027 Design Automation plugin template.
+- Finding: APS Design Automation is the Autodesk-supported true-headless Revit engine; RevitBatchProcessor and local MCP bridges still depend on a running desktop Revit process and can be affected by modal dialogs or add-in trust prompts.
+- No repository was cloned, no credentials/account were used, no software was installed, and no trust/security setting changed.
+- Recommended future architecture: split deterministic geometry/report logic from the current `IExternalCommand` shell so it can serve both local Revit studies and a future APS AppBundle. No cloud migration is authorized or required now.
