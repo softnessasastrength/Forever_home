@@ -3446,3 +3446,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Finding: APS Design Automation is the Autodesk-supported true-headless Revit engine; RevitBatchProcessor and local MCP bridges still depend on a running desktop Revit process and can be affected by modal dialogs or add-in trust prompts.
 - No repository was cloned, no credentials/account were used, no software was installed, and no trust/security setting changed.
 - Recommended future architecture: split deterministic geometry/report logic from the current `IExternalCommand` shell so it can serve both local Revit studies and a future APS AppBundle. No cloud migration is authorized or required now.
+## M375 — UI-neutral artifact core seam — 2026-11-02
+
+- Added `Tools/RevitPilot/Core/StudyArtifactContract.cs`, a Revit-independent helper for SHA256 file fingerprints and deterministic JSON artifact writing.
+- Updated the native M-06 Tresham command to use the shared helper without changing its geometry, output schema or fit gates.
+- Added `Tools/RevitPilot/tests/test_ui_neutral_core_contract.py`; the offline suite now passes **66 tests**.
+- Built the disposable `core-refactor-check` DLL successfully with **0 errors** and the two pre-existing MSB3277 warning groups; SHA256 `87B06DAA503721D12D070A77AD4F0E1B86347D06C1AA6C698D3A7583B858658C`.
+- No Revit restart, manifest replacement, cloud credential, AppBundle upload, Selected-D edit or remote-state change occurred.

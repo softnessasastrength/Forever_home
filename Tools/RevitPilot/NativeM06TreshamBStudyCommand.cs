@@ -2,10 +2,9 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
+using ForeverHome.Pilot.Core;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text.Json;
 
 namespace ForeverHome.Pilot;
 
@@ -15,7 +14,6 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
     private const string SourceRelative = ".local/revit-pilot/family-intake/candidates/kohler-tresham-k-2844-4-0.rfa";
     private const string SourceSha256 = "3b1cbdaa844d35bd462f6e59a828b82f7870fde4ee7397bac09f4ca0c2f9b949";
     private static double Ft(double inches) => inches / 12.0;
-    private static string Hash(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static void Tag(Element e, string value) => e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.Set(value);
 
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
@@ -26,7 +24,7 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
             string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string sourcePath = Path.Combine(root, SourceRelative.Replace('/', Path.DirectorySeparatorChar));
             if (!File.Exists(sourcePath)) throw new FileNotFoundException("Pinned Tresham RFA is missing.", sourcePath);
-            string before = Hash(sourcePath);
+            string before = StudyArtifactContract.Sha256File(sourcePath);
             if (!before.Equals(SourceSha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("Tresham source hash mismatch.");
             string output = Path.Combine(root, ".local", "revit-pilot", "m06-tresham-b-study", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
@@ -98,10 +96,10 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 source = SourceRelative, source_sha256 = before, family = "kohler-tresham-k-2844-4-0", type = symbolName,
                 family_instances = familyInstances, toilet_proxy = new { sku = "610AA001.020", width_in = 19.0, projection_in = 30.25 },
                 door_approach_supported = false, service_route_supported = false, selected = false,
-                saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = Hash(ifc), ifc2x3 = File.ReadAllText(ifc).Contains("FILE_SCHEMA(('IFC2X3'))", StringComparison.Ordinal),
+                saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = StudyArtifactContract.Sha256File(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = StudyArtifactContract.Sha256File(ifc), ifc2x3 = File.ReadAllText(ifc).Contains("FILE_SCHEMA(('IFC2X3'))", StringComparison.Ordinal),
                 limitations = new[] { "Tresham is hosted on a synthetic wall for orientation only; host is not house geometry.", "Toilet is a labelled plan proxy, not an exact current-SKU solid.", "Door/approach and lower-MEP markers are reservations only; no clear leaf, swing, rough-in, slope, vent or network is modelled.", "No code, accessibility, structural, professional, permit or construction conclusion follows. Selected-D and the Evolution RFA are untouched." }
             };
-            File.WriteAllText(Path.Combine(output, "m06-tresham-b-study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
+            StudyArtifactContract.WriteJson(Path.Combine(output, "m06-tresham-b-study-manifest.json"), manifest);
             TaskDialog.Show("Forever Home M-06 study", $"Disposable Tresham/B study saved:\n{output}");
             return Result.Succeeded;
         }

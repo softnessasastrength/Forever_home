@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M375 — UI-neutral artifact core seam
+
+**Status:** complete locally; not registered with Revit and not run in the open session.
+
+**Result:** added `Tools/RevitPilot/Core/StudyArtifactContract.cs`, which contains Revit-independent SHA256 and JSON-artifact helpers. `NativeM06TreshamBStudyCommand` now consumes those helpers while retaining its existing Revit-only geometry shell. The offline contract test covers the absence of Revit namespaces in the core and the desktop command's use of the seam. A disposable build completed with 0 errors and the two pre-existing MSB3277 warning groups; DLL SHA256 `87B06DAA503721D12D070A77AD4F0E1B86347D06C1AA6C698D3A7583B858658C`.
+
+**Limits/next:** this is an architectural seam, not an APS deployment. No cloud credentials, AppBundle, remote upload or Revit restart was used. Continue extracting only deterministic, UI-neutral logic; keep transactions, document creation and IFC export in the host-specific adapter until separately tested.
+
 ## M374 — Headless Revit automation research
 
 **Status:** research complete; no third-party bridge installed.
