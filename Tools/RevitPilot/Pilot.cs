@@ -95,6 +95,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build native roof\nshell comparison",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHMainFloorCandidateIfc", "Export main-floor\ncandidate IFC",
             Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
         panel.AddItem(new PushButtonData("FHAuditMainFloorCandidate", "Audit reopened\ncandidate",
