@@ -3341,3 +3341,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13** against `.local/revit-pilot/native-roof-shell/20261102T041843122Z`; it records three native roofs at the documented 8:12, 10:12 and 12:12 options, RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, and IFC2X3 roof entity/hash evidence. No pitch is selected.
 - `Tools/validate_m06_proxy_study.ps1`, `Tools/validate_m06_proxy_clearance_approach.ps1` and `Tools/validate_m06_coordination_gate.ps1` pass against the retained proxy/evidence chain. The result is deliberately `screen-valid-but-fit-blocked`; B remains unassigned.
 - No Selected-D, Evolution RFA, remote or history state changed. The next M-06 step requires exact current-SKU geometry or explicit owner proxy authorization, plus a supported clearance, door/approach and service route.
+## M357 — Full retained-evidence replay after coordination gates — 2026-11-02
+
+- Repository safety audit: branch `codex/house-design-sandbox`, worktree clean before edits, no history rewrite or remote mutation; `design/vr-tech-bom-roadmap` and `main` remain untouched.
+- `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-m356.json` passes **12/12** stages after the M354–M356 evidence updates.
+- This is a regression confirmation, not a new model generation. Selected-D, the Evolution RFA, M-06/B and all remote state remain protected.

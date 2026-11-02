@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M357 — Full retained-evidence replay after coordination gates
+
+**Acceptance:** rerun the repository's consolidated BIM sequence after M354–M356, requiring all retained Revit/IFC/M-06 boundaries and offline regressions to remain green without opening Selected-D.
+
+**Result:** `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-m356.json` passes all **12/12** stages. This confirms the new documentation and coordination evidence did not disturb the retained baseline.
+
+**Limits/next:** the runner validates retained evidence; it does not regenerate a new RVT or promote generic wall, floor, door, roof or fixture placeholders. The next substantive change requires documented assembly/product inputs or owner authorization for a labelled proxy study.
+
 ## M356 — Roof and M-06 evidence replay
 
 **Acceptance:** replay the retained native roof-shell validator and M-06 proxy/coordination validators without changing Selected-D or assigning B; require the documented roof options, IFC roof entity, proxy provenance, and explicit fit-blocked status.
