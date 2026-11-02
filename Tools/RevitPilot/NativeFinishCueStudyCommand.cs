@@ -11,7 +11,7 @@ namespace ForeverHome.Pilot;
 [Transaction(TransactionMode.Manual)]
 public sealed class NativeFinishCueStudyCommand : IExternalCommand
 {
-    private const string MaterialName = "FH-F-01-EngHardwood-OakWarm | DISPLAY ONLY | owner-selected finish direction";
+    private const string MaterialName = "FH-F-01-EngHardwood-OakWarm - DISPLAY ONLY - owner-selected finish direction";
     private static string Hash(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static void Tag(Element e, string value) => e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.Set(value);
 

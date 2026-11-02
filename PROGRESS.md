@@ -3374,3 +3374,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 
 - Recorded the owner’s nine coordination answers in `Decisions/2026-11-02_Coordination_Gate_Bundle.md`.
 - The bundle is sufficient to start the next disposable native coordination study. It does not select Selected-D geometry, a structural assembly, a roof pitch for construction, a door family, or M-06/B.
+## M364 — F-01 finish-cue Revit name correction — 2026-11-02
+
+- Corrected the material name after Revit rejected pipe characters; v2 uses `FH-F-01-EngHardwood-OakWarm - DISPLAY ONLY - owner-selected finish direction`.
+- `Tools/RevitPilot\build.ps1 -BuildDirectory finish-cue-v2` passes with **0 errors** and 2 existing MSB3277 warning groups. DLL SHA256 `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup `.local/revit-pilot/registration-backups/20261102-145311337/`.
+- Revit restarted with the exact v2 manifest, but the trial WebView close control remains inaccessible to the supported UI bridge. No runtime output was generated or claimed.

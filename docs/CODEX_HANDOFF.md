@@ -44,6 +44,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M359 reran the offline RevitPilot contract suite: 53 tests pass. This is a source/validator regression check, not host-side Revit generation.
 - M360 records the owner-approved F-01 direction: engineered oak for kitchen, dining, living and halls. Product, thickness, substrate and structural floor build-up remain open; use only a labelled display material in the next disposable study.
 - M361 adds the build-verified `NativeFinishCueStudyCommand` and validator for that labelled display material. DLL SHA256 is `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`; runtime is pending because the Revit trial WebView again blocked the supported UI bridge. Do not claim an RVT/IFC output until the exact DLL runs.
+- M364 corrected the Revit-invalid pipe characters in the F-01 material name. The v2 DLL SHA256 is `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; the exact manifest is registered and backed up, but runtime remains pending on manual/host-side dismissal of the trial WebView.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note

@@ -1,5 +1,11 @@
 # Architectural BIM pipeline plan
 
+## M364 — F-01 finish-cue Revit name correction
+
+**Result:** the first disposable runtime attempt exposed a Revit API restriction on pipe characters in material names. `NativeFinishCueStudyCommand.cs` now uses Revit-safe hyphen punctuation and rebuilds as `finish-cue-v2` with **0 errors** and the existing 2 MSB3277 warning groups. DLL SHA256: `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup: `.local/revit-pilot/registration-backups/20261102-145311337/`.
+
+**Runtime status:** Revit was restarted with the corrected manifest, but the trial WebView still intercepts the visible close button and the supported UI bridge cannot target it. No F-01 RVT/IFC output is claimed until the overlay is dismissed and the exact hash-checked v2 DLL runs.
+
 ## M363 — Owner coordination gate bundle
 
 **Result:** `Decisions/2026-11-02_Coordination_Gate_Bundle.md` records the owner’s answers: 43½-in split rise; 5½-in non-structural wall placeholder; 1½-in generic floor build-up beneath engineered oak; 36-in nominal openings; 10:12 working roof with 8:12 comparison; living-only skylight zone; M-06 proxy/SKU expansion; lower-MEP service route; and hall-edge approach.
