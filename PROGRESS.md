@@ -3396,3 +3396,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 
 - Added `Tools/RevitPilot/tests/test_f01_finish_cue_command_contract.py` to pin the Revit-safe engineered-oak material name, display-only/one-floor contract, IFC2x3 export path, ribbon registration and validator schema.
 - The offline RevitPilot suite now passes **56/56**. This strengthens source-level reproducibility only; the live F-01 RVT/IFC runtime remains pending and no finish assembly is promoted.
+
+## M368 — F-01 finish-cue runtime and IFC validation — 2026-11-02
+
+- Revit 2027.3 ran the exact hash-checked project-local F-01 DLL in a new imperial disposable project. Output: `.local/revit-pilot/finish-cue-study/20261102T200546656Z/`.
+- `Tools/RevitPilot/validate_f01_finish_cue.ps1` passes **6/6**. RVT SHA256: `cf9b1d43b3f78563e889ab0f0dd6747c4fd2a9fe14298406dcf476f03d06f523`; IFC2X3 SHA256: `328ccf47dd6167d282467064ac8145f3694162adc2696cf0ec96732d014196af`.
+- The manifest records one display-only floor, the owner-selected engineered-oak material cue, `assembly_selected=false`, IFC2X3 and `IFCSLAB` evidence. The derivative was generated and closed without opening or modifying Selected-D; no structural, code, professional, permit or construction conclusion follows.
+- Post-runtime regression remains green: retained BIM sequence **12/12**, consolidated gate **15/15**, offline RevitPilot tests **56/56**.

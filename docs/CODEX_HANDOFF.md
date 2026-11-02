@@ -48,6 +48,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M365 retried the F-01 runtime path. Revit created `.local/revit-pilot/finish-cue-study/20261102T195238491Z/` but wrote no RVT/IFC/manifest before Computer Use was interrupted by the physical Escape key; treat the directory as an incomplete attempt and do not claim validation.
 - M366 replayed the retained coordination evidence: `run_verified_bim_sequence.ps1` passes **12/12** and `validate_verified_bim_milestone.ps1` passes **15/15**. These are regression reports only; F-01 runtime remains pending and no placeholder is promoted.
 - M367 added the F-01 source contract test; the offline RevitPilot suite now passes **56/56**. This covers command wiring and safety labels but is not runtime RVT/IFC evidence.
+- M368 completed the F-01 runtime gate in Revit 2027.3. Output `.local/revit-pilot/finish-cue-study/20261102T200546656Z/` passes `validate_f01_finish_cue.ps1` **6/6**; RVT SHA256 `cf9b1d43b3f78563e889ab0f0dd6747c4fd2a9fe14298406dcf476f03d06f523`; IFC2X3 SHA256 `328ccf47dd6167d282467064ac8145f3694162adc2696cf0ec96732d014196af`. The retained sequence is 12/12, consolidated gate 15/15, and offline suite 56/56. This is still a display-only finish cue, not a selected assembly.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note

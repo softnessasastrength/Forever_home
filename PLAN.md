@@ -3487,3 +3487,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next:** run the exact hash-checked F-01 command in Revit when the UI is idle, then validate its disposable output before any placeholder-replacement study.
 
+## M368 — F-01 finish-cue runtime and IFC validation
+
+**Acceptance:** execute the exact project-local F-01 command in Revit 2027.3, save a disposable RVT and IFC2X3, pass the independent finish-cue validator, and replay the retained BIM gates without modifying Selected-D.
+
+**Status:** complete. Revit produced `.local/revit-pilot/finish-cue-study/20261102T200546656Z/`; the finish-cue validator passes **6/6**, the retained sequence passes **12/12**, the consolidated gate passes **15/15**, and the offline suite passes **56/56**.
+
+**Limitations:** engineered oak remains a display-only finish direction; product, plank, substrate, thickness, structure, acoustics, moisture, code and construction requirements remain unresolved. Next architectural work may study documented wall/floor/opening coordination only in another disposable derivative.
+
