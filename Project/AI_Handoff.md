@@ -4,7 +4,7 @@
 
 Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; verify the current commit with `git log`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
 
-M361 is the latest implementation milestone: the owner-approved F-01 engineered-oak finish-cue command builds with 0 errors (DLL SHA256 `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`), but Revit runtime is pending because the trial WebView blocked the supported UI bridge. M-06 remains explicitly fit-blocked; Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected.
+M363 is the latest design-input milestone: the owner authorized the coordination bundle in `Decisions/2026-11-02_Coordination_Gate_Bundle.md`—43½-in split rise, 5½-in partitions, 1½-in floor build-up beneath engineered oak, 36-in openings, 10:12/8:12 roof studies, living-only skylight zone, M-06 proxy/SKU expansion, lower-MEP route and hall-edge approach. The F-01 finish-cue command remains build-verified but Revit runtime-pending; M-06/B and Selected-D remain protected.
 Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`

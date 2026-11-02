@@ -3370,3 +3370,7 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 
 - Updated `AGENTS.md` and `docs/CODEX_HANDOFF.md` to record the owner's explicit override: **Always Load** may be used for the exact hash-verified project-local Forever Home DLL only.
 - Safeguards remain mandatory: authorized AddInId, repository-local assembly path, recorded SHA256, preserved prior manifest, and no unrelated add-ins or trust-wide/security changes.
+## M363 — Owner coordination gate bundle — 2026-11-02
+
+- Recorded the owner’s nine coordination answers in `Decisions/2026-11-02_Coordination_Gate_Bundle.md`.
+- The bundle is sufficient to start the next disposable native coordination study. It does not select Selected-D geometry, a structural assembly, a roof pitch for construction, a door family, or M-06/B.

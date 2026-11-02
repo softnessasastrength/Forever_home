@@ -29,6 +29,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - The worktree may contain intentionally ignored `.local/` Revit outputs and per-user pilot builds; do not treat them as portable Git source.
 - The incoming Evolution RFA is a separately preserved, hash-pinned local input and must not be overwritten, upgraded, or committed casually.
 - Owner override recorded 2026-11-02: **Always Load** is permitted only for the exact hash-checked project-local Forever Home DLL under the authorized AddInId, never for unknown add-ins or trust-wide/security changes. Record the DLL SHA256 and preserve the prior manifest before registration.
+- M363 records the owner’s coordination bundle: 43½-in split rise, 5½-in non-structural partitions, 1½-in generic floor build-up beneath engineered oak, 36-in nominal openings, 10:12 working roof with 8:12 comparison, living-only skylight zone, M-06 proxy/SKU expansion, lower-MEP route and hall-edge approach. See `Decisions/2026-11-02_Coordination_Gate_Bundle.md`.
 
 ## BIM state and next action
 

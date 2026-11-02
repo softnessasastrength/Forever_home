@@ -1,5 +1,11 @@
 # Architectural BIM pipeline plan
 
+## M363 — Owner coordination gate bundle
+
+**Result:** `Decisions/2026-11-02_Coordination_Gate_Bundle.md` records the owner’s answers: 43½-in split rise; 5½-in non-structural wall placeholder; 1½-in generic floor build-up beneath engineered oak; 36-in nominal openings; 10:12 working roof with 8:12 comparison; living-only skylight zone; M-06 proxy/SKU expansion; lower-MEP service route; and hall-edge approach.
+
+**Next:** build the next disposable coordination derivative from these labelled inputs, validate its RVT/IFC lineage, and keep every choice explicitly provisional except the engineered-oak finish direction.
+
 ## M362 — Owner-authorized exact-DLL trust mode
 
 **Acceptance:** update repository instructions to reflect the owner’s explicit override permitting **Always Load** for the exact project-local Forever Home DLL, while retaining AddInId, path, SHA256, manifest-backup and no-trust-wide-change safeguards.
