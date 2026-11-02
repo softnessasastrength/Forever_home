@@ -3351,3 +3351,7 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10** for the retained nominal door-family comparison, including both baseline and wider pantry cases.
 - `Tools/RevitPilot/validate_native_main_floor_openings.ps1` passes **13/13** against `.local/revit-pilot/main-floor-openings/20261102T125705634Z/`. It records two unselected native cases with 11 host walls each, a 36-in front-entry route proxy, 5-ft rear French-door reservation, and 30-in/36-in pantry alternatives; RVT/IFC2x3 hashes and source fingerprint match.
 - No door family, threshold, clear leaf, accessibility, code, Selected-D, M-06/B, Evolution RFA or remote state changed.
+## M359 — Offline RevitPilot contract replay — 2026-11-02
+
+- Ran `.venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q`; **53 tests passed**, 0 failures/errors.
+- This replay covers the repository's offline command contracts and validators after M358. No Revit document, Selected-D, Evolution RFA, remote ref or source model was modified.

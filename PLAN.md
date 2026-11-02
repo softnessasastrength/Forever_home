@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M359 — Offline RevitPilot contract replay
+
+**Acceptance:** rerun the repository-local RevitPilot contract tests after the native opening milestone; require all test cases to pass without opening Revit or changing model state.
+
+**Result:** `.venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q` reports **53 tests, OK**. This confirms the roof, selected-D, IFC, compact-study and review-packet contracts remain executable.
+
+**Limits/next:** offline contracts do not replace host-side Revit inspection or justify promoting unsupported assemblies. The remaining substantive gate is documented wall/floor/door product and assembly input, followed by M-06 exact-fit evidence.
+
 ## M358 — Documented native opening replay
 
 **Acceptance:** independently validate the retained native opening derivative against the source-fingerprinted input; require both documented 30-in and 36-in pantry cases, nominal front/porch reservations, RVT/IFC2x3 lineage, and explicit unselected status.
