@@ -3324,3 +3324,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The command creates a native landing bridge from the measured stair/upper-floor gap, retains the native stair/floor lineage, and adds a clearly labelled circulation proxy. It exports RVT and IFC2x3 and records all limitations in a machine-readable manifest.
 - Runtime validation remains pending because the handoff was paused before the exact v1 DLL could be loaded and invoked. Do not claim M354 completion until the RVT/IFC output and validator pass exist.
 
+## M354 — Native upper stair-to-floor landing coordination — 2026-11-02
+
+- Revit 2027.3 generated `.local/revit-pilot/stair-landing-coordination/20261102T192620005Z/` in a disposable `FH_Compact_Core_Study`; the derivative was closed before hashing. `Tools/RevitPilot/validate_stair_landing_coordination.ps1` passes **13/13**.
+- Evidence: saved RVT SHA256 `691D0BAB211066179521F2A2E7CEC7C57463FFF838F56CC4DCD40F7A9453663A`; two native stair elements (`id=3987`); positive `18.75 sf` landing bridging the `5.625 ft` plan gap; four circulation curves at `3.333 ft` width and `4 ft` depth; four native floors with landing `id=4092`; and an IFC2X3 STEP export containing stair plus slab/floor entities.
+- This is a disposable, unselected coordination study. Selected-D, M-06/B, the Evolution RFA and remotes remain protected. The circulation proxy is explicitly `code=false`; no code/accessibility, structural, professional, permit or construction-readiness conclusion follows.
+

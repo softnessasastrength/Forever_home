@@ -24,7 +24,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 
 - Repository: `softnessasastrength/Forever_home`
 - Active sandbox branch: `codex/house-design-sandbox`
-- Latest pushed commit: `274e0e7 docs: make ButlerGPT handoff discoverable`
+- Latest repository commit: verify with `git log`; local M354 runtime evidence is recorded below. Do not assume ignored `.local/` outputs are portable.
 - `main` and `design/vr-tech-bom-roadmap` are not the sandbox working branch.
 - The worktree may contain intentionally ignored `.local/` Revit outputs and per-user pilot builds; do not treat them as portable Git source.
 - The incoming Evolution RFA is a separately preserved, hash-pinned local input and must not be overwritten, upgraded, or committed casually.
@@ -33,8 +33,8 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 
 - M353 native walkthrough composition is runtime-verified in Revit 2027.3 and IFC2x3-validated at `.local/revit-pilot/walkthrough-composition/20261102T161721219Z/`.
 - M353 is disposable comparison geometry only: no roof pitch, floor-to-floor datum, assemblies, structure, MEP, code/accessibility review, or M-06 assignment is selected.
-- M354 `NativeStairLandingCoordinationCommand.cs` and `validate_stair_landing_coordination.ps1` are present and build-verified in the pushed commit. Revit runtime validation was not completed before the handoff pause.
-- Next authorized action: rebuild the exact project-local RevitPilot DLL, verify AddInId/path/SHA256, preserve the existing per-user manifest, use **Load Once** only for that exact DLL, run M354 in a disposable `FH_Compact_Core_Study`, and validate RVT/IFC lineage. Do not open or modify Selected-D.
+- M354 `NativeStairLandingCoordinationCommand.cs` and `validate_stair_landing_coordination.ps1` are runtime-verified in Revit 2027.3. The retained study is `.local/revit-pilot/stair-landing-coordination/20261102T192620005Z/`; its independent validator passes 13/13, with RVT SHA256 `691D0BAB211066179521F2A2E7CEC7C57463FFF838F56CC4DCD40F7A9453663A` and IFC2X3 stair/slab evidence.
+- Next authorized action: advance to the documented placeholder-replacement gates, beginning only with categories supported by source inputs. Do not open or modify Selected-D; keep M-06/B unassigned.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note
