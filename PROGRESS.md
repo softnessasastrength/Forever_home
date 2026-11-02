@@ -3206,6 +3206,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Recorded the reproducible audit in `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md`.
 - This narrows the blocker: an exact current-SKU asset/drawing or explicit proxy authorization is required before native M-06 fixture placement. B remains unassigned.
 
+## M339 — Placeholder replacement readiness matrix — 2026-11-02
+
+- Added `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md` to classify current walls, floor plates, pantry/front openings, roof options and M-06 fixtures.
+- The matrix permits comparison derivatives but prohibits promotion of template wall/floor/door types into Selected-D without cited assemblies, finished-face data and owner/design approval.
+- No Revit restart or model edit was required; the exact M-06 blocker and B-unassigned rule remain unchanged.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

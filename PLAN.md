@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M338 local exact-SKU M-06 asset audit)
+Updated: 2026-11-02 (M339 placeholder replacement readiness matrix)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -13,6 +13,7 @@ M335 adds the verified M218/M219 native pantry-door comparison to the consolidat
 M336 adds a reproducible M-06 coordination evidence contract. It confirms the pinned Selected-D source, verified lavatory-family evidence, current-SKU toilet infographic envelope, and preliminary Connecticut screening note while explicitly keeping product/clearance/door/approach/service/assignment gates false. This is the correct pre-fit state; no Revit restart is required.
 M337 folds the M336 contract into the machine-checked verified-BIM gate. The consolidated replay now proves the evidence chain and the unresolved M-06 boundary together; a green gate must not be read as a bathroom-fit approval.
 M338 audits the local intake and confirms that no exact current-SKU 610AA001.020 RFA or assembled drawing is present; predecessor bowl/seat files remain explicitly non-substitutable. This is the current external-input blocker for a native M-06 fit study.
+M339 records the replacement-readiness matrix in `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md`. It confirms that current native walls, floors, pantry doors and roof shells remain comparison derivatives; no unsupported placeholder is promoted into Selected-D.
 The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
@@ -41,6 +42,12 @@ M327 now replays the existing compact-core generator in Revit 2027.3, then audit
 **Acceptance:** audit repository and quarantined intake paths for an exact `610AA001.020` complete family or current assembled drawing; preserve all predecessor-family distinctions.
 
 **Result:** `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md` records no exact local asset. The next native fixture study therefore requires owner-supplied current-SKU evidence or explicit proxy authorization.
+
+## M339 — Placeholder replacement readiness matrix
+
+**Acceptance:** classify each native category as selected, comparison-only or blocked using current documented inputs; prohibit silent promotion of template wall/floor/door types.
+
+**Result:** `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md` records the current matrix. Only documented comparison derivatives are permitted; Selected-D remains unchanged.
 
 ## M325 — Disposable native split-rise stair host gate
 
