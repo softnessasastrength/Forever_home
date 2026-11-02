@@ -3329,3 +3329,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** generic nominal solids are not product selections; host walls remain continuous for family hosting; actual wall openings, frames, swings, thresholds, clear widths, shelving, code/accessibility, structural, MEP, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
 
+## M348 — Documented opening assembly comparison
+
+**Acceptance:** in a disposable Revit 2027 derivative, use the documented D-01/D-02/D-03/D-04 nominal widths to create native host wall segments and hosted door-family instances for the 30-in pantry baseline and labelled 36-in comparison; save RVT and IFC2x3; verify source hashes, 16 host/jamb walls, four door records, native `IFCDOOR` entities, hashes, and unselected status. Preserve Selected-D.
+
+**Status:** runtime verified in Revit 2027.3 using the exact project-local DLL SHA256 `EECD3536A91F2E6106DC766073257E998ADA8525AA207576A831ADBAE3D7D164` and owner-authorized **Load Once**. Output `.local/revit-pilot/documented-opening-assembly/20261102T135857068Z/`; `Tools/RevitPilot/validate_documented_opening_assembly.ps1` passes **8/8**. The corrected study uses slightly longer host segments around each nominal opening so Revit can host and cut the generic door families; IFC includes `IFCDOOR` and `IFCWALL` entities.
+
+**Limitations:** these are source-backed nominal comparison assemblies, not selected products or approved construction assemblies. Wall type, floor, frame, swing, threshold, clear width, weathering, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
+

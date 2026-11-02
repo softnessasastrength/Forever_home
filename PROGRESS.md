@@ -3272,3 +3272,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Repaired a runtime evidence-lock failure by closing the disposable document before hashing saved artifacts. No Selected-D, source RFA, remote branch or unrelated dirty/untracked file was changed.
 - This remains nominal comparison evidence only; actual openings, frames, swings, thresholds, clear widths, shelving, product selection, M-06/B assignment and all code/structural/professional/construction claims remain open.
 
+## M348 — Documented opening assembly comparison — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeDocumentedOpeningAssemblyCommand.cs` and `Tools/RevitPilot/validate_documented_opening_assembly.ps1`. The command is disposable and source-hashed to `Architecture/Material_Schedule.md` and `Architecture/Main_Floor_Schematic.md`.
+- Revit 2027.3 runtime succeeded after correcting host geometry: each nominal opening now has a native host wall segment with enough margin for Revit to cut the generic family. Output `.local/revit-pilot/documented-opening-assembly/20261102T135857068Z/` contains three generic RFA proxies, one RVT and one IFC2x3 export. `Tools/RevitPilot/validate_documented_opening_assembly.ps1` passes **8/8**, including two pantry cases, 16 walls, four unselected door records, RVT/IFC hashes, IFC2x3 schema and `IFCDOOR`/`IFCWALL` entities.
+- Build used the authorized AddInId and exact project-local DLL SHA256 `EECD3536A91F2E6106DC766073257E998ADA8525AA207576A831ADBAE3D7D164`; prior manifests remain backed up under `.local/revit-pilot/registration-backups/`; Revit trust prompt was answered **Load Once**.
+- Extended `Tools/run_verified_bim_sequence.ps1` with M348 and `Tools/validate_verified_bim_milestone.ps1` with the consolidated M348 gate. No Selected-D, M-06 assignment, B assignment, source RFA or remote state changed. No code, accessibility, structural, professional, permit or construction-readiness claim follows.
+
