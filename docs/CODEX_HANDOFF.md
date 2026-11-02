@@ -24,7 +24,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 
 - Repository: `softnessasastrength/Forever_home`
 - Active sandbox branch: `codex/house-design-sandbox`
-- Latest pushed commit: `5a3074d feat: preserve pantry studies and stair landing coordination`
+- Latest pushed commit: `274e0e7 docs: make ButlerGPT handoff discoverable`
 - `main` and `design/vr-tech-bom-roadmap` are not the sandbox working branch.
 - The worktree may contain intentionally ignored `.local/` Revit outputs and per-user pilot builds; do not treat them as portable Git source.
 - The incoming Evolution RFA is a separately preserved, hash-pinned local input and must not be overwritten, upgraded, or committed casually.
