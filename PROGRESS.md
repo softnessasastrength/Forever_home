@@ -3186,6 +3186,13 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Extended `Tools/validate_verified_bim_milestone.ps1` with this M218 gate. The next consolidated run is expected to cover **8/8** evidence gates without reopening Revit.
 - This does not select a door family, rough opening, threshold, finished-face clearance, accessibility/code path, or services route. Front/porch openings, wall/floor assemblies, M-06 and B remain unresolved.
 
+## M336 — M-06 coordination evidence contract — 2026-11-02
+
+- Added `Tools/validate_m06_coordination_gate.ps1` to combine the current M-06 evidence without pretending that gross arithmetic is a room fit.
+- The contract passes for the pinned Selected-D fingerprint, unassigned M-06 status, measured American Standard Evolution family evidence, current 610AA infographic envelope and the cited preliminary Connecticut clearance basis.
+- Report: `.local/revalidation/m06-coordination-gate-m336.json`; status is `screen-valid-but-fit-blocked`.
+- Product geometry, finished-face clearance, door/approach, service route and room assignment remain explicitly false. B stays unassigned; no Revit restart or model edit was required.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
