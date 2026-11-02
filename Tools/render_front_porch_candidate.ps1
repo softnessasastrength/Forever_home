@@ -1,4 +1,4 @@
-param([string]$Routes,[string]$Interfaces,[string]$Output)
+param([string]$Routes,[string]$Interfaces,[string]$Output,[string]$PantryReport)
 $ErrorActionPreference='Stop'
 if(Test-Path $Output){throw 'Output exists'}
 Add-Type -AssemblyName System.Drawing
@@ -17,9 +17,10 @@ Box $l.entry '#edcdb2' 'Arrival'
 foreach($key in @('bridge','dining','porch')){$q=$c.$key;Box ([pscustomobject]@{x=$q.X;y=$q.Y;w=$q.W;d=$q.D}) '#d3e6eb' $key}
 $s=Get-Content Architecture/Selected_Design_Iteration_2026-10-27/study.json -Raw|ConvertFrom-Json
 foreach($q in $s.selection.main_public_bath.search_windows){Box $q '#edb5ae' 'Bath reserve'}
-Box ($s.plans.main|Where-Object id -eq 'M-04') '#d7c7aa' 'Pantry 5 x 7'
+if($PantryReport){$p=Get-Content $PantryReport -Raw|ConvertFrom-Json;$pantry=@($p.placements|Where-Object {$_.candidate-eq$c.candidate-and$_.connector_spur_count-gt0})[0];Box $pantry.pantry '#d7c7aa' 'Pantry proposal'}else{Box ($s.plans.main|Where-Object id -eq 'M-04') '#d7c7aa' 'Pantry 5 x 7'}
 foreach($q in $l.obstacles){Box $q '#a49177' ''}
 foreach($q in $c.diningObstacles){Box ([pscustomobject]@{x=$q.X;y=$q.Y;w=$q.W;d=$q.D}) '#b8a4bf' ''}
+foreach($q in $c.livingObstacles){Box ([pscustomobject]@{x=$q.X;y=$q.Y;w=$q.W;d=$q.D}) '#d9ac88' ''}
 $points=[Drawing.PointF[]]@($c.path|ForEach-Object {[Drawing.PointF]::new([single](40+15*$_[0]),[single](90+15*(52-$_[1])))})
 $routePen=[Drawing.Pen]::new([Drawing.Color]::FromArgb(85,20,120,145),45);$g.DrawLines($routePen,$points)
 $line=[Drawing.Pen]::new([Drawing.Color]::DarkSlateGray,2);$g.DrawLines($line,$points)

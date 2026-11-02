@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Routes,[Parameter(Mandatory=$true)][string]$Interfaces,[Parameter(Mandatory=$true)][string]$Output,[string]$SelectedD,[string]$DiningFurniture)
+param([Parameter(Mandatory=$true)][string]$Routes,[Parameter(Mandatory=$true)][string]$Interfaces,[Parameter(Mandatory=$true)][string]$Output,[string]$SelectedD,[string]$DiningFurniture,[string]$LivingFurniture)
 $ErrorActionPreference='Stop'
 $r=Get-Content $Routes -Raw|ConvertFrom-Json;$f=Get-Content $Interfaces -Raw|ConvertFrom-Json
 $selected=$null
@@ -14,6 +14,14 @@ foreach($case in $r.results){
  if(-not$case.route_found){continue}
  $rooms=@($c.entry,$c.living,$c.kitchen)
  $obstacles=@($c.obstacles)
+ if(@($case.livingObstacles).Count-gt0){
+  if(-not$LivingFurniture-or(Get-FileHash $LivingFurniture).Hash-ne$case.living_source_sha256){throw 'Living source missing or hash mismatch'}
+  $livingSource=Get-Content $LivingFurniture -Raw|ConvertFrom-Json;$expectedLiving=@()
+  foreach($o in $livingSource.living_test.fixtures){$localY=if($case.living_transform-eq'whole-set local-Y mirror'){$c.living.d-$o.y-$o.d}elseif($case.living_transform-eq'source local placement'){$o.y}else{throw 'Unknown living transform'};$expectedLiving+=[pscustomobject]@{x=$c.living.x+$o.x;y=$c.living.y+$localY;w=$o.w;d=$o.d}}
+  if($expectedLiving.Count-ne@($case.livingObstacles).Count){throw 'Living proxy count mismatch'}
+  for($j=0;$j-lt$expectedLiving.Count;$j++){foreach($key in @('x','y','w','d')){if([math]::Abs($expectedLiving[$j].$key-$case.livingObstacles[$j].$key)-gt1e-6){throw 'Living transform mismatch'}}}
+  $obstacles+=$expectedLiving
+ }
  if($null-ne$case.bridge){
   if($null-eq$selected){throw 'Dining validation requires SelectedD'}
   $d=$selected.plans.main|Where-Object id -eq 'M-03'

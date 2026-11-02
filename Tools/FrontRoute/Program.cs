@@ -12,19 +12,28 @@ class Program {
   for(int i=1;i<xs.Length;i++)for(int j=1;j<ys.Length;j++){double x=(xs[i-1]+xs[i])/2,y=(ys[j-1]+ys[j])/2;if(!rooms.Any(r=>x>=r.X-1e-7&&x<=r.X+r.W+1e-7&&y>=r.Y-1e-7&&y<=r.Y+r.D+1e-7))return false;}return true;
  }
  static void Main(string[] args){
-  if((args.Length<2||args.Length>7)||File.Exists(args[1]))throw new Exception("Require input, new output, optional Selected-D, furniture, rotate-dining, rear-dining and porch-left flags");
+  if((args.Length<2||args.Length>9)||File.Exists(args[1]))throw new Exception("Require input, output, optional dining/porch flags, living source and mirror-living-y");
   var selected=args.Length>=3?JsonNode.Parse(File.ReadAllText(args[2])):null;
   var furniture=args.Length>=4?JsonNode.Parse(File.ReadAllText(args[3])):null;
   bool rotate=args.Length>=5&&args[4]=="rotate-dining";
   if(args.Length>=5&&!rotate)throw new Exception("Unknown dining transform");
   bool rear=args.Length>=6&&args[5]=="rear-dining";
   if(args.Length>=6&&!rear)throw new Exception("Unknown dining placement");
-  bool porchMode=args.Length==7&&args[6]=="porch-left";
-  if(args.Length==7&&(!rear||!porchMode))throw new Exception("Unknown porch placement");
+  bool porchMode=args.Length>=7&&args[6]=="porch-left";
+  if(args.Length>=7&&(!rear||!porchMode))throw new Exception("Unknown porch placement");
+  var livingSource=args.Length>=8?JsonNode.Parse(File.ReadAllText(args[7])):null;
+  bool mirrorLiving=args.Length==9&&args[8]=="mirror-living-y";
+  if(args.Length==9&&!mirrorLiving)throw new Exception("Unknown living transform");
   var doc=JsonNode.Parse(File.ReadAllText(args[0]));double width=(double)doc["patch_width_ft"],h=width/2;
   var results=new List<object>();
   foreach(var c in doc["results"].AsArray().Where(c=>(bool)c["both_interfaces_clear"])){
    var rooms=new[]{R(c["entry"]),R(c["living"]),R(c["kitchen"])};var obs=c["obstacles"].AsArray().Select(R).ToArray();var entry=rooms[0];
+   Rect[] livingObstacles=Array.Empty<Rect>();
+   if(livingSource!=null){
+    var living=rooms[1];livingObstacles=livingSource["living_test"]["fixtures"].AsArray().Select(R).Select(r=>new Rect(living.X+r.X,living.Y+(mirrorLiving?living.D-r.Y-r.D:r.Y),r.W,r.D)).ToArray();
+    if(livingObstacles.Any(r=>!Covered(r,new[]{living})))throw new Exception("Living proxy outside room");
+    obs=obs.Concat(livingObstacles).ToArray();
+   }
    Rect bridge=null;Rect dining=null;
    Rect porch=null;double doorLeft=0,doorRight=0;
    Rect[] diningObstacles=Array.Empty<Rect>();
@@ -78,7 +87,7 @@ class Program {
     }
    }
    var path=new List<double[]>();for(int p=end;p>=0;p=parent[p])path.Add(new[]{xs[p%nx],ys[p/nx]});path.Reverse();
-   results.Add(new{candidate=(int)c["candidate"],mirrored=(bool)c["mirrored"],route_found=end>=0,visited,path,bridge,dining,diningObstacles,porch,door_reservation_ft=porchMode?new[]{doorLeft,doorRight}:null,scope=porchMode?"front interior to porch interior through nominal opening reservation; door clear width/swing unresolved":furniture!=null?"front interior to dining rear edge with table/chair/use proxies; porch unresolved":selected==null?"front interior entry proxy to living/kitchen interface; living and entry unfurnished":"front interior to source dining via explicit residual-gap connector; dining unfurnished"});
+   results.Add(new{candidate=(int)c["candidate"],mirrored=(bool)c["mirrored"],route_found=end>=0,visited,path,bridge,dining,diningObstacles,livingObstacles,living_transform=mirrorLiving?"whole-set local-Y mirror":"source local placement",living_source_sha256=args.Length>=8?Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(args[7]))):null,porch,door_reservation_ft=porchMode?new[]{doorLeft,doorRight}:null,scope=porchMode?"front interior to porch interior through nominal opening reservation; door clear width/swing unresolved":furniture!=null?"front interior to dining rear edge with table/chair/use proxies; porch unresolved":selected==null?"front interior entry proxy to living/kitchen interface; living and entry unfurnished":"front interior to source dining via explicit residual-gap connector; dining unfurnished"});
   }
   Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(args[1]))!);
   File.WriteAllText(args[1],JsonSerializer.Serialize(new{input_sha256=Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(args[0]))),selected_d_sha256=args.Length>=3?Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(args[2]))):null,dining_furniture_sha256=args.Length>=4?Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(args[3]))):null,dining_transform=rotate?"90-degree whole-set rotation, centred in source dining room":"source orientation and placement",width_ft=width,results,limitations="No exterior threshold, door swing, living furniture, appliance-open or porch route; no code/compliance result."},new JsonSerializerOptions{WriteIndented=true}));

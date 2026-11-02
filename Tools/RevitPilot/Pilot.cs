@@ -68,6 +68,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
             Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHStairLandingCoordination", "Build stair/landing\ncoordination",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeStairLandingCoordinationCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
             Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactAuditVisible", "Audit active\ncompact core",
