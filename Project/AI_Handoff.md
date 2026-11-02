@@ -1,5 +1,5 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-11-02 (M344 native M-06 proxy runtime and 11-gate replay verified; placeholder replacement matrix retained)
+Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
