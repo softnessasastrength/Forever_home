@@ -43,7 +43,9 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 level.Name = "M-06/B disposable study datum - unassigned";
                 Tag(level, "FH-M371 | M-06/B gross-pair comparison | not Selected-D");
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>().First(x => x.Kind == WallKind.Basic);
-                var host = Wall.Create(doc, Line.CreateBound(new XYZ(0, 0, 0), new XYZ(10, 0, 0)), wallType.Id, level.Id, 10, 0, false, false);
+                // Run the synthetic host north/south so its side-face normal is X;
+                // Revit rejects an insertion direction parallel to the face normal.
+                var host = Wall.Create(doc, Line.CreateBound(new XYZ(0, 0, 0), new XYZ(0, 10, 0)), wallType.Id, level.Id, 10, 0, false, false);
                 Tag(host, "FH-M372 | synthetic host only | not house geometry");
                 if (!symbol.IsActive) { symbol.Activate(); doc.Regenerate(); }
                 var faceRef = HostObjectUtils.GetSideFaces(host, ShellLayerType.Interior).First();
@@ -87,12 +89,13 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 finally { if (tx.GetStatus() == TransactionStatus.Started) tx.RollBack(); }
             }
             if (!exported) throw new InvalidOperationException("IFC export returned false.");
+            string symbolName = symbol.Name;
             doc.Close(false); doc = null;
             var manifest = new
             {
                 schema = "forever-home-m372-m06-tresham-b-study-v1",
                 status = "disposable native family/proxy comparison; M-06/B remains unassigned and fit-blocked",
-                source = SourceRelative, source_sha256 = before, family = "kohler-tresham-k-2844-4-0", type = symbol.Name,
+                source = SourceRelative, source_sha256 = before, family = "kohler-tresham-k-2844-4-0", type = symbolName,
                 family_instances = familyInstances, toilet_proxy = new { sku = "610AA001.020", width_in = 19.0, projection_in = 30.25 },
                 door_approach_supported = false, service_route_supported = false, selected = false,
                 saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = Hash(ifc), ifc2x3 = File.ReadAllText(ifc).Contains("FILE_SCHEMA(('IFC2X3'))", StringComparison.Ordinal),
