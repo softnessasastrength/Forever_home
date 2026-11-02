@@ -2415,9 +2415,10 @@ public class CompactLandingStudyCommand : IExternalCommand
                 finally { if (exportTransaction.GetStatus() == TransactionStatus.Started) exportTransaction.RollBack(); }
             }
             if (!ifcOk) throw new InvalidOperationException("Revit IFC export returned false.");
-            doc.Close(false);
-            data.Application.OpenAndActivateDocument(studyPath);
-            TaskDialog.Show("Forever Home landing study", $"Created a disposable native landing bridge from the measured stair/floor gap ({gapFt:0.###} ft × {widthFt:0.###} ft).\n\n{output}");
+            // The derivative is the active document after SaveAs. Revit forbids closing
+            // the active document from an external command, so leave it open for review.
+            // The source compact-core model remains preserved on disk and untouched.
+            TaskDialog.Show("Forever Home landing study", $"Created a disposable native landing bridge from the measured stair/floor gap ({gapFt:0.###} ft × {widthFt:0.###} ft).\n\nThe derivative remains open for review:\n{studyPath}");
             return Result.Succeeded;
         }
         catch (Exception ex) { message = ex.ToString(); return Result.Failed; }

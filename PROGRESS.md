@@ -3164,3 +3164,10 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Release build: **0 errors** with the repository’s two pre-existing MSB3277 reference-conflict warning groups. Staged DLL SHA256: `9EA96F4FBF28BA8F1108F36937AD58C7DC86049D73956F4D42999350B2ADF9AF`. The authorized AddInId is unchanged and the previous registration is backed up under `.local/revit-pilot/registration-backups/20261101201036036/`.
 - Added the native-roof command contract regression test; the full offline RevitPilot suite now passes **53/53**.
 - Runtime remains pending: current Revit is showing the owner-authorized trial overlay and has the prior assembly loaded. No M333 RVT/IFC or roof selection has been made. The study is comparative only and does not establish code compliance, structure, accessibility, professional approval, permit approval or construction readiness.
+
+## M334 — Landing runtime close guard repaired — 2026-11-02
+
+- Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
+- Removed that prohibited close/reopen sequence. The disposable derivative now remains open for review after export; the source compact-core model remains preserved and untouched.
+- Release build completed with **0 errors** and the existing MSB3277 reference-conflict warnings. The offline RevitPilot unittest suite passes **53/53**.
+- The corrected build output is `.local/revit-pilot/build/Release/net10.0-windows/RevitPilot.dll` (SHA256 `51825631D4D818E91728C9FBC45EA610A65DAAA9C4D14E10383AEF30540D9A93`). The currently loaded staged DLL remains file-locked by Revit, so runtime reload, landing IFC export, and the subsequent roof study require one controlled Revit restart and exact-DLL Load Once verification.
