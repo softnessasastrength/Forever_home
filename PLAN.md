@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M358 — Documented native opening replay
+
+**Acceptance:** independently validate the retained native opening derivative against the source-fingerprinted input; require both documented 30-in and 36-in pantry cases, nominal front/porch reservations, RVT/IFC2x3 lineage, and explicit unselected status.
+
+**Result:** `.local/revit-pilot/main-floor-openings/20261102T125705634Z/` passes `Tools/RevitPilot/validate_native_main_floor_openings.ps1` **13/13**. The two cases preserve 11 native host walls and the documented 36-in front route, 5-ft rear French-door reservation, and 30-in versus 36-in pantry opening comparison. Saved RVT/IFC2x3 hashes and IFC opening entities validate against the source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`.
+
+**Limits/next:** no door family, frame, threshold, clear leaf, accessibility or code result is selected. This is the final defensible opening comparison until a specific family and finished-face datum are documented.
+
 ## M357 — Full retained-evidence replay after coordination gates
 
 **Acceptance:** rerun the repository's consolidated BIM sequence after M354–M356, requiring all retained Revit/IFC/M-06 boundaries and offline regressions to remain green without opening Selected-D.

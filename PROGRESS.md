@@ -3346,3 +3346,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Repository safety audit: branch `codex/house-design-sandbox`, worktree clean before edits, no history rewrite or remote mutation; `design/vr-tech-bom-roadmap` and `main` remain untouched.
 - `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-m356.json` passes **12/12** stages after the M354–M356 evidence updates.
 - This is a regression confirmation, not a new model generation. Selected-D, the Evolution RFA, M-06/B and all remote state remain protected.
+## M358 — Documented native opening replay — 2026-11-02
+
+- `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10** for the retained nominal door-family comparison, including both baseline and wider pantry cases.
+- `Tools/RevitPilot/validate_native_main_floor_openings.ps1` passes **13/13** against `.local/revit-pilot/main-floor-openings/20261102T125705634Z/`. It records two unselected native cases with 11 host walls each, a 36-in front-entry route proxy, 5-ft rear French-door reservation, and 30-in/36-in pantry alternatives; RVT/IFC2x3 hashes and source fingerprint match.
+- No door family, threshold, clear leaf, accessibility, code, Selected-D, M-06/B, Evolution RFA or remote state changed.

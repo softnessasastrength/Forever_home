@@ -4,7 +4,7 @@
 
 Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; verify the current commit with `git log`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
 
-M357 is the latest evidence-replay milestone: the consolidated 12-stage sequence remains green after M354–M356; M354's stair/landing RVT passes 13/13, the integrated main-floor comparison 7/7, the native roof shell 13/13, and the M-06 chain remains explicitly fit-blocked. Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected. See `docs/CODEX_HANDOFF.md` for the next placeholder-replacement gate.
+M358 is the latest evidence-replay milestone: the consolidated 12-stage sequence remains green after M354–M357; the documented native opening comparison now also passes 13/13 for 30-in/36-in pantry alternatives and nominal front/porch reservations. M-06 remains explicitly fit-blocked. Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected. See `docs/CODEX_HANDOFF.md` for the next placeholder-replacement gate.
 Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`

@@ -38,6 +38,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M355 revalidated the retained integrated main-floor comparison at `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; `validate_integrated_main_floor_assembly.ps1` passes 7/7. It contains 57 provisional walls and 12 nominal openings across three unselected ceiling-height cases. This is coordination evidence, not promotion of wall/floor/door assemblies.
 - M356 replayed the retained roof and M-06 evidence: the native roof shell passes 13/13 for 8:12, 10:12 and 12:12, while the M-06 proxy/clearance/coordination validators pass only as a fit-blocked evidence chain. No roof pitch is selected and B remains unassigned.
 - M357 replayed `Tools/run_verified_bim_sequence.ps1` after the coordination updates; all 12 retained stages pass. This remains a regression replay, not a fresh Selected-D generation or placeholder promotion.
+- M358 independently revalidated the documented native opening comparison: `validate_documented_door_study.ps1` passes 10/10 and `validate_native_main_floor_openings.ps1` passes 13/13 for the 30-in/36-in pantry cases and nominal front/porch reservations. Door families, clear leaves and thresholds remain unselected.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note
