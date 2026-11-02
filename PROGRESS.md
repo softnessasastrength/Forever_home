@@ -3330,3 +3330,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Evidence: saved RVT SHA256 `691D0BAB211066179521F2A2E7CEC7C57463FFF838F56CC4DCD40F7A9453663A`; two native stair elements (`id=3987`); positive `18.75 sf` landing bridging the `5.625 ft` plan gap; four circulation curves at `3.333 ft` width and `4 ft` depth; four native floors with landing `id=4092`; and an IFC2X3 STEP export containing stair plus slab/floor entities.
 - This is a disposable, unselected coordination study. Selected-D, M-06/B, the Evolution RFA and remotes remain protected. The circulation proxy is explicitly `code=false`; no code/accessibility, structural, professional, permit or construction-readiness conclusion follows.
 
+## M355 — Integrated main-floor assembly revalidation — 2026-11-02
+
+- Replayed `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` against `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; the independent validator passes **7/7**.
+- The retained manifest records three unselected 8/9/10-ft comparison cases, 57 native walls, 12 nominal door openings, source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, RVT SHA256 `605E5C73E1B70CF946EE02793B71DDC66120E9B642DD9CBA5DAFB6D2D8AB406E`, and IFC2X3 SHA256 `E02FD400B8D322A5C7DA82186E7FFE6D6E0FDC74AC1E815B8EB4C9EF9E5C2E14`.
+- This confirms reproducible comparison geometry only. No generic wall/floor/door type is promoted; Selected-D, M-06/B, the Evolution RFA and remotes remain unchanged.
+

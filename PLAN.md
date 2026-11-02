@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M355 — Integrated main-floor assembly revalidation
+
+**Acceptance:** independently validate the retained disposable integrated main-floor derivative, including source fingerprint, 8/9/10-ft comparison cases, native wall/door inventory, saved RVT/IFC hashes and IFC2x3 entities. Preserve explicit unselected status; do not infer final wall, floor, door, threshold, accessibility or code assemblies.
+
+**Result:** `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/` passes `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` **7/7**. The manifest records 57 native walls and 12 nominal door openings across three unselected cases, source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, RVT SHA256 `605E5C73E1B70CF946EE02793B71DDC66120E9B642DD9CBA5DAFB6D2D8AB406E`, and IFC2X3 SHA256 `E02FD400B8D322A5C7DA82186E7FFE6D6E0FDC74AC1E815B8EB4C9EF9E5C2E14`.
+
+**Limits/next:** native categories remain comparison geometry. Wall type, layered floor assembly, final door family/swing/threshold, routes, stair datum, M-06/B and services remain unresolved. No code, structural, professional, permit or construction-readiness conclusion follows.
+
 Updated: 2026-11-02 (M354 stair/landing coordination runtime verification)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
