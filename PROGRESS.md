@@ -3308,10 +3308,12 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - `composition_created=false` is deliberate: this is a pre-runtime lineage gate, not a claim that a composed walkthrough RVT already exists.
 - Roof pitch, floor-to-floor datum, wall/floor assembly, structure, MEP, and M-06 remain unresolved or unselected. No source, Selected-D, RFA, remote, or unrelated dirty file changed.
 
-## 2026-11-02 — M353 native walkthrough composition prepared
+## 2026-11-02 — M353 native walkthrough composition prepared and runtime-verified
 
 - Added `Tools/RevitPilot/NativeWalkthroughCompositionCommand.cs` and `Tools/RevitPilot/validate_walkthrough_composition.ps1`.
-- The command builds successfully with 0 errors and 2 known MSB3277 reference warnings. Corrected DLL SHA256: `B910D14FBA0D5DA421983CF351C076F13CE3437120CC0F8CF130170FF102AA40`.
-- The exact project-local manifest uses the authorized AddInId and was installed only after preserving the prior manifest under `.local/revit-pilot/registration-backups/20261102-092922187/`.
-- Runtime is pending: Revit starts behind an Autodesk trial overlay rendered by an embedded webview; the current UI bridge cannot target its close control. No composition RVT/IFC was claimed or promoted.
+- The command builds successfully with 0 errors and 2 known MSB3277 reference warnings. The repaired v3 DLL SHA256 is `37C2D11AE04A4A86B99F2D2AFABE9C4FA6DEBA431BD58600D2C2DF72EF7A71E0`.
+- The v2 manifest was preserved under `.local/revit-pilot/registration-backups/20261102-111530336/` before installing the exact v3 project-local manifest with the authorized AddInId.
+- The first v2 runtime exposed a Revit 2027 `NewFootPrintRoof` null `ModelCurveArray` mapping defect. Initializing the mapping container repaired it without touching Selected-D.
+- Revit then completed the disposable run at `.local/revit-pilot/walkthrough-composition/20261102T161721219Z/`, producing RVT and IFC2x3. The validator passes **7/7** for the expected 57 walls, 12 doors, 9 floors, 3 roofs, 3 landing markers, required files, and lineage.
+- Revit displayed six proxy-wall overlap warnings and 0 errors. These are confined to the disposable comparison; no Selected-D baseline, source RFA, remote, or unrelated dirty file changed.
 
