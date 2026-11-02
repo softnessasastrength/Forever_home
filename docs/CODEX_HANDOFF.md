@@ -28,6 +28,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - `main` and `design/vr-tech-bom-roadmap` are not the sandbox working branch.
 - The worktree may contain intentionally ignored `.local/` Revit outputs and per-user pilot builds; do not treat them as portable Git source.
 - The incoming Evolution RFA is a separately preserved, hash-pinned local input and must not be overwritten, upgraded, or committed casually.
+- Owner override recorded 2026-11-02: **Always Load** is permitted only for the exact hash-checked project-local Forever Home DLL under the authorized AddInId, never for unknown add-ins or trust-wide/security changes. Record the DLL SHA256 and preserve the prior manifest before registration.
 
 ## BIM state and next action
 

@@ -1,5 +1,11 @@
 # Architectural BIM pipeline plan
 
+## M362 — Owner-authorized exact-DLL trust mode
+
+**Acceptance:** update repository instructions to reflect the owner’s explicit override permitting **Always Load** for the exact project-local Forever Home DLL, while retaining AddInId, path, SHA256, manifest-backup and no-trust-wide-change safeguards.
+
+**Result:** `AGENTS.md` and `docs/CODEX_HANDOFF.md` now record the narrow override. It does not permit unrelated add-ins, unknown hashes, different AddInIds, Windows/Revit-wide security changes, anti-malware bypasses, or remote changes.
+
 ## M361 — Disposable F-01 engineered-oak finish-cue command
 
 **Acceptance:** add a project-local RevitPilot command that creates one native floor surface using the owner-approved F-01 engineered-oak display material, records an explicit display-only/unselected manifest, and exports IFC2x3. Build must pass before any Revit runtime attempt; Selected-D must remain untouched.

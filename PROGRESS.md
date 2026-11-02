@@ -3366,3 +3366,7 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Added `Tools/RevitPilot/validate_f01_finish_cue.ps1` and ribbon registration. Build `finish-cue-v1` completed with **0 errors** and the existing 2 MSB3277 warning groups; DLL SHA256 `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`.
 - Per-user manifest AddInId/path were verified and the prior manifest was backed up at `.local/revit-pilot/registration-backups/20261102-144408313/`.
 - Runtime remains pending: Revit's trial WebView did not expose a foreground process to the supported UI bridge. No finish-cue RVT/IFC was generated or claimed. Selected-D, the Evolution RFA and remote state remain unchanged.
+## M362 — Owner-authorized exact-DLL trust mode — 2026-11-02
+
+- Updated `AGENTS.md` and `docs/CODEX_HANDOFF.md` to record the owner's explicit override: **Always Load** may be used for the exact hash-verified project-local Forever Home DLL only.
+- Safeguards remain mandatory: authorized AddInId, repository-local assembly path, recorded SHA256, preserved prior manifest, and no unrelated add-ins or trust-wide/security changes.
