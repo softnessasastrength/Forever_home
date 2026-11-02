@@ -3505,3 +3505,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next:** compare this native placeholder derivative against the retained main-floor, stair/landing and finish-cue evidence, then study the next documented category without promoting any type or opening until the source and fit gates support it.
 
+## M370 — M-06 Tresham family evidence inspection
+
+**Acceptance:** inspect the quarantined KOHLER Tresham K-2844-4 RFA read-only in Revit 2027.3; verify source hash before/after, family metadata, type inventory, positive-volume solids, finite bounds and connector inventory in an isolated derivative; do not place it in Selected-D or assign M-06/B.
+
+**Status:** complete. `Tools/RevitPilot/validate_candidate_family_geometry.ps1` passes **11/11** against `.local/revit-pilot/family-intake/derivatives/M370-Kohler-Tresham-Inspection-20261102/candidate-family-geometry.json`. The source SHA256 is stable at `3b1cbdaa844d35bd462f6e59a828b82f7870fde4ee7397bac09f4ca0c2f9b949`; the saved disposable RVT SHA256 is `0dd0ff380331b74b2b03d2bd9f64533060ce3d47879fcc9010abf1a02dcde55b`. Revit reports a Plumbing Fixtures, WorkPlaneBased family named `kohler-tresham-k-2844-4-0`, ten finish types, three positive-volume solids per type, bounds about 24.13 × 19.56 × 34.69 in, and one primary sanitary round connector with ⅝-in radius. The measured envelope is consistent with, but does not replace, the manufacturer's nominal 24 × 19½ × 34⅝-in product evidence.
+
+**Trade-off / decision gate:** Tresham now has stronger exact-family evidence than the uninspected sink candidates and a plausible traditional design direction, but it remains a research candidate. Owner input is required before carrying it into a combined M-06/B fit study: choose Tresham, retain Evolution as the primary comparison, compare both, or defer the lavatory choice. B remains unassigned until the selected toilet, sink geometry, clearance basis, entry/door approach and service route pass together.
+

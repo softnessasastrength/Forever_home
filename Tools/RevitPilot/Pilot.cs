@@ -62,6 +62,8 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
+            Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCoordinatedPlaceholders", "Build coordinated\nplaceholders",
             Assembly.GetExecutingAssembly().Location, typeof(NativeCoordinatedPlaceholderStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
@@ -127,8 +129,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(GableMassingCommand).FullName!));
         panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
-            Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
             Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGeometryQa", "Run geometry\nQA",
