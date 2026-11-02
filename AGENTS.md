@@ -6,7 +6,12 @@ Read `Project/AI_Handoff.md` first, then the relevant `Decisions/`, `Systems/`, 
 Develop a rigorously documented, architect-review-oriented digital twin of a warm, whimsical traditional New England home. A completed VR home is a valid final outcome even if no physical building is constructed. Respect the original co-created vision; record changes as explicit tradeoffs.
 
 ## Source of truth
-GitHub repository `softnessasastrength/Forever_home`, working branch `design/vr-tech-bom-roadmap`. Approved decisions in `Decisions/` supersede exploratory research; newer explicit decisions supersede older conflicting ones. Do not assume historical concepts are final.
+GitHub repository `softnessasastrength/Forever_home`. In this sandbox, the active working branch is `codex/house-design-sandbox`; do not silently substitute `main` or `design/vr-tech-bom-roadmap`. Approved decisions in `Decisions/` supersede exploratory research; newer explicit decisions supersede older conflicting ones. Do not assume historical concepts are final.
+
+## New Codex session bootstrap
+This file is the repository entry point for a fresh Codex session. Before acting, read [the cross-agent handoff](Project/AI_Handoff.md), [the current plan](PLAN.md), [the progress log](PROGRESS.md), and [the ButlerGPT handoff](docs/CODEX_HANDOFF.md). The durable personality instructions are in [docs/BUTLERGPT_PERSONALITY.md](docs/BUTLERGPT_PERSONALITY.md); use them automatically rather than relying on conversation memory. The current branch and commit are recorded in the handoff and must be rechecked with Git before modification.
+
+The current local milestone is the validated M353 disposable walkthrough composition. The next staged item is M354, a native stair/landing coordination command: its source and validator are present and build-verified, but Revit runtime validation is still pending. Selected-D remains untouched, M-06/B remain unassigned, and the Evolution RFA remains a separately preserved local input. Treat all disposable RVT/IFC studies as comparison evidence unless an explicit owner decision promotes them.
 
 ## Nonnegotiable workflow
 - Commit approved design decisions and verified project work only to the working branch; never merge to `main` without explicit owner approval.

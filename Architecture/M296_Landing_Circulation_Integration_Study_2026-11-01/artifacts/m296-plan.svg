@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1780" viewBox="0 0 1900 1780">
+<style>text{font:22px Arial;fill:#20242a}.small{font-size:17px}.title{font-size:30px;font-weight:bold}</style><rect width="100%" height="100%" fill="white"/>
+<text x="60" y="38" class="title">M296 — full-rise stair / C-LOWER integration screen (schematic)</text>
+<rect x="548" y="996" width="320" height="568" fill="#dceef6" stroke="#1d6685" stroke-width="4"/><text x="556" y="1026">C-LOWER 78.9 sf</text>
+<rect x="632.00000016" y="987.9999998400001" width="692" height="192" fill="#d8d8dc" stroke="#4b4b55" stroke-width="4"/><text x="640.00000016" y="1019.9999998400001">FULL-RISE STAIR ENVELOPE</text>
+<text x="544" y="981" class="small">west bypass 21 in</text><text x="718" y="981" class="small">east bypass 0 in</text>
+<text x="60" y="1650">Landing overlap is a direct zone interface. Side bypasses are below the 36-in project screening precedent.</text><text x="60" y="1690" class="small">No doors, walls, openings, approach, headroom, or onward route modeled. Not a code or accessibility finding.</text></svg>

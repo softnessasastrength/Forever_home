@@ -1,0 +1,44 @@
+{
+  "schema": "forever-home-m290-checks-v1",
+  "status": "pass",
+  "passed": 9,
+  "total": 9,
+  "details": [
+    {
+      "id": "input report matches committed M289 SHA256",
+      "pass": true
+    },
+    {
+      "id": "both representative routes are positive-length and connect to C-LOWER",
+      "pass": true
+    },
+    {
+      "id": "minimum-change reference has zero measured L-01 separation",
+      "pass": true
+    },
+    {
+      "id": "positive-gap reference has positive measured L-01 separation",
+      "pass": true
+    },
+    {
+      "id": "all stair and swept-route proxy pieces remain clipped to C-LOWER for residual analysis",
+      "pass": true
+    },
+    {
+      "id": "occupied union plus free-space components conserves C-LOWER area",
+      "pass": true
+    },
+    {
+      "id": "free-space partition has no zero-area tiles or overlapping component membership",
+      "pass": true
+    },
+    {
+      "id": "component flood fill accounts for every unoccupied tile",
+      "pass": true
+    },
+    {
+      "id": "selected-D and M-06 remain unchanged/unassigned",
+      "pass": true
+    }
+  ]
+}

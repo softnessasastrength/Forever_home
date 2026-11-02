@@ -43,6 +43,7 @@ The primary and Jack & Jill baths remain **full baths** (toilet + lavatory + bat
 - **One door only** from primary bedroom (privacy lockset).
 - Optional second linen closet door from suite hall — **not baseline**.
 - Stack plumbing with Jack & Jill or lower-level bath when plan allows.
+- **Owner design direction (2026-11-01):** MGM Springfield full-suite shower, with tile and an overhead rain-style showerhead; the owner confirmed the public Deluxe Garden Suite bathroom image as a match and selected a **separate tub plus separate shower**. The current 9 × 10 ft study envelope is retained for a fit check, not proof of fit. No product, dimension, mounting detail, or assembly is selected from the image; see [the reference decision](../Decisions/2026-11-01_Primary_Bath_MGM_Springfield_Shower_Reference.md).
 
 ### 2.2 Jack & Jill bath (open, spacious)
 
@@ -105,7 +106,7 @@ Shared between **two secondary bedrooms**:
 | Vanity counter height | **34"** AFF (comfort) or **36"** if matching kitchen language |
 | Mirror | Full width of vanity; optional medicine cabinets recessed |
 | Toilet clear | **30" W** min zone; **15"** min from centerline to wall/obstruction each side; **21"** clear in front |
-| Bathing | **60" alcove tub/shower** baseline **or** **36"×48"** walk-in shower if tub declined |
+| Bathing | Owner-selected direction: **separate tub plus separate tiled shower**; current 9 × 10 ft room envelope is retained for a fit study and does not establish that both fixtures fit |
 | Circulation | **30" min** path; **36"** preferred at vanity face |
 
 ### 3.3 Primary fixtures
@@ -115,7 +116,8 @@ Shared between **two secondary bedrooms**:
 | **Toilet** | Traditional **two-piece**, elongated bowl, **comfort height** (~16-1/2" rim) | Soft-close seat; dual-flush or 1.28 gpf; **white**; skirted trapway preferred for cleaning |
 | **Lavatory** | Undermount oval **or** classic drop-in in quartz top | Double bowl if 60" vanity; single if 48" |
 | **Faucets** | Widespread or centerset **traditional** | **Aged brass** or polished nickel; cross or lever handles |
-| **Tub/shower** | Cast-iron or acrylic **60" alcove** with shower trim on wall | Traditional telephone-style or rain + handheld; cream tile surround |
+| **Tub** | Separate bathing fixture, model/type not selected | Preserve a separate-tub option; product geometry and room fit unresolved |
+| **Shower** | Separate tiled shower with overhead rain-style head, per owner-confirmed MGM Springfield visual reference | Exact dimensions, overhead support, enclosure, controls, handheld spray, waterproofing, drainage, and fit remain unresolved; the photo is visual precedent only |
 | **Accessories** | Towel bars, TP holder, robe hooks | Match faucet finish |
 
 ### 3.4 Primary vanity

@@ -1,0 +1,3 @@
+# Main-floor coordination direction — 2026-11-01
+
+Owner reviewed the generated wall comparisons and said they look good. This is owner visual feedback, not an independent RVT inventory or approval of wall assemblies. Owner authorized integrated main-floor coordination and selected Keep front entrance. Front means schematic south edge only; site orientation remains unresolved. Preserve the 40 x 42 ft envelope, 8 x 4 ft appliance-free island, fully open kitchen/living intent, protected west A and unassigned B. Use Selected-D pantry area 5 x 7 ft. Dining and porch may move within previously authorized study scope. Selected-D remains unchanged; new room dimensions and door/approach routes require evidence.

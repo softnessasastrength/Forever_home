@@ -1,0 +1,314 @@
+{
+  "route_sha256": "5D450570EC589FD5689693C29AAFFEC9E27197C927AD14A07A2F9FBCABE4F433",
+  "interface_sha256": "B039B9BF6646A78024E19C18E35A5F54746F87C9CA1EA2A2E9E1CC41108A22A7",
+  "scope": "north-adjacent full-area pantry translations and 90-degree orientation; source pantry removed only for comparison",
+  "placements": [
+    {
+      "candidate": 21,
+      "pantry": {
+        "x": 5.916666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.4166666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            7.416666666666667,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 0.9166666666666665,
+            "y": 15.916666666666668,
+            "w": 8.000000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.0
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 21,
+      "pantry": {
+        "x": 6.166666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.4166666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            7.666666666666667,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 0.9166666666666665,
+            "y": 15.916666666666668,
+            "w": 8.250000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.25
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 21,
+      "pantry": {
+        "x": 6.416666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.4166666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            7.916666666666667,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 0.9166666666666665,
+            "y": 15.916666666666668,
+            "w": 8.500000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.5
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 21,
+      "pantry": {
+        "x": 6.666666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.4166666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            8.166666666666668,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 0.9166666666666665,
+            "y": 15.916666666666668,
+            "w": 8.750000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.750000000000002
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 21,
+      "pantry": {
+        "x": 6.916666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.4166666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            8.416666666666668,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 0.9166666666666665,
+            "y": 15.916666666666668,
+            "w": 9.000000000000002,
+            "d": 3.0
+          },
+          "length_ft": 6.000000000000002
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 22,
+      "pantry": {
+        "x": 6.166666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.6666666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            7.666666666666667,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 1.1666666666666665,
+            "y": 15.916666666666668,
+            "w": 8.000000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.0
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 22,
+      "pantry": {
+        "x": 6.416666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.6666666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            7.916666666666667,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 1.1666666666666665,
+            "y": 15.916666666666668,
+            "w": 8.250000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.25
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 22,
+      "pantry": {
+        "x": 6.666666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.6666666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            8.166666666666668,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 1.1666666666666665,
+            "y": 15.916666666666668,
+            "w": 8.500000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.500000000000002
+        }
+      ],
+      "door_swing": "unresolved"
+    },
+    {
+      "candidate": 22,
+      "pantry": {
+        "x": 6.916666666666667,
+        "y": 13.916666666666666,
+        "w": 5.0,
+        "d": 7.0
+      },
+      "area_sf": 35.0,
+      "existing_porch_route_preserved": true,
+      "kitchen_shared_approach_count": 0,
+      "approach_centres_x": [],
+      "connector_spur_count": 17,
+      "connector_spur_example": [
+        {
+          "from_route_ft": [
+            2.6666666666666665,
+            17.416666666666668
+          ],
+          "to_pantry_ft": [
+            8.416666666666668,
+            17.416666666666668
+          ],
+          "swept_rect": {
+            "x": 1.1666666666666665,
+            "y": 15.916666666666668,
+            "w": 8.750000000000002,
+            "d": 3.0
+          },
+          "length_ft": 5.750000000000002
+        }
+      ],
+      "door_swing": "unresolved"
+    }
+  ],
+  "limitations": "Static footprint and local 36-in approach patches only; no storage layout, door swing, plumbing or code finding"
+}

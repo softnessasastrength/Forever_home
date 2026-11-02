@@ -1,8 +1,233 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-01
-Status: M266 freshly regenerated the selected-D room-boundary study in Revit 2027.3 and validated the new IFC2X3 export 26/26 twice with byte-identical reports. M267 inspected a public, hash-pinned KOHLER Tresham lavatory family in a separate disposable Revit derivative: ten finish types, positive-volume geometry and bounds near the published nominal envelope; no instance was placed and the source hash was unchanged. M269's read-only `ConnectorElement` inventory ran successfully in Revit 2027.3 and found one primary round sanitary connector (5/8 in radius); M270 corrects the connector's inapplicable width/height sentinels but still awaits runtime replay. M271 replaced the policy-blocked M83 source generator with a package-free C#/.NET 10 tool, regenerated the six hypothetical roof comparisons reproducibly, and completed a disposable Revit 2027.3 RVT/IFC2X3 run; independent IFC checks pass 21/21; the owner named 12:12 a visual favorite only, not a selected or technically approved pitch. M272 adds a checked, non-site-fitted patio adjacency diagram using only the documented porch and minimum landing dimensions. No complete house geometry is present: native walls, openings, floors, stairs, roof assembly, MEP and exact selected toilet family remain open. M-06 and B stay unassigned; west A stays protected. M-05 topology and the fully open kitchen/living connection remain unresolved.
+Updated: 2026-11-02 (M354 stair/landing coordination handoff)
+Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
+M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
+M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
+M320 replays the current-SKU M-06 plan-envelope screen under the configured PowerShell host without an execution-policy override: 14/14 integrity checks pass and all 16 research toilet/lavatory boxes remain contained in the gross B window. This remains gross arithmetic only; B is not assigned.
+M321 independently revalidates the retained isolated M-02 kitchen-island IFC2x3 export against its Revit audit and selected-D source: 13/13 checks pass with matching RVT/IFC lineage, 21 spaces on three storeys, four casework modules, and the generic countertop placeholder. This remains a furnishing-study derivative, not selected-D building geometry.
+The consolidated handoff is `Architecture/Verified_BIM_Milestone_2026-11-01.md`; it cross-references the verified gates, reproduction commands, and remaining limitations for a fresh Codex/Revit 2027 session.
+The handoff now has a machine-readable acceptance command, `Tools/validate_verified_bim_milestone.ps1`, which checks the current evidence chain without opening or modifying Selected-D.
+The consolidated acceptance replay now passes 7/7, including the M325 native split-rise stair RVT/IFC gate; this remains evidence-chain validation rather than selected-design approval.
+M335 adds the verified M218/M219 native pantry-door comparison to the consolidated gate. The two swing derivatives pass their 9/9 integrity checks without opening or modifying Selected-D. This is the current opening gate; no other opening or assembly is selected.
+M336 adds a reproducible M-06 coordination evidence contract. It confirms the pinned Selected-D source, verified lavatory-family evidence, current-SKU toilet infographic envelope, and preliminary Connecticut screening note while explicitly keeping product/clearance/door/approach/service/assignment gates false. This is the correct pre-fit state; no Revit restart is required.
+M337 folds the M336 contract into the machine-checked verified-BIM gate. The consolidated replay now proves the evidence chain and the unresolved M-06 boundary together; a green gate must not be read as a bathroom-fit approval.
+M338 audits the local intake and confirms that no exact current-SKU 610AA001.020 RFA or assembled drawing is present; predecessor bowl/seat files remain explicitly non-substitutable. This is the current external-input blocker for a native M-06 fit study.
+M339 records the replacement-readiness matrix in `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md`. It confirms that current native walls, floors, pantry doors and roof shells remain comparison derivatives; no unsupported placeholder is promoted into Selected-D.
+M340 adds `Tools/run_verified_bim_sequence.ps1`, a local runner for the retained Revit evidence validators, M-06 contract and 53-test offline suite. It provides one reproducible report while explicitly stating that it validates retained evidence rather than opening Revit.
+M341 repairs PowerShell exit-code contamination in the runner by resetting `$LASTEXITCODE` before each stage. The sequence now reliably passes six stages; the current shell has no .NET SDK, so fresh RevitPilot compilation remains an environment limitation rather than a source result.
+M342 rechecked anonymous public sources for the exact 610AA001.020 and found product listings but no current-SKU BIM/RFA asset. The search is bounded and does not alter the existing exact-asset blocker.
+M343 establishes one labelled proxy setup: the inspected TOTO Nexus family for toilet comparison plus the measured Evolution lavatory family. The proxy is provenance-checked but does not assign B or replace the owner-selected Champion intent.
+The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
+M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
+M327 now replays the existing compact-core generator in Revit 2027.3, then audits, QA-checks, and exports the resulting disposable native house candidate. The resulting RVT/IFC chain is valid for further design review, but the compact-core brief remains a test arrangement: three provisional floor plates, generic wall/floor types, no roof or MEP, and an explicitly open upper stair-to-floor landing gap. Selected-D is not edited or promoted.
+
+## M335 — Native pantry-door comparison gate
+
+**Acceptance:** validate the existing M218/M219 disposable Revit derivatives, require both swing alternatives, recorded RVT hashes and native inventories, and an explicit assertion that Selected-D was neither opened nor modified. Do not infer a selected door family, rough opening, accessibility, code or services result.
+
+**Result:** `.local/revit-pilot/m218-pantry-door-study/20261101T212718036Z/m218-revit-study-manifest.json` passes `Tools/RevitPilot/validate_m218_revit_study.ps1` at **9/9**. Revit need not be reopened for this documentation and consolidated-gate refresh.
+
+## M336 — M-06 coordination evidence contract
+
+**Acceptance:** confirm the pinned Selected-D source, verified lavatory-family evidence, current-SKU infographic envelope and cited preliminary clearance note; explicitly report product geometry, finished-face clearance, door/approach, service route and room assignment as unresolved until supported together.
+
+**Result:** `Tools/validate_m06_coordination_gate.ps1` passes its evidence contract and writes `.local/revalidation/m06-coordination-gate-m336.json` with status `screen-valid-but-fit-blocked`. No fixture is assigned and no Revit state is changed.
+
+## M337 — Consolidated M-06 boundary gate
+
+**Acceptance:** require the M336 report to be source-pinned, screen-valid and explicitly fit-blocked, with product geometry, door/approach, service route and assignment still false.
+
+**Result:** `Tools/validate_verified_bim_milestone.ps1` now includes this boundary check and passes **9/9**. This strengthens the handoff without promoting B or claiming code compliance.
+
+## M338 — Local exact-SKU M-06 asset audit
+
+**Acceptance:** audit repository and quarantined intake paths for an exact `610AA001.020` complete family or current assembled drawing; preserve all predecessor-family distinctions.
+
+**Result:** `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md` records no exact local asset. The next native fixture study therefore requires owner-supplied current-SKU evidence or explicit proxy authorization.
+
+## M339 — Placeholder replacement readiness matrix
+
+**Acceptance:** classify each native category as selected, comparison-only or blocked using current documented inputs; prohibit silent promotion of template wall/floor/door types.
+
+**Result:** `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md` records the current matrix. Only documented comparison derivatives are permitted; Selected-D remains unchanged.
+
+## M340 — Verified BIM sequence runner
+
+**Acceptance:** run the retained landing, roof, pantry, M-06, consolidated BIM and offline regression checks in one local command; emit a machine-readable report and preserve all limitations.
+
+**Result:** `Tools/run_verified_bim_sequence.ps1` is the reproducible sequence entry point. It does not regenerate Revit geometry or imply that M-06 is fitted.
+
+## M341 — Sequence runner robustness repair
+
+**Acceptance:** prevent a prior command's non-zero `$LASTEXITCODE` from contaminating later PowerShell stages; rerun the six-step sequence.
+
+**Result:** runner now resets the process exit code per stage and passes all six steps. No model or source file is changed.
+
+## M342 — Public exact-SKU M-06 recheck
+
+**Acceptance:** check anonymous manufacturer and public retailer pages for a current-SKU BIM/RFA asset without sign-in or gated download; record the source limits.
+
+**Result:** the recheck found product pages and dimensions only. No exact current-SKU family was obtained; M-06/B remains blocked and unassigned.
+
+## M343 — M-06 proxy setup contract
+
+**Acceptance:** validate one complete public toilet proxy and the preserved measured lavatory family by SHA256 and source metadata; explicitly keep owner intent, clearances, door/approach, services and B assignment unresolved.
+
+**Result:** `Tools/validate_m06_proxy_setup.ps1` passes the proxy provenance contract and writes a `pass-proxy-only` report. No fixture is promoted or assigned.
+
+## M325 — Disposable native split-rise stair host gate
+
+**Acceptance:** run the exact hash-checked project-local RevitPilot build in Revit 2027.3; create two native `Stairs` elements spanning 0 → 2.5 → 5 ft with four positive-riser runs each; save and reopen the disposable RVT; export IFC2x3; pass `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1`; preserve Selected-D and record the no-promotion limitation.
+
+**Current state:** `Tools/RevitPilot/SplitRiseNativeStairCommand.cs` compiles with 0 errors and 2 pre-existing MSB3277 warnings. The registered per-user manifest points only to the current-worktree build, AddInId is unchanged, the prior manifest is backed up under `.local/revit-pilot/registration-backups/20261101T225142990Z/`, and the DLL SHA256 is `C19B468F54B9079D2A8F70E6315024F0410134A37E03565041C8585F19C9FC3D`. Revit 2027.3 host execution completed in a disposable project; the latest study at `.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/` passes the validator 15/15, including two native stair elements, four risers per flight, 0/2.5/5 ft levels, a saved RVT hash, and IFC2x3 stair entities. Selected-D remains untouched.
+
+## M327 — Compact-core native house derivative audit/export
+
+**Acceptance:** regenerate the existing `Tools/RevitPilot/compact-study-config.json` candidate in Revit 2027.3 without opening or editing Selected-D; use the exact current-worktree RevitPilot DLL; run the read-only native audit and geometry QA; export IFC2x3/DWG/PDF/room CSV; validate the retained manifest and IFC lineage; record all open area and stair-coordination findings.
+
+**Result:** study `.local/revit-pilot/compact-core/20261101T230538811Z/` regenerated successfully. The saved RVT fingerprint is `b451ec48c7ff054e059fdad75ba69ba4362c48f0fa25483171553bf3e426a420`. Audit `.local/revit-pilot/audits/20261101T231446339Z/` records Revit 2027.3, three levels, 17 enclosed rooms, 78 walls, five nominal doors, two native stairs, three floors and zero native warnings. Geometry QA `.local/revit-pilot/geometry-qa/20261101T231509294Z/` passes with zero issues/errors/warnings. Export `.local/revit-pilot/exports/20261101T231519726Z/` produced non-empty IFC2x3, DWG, PDF and room CSV; IFC validation passes with schema/lineage/space/area/geometry checks and no errors. IFC SHA256 is `d715aa2c69e4eb384da219f3b5db92f20c57c9a531c2458ff7e96ecb9a0120ba`.
+
+**Open findings:** the disposable C arrangement has provisional room-area variances (including M-02 above its preliminary range, M-06 below the proposed 9 × 10 ft target, and L-02/U-01/U-03/U-04/U-05/U-06 below their study references) and a 5.625 ft upper stair-to-floor plan gap. These are review gates, not selected-D changes. The compact-core candidate has no roof, selected floor assemblies, clear-opening/swing/accessibility validation, structural/MEP coordination or code approval.
+
+## M321 — M-02 kitchen island IFC recheck
+
+**Acceptance:** validate the retained Revit audit/export pair and selected-D source; require IFC2x3 integrity, matching saved-model lineage, 21-space/three-storey inventory, four measured modules, and the documented countertop placeholder.
+
+**Result:** `.local/revalidation/M321-kitchen-island-ifc-final.json` passes 13/13 with zero errors. Countertop finish split, perimeter clearances, appliances, openings, services, and final kitchen placement remain unresolved.
+
+## M320 — M-06 current-product envelope recheck
+
+**Acceptance:** reproduce the source-bound M120 screen without bypassing the configured execution policy; require 14/14 checks, 16/16 contained research pairs, current-SKU geometry still marked unverified, and no M-06 assignment.
+
+**Result:** `.local/revalidation/M320-m120-current-envelope-pwsh/` passes the gate. Door/approach, finished-face clearances, service routing, exact current-SKU family geometry, and local applicability remain open.
+
+## M319 — Selected-D baseline acceptance recheck
+
+**Acceptance:** run the documented baseline validator in an ignored output directory; require two byte-identical 43-check source replays, parseable plan SVGs, retained IFC2X3 validation with zero errors, and unchanged protected source/RVT/IFC hashes.
+
+**Result:** `.local/revalidation/architectural-bim-baseline-20261101T-recheck/baseline-validation.json` reports pass, 2 × 43 geometry checks, 26/26 IFC checks, and protected inputs unchanged.
+
+## M318 — Main-floor wall/plate provenance coordination gate
+
+**Acceptance:** independently validate the saved-RVT hashes and source chain from M313 to M314; require 42 walls, three 40 × 42 ft / 1,680 sf plates at recorded display offsets, and explicit unselected status. Do not infer storey spacing or select an assembly.
+
+**Next:** use this chain only as a disposable visual coordination base. Resolve the stair/section relationship, floor-to-floor datum, wall/floor assemblies, and real openings before adding further physical categories.
+Status: M291 freshly revalidated the selected-D source-to-IFC workflow: two 43/43 source runs, seven identical outputs per run, all six SVGs parse, and retained IFC2X3 passes 26/26 with zero errors and unchanged source/RVT/IFC hashes. M311 generated three isolated native-wall comparison RVTs for the Selected-D 40 × 42 and 36 × 32 ft envelopes at 8/9/10-ft wall-top references; its independent validator passes 4/4 and the main plan was visually inspected after reopen. M270 generated and validated the isolated Cimarron family connector replay with 11/11 checks. M293 fixes M285 markdown hash portability and confirms M285 17/17, M289 15/15 and M290 9/9 in two byte-identical replays each. M294 records the owner's least-change/tangent preference for analysis only. M295's source-bound full 60-in stair search passes 19/19 twice; it finds 5,065 landing interfaces but zero separate 36-in routes to C-LOWER while all other lower rooms remain fixed. M296 tests treating the landing as part of C-LOWER: the stair leaves a 21-in west gap and no east bypass, below the 36-in project route-screen precedent. M297 tests same-area L-02 movement and finds no full-rise stair envelope even with L-02 omitted. In response, M300 tests same-area L-01 movement: 1,098 candidates are checked; only 10 candidate/stair envelope pairs survive; all 20 end-route searches fail immediately, yielding zero interfaces or routes. Neither flex-room move alone resolves the full-rise case with the remaining constraints fixed. M301 tests an explicitly hypothetical L-turn envelope with the same 60-in transition and 3+4 aggregate tread-run split; two 7/7 runs agree, but 2,964,960 placements yield no fit in the 36 × 32 ft wing with protected M-06 windows and all other blocks fixed. This is a bounded proxy, not a stair schedule. M302 tests the owner-documented 38⅓ × 40 ft shell as a lower-plan sensitivity: 3,850,039 of 303,801,450 unverified L-turn/L-01 placements pass the block screen, concentrated in the added north band. This shell is +381.33 sf (+33.1%) over the 36 × 32 ft comparison and remains unselected. M303 then tests 48 endpoint routes across the first 24 low-L-01-movement samples: 20,907 nodes, zero routes to C-LOWER. This is not exhaustive over the 3,850,039 envelope fits; it shows the larger shell alone has not solved access in these samples. M304 carries the owner-approved joint L-01/L-02 screen into that shell. An upper-bound pass found 12 paths with both rooms omitted; movement-spread sampling then found 9 room/stair layouts with a 36-in proxy route to fixed C-LOWER. The least-movement option shifts L-01 east ~10 ft and reshapes L-02 to 14.5 × 7.586 ft; end landings/doors/real stair geometry remain unresolved. The shell stays unselected at +33.1% area. Next: a bounded section/stair study within Selected-D, then disposable native coordination only where source dimensions and assumptions are explicit. M298 passed Revit 2027.3: the isolated 8/9/10-ft wireframe has 9 levels and 63 room-volume records across 21 source spaces, plus 828 vertical curves. M299/M311 are native-wall proxy studies only; neither adds floors, stairs, roofs, openings, or a coordinated architectural layout. Selected-D remains a 21-space room-boundary study, not a complete house. Native partitions/openings, floor assemblies, a feasible stair/section, roof geometry, MEP and exact selected toilet family remain open. M-06 and B stay unassigned; west A stays protected. M-05 topology, fully open kitchen/living connection, and skylight count/location/product/opening remain unresolved. Future finish assignment follows `Architecture/Render_to_Model_Reference_Map.md`; the M299 shell is intentionally uncolored and the exterior palette is not specified.
+
+## M310 — Selected-D dimensional basis
+
+**Acceptance:** record the owner's direction to use Selected-D as the current envelope basis; list its sourced main and rear-level test envelopes; retire the 38⅓ × 40 ft lower expansion from the active path; preserve later owner decisions and keep unspecified assemblies/dimensions unresolved.
+
+**Result:** owner direction is recorded in `Decisions/2026-11-02_Selected_D_Dimensional_Basis.md`. Main envelope 40 × 42 ft; rear-level envelopes 36 × 32 ft. These remain schematic test envelopes, not approved gross/conditioned/site dimensions. Selected-D source remains unchanged.
+
+**Result update:** source-linked dimension register added at `Architecture/Dimension_Register.md`; owner clarified that 8/9/10 ft are clear-ceiling alternatives and the stair/floor-to-floor remain unresolved. Selected-D geometry regeneration reproduced 43/43 checks twice; the retained IFC2X3 passed 26/26 with zero errors. See ignored output `.local/revalidation/selected-d-ceiling-check-20261101T133722663Z/`.
+
+## M311 — Correct clear-height native-wall comparison
+
+**Acceptance:** preserve Selected-D 40 × 42 ft main and 36 × 32 ft rear envelopes; produce isolated, single-level 8/9/10-ft wall-top proxy cases with no false floor-to-floor or stair datum; source-fingerprint each RVT and manifest; verify wall/level counts and all dimensions; reopen and visually inspect each model or a representative from each footprint; leave selected-D/RVT/IFC and unknown assemblies untouched.
+
+**Status:** command updated to generate three disposable footprint models, each with twelve native walls, one local zero level, and side-by-side 8/9/10-ft clear-height proxies. The current project-local build has zero errors and two existing MSB3277 SDK-reference warnings; DLL SHA256 `AA04ADF764F260D3D014F32D243C97A24107C56C1C94E25E491AE399AA530B07`. Revit runtime generated `.local/revit-pilot/clear-ceiling-wall-height/20261101T213134039Z/`; `Tools/RevitPilot/validate_clear_height_wall_study.ps1` passes 4/4, and the reopened main plan was visually inspected. The previous M299 derivative has not been changed and its former 8/9/10-ft floor-spacing representation is superseded for active design.
+
+**Next:** resolve the stair/section relationship within documented study assumptions before adding physical stairs or treating these wall heights as final. Do not edit Selected-D or infer floor assemblies/stair geometry.
+
+## M313 — Native main-floor candidate runtime, reopen audit, and IFC gate
+
+**Acceptance:** run the source-fingerprinted main-floor candidate in a disposable Revit project; preserve its 42 native wall objects and 252 outline curves; reopen a copy read-only and assert the expected inventory; export IFC2x3 from a copied RVT; validate STEP header, schema, wall entity presence, non-empty output, and manifest hash. Do not edit Selected-D or assign M-06/B.
+
+**Result:** the exact project-local RevitPilot v4 DLL (SHA256 `F4BCC73E771DA832EDB17542AF127DDA45154B3022F8F754FACE2B9E3B974F44`) ran after **Load Once** in Revit 2027.3. Existing runtime output `.local/revit-pilot/main-floor-candidate/20261101T215346325Z/` contains 42 walls, 252 model curves, and the source input hash `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`; saved RVT hash is `2206449F0EE56AE3E084F159648F44D4F9EA15D98E98650DEF9219DBB7931F60`. The read-only reopen audit records one local-zero level, 42 walls, 252 curves, and zero floors/doors/roofs/stairs; all assertions pass. IFC2x3 export is `216661` bytes with SHA256 `15C21E507BF49552A1F205290D8F876DEE57883C26BF63AA6AF6E0D14DBC2944`; `Tools/RevitPilot/validate_main_floor_candidate_ifc.ps1` passes, including manifest hash, STEP header, IFC2X3 schema, and wall-entity checks.
+
+**Limits/next:** this is a disposable, unselected native-wall comparison. It has no floors, ceilings, doors, physical furniture, stairs, roof, structure, MEP, selected wall type, or code/clearance conclusion. Next work remains the bounded stair/section relationship and then separately supported openings/assemblies; keep Selected-D, M-06, and B unchanged.
+
+## M314 — Provisional native main-floor plate comparison
+
+**Acceptance:** reopen the hash-pinned M313 candidate in a disposable Revit derivative; preserve its 42 walls; add only three clearly marked 40 × 42 ft provisional native floor plates translated beside the 8/9/10-ft wall-height cases; record the template floor type as unselected; save and validate the derivative without changing M313 or Selected-D.
+
+**Result:** the exact project-local build (SHA256 `67FA2BEF7E15D4B3A585A2F81750878E9C922BBA0B7C6E86201E05D3C20E0A1B`) ran in Revit 2027.3 after **Load Once**. Output `.local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/` contains a saved RVT with three floor elements, each a 40 × 42 ft / 1,680 sf comparison profile, while preserving all 42 source walls. The saved RVT SHA256 is `9EAC7B3DA7EBCF4E00C8CF52D72C41A8346006EF2FFB49479686B587175E0CB1`; `Tools/RevitPilot/validate_main_floor_floor_plate.ps1` passes **5/5**.
+
+**Limits/next:** the floor type is the Revit template default and is explicitly not a selected structural/finish assembly. Plates use a local zero datum and are translated display comparisons, not storey spacing. No openings, doors, stairs, roof, structure, MEP, code, professional or construction conclusion follows. Next: resolve the stair/section relationship before attempting physical openings or a multi-level coordinated model.
+
+## M315 — Provisional floor-plate IFC2x3 export gate
+
+**Acceptance:** export the hash-verified M314 derivative through Revit's IFC2x3 API into a disposable run; preserve the RVT/manifest chain; validate the IFC hash, STEP header, IFC2X3 schema, at least 42 wall entities, and three floor slab entities.
+
+**Result:** the exact project-local build (SHA256 `443C9793C9141DC330331C313055490EBCABF7C836B6810A3D3DC88B6BD98A4F`) ran after **Load Once**. The derivative output `.local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/ifc2x3/` contains a 225,716-byte IFC2x3 file with SHA256 `B6F5AB90CDD907485F6D3BE8CFA4611108EAD3ED2FCFC87D48B2CCBDE98179C2`; `Tools/RevitPilot/validate_main_floor_floor_plate_ifc.ps1` passes **6/6**, including 42 `IFCWALL` and 3 `IFCSLAB` entities.
+
+**Limits/next:** this is export integrity and entity-presence evidence for a disposable comparison, not a coordinated architectural or engineering model. The floor type, openings, doors, stairs, roof, structure, MEP, code and clearances remain unresolved.
+
+## M316 — Section/stair constraint register
+
+**Acceptance:** consolidate the owner-approved Selected-D basis, ceiling-range direction, 60-in comparison, DD-013 43½-in preference, M295 full-rise inputs, route precedent, and M-06/A/B assignment gates; state the exact evidence required before native stair geometry; introduce no new dimensions or selections.
+
+**Result:** `Architecture/M316_Section_Stair_Constraint_Register_2026-11-01/README.md` records the gate and cites the existing Dimension Register, M285, M295, CT stair screening, and current owner direction. It confirms that M295's 19/19 two-run screen found landing interfaces but no separate 36-in route under its fixed-room constraints. The register does not select a floor-to-floor datum, stair, room move, M-06 window, or code interpretation.
+
+**Next:** obtain or derive a coherent section envelope from existing approved inputs before adding any native stair/opening geometry. Keep Selected-D, M-06, A, and B unchanged.
+
+## M317 — M-06 public candidate evidence replay
+
+**Acceptance:** hash-check the public KOHLER Cimarron provenance and the M270 Revit report; verify no authentication, no Selected-D access, no placed instances, positive-volume symbol geometry, a sanitary connector, and an explicitly unselected M-06/B status. Do not infer room fit or assign B.
+
+**Result:** `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` passes **8/8** against `kohler-cimarron-k2362-provenance.json` and the runtime report in `.local/revit-pilot/family-intake/derivatives/20261101T220500Z-kohler-cimarron-m270/`. The source RFA remains SHA256 `3E5FD99648DE9CB384A8269F82896A2684C52F6E6C46A098F2A16DCE34A08979`; the report confirms two positive-volume solids and a primary round sanitary connector with 0.625 in radius. The evidence remains isolated and unassigned.
+
+**Limits/next:** this is family provenance/geometry evidence only. It does not establish exact selected-SKU correspondence, room fit, clearances, door/approach, plumbing route, code compliance, professional approval, or construction readiness. Keep M-06/B unassigned.
+
+## M309 — Wider-sample integrated stair landing and route screen
+
+**Result:** .NET 10 build 0 warnings/errors; 6/6 checks in two identical runs across 118 spatially spread stair samples. 52 paired landing layouts and 29 lower routes pass with rooms omitted; none pass with moved L-01/L-02. This is bounded; three route cases reached their node cap. Evidence `Architecture/M309_Wide_Sample_Integrated_Stair_Search_2026-11-02/README.md`. The larger shell study is superseded for active design by M310's Selected-D envelope direction.
+
+## M307 — Integrated stair, landing and lower-route search
+
+**Acceptance:** search 24 retained M302 stair envelopes and both lower-flight choices; require both inherited 4 × 4 ft end-landing proxies, the 8-in shell margin, protected M-06 windows and a 36-in route to C-LOWER before same-area L-01/L-02 screening; replay twice and parse SVG. Analysis only.
+
+**Result:** .NET 10 build 0 warnings/errors; 6/6 checks in two byte-identical runs. Four paired landing arrangements clear fixed blocks; one yields a lower route with rooms omitted. No L-01 candidate among the 3,825 generated clears that sole stair/landing/route corridor; no room pair passes. This is bounded to 24 of M302's 3,850,039 spatial fits and fixed other room blocks. See `Architecture/M307_Integrated_Stair_Landing_Search_2026-11-02/README.md`.
+
+**Next:** owner decision required to relax a design constraint or authorize a broader search axis: move additional rooms, test a different stair/level relationship, or test a larger shell sensitivity. Keep all options unselected; do not create physical stair geometry until a complete plan and section survive.
+
+## M306 — Two-ended stair landing footprint screen
+
+**Acceptance:** pin M302/M304/M295/M305 and scope inputs; preserve all nine room/stair samples, room areas, fixed blocks and M-06 windows; check each opposite-end 4 × 4 ft landing against shell margin/obstacles and combine with the inherited M305 lower-route result; replay twice and parse SVG. Analysis only.
+
+**Result:** .NET 10 build 0 warnings/errors; 6/6 checks in two byte-identical runs. Six layouts retain the lower landing/route, two fit an upper landing, and none pass both. The sample set is bounded and does not show impossibility. See `Architecture/M306_Two_Ended_Stair_Landing_Screen_2026-11-02/README.md`.
+
+**Next:** perform a broader stair/room search that includes both end landings and the lower route from the outset. Keep the shell unselected; only after a paired plan-and-section option exists should it be considered for disposable Revit visualization.
+
+## M305 — Lower end-landing and route refinement
+
+**Acceptance:** pin M304/M302/M295/M215 and scope inputs; screen both lower ends in all nine retained M304 room/stair samples with the inherited 4 × 4 ft landing proxy; keep room areas, fixed blocks and M-06 windows; test a 36-in swept route from landing exterior to C-LOWER; replay twice and parse the SVG. Analysis only; no selected-D or Revit change.
+
+**Result:** .NET 10 build 0 warnings/errors; 6/6 checks in two byte-identical runs. Of 18 ends, 8 landing footprints pass and 6 have route proxies (23.5–26 ft), all related flight-A variants in a narrow north-west band. The larger shell remains hypothetical at +33.1%. See `Architecture/M305_Lower_End_Landing_Route_Study_2026-11-02/README.md`.
+
+**Next:** carry these six options into a bounded upper-end/section comparison using only inherited references; examine floor-to-floor and ceiling-range conflicts. Keep physical geometry unselected until stair rise/run, opening/headroom, door approach, and circulation continuity are resolved. Then produce a disposable Revit study for visual review before any design selection.
+
+## M304 — Joint same-area L-01/L-02 route screen
+
+**Acceptance:** keep the documented larger shell unselected; preserve L-01/L-02 areas and fixed C-LOWER/other rooms; protect unassigned M-06 windows; sample candidate layouts and routes reproducibly; report the shell premium and limitations. No physical selection or code claim.
+
+**Result:** 0 build warnings/errors; 7/7 checks in two byte-identical runs. Twelve permissive corridors; 32,074 joint placements tested; nine retain both room areas and a 36-in route proxy to C-LOWER. Reproduction/artifacts: `Architecture/M304_Joint_L01_L02_Route_Study_2026-11-02/README.md`.
+
+**Next:** owner review of the +33.1% shell sensitivity before any disposable Revit arrangement; then test actual landing/approach and route beyond C-LOWER.
+## M303 — Route screen M302 sample fits
+
+**Acceptance:** pin M302/M215/authorization inputs; sample both ends of 24 retained envelopes; use the 36-in project precedent as a labeled proxy; ensure any route stays inside shell and clears fixed blocks; replay twice and parse SVG. No access/code finding.
+
+**Result:** 0 build warnings/errors; 6/6 checks in two identical runs; 48 endpoint attempts, 20,907 nodes, zero reaches C-LOWER. The bounded sample does not cover all M302 spatial fits. Artifacts and procedure: `Architecture/M303_L_Turn_Route_Sample_Screen_2026-11-02/README.md`.
+
+**Next:** test joint same-area L-01/L-02 movement for the hypothetical larger shell; hold C-LOWER and M-06 protected. Keep all geometry unselected.
+## M302 — Hypothetical lower-shell stair sensitivity
+
+**Acceptance:** use only the owner-documented hypothetical 38⅓ × 40 ft case; pin inputs; hold source rooms/C-LOWER/M-06 fixed; preserve L-01 area; quantify envelope/block fit and report expansion trade-off; replay twice and validate SVG. Do not select the shell or claim stair, route or code approval.
+
+**Result:** 0 build warnings/errors; 7/7 checks in two identical runs; 3,850,039 spatial fits across 303,801,450 tested combinations. The shell comparison is +33.1% plan area; landing access and route are untested. See `Architecture/M302_Hypothetical_Lower_Shell_Stair_Sensitivity_2026-11-02/README.md`.
+
+**Next:** analyze lower approach/route for labeled fits, then bring the expanded-shell area trade-off to the owner before any physical selection.
+## M301 — Screen an alternative L-turn stair envelope
+
+**Acceptance:** preserve the 60-in transition comparison, source L-01 area and fixed rooms; pin source inputs; label the 3+4 run split as a spatial hypothesis; protect M-06 windows; check every placement; reproduce results and parse SVG. Do not change selected-D or claim a stair schedule, access route or code result.
+
+**Result:** build 0 warnings/errors; 7/7 checks in two byte-identical replays; 71 same-area L-01 candidates and 2,964,960 stair proxy placements, with zero fits. Report: `Architecture/M301_Alternative_Stair_Envelope_Study_2026-11-02/README.md`.
+
+**Next:** test the documented hypothetical 38⅓ × 40 ft shell case as analysis only, holding room blocks fixed. If any envelope fits, evaluate route/access and reconcile actual flight/riser geometry before creating a Revit stair.
 ## M272 — Diagram porch-to-patio relationships without inventing a site plan
 
 **Acceptance:** encode the owner-selected porch-to-landing connection, separate dining and fire/lounge zones, future fireplace reserve and distinct pool route; use exact source dimensions only for the 12 × 10 ft porch and minimum 3 × 3 ft landing; label all exterior dimensions, orientation and product footprints unresolved; validate the SVG structure and required labels.
@@ -31,7 +256,9 @@ Status: M266 freshly regenerated the selected-D room-boundary study in Revit 202
 
 **Acceptance:** rebuild and run the corrected inspector in Revit 2027.3 against the same SHA-pinned KOHLER RFA in a new disposable project; show the round connector radius and null width/height; verify source and selected-D hashes/scope; retain no instance placements or service network; revalidate the saved report and derivative fingerprints.
 
-**Implementation:** `CandidateFamilyGeometryCommand` now emits radius only for `Round` and width/height only for `Rectangular` connectors. It compiles with zero errors and two existing `MSB3277` warnings to the separate unregistered M270 DLL. Runtime replay remains pending; the current Revit session was loaded with M269.
+**Implementation:** `CandidateFamilyGeometryCommand` now emits radius only for `Round` and width/height only for `Rectangular` connectors. It compiles with zero errors and two existing `MSB3277` warnings to the project-local M270 DLL (SHA256 `7D42C49F92B7CB20FACCBB1840C097C7E47FFBDBD3BA89733A05EDE09A507975`).
+
+**Runtime result — 2026-11-01:** Revit 2027.3 launched the exact manifest-registered project-local M270 DLL after the visible trial overlay was dismissed. The command ran against the hash-pinned KOHLER Cimarron RFA in a new disposable project and wrote `.local/revit-pilot/family-intake/derivatives/20261101T220500Z-kohler-cimarron-m270/`. The independent validator passes **11/11**. Report SHA256 `EA69870A6E3EC7A42ED636F4AE2F0E9FFF3DA18EFF3A353CE42CCCE8399250F2`; derivative RVT SHA256 `2D8648BD4C259A8D1612722DCD847EFE98D960E9F77A4AC3C4CF277B2A3B34FE`. The report contains one primary round sanitary connector with radius `0.625 in` and `null` width/height, proving the shape-specific correction. The source RFA remains unchanged; no instance, service network, selected-D model, or family edit was made. No Windows/Revit trust, licensing or security settings were changed.
 
 ## M268 — Diagnose stale M83 roof-study provenance
 
@@ -2827,3 +3054,336 @@ Next measurable gate: integrate the 14 × 12 ft kitchen candidate, the documente
 **Status:** Complete. M283 passed 43/43 checks on both replays, reproduced seven artifacts byte-for-byte, parsed three SVGs per run, and passed the IFC validator 26/26 with zero errors/schema issues. Source, RVT, and IFC fingerprints remained unchanged. PowerShell `RemoteSigned` was set at `Process` scope for the one local run; no persisted execution policy or Revit trust setting changed. See `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md`.
 
 **Next:** create source-bound native envelope geometry only in a disposable Revit derivative, deriving dimensions from the approved source and recording any Revit-template type as an unapproved placeholder. The full selected-D RVT remains a room-boundary study; actual wall assemblies, openings, floor construction, stairs, roof, fixtures, and services still require coordinated decisions and native modeling. Resolve the M282 entry-side choice before representing an open kitchen/living connection or selecting M-05.
+
+## M284 - Compare M-05 entry topology and the open kitchen/living connection
+
+**Acceptance:** use the owner-authorized three-path scope; preserve selected-D dimensions and area, M-03/M-04, west-A protection, and B-unassigned status; screen source baseline, presumed south/front M-05 with M-01/M-02 translation, and north/rear or east/side M-05 with M-01/M-02 translation; report shared-edge spans and all block translations; bind source and authorization hashes; pass an independent deterministic replay and parse the plan SVG; do not claim an opening, access route, code result, or selected design.
+
+**Status:** Complete as an analysis-only static-block comparison. C#/.NET 10 build: 0 warnings/errors. Two executions pass 15/15 and reproduce JSON/checks/SVG; SVG parses. Twenty M-01/M-02 positions share an edge while clearing fixed M-03/M-04/A/B rectangles. One scored south-row/front-hypothesis example and north/rear and east/side alternatives preserve all room block areas. Nothing is selected or treated as an entry/clearance solution. Connecticut DAS's current code-cycle status was rechecked and the M273 note updated. Evidence: `Architecture/M284_M05_Entry_Topology_Study_2026-11-01/README.md`.
+
+**Next:** after owner review, carry only the chosen entry orientation into a disposable Revit door/approach and route test. Resolve vertical-section constraints before native exterior walls/roof heights; continue to derive all plan sizes from approved sources. Keep M-06 unassigned until exact product geometry, applicable clearance, door/approach, and plausible services align.
+
+## M285 - DD-013 vertical section and lower stair-envelope study
+
+**Acceptance:** carry the owner's selected 43½-in DD-013 preferred rise into a separate comparison; keep selected-D's 60-in level offsets immutable; check nominal riser arithmetic against the currently documented CT stair maximum without claiming code compliance; screen preferred stair width, tread run and landing dimensions in the lower plan; report both room-block gap and circulation overlap; hash-bind sources; produce deterministic JSON/checks/SVG; document exact replay commands and limitations.
+
+**Status:** Complete as a bounded analysis-only study. The source-bound C#/.NET 10 build passes with 0 warnings/errors; two fresh replays pass 17/17 and reproduce four artifacts byte-for-byte. The ¼-ft scan finds 402 room-block-clear envelopes; 80 overlap protected M-06 windows (all B, none A), so 322 preserve both. Of those, 40 also avoid the source circulation block. The closest-to-legacy example overlaps circulation by 12.514 sf; the best measured room-gap option also avoiding circulation and M-06 windows has a 13-in block gap at `(24.9167,13.9167)` ft but only a 1-in gap to B. A separate maximum-window-gap example has 22 in to A/B but 0 in to a room block. These are rectangular screening results, not stair placements or clearance standards. The section diagram compares ±60-in selected-D levels with the separate ±43½-in proposal. No Revit objects or selected-D geometry changed. Evidence: `Architecture/M285_DD013_Vertical_Section_Study_2026-11-01/README.md`.
+
+**Next:** M286 and M287 are analysis-only follow-ups; no physical stair or level change is authorized. Continue to check continuous access, door/approach, headroom, structure, floor assembly, and applicable CT requirements before native Revit modeling.
+
+## M286 — Lower flex-living / stair-envelope study
+
+**Acceptance:** use the owner's authorization to move/reshape L-01 in analysis only; preserve its source area; hold all other room blocks and C-LOWER fixed; derive stair envelopes from M285; protect unassigned M-06 projected windows; compare existing L-01 with generated same-area options; measure circulation overlap separately; hash-pin sources; build and replay deterministically; make no layout or stair selection.
+
+**Status:** Complete as a bounded static-rectangle study. Package-free C#/.NET 10 build: 0 warnings/errors; two fresh replays pass 13/13 and reproduce report/checks/SVG byte-for-byte; SVG parses. It finds 74 same-area L-01 rectangles, 1,393 stair envelopes clear of fixed rooms and M-06 windows, and 24,996 compatible pairs. The current L-01 shape/location already pairs with 644 stair envelopes, so moving it is not necessary merely to avoid rectangle overlap. Only 80 of those avoid positive-area C-LOWER overlap; the best room/stair gap in that subset is 13 in, with the stair 97 in from circulation. A stair closer to C-LOWER overlaps that rectangle; a reshaped L-01 example increases the room/stair gap to 36.144 in but its stair envelope overlaps 27.667 sf of C-LOWER. These are not route or clearance findings. Evidence: `Architecture/M286_Lower_Flex_Living_Stair_Study_2026-11-01/README.md`.
+
+## M287 — Connect lower stair landing to arrival/circulation
+
+**Acceptance:** use the owner's direction to connect the stair study to source C-LOWER; preserve L-01 area and other room geometry; screen both lower-landing ends/orientations and a continuous 36-in swept-path proxy sourced from M215; keep M-06 projected windows protected; measure stair/circulation occupation and residual route geometry; bind source and authorization hashes; deterministic replay and SVG/XML validation; do not claim a selected plan, code-compliant stair, or actual route.
+
+**Status:** Complete as a bounded static-block screen. Package-free C#/.NET 10 builds with 0 warnings/errors; two runs pass 10/10 and reproduce the report/checks/SVG byte-for-byte, with SVG parsed as XML. Across 103,082 compatible L-01/stair pairs, 33,754 lower landings directly intersect C-LOWER, consuming part of its reserved area. The best-ranked unchanged-L-01 example occupies 2.597 sf of C-LOWER and has only a ⅙-in block-model gap to L-01. **Zero** explicit 36-in swept path runs connect a non-overlapping landing to C-LOWER while clearing the fixed blocks and M-06 windows. No design selected; see `Architecture/M287_Lower_Stair_Arrival_Study_2026-11-01/README.md`.
+
+**Next:** M288 is owner-authorized to compare dogleg routes with all source blocks fixed against same-area C-LOWER move/reshape options. Keep L-01 at its current geometry, preserve other rooms and M-06/A/B, and do not alter selected-D or Revit.
+
+## M288 — Compare lower stair dogleg and circulation alternatives
+
+**Acceptance:** test 36-in project-precedent orthogonal dogleg route proxies from both M285 lower landing ends with source blocks fixed; separately search same-area C-LOWER move/reshape candidates with L-01 and all other room blocks fixed; protect M-06/A/B; quantify stair/path overlap with target circulation; hash-pin selected-D/M285/M215/owner authorization; build and replay deterministically; make no layout, route or stair selection and no code/structural claim.
+
+**Status:** Complete as a bounded static-block screen. Package-free C#/.NET 10 build has 0 warnings/errors; two independent runs pass 12/12 and reproduce JSON/checks/SVG byte-for-byte, with SVG parsed as XML. With source blocks fixed, 322 stair envelopes and 644 landing ends yield a direct landing interface occupying C-LOWER; **zero dogleg routes** clear fixed rooms and both M-06 windows. A same-area C-LOWER scan finds 67 candidate rectangles, all with at least one landing interface but again **zero dogleg routes**. The least-occupied interface search moves/reshapes C by 2.648 ft, and the stair plus 36-in endpoint envelope occupies 4.051 sf of its 78.889 sf while leaving 74.838 sf outside that proxy. Remaining C use is not evaluated. Evidence and hashes: `Architecture/M288_Lower_Stair_Circulation_Alternatives_2026-11-01/README.md`.
+
+**Next:** M289 now has owner authorization to test same-area joint L-01/C-LOWER move/reshape options while protecting other lower rooms and M-06 windows. No such geometry change is selected or authorized in Revit; keep selected-D and M-06 unassigned.
+
+## M289 — Joint lower flex-room, circulation and stair connection study
+
+**Acceptance:** jointly move/reshape L-01 and C-LOWER in analysis only while preserving each exact selected-D area; hold all other lower room blocks and the shell fixed; retain M285's stair envelope and M215's 36-in route-screen precedent; protect both M-06 windows from the C-LOWER/stair/path proxies while reporting lower-level L-01 projection overlap separately; quantify fixed-area candidate pairs, stair/route results, route-to-L-01 gap, and C-LOWER occupation; pin inputs and owner authorization; deterministically replay and parse the SVG; do not select geometry or claim code/structural/construction approval.
+
+**Status:** Complete as an analysis-only screen. The C#/.NET 10 tool builds with 0 warnings/errors; two independent runs pass 15/15 checks, match JSON/checks/SVG byte-for-byte, and parse the SVG. It tests 1,208 L-01 and 2,912 C-LOWER candidates, 6,707 non-overlapping block pairs, and 52,432 stair envelopes. Route results include 320 dogleg, two straight path, two endpoint-contact and 6,461 landing-interface options; no selections were made. The lowest change-metric dogleg is tangent to L-01, while a higher-change option reports 26.644 in separation and a short straight connector. Both trade-offs and exact limits are documented in `Architecture/M289_Joint_Lower_Stair_Circulation_Study_2026-11-01/README.md`.
+
+**Next gate:** M290 partitions the residual C-LOWER geometry for the tangent and positive-gap references. Owner preference remains pending before selecting either geometry or authorizing Revit. Independently, continue M-06 product/family evidence; keep selected-D unchanged and M-06/A/B unassigned until product geometry, an applicable clearance basis, door/approach and plausible services align. No Revit or IFC was produced by M289.
+
+## M290 — Partition residual C-LOWER geometry for the M289 trade-off
+
+**Acceptance:** read only the hash-pinned M289 report; reconstruct its 36-in swept-route and stair rectangle proxies; calculate an exact coordinate-compressed residual partition within C-LOWER for the minimum-change and maximum-gap positive-length options; verify area conservation, component connectivity and selected-D/M-06 non-assignment; generate deterministic JSON/checks/SVG and preserve all model sources.
+
+**Status:** Complete as an analysis-only exact rectangle partition. The package-free C#/.NET 10 generator builds with 0 warnings/errors; two runs pass 9/9 checks and reproduce all outputs byte-for-byte; the SVG parses as XML. Both M289 examples leave one edge-connected residual component: 78.4306 sq ft after a 0.4583-sq-ft proxy occupation in the minimum-change option; 74.3889 sq ft after 4.5 sq ft in the higher-change positive-gap option. These connected components remain geometric residuals, not established usable circulation or room space. Details, hashes and reproduction commands: `Architecture/M290_Circulation_Residual_Partition_2026-11-01/README.md`.
+
+**Next gate:** owner preference among minimum-change/tangent geometry, larger separation with more room reshaping, or parallel comparison is pending. No geometry is selected or authorized for Revit; preserve selected-D and keep M-06/A/B unassigned.
+
+## M291 — Repeat selected-D source and IFC baseline validation — 2026-11-01
+
+**Acceptance:** run the documented baseline validator from the current checkout without changing PowerShell policy; require two independent 43-check geometry runs with seven matching artifacts each, parse every SVG, validate the retained IFC2X3 against all 21 spaces/three storeys and export lineage, and confirm selected-D/RVT/IFC hashes remain unchanged.
+
+**Status:** Complete. Direct invocation under existing LocalMachine `RemoteSigned` policy passes. Both geometry replays pass 43/43; seven files match byte-for-byte; six plan SVGs parse; the IFC validator passes 26/26 with zero errors. Selected-D source/RVT/IFC hashes are unchanged. Detailed evidence and exact commands: `Architecture/M283_Selected_D_Baseline_Replay_2026-11-01/README.md` (current-checkout replay section).
+
+**Limit:** this repeats validation of the existing 21-space room-boundary study and its IFC2X3 export. It does not supply native walls, floors, stairs, doors, windows, roof, MEP or fixture geometry. Do not claim code, accessibility, structural, professional, permit or construction readiness.
+
+## M292 — Attempt M270 connector-report runtime replay in a disposable family study — 2026-11-01
+
+**Acceptance:** verify the registered RevitPilot AddInId, in-checkout DLL path and SHA256; hash-pin an already quarantined public KOHLER family; run only in a new disposable Revit project; verify that round connectors report radius with inapplicable width/height omitted; preserve the original request, source family, selected-D/RVT/IFC and all security settings.
+
+**Result:** the per-user manifest contains AddInId `096B0D51-8883-4B3D-BD31-E9622201E785` and points inside this checkout to the M270 DLL with matching SHA256 `0B2FB3CF174CAE3D4D366DAE09426E51AD6F7D2E940FEEAA34CD38C8916A2E10`. Revit 2027.3 reached Home behind the visible introductory trial overlay. The supported UI bridge reports the overlay belongs to an untargetable `msedgewebview2.exe` child and rejected the close click before any trust prompt appeared. After activation and fresh observation, one retry was rejected identically. No **Load Once** selection, add-in command, family inspection, or derivative occurred. The staged candidate request was restored byte-for-byte; source and selected-D hashes remain unchanged. Detailed evidence is in `Architecture/M269_Family_Connector_Inventory_2026-11-01/README.md`.
+
+**Next:** runtime verification awaits a targetable owner-visible overlay close or a supported UI bridge. This does not authorize licensing/trust/security changes or another input route around the overlay. Continue independent non-Revit work while this native runtime gate is unavailable.
+
+## M293 — Revalidate joint lower stair study and establish a CT stair geometry checklist — 2026-11-01
+
+**Acceptance:** verify the owner's joint same-area L-01/C-LOWER study selection against existing M289 scope; replay M285, M289 and M290 from clean ignored output folders; make Markdown source hashing stable across CRLF/LF checkouts without changing the pinned source text or historical output; compare only documented stair dimensions with current published Connecticut residential stair provisions; preserve selected-D and leave all candidate geometry unselected.
+
+**Status:** Complete as a reproducibility and code-screening checkpoint. M285's CT research Markdown hash is now normalized to UTF-8/LF before hashing, while JSON source bytes and the other existing source pin remain unchanged. The package-free .NET 10 build succeeds with 0 warnings/errors. Two fresh M285 runs pass 17/17 and match all four outputs exactly, including the prior report and SVG hashes. Two M289 runs pass 15/15 and reproduce all three artifacts; two M290 runs pass 9/9 and reproduce all three artifacts. The current M285 joint-area geometry therefore remains exactly the prior result. `Research/CT_Stair_Geometry_Checklist_2026-11-01.md` separates nominal inputs from unmeasured clear geometry and records the unclosed 43½-in preferred rise / 60-in selected-D level difference. M289's joint study already implements the owner's latest direction; no room, stair, route, Revit or IFC object was selected or changed.
+
+**Next gate:** the owner now prefers M289's least-change option and accepts its schematic tangency for continued analysis; the separate choice between greater separation/more reshaping is not preferred. Before carrying the preferred reference into Revit, resolve how the 43½-in half-story stair rise relates to the 60-in selected-D floor datums, and obtain an actual coordinated section/opening/landing and route basis. Continue M270 family runtime only when the visible Revit overlay can be closed through the supported UI bridge. The zero-gap rectangle contact still has no allowance for wall/finish thickness, tolerances, railing, or installation geometry. M-06/A/B remain unassigned. No code compliance, accessibility, structural safety, professional approval or construction readiness is established.
+
+## M294 — Record the owner's preferred lower stair analysis reference — 2026-11-01
+
+**Acceptance:** record the owner's explicit preference among M289/M290 trade-offs; identify the exact source-bound analytical option; preserve both its measured zero-gap limitation and the non-selected alternative as evidence; do not edit selected-D, create Revit objects, or imply the abstract tangent screen models walls/finishes or establishes a usable route.
+
+**Status:** Complete. The owner prefers the **least layout change** and accepts the tangent geometry of M289's minimum-change dogleg for continued analysis. The reference has a 1.1193-ft combined block-change score, L-01 at 13.5 × 18.5597 ft / 250.5556 sf, source-position same-area C-LOWER at 6.6667 × 11.8333 ft / 78.8889 sf, a 10.375 × 3.1667 ft M285 stair envelope, 9.25-ft two-turn route proxy, and 0-in rectangle gap to L-01. Decision record: `Decisions/2026-11-01_M294_Lower_Stair_Analysis_Reference_Preference.md`.
+
+**Limits/next:** this chooses only an analytical reference direction, not a physical stair, room dimensions, level, route, or selected-D plan, and does not authorize native Revit geometry. The 0-in gap omits wall/finish thickness, tolerances, rails, door leaves, and installation detail. The 43½-in preferred rise remains 16½ in short of the 60-in selected-D test transition; resolve the section and opening/landing arrangement before any native stair placement. M-06/A/B remain unassigned. No code-compliance, accessibility, structural-safety, professional, permit, or construction-readiness claim follows.
+
+## M295 — Fit the inherited full 60-in stair against joint same-area lower layout options — 2026-11-01
+
+**Acceptance:** use only selected-D's documented 8 × 7½-in / 7 × 11-in / 4-ft-width / 4-ft-landing-depth stair comparison for the 60-in transition; compare against same-area L-01/C-LOWER changes with all other lower blocks and the 36 × 32-ft shell fixed; protect M-06 windows; preserve M294's minimum-change preference as a source reference; screen landing interfaces separately from independent 36-in route paths; pin inputs; deterministic two-run replay and SVG validation; no selected-D/Revit/IFC geometry change.
+
+**Status:** Complete as a bounded analysis-only comparison. .NET 10 build: 0 warnings/errors; two runs pass 19/19 and reproduce the three output files byte-for-byte; SVG parses. The full-rise envelope is 4 × 14.4167 ft (48.5 in longer than M285's preferred half-story envelope). Search tests 1,208 L-01 and 2,912 C-LOWER candidates, 6,707 compatible pairs and 1,640 full-size stair envelopes. It finds 5,065 direct landing-interface cases but **zero** separate 36-in straight/dogleg routes to C-LOWER. The least-change sample leaves rooms at source geometry but a stair landing occupies 15.3333 sq ft of C-LOWER; the remaining 55.5417 sq ft is not shown usable. Evidence and commands: `Architecture/M295_Full_Rise_Stair_Fit_Study_2026-11-01/README.md`.
+
+**Limits/next:** this negative result is limited to the bounded rectangle/grid screen and fixed-room constraints. The owner must choose any further relaxation, such as treating the landing and C-LOWER as a combined space, permitting another room's same-area move/reshape, or studying a different vertical/flight arrangement, before additional geometry is selected. No code-compliance, accessibility, structural, professional, permit, or construction-readiness conclusion follows. Keep M-06/A/B unassigned.
+
+## M296 — Integrate the full-rise stair landing with lower circulation — 2026-11-01
+
+**Acceptance:** quantify the owner-authorized M295 minimum-change stair/C-LOWER union; distinguish landing overlap from complete stair-footprint overlap; calculate residual rectangle area and side bypass widths; compare only with the inherited 36-in project route-screen precedent; pin sources; reproduce JSON/check/SVG byte-for-byte twice; leave selected-D, Revit, IFC, M-06/A/B unchanged.
+
+**Status:** Complete as an analysis-only screen. The .NET 10 generator builds with 0 warnings/errors. Two independent runs pass 9/9 checks and produce identical outputs; SVG parses as XML. M295's 15.3333-sf landing overlap and 18.8472-sf complete stair-envelope overlap are distinct. C-LOWER has 60.0417 sf outside the full stair footprint, but the west-side passage beside the stair is only 21 in and the stair reaches/passes C-LOWER's east edge, leaving no east bypass. Thus the landing and C-LOWER rectangles join, but there is no 36-in geometric side bypass in this configuration. See `Architecture/M296_Landing_Circulation_Integration_Study_2026-11-01/README.md`.
+
+**Limits/next:** this does not prove an integrated circulation design impossible; actual wall/opening/door geometry, stair approach, stair opening, headroom, structure, finishes, tolerances and continuation beyond C-LOWER are absent. Decide which additional layout freedom or vertical arrangement merits analysis before selecting geometry. No selected-D/Revit/IFC edits. M-06/A/B remain unassigned. No code-compliance, accessibility, structural, professional, permit, or construction-readiness claim follows.
+
+## M298 — Runtime-verify an 8–10 ft interval room-volume wireframe — 2026-11-02
+
+**Acceptance:** keep selected-D unchanged; read its source-hash-pinned 40 × 42 ft main and 36 × 32 ft wing shell envelopes, room blocks/IDs and plan offsets; create separate 8/9/10-ft interval comparison cases in a disposable Revit model; label all geometry as wireframe/zero-assembly study proxy; verify exactly nine study datums, source-derived room volumes and saved-RVT fingerprint; preserve the exact AddInId/hash workflow; do not claim a finished walkthrough or construction model.
+
+**Implementation/build:** `Tools/RevitPilot/WalkthroughShellStudyCommand.cs` and the Revit ribbon entry are added. The command reuses the disposable template's seed level and closes the saved derivative before hashing it. The Revit 2027 API build succeeds with 0 errors and 2 MSB3277 reference-conflict warnings. Assembly SHA256: `86F3440736FE6D47F679E0F670194AAC2C307BAFD225564BC952AB800FAFE5EB`. The authorized per-user manifest's AddInId is correct and resolves inside this checkout to that DLL.
+
+**Runtime validation:** Revit 2027.3 ran the command in a new disposable project. `.local/revit-pilot/walkthrough-shell/20261101T170505234Z/` contains the model and manifest. PowerShell validation confirmed the selected-D source hash, saved-RVT hash, 9 levels, 21 unique source IDs across 63 case records, cases 8/9/10 ft, 828 vertical curves and zero native walls/floors/stairs/roofs. The saved RVT reopened and its isometric comparison view was inspected; Revit was closed before independently hashing the RVT. No trust prompt appeared and no trust choice was made. Full commands and limitations: `Architecture/Walkthrough_Shell_Wireframe_Study_2026-11-02/README.md`.
+
+**Limits/next:** the runtime-verified wireframe still shows room volumes only. No physical walls, floor/roof assemblies, doors/windows, stairs, MEP, or selected exterior dimensions are represented. The material schedule records living skylights with diffuse light/TV-glare avoidance, but count, placement/product/opening remain undesigned. M297 later tested L-02 movement and found no full-rise stair placement even with L-02 omitted; the next gate is whether to relax L-01 or compare another stair/level arrangement before detailed partitions and openings. M-06/A/B assignment gates remain active.
+
+## M299 — Create a first native Revit wall-shell comparison — 2026-11-02
+
+**Acceptance:** use only the source-hash-pinned selected-D shell envelopes and plan offsets plus the owner-authorized 8/9/10-ft comparison intervals; create a separate disposable Revit model with native Basic Wall elements around the comparative lower/main/upper shell rectangles; reuse one seed level and create eight comparison levels; record actual template wall type/name/width as an unselected placeholder; label all walls and limitations; verify 36 walls, 9 levels, exact source/basis fingerprints and saved-RVT hash; reopen and visually inspect the 3D view. Do not edit selected-D, add unsourced doors/windows/partitions/floors/roof/stairs/structure/MEP, or claim a selected assembly, coordinated house, code compliance, structural adequacy, or construction readiness.
+
+**Status:** Complete as a bounded, disposable native-wall comparison. `Tools/RevitPilot/build.ps1 -BuildDirectory native-wall-shell` builds with 0 errors and 2 MSB3277 reference-conflict warnings; project-local DLL SHA256 is `1C60CF4A1DF8EAF78CB2D3071F46C233F410ED3E9CB6357A4F88DD9975585A78`. Revit 2027.3 generated `.local/revit-pilot/native-wall-shell/20261101T172354034Z/`. PowerShell confirmed selected-D and basis fingerprints, saved-RVT SHA256 `75D3D0400AAFAD33870217BFB2CD88337C574DD789F657C8313E997BBFB02453`, 36 walls/records, 9 levels, 8/9/10-ft cases, and zero doors/windows/floors/stairs/roofs. The saved model reopened and its named isometric view was visually checked. Template `Wall 1` at 8 in is explicitly provisional and unselected. The failed run `20261101T172028419Z` is preserved. See `Architecture/Native_Wall_Shell_Study_2026-11-02/README.md`.
+
+**Limits/next:** This supplies the first native Revit wall objects, but only comparative perimeter rectangles. It is not a selected footprint or coordinated model, and is deliberately uncolored. Envelopes, wall type/width, floor-to-floor intervals, openings, and assemblies remain unresolved. Use `Architecture/Render_to_Model_Reference_Map.md` before assigning finishes: current owner decisions/material schedule supersede conflicting details in conceptual renders, and no exterior palette is documented. M297/M300 show neither L-02 nor L-01 move alone resolves the full-rise route. Next: analyze alternate stair/level arrangements that preserve the 60-in transition and current room blocks, then develop supported wall lines/openings and a rendering-aligned material pass. Keep M-06/A/B gates active. No compliance, structural, professional, permit, or construction-readiness claim follows.
+
+## M297 — L-02 same-area move/reshape stair-route study — 2026-11-02
+
+**Acceptance:** preserve L-02's 110-sf source area; keep L-01, C-LOWER and all other lower rooms fixed in the 36 × 32 ft comparison shell; use the M295 full 60-in stair envelope and M215 36-in route precedent; protect both M-06 windows, west A and B; pin all inputs; distinguish direct landing interfaces from a separate swept route; replay and compare output hashes; leave selected-D/Revit/IFC unchanged.
+
+**Result:** `Tools/M297Generator` builds on the repository-local .NET 10 SDK with 0 warnings/errors. Two runs pass 14/14 checks and reproduce report/check/SVG byte-for-byte; SVG parses as XML. It generates 4,761 same-area L-02 rectangles. In the maximally permissive stair-placement screen, L-02 is removed from the plan entirely. Of 16,892 full-size stair envelopes, 16,272 overlap fixed rooms, 600 overlap protected M-06 windows, and 20 cross C-LOWER outside an end landing; none survives. Therefore moving L-02 alone cannot place this full 60-in stair under the other fixed constraints. This does not establish that another stair arrangement or overall plan is impossible. Full evidence and commands: `Architecture/M297_L02_Same_Area_Stair_Route_Study_2026-11-02/README.md`.
+
+**Limits/next:** no physical room/stair selected; no Revit/IFC. The result is bounded to the schematic rectangles, 0.25-ft grid, protected windows, fixed L-01/C-LOWER/other rooms and inherited stair geometry. M300 subsequently tested a same-area L-01 move/reshape and also found no route; compare an alternate stair/level arrangement as a labeled analysis-only proposal. Keep M-06/A/B unassigned and west A protected. No code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
+
+## M300 — L-01 same-area move/reshape stair-route study — 2026-11-02
+
+**Acceptance:** follow the owner's “Move/reshape L-01, keep the 60-in stair” direction; preserve the 250.5556-sf L-01 source area; keep L-02, C-LOWER and other rooms fixed; use the M295 full-rise envelope and M215 route precedent; protect both M-06 windows, west A and B; pin inputs; distinguish landing interfaces from continuous routes; replay outputs; make no selected-D/Revit/IFC edits.
+
+**Result:** `Tools/M300Generator` builds on repository-local .NET 10 with 0 warnings/errors. Two runs pass 14/14 and reproduce JSON/check/SVG byte-for-byte; SVG parses. It tests all 1,098 same-area L-01 candidates. With L-01 omitted, 16,892 full-size stair placements yield 131 envelopes after fixed-room/window/landing screens. Pairing these with L-01 candidates leaves 10 non-overlapping pairs; both ends of each were searched, 20 BFS runs total, with no route/interface. Neither moving L-01 nor the prior L-02-only study resolves this bounded full-rise case. Details/replay: `Architecture/M300_L01_Same_Area_Stair_Route_Study_2026-11-02/README.md`.
+
+**Limits/next:** no physical geometry selected or Revit/IFC created. Geometry is a 0.25-ft rectangle screen with 36-in route proxy and inherited stair envelope. Next: compare alternate stair/level arrangements preserving the 60-in transition and current rooms as analysis-only proposals. Keep M-06/A/B unassigned and west A protected. No code, accessibility, structural, professional, permit or construction-readiness conclusion follows.
+
+## M311 transaction review follow-up
+
+Moved the base-level rename inside the Revit transaction; the previous build would attempt a document modification outside a transaction. Rebuilt with 0 errors and 2 existing MSB3277 warnings. Corrected DLL: ignored .local/revit-pilot/clear-ceiling-wall-height-transaction-fix/Release/net10.0-windows/RevitPilot.dll; SHA256 DF03D04175FF19A9192A3AF8A18196F629BA09147DEF18FA4BFF3588A5305320. This corrected build is staged, not registered or runtime verified. The per-user manifest still references the preceding build; do not run that preceding build. Next: register the corrected build using AGENTS.md backup/path/hash checks, restart Revit and validate runtime outputs. No model generation occurred in this follow-up.
+
+M311 registration follow-up: the corrected transaction-fix DLL SHA256 DF03D04175FF19A9192A3AF8A18196F629BA09147DEF18FA4BFF3588A5305320 is now registered with the authorized AddInId and a verified in-checkout assembly path. Previous manifest preserved under ignored .local/revit-pilot/registration-backups/20261101T134453327/. Revit remains at Home; fresh computer-use window recovery failed with "id must be an integer >= 0" despite a returned numeric window ID. Restart and runtime execution remain pending; no M311 RVT exists. This supersedes earlier notes saying the corrected DLL is unregistered.
+
+M269 retained-report validation follow-up: current validate_candidate_family_geometry.ps1 replay against the pinned Kohler source hash 3B1CBDAA844D35BD462F6E59A828B82F7870FDE4EE7397BAC09F4CA0C2F9B949 passes 10/11; limitations_explicit fails (three limitation entries). Console evidence is ignored .local/revit-pilot/m269-current-validator-replay.json (plain text despite suffix). Do not describe this as a full current-validator pass or alter the historical report to conceal it. Corrected report generation/runtime replay remains pending. B and M-06 remain unassigned. Revit still enumerates Home, but fresh screenshot capture again fails with foreground window did not report a process id.
+
+M311 family-report repair: generator now explicitly states whether an instance was placed, conditionally distinguishing symbol-only inspection from the synthetic-wall probe. Historical M269 report remains unchanged. Separate m311-family-limitations-fix DLL builds with 0 errors/2 existing warnings and is not registered. Validator fixture runner now uses the current PowerShell executable; hardcoded powershell.exe lacked Get-FileHash in this environment. Fresh fixture tests improve from 0/6 infrastructure failures to 5/6: valid host-probe fixture still fails and requires diagnosis. Evidence .local/revalidation/m311-family-validator-tests-current-host.json. No runtime geometry or bathroom assignment is established.
+
+M311 validator fixture resolution: the valid host-probe fixture inherited symbol-only no-placement language and omitted the required synthetic-host/test-wall limitations. Replaced that fixture wording with accurate one-instance disposable-host scope; validator rules unchanged. Current-host runner and corrected fixture pass 6/6, including four rejection cases. Evidence .local/revalidation/m311-family-validator-tests-fixed-fixture.json. Historical M269 still fails limitations_explicit; future report-generator repair remains build-only pending Revit runtime.
+
+Runtime blocker audit: current Revit inventory and screenshot confirm Home, with no M311 output folders beyond the build Release directory. A fresh returned-window selection and activation succeeded, but the authorized idle-Revit restart input again failed with foreground window did not report a process id. This is the same persistent control-bridge blocker across multiple goal continuations. Corrected native geometry and corrected family-report runtime remain unproven; source geometry/retained IFC baseline and validator fixture tests remain the latest passing evidence. Owner intervention to restart Revit and open a blank disposable project is required before further native runtime validation. No remote operation or source-model edit occurred.
+
+M311 native runtime succeeded after owner invocation, 2026-11-01: run .local/revit-pilot/clear-ceiling-wall-height/20261101T185016177Z contains comparison-index.json, three per-model manifests and three RVTs. Revit journal records successful save and completion dialog. Independent PowerShell checks confirm all input fingerprints and saved RVT hashes, three models, 12 wall records and one local level per model, four walls in each 8/9/10-ft case, zero base elevation, exact selected-D footprint edge lengths, and zero reported floors/ceilings/doors/windows/stairs/roofs. Evidence validation-powershell.json in the run folder. This is manifest/file validation plus in-command runtime counts; independent reopened RVT inventory and visual inspection remain pending. These are three isolated footprint height comparisons, not a coordinated house or a new IFC export. This supersedes earlier statements that no M311 RVT exists.
+
+M312: owner visually accepted wall comparisons and authorized main-floor coordination with front/schematic-south entrance retained. New pantry sensitivity derives M213 with only pantry proxy changed from 5x6 to source-area 5x7 ft at its prior study location. Two runs pass 13/13 and underlying route 29/29; all three outputs match byte-for-byte. Kitchen sample remains 178.875 sf, island 8x4 ft, route 33.5 ft, zero minimum modeled obstacle gap, fragile. This is not an integrated front-entry/living-opening solution or selected pantry location. Evidence Architecture/M312_Source_Pantry_Sensitivity/artifacts. Next integrate front arrival and living/kitchen opening, with actual door/approach and protected A/B. No selected-D/Revit/IFC edits.
+
+Main-floor frame audit, 2026-11-01: M312 inherits the BathFirst alternative kitchen origin (0.6667,0.6667), whereas Selected-D kitchen is on the opposite side. Translating its 13.5x13.25-ft envelope at that inherited origin overlaps Selected-D M-01 by 182 sf (M-05 overlap zero). A/B window coordinates agree between both source studies. Thus M312 is a component sensitivity only and its route cannot be inserted into Selected-D unchanged. Next joint search must solve M-01/M-02/M-05 positions and recompute routes in one common frame with front entry fixed to the schematic south edge. Do not claim an integrated layout from the earlier passing route.
+
+Front-entry joint block screen: new Tools/search_main_front_entry_blocks.ps1 derives source living/entry sizes, fixed dining and full 5x7 pantry, protected A/unassigned B, and M312 kitchen envelope in a common Selected-D frame. Two runs each test 10,074 triples and retain 780 static candidates; JSON is byte-identical. Source Y row retained for front arrival; kitchen shares a boundary with living. No route, furniture mapping, actual door, approach, porch integration or wall assembly is verified. Evidence .local/revalidation/front-entry-joint-a/front-entry-blocks.json and joint-b. Next screen actual front-entry-to-social routes and mapped kitchen furniture before selecting a layout.
+
+Front-entry interface follow-up: all 780 static placements were screened for direct side contact between M-05 and living or kitchen with shared span at least the inherited 36-in M312 route proxy. 39 arrangements qualify at the block-interface level. Two runs reproduce both JSON artifacts byte-for-byte (.local/revalidation/front-entry-interface-a and interface-b). This does not verify doors, approach, counter/island blockage or continuous routes. Next map kitchen casework/island/stool proxies and test circulation through these 39 interfaces. Source Selected-D untouched; A protected and B unassigned.
+
+Furnished main-floor interfaces: Tools/screen_front_entry_furnished_interfaces.ps1 maps M178 8x4 island and stool proxy plus centered 12.5-ft counter into all 39 common-frame entry candidates in both mirrored orientations. Using inherited 36-in square approach patches, 19/78 orientation cases have clear patches at both entry/social and kitchen/living boundaries. Two runs reproduce report byte-for-byte (.local/revalidation/front-furnished-a and front-furnished-b). This is not continuous route validation: living/entry furniture, door swing, wall thickness and appliance-open zones remain omitted. Next connect the passing patches with a swept route confined to actual room union and preserving protected A/B. No selected-D or Revit/IFC edits.
+
+Continuous front-entry route screen: Tools/FrontRoute builds and tests 19 furnished-interface cases with 36-in swept rectangles and exact coordinate-cell containment in the entry/living/kitchen union. 19 of 19 connect the front-interior arrival proxy to a kitchen/living interface; two reports match byte-for-byte (.local/revalidation/front-route-a.json and front-route-b.json). Routes stop at the interface, with living and entry unfurnished; no exterior door, swing, kitchen working destination, appliance-open or dining/porch route validated. Next independently audit swept paths, then extend through kitchen to dining/porch. No geometry selected or Revit/IFC edited.
+
+Independent front-route audit: PowerShell validator verifies input fingerprint, disjoint room domains, arrival/target endpoints, orthogonality, full swept-area containment by intersection sums and obstacle exclusion. Both reports pass 19 cases and all swept patches. Initial audit exposed integer overload truncation in its Math.Max(0,...) calculation; corrected to 0.0 before reporting passes. Route scope remains front-interior to kitchen/living interface only; dining/porch and actual doors unresolved. Evidence .local/revalidation/front-route-independent-a.json and independent-b.json.
+
+Dining extension screen: FrontRoute now accepts optional Selected-D input and constructs an explicit residual connector from kitchen rear edge to source dining front edge using their shared X overlap; rejects protected-A/B intrusion and includes pantry/A/B obstacles. 19/19 sampled cases reach the unfurnished dining-front target with 36-in swept proxy. Two outputs match byte-for-byte (.local/revalidation/front-dining-a.json and front-dining-b.json). Connector geometry is a proposed circulation allocation, not selected room geometry. Dining furniture, porch, door swings, stair/core and independent extended-route audit remain pending; no full integrated plan claim.
+
+Dining extension independently verified: current FrontRoute build has 0 warnings/0 errors and reports Selected-D SHA256. Two source-fingerprinted generations reproduce identically; independent PowerShell intersection-area audit passes 19 routes/3397 swept patches each, checks disjoint domains, endpoints, obstacle exclusion including pantry/A/B and exact source dining dimensions. Evidence .local/revalidation/front-dining-audited-a.json and front-dining-independent-a.json (plus b counterparts). Dining remains unfurnished and connector is a proposal; porch/door/appliance/core coordination still unresolved. Next add dining furniture and porch relationship before selecting or modeling a main-floor candidate.
+
+Furnished dining gate fails: FrontRoute now maps the exact M192 36x60-in table, four chair bodies and four pull-out/use proxies into source M03, verifies their containment, and searches to dining rear edge. 0/19 route cases pass in this bounded furniture orientation/placement; two reports match byte-for-byte (.local/revalidation/front-dining-furniture-a.json and b). Build 0 errors. This does not invalidate prior front-to-empty-dining-front results, but blocks claiming furnished dining/porch continuity. Next compare rotated dining-set orientation and/or allowed placement changes, retaining island and A/B protections. No Revit, IFC or selected-D changes.
+
+Dining whole-set rotation sensitivity: 90-degree rotation of the complete source table/chair/pullout set about its bounding centre, then centring in source M03, preserves every rectangle dimension (axes exchanged) and checks containment. 19/19 front-to-dining-rear route cases pass versus 0/19 source orientation/placement. Two reports match byte-for-byte (.local/revalidation/front-dining-rotated-a.json and b); build 0 warnings/errors. This changes orientation AND centring, so do not attribute improvement to rotation alone. Proposal only; independent transformed-furniture/path audit and actual porch/door/core/furnishing coordination remain pending. No source, Revit or IFC edits.
+
+Rotated dining independent audit passes: reconstructs every table/chair/use-zone rectangle from fingerprinted M192 input and stated rotation/centring transform; checks source dining, arrival/dining-rear endpoints, disjoint domain coverage and obstacle exclusion. 19 routes/4511 swept patches pass in each of two independent audits. Packaged artifacts under Architecture/Main_Floor_Front_Entry_Coordination_2026-11-01/artifacts. Still proposed: no porch connection, door swing, appliance-open zones, living furniture or vertical-core reconciliation. No selected-D or native model changes.
+
+Rear dining sensitivity: owner-authorized dining/porch movement scope used to translate unchanged source dining 11.3333x14-ft block north to y=28..42-ft shell rear edge; rotated/centred dining furniture retained. 19/19 front-interior-to-dining-rear routes pass; two reports identical (.local/revalidation/rear-dining-a.json and b). This extends the proposed connector substantially (first case about 156.09 sf versus 24.94 sf previously); it is not selected circulation allocation or finished architecture. Provides an exterior porch-attachment opportunity only; porch/door geometry not yet modeled. Independent moved-dining audit, core/room conflict checks and area efficiency are still required. No selected-D/Revit/IFC edits.
+
+Rear connector area/core audit: independent script Tools/audit_rear_dining_corridors.ps1 clips every swept patch to proposed connector and calculates exact strip-union area. Across 19 route cases, actual swept connector union is 45-56 sf; first broad connector envelope was 156.09 sf. These are route-footprint areas, not approved circulation floor allowances. Both connector and moved dining rectangles clear inherited main landings, floor openings and lift reservation in plan. Two audit reports identical (.local/revalidation/rear-corridor-a.json and b). Final stair/core remains TBD; no compliance claim. Next narrow explicit corridor proposal and exterior porch/door sweep, then independent moved-dining path validation. No selected-D/Revit/IFC edits.
+
+Exterior porch reservation screen: rear-dining branch now adds source 12x10-ft porch centred on dining rear face outside y=42 shell edge, and a nominal 5-ft French-door reservation at the west end of dining face (specification comparison dimension, not actual clear width). Swept-route crossings are constrained to that reservation; target reaches one half-route-width (1.5 ft) into porch, so full 3-ft square lies inside porch at endpoint. 2/19 sampled cases pass, versus 19/19 to dining rear. Two reports match (.local/revalidation/front-porch-a.json and b); no source/native model edits. Independent porch-route validation, drawing, door swing/clear opening, threshold, site and final core remain pending. Earlier wording about reaching 3 ft into porch refers to the swept patch extent, not centreline distance.
+
+Porch independent audit passes 2 routes/581 swept patches in each replay, checking moved dining dimensions, source porch size/attachment, nominal 5-ft reservation and every wall crossing. Source-derived transformed dining furniture independently reconstructed; 36-in swept union coverage and obstacle exclusions pass. Generated annotated plan SVG via Tools/draw_front_porch_candidate.ps1; XML parses, visual rendering review pending. Evidence .local/revalidation/front-porch-independent-a.json and b; drawing front-porch-candidate.svg. Actual door family/swing/clearance, threshold, site, living furniture, appliances and final core remain open.
+
+Visual review completed using System.Drawing-rendered candidate 21 plan. Route band and dining furniture agree with report; drawing reveals large unallocated main-shell area, remote pantry and unfurnished living traverse. Candidate remains route-tested analysis, not selected house layout. Next jointly relocate full 5x7 pantry within authorized study scope and test furnished living/arrival routes; preserve A/B and future core. PNG/SVG and porch-route/independent report now archived with study. Tools/FrontRoute ignores generated obj/bin; no generated binaries staged. No source/Revit/IFC change or remote operation.
+
+Near-kitchen pantry gate: Tools/search_pantry_near_kitchen.ps1 tests source 35-sf pantry in both 5x7/7x5 orientations directly north of proposed kitchen, holding passing porch routes, dining, living/entry, A/B and inherited core clear. Nine static placements preserve route and reservations; zero have a clear local 36-in kitchen-to-pantry approach with source kitchen counter/island/stool proxies. Two reports identical (.local/revalidation/pantry-near-a.json and b). Bounded north-adjacent search only, not impossibility. Next test connector-side access to full-area pantry rather than reduce island or storage; door swing/shelving and full approach still unverified. No native/source model changes.
+
+Connector-side pantry follow-up: all nine full-area north-adjacent pantry placements have at least one straight 36-in swept spur from a recorded porch-route point into the pantry. Spur is contained in the explicit connector envelope, avoids source A/B/core/room and kitchen-furniture obstacles, and terminates one route radius inside pantry. First case pantry (5.9167,13.9167,5,7) ft uses a 5-ft centreline spur from existing route. Both reports identical (.local/revalidation/pantry-spurs-a.json and b). Local direct kitchen approach still fails in all nine. Proposed connector-side access only; shelves, door family/swing and independent spur audit pending. No source/Revit/IFC changes.
+
+Pantry independent spur audit passes nine stored examples twice (Tools/validate_pantry_spurs.ps1; .local/revalidation/pantry-spurs-independent-a.json and b). Verifies source report hashes, 35-sf pantry, actual route-point join, reconstructed sweep geometry, connector containment, full terminal square inside pantry and kitchen obstacle exclusion. This does not independently re-audit all fixed reservations or all generated spurs. Kitchen_Dining_Porch_Specs.md specifies nominal 2ft6in pantry door, while route proxy is36in; door study question sent (compare old nominal30in and wider option). No cited pantry shelving depth found in that spec. Do not claim door/shelving fit; maintain proposed status. No source/native model or remote edits.
+
+Living source audit found existing schematic loveseat/recliner and TV/hearth reservation rectangles in Architecture/Schematic_Study_2026-10-25/study.json living_test. They are study proxies, not measured selected furniture or listed thermal envelopes. Overlaying those source placements in both porch-reaching candidates intersects the previously empty-living route (TV and hearth reserves). Evidence .local/revalidation/living-proxy-overlay.json. Existing routes therefore do not establish furnished-living continuity. Next reroute with these obstacles and compare furniture/wall relationship as proposals; exact TV/stove still unselected. Pantry-door owner question pending; no dimension invented.
+
+Living-furnished reroute: FrontRoute optionally maps fingerprinted source living_test (TV/service, hearth, loveseat, extended recliner proxies). Source placements yield 0/19 complete porch routes; whole-set local-Y mirror yields 2/19 with unchanged dimensions. Two mirrored reports identical (.local/revalidation/front-living-mirrored-a.json and b); baseline front-living-source.json retained. Build 0 warnings/errors. These historical TV/hearth reserves are not measured selected products or listed thermal clearances. Independent living-transform/route audit, near-pantry rerun on changed paths, door choice and final furnishing/MEP/core/site review pending. No selected-D/native edits.
+
+Combined living/pantry checkpoint: independent living-transform and full-route validator passes 2 routes/581 swept patches in both replays. Near-pantry rerun on new furnished routes retains 9 placements and independently verifies all 9 stored connector spurs. Updated PNG includes living proxies and relocated pantry proposal; archived latest reports under main-floor coordination artifacts. Door choice remains pending; no actual shelving, door swing/clear width, appliance-open or Revit construction geometry established. Next review combined drawing and prepare disposable main-floor derivative only as proposal.
+
+Unified candidate input built: Tools/build_main_floor_candidate_input.ps1 packages candidate21, five proposed main room blocks, rotated/centred dining, mirrored living proxies, 35-sf nearby pantry, porch, source-bound route/spur and protected A/B into one deterministic Revit-oriented JSON. Two builds identical; all tracked source hashes and route/pantry lineage agree. Artifact main-floor coordination artifacts/main-floor-candidate-input.json. No candidate selection or wall/door assembly approval implied; pantry door choice pending. Next implement a disposable single-level native Revit comparison driven by this file, keeping source selected-D unchanged and all openings/assemblies labeled.
+
+Native main-floor comparison command implemented: MainFloorCandidateCommand reads source-linked candidate JSON and validates its source fingerprints, creates native main-shell/porch/pantry walls in separate 8/9/10-ft side-by-side cases plus room/furniture outlines, and saves disposable RVT/manifest. Uses template wall type as unselected placeholder and explicit 36-in front/pantry route gaps plus nominal5-ft porch reservation. Build 0 errors/2 existing MSB3277 warnings; DLL SHA256 0A5C5B56AF2E5ECAE4325D61879C8E8DBF01510FBF5EF19669ECF39555AA48AD under ignored main-floor-candidate-v1. Build only: not registered or run yet. Centreline-based template walls can change actual face clearances; native runtime geometry/opening audit and IFC export required before any fit claim. Selected-D remains unchanged.
+
+Main-floor Revit registration: verified authorized AddInId and current-checkout assembly path, SHA256 0A5C5B56AF2E5ECAE4325D61879C8E8DBF01510FBF5EF19669ECF39555AA48AD; prior manifest byte-hash verified backup .local/revit-pilot/registration-backups/20261101T141800582/. New main-floor-candidate-v1 DLL registered. Current Revit screenshot shows old clear-height success dialog still open in blank Project1; attempt to close it failed with foreground window did not report a process id. New command not loaded/executed; no main-floor native RVT generated. Owner can close dialog, restart Revit, use Load Once only for exact registered DLL, then run Build main-floor candidate comparison in a blank project. All previous source geometry and native outputs preserved.
+
+Native audit v2 build/registration: main-floor command now snapshots actual post-transaction Revit wall location curves, width, unconnected height and bounding boxes, alongside intended records. Requires 39 walls (13 per case). Build 0 errors/2 existing SDK warnings; SHA256 95018D250CC726C25B67FDDC67C975A16FCF61A1DD844AE3E6F13DA0975B7005. Authorized AddInId and current-checkout path verified; previous registration preserved C:\Users\brand\.codex\worktrees\house-design-sandbox\Forever_home\.local\revit-pilot\registration-backups\20261101T141931547. Current registered build main-floor-candidate-native-audit-v2; runtime remains pending. This does not establish wall-face route fit until native output is inspected.
+
+Pantry jamb review: previous stored spur selected the bottommost equal-length approach, tangent to the south wall centreline. Changed equal-length tie-break to closest pantry-depth centre; first spur now y17.4167ft, same5ft length, leaving full corner jamb separation. All9 independent spur examples still pass. Canonical pantry options and candidate input regenerated. Native command now expects42 walls (14 per case: centred pantry opening has two west jamb segments). New main-floor-candidate-centred-v3 build staged, runtime not yet verified; previous native39-wall runtime instructions are superseded. No native/source baseline model edits.
+
+Native candidate validator implemented at Tools/RevitPilot/validate_main_floor_candidate.ps1; syntax parsed successfully. Requires isolated run, exact input/upstream/RVT hashes,42 native walls/252 outline curves, actual-to-intended curve agreement and conservative actual wall-bounds exclusion for main route plus centred pantry spur in all height cases. Emits failure evidence for deviations/collisions. No runtime output exists yet, so validator is not runtime-verified. Next owner Revit restart/run remains necessary due control bridge failure.
+
+Owner selected Compare30-in and wider pantry door; recorded Decisions/2026-11-01_Pantry_Door_Comparison.md. Comparison uses nominal30 baseline and proposed nominal36 case tied to route proxy; neither establishes actual clear width. Arithmetic differences are -6in and0in respectively. Door/frame, swing and shelf layout remain unresolved. Existing native36-in gap is only a reservation. No native main-floor manifest found yet; runtime still pending.
+
+Native runtime blocker revalidated: fresh Revit screenshot still shows old clear-height completion dialog in Project1. Current registered centred-v3 DLL hash matches FC4ECE47B59BD79A550BE2FDFE5522FCE7D491E75349346D0A48F158E1D61895. No main-floor native manifest exists. Fresh control-bridge observation then fails foreground window did not report a process id; no input succeeded. Same external-state blocker persists across the recent native-command continuations. Required owner step: close old completion dialog, restart Revit, choose Load Once only for exact project-local centred-v3 DLL, create blank project and run Build main-floor candidate comparison. Goal incomplete; native runtime, wall-face validation and IFC remain pending.
+- Native candidate correction (in progress): the saved 42-wall disposable RVT exposed a genuine pantry/main-route bound collision. The packager now chooses the furthest-east equal-area pantry candidate and records the new input hash. Acceptance requires a fresh Revit run against that hash, native wall-bound validation with zero collisions/deviations, then isolated IFC export/checks. The prior RVT remains evidence of the failed placement and is preserved.
+
+- Native/IFC acceptance evidence (2026-11-01): corrected 42-wall disposable candidate now passes native curve/bound validation (0 deviations, 0 collisions, 12,264 comparisons) and exports through the exact project-local RevitPilot DLL to a non-empty IFC2x3CV2 file. `Tools/RevitPilot/validate_main_floor_candidate_ifc.ps1` checks the manifest hash, STEP header, schema and wall-entity presence. Remaining scope is deliberate: this is not the selected-D model and still lacks actual doors, floors, ceilings, stairs, roof, structure, MEP, code review or construction approval. Next milestone is independent reopened-document inventory and then carefully scoped architectural assemblies, with M-06/B kept unassigned until evidence supports them.
+
+- Reopened-document evidence (2026-11-02): `Tools/RevitPilot/AuditMainFloorCandidateCommand.cs` independently opens a byte-identical copy of the saved candidate and records `.local/revalidation/main-floor-candidate-reopened-inventory.json`. Source hash, 42 walls, 252 curves and zero floors/doors/roofs/stairs all pass. The next gate is not more shell validation: it is documented assembly/opening inputs and a separate selected-D architectural study, while M-06/B remain unassigned.
+
+- Reopened-inventory replay guard (2026-11-02): `Tools/RevitPilot/validate_reopened_candidate_inventory.ps1` rechecks the report schema, source hash record, expected 42-wall/252-curve counts and zero unapproved building categories. The current output passes; it remains evidence for the comparison derivative only.
+
+- M218 analytical replay (2026-11-01): two fresh PowerShell runs reproduce all three retained M218 artifacts byte-for-byte and pass 6/6 checks. The native M219 command is prepared and hash-pinned, but its Revit runtime remains a separate pending gate; do not describe the static replay as native RVT evidence.
+
+- Selected-D regression replay (2026-11-01): `Tools/validate_architectural_bim_baseline.ps1` passes two 43/43 geometry runs, six SVG parses, seven matching artifacts per run and the retained IFC2x3 validator 26/26. The source/RVT/IFC fingerprints remain unchanged. The next architectural gate remains native assemblies/openings in disposable derivatives, not edits to selected-D.
+
+- M-06 family evidence replay (2026-11-01): M280 rebuilds with 0 warnings/errors and reproduces both review artifacts byte-for-byte in two fresh runs, with 28/28 checks each. This confirms the family evidence pipeline, not a fixture selection or fit decision; M-06/A/B assignment gates remain active.
+## M328 — Native upper stair landing bridge — 2026-11-02
+
+**Acceptance:** derive a disposable native floor bridge from the measured compact-core upper stair/floor gap; preserve the source compact-core RVT and Selected-D; save an RVT, manifest and IFC2x3 export; validate hashes, marker, positive dimensions and IFC entities independently.
+
+**Implementation:** `CompactLandingStudyCommand` is registered only in the project-local RevitPilot build. It measures `FH-C-FLOOR-UPPER` and `FH-C-STAIR-MAIN-UPPER`, creates `FH-C-STAIR-LANDING-BRIDGE`, saves a disposable derivative and exports IFC2x3. The corrected command fingerprints saved RVT bytes directly after `doc.Save()`; validator: `Tools/RevitPilot/validate_compact_landing_ifc.ps1`.
+
+**Current status:** the corrected runtime produced `.local/revit-pilot/compact-core-landing/20261102T033153576Z/` with a manifest, saved RVT, and IFC2x3. The bridge measures 5.625 ft × 3.3333 ft (18.75 sq ft) on `C Upper +5 ft`; saved RVT SHA256 is `2cdd9c7c1f1dc6363011aeb5f3cb09d85ddafdfda96ff7c1ef489944c0e2edfb`. `Tools/RevitPilot/validate_compact_landing_ifc.ps1` passes **15/15**, including IFC STEP/schema, floor entity, and the exported landing slab matched to manifest element id 4084. The command now leaves the disposable derivative open for review because Revit forbids closing the active document through the API; UI closure released the file lock. Do not promote the landing or claim route/headroom/guard/rail/structure/accessibility/code compliance.
+
+**Next:** proceed to the separate roof-shell runtime study. Keep M-06/B unassigned and Selected-D untouched.
+## M333 — Native steep-roof shell comparison (prepared; Revit runtime pending)
+
+**Acceptance:** build a disposable Revit 2027 derivative containing three native `FootPrintRoof` elements derived only from the documented 8:12, 10:12 and 12:12 comparison options; preserve Selected-D; export IFC2x3; validate native roof count, source/basis hashes, saved-RVT lineage and IFC entities. Do not select a pitch or imply code compliance.
+
+**Implementation:** `Tools/RevitPilot/NativeRoofShellStudyCommand.cs` is registered behind the owner-authorized AddInId. It creates side-by-side 40 × 42 ft roofs on a relative eave datum, sets the documented slope ratios, records each element ID and exports inside a rollback transaction. The project-local DLL builds with 0 errors and the current hash is `9EA96F4FBF28BA8F1108F36937AD58C7DC86049D73956F4D42999350B2ADF9AF`; the prior manifest is preserved under `.local/revit-pilot/registration-backups/`.
+
+**Status:** runtime verified. The corrected project-local DLL SHA256 is `D879A76EEE6C79978E0B15950D58E0737365EC4C3026C7AE02129C3A7CB16423`; the prior per-user manifest is preserved under `.local/revit-pilot/registration-backups/20261101231310984/`. Revit 2027.3 produced `.local/revit-pilot/native-roof-shell/20261102T041843122Z/` with three native roofs, RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, and IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`. `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13** after `Tools/RevitPilot/finalize_native_roof_hash.ps1` runs once Revit releases the saved file. No pitch, ridge, roof assembly, structure, code, permit or construction conclusion follows.
+
+## M344 — Native M-06 proxy setup
+
+**Acceptance:** in a disposable Revit 2027 document only, load the hash-pinned TOTO Nexus proxy and Evolution lavatory evidence family, create a measurable native wall harness, save RVT and export IFC2x3, independently validate hashes/entities/lineage, and keep all product/room gates false.
+
+**Status:** complete. Runtime output is `.local/revit-pilot/m06-proxy-study/20261102T122827829Z/`; `Tools/validate_m06_proxy_study.ps1` passes **15/15**. Final DLL SHA256 is `1ADCFD5CABC0916C447D08EE454C5CACC3E60DB961F4CA888F316837707A18EA`. The command is a labelled comparison derivative only: Champion PRO `610AA001.020` remains unresolved, B remains unassigned and Selected-D is unchanged.
+
+**Next:** use the validated proxy only to refine a separately labelled clearance/approach study if the exact owner product geometry or a documented proxy decision becomes available. Do not promote either proxy into Selected-D or claim code, accessibility, services, structural or construction readiness.
+
+## M345 — Evidence-chain replay including native M-06 proxy
+
+**Acceptance:** replay the retained native pantry, roof, landing, M-06 coordination, M-06 proxy, main-floor wall/plate provenance, consolidated gate and offline RevitPilot checks; require every stage to pass and retain a machine-readable report.
+
+**Status:** complete. `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261102-v2.json` passes 8/8 stages. The consolidated gate passes 11/11, the main-floor wall/plate chain passes 9/9, and the offline RevitPilot suite passes 53/53. The replay validates retained evidence and disposable derivatives only; it does not regenerate Revit or promote any placeholder.
+
+**Next:** advance only with cited assembly/opening inputs or an owner-approved separate study. Keep M-06 exact product, door/approach, service route and room assignment gates open; keep B unassigned and Selected-D unchanged.
+## M346 — Native main-floor opening comparison
+
+**Acceptance:** build a disposable Revit 2027 comparison from the documented main-floor candidate input; preserve Selected-D; represent the 36-in front route, nominal 5-ft rear French-door reservation, and pantry 30-in versus 36-in alternatives with native wall geometry; save RVT and IFC2x3 evidence; independently validate hashes, wall counts, aperture records, and unselected status.
+
+**Status:** complete. `NativeMainFloorOpeningStudyCommand` ran in Revit 2027.3 using the exact project-local, hash-verified DLL (SHA256 `E6D4343FDC17E14B9D7FE412C43DB257FB9E37D75942FDC8811D8F7255B5735D`). Output `.local/revit-pilot/main-floor-openings/20261102T125705634Z/` contains `pantry-30in` and `pantry-36in` RVT/IFC2x3 derivatives. `Tools/RevitPilot/validate_native_main_floor_openings.ps1` passes **13/13**.
+
+**Limitations:** these are native wall segments around nominal gaps, not selected door families or clear openings. The template wall type and 10-ft harness height are comparison scaffolding. No selected-D edit, room assignment, code/accessibility, structural, MEP, permit, professional or construction conclusion follows. Next architectural gate is coordinated native assemblies/openings in a separately labelled derivative, with M-06/B still unassigned.
+
+## M347 — Native documented nominal door-family comparison
+
+**Acceptance:** create a disposable Revit 2027 comparison from the documented material schedule and main-floor schematic for D-01/D-02/D-03/D-04 nominal widths; preserve Selected-D; export IFC2x3; independently validate source hashes, two pantry cases, native wall/door counts, unselected records and RVT/IFC hashes.
+
+**Status:** complete. `.local/revit-pilot/documented-door-study/20261102T133842605Z/` contains generic nominal RFA proxies, one comparison RVT and one IFC2x3 export. `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10**. The exact project-local DLL was loaded once after path/hash verification (SHA256 `DB8F9C8DA45D38188E23EDEEF612B4DAEB9D665F8148A95A09E97E02991A777B`).
+
+**Limitations:** generic nominal solids are not product selections; host walls remain continuous for family hosting; actual wall openings, frames, swings, thresholds, clear widths, shelving, code/accessibility, structural, MEP, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
+
+## M348 — Documented opening assembly comparison
+
+**Acceptance:** in a disposable Revit 2027 derivative, use the documented D-01/D-02/D-03/D-04 nominal widths to create native host wall segments and hosted door-family instances for the 30-in pantry baseline and labelled 36-in comparison; save RVT and IFC2x3; verify source hashes, 16 host/jamb walls, four door records, native `IFCDOOR` entities, hashes, and unselected status. Preserve Selected-D.
+
+**Status:** runtime verified in Revit 2027.3 using the exact project-local DLL SHA256 `EECD3536A91F2E6106DC766073257E998ADA8525AA207576A831ADBAE3D7D164` and owner-authorized **Load Once**. Output `.local/revit-pilot/documented-opening-assembly/20261102T135857068Z/`; `Tools/RevitPilot/validate_documented_opening_assembly.ps1` passes **8/8**. The corrected study uses slightly longer host segments around each nominal opening so Revit can host and cut the generic door families; IFC includes `IFCDOOR` and `IFCWALL` entities.
+
+**Limitations:** these are source-backed nominal comparison assemblies, not selected products or approved construction assemblies. Wall type, floor, frame, swing, threshold, clear width, weathering, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
+
+## M349 — Integrated candidate-21 main-floor assembly
+
+**Acceptance:** use the source-fingerprinted candidate-21 main-floor envelope in a disposable Revit 2027 derivative; add the documented D-01/D-02/D-03/D-04 nominal assemblies as native hosted doors across the 8, 9 and 10 ft clear-ceiling comparison cases; export RVT and IFC2x3; validate 57 walls, 12 doors, three unselected cases, source lineage and IFC wall/door entities. Preserve Selected-D.
+
+**Status:** runtime verified in Revit 2027.3 with the exact project-local DLL SHA256 `BB78D1C618544D3966A5EEFF65213AF94AA57FA3849509C8152CFF799263817E` and owner-authorized **Load Once**. Output `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` passes **7/7**. Revit issued six non-fatal wall-overlap warnings; the command explicitly disallowed wall joins and completed the IFC export. IFC contains `IFCDOOR`, `IFCWALL`, and IFC2X3 schema markers.
+
+**Limitations:** candidate-21 room blocks, host wall type, floor, ceiling, door frame/swing/threshold/clear width, furniture, route, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. This is a coordinated comparison derivative, not a selected house model; M-06/B and Selected-D are unchanged.
+
+## M350 — M-06 current-SKU evidence recheck
+
+**Acceptance:** recheck the owner-targeted current SKU against the manufacturer's current product page and linked installation/specification documents; capture source URLs and hashes; distinguish exact-SKU evidence from predecessor-family references; preserve M-06/A/B unassigned and Selected-D unchanged.
+
+**Status:** complete as an evidence update. The current American Standard page identifies `610AA001.020` and reports a 12-in rough-in; its linked PDFs are explicitly `211AA`/`211BA`/`211CA` predecessor-family documents. Local captures and SHA256 values are recorded in `Research/M06_Current_SKU_Evidence_2026-11-02.md` under ignored `.local/research/m06-current-sku/`.
+
+**Trade-off:** the evidence is materially stronger for SKU identity and rough-in convention, but it does not provide exact current-SKU solids, a current-SKU RFA/CAD, a selected lavatory, a door/approach, or a project service route. No fixture or room is promoted.
+
+**Next:** use the labelled proxy only for a separate clearance/approach/service-route comparison if desired; otherwise obtain an exact current-SKU installation/dimension source before assigning M-06. Keep B unassigned.
+
+## M351 — M-06 proxy clearance/approach screen
+
+**Acceptance:** bind the existing M344 proxy manifest, the current Selected-D B gross-pair replay, and the provisional 15/30/21-in screening basis into a deterministic gate report; verify Selected-D and proxy hashes; keep exact product geometry, door/approach, service route, and B assignment false.
+
+**Status:** complete. `Tools/validate_m06_proxy_clearance_approach.ps1` passes 9/9 and writes `.local/revalidation/m351-m06-proxy-clearance-approach.json`. The source-linked README is `Architecture/M351_M06_Proxy_Clearance_Approach_Screen_2026-11-02/README.md`.
+
+**Finding:** the proxy and current gross screen are source-pinned, but no evidence supports promoting M-06. Finished-face geometry, a selected lavatory, actual door/approach, and a plausible project service route remain open. B remains unassigned.
+
+## M352 — Walkthrough coordination package gate
+
+**Acceptance:** validate the retained M328 landing, M333 roof, M315 floor-plate, and M349 main-floor assembly derivatives as a lineage-compatible package; preserve Selected-D and M-06 `TBD`; record that a new composed RVT is still pending.
+
+**Status:** complete. `Tools/validate_walkthrough_coordination_package.ps1` passes **9/9** and writes `.local/revalidation/m352-walkthrough-coordination-package.json`. Details: `Architecture/M352_Walkthrough_Coordination_Package_2026-11-02/README.md`.
+
+**Next runtime gate:** create a disposable composed Revit walkthrough derivative from these source-backed inputs, then reopen, export IFC2x3, and validate the combined inventory. Do not select a roof pitch, floor-to-floor datum, wall/floor assembly, or M-06 room.
+
+## M353 — Native walkthrough composition command
+
+**Acceptance:** build a disposable Revit command that recreates the source-fingerprinted candidate in three side-by-side cases with native walls, nominal doors, provisional F-01/F-02 floor proxies, M328 landing bridge markers, and 8:12/10:12/12:12 roofs; save RVT/IFC2x3 and validate inventory/entities when runtime is available.
+
+**Status:** command and validator build successfully with 0 errors and the two known MSB3277 reference warnings. The repaired project-local DLL is `.local/revit-pilot/walkthrough-composition-v3/Release/net10.0-windows/RevitPilot.dll` (SHA256 `37C2D11AE04A4A86B99F2D2AFABE9C4FA6DEBA431BD58600D2C2DF72EF7A71E0`); the authorized AddInId/path was installed only after preserving the v2 manifest under `.local/revit-pilot/registration-backups/20261102-111530336/`.
+
+**Runtime evidence:** after the first v2 run exposed a Revit 2027 `NewFootPrintRoof` null mapping defect, the command was repaired to initialize `ModelCurveArray`. The v3 command then completed in Revit in disposable study directory `.local/revit-pilot/walkthrough-composition/20261102T161721219Z/`, exporting `FH_Walkthrough_Composition.rvt` and IFC2x3. `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **7/7**. Revit reported six expected proxy-wall overlap warnings and 0 errors; no Selected-D file was opened or modified.
+
+**Limitation:** this is a comparison derivative only. Roof pitch, floor-to-floor datum, wall/floor assemblies, structure, MEP, code/accessibility review, and M-06 assignment remain unresolved and unselected.
+
+## M354 — Native stair/landing coordination handoff
+
+**Acceptance:** run the project-local RevitPilot command `NativeStairLandingCoordinationCommand` against the saved disposable `FH_Compact_Core_Study`, create a native landing bridge plus labelled upper-circulation proxy without opening Selected-D, export RVT and IFC2x3, and pass `Tools/RevitPilot/validate_stair_landing_coordination.ps1`.
+
+**Status:** source and validator are committed and build-verified with 0 errors and the two known MSB3277 reference warnings. The runtime study is pending after the handoff pause. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
+

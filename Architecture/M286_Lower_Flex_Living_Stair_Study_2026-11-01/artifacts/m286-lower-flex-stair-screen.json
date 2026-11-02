@@ -1,0 +1,190 @@
+{
+  "schema": "forever-home-m286-lower-flex-stair-screen-v1",
+  "status": "pass; same-area L-01 move/reshape paired with analysis-only stair envelopes; no room or stair selected",
+  "selected_d_edited": false,
+  "owner_authorized_basis": {
+    "preserve_l01_area_sf": 250.55555555555551,
+    "m285_rise_in": 43.5,
+    "stair_width_in": 38,
+    "tread_count": 5,
+    "tread_depth_in": 10.5,
+    "landing_depth_in": 36
+  },
+  "source_L01": {
+    "x_ft": 10.166666666666666,
+    "y_ft": 13,
+    "width_ft": 13.666666666666666,
+    "depth_ft": 18.333333333333332,
+    "area_sf": 250.55555555555551
+  },
+  "search": {
+    "shell_ft": [
+      36,
+      32
+    ],
+    "shell_margin_ft": 0.6666666666666666,
+    "position_grid_ft": 0.25,
+    "sampled_width_count": 109,
+    "generated_same_area_rectangles_clear_of_fixed_rooms_and_circulation": 74,
+    "stair_envelopes_clear_of_fixed_rooms_and_M06_windows": 1393,
+    "compatible_room_stair_pairs": 24996,
+    "source_L01_shape_and_position_stair_pairs": 644,
+    "source_L01_pairs_without_positive_circulation_overlap": 80,
+    "source_L01_best_gap_when_stair_avoids_circulation_in": 13,
+    "ranking_is_multicriteria": true
+  },
+  "examples": [
+    {
+      "label": "source L-01; stair avoids positive-area overlap with circulation; largest room gap",
+      "l01": {
+        "X": 10.166666666666666,
+        "Y": 13,
+        "W": 13.66666667,
+        "D": 18.333333328861787,
+        "area_sf": 250.55555555555554
+      },
+      "stair": {
+        "Orientation": "east-west",
+        "X": 24.91666667,
+        "Y": 12.16666667,
+        "W": 10.375,
+        "D": 3.1666666666666665,
+        "WindowGapIn": 22,
+        "CirculationGapIn": 97,
+        "CirculationOverlapSf": 0
+      },
+      "stair_gap_in": 13,
+      "l01_to_circulation_gap_in": 6,
+      "l01_overlap_with_projected_m06_windows_sf": 77.653,
+      "combined_l01_change_ft": 0
+    },
+    {
+      "label": "source L-01; smallest positive stair/circulation overlap",
+      "l01": {
+        "X": 10.166666666666666,
+        "Y": 13,
+        "W": 13.66666667,
+        "D": 18.333333328861787,
+        "area_sf": 250.55555555555554
+      },
+      "stair": {
+        "Orientation": "east-west",
+        "X": 15.91666667,
+        "Y": 9.66666667,
+        "W": 10.375,
+        "D": 3.1666666666666665,
+        "WindowGapIn": 40,
+        "CirculationGapIn": 0,
+        "CirculationOverlapSf": 2.597
+      },
+      "stair_gap_in": 2,
+      "l01_to_circulation_gap_in": 6,
+      "l01_overlap_with_projected_m06_windows_sf": 77.653,
+      "combined_l01_change_ft": 0
+    },
+    {
+      "label": "reshaped L-01; maximum sampled room/stair gap",
+      "l01": {
+        "X": 9.66666667,
+        "Y": 14.05363985,
+        "W": 14.5,
+        "D": 17.279693486590034,
+        "area_sf": 250.5555555555555
+      },
+      "stair": {
+        "Orientation": "north-south",
+        "X": 9.66666667,
+        "Y": 0.6666666666666666,
+        "W": 3.1666666666666665,
+        "D": 10.375,
+        "WindowGapIn": 61.5,
+        "CirculationGapIn": 0,
+        "CirculationOverlapSf": 27.667
+      },
+      "stair_gap_in": 36.144,
+      "l01_to_circulation_gap_in": 18.644,
+      "l01_overlap_with_projected_m06_windows_sf": 79.986,
+      "combined_l01_change_ft": 3.4406
+    }
+  ],
+  "counts": {
+    "zero_gap_room_stair_pairs": 448,
+    "pairs_with_at_least_6in_room_stair_gap": 17152,
+    "pairs_with_at_least_12in_room_stair_gap": 9332,
+    "pairs_where_L01_overlaps_projected_M06_window": 24996,
+    "stair_envelopes_overlapping_circulation_rectangle": 821,
+    "stair_envelopes_touching_circulation_without_positive_area_overlap": 0,
+    "stair_envelopes_within_36in_of_circulation_rectangle": 1079
+  },
+  "inputs_sha256": {
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "m285_report": "66FBF95A7D7AB07A71F0F2F1FAEBCACA67493344290A21DE0CE6E3F9E0C09F6C",
+    "m285_basis": "B2073D1B2C7E2B1AEF389B69C9E4121E161452F66A1654358BA2012EDCECF59B",
+    "authorization": "A834C5BFD3248E488B94A6D35CE7AEFDCE32BCA00DE075AC2501E582EE17C5EC"
+  },
+  "checks": {
+    "passed": 13,
+    "total": 13,
+    "details": [
+      {
+        "id": "selected-D source hash is unchanged",
+        "pass": true
+      },
+      {
+        "id": "M285 source report is hash-pinned",
+        "pass": true
+      },
+      {
+        "id": "M285 basis is hash-pinned",
+        "pass": true
+      },
+      {
+        "id": "owner authorization is hash-pinned",
+        "pass": true
+      },
+      {
+        "id": "owner authorized a same-area lower L-01 move/reshape study",
+        "pass": true
+      },
+      {
+        "id": "all L-01 candidates preserve source area within numeric tolerance",
+        "pass": true
+      },
+      {
+        "id": "all L-01 candidates remain inside the lower shell margin",
+        "pass": true
+      },
+      {
+        "id": "all candidate L-01 rooms avoid fixed rooms and circulation",
+        "pass": true
+      },
+      {
+        "id": "all paired stair envelopes avoid fixed rooms and M-06 windows; circulation overlap is measured separately",
+        "pass": true
+      },
+      {
+        "id": "all paired stair envelopes avoid the reshaped L-01 block",
+        "pass": true
+      },
+      {
+        "id": "source L-01 position and shape remain represented in the comparison",
+        "pass": true
+      },
+      {
+        "id": "M-06 remains unassigned and the two search windows remain reportable",
+        "pass": true
+      },
+      {
+        "id": "no candidate is selected and no code/route/buildability claim is made",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "L-01 widths are sampled every 3 in between geometric shell limits; depths are calculated to preserve its source area exactly. These are search candidates, not owner-selected dimensions.",
+    "The search uses source room rectangles, a 6-riser/two-landing rectangle and quarter-foot placement grid. Stair-envelope overlap with the source circulation block is measured, not treated as a collision or accepted route. Walls, door swings, routes, furniture, light, egress, headroom, floor openings, structure and services are not modeled.",
+    "M-06 A/B are main-level projected windows used as stair/floor-opening reservations. L-01 overlap with their plan projection is reported but not prohibited because they are different levels; this is not a coordinated section.",
+    "A positive room-to-stair rectangle gap is descriptive only and is not a required clearance. No Revit elements, levels, room assignments or IFC were generated.",
+    "No code compliance, accessibility, professional approval, structural safety or construction readiness is established."
+  ]
+}

@@ -1,0 +1,5 @@
+# Source pantry sensitivity
+
+M312: owner visually accepted wall comparisons and authorized main-floor coordination with front/schematic-south entrance retained. New pantry sensitivity derives M213 with only pantry proxy changed from 5x6 to source-area 5x7 ft at its prior study location. Two runs pass 13/13 and underlying route 29/29; all three outputs match byte-for-byte. Kitchen sample remains 178.875 sf, island 8x4 ft, route 33.5 ft, zero minimum modeled obstacle gap, fragile. This is not an integrated front-entry/living-opening solution or selected pantry location. Evidence Architecture/M312_Source_Pantry_Sensitivity/artifacts. Next integrate front arrival and living/kitchen opening, with actual door/approach and protected A/B. No selected-D/Revit/IFC edits.
+
+Reproduce: Tools/search_m312_source_pantry_sensitivity.ps1 -OutputDirectory .local/revalidation/m312-new -ScratchPrefix m312-new. Run from repository root. This inherits M213 schematic route/proxy assumptions and does not establish code compliance, physical fit or construction readiness.

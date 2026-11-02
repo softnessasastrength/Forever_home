@@ -1,0 +1,128 @@
+{
+  "schema": "forever-home-m290-circulation-residual-partition-v1",
+  "status": "pass; exact residual rectangle partition; no C-LOWER layout, route, or stair selected",
+  "input_sha256": "00000094823867028C728501AFA26B88A569376AB920B4AFAF00FC7F4ECCD4D1",
+  "analysis_basis": {
+    "route_width_ft": 3,
+    "source": "M289 36-in swept-route proxy",
+    "partition": "coordinate-compressed axis-aligned cells; edge-adjacent unoccupied cells form components",
+    "dimensions_are_not_clearance_or_usability_standards": true
+  },
+  "cases": [
+    {
+      "case_id": "minimum-change dogleg",
+      "source_M289_option": {
+        "C_LOWER_ft": [
+          10.166666666666666,
+          0.6666666666666666,
+          6.666666666666667,
+          11.833333333333334
+        ],
+        "change_metric_ft": 1.1193415618930018,
+        "route_length_ft": 9.25,
+        "route_turns": 2,
+        "stair_path_gap_to_L01_in": 0
+      },
+      "C_LOWER_blocked_union_sf": 0.4583333333333428,
+      "C_LOWER_residual_sf": 78.43055555555556,
+      "component_count": 1,
+      "residual_components": [
+        {
+          "area_sf": 78.43055555555556,
+          "bounding_box_ft": [
+            10.166666666666666,
+            0.6666666666666666,
+            6.666666666666666,
+            11.833333333333334
+          ],
+          "rectangular_tile_count": 3
+        }
+      ],
+      "residual_partition": {
+        "tile_count": 3,
+        "component_area_sum_sf": 78.43055555555556
+      }
+    },
+    {
+      "case_id": "maximum-gap straight connector",
+      "source_M289_option": {
+        "C_LOWER_ft": [
+          9.66666667,
+          0.66666667,
+          6,
+          13.14814814814815
+        ],
+        "change_metric_ft": 5.922094508224782,
+        "route_length_ft": 0.25,
+        "route_turns": 0,
+        "stair_path_gap_to_L01_in": 26.644
+      },
+      "C_LOWER_blocked_union_sf": 4.500000009999994,
+      "C_LOWER_residual_sf": 74.3888888788889,
+      "component_count": 1,
+      "residual_components": [
+        {
+          "area_sf": 74.38888887888889,
+          "bounding_box_ft": [
+            9.66666667,
+            0.66666667,
+            6,
+            13.14814814814815
+          ],
+          "rectangular_tile_count": 7
+        }
+      ],
+      "residual_partition": {
+        "tile_count": 7,
+        "component_area_sum_sf": 74.38888887888889
+      }
+    }
+  ],
+  "checks": {
+    "passed": 9,
+    "total": 9,
+    "details": [
+      {
+        "id": "input report matches committed M289 SHA256",
+        "pass": true
+      },
+      {
+        "id": "both representative routes are positive-length and connect to C-LOWER",
+        "pass": true
+      },
+      {
+        "id": "minimum-change reference has zero measured L-01 separation",
+        "pass": true
+      },
+      {
+        "id": "positive-gap reference has positive measured L-01 separation",
+        "pass": true
+      },
+      {
+        "id": "all stair and swept-route proxy pieces remain clipped to C-LOWER for residual analysis",
+        "pass": true
+      },
+      {
+        "id": "occupied union plus free-space components conserves C-LOWER area",
+        "pass": true
+      },
+      {
+        "id": "free-space partition has no zero-area tiles or overlapping component membership",
+        "pass": true
+      },
+      {
+        "id": "component flood fill accounts for every unoccupied tile",
+        "pass": true
+      },
+      {
+        "id": "selected-D and M-06 remain unchanged/unassigned",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "This partitions the M289 axis-aligned stair and 36-in swept-route rectangles only. It does not evaluate circulation use, doors, approaches, walls, finished faces, landings, actual stair geometry, code, accessibility, headroom, structure, MEP, or furniture.",
+    "Component bounding boxes can contain notches and are not solid usable rectangles. Component count/area and descriptive bounds do not establish a usable room or required clearance.",
+    "The M289 route-width basis is a project screen precedent only, not an adopted code or accessibility criterion. Both comparisons remain hypothetical; no design or model objects are selected."
+  ]
+}

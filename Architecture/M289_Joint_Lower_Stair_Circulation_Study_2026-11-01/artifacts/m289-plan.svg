@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1422" height="324" viewBox="0 0 1422 324"><style>text{font:9px Arial}.room{fill:#dce8ed;stroke:#24566c}.circ{fill:#f1d9d9;stroke:#9a3030}.win{fill:#f7d9f0;stroke:#83366e;stroke-dasharray:3 2}.stair{fill:#f5e5b8;stroke:#7c5d11;stroke-width:2}.land{fill:#f4b183;fill-opacity:.75;stroke:#9a4512}.route{fill:#a8c9f0;fill-opacity:.45;stroke:#174f94}.shell{fill:none;stroke:#222;stroke-width:2}</style>
+<text x="24" y="15">M289 1: dogleg 9.25 ft; block-change metric 1.1193 ft</text>
+<rect class="room" x="29.3333" y="238.6667" width="72" height="80"/>
+<text x="31.3333" y="248.6667">L-03</text>
+<rect class="room" x="29.3333" y="170.6667" width="72" height="64"/>
+<text x="31.3333" y="180.6667">L-04</text>
+<rect class="room" x="29.3333" y="73.3333" width="72" height="93.3333"/>
+<text x="31.3333" y="83.3333">L-05</text>
+<rect class="room" x="234.6667" y="226.6667" width="72" height="92"/>
+<text x="236.6667" y="236.6667">L-07</text>
+<rect class="room" x="162.6667" y="254.6667" width="64" height="64"/>
+<text x="164.6667" y="264.6667">L-06</text>
+<rect class="room" x="218.6667" y="74.6667" width="88" height="80"/>
+<text x="220.6667" y="84.6667">L-02</text>
+<rect class="win" x="120" y="103.3333" width="41.3333" height="91.3333"/>
+<text x="122" y="113.3333">M06-west_of_core</text>
+<rect class="win" x="193.3333" y="130.6667" width="105.3333" height="56"/>
+<text x="195.3333" y="140.6667">M06-east_of_core</text>
+<rect class="room" x="101.3333" y="73.3333" width="108" height="148.4774"/>
+<text x="103.3333" y="83.3333">L-01 same area</text>
+<rect class="circ" x="105.3333" y="224" width="53.3333" height="94.6667"/>
+<text x="107.3333" y="234">C-LOWER same area</text>
+<rect class="stair" x="223.3333" y="201.3333" width="83" height="25.3333"/>
+<text x="225.3333" y="211.3333">stair envelope</text>
+<rect class="land" x="223.3333" y="201.3333" width="24" height="25.3333"/>
+<rect class="route" x="211.3333" y="202" width="24" height="24"/>
+<rect class="route" x="209.3333" y="202" width="24" height="24"/>
+<rect class="route" x="209.3333" y="222" width="24" height="24"/>
+<rect class="route" x="157.3333" y="222" width="24" height="24"/>
+<rect class="shell" x="24" y="68" width="288" height="256"/>
+<text x="386" y="15">M289 2: dogleg 9.5 ft; block-change metric 1.2263 ft</text>
+<rect class="room" x="391.3333" y="238.6667" width="72" height="80"/>
+<text x="393.3333" y="248.6667">L-03</text>
+<rect class="room" x="391.3333" y="170.6667" width="72" height="64"/>
+<text x="393.3333" y="180.6667">L-04</text>
+<rect class="room" x="391.3333" y="73.3333" width="72" height="93.3333"/>
+<text x="393.3333" y="83.3333">L-05</text>
+<rect class="room" x="596.6667" y="226.6667" width="72" height="92"/>
+<text x="598.6667" y="236.6667">L-07</text>
+<rect class="room" x="524.6667" y="254.6667" width="64" height="64"/>
+<text x="526.6667" y="264.6667">L-06</text>
+<rect class="room" x="580.6667" y="74.6667" width="88" height="80"/>
+<text x="582.6667" y="84.6667">L-02</text>
+<rect class="win" x="482" y="103.3333" width="41.3333" height="91.3333"/>
+<text x="484" y="113.3333">M06-west_of_core</text>
+<rect class="win" x="555.3333" y="130.6667" width="105.3333" height="56"/>
+<text x="557.3333" y="140.6667">M06-east_of_core</text>
+<rect class="room" x="463.3333" y="74.1893" width="108" height="148.4774"/>
+<text x="465.3333" y="84.1893">L-01 same area</text>
+<rect class="circ" x="467.3333" y="224" width="53.3333" height="94.6667"/>
+<text x="469.3333" y="234">C-LOWER same area</text>
+<rect class="stair" x="585.3333" y="201.3333" width="83" height="25.3333"/>
+<text x="587.3333" y="211.3333">stair envelope</text>
+<rect class="land" x="585.3333" y="201.3333" width="24" height="25.3333"/>
+<rect class="route" x="573.3333" y="202" width="24" height="24"/>
+<rect class="route" x="571.3333" y="202" width="24" height="24"/>
+<rect class="route" x="571.3333" y="224" width="24" height="24"/>
+<rect class="route" x="519.3333" y="224" width="24" height="24"/>
+<rect class="shell" x="386" y="68" width="288" height="256"/>
+<text x="748" y="15">M289 3: dogleg 9 ft; block-change metric 1.3488 ft</text>
+<rect class="room" x="753.3333" y="238.6667" width="72" height="80"/>
+<text x="755.3333" y="248.6667">L-03</text>
+<rect class="room" x="753.3333" y="170.6667" width="72" height="64"/>
+<text x="755.3333" y="180.6667">L-04</text>
+<rect class="room" x="753.3333" y="73.3333" width="72" height="93.3333"/>
+<text x="755.3333" y="83.3333">L-05</text>
+<rect class="room" x="958.6667" y="226.6667" width="72" height="92"/>
+<text x="960.6667" y="236.6667">L-07</text>
+<rect class="room" x="886.6667" y="254.6667" width="64" height="64"/>
+<text x="888.6667" y="264.6667">L-06</text>
+<rect class="room" x="942.6667" y="74.6667" width="88" height="80"/>
+<text x="944.6667" y="84.6667">L-02</text>
+<rect class="win" x="844" y="103.3333" width="41.3333" height="91.3333"/>
+<text x="846" y="113.3333">M06-west_of_core</text>
+<rect class="win" x="917.3333" y="130.6667" width="105.3333" height="56"/>
+<text x="919.3333" y="140.6667">M06-east_of_core</text>
+<rect class="room" x="825.3333" y="73.3333" width="108" height="148.4774"/>
+<text x="827.3333" y="83.3333">L-01 same area</text>
+<rect class="circ" x="829.3333" y="225.1687" width="54" height="93.4979"/>
+<text x="831.3333" y="235.1687">C-LOWER same area</text>
+<rect class="stair" x="947.3333" y="201.3333" width="83" height="25.3333"/>
+<text x="949.3333" y="211.3333">stair envelope</text>
+<rect class="land" x="947.3333" y="201.3333" width="24" height="25.3333"/>
+<rect class="route" x="935.3333" y="202" width="24" height="24"/>
+<rect class="route" x="933.3333" y="202" width="24" height="24"/>
+<rect class="route" x="933.3333" y="222" width="24" height="24"/>
+<rect class="route" x="883.3333" y="222" width="24" height="24"/>
+<rect class="shell" x="748" y="68" width="288" height="256"/>
+<text x="1110" y="15">M289 4: dogleg 9.5 ft; block-change metric 1.3693 ft</text>
+<rect class="room" x="1115.3333" y="238.6667" width="72" height="80"/>
+<text x="1117.3333" y="248.6667">L-03</text>
+<rect class="room" x="1115.3333" y="170.6667" width="72" height="64"/>
+<text x="1117.3333" y="180.6667">L-04</text>
+<rect class="room" x="1115.3333" y="73.3333" width="72" height="93.3333"/>
+<text x="1117.3333" y="83.3333">L-05</text>
+<rect class="room" x="1320.6667" y="226.6667" width="72" height="92"/>
+<text x="1322.6667" y="236.6667">L-07</text>
+<rect class="room" x="1248.6667" y="254.6667" width="64" height="64"/>
+<text x="1250.6667" y="264.6667">L-06</text>
+<rect class="room" x="1304.6667" y="74.6667" width="88" height="80"/>
+<text x="1306.6667" y="84.6667">L-02</text>
+<rect class="win" x="1206" y="103.3333" width="41.3333" height="91.3333"/>
+<text x="1208" y="113.3333">M06-west_of_core</text>
+<rect class="win" x="1279.3333" y="130.6667" width="105.3333" height="56"/>
+<text x="1281.3333" y="140.6667">M06-east_of_core</text>
+<rect class="room" x="1187.3333" y="73.3333" width="108" height="148.4774"/>
+<text x="1189.3333" y="83.3333">L-01 same area</text>
+<rect class="circ" x="1189.3333" y="224" width="53.3333" height="94.6667"/>
+<text x="1191.3333" y="234">C-LOWER same area</text>
+<rect class="stair" x="1309.3333" y="201.3333" width="83" height="25.3333"/>
+<text x="1311.3333" y="211.3333">stair envelope</text>
+<rect class="land" x="1309.3333" y="201.3333" width="24" height="25.3333"/>
+<rect class="route" x="1297.3333" y="202" width="24" height="24"/>
+<rect class="route" x="1295.3333" y="202" width="24" height="24"/>
+<rect class="route" x="1295.3333" y="222" width="24" height="24"/>
+<rect class="route" x="1241.3333" y="222" width="24" height="24"/>
+<rect class="shell" x="1110" y="68" width="288" height="256"/>
+<text x="12" y="319">Analysis only; 36-in project route precedent; no selected stair or code/route approval.</text></svg>

@@ -1,0 +1,30 @@
+{
+  "passed": 6,
+  "total": 6,
+  "details": [
+    {
+      "id": "M302/M304/M295/M305/M306 fingerprints match",
+      "pass": true
+    },
+    {
+      "id": "hypothetical shell and inherited 4x4-ft landing references are retained",
+      "pass": true
+    },
+    {
+      "id": "all nine M304 room/stair layouts are paired with their M305 flight-A result",
+      "pass": true
+    },
+    {
+      "id": "upper landing checks include shell margin, rooms, windows, stair pieces and lower landing",
+      "pass": true
+    },
+    {
+      "id": "joint result is exactly the intersection of the lower-route and upper-landing predicates",
+      "pass": true
+    },
+    {
+      "id": "no selected-D, RVT, IFC, family, or compliance result is emitted",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "status": "pass",
+  "placements_checked": 9,
+  "report_sha256": "2756D525EA29E7CB8E4961F415D0C86FC5E00F37884B96585C501E9720286167",
+  "limitations": "Validates stored example spur only; no shelving, door leaf/swing or clear opening verified"
+}

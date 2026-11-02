@@ -1,0 +1,522 @@
+{
+  "schema": "forever-home-m288-stair-circulation-alternatives-v1",
+  "status": "pass; analysis-only comparison; no room, route, or stair selected",
+  "selected_d_edited": false,
+  "route_basis": {
+    "width_in": 36,
+    "source": "M215 project route-screen precedent only",
+    "code_or_accessibility_finding": false,
+    "grid_ft": 0.25
+  },
+  "source_geometry": {
+    "shell_ft": [
+      36,
+      32
+    ],
+    "L01_area_sf": 250.55555555555551,
+    "C_LOWER": {
+      "x_ft": 10.166666666666666,
+      "y_ft": 0.6666666666666666,
+      "width_ft": 6.666666666666667,
+      "depth_ft": 11.833333333333334,
+      "area_sf": 78.8888888888889
+    },
+    "protected_M06_windows": [
+      {
+        "id": "M06-west_of_core",
+        "x_ft": 12,
+        "y_ft": 16.166666666666668,
+        "width_ft": 5.166666666666668,
+        "depth_ft": 11.416666666666664,
+        "area_sf": 58.986111111111114
+      },
+      {
+        "id": "M06-east_of_core",
+        "x_ft": 21.166666666666668,
+        "y_ft": 17.166666666666668,
+        "width_ft": 13.166666666666668,
+        "depth_ft": 7,
+        "area_sf": 92.16666666666667
+      }
+    ]
+  },
+  "fixed_blocks_dogleg": {
+    "stairs": 322,
+    "landing_ends": 644,
+    "landing_interface_option": true,
+    "standalone_dogleg_option": false,
+    "best_options": [
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.166666666666666,
+          "y_ft": 0.6666666666666666,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0,
+          "occupied_by_stair_and_route_sf": 6.72222220472222,
+          "remaining_area_after_screened_footprint_sf": 72.16666668416669
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.59722220972222
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      }
+    ]
+  },
+  "same_area_C_LOWER": {
+    "candidate_count": 67,
+    "stairs": 322,
+    "landing_ends": 644,
+    "C_candidates_with_landing_interface": 67,
+    "C_candidates_with_dogleg_route": 0,
+    "best_options": [
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.166666666666666,
+          "y_ft": 0.6666666666666666,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0,
+          "occupied_by_stair_and_route_sf": 6.72222220472222,
+          "remaining_area_after_screened_footprint_sf": 72.16666668416669
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.59722220972222
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.16666667,
+          "y_ft": 0.66666667,
+          "width_ft": 6.75,
+          "depth_ft": 11.68724279835391,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.22942387497942351,
+          "occupied_by_stair_and_route_sf": 6.593106995884771,
+          "remaining_area_after_screened_footprint_sf": 72.29578189300413
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.6872427983539056
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 9.91666667,
+          "y_ft": 0.6666666666666666,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.2499999966666664,
+          "occupied_by_stair_and_route_sf": 6.013888881666665,
+          "remaining_area_after_screened_footprint_sf": 72.87500000722224
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 1.888888886666665
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.166666666666666,
+          "y_ft": 0.91666667,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.2500000033333334,
+          "occupied_by_stair_and_route_sf": 7.326388878611109,
+          "remaining_area_after_screened_footprint_sf": 71.56250001027779
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.826388878611109
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.41666667,
+          "y_ft": 0.6666666666666666,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.2500000033333336,
+          "occupied_by_stair_and_route_sf": 7.430555546666665,
+          "remaining_area_after_screened_footprint_sf": 71.45833334222223
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 3.3055555516666653
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.16666667,
+          "y_ft": 0.66666667,
+          "width_ft": 6.5,
+          "depth_ft": 12.136752136752138,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.4700854767521381,
+          "occupied_by_stair_and_route_sf": 6.852564102564098,
+          "remaining_area_after_screened_footprint_sf": 72.0363247863248
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.3525641025640978
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 9.91666667,
+          "y_ft": 0.66666667,
+          "width_ft": 6.75,
+          "depth_ft": 11.68724279835391,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.4794238683127563,
+          "occupied_by_stair_and_route_sf": 5.921296296296292,
+          "remaining_area_after_screened_footprint_sf": 72.96759259259261
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.015432098765428
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.16666667,
+          "y_ft": 0.91666667,
+          "width_ft": 6.75,
+          "depth_ft": 11.68724279835391,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.4794238749794235,
+          "occupied_by_stair_and_route_sf": 7.21810699588477,
+          "remaining_area_after_screened_footprint_sf": 71.67078189300413
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 2.937242798353905
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 10.41666667,
+          "y_ft": 0.66666667,
+          "width_ft": 6.75,
+          "depth_ft": 11.68724279835391,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.4794238749794235,
+          "occupied_by_stair_and_route_sf": 7.2649176954732475,
+          "remaining_area_after_screened_footprint_sf": 71.62397119341566
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 3.359053497942383
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      },
+      {
+        "connection": "lower-landing interface",
+        "circulation": {
+          "x_ft": 9.66666667,
+          "y_ft": 0.6666666666666666,
+          "width_ft": 6.666666666666667,
+          "depth_ft": 11.833333333333334,
+          "area_sf": 78.8888888888889,
+          "combined_change_ft": 0.4999999966666664,
+          "occupied_by_stair_and_route_sf": 5.305555549166664,
+          "remaining_area_after_screened_footprint_sf": 73.58333333972223
+        },
+        "stair": {
+          "orientation": "east-west",
+          "x_ft": 15.91666667,
+          "y_ft": 9.66666667,
+          "width_ft": 10.375,
+          "depth_ft": 3.1666666666666665,
+          "lower_landing_end": "west",
+          "lower_landing_overlap_sf": 1.180555554166665
+        },
+        "route": {
+          "width_in": 36,
+          "length_ft": 0,
+          "centerline_points_ft": [
+            [
+              15.91666667,
+              11.250000003333334
+            ]
+          ]
+        },
+        "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+      }
+    ],
+    "minimum_occupied_landing_interface": {
+      "connection": "lower-landing interface",
+      "circulation": {
+        "x_ft": 9.66666667,
+        "y_ft": 0.66666667,
+        "width_ft": 7.5,
+        "depth_ft": 10.51851851851852,
+        "area_sf": 78.8888888888889,
+        "combined_change_ft": 2.648148148148146,
+        "occupied_by_stair_and_route_sf": 4.050925925925929,
+        "remaining_area_after_screened_footprint_sf": 74.83796296296298
+      },
+      "stair": {
+        "orientation": "east-west",
+        "x_ft": 15.91666667,
+        "y_ft": 9.66666667,
+        "width_ft": 10.375,
+        "depth_ft": 3.1666666666666665,
+        "lower_landing_end": "west",
+        "lower_landing_overlap_sf": 1.8981481481481484
+      },
+      "route": {
+        "width_in": 36,
+        "length_ft": 0,
+        "centerline_points_ft": [
+          [
+            15.91666667,
+            11.250000003333334
+          ]
+        ]
+      },
+      "limitations": "Schematic rectangles; no door, opening, wall, use/approach, or route beyond C-LOWER; not selected."
+    }
+  },
+  "inputs_sha256": {
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "m285_report": "66FBF95A7D7AB07A71F0F2F1FAEBCACA67493344290A21DE0CE6E3F9E0C09F6C",
+    "m215_report": "F2F6A66DEDA2A9C48A991E36B986683FE1F5B1C1D361FBF3E43BE2A2E1A053B1",
+    "authorization": "35413BD2F2522BC864D96AEDCB3B5A8EC3B9FF0EB0CD62EFD9FC75956FDF9DDD"
+  },
+  "checks": {
+    "passed": 12,
+    "total": 12,
+    "details": [
+      {
+        "id": "selected-D and M285/M215 inputs are fingerprint-pinned",
+        "pass": true
+      },
+      {
+        "id": "owner explicitly authorized both analysis-only alternatives",
+        "pass": true
+      },
+      {
+        "id": "M285 stair envelope dimensions are used unchanged",
+        "pass": true
+      },
+      {
+        "id": "all stair envelopes clear L-01, other source rooms and protected M-06 windows",
+        "pass": true
+      },
+      {
+        "id": "all generated C-LOWER alternatives preserve exact source area",
+        "pass": true
+      },
+      {
+        "id": "all C-LOWER alternatives clear fixed rooms, L-01, M-06 and shell margin",
+        "pass": true
+      },
+      {
+        "id": "all reported landing interfaces or 36-in dogleg paths touch their C-LOWER target",
+        "pass": true
+      },
+      {
+        "id": "all reported routes clear fixed rooms and both M-06 windows",
+        "pass": true
+      },
+      {
+        "id": "route starts align each source-grid landing-end phase and centerlines have no diagonal snaps",
+        "pass": true
+      },
+      {
+        "id": "route width uses the M215 36-in study precedent only",
+        "pass": true
+      },
+      {
+        "id": "M-06 footprint, position and service route remain unassigned",
+        "pass": true
+      },
+      {
+        "id": "no candidate selected and no code, structure or construction claim",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "The routes are orthogonal centerline searches with a 36-in square swept envelope on a 3-in grid; each sample envelope must remain inside the lower shell and avoid fixed room rectangles and M-06 windows. Stair envelopes and room blocks are rectangles; door leaves/openings, wall thickness, floor holes, riser geometry, headroom, furniture, structure, transitions, site/grade and building services are not modeled.",
+    "M288-A keeps all source blocks fixed; a landing interface may consume C-LOWER. M288-B permits only C-LOWER movement/reshape while preserving its exact source area; all rooms including L-01 stay fixed. Candidate dimensions/origins are search options only.",
+    "A path terminating at C-LOWER proves only geometric contact with its schematic rectangle. Remaining use of C-LOWER, entry/door approaches, route continuity beyond it, applicable code and accessibility are unresolved. The 36-in basis is not a compliance finding.",
+    "No Revit or IFC was generated; no code compliance, accessibility, professional approval, structural safety, or construction readiness is established."
+  ]
+}

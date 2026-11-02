@@ -1,0 +1,30 @@
+{
+  "passed": 6,
+  "total": 6,
+  "details": [
+    {
+      "id": "M302/M215/M295/M307 source fingerprints match",
+      "pass": true
+    },
+    {
+      "id": "24 stair samples, both protected M-06 windows, and inherited dimensions are retained",
+      "pass": true
+    },
+    {
+      "id": "all screened landings fit the shell and clear fixed rooms, windows and stair pieces",
+      "pass": true
+    },
+    {
+      "id": "all reported room pairs preserve source room areas",
+      "pass": true
+    },
+    {
+      "id": "every reported 36-in route clears both landings, rooms, stair pieces and fixed obstacles",
+      "pass": true
+    },
+    {
+      "id": "no selected-D, Revit, IFC, family, or compliance result is emitted",
+      "pass": true
+    }
+  ]
+}

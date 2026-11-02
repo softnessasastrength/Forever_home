@@ -1,0 +1,295 @@
+{
+  "schema": "forever-home-m285-dd013-vertical-section-screen-v1",
+  "status": "pass; analysis-only section basis and lower-level stair-envelope screen; no location selected",
+  "owner_selected_basis": {
+    "preferred_risers": 6,
+    "preferred_riser_in": 7.25,
+    "total_rise_in": 43.5,
+    "proposed_study_levels_ft": [
+      -3.625,
+      0,
+      3.625
+    ],
+    "selected_d_edited": false
+  },
+  "selected_d_current": {
+    "levels_ft": [
+      -5,
+      0,
+      5
+    ],
+    "adjacent_deltas_in": [
+      60,
+      60
+    ],
+    "comparison_risers": 8,
+    "comparison_riser_in": 7.5,
+    "comparison_treads": 7,
+    "rise_ft": 5
+  },
+  "unassigned_m06": {
+    "id": "M-06",
+    "footprint": "TBD",
+    "position": "TBD",
+    "service_route": "TBD"
+  },
+  "CT_screen": {
+    "published_max_riser_in": 8.25,
+    "preferred_riser_numeric_margin_in": 1,
+    "project_code_compliance_determined": false
+  },
+  "riser_alternatives": [
+    {
+      "risers": 5,
+      "riser_for_current_60in_level_delta": 12,
+      "current_delta_with_DD013_preferred_riser_in": 23.75,
+      "DD013_equal_riser_total_rise_in": 36.25,
+      "within_CT_published_numeric_max_at_DD013_riser": true
+    },
+    {
+      "risers": 6,
+      "riser_for_current_60in_level_delta": 10,
+      "current_delta_with_DD013_preferred_riser_in": 16.5,
+      "DD013_equal_riser_total_rise_in": 43.5,
+      "within_CT_published_numeric_max_at_DD013_riser": true
+    },
+    {
+      "risers": 7,
+      "riser_for_current_60in_level_delta": 8.571429,
+      "current_delta_with_DD013_preferred_riser_in": 9.25,
+      "DD013_equal_riser_total_rise_in": 50.75,
+      "within_CT_published_numeric_max_at_DD013_riser": true
+    },
+    {
+      "risers": 8,
+      "riser_for_current_60in_level_delta": 7.5,
+      "current_delta_with_DD013_preferred_riser_in": 2,
+      "DD013_equal_riser_total_rise_in": 58,
+      "within_CT_published_numeric_max_at_DD013_riser": true
+    }
+  ],
+  "plan_envelope": {
+    "lower_shell_ft": [
+      36,
+      32
+    ],
+    "preferred_stair_width_ft": 3.1666666666666665,
+    "tread_run_ft": 4.375,
+    "landing_depth_ft": 3,
+    "total_envelope_length_ft": 10.375,
+    "search_grid_ft": 0.25,
+    "lower_room_blocks_screened": 7,
+    "unassigned_m06_search_windows_protected": [
+      {
+        "Id": "M06-west_of_core",
+        "Name": "Dining-side search window",
+        "Kind": "protected-search-window",
+        "X": 12,
+        "Y": 16.166666666666668,
+        "W": 5.166666666666668,
+        "D": 11.416666666666664,
+        "Area": 58.986111111111114
+      },
+      {
+        "Id": "M06-east_of_core",
+        "Name": "Pantry-side search window",
+        "Kind": "protected-search-window",
+        "X": 21.166666666666668,
+        "Y": 17.166666666666668,
+        "W": 13.166666666666668,
+        "D": 7,
+        "Area": 92.16666666666667
+      }
+    ],
+    "lower_circulation_blocks_not_treated_as_obstacles": 1,
+    "collision_tolerance_ft_per_axis": 1E-06
+  },
+  "placement_search": {
+    "room_clear_candidate_count": 402,
+    "candidates_overlapping_protected_m06_window": 80,
+    "protected_window_overlap_counts": [
+      {
+        "window_id": "M06-west_of_core",
+        "candidate_count": 0
+      },
+      {
+        "window_id": "M06-east_of_core",
+        "candidate_count": 80
+      }
+    ],
+    "candidates_preserving_both_m06_windows": 322,
+    "candidates_with_at_least_6in_block_gap": 130,
+    "candidates_with_at_least_12in_block_gap": 48,
+    "candidates_with_at_least_6in_m06_window_gap": 312,
+    "candidates_with_at_least_12in_m06_window_gap": 302,
+    "candidates_without_circulation_overlap": 40,
+    "maximum_sampled_room_block_gap": 23.5,
+    "maximum_gap_candidate": {
+      "Orientation": "north-south",
+      "X": 12.16666667,
+      "Y": 0.6666666666666666,
+      "W": 3.1666666666666665,
+      "D": 10.375,
+      "ManhattanFromLegacyFt": 27.66666666333333,
+      "MinimumRoomGapIn": 23.5,
+      "CirculationOverlapSf": 32.854,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 61.5,
+      "OverlappedProtectedWindows": []
+    },
+    "maximum_gap_candidate_without_circulation_overlap": {
+      "Orientation": "east-west",
+      "X": 24.91666667,
+      "Y": 13.91666667,
+      "W": 10.375,
+      "D": 3.1666666666666665,
+      "ManhattanFromLegacyFt": 26.5,
+      "MinimumRoomGapIn": 13,
+      "CirculationOverlapSf": 0,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 1,
+      "OverlappedProtectedWindows": []
+    },
+    "maximum_m06_window_gap_without_circulation_overlap": {
+      "Orientation": "east-west",
+      "X": 23.91666667,
+      "Y": 12.16666667,
+      "W": 10.375,
+      "D": 3.1666666666666665,
+      "ManhattanFromLegacyFt": 27.25,
+      "MinimumRoomGapIn": 0,
+      "CirculationOverlapSf": 0,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 22,
+      "OverlappedProtectedWindows": []
+    },
+    "closest_to_legacy_origin": {
+      "Orientation": "east-west",
+      "X": 12.41666667,
+      "Y": 9.66666667,
+      "W": 10.375,
+      "D": 3.1666666666666665,
+      "ManhattanFromLegacyFt": 18.416666660000004,
+      "MinimumRoomGapIn": 2,
+      "CirculationOverlapSf": 12.514,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 40,
+      "OverlappedProtectedWindows": []
+    },
+    "closest_east_west": {
+      "Orientation": "east-west",
+      "X": 12.41666667,
+      "Y": 9.66666667,
+      "W": 10.375,
+      "D": 3.1666666666666665,
+      "ManhattanFromLegacyFt": 18.416666660000004,
+      "MinimumRoomGapIn": 2,
+      "CirculationOverlapSf": 12.514,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 40,
+      "OverlappedProtectedWindows": []
+    },
+    "closest_north_south": {
+      "Orientation": "north-south",
+      "X": 12.41666667,
+      "Y": 2.41666667,
+      "W": 3.1666666666666665,
+      "D": 10.375,
+      "ManhattanFromLegacyFt": 25.666666659999997,
+      "MinimumRoomGapIn": 2.5,
+      "CirculationOverlapSf": 31.931,
+      "ProtectedSearchOverlapSf": 0,
+      "MinimumProtectedWindowGapIn": 40.5,
+      "OverlappedProtectedWindows": []
+    },
+    "selected": false
+  },
+  "source_hashes_sha256": {
+    "selected_d": "516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB",
+    "DD013_stairs_spec": "B480E12548612ACB2DBAF98361E5AC1512BE4D8A9F4EEEBF179DD8CDBCBD7C84",
+    "CT_stair_research": "65250B9F68A8674B2BF361F99B76C35C63A97E85EC75304F1F4E77681CC26EE6",
+    "owner_section_basis": "B2073D1B2C7E2B1AEF389B69C9E4121E161452F66A1654358BA2012EDCECF59B"
+  },
+  "checks": {
+    "passed": 17,
+    "total": 17,
+    "status": "pass",
+    "details": [
+      {
+        "id": "selected-D source is hash-pinned and unchanged",
+        "pass": true
+      },
+      {
+        "id": "DD-013 source and owner-selected study basis are recorded",
+        "pass": true
+      },
+      {
+        "id": "CT stair research is source-pinned",
+        "pass": true
+      },
+      {
+        "id": "selected-D adjacent test levels remain 60 in apart",
+        "pass": true
+      },
+      {
+        "id": "selected-D 8 x 7.5 in arithmetic remains only comparison",
+        "pass": true
+      },
+      {
+        "id": "DD-013 preferred 6 x 7.25 in rise equals 43.5 in",
+        "pass": true
+      },
+      {
+        "id": "preferred riser is below cited CT numerical maximum",
+        "pass": true
+      },
+      {
+        "id": "tread run and landing references match DD-013",
+        "pass": true
+      },
+      {
+        "id": "lower-level source room inventory is preserved",
+        "pass": true
+      },
+      {
+        "id": "room-clear lower-level stair envelope candidates found",
+        "pass": true
+      },
+      {
+        "id": "all searched envelopes avoid positive-area overlap with lower rooms",
+        "pass": true
+      },
+      {
+        "id": "circulation overlap is measured independently from room-block clearance",
+        "pass": true
+      },
+      {
+        "id": "both selected-D unassigned M-06 search windows are preserved",
+        "pass": true
+      },
+      {
+        "id": "reported examples avoid M-06 windows, including protected B",
+        "pass": true
+      },
+      {
+        "id": "selected-D source file remains unchanged",
+        "pass": true
+      },
+      {
+        "id": "selected-D M-06 footprint, position, and service route remain unassigned",
+        "pass": true
+      },
+      {
+        "id": "no room relocation, Revit stair, opening, route, or compliance result is claimed",
+        "pass": true
+      }
+    ]
+  },
+  "limitations": [
+    "The DD-013 43.5-in rise is the owner\u0027s selected study basis, not a final floor elevation or approved stair placement.",
+    "The 60-in selected-D levels and B-derived eight-riser plan remain unchanged source comparisons; the 15-in floor-assembly value is only a planning placeholder.",
+    "The scan uses room rectangles, the selected-D unassigned M-06 search windows as protected zones, a 0.25-ft grid and the preferred clear width/landing/tread references. It ignores wall thickness, doors, furniture, structural support, headroom, transitions, and connection to a continuous route.",
+    "A rectangle-clear candidate may still have zero gap to a room block; its nearest block gap is reported, not treated as a required clearance. Overlap with the source circulation block is measured separately because it may require reshaping circulation or changing the stair envelope.",
+    "No Revit stair, floor opening, wall, room move, code finding, professional approval, or construction-readiness result is produced."
+  ]
+}

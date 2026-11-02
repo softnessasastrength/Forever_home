@@ -1,0 +1,76 @@
+{
+  "schema": "forever-home-m285-checks-v1",
+  "status": "pass",
+  "passed": 17,
+  "total": 17,
+  "checks": [
+    {
+      "id": "selected-D source is hash-pinned and unchanged",
+      "pass": true
+    },
+    {
+      "id": "DD-013 source and owner-selected study basis are recorded",
+      "pass": true
+    },
+    {
+      "id": "CT stair research is source-pinned",
+      "pass": true
+    },
+    {
+      "id": "selected-D adjacent test levels remain 60 in apart",
+      "pass": true
+    },
+    {
+      "id": "selected-D 8 x 7.5 in arithmetic remains only comparison",
+      "pass": true
+    },
+    {
+      "id": "DD-013 preferred 6 x 7.25 in rise equals 43.5 in",
+      "pass": true
+    },
+    {
+      "id": "preferred riser is below cited CT numerical maximum",
+      "pass": true
+    },
+    {
+      "id": "tread run and landing references match DD-013",
+      "pass": true
+    },
+    {
+      "id": "lower-level source room inventory is preserved",
+      "pass": true
+    },
+    {
+      "id": "room-clear lower-level stair envelope candidates found",
+      "pass": true
+    },
+    {
+      "id": "all searched envelopes avoid positive-area overlap with lower rooms",
+      "pass": true
+    },
+    {
+      "id": "circulation overlap is measured independently from room-block clearance",
+      "pass": true
+    },
+    {
+      "id": "both selected-D unassigned M-06 search windows are preserved",
+      "pass": true
+    },
+    {
+      "id": "reported examples avoid M-06 windows, including protected B",
+      "pass": true
+    },
+    {
+      "id": "selected-D source file remains unchanged",
+      "pass": true
+    },
+    {
+      "id": "selected-D M-06 footprint, position, and service route remain unassigned",
+      "pass": true
+    },
+    {
+      "id": "no room relocation, Revit stair, opening, route, or compliance result is claimed",
+      "pass": true
+    }
+  ]
+}

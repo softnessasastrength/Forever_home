@@ -12,6 +12,22 @@ namespace ForeverHome.Pilot;
 
 internal sealed record SavedModelFingerprint(string algorithm, string sha256, string file_name, long bytes);
 
+internal static class WorkspaceLocator
+{
+    internal static string Find(Assembly assembly)
+    {
+        var directory = new DirectoryInfo(Path.GetDirectoryName(assembly.Location)!);
+        while (directory is not null)
+        {
+            if (Directory.Exists(Path.Combine(directory.FullName, "Project")) &&
+                Directory.Exists(Path.Combine(directory.FullName, "Tools")))
+                return directory.FullName;
+            directory = directory.Parent!;
+        }
+        throw new DirectoryNotFoundException("Could not locate the Forever_home workspace from the loaded project-local RevitPilot assembly.");
+    }
+}
+
 internal static class SavedModelIdentity
 {
     internal static SavedModelFingerprint Capture(Document doc)
@@ -46,12 +62,61 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeIntegratedMainFloorAssemblyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHWalkthroughComposition", "Build walkthrough\ncomposition",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHStairLandingCoordination", "Build stair/landing\ncoordination",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeStairLandingCoordinationCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
+            Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactAuditVisible", "Audit active\ncompact core",
+            Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactQaVisible", "QA active\ncompact core",
+            Assembly.GetExecutingAssembly().Location, typeof(GeometryQaCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCompactExportVisible", "Export compact\ncore IFC",
+            Assembly.GetExecutingAssembly().Location, typeof(ManifestExportCommand).FullName!));
+        // Keep the current main-floor validation gates visible even when Revit
+        // compresses the panel into a narrow ribbon strip.
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateIfcVisible", "Export main-floor\nIFC",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHAuditMainFloorCandidateVisible", "Audit main-floor\nRVT",
+            Assembly.GetExecutingAssembly().Location, typeof(AuditMainFloorCandidateCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateFloorPlate", "Add provisional\nfloor plates",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateFloorPlateCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorFloorPlateIfc", "Export floor-plate\nIFC",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorFloorPlateIfcCommand).FullName!));
+        // Keep the active disposable study reachable on narrower Revit ribbon widths.
+        panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
+            Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHM343M06ProxyStudy", "Build M343 M-06\nproxy setup",
+            Assembly.GetExecutingAssembly().Location, typeof(M06ProxyStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorOpenings", "Build native\nopening study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeMainFloorOpeningStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHDocumentedDoorStudy", "Build documented\ndoor study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeDocumentedDoorStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHDocumentedOpeningAssembly", "Build documented\nopening assembly",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeDocumentedOpeningAssemblyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompatibilityPilot", "Run compatibility\npilot",
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
         panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",
             Assembly.GetExecutingAssembly().Location, typeof(CompactCoreCommand).FullName!));
         panel.AddItem(new PushButtonData("FHSelectedDStudy", "Build selected D\nspace study",
             Assembly.GetExecutingAssembly().Location, typeof(SelectedDCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHWalkthroughShellStudy", "Build walkthrough\nshell study",
+            Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build native roof\nshell comparison",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidateIfc", "Export main-floor\ncandidate IFC",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHAuditMainFloorCandidate", "Audit reopened\ncandidate",
+            Assembly.GetExecutingAssembly().Location, typeof(AuditMainFloorCandidateCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorCandidate", "Build main-floor\ncandidate comparison",
+            Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateCommand).FullName!));
         panel.AddItem(new PushButtonData("FHUpperSuiteTest", "Build upper-suite\ntest study",
             Assembly.GetExecutingAssembly().Location, typeof(UpperSuiteComparisonCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGableMassing", "Build M83 gable\nmassing options",
@@ -60,8 +125,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
         panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
             Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHM218PantryDoorStudy", "Build M218 pantry\ndoor comparisons",
-            Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
             Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGeometryQa", "Run geometry\nQA",
@@ -159,8 +222,7 @@ public class IslandCountertopTestCommand : IExternalCommand
             if (!string.Equals(doc.Title, ExpectedTitle, StringComparison.Ordinal))
                 throw new InvalidOperationException($"This test is restricted to '{ExpectedTitle}', not '{doc.Title}'. No elements were changed.");
             var before = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string studyPath = Path.Combine(root, "Architecture", "Selected_Design_Iteration_2026-10-27", "study.json");
             using var studyDoc = JsonDocument.Parse(File.ReadAllText(studyPath).TrimStart('\uFEFF'));
             var study = studyDoc.RootElement;
@@ -320,8 +382,7 @@ public class ApiAuditCommand : IExternalCommand
         try
         {
             var modelFingerprint = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string output = Path.Combine(root, ".local", "revit-pilot", "audits",
                 DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
@@ -473,8 +534,7 @@ public class ManifestExportCommand : IExternalCommand
 
         try
         {
-            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
-            string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string manifestDirectory = Path.Combine(root, "Tools", "RevitPilot");
             var matchingManifests = Directory.GetFiles(manifestDirectory, "export-manifest*.json")
                 .OrderBy(path => path, StringComparer.OrdinalIgnoreCase)
@@ -700,8 +760,7 @@ public class GeometryQaCommand : IExternalCommand
         try
         {
             var modelFingerprint = SavedModelIdentity.Capture(doc);
-            string root = File.ReadAllText(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
             string output = Path.Combine(root, ".local", "revit-pilot", "geometry-qa",
                 DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
@@ -1999,7 +2058,13 @@ public class CompactCoreCommand : IExternalCommand
         try
         {
             var doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
-            string root = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "workspace.txt")).Trim();
+            var workspace = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!);
+            while (workspace is not null &&
+                   !(Directory.Exists(Path.Combine(workspace.FullName, "Project")) &&
+                     Directory.Exists(Path.Combine(workspace.FullName, "Tools"))))
+                workspace = workspace.Parent;
+            if (workspace is null) throw new DirectoryNotFoundException("Could not locate the Forever_home workspace from the loaded project-local RevitPilot assembly.");
+            string root = workspace.FullName;
             string output = Path.Combine(root, ".local", "revit-pilot", "compact-core", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
             var configPath = Path.Combine(root, "Tools", "RevitPilot", "compact-study-config.json");
@@ -2268,6 +2333,109 @@ public class CompactCoreCommand : IExternalCommand
             return Result.Succeeded;
         }
         catch (Exception ex) { message = ex.Message; return Result.Failed; }
+    }
+}
+
+[Transaction(TransactionMode.Manual)]
+public class CompactLandingStudyCommand : IExternalCommand
+{
+    static SavedModelFingerprint CaptureSavedFile(string path)
+    {
+        var info = new FileInfo(path);
+        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+        string digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(stream)).ToLowerInvariant();
+        return new SavedModelFingerprint("sha256-of-saved-rvt-bytes-v1", digest, info.Name, info.Length);
+    }
+
+    static void Tag(Element element, string value)
+    {
+        var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (parameter is not null && !parameter.IsReadOnly) parameter.Set(value);
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? doc = data.Application.ActiveUIDocument?.Document;
+        try
+        {
+            if (doc is null || !doc.IsValidObject)
+                throw new InvalidOperationException("A saved compact-core RVT must be active before creating the landing derivative.");
+            if (!string.Equals(doc.Title, "FH_Compact_Core_Study", StringComparison.Ordinal))
+                throw new InvalidOperationException("This study is restricted to the verified FH_Compact_Core_Study document; no other model was changed.");
+            if (string.IsNullOrWhiteSpace(doc.PathName) || !File.Exists(doc.PathName))
+                throw new InvalidOperationException("The verified compact-core study must have a readable saved path before creating its landing derivative.");
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
+            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core-landing",
+                DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            string sourcePath = doc.PathName;
+            var sourceFingerprint = CaptureSavedFile(sourcePath);
+            string studyPath = Path.Combine(output, "FH_Compact_Core_Landing_Study.rvt");
+            doc.SaveAs(studyPath, new SaveAsOptions());
+
+            var upperFloor = new FilteredElementCollector(doc).OfClass(typeof(Floor)).Cast<Floor>()
+                .FirstOrDefault(f => f.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString()?.StartsWith("FH-C-FLOOR-UPPER", StringComparison.Ordinal) == true)
+                ?? throw new InvalidOperationException("The verified upper floor plate marker was not found.");
+            var stair = new FilteredElementCollector(doc).OfClass(typeof(Stairs)).Cast<Stairs>()
+                .FirstOrDefault(s => s.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString()?.StartsWith("FH-C-STAIR-MAIN-UPPER", StringComparison.Ordinal) == true)
+                ?? throw new InvalidOperationException("The verified upper native stair marker was not found.");
+            var upperBox = upperFloor.get_BoundingBox(null) ?? throw new InvalidOperationException("Upper floor has no bounding box.");
+            var stairBox = stair.get_BoundingBox(null) ?? throw new InvalidOperationException("Upper stair has no bounding box.");
+            double gapFt = upperBox.Min.Y - stairBox.Max.Y;
+            double widthFt = stairBox.Max.X - stairBox.Min.X;
+            if (!(gapFt > 0.01 && widthFt > 0.01))
+                throw new InvalidOperationException($"Measured stair/upper-floor gap is not positive: gap={gapFt:0.###} ft, width={widthFt:0.###} ft.");
+
+            Level upperLevel = (Level)doc.GetElement(upperFloor.LevelId)!;
+            ElementId floorTypeId = Floor.GetDefaultFloorType(doc, false);
+            if (floorTypeId == ElementId.InvalidElementId) throw new InvalidOperationException("No default floor type is available for the landing derivative.");
+            Floor landing;
+            using (var transaction = new Transaction(doc, "Create derived native upper stair landing bridge"))
+            {
+                transaction.Start();
+                var loop = new CurveLoop();
+                double z = upperLevel.Elevation;
+                XYZ a = new(stairBox.Min.X, stairBox.Max.Y, z);
+                XYZ b = new(stairBox.Max.X, stairBox.Max.Y, z);
+                XYZ c = new(stairBox.Max.X, upperBox.Min.Y, z);
+                XYZ d = new(stairBox.Min.X, upperBox.Min.Y, z);
+                loop.Append(Line.CreateBound(a, b)); loop.Append(Line.CreateBound(b, c));
+                loop.Append(Line.CreateBound(c, d)); loop.Append(Line.CreateBound(d, a));
+                landing = Floor.Create(doc, new[] { loop }, floorTypeId, upperLevel.Id);
+                Tag(landing, "FH-C-STAIR-LANDING-BRIDGE | PROVISIONAL | derived from measured stair/floor gap");
+                transaction.Commit();
+            }
+            doc.Save();
+            var savedFingerprint = CaptureSavedFile(studyPath);
+            var manifest = new
+            {
+                schema = "forever-home.compact-core-native-landing-study-v1",
+                status = "disposable native landing derivative; Selected-D untouched; no code or construction approval",
+                utc = DateTime.UtcNow,
+                source_document_title = sourceFingerprint.file_name,
+                source_model_fingerprint = sourceFingerprint,
+                model_fingerprint = savedFingerprint,
+                source_study = sourcePath,
+                landing = new { marker = "FH-C-STAIR-LANDING-BRIDGE", element_id = landing.Id.Value, level = upperLevel.Name, gap_ft = gapFt, width_ft = widthFt, area_sqft = gapFt * widthFt, floor_type = ((FloorType)doc.GetElement(floorTypeId)!).Name },
+                limitations = new[] { "Landing footprint is a disposable coordination bridge derived from native bounding boxes.", "Landing does not prove clear headroom, guard/rail, door approach, structure, accessibility or code compliance.", "Source compact-core RVT and Selected-D remain preserved separately." }
+            };
+            File.WriteAllText(Path.Combine(output, "landing-study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
+            bool ifcOk;
+            using (var options = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true })
+            using (var exportTransaction = new Transaction(doc, "Export native landing IFC2x3"))
+            {
+                exportTransaction.Start();
+                try { ifcOk = doc.Export(output, "FH_Compact_Core_Landing_Study", options); }
+                finally { if (exportTransaction.GetStatus() == TransactionStatus.Started) exportTransaction.RollBack(); }
+            }
+            if (!ifcOk) throw new InvalidOperationException("Revit IFC export returned false.");
+            // The derivative is the active document after SaveAs. Revit forbids closing
+            // the active document from an external command, so leave it open for review.
+            // The source compact-core model remains preserved on disk and untouched.
+            TaskDialog.Show("Forever Home landing study", $"Created a disposable native landing bridge from the measured stair/floor gap ({gapFt:0.###} ft × {widthFt:0.###} ft).\n\nThe derivative remains open for review:\n{studyPath}");
+            return Result.Succeeded;
+        }
+        catch (Exception ex) { message = ex.ToString(); return Result.Failed; }
     }
 }
 

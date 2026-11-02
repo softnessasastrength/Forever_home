@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="364" height="1638" viewBox="0 0 364 1638">
+<style>text{font-family:Arial,sans-serif;font-size:11px}.title{font-weight:bold;font-size:13px}.note{fill:#555}.shell{fill:none;stroke:#222;stroke-width:2}.room{fill:#d8e7ed;stroke:#24566c;stroke-width:1.5}.entry{fill:#efe3c4;stroke:#755b22;stroke-width:1.5}.fixed{fill:#e1d4e9;stroke:#68437c;stroke-width:1}</style>
+<text class="title" x="22" y="28">BASELINE — Current M01/M02/M05 blocks; no shared-edge kitchen/living connection</text>
+<rect class="shell" x="22" y="41" width="320" height="336"/>
+<rect class="room" x="31.333" y="251.667" width="128" height="120"/>
+<text x="33.333" y="263.667">M-01 LIVING</text>
+<rect class="room" x="194" y="243.667" width="138.667" height="128"/>
+<text x="196" y="255.667">M-02 KITCHEN</text>
+<rect class="entry" x="159.333" y="275.667" width="34.667" height="96"/>
+<text x="161.333" y="287.667">M-05 ENTRY/HALL</text>
+<rect class="fixed" x="27.333" y="135.667" width="90.667" height="112"/>
+<text x="29.333" y="147.667">M-03-dining-source</text>
+<rect class="fixed" x="296.667" y="183.667" width="40" height="56"/>
+<text x="298.667" y="195.667">M-04-pantry-source-5x7</text>
+<rect class="fixed" x="118" y="156.333" width="41.333" height="91.333"/>
+<text x="120" y="168.333">protected-A</text>
+<rect class="fixed" x="191.333" y="183.667" width="105.333" height="56"/>
+<text x="193.333" y="195.667">unassigned-B</text>
+<text class="note" x="22" y="390">Shared M-01/M-02 edge: 0 ft | movement sum: 0 ft | blocks only; no door or route</text>
+<text class="title" x="22" y="436">FRONT/SOUTH — Presumed south/front-side M05 row; M01/M02 translated to share an edge</text>
+<rect class="shell" x="22" y="449" width="320" height="336"/>
+<rect class="room" x="65.333" y="659.667" width="128" height="120"/>
+<text x="67.333" y="671.667">M-01 LIVING</text>
+<rect class="room" x="193.333" y="651.667" width="138.667" height="128"/>
+<text x="195.333" y="663.667">M-02 KITCHEN</text>
+<rect class="entry" x="29.333" y="683.667" width="34.667" height="96"/>
+<text x="31.333" y="695.667">M-05 ENTRY/HALL</text>
+<rect class="fixed" x="27.333" y="543.667" width="90.667" height="112"/>
+<text x="29.333" y="555.667">M-03-dining-source</text>
+<rect class="fixed" x="296.667" y="591.667" width="40" height="56"/>
+<text x="298.667" y="603.667">M-04-pantry-source-5x7</text>
+<rect class="fixed" x="118" y="564.333" width="41.333" height="91.333"/>
+<text x="120" y="576.333">protected-A</text>
+<rect class="fixed" x="191.333" y="591.667" width="105.333" height="56"/>
+<text x="193.333" y="603.667">unassigned-B</text>
+<text class="note" x="22" y="798">Shared M-01/M-02 edge: 15 ft | movement sum: 20.583 ft | blocks only; no door or route</text>
+<text class="title" x="22" y="844">NORTH/REAR — North/rear test-shell edge; M01/M02 translated to share an edge</text>
+<rect class="shell" x="22" y="857" width="320" height="336"/>
+<rect class="room" x="33.333" y="1067.667" width="128" height="120"/>
+<text x="35.333" y="1079.667">M-01 LIVING</text>
+<rect class="room" x="161.333" y="1059.667" width="138.667" height="128"/>
+<text x="163.333" y="1071.667">M-02 KITCHEN</text>
+<rect class="entry" x="160" y="857" width="34.667" height="96"/>
+<text x="162" y="869">M-05 ENTRY/HALL</text>
+<rect class="fixed" x="27.333" y="951.667" width="90.667" height="112"/>
+<text x="29.333" y="963.667">M-03-dining-source</text>
+<rect class="fixed" x="296.667" y="999.667" width="40" height="56"/>
+<text x="298.667" y="1011.667">M-04-pantry-source-5x7</text>
+<rect class="fixed" x="118" y="972.333" width="41.333" height="91.333"/>
+<text x="120" y="984.333">protected-A</text>
+<rect class="fixed" x="191.333" y="999.667" width="105.333" height="56"/>
+<text x="193.333" y="1011.667">unassigned-B</text>
+<text class="note" x="22" y="1206">Shared M-01/M-02 edge: 15 ft | movement sum: 33.75 ft | blocks only; no door or route</text>
+<text class="title" x="22" y="1252">EAST/SIDE — East-side test-shell edge; M01/M02 translated to share an edge</text>
+<rect class="shell" x="22" y="1265" width="320" height="336"/>
+<rect class="room" x="33.333" y="1475.667" width="128" height="120"/>
+<text x="35.333" y="1487.667">M-01 LIVING</text>
+<rect class="room" x="161.333" y="1467.667" width="138.667" height="128"/>
+<text x="163.333" y="1479.667">M-02 KITCHEN</text>
+<rect class="entry" x="307.333" y="1499" width="34.667" height="96"/>
+<text x="309.333" y="1511">M-05 ENTRY/HALL</text>
+<rect class="fixed" x="27.333" y="1359.667" width="90.667" height="112"/>
+<text x="29.333" y="1371.667">M-03-dining-source</text>
+<rect class="fixed" x="296.667" y="1407.667" width="40" height="56"/>
+<text x="298.667" y="1419.667">M-04-pantry-source-5x7</text>
+<rect class="fixed" x="118" y="1380.333" width="41.333" height="91.333"/>
+<text x="120" y="1392.333">protected-A</text>
+<rect class="fixed" x="191.333" y="1407.667" width="105.333" height="56"/>
+<text x="193.333" y="1419.667">unassigned-B</text>
+<text class="note" x="22" y="1614">Shared M-01/M-02 edge: 15 ft | movement sum: 22.917 ft | blocks only; no door or route</text>
+</svg>

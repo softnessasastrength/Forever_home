@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1286" height="393" viewBox="0 0 1286 393">
+<style>text{font:10px Arial,sans-serif}.title{font-weight:bold;font-size:12px}.room{fill:#dce8ed;stroke:#24566c}.circ{fill:#f1d9d9;stroke:#9a3030;stroke-dasharray:3 2}.window{fill:#f7d9f0;stroke:#83366e;stroke-dasharray:3 2}.flex{fill:#bfd6a6;fill-opacity:.82;stroke:#386527;stroke-width:2}.stair{fill:#f5e5b8;fill-opacity:.85;stroke:#7c5d11;stroke-width:2}.shell{fill:none;stroke:#222;stroke-width:2}</style>
+<text class="title" x="25" y="17">Source L-01; stair avoids circulation overlap</text>
+<text x="25" y="33">L-01 13.6667 × 18.3333 ft; area 250.5556 sf; stair gap 13 in</text>
+<rect class="room" x="31.6667" y="286.3333" width="90" height="100"/>
+<text x="33.6667" y="297.3333">L-03</text>
+<rect class="room" x="31.6667" y="201.3333" width="90" height="80"/>
+<text x="33.6667" y="212.3333">L-04</text>
+<rect class="room" x="31.6667" y="79.6667" width="90" height="116.6667"/>
+<text x="33.6667" y="90.6667">L-05</text>
+<rect class="room" x="288.3333" y="271.3333" width="90" height="115"/>
+<text x="290.3333" y="282.3333">L-07</text>
+<rect class="room" x="198.3333" y="306.3333" width="80" height="80"/>
+<text x="200.3333" y="317.3333">L-06</text>
+<rect class="circ" x="126.6667" y="268" width="66.6667" height="118.3333"/>
+<text x="128.6667" y="279">C-LOWER</text>
+<rect class="room" x="268.3333" y="81.3333" width="110" height="100"/>
+<text x="270.3333" y="92.3333">L-02</text>
+<rect class="window" x="145" y="117.1667" width="51.6667" height="114.1667"/>
+<text x="147" y="128.1667">M06-west_of_core reserved</text>
+<rect class="window" x="236.6667" y="151.3333" width="131.6667" height="70"/>
+<text x="238.6667" y="162.3333">M06-east_of_core reserved</text>
+<rect class="flex" x="126.6667" y="79.6667" width="136.6667" height="183.3333"/>
+<text x="128.6667" y="90.6667">L-01 same area</text>
+<rect class="stair" x="274.1667" y="239.6667" width="103.75" height="31.6667"/>
+<text x="276.1667" y="250.6667">M285 stair envelope</text>
+<rect class="shell" x="25" y="73" width="360" height="320"/>
+<text class="title" x="463" y="17">Source L-01; smallest stair/circulation overlap</text>
+<text x="463" y="33">L-01 13.6667 × 18.3333 ft; area 250.5556 sf; stair gap 2 in</text>
+<rect class="room" x="469.6667" y="286.3333" width="90" height="100"/>
+<text x="471.6667" y="297.3333">L-03</text>
+<rect class="room" x="469.6667" y="201.3333" width="90" height="80"/>
+<text x="471.6667" y="212.3333">L-04</text>
+<rect class="room" x="469.6667" y="79.6667" width="90" height="116.6667"/>
+<text x="471.6667" y="90.6667">L-05</text>
+<rect class="room" x="726.3333" y="271.3333" width="90" height="115"/>
+<text x="728.3333" y="282.3333">L-07</text>
+<rect class="room" x="636.3333" y="306.3333" width="80" height="80"/>
+<text x="638.3333" y="317.3333">L-06</text>
+<rect class="circ" x="564.6667" y="268" width="66.6667" height="118.3333"/>
+<text x="566.6667" y="279">C-LOWER</text>
+<rect class="room" x="706.3333" y="81.3333" width="110" height="100"/>
+<text x="708.3333" y="92.3333">L-02</text>
+<rect class="window" x="583" y="117.1667" width="51.6667" height="114.1667"/>
+<text x="585" y="128.1667">M06-west_of_core reserved</text>
+<rect class="window" x="674.6667" y="151.3333" width="131.6667" height="70"/>
+<text x="676.6667" y="162.3333">M06-east_of_core reserved</text>
+<rect class="flex" x="564.6667" y="79.6667" width="136.6667" height="183.3333"/>
+<text x="566.6667" y="90.6667">L-01 same area</text>
+<rect class="stair" x="622.1667" y="264.6667" width="103.75" height="31.6667"/>
+<text x="624.1667" y="275.6667">M285 stair envelope</text>
+<rect class="shell" x="463" y="73" width="360" height="320"/>
+<text class="title" x="901" y="17">Reshaped L-01; largest room/stair gap</text>
+<text x="901" y="33">L-01 14.5 × 17.2797 ft; area 250.5556 sf; stair gap 36.144 in</text>
+<rect class="room" x="907.6667" y="286.3333" width="90" height="100"/>
+<text x="909.6667" y="297.3333">L-03</text>
+<rect class="room" x="907.6667" y="201.3333" width="90" height="80"/>
+<text x="909.6667" y="212.3333">L-04</text>
+<rect class="room" x="907.6667" y="79.6667" width="90" height="116.6667"/>
+<text x="909.6667" y="90.6667">L-05</text>
+<rect class="room" x="1164.3333" y="271.3333" width="90" height="115"/>
+<text x="1166.3333" y="282.3333">L-07</text>
+<rect class="room" x="1074.3333" y="306.3333" width="80" height="80"/>
+<text x="1076.3333" y="317.3333">L-06</text>
+<rect class="circ" x="1002.6667" y="268" width="66.6667" height="118.3333"/>
+<text x="1004.6667" y="279">C-LOWER</text>
+<rect class="room" x="1144.3333" y="81.3333" width="110" height="100"/>
+<text x="1146.3333" y="92.3333">L-02</text>
+<rect class="window" x="1021" y="117.1667" width="51.6667" height="114.1667"/>
+<text x="1023" y="128.1667">M06-west_of_core reserved</text>
+<rect class="window" x="1112.6667" y="151.3333" width="131.6667" height="70"/>
+<text x="1114.6667" y="162.3333">M06-east_of_core reserved</text>
+<rect class="flex" x="997.6667" y="79.6667" width="145" height="172.7969"/>
+<text x="999.6667" y="90.6667">L-01 same area</text>
+<rect class="stair" x="997.6667" y="282.5833" width="31.6667" height="103.75"/>
+<text x="999.6667" y="293.5833">M285 stair envelope</text>
+<rect class="shell" x="901" y="73" width="360" height="320"/>
+<text x="20" y="388">Analysis only; no room or stair selected; plan rectangles are not door/access/clearance proof.</text></svg>

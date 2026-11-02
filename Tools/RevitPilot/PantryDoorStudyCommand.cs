@@ -31,6 +31,10 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     private const double RouteWidthFt = 3.0;
     private const double LineZFt = 0.05;
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
+    // ModelCurve does not expose a writable instance marker in this Revit template.
+    // Keep the command-recorded marker map for the disposable in-memory audit instead
+    // of pretending that a non-existent parameter is available.
+    private static readonly Dictionary<int, string> CurveMarkers = new();
 
     private sealed record DoorPosition(string Id, double StartY);
     private sealed record Point3(double x, double y, double z);
@@ -51,7 +55,7 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     {
         if (element.Location is not LocationCurve location)
             throw new InvalidDataException($"Tagged study element {element.Id} has no curve location.");
-        var marker = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "";
+        var marker = Marker(element);
         if (string.IsNullOrWhiteSpace(marker))
             throw new InvalidDataException($"Tagged study element {element.Id} has no marker.");
         var height = element is Wall wall
@@ -63,11 +67,13 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     private static (IReadOnlyList<GeometryRecord> Walls, IReadOnlyList<GeometryRecord> Curves) AuditGeometry(Document doc)
     {
         var walls = new FilteredElementCollector(doc).OfClass(typeof(Wall)).Cast<Wall>()
-            .Where(element => (element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "")
+            .Where(element => Marker(element)
                 .StartsWith("M218-", StringComparison.Ordinal))
             .Select(Record).OrderBy(record => record.marker, StringComparer.Ordinal).ToList();
-        var curves = new FilteredElementCollector(doc).OfClass(typeof(ModelCurve)).Cast<ModelCurve>()
-            .Where(element => (element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString() ?? "")
+        // Revit's native collector rejects ModelCurve as a direct class filter;
+        // collect the supported CurveElement base and narrow in managed code.
+        var curves = new FilteredElementCollector(doc).OfClass(typeof(CurveElement)).Cast<CurveElement>().OfType<ModelCurve>()
+            .Where(element => Marker(element)
                 .StartsWith("M218-", StringComparison.Ordinal))
             .Select(Record).OrderBy(record => record.marker, StringComparer.Ordinal).ToList();
         if (walls.Count != 13 || curves.Count != 48)
@@ -114,9 +120,17 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     {
         var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
         if (parameter is null || parameter.IsReadOnly)
+            parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_MARK);
+        if (parameter is null || parameter.IsReadOnly)
             throw new InvalidOperationException($"Cannot tag disposable study element {marker}.");
         parameter.Set(marker);
     }
+
+    private static string Marker(Element element)
+        => element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString()
+            ?? element.get_Parameter(BuiltInParameter.ALL_MODEL_MARK)?.AsString()
+            ?? (element is ModelCurve && CurveMarkers.TryGetValue((int)element.Id.Value, out var marker) ? marker : null)
+            ?? "";
 
     private static List<DoorPosition> ReadDoorPositions(JsonElement m218)
     {
@@ -157,7 +171,7 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     {
         if (a.DistanceTo(b) < 1e-6) return;
         var curve = doc.Create.NewModelCurve(Line.CreateBound(a, b), plane);
-        Tag(curve, marker);
+        CurveMarkers[(int)curve.Id.Value] = marker;
         if (color is not null)
         {
             var overrides = new OverrideGraphicSettings();
@@ -192,6 +206,7 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
     {
         var app = ui.Application;
         var doc = app.NewProjectDocument(UnitSystem.Imperial);
+        CurveMarkers.Clear();
         wallCount = 0;
         curveCount = 0;
         try
@@ -203,7 +218,8 @@ public sealed class PantryDoorStudyCommand : IExternalCommand
                     .OrderBy(item => item.Elevation).FirstOrDefault(item => Math.Abs(item.Elevation) < 1e-6)
                     ?? Level.Create(doc, 0.0);
                 level.Name = "M218 test level — 0 ft";
-                Tag(level, "M218-TEST-LEVEL-NOT-HOUSE-DATUM");
+                // Levels do not expose the instance-comments parameter used by tagged study elements.
+                // The explicit name is the stable marker; do not invent a parameter on the datum.
                 var wallType = new FilteredElementCollector(doc).OfClass(typeof(WallType)).Cast<WallType>()
                     .Where(item => item.Kind == WallKind.Basic).OrderBy(item => item.Name, StringComparer.OrdinalIgnoreCase).First();
                 var floorPlanType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>()
