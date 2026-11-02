@@ -3212,6 +3212,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The matrix permits comparison derivatives but prohibits promotion of template wall/floor/door types into Selected-D without cited assemblies, finished-face data and owner/design approval.
 - No Revit restart or model edit was required; the exact M-06 blocker and B-unassigned rule remain unchanged.
 
+## M340 — Verified BIM sequence runner — 2026-11-02
+
+- Added `Tools/run_verified_bim_sequence.ps1` to run the retained M218 pantry, M333 roof, M328 landing, M06 coordination, consolidated BIM and RevitPilot regression checks in sequence.
+- The runner emits one JSON report under ignored `.local/revalidation/` and distinguishes retained-evidence validation from a new Revit runtime generation.
+- No Selected-D, source family, remote state or unrelated worktree file was changed.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

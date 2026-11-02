@@ -1,5 +1,5 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-11-02 (M339 placeholder replacement readiness matrix; native pantry opening gate retained)
+Updated: 2026-11-02 (M340 verified BIM sequence runner; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
@@ -10,6 +10,7 @@ Default branch: `main` (protected by **owner approval requirement** for merges)
 **Next architectural gate:** the native wall/plate candidate remains a comparison derivative: 42 walls and three provisional plates are verified, but wall type, layered floor assembly, front/porch opening and pantry door are not selected. M218/M219 provides the documented pantry swing comparison; M336 confirms M-06 evidence is screen-valid but fit-blocked. Keep floor-to-floor/stair relationship unresolved, M-06/A/B unassigned, west A protected, and do not replace placeholders without a cited input.
 M338 confirms the local intake contains no exact current-SKU `610AA001.020` complete family or assembled dimension drawing; predecessor bowl/seat families remain non-substitutable. The next native M-06 fixture study therefore awaits owner-supplied current-SKU evidence or explicit proxy authorization.
 M339's readiness matrix is the current promotion rule: native walls, floor plates, pantry/front openings and roof shells remain comparison-only; no template assembly is silently promoted into Selected-D.
+M340 adds `Tools/run_verified_bim_sequence.ps1` as the single local replay command for retained Revit evidence and offline regressions. It does not open Revit or regenerate a new RVT; M-06 remains fit-blocked.
 
 **Latest verified state:** M311 ran successfully in Revit after owner invocation. Three RVTs and manifests exist under ignored .local/revit-pilot/clear-ceiling-wall-height/20261101T185016177Z/. Saved-file/input hashes, footprint edges, 12 walls and one local level per model, and all nine height cases pass independent PowerShell checks. Reopen/visual inspection and independent RVT inventory remain pending. Family report wording repair is build-verified only; validator fixture tests pass 6/6. Earlier blocked/no-output notes below are historical and superseded.
 
