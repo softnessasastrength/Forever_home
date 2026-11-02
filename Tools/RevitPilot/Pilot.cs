@@ -62,6 +62,8 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
+            Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
             Assembly.GetExecutingAssembly().Location, typeof(SplitRiseNativeStairCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactAuditVisible", "Audit active\ncompact core",
@@ -2315,6 +2317,103 @@ public class CompactCoreCommand : IExternalCommand
             return Result.Succeeded;
         }
         catch (Exception ex) { message = ex.Message; return Result.Failed; }
+    }
+}
+
+[Transaction(TransactionMode.Manual)]
+public class CompactLandingStudyCommand : IExternalCommand
+{
+    static SavedModelFingerprint CaptureSavedFile(string path)
+    {
+        var info = new FileInfo(path);
+        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+        string digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(stream)).ToLowerInvariant();
+        return new SavedModelFingerprint("sha256-of-saved-rvt-bytes-v1", digest, info.Name, info.Length);
+    }
+
+    static void Tag(Element element, string value)
+    {
+        var parameter = element.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (parameter is not null && !parameter.IsReadOnly) parameter.Set(value);
+    }
+
+    public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
+    {
+        Document? doc = data.Application.ActiveUIDocument?.Document;
+        try
+        {
+            if (doc is null || !doc.IsValidObject)
+                throw new InvalidOperationException("A saved compact-core RVT must be active before creating the landing derivative.");
+            if (!string.Equals(doc.Title, "FH_Compact_Core_Study", StringComparison.Ordinal))
+                throw new InvalidOperationException("This study is restricted to the verified FH_Compact_Core_Study document; no other model was changed.");
+            if (string.IsNullOrWhiteSpace(doc.PathName) || !File.Exists(doc.PathName))
+                throw new InvalidOperationException("The verified compact-core study must have a readable saved path before creating its landing derivative.");
+            string root = WorkspaceLocator.Find(Assembly.GetExecutingAssembly());
+            string output = Path.Combine(root, ".local", "revit-pilot", "compact-core-landing",
+                DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+            Directory.CreateDirectory(output);
+            string sourcePath = doc.PathName;
+            var sourceFingerprint = CaptureSavedFile(sourcePath);
+            string studyPath = Path.Combine(output, "FH_Compact_Core_Landing_Study.rvt");
+            doc.SaveAs(studyPath, new SaveAsOptions());
+
+            var upperFloor = new FilteredElementCollector(doc).OfClass(typeof(Floor)).Cast<Floor>()
+                .FirstOrDefault(f => f.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString()?.StartsWith("FH-C-FLOOR-UPPER", StringComparison.Ordinal) == true)
+                ?? throw new InvalidOperationException("The verified upper floor plate marker was not found.");
+            var stair = new FilteredElementCollector(doc).OfClass(typeof(Stairs)).Cast<Stairs>()
+                .FirstOrDefault(s => s.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.AsString()?.StartsWith("FH-C-STAIR-MAIN-UPPER", StringComparison.Ordinal) == true)
+                ?? throw new InvalidOperationException("The verified upper native stair marker was not found.");
+            var upperBox = upperFloor.get_BoundingBox(null) ?? throw new InvalidOperationException("Upper floor has no bounding box.");
+            var stairBox = stair.get_BoundingBox(null) ?? throw new InvalidOperationException("Upper stair has no bounding box.");
+            double gapFt = upperBox.Min.Y - stairBox.Max.Y;
+            double widthFt = stairBox.Max.X - stairBox.Min.X;
+            if (!(gapFt > 0.01 && widthFt > 0.01))
+                throw new InvalidOperationException($"Measured stair/upper-floor gap is not positive: gap={gapFt:0.###} ft, width={widthFt:0.###} ft.");
+
+            Level upperLevel = (Level)doc.GetElement(upperFloor.LevelId)!;
+            ElementId floorTypeId = Floor.GetDefaultFloorType(doc, false);
+            if (floorTypeId == ElementId.InvalidElementId) throw new InvalidOperationException("No default floor type is available for the landing derivative.");
+            Floor landing;
+            using (var transaction = new Transaction(doc, "Create derived native upper stair landing bridge"))
+            {
+                transaction.Start();
+                var loop = new CurveLoop();
+                double z = upperLevel.Elevation;
+                XYZ a = new(stairBox.Min.X, stairBox.Max.Y, z);
+                XYZ b = new(stairBox.Max.X, stairBox.Max.Y, z);
+                XYZ c = new(stairBox.Max.X, upperBox.Min.Y, z);
+                XYZ d = new(stairBox.Min.X, upperBox.Min.Y, z);
+                loop.Append(Line.CreateBound(a, b)); loop.Append(Line.CreateBound(b, c));
+                loop.Append(Line.CreateBound(c, d)); loop.Append(Line.CreateBound(d, a));
+                landing = Floor.Create(doc, new[] { loop }, floorTypeId, upperLevel.Id);
+                Tag(landing, "FH-C-STAIR-LANDING-BRIDGE | PROVISIONAL | derived from measured stair/floor gap");
+                transaction.Commit();
+            }
+            doc.Save();
+            var savedFingerprint = CaptureSavedFile(studyPath);
+            var manifest = new
+            {
+                schema = "forever-home.compact-core-native-landing-study-v1",
+                status = "disposable native landing derivative; Selected-D untouched; no code or construction approval",
+                utc = DateTime.UtcNow,
+                source_document_title = sourceFingerprint.file_name,
+                source_model_fingerprint = sourceFingerprint,
+                model_fingerprint = savedFingerprint,
+                source_study = sourcePath,
+                landing = new { marker = "FH-C-STAIR-LANDING-BRIDGE", element_id = landing.Id.Value, level = upperLevel.Name, gap_ft = gapFt, width_ft = widthFt, area_sqft = gapFt * widthFt, floor_type = ((FloorType)doc.GetElement(floorTypeId)!).Name },
+                limitations = new[] { "Landing footprint is a disposable coordination bridge derived from native bounding boxes.", "Landing does not prove clear headroom, guard/rail, door approach, structure, accessibility or code compliance.", "Source compact-core RVT and Selected-D remain preserved separately." }
+            };
+            File.WriteAllText(Path.Combine(output, "landing-study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
+            using (var options = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true })
+            {
+                if (!doc.Export(output, "FH_Compact_Core_Landing_Study", options)) throw new InvalidOperationException("Revit IFC export returned false.");
+            }
+            doc.Close(false);
+            data.Application.OpenAndActivateDocument(studyPath);
+            TaskDialog.Show("Forever Home landing study", $"Created a disposable native landing bridge from the measured stair/floor gap ({gapFt:0.###} ft × {widthFt:0.###} ft).\n\n{output}");
+            return Result.Succeeded;
+        }
+        catch (Exception ex) { message = ex.ToString(); return Result.Failed; }
     }
 }
 

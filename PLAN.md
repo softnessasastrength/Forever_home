@@ -3218,3 +3218,12 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 - Selected-D regression replay (2026-11-01): `Tools/validate_architectural_bim_baseline.ps1` passes two 43/43 geometry runs, six SVG parses, seven matching artifacts per run and the retained IFC2x3 validator 26/26. The source/RVT/IFC fingerprints remain unchanged. The next architectural gate remains native assemblies/openings in disposable derivatives, not edits to selected-D.
 
 - M-06 family evidence replay (2026-11-01): M280 rebuilds with 0 warnings/errors and reproduces both review artifacts byte-for-byte in two fresh runs, with 28/28 checks each. This confirms the family evidence pipeline, not a fixture selection or fit decision; M-06/A/B assignment gates remain active.
+## M328 — Native upper stair landing bridge — 2026-11-02
+
+**Acceptance:** derive a disposable native floor bridge from the measured compact-core upper stair/floor gap; preserve the source compact-core RVT and Selected-D; save an RVT, manifest and IFC2x3 export; validate hashes, marker, positive dimensions and IFC entities independently.
+
+**Implementation:** `CompactLandingStudyCommand` is registered only in the project-local RevitPilot build. It measures `FH-C-FLOOR-UPPER` and `FH-C-STAIR-MAIN-UPPER`, creates `FH-C-STAIR-LANDING-BRIDGE`, saves a disposable derivative and exports IFC2x3. The corrected command fingerprints saved RVT bytes directly after `doc.Save()`; validator: `Tools/RevitPilot/validate_compact_landing_ifc.ps1`.
+
+**Current status:** build passes with 0 errors and two existing MSB3277 reference-conflict warnings. Runtime command has been loaded from the exact hash-checked DLL (`55B6C605C5ACF14DF9F93D9B753197A63B18BC5875A237C42DF805000C0E84CA`), but the current Revit session has not yet produced a complete manifest/IFC package; the two earlier disposable RVT-only attempts are retained as failed evidence. Do not promote the landing or claim route/headroom/guard/rail/structure/accessibility/code compliance.
+
+**Next:** perform one controlled Revit invocation, validate the complete package, then proceed to the roof-shell study. Keep M-06/B unassigned and Selected-D untouched.

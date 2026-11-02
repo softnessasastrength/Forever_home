@@ -3148,3 +3148,10 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Independent validation: `validate_compact_manifest.py` passes; `validate_compact_ifc.py` reports **PASS with open coordination findings**, no errors, clean IFC2X3 schema, matching three storeys/17 spaces, matching room CSV and decoded physical geometry. One informational `IfcAnnotation` decode exception remains; physical-product decode failures are zero.
 - Findings retained rather than hidden: provisional room-area variances, and the upper stair-to-floor bounding-box gap of 5.625 ft. These are compact-core review issues, not Selected-D edits. No roof, selected floor assemblies, clear opening/swing/accessibility, structural/MEP, code, permit or construction-readiness claim follows.
 
+## M328 — Native upper stair landing bridge — 2026-11-02
+
+- Added `CompactLandingStudyCommand` and `Tools/RevitPilot/validate_compact_landing_ifc.ps1` for a disposable native bridge derived from measured upper-stair/upper-floor bounds.
+- Corrected saved-RVT fingerprinting to hash the written derivative directly after `doc.Save()`; restored the M324 split-rise ribbon command label/target.
+- Release build: 0 errors, two existing MSB3277 warning groups. Current project-local DLL SHA256: `55B6C605C5ACF14DF9F93D9B753197A63B18BC5875A237C42DF805000C0E84CA`.
+- Two early Revit invocations produced RVT-only derivatives under `.local/revit-pilot/compact-core-landing/` without manifest/IFC; these are retained as failed evidence. A corrected runtime invocation remains pending because the Add-Ins button has not yet produced a new output directory in the current UI session.
+- Source compact-core and Selected-D remain unchanged. No landing, stair route, headroom, guard/rail, structure, accessibility, code or construction-readiness conclusion follows.

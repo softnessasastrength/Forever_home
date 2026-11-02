@@ -69,3 +69,6 @@ The Revit-dependent runs require Revit 2027/2027.3 and the exact hash-verified p
 ## Repository safety
 
 Work remains on the local sandbox branch. No remote state was changed, no history was rewritten, and unrelated existing worktree edits remain preserved and unstaged.
+## M328 native landing study checkpoint
+
+The compact-core derivative has an explicitly open upper stair-to-floor gap. `CompactLandingStudyCommand` now defines a disposable native floor bridge from measured bounds and `validate_compact_landing_ifc.ps1` checks the expected manifest, RVT hash, positive bridge geometry and IFC2x3 floor marker. The release build is clean apart from the two pre-existing MSB3277 reference warnings. The corrected DLL is hash-checked and registered only at the project-local path. Complete manifest/IFC runtime evidence is still pending; the two RVT-only attempts are retained as failed evidence. This study does not select a stair/landing or establish headroom, guard/rail, structural, accessibility, code, professional or construction readiness.
