@@ -15,9 +15,10 @@ class M372M06TreshamBContractTests(unittest.TestCase):
         self.assertIn("Selected-D and the Evolution RFA are untouched", COMMAND)
 
     def test_keeps_door_and_service_gates_false(self):
-        self.assertIn("door_approach_supported = false", COMMAND)
-        self.assertIn("service_route_supported = false", COMMAND)
-        self.assertIn("lower-MEP route marker only", COMMAND)
+        self.assertIn("DoorApproachVerified", COMMAND)
+        self.assertIn("ServiceRouteVerified", COMMAND)
+        self.assertIn("FitGatesClosed", COMMAND)
+        self.assertIn("route marker only", COMMAND)
         self.assertIn("IFCVersion.IFC2x3CV2", COMMAND)
 
     def test_is_registered(self):

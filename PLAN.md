@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M376 — Standalone core project and typed M-06 specification
+
+**Status:** complete locally; not registered with Revit.
+
+**Result:** added `Tools/RevitPilot/Core/RevitPilot.Core.csproj` targeting `net10.0`, a typed `M06CoordinationStudySpec`, and `Tools/build_revitpilot_core.ps1`. The standalone core builds with 0 warnings and 0 errors. The desktop RevitPilot build also succeeds with 0 errors and the two pre-existing MSB3277 warning groups. The parent project’s recursive compile exclusions were tightened so nested core `obj`/`bin` outputs cannot contaminate the Revit build.
+
+**Next:** continue moving deterministic manifest/spec construction into the core; keep all Autodesk document transactions and IFC export in the Revit adapter until an independent host replay justifies further extraction.
+
 ## M375 — UI-neutral artifact core seam
 
 **Status:** complete locally; not registered with Revit and not run in the open session.

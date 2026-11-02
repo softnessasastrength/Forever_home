@@ -3453,3 +3453,11 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Added `Tools/RevitPilot/tests/test_ui_neutral_core_contract.py`; the offline suite now passes **66 tests**.
 - Built the disposable `core-refactor-check` DLL successfully with **0 errors** and the two pre-existing MSB3277 warning groups; SHA256 `87B06DAA503721D12D070A77AD4F0E1B86347D06C1AA6C698D3A7583B858658C`.
 - No Revit restart, manifest replacement, cloud credential, AppBundle upload, Selected-D edit or remote-state change occurred.
+## M376 — Standalone core project and typed M-06 specification — 2026-11-02
+
+- Added `Tools/RevitPilot/Core/RevitPilot.Core.csproj` and `Tools/build_revitpilot_core.ps1`.
+- Added typed `M06CoordinationStudySpec.OwnerDraft`; the native command now consumes its owner-directed preferences and asserts that all fit gates remain closed.
+- Standalone UI-neutral core build: **0 warnings, 0 errors**; output `.local/revit-pilot/core-standalone-check/Release/net10.0/RevitPilot.Core.dll`.
+- Desktop RevitPilot build: **0 errors**, two pre-existing MSB3277 warning groups; DLL SHA256 `B61B1834D9D3DF4FBACF4BE71926B91A6A55F4E4FEFA4BA3963FF1441EE54E0F`.
+- Offline regression suite: **68 tests passed**.
+- Repaired parent-project compile exclusions after the nested core project initially exposed duplicate generated assembly attributes. No Revit restart, manifest replacement, Selected-D edit or remote-state change occurred.

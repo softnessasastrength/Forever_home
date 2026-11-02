@@ -28,6 +28,8 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
             if (!before.Equals(SourceSha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("Tresham source hash mismatch.");
             string output = Path.Combine(root, ".local", "revit-pilot", "m06-tresham-b-study", DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
             Directory.CreateDirectory(output);
+            var studySpec = M06CoordinationStudySpec.OwnerDraft;
+            if (!studySpec.FitGatesClosed) throw new InvalidDataException("M-06 draft fit gates must remain closed in the disposable study.");
             doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
             Family family;
             using (var familyDoc = data.Application.Application.OpenDocumentFile(sourcePath))
@@ -51,7 +53,7 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 var uv = face.GetBoundingBox();
                 var point = face.Evaluate(new UV((uv.Min.U + uv.Max.U) / 2, (uv.Min.V + uv.Max.V) / 2));
                 var lav = doc.Create.NewFamilyInstance(faceRef, point, XYZ.BasisY, symbol);
-                Tag(lav, "FH-M372 | KOHLER Tresham K-2844-4 | owner-approved lavatory direction | gross-pair proxy | unassigned");
+                Tag(lav, $"FH-M372 | {studySpec.LavatoryDirection} | owner-approved lavatory direction | gross-pair proxy | {studySpec.Assignment}");
                 familyInstances++;
 
                 var toilet = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
@@ -62,15 +64,15 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 loop.Append(Line.CreateBound(new XYZ(x + w / 2, y + d, 0), new XYZ(x - w / 2, y + d, 0)));
                 loop.Append(Line.CreateBound(new XYZ(x - w / 2, y + d, 0), new XYZ(x - w / 2, y, 0)));
                 toilet.SetShape(new GeometryObject[] { GeometryCreationUtilities.CreateExtrusionGeometry(new[] { loop }, XYZ.BasisZ, h) });
-                Tag(toilet, "FH-M372 | American Standard 610AA001.020 plan proxy 19 x 30.25 in | not exact SKU solid | unassigned");
+                Tag(toilet, $"FH-M372 | American Standard 610AA001.020 plan proxy 19 x 30.25 in | {studySpec.ToiletGeometry} | {studySpec.Assignment}");
 
                 void Marker(XYZ a, XYZ b, string text)
                 {
                     var curve = doc.Create.NewModelCurve(Line.CreateBound(a, b), SketchPlane.Create(doc, Plane.CreateByNormalAndOrigin(XYZ.BasisZ, XYZ.Zero)));
                     Tag(curve, text);
                 }
-                Marker(new XYZ(Ft(0), Ft(70), 0), new XYZ(Ft(36), Ft(70), 0), "FH-M372 | 36 in door/approach reservation | unresolved leaf/swing | no room assignment");
-                Marker(new XYZ(Ft(0), Ft(78), 0), new XYZ(Ft(60), Ft(78), 0), "FH-M372 | lower-MEP route marker only | no supply/drain/vent network");
+                Marker(new XYZ(Ft(0), Ft(70), 0), new XYZ(Ft(36), Ft(70), 0), $"FH-M372 | 36 in door/approach reservation | {studySpec.DoorSwingPreference} preference | {studySpec.ApproachPreference} | unresolved leaf | {studySpec.Assignment}");
+                Marker(new XYZ(Ft(0), Ft(78), 0), new XYZ(Ft(60), Ft(78), 0), $"FH-M372 | {studySpec.ServiceRouteTarget} route marker only | {studySpec.FixtureRelationshipPreference} preference | no supply/drain/vent network");
                 var viewType = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(x => x.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, viewType.Id); view.Name = "M-06 Tresham/B disposable gross-pair study";
                 tx.Commit();
@@ -95,7 +97,8 @@ public sealed class NativeM06TreshamBStudyCommand : IExternalCommand
                 status = "disposable native family/proxy comparison; M-06/B remains unassigned and fit-blocked",
                 source = SourceRelative, source_sha256 = before, family = "kohler-tresham-k-2844-4-0", type = symbolName,
                 family_instances = familyInstances, toilet_proxy = new { sku = "610AA001.020", width_in = 19.0, projection_in = 30.25 },
-                door_approach_supported = false, service_route_supported = false, selected = false,
+                door_approach_supported = studySpec.DoorApproachVerified, service_route_supported = studySpec.ServiceRouteVerified, selected = studySpec.RoomAssignmentAuthorized,
+                draft_preferences = new { studySpec.ApproachPreference, studySpec.DoorSwingPreference, studySpec.FixtureRelationshipPreference, studySpec.ServiceRouteTarget, protected_search_windows = studySpec.ProtectedSearchWindows },
                 saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = StudyArtifactContract.Sha256File(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = StudyArtifactContract.Sha256File(ifc), ifc2x3 = File.ReadAllText(ifc).Contains("FILE_SCHEMA(('IFC2X3'))", StringComparison.Ordinal),
                 limitations = new[] { "Tresham is hosted on a synthetic wall for orientation only; host is not house geometry.", "Toilet is a labelled plan proxy, not an exact current-SKU solid.", "Door/approach and lower-MEP markers are reservations only; no clear leaf, swing, rough-in, slope, vent or network is modelled.", "No code, accessibility, structural, professional, permit or construction conclusion follows. Selected-D and the Evolution RFA are untouched." }
             };
