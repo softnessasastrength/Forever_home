@@ -1,6 +1,7 @@
 param(
     [string]$Output = '.local/revalidation/verified-bim-milestone.json',
-    [string]$NativeStairStudyDirectory = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z'
+    [string]$NativeStairStudyDirectory = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z',
+    [string]$NativeRoofStudyDirectory = '.local/revit-pilot/native-roof-shell/20261102T041843122Z'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -20,15 +21,15 @@ $chain = Read-Json '.local/revalidation/m318-main-floor-coordination-final.json'
 $m06 = Read-Json '.local/revalidation/m06-cimarron-evidence.json'
 $m120 = Read-Json '.local/revalidation/M320-m120-current-envelope-pwsh/m120-report.json'
 $m321 = Read-Json '.local/revalidation/M321-kitchen-island-ifc-final.json'
-$m83 = Read-Json '.local/revit-pilot/roof-massing/20261101T210719010Z/ifc-validation.json'
 $m325 = Read-Json (Join-Path $NativeStairStudyDirectory 'native-stair-validation.json')
+$m333 = Read-Json (Join-Path $NativeRoofStudyDirectory 'native-roof-shell-validation.json')
 
 Add-Check 'selected_d_baseline' ($baseline.status -eq 'pass' -and $baseline.replay_count -eq 2 -and $baseline.geometry_check_count_per_replay -eq 43 -and $baseline.ifc_checks_passed -eq 26 -and $baseline.protected_inputs_unchanged) '2 x 43 source replay; retained IFC 26/26; protected inputs unchanged'
 Add-Check 'main_floor_wall_plate_chain' ($chain.passed -eq 9 -and $chain.total -eq 9) 'M318 provenance/inventory gate'
 Add-Check 'm06_public_candidate' ([bool]$m06.pass -and @($m06.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'isolated public-family evidence with no placement'
 Add-Check 'm06_gross_envelope' ($m120.status -match '^passed' -and $m120.pair_count -eq 16 -and $m120.gross_containment_count -eq 16 -and -not [bool]$m120.fit_window.assigned) '16/16 gross pairs; B remains unassigned'
 Add-Check 'm02_kitchen_ifc' ($m321.status -eq 'pass' -and @($m321.checks.PSObject.Properties | Where-Object { $_.Value -ne $true }).Count -eq 0) 'isolated kitchen furnishing IFC gate'
-Add-Check 'm83_roof_ifc' ($m83.status -eq 'pass' -and @($m83.checks.PSObject.Properties | Where-Object { $_.Value -ne $true }).Count -eq 0) 'six-case comparative roof-surface IFC gate'
+Add-Check 'm333_native_roof' ($m333.passed -eq $m333.total -and $m333.total -eq 13 -and @($m333.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'three native 8:12/10:12/12:12 roof RVT/IFC gate'
 Add-Check 'm325_native_stair' ($m325.pass -eq $true -and $m325.checks.Count -ge 14 -and @($m325.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'disposable native split-rise stair RVT/IFC gate'
 
 $outPath = if ([IO.Path]::IsPathRooted($Output)) { [IO.Path]::GetFullPath($Output) } else { [IO.Path]::GetFullPath((Join-Path $repo $Output)) }

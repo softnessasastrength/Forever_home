@@ -11,13 +11,13 @@ This is the current local-sandbox handoff for the Forever Home architectural BIM
 | Native main-floor walls | M313 run and reopen audit | Disposable Revit 2027.3 derivative contains 42 native walls and 252 model curves; reopen inventory passes. |
 | Provisional floor plates | M314/M318 | Exact M313 source chain preserved; three 40 × 42 ft / 1,680 sf provisional plates at display offsets 0/60/120 ft; M318 passes 9/9. |
 | Floor-plate IFC | M315 | IFC2x3 export passes 6/6, including 42 walls and three slab entities. |
-| Roof comparison | M83 host runs | Six open-mesh 8:12/10:12/12:12 comparisons with both ridge axes; independent IFC checks pass 21/21. No native roof is selected. |
+| Roof comparison | M333 native run; `.local/revit-pilot/native-roof-shell/20261102T041843122Z/` | Three native `FootPrintRoof` comparisons at 8:12/10:12/12:12; independent validator passes 13/13, including RVT/IFC hashes and IFCROOF. No native roof is selected. |
 | M-06 family evidence | M270/M317 | Public KOHLER Cimarron family inspected in an isolated derivative; positive solids and sanitary connector recorded; 8/8 evidence replay passes. No instance is placed in Selected-D. |
 | M-06 envelope screen | M320 | Current-SKU plan proxy plus research lavatories: 14/14 checks and 16/16 gross containment pairs. B remains unassigned. |
 | M-02 island furnishing IFC | M321 | Isolated Revit 2027.3 furnishing derivative passes IFC2x3 validation 13/13 with matching audit/export lineage. |
 | Native split-rise stair study | M325 | Disposable Revit 2027.3 derivative contains two native stairs with four risers each across 0/2.5/5 ft datums; RVT hash and IFC2x3 stair export pass 15/15. |
 | Compact-core native house derivative | M327 | Disposable Revit 2027.3 candidate audit records 17 rooms/78 walls/5 nominal doors/2 native stairs/3 floors with zero warnings; geometry QA has 0 issues; IFC2x3/DWG/PDF/CSV exports are non-empty and independent IFC validation passes with no errors. |
-| Offline RevitPilot contracts | Current checked-in test suite | 49/49 tests pass; RevitPilot build completes with zero errors and the repository's existing Autodesk reference-conflict warnings. |
+| Offline RevitPilot contracts | Current checked-in test suite | 53/53 tests pass; RevitPilot build completes with zero errors and the repository's existing Autodesk reference-conflict warnings. |
 
 ## Reproduction commands
 
@@ -69,6 +69,10 @@ The Revit-dependent runs require Revit 2027/2027.3 and the exact hash-verified p
 ## Repository safety
 
 Work remains on the local sandbox branch. No remote state was changed, no history was rewritten, and unrelated existing worktree edits remain preserved and unstaged.
+## M333 native roof-shell study checkpoint
+
+The disposable native roof study is now host-verified. `NativeRoofShellStudyCommand` created three side-by-side 40 × 42 ft `FootPrintRoof` elements from the documented 8:12, 10:12 and 12:12 options, exported IFC2x3, and saved an RVT. Because Revit retains the SaveAs handle during the command, `Tools/RevitPilot/finalize_native_roof_hash.ps1` records the RVT hash only after Revit closes. The final derivative is `.local/revit-pilot/native-roof-shell/20261102T041843122Z/`; RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`, validation **13/13**. This is a comparative roof shell only; it does not select pitch, assembly, framing, drainage, code path or structure.
+
 ## M328 native landing study checkpoint
 
 The compact-core derivative has an explicitly open upper stair-to-floor gap. `CompactLandingStudyCommand` now defines a disposable native floor bridge from measured bounds and `validate_compact_landing_ifc.ps1` checks the expected manifest, RVT hash, positive bridge geometry and IFC2x3 floor marker. A controlled run produced `.local/revit-pilot/compact-core-landing/20261102T005830531Z/` with a 5.625 ft × 3.3333 ft bridge and saved RVT SHA256 `8d9bdf1901037828c3012e1b4bf8f3df16b8305e064ac34c906437e1b56e3f71`. IFC export exposed a Revit transaction requirement; the command now wraps export in a rollback transaction and requires one clean rerun. The corrected DLL is hash-checked and registered only at the project-local path. This study does not select a stair/landing or establish headroom, guard/rail, structural, accessibility, code, professional or construction readiness.

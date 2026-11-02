@@ -3173,6 +3173,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Post-Revit finalisation recorded RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`; IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`. `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13**.
 - The roofs remain comparison options only. No pitch, ridge, assembly, overhang, drainage, framing, code, permit, structural, professional or construction-readiness conclusion follows; Selected-D and source compact-core remain untouched.
 
+## M334 — Consolidated evidence gate refreshed — 2026-11-02
+
+- Updated `Tools/validate_verified_bim_milestone.ps1` to use the verified M333 native-roof validator rather than the older open-surface M83 comparison.
+- The consolidated gate passes **7/7**, covering the selected-D baseline, wall/plate provenance, M-06 public-family evidence, M-06 gross envelope, M-02 furnishing IFC, M325 native stair, and M333 native roof RVT/IFC evidence.
+- This remains an evidence-chain gate. It does not select wall/floor/door assemblies or close the outstanding stair section, M-06 exact toilet, finished clearances, approach, service routing, code applicability, structure, MEP, site or professional-review gates.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
