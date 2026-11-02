@@ -1,5 +1,5 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-11-02 (M340 verified BIM sequence runner; placeholder replacement matrix retained)
+Updated: 2026-11-02 (M341 sequence runner robustness repair; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
@@ -11,6 +11,7 @@ Default branch: `main` (protected by **owner approval requirement** for merges)
 M338 confirms the local intake contains no exact current-SKU `610AA001.020` complete family or assembled dimension drawing; predecessor bowl/seat families remain non-substitutable. The next native M-06 fixture study therefore awaits owner-supplied current-SKU evidence or explicit proxy authorization.
 M339's readiness matrix is the current promotion rule: native walls, floor plates, pantry/front openings and roof shells remain comparison-only; no template assembly is silently promoted into Selected-D.
 M340 adds `Tools/run_verified_bim_sequence.ps1` as the single local replay command for retained Revit evidence and offline regressions. It does not open Revit or regenerate a new RVT; M-06 remains fit-blocked.
+M341 fixed per-stage PowerShell exit-code contamination in that runner; the six-step replay now passes reliably. The current shell has no .NET SDK for a fresh RevitPilot build, while existing project-local build evidence remains preserved.
 
 **Latest verified state:** M311 ran successfully in Revit after owner invocation. Three RVTs and manifests exist under ignored .local/revit-pilot/clear-ceiling-wall-height/20261101T185016177Z/. Saved-file/input hashes, footprint edges, 12 walls and one local level per model, and all nine height cases pass independent PowerShell checks. Reopen/visual inspection and independent RVT inventory remain pending. Family report wording repair is build-verified only; validator fixture tests pass 6/6. Earlier blocked/no-output notes below are historical and superseded.
 

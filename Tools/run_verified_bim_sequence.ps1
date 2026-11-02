@@ -9,6 +9,7 @@ $steps = [System.Collections.Generic.List[object]]::new()
 function Run-Step([string]$Name, [scriptblock]$Action) {
     $output = @()
     $exitCode = 0
+    $global:LASTEXITCODE = 0
     try {
         $output = @(& $Action 2>&1)
         $exitCode = if ($null -eq $LASTEXITCODE) { 0 } else { [int]$LASTEXITCODE }

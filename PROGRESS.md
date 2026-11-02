@@ -3218,6 +3218,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The runner emits one JSON report under ignored `.local/revalidation/` and distinguishes retained-evidence validation from a new Revit runtime generation.
 - No Selected-D, source family, remote state or unrelated worktree file was changed.
 
+## M341 — Sequence runner robustness repair — 2026-11-02
+
+- Reset `$LASTEXITCODE` before each sequence stage so a prior failed command cannot falsely fail a later passing validator.
+- Replayed the sequence successfully: **6/6** steps pass, including the **53/53** offline suite.
+- A fresh `dotnet build` could not run in this shell because no .NET SDK is installed; no source conclusion is inferred from that environment limitation.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

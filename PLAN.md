@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M340 verified BIM sequence runner)
+Updated: 2026-11-02 (M341 sequence runner robustness repair)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -15,6 +15,7 @@ M337 folds the M336 contract into the machine-checked verified-BIM gate. The con
 M338 audits the local intake and confirms that no exact current-SKU 610AA001.020 RFA or assembled drawing is present; predecessor bowl/seat files remain explicitly non-substitutable. This is the current external-input blocker for a native M-06 fit study.
 M339 records the replacement-readiness matrix in `Architecture/Placeholder_Replacement_Readiness_2026-11-02.md`. It confirms that current native walls, floors, pantry doors and roof shells remain comparison derivatives; no unsupported placeholder is promoted into Selected-D.
 M340 adds `Tools/run_verified_bim_sequence.ps1`, a local runner for the retained Revit evidence validators, M-06 contract and 53-test offline suite. It provides one reproducible report while explicitly stating that it validates retained evidence rather than opening Revit.
+M341 repairs PowerShell exit-code contamination in the runner by resetting `$LASTEXITCODE` before each stage. The sequence now reliably passes six stages; the current shell has no .NET SDK, so fresh RevitPilot compilation remains an environment limitation rather than a source result.
 The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
@@ -55,6 +56,12 @@ M327 now replays the existing compact-core generator in Revit 2027.3, then audit
 **Acceptance:** run the retained landing, roof, pantry, M-06, consolidated BIM and offline regression checks in one local command; emit a machine-readable report and preserve all limitations.
 
 **Result:** `Tools/run_verified_bim_sequence.ps1` is the reproducible sequence entry point. It does not regenerate Revit geometry or imply that M-06 is fitted.
+
+## M341 — Sequence runner robustness repair
+
+**Acceptance:** prevent a prior command's non-zero `$LASTEXITCODE` from contaminating later PowerShell stages; rerun the six-step sequence.
+
+**Result:** runner now resets the process exit code per stage and passes all six steps. No model or source file is changed.
 
 ## M325 — Disposable native split-rise stair host gate
 
