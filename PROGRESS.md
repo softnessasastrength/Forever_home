@@ -3294,3 +3294,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - M-06, west A, B, and Selected-D remain unchanged. No product, room, door, service route, or code-compliance claim was promoted.
 - Validation context remains: M349 verified BIM sequence 12/12, consolidated gate 15/15, offline RevitPilot tests 53/53.
 
+## 2026-11-02 — M351 M-06 proxy clearance/approach screen
+
+- Added `Tools/validate_m06_proxy_clearance_approach.ps1` and `Architecture/M351_M06_Proxy_Clearance_Approach_Screen_2026-11-02/README.md`.
+- The deterministic report passes **9/9** source/gate checks against the M344 proxy manifest, current Selected-D B gross-pair replay, and pinned Selected-D hash.
+- It confirms the 158 × 84 in B gross window and proxy evidence remain unassigned comparisons. Exact owner-product solids, finished-face clearance, door/approach, service route, and room assignment remain false/open.
+- No Revit source, Selected-D, RFA, remote, or unrelated dirty file changed.
+

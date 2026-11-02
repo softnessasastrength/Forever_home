@@ -3355,3 +3355,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next:** use the labelled proxy only for a separate clearance/approach/service-route comparison if desired; otherwise obtain an exact current-SKU installation/dimension source before assigning M-06. Keep B unassigned.
 
+## M351 — M-06 proxy clearance/approach screen
+
+**Acceptance:** bind the existing M344 proxy manifest, the current Selected-D B gross-pair replay, and the provisional 15/30/21-in screening basis into a deterministic gate report; verify Selected-D and proxy hashes; keep exact product geometry, door/approach, service route, and B assignment false.
+
+**Status:** complete. `Tools/validate_m06_proxy_clearance_approach.ps1` passes 9/9 and writes `.local/revalidation/m351-m06-proxy-clearance-approach.json`. The source-linked README is `Architecture/M351_M06_Proxy_Clearance_Approach_Screen_2026-11-02/README.md`.
+
+**Finding:** the proxy and current gross screen are source-pinned, but no evidence supports promoting M-06. Finished-face geometry, a selected lavatory, actual door/approach, and a plausible project service route remain open. B remains unassigned.
+
