@@ -3263,3 +3263,12 @@ The owner-authorized local RevitPilot runtime produced a disposable native openi
 
 This is a comparison derivative only. No door family, frame, threshold, swing, clear opening, room assignment or Selected-D change was made. M-06/B remain unassigned; no code, accessibility, structural, professional, permit or construction-readiness claim follows. The next replay will include this gate as M346.
 
+## M347 — Native documented nominal door-family comparison — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeDocumentedDoorStudyCommand.cs` and `Tools/RevitPilot/validate_documented_door_study.ps1`.
+- Built the project-local RevitPilot v9 DLL with **0 errors** (existing MSB3277 reference warnings only), SHA256 `DB8F9C8DA45D38188E23EDEEF612B4DAEB9D665F8148A95A09E97E02991A777B`; prior registration was backed up under `.local/revit-pilot/registration-backups/20261102-083343336/`; Revit loaded the exact DLL with owner-authorized **Load Once**.
+- Runtime generated `.local/revit-pilot/documented-door-study/20261102T133842605Z/` with three generic nominal RFA proxies, one RVT, one IFC2x3 export and a source-hashed manifest. The two cases are the documented 30-in pantry baseline and labelled 36-in comparison; each records eight native host walls and four unselected door-family records.
+- `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10**, including source hashes, case IDs, counts, unselected status, RVT/IFC hashes, IFC2x3 schema and `IFCDOOR` entities.
+- Repaired a runtime evidence-lock failure by closing the disposable document before hashing saved artifacts. No Selected-D, source RFA, remote branch or unrelated dirty/untracked file was changed.
+- This remains nominal comparison evidence only; actual openings, frames, swings, thresholds, clear widths, shelving, product selection, M-06/B assignment and all code/structural/professional/construction claims remain open.
+

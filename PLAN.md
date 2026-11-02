@@ -3321,3 +3321,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** these are native wall segments around nominal gaps, not selected door families or clear openings. The template wall type and 10-ft harness height are comparison scaffolding. No selected-D edit, room assignment, code/accessibility, structural, MEP, permit, professional or construction conclusion follows. Next architectural gate is coordinated native assemblies/openings in a separately labelled derivative, with M-06/B still unassigned.
 
+## M347 — Native documented nominal door-family comparison
+
+**Acceptance:** create a disposable Revit 2027 comparison from the documented material schedule and main-floor schematic for D-01/D-02/D-03/D-04 nominal widths; preserve Selected-D; export IFC2x3; independently validate source hashes, two pantry cases, native wall/door counts, unselected records and RVT/IFC hashes.
+
+**Status:** complete. `.local/revit-pilot/documented-door-study/20261102T133842605Z/` contains generic nominal RFA proxies, one comparison RVT and one IFC2x3 export. `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10**. The exact project-local DLL was loaded once after path/hash verification (SHA256 `DB8F9C8DA45D38188E23EDEEF612B4DAEB9D665F8148A95A09E97E02991A777B`).
+
+**Limitations:** generic nominal solids are not product selections; host walls remain continuous for family hosting; actual wall openings, frames, swings, thresholds, clear widths, shelving, code/accessibility, structural, MEP, professional, permit and construction conclusions remain unresolved. M-06/B and Selected-D are unchanged.
+
