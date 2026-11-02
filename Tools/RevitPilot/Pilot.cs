@@ -87,6 +87,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(PantryDoorStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM343M06ProxyStudy", "Build M343 M-06\nproxy setup",
             Assembly.GetExecutingAssembly().Location, typeof(M06ProxyStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMainFloorOpenings", "Build native\nopening study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeMainFloorOpeningStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompatibilityPilot", "Run compatibility\npilot",
             Assembly.GetExecutingAssembly().Location, typeof(Command).FullName!));
         panel.AddItem(new PushButtonData("FHCompactCoreStudy", "Build compact core\nstudy",

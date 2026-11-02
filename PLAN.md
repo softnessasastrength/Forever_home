@@ -3313,3 +3313,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 **Status:** complete. `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261102-v2.json` passes 8/8 stages. The consolidated gate passes 11/11, the main-floor wall/plate chain passes 9/9, and the offline RevitPilot suite passes 53/53. The replay validates retained evidence and disposable derivatives only; it does not regenerate Revit or promote any placeholder.
 
 **Next:** advance only with cited assembly/opening inputs or an owner-approved separate study. Keep M-06 exact product, door/approach, service route and room assignment gates open; keep B unassigned and Selected-D unchanged.
+## M346 — Native main-floor opening comparison
+
+**Acceptance:** build a disposable Revit 2027 comparison from the documented main-floor candidate input; preserve Selected-D; represent the 36-in front route, nominal 5-ft rear French-door reservation, and pantry 30-in versus 36-in alternatives with native wall geometry; save RVT and IFC2x3 evidence; independently validate hashes, wall counts, aperture records, and unselected status.
+
+**Status:** complete. `NativeMainFloorOpeningStudyCommand` ran in Revit 2027.3 using the exact project-local, hash-verified DLL (SHA256 `E6D4343FDC17E14B9D7FE412C43DB257FB9E37D75942FDC8811D8F7255B5735D`). Output `.local/revit-pilot/main-floor-openings/20261102T125705634Z/` contains `pantry-30in` and `pantry-36in` RVT/IFC2x3 derivatives. `Tools/RevitPilot/validate_native_main_floor_openings.ps1` passes **13/13**.
+
+**Limitations:** these are native wall segments around nominal gaps, not selected door families or clear openings. The template wall type and 10-ft harness height are comparison scaffolding. No selected-D edit, room assignment, code/accessibility, structural, MEP, permit, professional or construction conclusion follows. Next architectural gate is coordinated native assemblies/openings in a separately labelled derivative, with M-06/B still unassigned.
+
