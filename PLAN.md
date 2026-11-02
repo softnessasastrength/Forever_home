@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M342 public exact-SKU M-06 recheck)
+Updated: 2026-11-02 (M343 M-06 proxy setup contract)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -17,6 +17,7 @@ M339 records the replacement-readiness matrix in `Architecture/Placeholder_Repla
 M340 adds `Tools/run_verified_bim_sequence.ps1`, a local runner for the retained Revit evidence validators, M-06 contract and 53-test offline suite. It provides one reproducible report while explicitly stating that it validates retained evidence rather than opening Revit.
 M341 repairs PowerShell exit-code contamination in the runner by resetting `$LASTEXITCODE` before each stage. The sequence now reliably passes six stages; the current shell has no .NET SDK, so fresh RevitPilot compilation remains an environment limitation rather than a source result.
 M342 rechecked anonymous public sources for the exact 610AA001.020 and found product listings but no current-SKU BIM/RFA asset. The search is bounded and does not alter the existing exact-asset blocker.
+M343 establishes one labelled proxy setup: the inspected TOTO Nexus family for toilet comparison plus the measured Evolution lavatory family. The proxy is provenance-checked but does not assign B or replace the owner-selected Champion intent.
 The stair/section register now has its own source-bound replay, `Tools/validate_section_stair_gate.ps1`; it confirms the documented 60 in versus 43½ in conflict without selecting either arrangement.
 M324 adds an arithmetic split-rise sensitivity, including a 4+4 native-stair-shaped comparison. M325 now executes that comparison in a disposable Revit 2027.3 document, saves RVT and IFC2x3 artefacts, and passes the host validator. No stair is selected or promoted.
 
@@ -69,6 +70,12 @@ M327 now replays the existing compact-core generator in Revit 2027.3, then audit
 **Acceptance:** check anonymous manufacturer and public retailer pages for a current-SKU BIM/RFA asset without sign-in or gated download; record the source limits.
 
 **Result:** the recheck found product pages and dimensions only. No exact current-SKU family was obtained; M-06/B remains blocked and unassigned.
+
+## M343 — M-06 proxy setup contract
+
+**Acceptance:** validate one complete public toilet proxy and the preserved measured lavatory family by SHA256 and source metadata; explicitly keep owner intent, clearances, door/approach, services and B assignment unresolved.
+
+**Result:** `Tools/validate_m06_proxy_setup.ps1` passes the proxy provenance contract and writes a `pass-proxy-only` report. No fixture is promoted or assigned.
 
 ## M325 — Disposable native split-rise stair host gate
 

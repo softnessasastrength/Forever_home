@@ -3230,6 +3230,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The pages identify the product and dimensions but expose no current-SKU BIM/RFA asset; no account, credential, purchase or gated download was used.
 - Appended the bounded search and source links to `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md`; B remains unassigned.
 
+## M343 — M-06 proxy setup contract — 2026-11-02
+
+- Added `Tools/validate_m06_proxy_setup.ps1` for one labelled comparison setup: hash-pinned TOTO Nexus `MS442124CEFG` toilet proxy plus the measured American Standard Evolution lavatory family.
+- The contract validates source identity and preserves the owner-selected Champion `610AA001.020` as intent only; it explicitly leaves finished-face clearances, door/approach, service route and B assignment false.
+- This is a preparation contract, not a Revit placement or product selection. No Revit restart was required.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

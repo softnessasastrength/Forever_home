@@ -1,5 +1,5 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-11-02 (M342 public exact-SKU M-06 recheck; placeholder replacement matrix retained)
+Updated: 2026-11-02 (M343 M-06 proxy setup contract; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
@@ -13,6 +13,7 @@ M339's readiness matrix is the current promotion rule: native walls, floor plate
 M340 adds `Tools/run_verified_bim_sequence.ps1` as the single local replay command for retained Revit evidence and offline regressions. It does not open Revit or regenerate a new RVT; M-06 remains fit-blocked.
 M341 fixed per-stage PowerShell exit-code contamination in that runner; the six-step replay now passes reliably. The current shell has no .NET SDK for a fresh RevitPilot build, while existing project-local build evidence remains preserved.
 M342's anonymous public recheck found only product pages/listings for `610AA001.020`, not an exact BIM/RFA asset. The search is bounded; no account or gated download was used, and the M-06 blocker remains unchanged.
+M343 prepares one labelled proxy setup: inspected TOTO Nexus `MS442124CEFG` for toilet comparison plus measured Evolution lavatory evidence. It is not a product substitution or room assignment; B remains unassigned and all fit gates remain open.
 
 **Latest verified state:** M311 ran successfully in Revit after owner invocation. Three RVTs and manifests exist under ignored .local/revit-pilot/clear-ceiling-wall-height/20261101T185016177Z/. Saved-file/input hashes, footprint edges, 12 walls and one local level per model, and all nine height cases pass independent PowerShell checks. Reopen/visual inspection and independent RVT inventory remain pending. Family report wording repair is build-verified only; validator fixture tests pass 6/6. Earlier blocked/no-output notes below are historical and superseded.
 
