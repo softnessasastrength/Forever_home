@@ -3345,3 +3345,13 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** candidate-21 room blocks, host wall type, floor, ceiling, door frame/swing/threshold/clear width, furniture, route, structure, MEP, code/accessibility, professional, permit and construction conclusions remain unresolved. This is a coordinated comparison derivative, not a selected house model; M-06/B and Selected-D are unchanged.
 
+## M350 — M-06 current-SKU evidence recheck
+
+**Acceptance:** recheck the owner-targeted current SKU against the manufacturer's current product page and linked installation/specification documents; capture source URLs and hashes; distinguish exact-SKU evidence from predecessor-family references; preserve M-06/A/B unassigned and Selected-D unchanged.
+
+**Status:** complete as an evidence update. The current American Standard page identifies `610AA001.020` and reports a 12-in rough-in; its linked PDFs are explicitly `211AA`/`211BA`/`211CA` predecessor-family documents. Local captures and SHA256 values are recorded in `Research/M06_Current_SKU_Evidence_2026-11-02.md` under ignored `.local/research/m06-current-sku/`.
+
+**Trade-off:** the evidence is materially stronger for SKU identity and rough-in convention, but it does not provide exact current-SKU solids, a current-SKU RFA/CAD, a selected lavatory, a door/approach, or a project service route. No fixture or room is promoted.
+
+**Next:** use the labelled proxy only for a separate clearance/approach/service-route comparison if desired; otherwise obtain an exact current-SKU installation/dimension source before assigning M-06. Keep B unassigned.
+

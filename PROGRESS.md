@@ -3286,3 +3286,11 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The exact project-local DLL SHA256 was `BB78D1C618544D3966A5EEFF65213AF94AA57FA3849509C8152CFF799263817E`; previous registration was backed up under `.local/revit-pilot/registration-backups/`; Revit loaded it with **Load Once**. Six non-fatal wall-overlap warnings were acknowledged; no Revit errors remained.
 - Extended the replay and consolidated validators with M349. No Selected-D, M-06/B assignment, source RFA or remote state changed. This is a coordinated comparison derivative, not code/accessibility/structural/MEP/professional/permit/construction approval.
 
+## 2026-11-02 — M350 current-SKU evidence recheck
+
+- Rechecked the American Standard manufacturer page for the owner-targeted `610AA001.020` Champion PRO toilet.
+- Confirmed current-page SKU identity and 12-in rough-in; the linked installation/specification PDFs are predecessor-family `211AA`/`211BA`/`211CA` documents, not exact current-SKU geometry.
+- Captured the two linked PDFs anonymously under ignored `.local/research/m06-current-sku/` and recorded SHA256 values in `Research/M06_Current_SKU_Evidence_2026-11-02.md`.
+- M-06, west A, B, and Selected-D remain unchanged. No product, room, door, service route, or code-compliance claim was promoted.
+- Validation context remains: M349 verified BIM sequence 12/12, consolidated gate 15/15, offline RevitPilot tests 53/53.
+
