@@ -29,8 +29,11 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
 
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
+        string stage = "initializing";
         string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+        stage = "reading workspace path";
         string root = File.ReadAllText(Path.Combine(assemblyDir, "workspace.txt")).Trim();
+        stage = "reading documented source and roof basis";
         string sourcePath = Path.Combine(root, SourceRelative.Replace('/', Path.DirectorySeparatorChar));
         string basisPath = Path.Combine(root, RoofBasisRelative.Replace('/', Path.DirectorySeparatorChar));
         string output = Path.Combine(root, ".local", "revit-pilot", "native-roof-shell",
@@ -39,6 +42,7 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
 
         try
         {
+            stage = "hashing documented source and roof basis";
             byte[] sourceBytes = File.ReadAllBytes(sourcePath);
             string sourceHash = Convert.ToHexString(SHA256.HashData(sourceBytes));
             string basisHash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(basisPath)));
@@ -46,6 +50,8 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                 throw new InvalidDataException("The selected-D source changed; review it before generating the roof-shell study.");
 
             var records = new List<object>();
+            var createdRoofIds = new List<ElementId>();
+            stage = "creating disposable imperial document";
             using Document doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
             Level level = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
                 .OrderBy(item => item.Elevation).FirstOrDefault()
@@ -53,8 +59,10 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
             string? activePath = null;
             using (Transaction tx = new(doc, "Build native roof-shell comparison"))
             {
+                stage = "starting roof-shell transaction";
                 tx.Start();
                 level.Name = "Local Eave Datum — Comparative Only";
+                stage = "selecting a native roof type";
                 RoofType roofType = new FilteredElementCollector(doc).OfClass(typeof(RoofType)).Cast<RoofType>()
                     .OrderBy(item => item.Name, StringComparer.OrdinalIgnoreCase).FirstOrDefault()
                     ?? throw new InvalidOperationException("The Revit template contains no roof type.");
@@ -64,8 +72,12 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                 const double spacing = 52.0;
                 foreach (var (label, rise, run) in Cases)
                 {
+                    stage = $"creating {label} footprint roof";
                     double offset = records.Count * spacing;
-                    var footprint = new CurveArray();
+                    // Use Revit's document factory so the API-backed array is
+                    // initialized for NewFootPrintRoof; a plain CLR constructor
+                    // can leave the native handle null in Revit 2027.
+                    var footprint = doc.Application.Create.NewCurveArray();
                     XYZ a = new(offset, 0, level.Elevation);
                     XYZ b = new(offset + width, 0, level.Elevation);
                     XYZ c = new(offset + width, depth, level.Elevation);
@@ -75,9 +87,14 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     footprint.Append(Line.CreateBound(c, d));
                     footprint.Append(Line.CreateBound(d, a));
 
-                    ModelCurveArray? modelCurves;
+                    // Revit's API example initializes the mapping container before
+                    // passing it as an out argument; Revit 2027 otherwise reports
+                    // the opaque "Value cannot be null" at roof creation.
+                    ModelCurveArray modelCurves = new();
                     FootPrintRoof roof = doc.Create.NewFootPrintRoof(footprint, level, roofType, out modelCurves);
+                    createdRoofIds.Add(roof.Id);
                     doc.Regenerate();
+                    stage = $"mapping {label} roof slopes";
                     int curveIndex = 0;
                     foreach (ModelCurve curve in modelCurves)
                     {
@@ -90,7 +107,8 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                             roof.set_SlopeAngle(curve, Math.Atan(rise / run));
                         curveIndex++;
                     }
-                    roof.Name = $"FH-NATIVE-ROOF-SHELL; option={label}; ridge=long-axis; datum=relative";
+                    // FootPrintRoof does not support user-supplied instance names
+                    // in Revit 2027; preserve the option in comments and manifest.
                     Parameter? comments = roof.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
                     if (comments is not null && !comments.IsReadOnly)
                         comments.Set($"M333 native roof shell comparison; option={label}; rise={rise}; run={run}; no selection");
@@ -108,16 +126,16 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                 }
                 tx.Commit();
             }
+            stage = "counting native roofs";
 
-            int roofCount = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Roofs).GetElementCount();
+            // A new Revit project may contain template roof elements. Count only
+            // the roofs created by this disposable study, not unrelated template content.
+            int roofCount = createdRoofIds.Count;
             if (roofCount != Cases.Length)
                 throw new InvalidOperationException($"Expected {Cases.Length} native roofs; found {roofCount}.");
-            activePath = Path.Combine(output, "FH_Native_Roof_Shell_Comparison.rvt");
-            doc.SaveAs(activePath, new SaveAsOptions());
-            string savedHash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(activePath)));
-
             string ifcPath = Path.Combine(output, "FH_Native_Roof_Shell_Comparison.ifc");
             bool ifcOk = false;
+            stage = "exporting native roof IFC2x3";
             using (Transaction exportTx = new(doc, "Export native roof IFC2x3"))
             {
                 exportTx.Start();
@@ -131,6 +149,18 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     if (exportTx.GetStatus() == TransactionStatus.Started) exportTx.RollBack();
                 }
             }
+            stage = "saving native roof comparison RVT";
+            activePath = Path.Combine(output, "FH_Native_Roof_Shell_Comparison.rvt");
+            stage = "calling Document.SaveAs";
+            doc.SaveAs(activePath, new SaveAsOptions());
+            stage = "capturing roof level name";
+            string levelName = level.Name;
+            // Revit keeps the SaveAs handle until the disposable document is
+            // released.  The command must not re-open the RVT while that
+            // handle is still owned by Revit; finalize_native_roof_hash.ps1
+            // records the hash after Revit has closed the disposable document.
+            stage = "disposing disposable roof document";
+            doc.Dispose();
             string? ifcHash = File.Exists(ifcPath) ? Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(ifcPath))) : null;
             using (FileStream stream = File.Create(Path.Combine(output, "native-roof-shell-manifest.json")))
                 JsonSerializer.Serialize(stream, new
@@ -142,11 +172,11 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     documented_roof_basis = RoofBasisRelative,
                     documented_roof_basis_sha256 = basisHash,
                     shell_ft = new[] { 40.0, 42.0 },
-                    level = level.Name,
+                    level = levelName,
                     native_roof_count = roofCount,
                     roofs = records,
                     saved_rvt = Path.GetFileName(activePath),
-                    saved_rvt_sha256 = savedHash,
+                    saved_rvt_sha256 = (string?)null,
                     ifc = new { file = Path.GetFileName(ifcPath), api_result = ifcOk, sha256 = ifcHash },
                     limitations = new[]
                     {
@@ -162,7 +192,7 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
         catch (Exception ex)
         {
             message = ex.ToString();
-            TaskDialog.Show("Forever Home native roof-shell study failed", ex.Message);
+            TaskDialog.Show("Forever Home native roof-shell study failed", $"Stage: {stage}\n\n{ex.Message}");
             return Result.Failed;
         }
     }

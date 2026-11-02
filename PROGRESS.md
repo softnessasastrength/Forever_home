@@ -3165,6 +3165,14 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Added the native-roof command contract regression test; the full offline RevitPilot suite now passes **53/53**.
 - Runtime remains pending: current Revit is showing the owner-authorized trial overlay and has the prior assembly loaded. No M333 RVT/IFC or roof selection has been made. The study is comparative only and does not establish code compliance, structure, accessibility, professional approval, permit approval or construction readiness.
 
+## M333 — Native steep-roof shell comparison verified — 2026-11-02
+
+- Corrected the runtime file-lock path by deferring the saved-RVT SHA256 read until Revit has released the disposable document. Added `Tools/RevitPilot/finalize_native_roof_hash.ps1` for deterministic post-Revit finalisation.
+- Rebuilt the exact project-local RevitPilot DLL with **0 errors** and the two existing MSB3277 reference-conflict warning groups. DLL SHA256: `D879A76EEE6C79978E0B15950D58E0737365EC4C3026C7AE02129C3A7CB16423`; AddInId unchanged; previous per-user manifest preserved under `.local/revit-pilot/registration-backups/20261101231310984/`.
+- After exact hash/path verification and owner-authorized **Load Once**, Revit 2027.3 created `.local/revit-pilot/native-roof-shell/20261102T041843122Z/`. The derivative contains three native `FootPrintRoof` elements at 8:12, 10:12 and 12:12, a 491,520-byte RVT and a 10,024-byte IFC2x3 export.
+- Post-Revit finalisation recorded RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`; IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`. `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13**.
+- The roofs remain comparison options only. No pitch, ridge, assembly, overhang, drainage, framing, code, permit, structural, professional or construction-readiness conclusion follows; Selected-D and source compact-core remain untouched.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
