@@ -2404,10 +2404,15 @@ public class CompactLandingStudyCommand : IExternalCommand
                 limitations = new[] { "Landing footprint is a disposable coordination bridge derived from native bounding boxes.", "Landing does not prove clear headroom, guard/rail, door approach, structure, accessibility or code compliance.", "Source compact-core RVT and Selected-D remain preserved separately." }
             };
             File.WriteAllText(Path.Combine(output, "landing-study-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
+            bool ifcOk;
             using (var options = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true })
+            using (var exportTransaction = new Transaction(doc, "Export native landing IFC2x3"))
             {
-                if (!doc.Export(output, "FH_Compact_Core_Landing_Study", options)) throw new InvalidOperationException("Revit IFC export returned false.");
+                exportTransaction.Start();
+                try { ifcOk = doc.Export(output, "FH_Compact_Core_Landing_Study", options); }
+                finally { if (exportTransaction.GetStatus() == TransactionStatus.Started) exportTransaction.RollBack(); }
             }
+            if (!ifcOk) throw new InvalidOperationException("Revit IFC export returned false.");
             doc.Close(false);
             data.Application.OpenAndActivateDocument(studyPath);
             TaskDialog.Show("Forever Home landing study", $"Created a disposable native landing bridge from the measured stair/floor gap ({gapFt:0.###} ft × {widthFt:0.###} ft).\n\n{output}");
