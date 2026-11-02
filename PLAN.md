@@ -1,6 +1,6 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M343 M-06 proxy setup contract)
+Updated: 2026-11-02 (M354 stair/landing coordination handoff)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.
@@ -3380,4 +3380,10 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 **Runtime evidence:** after the first v2 run exposed a Revit 2027 `NewFootPrintRoof` null mapping defect, the command was repaired to initialize `ModelCurveArray`. The v3 command then completed in Revit in disposable study directory `.local/revit-pilot/walkthrough-composition/20261102T161721219Z/`, exporting `FH_Walkthrough_Composition.rvt` and IFC2x3. `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **7/7**. Revit reported six expected proxy-wall overlap warnings and 0 errors; no Selected-D file was opened or modified.
 
 **Limitation:** this is a comparison derivative only. Roof pitch, floor-to-floor datum, wall/floor assemblies, structure, MEP, code/accessibility review, and M-06 assignment remain unresolved and unselected.
+
+## M354 — Native stair/landing coordination handoff
+
+**Acceptance:** run the project-local RevitPilot command `NativeStairLandingCoordinationCommand` against the saved disposable `FH_Compact_Core_Study`, create a native landing bridge plus labelled upper-circulation proxy without opening Selected-D, export RVT and IFC2x3, and pass `Tools/RevitPilot/validate_stair_landing_coordination.ps1`.
+
+**Status:** source and validator are committed and build-verified with 0 errors and the two known MSB3277 reference warnings. The runtime study is pending after the handoff pause. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
 

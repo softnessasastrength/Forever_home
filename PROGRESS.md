@@ -3317,3 +3317,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit then completed the disposable run at `.local/revit-pilot/walkthrough-composition/20261102T161721219Z/`, producing RVT and IFC2x3. The validator passes **7/7** for the expected 57 walls, 12 doors, 9 floors, 3 roofs, 3 landing markers, required files, and lineage.
 - Revit displayed six proxy-wall overlap warnings and 0 errors. These are confined to the disposable comparison; no Selected-D baseline, source RFA, remote, or unrelated dirty file changed.
 
+## 2026-11-02 — M354 stair/landing coordination handoff prepared
+
+- Added `Tools/RevitPilot/NativeStairLandingCoordinationCommand.cs` and `Tools/RevitPilot/validate_stair_landing_coordination.ps1`.
+- The project-local RevitPilot build succeeds with 0 errors and the two known MSB3277 reference-conflict warning groups. The command is designed to run only from the saved disposable `FH_Compact_Core_Study` and to preserve Selected-D.
+- The command creates a native landing bridge from the measured stair/upper-floor gap, retains the native stair/floor lineage, and adds a clearly labelled circulation proxy. It exports RVT and IFC2x3 and records all limitations in a machine-readable manifest.
+- Runtime validation remains pending because the handoff was paused before the exact v1 DLL could be loaded and invoked. Do not claim M354 completion until the RVT/IFC output and validator pass exist.
+

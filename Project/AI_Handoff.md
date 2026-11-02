@@ -1,4 +1,10 @@
 # Forever Home — cross-agent handoff
+
+## Fresh-session entry point — 2026-11-02
+
+Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; latest pushed commit is `5a3074d`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
+
+M353 is the latest runtime-verified milestone. M354 source and validator are now present and build-verified, but its Revit runtime study is still pending. Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected. See `docs/CODEX_HANDOFF.md` for the exact next action.
 Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
