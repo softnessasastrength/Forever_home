@@ -67,7 +67,7 @@ The current 124 × 84 in `M06-B` search window contains the measured Tresham env
 
 ### M372 native disposable comparison (runtime pending)
 
-`Tools/RevitPilot/NativeM06TreshamBStudyCommand.cs` is build-verified and registered as `FHM372M06TreshamB`. It loads the exact hash-pinned Tresham RFA only into a new imperial derivative, places one family instance on a synthetic host for orientation, adds the labelled toilet plan proxy, and records the 36-in door/approach and lower-MEP route reservations without claiming either gate. Build `m372-m06-tresham-b` has 0 errors; the offline suite is 60/60. Runtime must use the exact project-local DLL and remain disposable; no Selected-D edit or M-06 assignment is permitted.
+`Tools/RevitPilot/NativeM06TreshamBStudyCommand.cs` is build-verified and registered as `FHM372M06TreshamB`. DLL SHA256 is `4BCE90D4FA5165615788D24A0142844EFFC78B94F4B8F30240994A96242DD0FF`; the prior manifest is preserved at `.local/revit-pilot/registration-backups/20261102-153226203/ForeverHome.Pilot.addin`. It loads the exact hash-pinned Tresham RFA only into a new imperial derivative, places one family instance on a synthetic host for orientation, adds the labelled toilet plan proxy, and records the 36-in door/approach and lower-MEP route reservations without claiming either gate. Build `m372-m06-tresham-b` has 0 errors; the offline suite is 60/60. Two disposable Revit `Project1` windows remain open and need a controlled restart before runtime validation; no Selected-D edit or M-06 assignment is permitted.
 
 ## Portability note
 
