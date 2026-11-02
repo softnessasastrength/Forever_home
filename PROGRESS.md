@@ -3179,6 +3179,13 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - The consolidated gate passes **7/7**, covering the selected-D baseline, wall/plate provenance, M-06 public-family evidence, M-06 gross envelope, M-02 furnishing IFC, M325 native stair, and M333 native roof RVT/IFC evidence.
 - This remains an evidence-chain gate. It does not select wall/floor/door assemblies or close the outstanding stair section, M-06 exact toilet, finished clearances, approach, service routing, code applicability, structure, MEP, site or professional-review gates.
 
+## M335 — Native pantry-door comparison gate refreshed — 2026-11-02
+
+- Re-ran `Tools/RevitPilot/validate_m218_revit_study.ps1` against `.local/revit-pilot/m218-pantry-door-study/20261101T212718036Z/`; the two native swing derivatives pass **9/9** integrity checks.
+- Evidence includes both recorded RVT hashes/sizes, 13 native wall records and 48 model-curve records per derivative, unique swing markers, and explicit `selected_d_opened=false` / `selected_d_modified=false`.
+- Extended `Tools/validate_verified_bim_milestone.ps1` with this M218 gate. The next consolidated run is expected to cover **8/8** evidence gates without reopening Revit.
+- This does not select a door family, rough opening, threshold, finished-face clearance, accessibility/code path, or services route. Front/porch openings, wall/floor assemblies, M-06 and B remain unresolved.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

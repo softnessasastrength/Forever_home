@@ -12,6 +12,7 @@ This is the current local-sandbox handoff for the Forever Home architectural BIM
 | Provisional floor plates | M314/M318 | Exact M313 source chain preserved; three 40 × 42 ft / 1,680 sf provisional plates at display offsets 0/60/120 ft; M318 passes 9/9. |
 | Floor-plate IFC | M315 | IFC2x3 export passes 6/6, including 42 walls and three slab entities. |
 | Roof comparison | M333 native run; `.local/revit-pilot/native-roof-shell/20261102T041843122Z/` | Three native `FootPrintRoof` comparisons at 8:12/10:12/12:12; independent validator passes 13/13, including RVT/IFC hashes and IFCROOF. No native roof is selected. |
+| Pantry door comparison | M218/M219 native run; `.local/revit-pilot/m218-pantry-door-study/20261101T212718036Z/` | Two fresh disposable RVTs compare swing into kitchen versus pantry; validator passes 9/9 with recorded hashes and native wall/curve inventories. No door family, rough opening, approach or selected-D edit is implied. |
 | M-06 family evidence | M270/M317 | Public KOHLER Cimarron family inspected in an isolated derivative; positive solids and sanitary connector recorded; 8/8 evidence replay passes. No instance is placed in Selected-D. |
 | M-06 envelope screen | M320 | Current-SKU plan proxy plus research lavatories: 14/14 checks and 16/16 gross containment pairs. B remains unassigned. |
 | M-02 island furnishing IFC | M321 | Isolated Revit 2027.3 furnishing derivative passes IFC2x3 validation 13/13 with matching audit/export lineage. |
@@ -63,6 +64,7 @@ The Revit-dependent runs require Revit 2027/2027.3 and the exact hash-verified p
 - The M327 compact-core derivative is a valid native coordination test, not the selected house: it retains provisional floor types, generic nominal doors and a documented upper-stair landing gap.
 - The stair/section and floor-to-floor relationship remains unresolved. The 8–10 ft values are clear-height study alternatives, not storey spacing.
 - M-06 exact current-SKU family geometry, finished-face clearance, door/approach, and a plausible water/waste/vent service route remain unproven. Keep A protected and B unassigned.
+- The pantry door comparison is the only currently document-supported native opening study; front/porch openings, wall assemblies, floor assemblies and other door families remain unselected.
 - Kitchen/living/dining/pantry openings and furniture routes remain schematic; the isolated M-02 furnishing derivative is not a whole-house coordination result.
 - Connecticut research values are preliminary screening inputs only. Confirm municipality, permit date, code path, accessibility scope and professional review before any compliance claim.
 
