@@ -3244,6 +3244,12 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Revit placement required vertical-face regeneration, orientation correction for the north wall and lock-tolerant hashing. These are runtime repairs, not design changes. Champion PRO `610AA001.020` remains owner intent only; room B remains unassigned; Selected-D is untouched.
 - This is a validated native proxy comparison, not a selected fixture, room assignment, code/accessibility approval, services route, structural conclusion or construction-ready model.
 
+## M345 — Evidence-chain replay including native M-06 proxy — 2026-11-02
+
+- Extended `Tools/validate_verified_bim_milestone.ps1` with the native M-06 proxy manifest and the revalidated main-floor wall/plate provenance report. Extended `Tools/run_verified_bim_sequence.ps1` with the M-06 proxy validator and the main-floor coordination-chain validator.
+- Replayed `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261102-v2.json`: **8/8 stages pass**. The consolidated gate passes **11/11**, the main-floor wall/plate chain passes **9/9**, and the offline RevitPilot unittest suite passes **53/53**.
+- The new evidence is retained under ignored `.local/revalidation/`; no Selected-D, source family, remote branch or unrelated worktree file was changed. The M-06 proxy remains explicitly unselected, B remains unassigned, and no code/accessibility/services/structural/construction claim follows.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).

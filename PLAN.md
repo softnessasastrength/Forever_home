@@ -3305,3 +3305,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 **Status:** complete. Runtime output is `.local/revit-pilot/m06-proxy-study/20261102T122827829Z/`; `Tools/validate_m06_proxy_study.ps1` passes **15/15**. Final DLL SHA256 is `1ADCFD5CABC0916C447D08EE454C5CACC3E60DB961F4CA888F316837707A18EA`. The command is a labelled comparison derivative only: Champion PRO `610AA001.020` remains unresolved, B remains unassigned and Selected-D is unchanged.
 
 **Next:** use the validated proxy only to refine a separately labelled clearance/approach study if the exact owner product geometry or a documented proxy decision becomes available. Do not promote either proxy into Selected-D or claim code, accessibility, services, structural or construction readiness.
+
+## M345 — Evidence-chain replay including native M-06 proxy
+
+**Acceptance:** replay the retained native pantry, roof, landing, M-06 coordination, M-06 proxy, main-floor wall/plate provenance, consolidated gate and offline RevitPilot checks; require every stage to pass and retain a machine-readable report.
+
+**Status:** complete. `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261102-v2.json` passes 8/8 stages. The consolidated gate passes 11/11, the main-floor wall/plate chain passes 9/9, and the offline RevitPilot suite passes 53/53. The replay validates retained evidence and disposable derivatives only; it does not regenerate Revit or promote any placeholder.
+
+**Next:** advance only with cited assembly/opening inputs or an owner-approved separate study. Keep M-06 exact product, door/approach, service route and room assignment gates open; keep B unassigned and Selected-D unchanged.

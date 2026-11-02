@@ -27,7 +27,9 @@ Run-Step 'm218_native_pantry_doors' { & .\Tools\RevitPilot\validate_m218_revit_s
 Run-Step 'm333_native_roof' { & .\Tools\RevitPilot\validate_native_roof_shell.ps1 -StudyDirectory .local/revit-pilot/native-roof-shell/20261102T041843122Z }
 Run-Step 'm328_native_landing' { & .\Tools\RevitPilot\validate_compact_landing_ifc.ps1 -StudyDirectory .local/revit-pilot/compact-core-landing/20261102T033153576Z }
 Run-Step 'm06_coordination_contract' { & .\Tools\validate_m06_coordination_gate.ps1 -OutputPath .local/revalidation/m06-coordination-gate-sequence.json }
-Run-Step 'consolidated_bim_gate' { & .\Tools\validate_verified_bim_milestone.ps1 -Output .local/revalidation/verified-bim-milestone-sequence.json }
+Run-Step 'm344_native_m06_proxy' { & .\Tools\validate_m06_proxy_study.ps1 -StudyDirectory .local/revit-pilot/m06-proxy-study/20261102T122827829Z }
+Run-Step 'main_floor_coordination_chain' { & .\Tools\RevitPilot\validate_main_floor_coordination_chain.ps1 -CandidateManifestPath .local/revit-pilot/main-floor-candidate/20261101T215346325Z/manifest.json -FloorPlateManifestPath .local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/floor-plate-manifest.json -Output .local/revalidation/main-floor-chain-sequence.json }
+Run-Step 'consolidated_bim_gate' { & .\Tools\validate_verified_bim_milestone.ps1 -Output .local/revalidation/verified-bim-milestone-sequence.json -MainFloorCoordinationReport .local/revalidation/main-floor-chain-sequence.json }
 Run-Step 'offline_revitpilot_tests' { & .venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q }
 
 $out = if ([IO.Path]::IsPathRooted($OutputPath)) { $OutputPath } else { Join-Path $repo $OutputPath }

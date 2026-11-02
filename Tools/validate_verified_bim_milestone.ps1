@@ -3,7 +3,9 @@ param(
     [string]$NativeStairStudyDirectory = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z',
     [string]$NativeRoofStudyDirectory = '.local/revit-pilot/native-roof-shell/20261102T041843122Z',
     [string]$M218StudyDirectory = '.local/revit-pilot/m218-pantry-door-study/20261101T212718036Z',
-    [string]$M06CoordinationReport = '.local/revalidation/m06-coordination-gate-m336.json'
+    [string]$M06CoordinationReport = '.local/revalidation/m06-coordination-gate-m336.json',
+    [string]$M06ProxyStudyDirectory = '.local/revit-pilot/m06-proxy-study/20261102T122827829Z',
+    [string]$MainFloorCoordinationReport = '.local/revalidation/main-floor-chain-20261102/coordination.json'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,6 +29,8 @@ $m325 = Read-Json (Join-Path $NativeStairStudyDirectory 'native-stair-validation
 $m333 = Read-Json (Join-Path $NativeRoofStudyDirectory 'native-roof-shell-validation.json')
 $m218 = Read-Json (Join-Path $M218StudyDirectory 'm218-revit-study-manifest.json')
 $m06Coordination = Read-Json $M06CoordinationReport
+$m06Proxy = Read-Json (Join-Path $M06ProxyStudyDirectory 'm06-proxy-study-manifest.json')
+$mainFloorCoordination = Read-Json $MainFloorCoordinationReport
 
 Add-Check 'selected_d_baseline' ($baseline.status -eq 'pass' -and $baseline.replay_count -eq 2 -and $baseline.geometry_check_count_per_replay -eq 43 -and $baseline.ifc_checks_passed -eq 26 -and $baseline.protected_inputs_unchanged) '2 x 43 source replay; retained IFC 26/26; protected inputs unchanged'
 Add-Check 'main_floor_wall_plate_chain' ($chain.passed -eq 9 -and $chain.total -eq 9) 'M318 provenance/inventory gate'
@@ -37,6 +41,8 @@ Add-Check 'm333_native_roof' ($m333.passed -eq $m333.total -and $m333.total -eq 
 Add-Check 'm325_native_stair' ($m325.pass -eq $true -and $m325.checks.Count -ge 14 -and @($m325.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'disposable native split-rise stair RVT/IFC gate'
 Add-Check 'm218_native_pantry_doors' ($m218.status -match '^pass' -and @($m218.files).Count -eq 2 -and @($m218.files | Where-Object { $_.sha256 -and $_.bytes -gt 0 -and $_.wall_count -eq 13 -and $_.model_curve_count -eq 48 }).Count -eq 2 -and $m218.project_scope.selected_d_opened -eq $false -and $m218.project_scope.selected_d_modified -eq $false) 'two native pantry swing derivatives; Selected-D untouched'
 Add-Check 'm336_m06_coordination_contract' ($m06Coordination.status -eq 'screen-valid-but-fit-blocked' -and $m06Coordination.selected_d_sha256 -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb' -and $m06Coordination.coordination_gates.product_geometry -eq $false -and $m06Coordination.coordination_gates.door_and_approach -eq $false -and $m06Coordination.coordination_gates.service_route -eq $false -and $m06Coordination.coordination_gates.room_assignment -eq $false) 'M336 M-06 evidence contract valid while fit remains blocked'
+Add-Check 'm344_native_m06_proxy' ($m06Proxy.schema -eq 'forever-home-m06-proxy-study-v1' -and $m06Proxy.status -eq 'disposable proxy comparison; not selected and B unassigned' -and @($m06Proxy.records | Where-Object { $_.selected -ne $false }).Count -eq 0 -and @($m06Proxy.gates.PSObject.Properties | Where-Object { $_.Value -ne $false }).Count -eq 0 -and $m06Proxy.ifc.file -eq 'FH_M06_Proxy_Setup.ifc' -and $m06Proxy.ifc.sha256.Length -eq 64) 'M344 native M-06 proxy RVT/IFC remains labelled and unassigned'
+Add-Check 'main_floor_coordination_chain' ($mainFloorCoordination.schema -eq 'forever-home-main-floor-coordination-chain-v1' -and $mainFloorCoordination.passed -eq 9 -and $mainFloorCoordination.total -eq 9) 'native wall/plate provenance and profile gate'
 
 $outPath = if ([IO.Path]::IsPathRooted($Output)) { [IO.Path]::GetFullPath($Output) } else { [IO.Path]::GetFullPath((Join-Path $repo $Output)) }
 $parent = Split-Path -Parent $outPath
