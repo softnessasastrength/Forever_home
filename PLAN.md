@@ -3513,3 +3513,13 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Trade-off / decision gate:** Tresham now has stronger exact-family evidence than the uninspected sink candidates and a plausible traditional design direction, but it remains a research candidate. Owner input is required before carrying it into a combined M-06/B fit study: choose Tresham, retain Evolution as the primary comparison, compare both, or defer the lavatory choice. B remains unassigned until the selected toilet, sink geometry, clearance basis, entry/door approach and service route pass together.
 
+## M371 — Source-pinned M-06 Tresham/B gross-pair screen
+
+**Acceptance:** carry the owner-approved KOHLER Tresham K-2844-4 direction into a deterministic, analysis-only pairing with the existing selected toilet proxy inside the documented M-06/B search window; verify source hashes and measured family evidence; keep B and M-06 unassigned; leave door/approach and service-route gates explicitly unresolved.
+
+**Status:** complete. `Tools/build_m371_m06_tresham_b_screen.ps1` passes **14/14** and writes `m371-report.json` plus `m371-checks.json` under `.local/revalidation/m371-m06-tresham-b/`. The 124 × 84 in B window contains the measured 24.1319 × 19.5626 in Tresham envelope paired with the 19 × 30.25 in toilet proxy under the documented same-wall/15-30-21 in screening assumptions. No Revit document was opened or modified by this screen.
+
+**Limitations:** Tresham remains unhosted symbol evidence; the toilet remains an infographic plan proxy. Finished faces, door leaf/swing and approach, and a plausible supply/drain/vent route are not supported. This is not code compliance, accessibility, professional, permit or construction approval. M-06/B remains fit-blocked and unassigned.
+
+**Next gate:** create a disposable native Revit comparison only after the source-pinned screen is reviewed: labelled Tresham and toilet proxies, explicit door/approach reservation, and a non-assertive lower-MEP route marker. Do not promote a room assignment or edit Selected-D.
+

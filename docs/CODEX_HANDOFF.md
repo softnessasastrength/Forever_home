@@ -59,6 +59,12 @@ The v3 project-local RevitPilot DLL (`11A56B447BE43E94EC56700893C0340569ACFBC1BB
 
 The quarantined KOHLER Tresham K-2844-4 RFA was inspected read-only in Revit 2027.3. `validate_candidate_family_geometry.ps1` passes **11/11** against `.local/revit-pilot/family-intake/derivatives/M370-Kohler-Tresham-Inspection-20261102/candidate-family-geometry.json`. Source SHA256 is stable at `3b1cbdaa844d35bd462f6e59a828b82f7870fde4ee7397bac09f4ca0c2f9b949`; derivative RVT SHA256 is `0dd0ff380331b74b2b03d2bd9f64533060ce3d47879fcc9010abf1a02dcde55b`. The family is Plumbing Fixtures / WorkPlaneBased with ten finish types, three positive-volume solids per type, measured bounds about 24.13 × 19.56 × 34.69 in, and one primary sanitary round connector with ⅝-in radius. This is stronger candidate evidence, not a selection or room fit. M-06/B remains unassigned pending the owner’s lavatory direction and the combined toilet, clearance, door/approach and service-route gate.
 
+### M371 M-06 Tresham/B gross-pair screen
+
+The owner selected **Tresham** as the lavatory direction for analysis. The committed snapshot `Architecture/M370_M06_Tresham_Family_Evidence_2026-11-02/tresham-evidence.json` records the quarantined RFA hash and the M370 Revit 2027.3 measured envelope (24.1319 × 19.5626 × 34.6878 in) without placing the family in the house model. `Tools/build_m371_m06_tresham_b_screen.ps1` passes **14/14** and writes ignored reports under `.local/revalidation/m371-m06-tresham-b/`.
+
+The current 124 × 84 in `M06-B` search window contains the measured Tresham envelope paired with the existing 19 × 30.25 in American Standard toilet plan proxy under the documented same-wall/15-30-21 in screening assumptions. This is gross-envelope evidence only. Door/approach and plausible supply/drain/vent routing remain unresolved, so M-06/B remains fit-blocked and unassigned. The next study may be a disposable native comparison with labelled proxies and route markers; do not edit Selected-D or claim code/accessibility/professional/construction readiness.
+
 ## Portability note
 
 Git contains the source, instructions, decisions, scripts, and committed evidence. Ignored `.local/` outputs, per-user Revit registration, machine caches, and the Evolution RFA are not guaranteed to exist after a fresh clone; rebuild or transfer those separately and verify hashes before use.
