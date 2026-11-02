@@ -3461,3 +3461,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Desktop RevitPilot build: **0 errors**, two pre-existing MSB3277 warning groups; DLL SHA256 `B61B1834D9D3DF4FBACF4BE71926B91A6A55F4E4FEFA4BA3963FF1441EE54E0F`.
 - Offline regression suite: **68 tests passed**.
 - Repaired parent-project compile exclusions after the nested core project initially exposed duplicate generated assembly attributes. No Revit restart, manifest replacement, Selected-D edit or remote-state change occurred.
+## M377 — Native interior design study command — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeInteriorDesignStudyCommand.cs` and registered **Build interior design study**.
+- Added `Architecture/M377_Interior_Design_Study_2026-11-02/` and `Tools/RevitPilot/validate_interior_design_study.ps1`.
+- The planned disposable derivative uses source-fingerprinted M-01 through M-05 room blocks, native walls/floors, the documented 8 × 4 ft M-02 island, and a labelled 9 × 10 ft U-05 bath vignette carrying the separate-tub/tiled-rain-shower direction. It does not assign M-06/B or claim U-05 placement.
+- Contract suite passes **70 tests**. The exact project-local RevitPilot build succeeds with **0 errors** and the two pre-existing MSB3277 warning groups.
+- Runtime is intentionally pending a controlled Revit restart; no manifest replacement, Revit session change, Selected-D edit or remote-state change occurred.

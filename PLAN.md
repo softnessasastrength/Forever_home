@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M377 — Native interior design study command
+
+**Status:** command and validator prepared; Revit runtime pending a planned restart.
+
+**Result:** added `NativeInteriorDesignStudyCommand` and the ribbon entry **Build interior design study**. The disposable derivative will create native shell and room-block partitions, three F-01 floor plates, three 8 × 4 ft M-02 island proxies, and three labelled U-05 primary-bath vignettes across the 8/9/10-ft clear-height cases. The exact project-local build succeeds with 0 errors and the two known MSB3277 warnings.
+
+**Next:** after the next controlled Revit restart, run only the hash-verified build, save/reopen the disposable RVT, export IFC2x3 and require `validate_interior_design_study.ps1` before treating the result as evidence. Selected-D and M-06/B remain untouched.
+
 ## M376 — Standalone core project and typed M-06 specification
 
 **Status:** complete locally; not registered with Revit.

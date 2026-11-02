@@ -74,6 +74,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(NativeFinishCueStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHWalkthroughComposition", "Build walkthrough\ncomposition",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHInteriorDesignStudy", "Build interior\ndesign study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorDesignStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
             Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHStairLandingCoordination", "Build stair/landing\ncoordination",
