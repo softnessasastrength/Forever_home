@@ -3391,3 +3391,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Replayed `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261103.json`; all **12/12** retained stages pass.
 - Replayed `Tools/validate_verified_bim_milestone.ps1 -Output .local/revalidation/verified-bim-milestone-20261103.json`; all **15/15** consolidated checks pass.
 - These reports validate retained disposable evidence and source contracts only; they do not close the pending F-01 runtime gate or promote any wall, floor, door, roof, stair or M-06 placeholder into Selected-D.
+
+## M367 — F-01 command contract coverage — 2026-11-02
+
+- Added `Tools/RevitPilot/tests/test_f01_finish_cue_command_contract.py` to pin the Revit-safe engineered-oak material name, display-only/one-floor contract, IFC2x3 export path, ribbon registration and validator schema.
+- The offline RevitPilot suite now passes **56/56**. This strengthens source-level reproducibility only; the live F-01 RVT/IFC runtime remains pending and no finish assembly is promoted.

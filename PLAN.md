@@ -3479,3 +3479,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next:** complete the pending disposable F-01 runtime study, then advance only to placeholder replacement categories backed by documented inputs. Keep M-06/B unassigned and Selected-D unchanged.
 
+## M367 — F-01 command contract coverage
+
+**Acceptance:** add an offline contract test for the F-01 command and require the full RevitPilot test suite to pass without changing protected inputs.
+
+**Status:** complete. The new F-01 contract test passes, and the offline suite passes **56/56**. This does not substitute for the pending Revit runtime, RVT/IFC export, or independent output validator.
+
+**Next:** run the exact hash-checked F-01 command in Revit when the UI is idle, then validate its disposable output before any placeholder-replacement study.
+

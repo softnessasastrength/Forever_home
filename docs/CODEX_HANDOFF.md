@@ -47,6 +47,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M364 corrected the Revit-invalid pipe characters in the F-01 material name. The v2 DLL SHA256 is `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; the exact manifest is registered and backed up, but runtime remains pending on manual/host-side dismissal of the trial WebView.
 - M365 retried the F-01 runtime path. Revit created `.local/revit-pilot/finish-cue-study/20261102T195238491Z/` but wrote no RVT/IFC/manifest before Computer Use was interrupted by the physical Escape key; treat the directory as an incomplete attempt and do not claim validation.
 - M366 replayed the retained coordination evidence: `run_verified_bim_sequence.ps1` passes **12/12** and `validate_verified_bim_milestone.ps1` passes **15/15**. These are regression reports only; F-01 runtime remains pending and no placeholder is promoted.
+- M367 added the F-01 source contract test; the offline RevitPilot suite now passes **56/56**. This covers command wiring and safety labels but is not runtime RVT/IFC evidence.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note
