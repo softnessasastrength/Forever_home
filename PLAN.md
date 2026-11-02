@@ -3571,3 +3571,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 The runtime pass required two source repairs: the synthetic host was rotated so its side-face normal was not parallel to the insertion direction, and the manifest captures the symbol name before closing the disposable document. The study contains one Tresham instance on a synthetic host, one labelled toilet proxy, and door/approach plus lower-MEP route markers. Both gates remain false and M-06/B remains unassigned.
 
+## M378 — Native interior design study runtime validation
+
+**Acceptance:** run the exact hash-checked project-local RevitPilot command in Revit 2027.3, generate a disposable side-by-side 8/9/10 ft clear-height interior study, export RVT and IFC2x3, pass the independent validator, and leave Selected-D, M-06/B, and the Evolution RFA unchanged.
+
+**Status:** complete. Revit generated `.local/revit-pilot/interior-design-study/20261102T230602576Z/`; `Tools/RevitPilot/validate_interior_design_study.ps1` passes **11/11**. The output contains three labelled cases, 72 native wall segments, three floors, three M-02 island proxies, and three U-05 bath vignettes. RVT SHA256 is `ae6e0b2e9906d51d3cda78e5722285043dc461bfffd58abb59c615498fbcd0e5`; IFC2x3 SHA256 is `a0f0a4169a3d1d8994faae864aec97a4207e5bf21509c9917a1777aa7a1f0ea5`. The exact project-local DLL was `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`; the prior manifest was preserved at `.local/revit-pilot/registration-backups/20261102-175559648/`.
+
+**Limitations:** Revit reported 12 expected wall-overlap warnings and 0 errors. This remains a disposable interior comparison, not a selected-D edit, code-compliance determination, structural design, professional review, or construction-ready model. Ceiling/floor datum, stair, M-06/B, assemblies, MEP and accessibility remain open gates.
+

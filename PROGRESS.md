@@ -3434,6 +3434,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The exact project-local manifest was registered under the authorized AddInId after preserving prior manifests at `.local/revit-pilot/registration-backups/20261102-153226203/`, `20261102-171418015/` and `20261102-171733630/`. The corrected DLL SHA256 is `0D9B96473B852D729EE6DBA983E1B52A818862F993FD933FD60B9CFCEAF8F91F`.
 - Revit 2027.3 runtime succeeded in disposable output `.local/revit-pilot/m06-tresham-b-study/20261102T221915147Z/`. `validate_m372_m06_tresham_b_study.ps1` passes **12/12**; RVT SHA256 `14DBF87B02F5BB70F41AD46D21C140C2B1797B205FF333C9E98345AE5EFE465D`; IFC2x3 SHA256 `4887AD17B0F1934117B5B934BE2B616D26DF982DE9F5237DDF349F81640B481D`.
 - Runtime repairs were limited to the disposable harness: rotate the synthetic host so the Tresham insertion direction is valid, and capture `symbol.Name` before closing the disposable document. The output has one Tresham family instance, one labelled toilet proxy, and explicit door/approach and lower-MEP reservations; both support gates remain false. Selected-D, the Evolution RFA, remotes and history remain unchanged.
+
+## M378 — Native interior design study runtime validation — 2026-11-02
+
+- Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.
+- Revit generated `.local/revit-pilot/interior-design-study/20261102T230602576Z/` from a disposable imperial project. The independent validator passes **11/11**: schema, protected Selected-D status, three cases, 72 walls, three floors, three island proxies, three bath vignettes, RVT hash, IFC hash, IFC2x3 and limitations.
+- RVT SHA256: `ae6e0b2e9906d51d3cda78e5722285043dc461bfffd58abb59c615498fbcd0e5`; IFC2x3 SHA256: `a0f0a4169a3d1d8994faae864aec97a4207e5bf21509c9917a1777aa7a1f0ea5`.
+- Revit displayed 12 wall-overlap warnings and 0 errors. The warnings are retained as a known limitation of the disposable room-block comparison; no Selected-D, Evolution RFA, remote ref or unrelated tracked file was changed.
+- Offline RevitPilot regression remains green: **70 tests passed**. The derivative is not code-compliant, structurally engineered, professionally certified, permit-ready or construction-ready; stair, ceiling/floor datum, M-06/B, assemblies, MEP and accessibility remain unresolved.
 ## M373 — Draft M-06 and primary-bath coordination inputs — 2026-11-02
 
 - Added the reversible draft package `Architecture/M373_Draft_Coordination_Choices_2026-11-02/`.
