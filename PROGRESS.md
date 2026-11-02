@@ -3379,3 +3379,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Corrected the material name after Revit rejected pipe characters; v2 uses `FH-F-01-EngHardwood-OakWarm - DISPLAY ONLY - owner-selected finish direction`.
 - `Tools/RevitPilot\build.ps1 -BuildDirectory finish-cue-v2` passes with **0 errors** and 2 existing MSB3277 warning groups. DLL SHA256 `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup `.local/revit-pilot/registration-backups/20261102-145311337/`.
 - Revit restarted with the exact v2 manifest, but the trial WebView close control remains inaccessible to the supported UI bridge. No runtime output was generated or claimed.
+
+## M365 — F-01 runtime retry checkpoint — 2026-11-02
+
+- Rebuilt `finish-cue-v2` after the runtime retry; the exact project-local DLL remains hash-stable at `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`. The offline RevitPilot suite remains **53/53**.
+- Revit reached the disposable F-01 study launch path and created the timestamped output directory `.local/revit-pilot/finish-cue-study/20261102T195238491Z/`, but no RVT, IFC or manifest was written before the supported Computer Use session was interrupted by the physical Escape key. This is an incomplete attempt, not runtime evidence.
+- The F-01 validator was therefore not run against an output and no finish assembly is promoted. Selected-D, the Evolution RFA, M-06/B and remote state remain unchanged.

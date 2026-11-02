@@ -3463,3 +3463,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Status:** source and validator are committed and build-verified with 0 errors and the two known MSB3277 reference warnings. The runtime study is pending after the handoff pause. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
 
+## M365 — F-01 finish-cue runtime retry checkpoint
+
+**Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
+
+**Status:** pending. The v2 DLL builds and remains hash-stable, and Revit created an empty timestamped study directory before the supported Computer Use session was interrupted by the physical Escape key. No RVT, IFC or manifest exists yet, so no runtime or finish-assembly claim is made.
+
+**Next:** resume only after the Revit window is available; verify the exact v2 path/hash in any trust prompt, run the ribbon command once, close the disposable output, and validate the resulting files. Keep the finish cue display-only and retain all coordination gates as documented.
+
