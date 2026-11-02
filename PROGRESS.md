@@ -3336,3 +3336,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The retained manifest records three unselected 8/9/10-ft comparison cases, 57 native walls, 12 nominal door openings, source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, RVT SHA256 `605E5C73E1B70CF946EE02793B71DDC66120E9B642DD9CBA5DAFB6D2D8AB406E`, and IFC2X3 SHA256 `E02FD400B8D322A5C7DA82186E7FFE6D6E0FDC74AC1E815B8EB4C9EF9E5C2E14`.
 - This confirms reproducible comparison geometry only. No generic wall/floor/door type is promoted; Selected-D, M-06/B, the Evolution RFA and remotes remain unchanged.
 
+## M356 — Roof and M-06 evidence replay — 2026-11-02
+
+- `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13** against `.local/revit-pilot/native-roof-shell/20261102T041843122Z`; it records three native roofs at the documented 8:12, 10:12 and 12:12 options, RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, and IFC2X3 roof entity/hash evidence. No pitch is selected.
+- `Tools/validate_m06_proxy_study.ps1`, `Tools/validate_m06_proxy_clearance_approach.ps1` and `Tools/validate_m06_coordination_gate.ps1` pass against the retained proxy/evidence chain. The result is deliberately `screen-valid-but-fit-blocked`; B remains unassigned.
+- No Selected-D, Evolution RFA, remote or history state changed. The next M-06 step requires exact current-SKU geometry or explicit owner proxy authorization, plus a supported clearance, door/approach and service route.

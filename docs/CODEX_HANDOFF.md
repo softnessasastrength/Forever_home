@@ -36,6 +36,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M354 `NativeStairLandingCoordinationCommand.cs` and `validate_stair_landing_coordination.ps1` are runtime-verified in Revit 2027.3. The retained study is `.local/revit-pilot/stair-landing-coordination/20261102T192620005Z/`; its independent validator passes 13/13, with RVT SHA256 `691D0BAB211066179521F2A2E7CEC7C57463FFF838F56CC4DCD40F7A9453663A` and IFC2X3 stair/slab evidence.
 - Next authorized action: advance to the documented placeholder-replacement gates, beginning only with categories supported by source inputs. Do not open or modify Selected-D; keep M-06/B unassigned.
 - M355 revalidated the retained integrated main-floor comparison at `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; `validate_integrated_main_floor_assembly.ps1` passes 7/7. It contains 57 provisional walls and 12 nominal openings across three unselected ceiling-height cases. This is coordination evidence, not promotion of wall/floor/door assemblies.
+- M356 replayed the retained roof and M-06 evidence: the native roof shell passes 13/13 for 8:12, 10:12 and 12:12, while the M-06 proxy/clearance/coordination validators pass only as a fit-blocked evidence chain. No roof pitch is selected and B remains unassigned.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note

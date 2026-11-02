@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M356 — Roof and M-06 evidence replay
+
+**Acceptance:** replay the retained native roof-shell validator and M-06 proxy/coordination validators without changing Selected-D or assigning B; require the documented roof options, IFC roof entity, proxy provenance, and explicit fit-blocked status.
+
+**Result:** the retained native roof shell at `.local/revit-pilot/native-roof-shell/20261102T041843122Z/` passes **13/13** (`8:12`, `10:12`, `12:12`; IFC2X3 roof entity). The retained M-06 proxy study at `.local/revit-pilot/m06-proxy-study/20261102T122827829Z/` passes its full provenance/IFC checks, while `validate_m06_proxy_clearance_approach.ps1` and `validate_m06_coordination_gate.ps1` both pass with the fit gates false.
+
+**Limits/next:** no roof pitch is selected. M-06/B remains unassigned because exact current-SKU solids, finished-face clearance, door/approach and service routing are not jointly supported. Owner-supplied product evidence or explicit proxy authorization is required before a native fit study.
+
 ## M355 — Integrated main-floor assembly revalidation
 
 **Acceptance:** independently validate the retained disposable integrated main-floor derivative, including source fingerprint, 8/9/10-ft comparison cases, native wall/door inventory, saved RVT/IFC hashes and IFC2x3 entities. Preserve explicit unselected status; do not infer final wall, floor, door, threshold, accessibility or code assemblies.
