@@ -66,6 +66,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCoordinatedPlaceholders", "Build coordinated\nplaceholders",
             Assembly.GetExecutingAssembly().Location, typeof(NativeCoordinatedPlaceholderStudyCommand).FullName!));
+         panel.AddItem(new PushButtonData("FHM372M06TreshamB", "Build M-06 Tresham/B\nstudy",
+             Assembly.GetExecutingAssembly().Location, typeof(NativeM06TreshamBStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
             Assembly.GetExecutingAssembly().Location, typeof(NativeIntegratedMainFloorAssemblyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeFinishCueStudy", "Build F-01\nfinish cue",

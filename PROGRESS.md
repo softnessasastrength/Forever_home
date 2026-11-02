@@ -3425,3 +3425,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Added `Tools/build_m371_m06_tresham_b_screen.ps1` and `Architecture/M371_M06_Tresham_B_Gross_Screen_2026-11-02/README.md`. The script passes **14/14** against the M120 toilet observations, owner follow-up proposal, Selected-D fingerprint, and Tresham evidence snapshot.
 - Result: the existing 124 × 84 in `M06-B` search window contains the measured Tresham envelope plus the 19 × 30.25 in selected-toilet plan proxy under the labelled same-wall/15-30-21 in screen. Door/approach and service-route gates remain false; M-06/B remains fit-blocked and unassigned.
 - No Selected-D file, Evolution RFA, Revit model, remote ref or history was changed. The next authorized step is a disposable native comparison with explicit route/door markers, not assignment or code-compliance certification.
+
+## M372 — Native disposable M-06 Tresham/B comparison — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeM06TreshamBStudyCommand.cs` and registered ribbon button `FHM372M06TreshamB`. The command is source-pinned to the quarantined Tresham RFA SHA256 `3b1cbdaa844d35bd462f6e59a828b82f7870fde4ee7397bac09f4ca0c2f9b949` and refuses a mismatch.
+- The disposable command loads the exact family into a new imperial project, places one instance only on a synthetic host, adds a labelled 19 × 30.25 in toilet plan proxy, and draws explicit 36-in door/approach and lower-MEP route markers. Both markers are reservations only; `door_approach_supported=false` and `service_route_supported=false` remain hard-coded in the manifest contract.
+- Build `m372-m06-tresham-b` succeeds with **0 errors** and the two known MSB3277 warning groups. The offline RevitPilot suite now passes **60/60** including `test_m372_m06_tresham_b_command_contract.py`.
+- Runtime RVT/IFC validation is still pending; no DLL was registered or loaded in Revit during this source/build pass. Selected-D, the Evolution RFA, remotes and history remain unchanged.

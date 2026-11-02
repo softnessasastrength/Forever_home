@@ -65,6 +65,10 @@ The owner selected **Tresham** as the lavatory direction for analysis. The commi
 
 The current 124 × 84 in `M06-B` search window contains the measured Tresham envelope paired with the existing 19 × 30.25 in American Standard toilet plan proxy under the documented same-wall/15-30-21 in screening assumptions. This is gross-envelope evidence only. Door/approach and plausible supply/drain/vent routing remain unresolved, so M-06/B remains fit-blocked and unassigned. The next study may be a disposable native comparison with labelled proxies and route markers; do not edit Selected-D or claim code/accessibility/professional/construction readiness.
 
+### M372 native disposable comparison (runtime pending)
+
+`Tools/RevitPilot/NativeM06TreshamBStudyCommand.cs` is build-verified and registered as `FHM372M06TreshamB`. It loads the exact hash-pinned Tresham RFA only into a new imperial derivative, places one family instance on a synthetic host for orientation, adds the labelled toilet plan proxy, and records the 36-in door/approach and lower-MEP route reservations without claiming either gate. Build `m372-m06-tresham-b` has 0 errors; the offline suite is 60/60. Runtime must use the exact project-local DLL and remain disposable; no Selected-D edit or M-06 assignment is permitted.
+
 ## Portability note
 
 Git contains the source, instructions, decisions, scripts, and committed evidence. Ignored `.local/` outputs, per-user Revit registration, machine caches, and the Evolution RFA are not guaranteed to exist after a fresh clone; rebuild or transfer those separately and verify hashes before use.

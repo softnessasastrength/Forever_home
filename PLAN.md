@@ -3523,3 +3523,9 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next gate:** create a disposable native Revit comparison only after the source-pinned screen is reviewed: labelled Tresham and toilet proxies, explicit door/approach reservation, and a non-assertive lower-MEP route marker. Do not promote a room assignment or edit Selected-D.
 
+## M372 — Native disposable M-06 Tresham/B comparison
+
+**Acceptance:** build the project-local RevitPilot command that loads the hash-pinned Tresham RFA into a new imperial derivative, places it only on a synthetic host, adds a labelled toilet plan proxy plus door/approach and lower-MEP route markers, exports RVT/IFC2x3, and records both unresolved gates and unassigned status. Runtime must not open Selected-D.
+
+**Status:** source/build complete; runtime pending. `NativeM06TreshamBStudyCommand.cs` builds with 0 errors and the two known MSB3277 reference-conflict warning groups. The generated DLL is under ignored `.local/revit-pilot/m372-m06-tresham-b/`; the offline contract suite covers registration, source pinning, IFC2x3 export and the deliberately false door/service gates. Run only with the exact hash-checked project-local DLL and a disposable Revit session.
+
