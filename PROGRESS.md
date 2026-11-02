@@ -3308,3 +3308,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - `composition_created=false` is deliberate: this is a pre-runtime lineage gate, not a claim that a composed walkthrough RVT already exists.
 - Roof pitch, floor-to-floor datum, wall/floor assembly, structure, MEP, and M-06 remain unresolved or unselected. No source, Selected-D, RFA, remote, or unrelated dirty file changed.
 
+## 2026-11-02 — M353 native walkthrough composition prepared
+
+- Added `Tools/RevitPilot/NativeWalkthroughCompositionCommand.cs` and `Tools/RevitPilot/validate_walkthrough_composition.ps1`.
+- The command builds successfully with 0 errors and 2 known MSB3277 reference warnings. Corrected DLL SHA256: `B910D14FBA0D5DA421983CF351C076F13CE3437120CC0F8CF130170FF102AA40`.
+- The exact project-local manifest uses the authorized AddInId and was installed only after preserving the prior manifest under `.local/revit-pilot/registration-backups/20261102-092922187/`.
+- Runtime is pending: Revit starts behind an Autodesk trial overlay rendered by an embedded webview; the current UI bridge cannot target its close control. No composition RVT/IFC was claimed or promoted.
+

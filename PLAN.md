@@ -3371,3 +3371,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next runtime gate:** create a disposable composed Revit walkthrough derivative from these source-backed inputs, then reopen, export IFC2x3, and validate the combined inventory. Do not select a roof pitch, floor-to-floor datum, wall/floor assembly, or M-06 room.
 
+## M353 — Native walkthrough composition command
+
+**Acceptance:** build a disposable Revit command that recreates the source-fingerprinted candidate in three side-by-side cases with native walls, nominal doors, provisional F-01/F-02 floor proxies, M328 landing bridge markers, and 8:12/10:12/12:12 roofs; save RVT/IFC2x3 and validate inventory/entities when runtime is available.
+
+**Status:** command and validator build successfully with 0 errors and the two known MSB3277 reference warnings. The corrected project-local DLL is `.local/revit-pilot/walkthrough-composition-v2/Release/net10.0-windows/RevitPilot.dll` (SHA256 `B910D14FBA0D5DA421983CF351C076F13CE3437120CC0F8CF130170FF102AA40`); the authorized AddInId/path was installed only after preserving the prior manifest under `.local/revit-pilot/registration-backups/20261102-092922187/`. Runtime is pending because Revit's trial overlay is currently an embedded webview that the UI bridge cannot safely target.
+
+**Limitation:** no composed RVT/IFC manifest exists yet. Do not claim M353 runtime completion until the overlay is dismissed, the exact DLL is loaded once, the command runs, and `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes.
+

@@ -64,6 +64,8 @@ public class App : IExternalApplication
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
         panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
             Assembly.GetExecutingAssembly().Location, typeof(NativeIntegratedMainFloorAssemblyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHWalkthroughComposition", "Build walkthrough\ncomposition",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
             Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM324NativeSplitRise", "Build M324 native\nsplit-rise stair",
