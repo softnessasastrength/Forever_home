@@ -3363,3 +3363,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Finding:** the proxy and current gross screen are source-pinned, but no evidence supports promoting M-06. Finished-face geometry, a selected lavatory, actual door/approach, and a plausible project service route remain open. B remains unassigned.
 
+## M352 — Walkthrough coordination package gate
+
+**Acceptance:** validate the retained M328 landing, M333 roof, M315 floor-plate, and M349 main-floor assembly derivatives as a lineage-compatible package; preserve Selected-D and M-06 `TBD`; record that a new composed RVT is still pending.
+
+**Status:** complete. `Tools/validate_walkthrough_coordination_package.ps1` passes **9/9** and writes `.local/revalidation/m352-walkthrough-coordination-package.json`. Details: `Architecture/M352_Walkthrough_Coordination_Package_2026-11-02/README.md`.
+
+**Next runtime gate:** create a disposable composed Revit walkthrough derivative from these source-backed inputs, then reopen, export IFC2x3, and validate the combined inventory. Do not select a roof pitch, floor-to-floor datum, wall/floor assembly, or M-06 room.
+

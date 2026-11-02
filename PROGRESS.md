@@ -3301,3 +3301,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - It confirms the 158 × 84 in B gross window and proxy evidence remain unassigned comparisons. Exact owner-product solids, finished-face clearance, door/approach, service route, and room assignment remain false/open.
 - No Revit source, Selected-D, RFA, remote, or unrelated dirty file changed.
 
+## 2026-11-02 — M352 walkthrough coordination package gate
+
+- Added `Tools/validate_walkthrough_coordination_package.ps1` and `Architecture/M352_Walkthrough_Coordination_Package_2026-11-02/README.md`.
+- The package gate passes **9/9**, confirming Selected-D lineage plus retained M328 landing, M333 roof, M315 floor-plate, and M349 integrated main-floor RVT/IFC derivatives.
+- `composition_created=false` is deliberate: this is a pre-runtime lineage gate, not a claim that a composed walkthrough RVT already exists.
+- Roof pitch, floor-to-floor datum, wall/floor assembly, structure, MEP, and M-06 remain unresolved or unselected. No source, Selected-D, RFA, remote, or unrelated dirty file changed.
+
