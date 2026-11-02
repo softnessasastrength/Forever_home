@@ -3495,3 +3495,13 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** engineered oak remains a display-only finish direction; product, plank, substrate, thickness, structure, acoustics, moisture, code and construction requirements remain unresolved. Next architectural work may study documented wall/floor/opening coordination only in another disposable derivative.
 
+## M369 — Native coordinated placeholder study
+
+**Acceptance:** build and run a disposable Revit 2027.3 command from the source-fingerprinted candidate-21 coordination input; create native floor, wall and hosted nominal-door geometry; export RVT and IFC2x3; independently validate inventory, lineage and unselected status; preserve Selected-D and the Evolution RFA.
+
+**Status:** complete. The v3 project-local DLL builds with 0 errors and the two known MSB3277 reference warnings; SHA256 `11A56B447BE43E94EC56700893C0340569ACFBC1BB2B10DC851337FF4080D72C`. Revit 2027.3 ran the exact verified DLL after preserving the prior manifest at `.local/revit-pilot/registration-backups/20261102-151524663/`. Output `.local/revit-pilot/coordinated-placeholder-study/20261102T201702862Z/`; `Tools/RevitPilot/validate_coordinated_placeholder_study.ps1` passes **8/8**. The derivative contains 11 native wall segments, one floor, and three hosted nominal doors, with RVT SHA256 `3b4c756492219a516105b0c3252b078c541fecf1161140c7d7f7a7aa0ba84e34` and IFC2x3 SHA256 `f3d056015c96a3cbe33ced7fbbb3d301b99ed6368c2b850f928d59d0c631322e`.
+
+**Limitations:** the 5½-in wall and 1½-in floor values are recorded coordination dimensions; Revit retains template-native host type layer geometry rather than asserting a construction assembly. The 36-in openings are nominal proxies only. No structural, code/accessibility, MEP, professional, permit or construction conclusion follows; Selected-D and M-06/B remain unchanged.
+
+**Next:** compare this native placeholder derivative against the retained main-floor, stair/landing and finish-cue evidence, then study the next documented category without promoting any type or opening until the source and fit gates support it.
+

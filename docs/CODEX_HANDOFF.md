@@ -51,6 +51,10 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M368 completed the F-01 runtime gate in Revit 2027.3. Output `.local/revit-pilot/finish-cue-study/20261102T200546656Z/` passes `validate_f01_finish_cue.ps1` **6/6**; RVT SHA256 `cf9b1d43b3f78563e889ab0f0dd6747c4fd2a9fe14298406dcf476f03d06f523`; IFC2X3 SHA256 `328ccf47dd6167d282467064ac8145f3694162adc2696cf0ec96732d014196af`. The retained sequence is 12/12, consolidated gate 15/15, and offline suite 56/56. This is still a display-only finish cue, not a selected assembly.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
+### M369 native coordinated placeholder study
+
+The v3 project-local RevitPilot DLL (`11A56B447BE43E94EC56700893C0340569ACFBC1BB2B10DC851337FF4080D72C`) ran successfully in Revit 2027.3 after the prior manifest was backed up at `.local/revit-pilot/registration-backups/20261102-151524663/`. Output `.local/revit-pilot/coordinated-placeholder-study/20261102T201702862Z/` passes `validate_coordinated_placeholder_study.ps1` **8/8**, with 11 native wall segments, one floor, three hosted nominal doors, RVT SHA256 `3b4c756492219a516105b0c3252b078c541fecf1161140c7d7f7a7aa0ba84e34`, and IFC2X3 SHA256 `f3d056015c96a3cbe33ced7fbbb3d301b99ed6368c2b850f928d59d0c631322e`. The study records the 5½-in/1½-in dimensions as coordination notes while retaining template-native host layers; it is not a construction assembly or Selected-D promotion. Offline suite is now **59/59**; retained gates remain **12/12** and **15/15**.
+
 ## Portability note
 
 Git contains the source, instructions, decisions, scripts, and committed evidence. Ignored `.local/` outputs, per-user Revit registration, machine caches, and the Evolution RFA are not guaranteed to exist after a fresh clone; rebuild or transfer those separately and verify hashes before use.

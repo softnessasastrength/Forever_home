@@ -62,6 +62,8 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHCoordinatedPlaceholders", "Build coordinated\nplaceholders",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeCoordinatedPlaceholderStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
             Assembly.GetExecutingAssembly().Location, typeof(NativeIntegratedMainFloorAssemblyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeFinishCueStudy", "Build F-01\nfinish cue",
