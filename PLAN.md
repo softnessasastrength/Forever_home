@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M373 — Draft M-06 and primary-bath coordination inputs
+
+**Status:** complete as a reversible documentation gate; native geometry remains the next study.
+
+**Result:** `Architecture/M373_Draft_Coordination_Choices_2026-11-02/` records the owner-directed M-06 preferences (hall-edge approach, inward door swing, same-wet-wall relationship, lower-MEP route target) and the U-05 MGM-inspired separate-tub/tiled-rain-shower direction. `Tools/validate_m373_draft_coordination.ps1` verifies the draft contract and confirms Selected-D, existing RVT files and remote state are untouched.
+
+**Next:** use the contract to build a disposable native comparison when the current Revit session permits the existing loaded command set or after a planned restart. Keep M-06/B unassigned until product, finished-face, door/approach and service gates pass together.
+
 ## M364 — F-01 finish-cue Revit name correction
 
 **Result:** the first disposable runtime attempt exposed a Revit API restriction on pipe characters in material names. `NativeFinishCueStudyCommand.cs` now uses Revit-safe hyphen punctuation and rebuilds as `finish-cue-v2` with **0 errors** and the existing 2 MSB3277 warning groups. DLL SHA256: `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup: `.local/revit-pilot/registration-backups/20261102-145311337/`.

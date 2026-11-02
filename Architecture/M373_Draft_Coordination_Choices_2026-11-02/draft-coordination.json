@@ -1,0 +1,38 @@
+{
+  "schema": "forever-home-m373-draft-coordination-v1",
+  "status": "draft-study-inputs",
+  "selected_d_modified": false,
+  "m06": {
+    "assignment": "unassigned",
+    "protected_search_windows": ["west-A", "east-B"],
+    "approach_preference": "entry-hall-edge",
+    "door_swing_preference": "into-bath",
+    "fixture_relationship_preference": "same-wet-wall",
+    "service_route_target": "lower-MEP-reservation",
+    "lavatory_direction": "Kohler Tresham K-2844-4",
+    "toilet_geometry": "labelled-current-SKU-plan-proxy",
+    "fit_gates": {
+      "product_geometry_verified": false,
+      "finished_face_clearance_verified": false,
+      "door_approach_verified": false,
+      "service_route_verified": false,
+      "room_assignment_authorized": false
+    }
+  },
+  "primary_bath": {
+    "source_block": "U-05",
+    "source_area_sf": 90.0,
+    "source_envelope_ft": [9.0, 10.0],
+    "arrangement": "separate-tub-plus-tiled-rain-shower",
+    "visual_reference": "MGM Springfield Deluxe Garden Suite photo",
+    "shower_glazing_direction": "black-grid-glass-study",
+    "fixture_product_selected": false,
+    "compartment_dimensions_selected": false
+  },
+  "reversibility": {
+    "kind": "new-draft-package",
+    "selected_d_overwrite": false,
+    "existing_rvt_overwrite": false,
+    "remote_state_changed": false
+  }
+}
