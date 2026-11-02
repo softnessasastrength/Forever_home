@@ -1,5 +1,5 @@
 # Forever Home — cross-agent handoff
-Updated: 2026-11-02 (M336 M-06 coordination evidence contract; native pantry opening gate retained)
+Updated: 2026-11-02 (M338 local exact-SKU M-06 asset audit; native pantry opening gate retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
 Default branch: `main` (protected by **owner approval requirement** for merges)
@@ -8,6 +8,7 @@ Default branch: `main` (protected by **owner approval requirement** for merges)
 **Latest continuation:** M333 is runtime-verified. `NativeRoofShellStudyCommand.cs` created three native `FootPrintRoof` comparison elements (8:12, 10:12, 12:12) from the documented M38 options, preserved Selected-D, and exported IFC2x3. The final disposable run is `.local/revit-pilot/native-roof-shell/20261102T041843122Z/`; RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, IFC SHA256 `917E4F7674A932C68FA017C18AA2C1912E1F5DDCED324603266E60D82C40B31A`, and `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13**. The corrected DLL SHA256 was `D879A76EEE6C79978E0B15950D58E0737365EC4C3026C7AE02129C3A7CB16423`; prior registration was preserved under `.local/revit-pilot/registration-backups/20261101231310984/`. No pitch is selected.
 
 **Next architectural gate:** the native wall/plate candidate remains a comparison derivative: 42 walls and three provisional plates are verified, but wall type, layered floor assembly, front/porch opening and pantry door are not selected. M218/M219 provides the documented pantry swing comparison; M336 confirms M-06 evidence is screen-valid but fit-blocked. Keep floor-to-floor/stair relationship unresolved, M-06/A/B unassigned, west A protected, and do not replace placeholders without a cited input.
+M338 confirms the local intake contains no exact current-SKU `610AA001.020` complete family or assembled dimension drawing; predecessor bowl/seat families remain non-substitutable. The next native M-06 fixture study therefore awaits owner-supplied current-SKU evidence or explicit proxy authorization.
 
 **Latest verified state:** M311 ran successfully in Revit after owner invocation. Three RVTs and manifests exist under ignored .local/revit-pilot/clear-ceiling-wall-height/20261101T185016177Z/. Saved-file/input hashes, footprint edges, 12 walls and one local level per model, and all nine height cases pass independent PowerShell checks. Reopen/visual inspection and independent RVT inventory remain pending. Family report wording repair is build-verified only; validator fixture tests pass 6/6. Earlier blocked/no-output notes below are historical and superseded.
 

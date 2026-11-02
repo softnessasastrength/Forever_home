@@ -3199,6 +3199,13 @@ M280 M-06 family evidence replayed 2026-11-01 with the repository-local .NET 10 
 - Consolidated replay passes **9/9**. The green result proves evidence integrity and unresolved-status discipline; it does not prove an M-06 fit.
 - No Revit restart, Selected-D edit, family mutation, remote operation or unrelated worktree staging occurred.
 
+## M338 — Local exact-SKU M-06 asset audit — 2026-11-02
+
+- Audited `Revit/Family_Intake/Incoming`, quarantined family candidates, `Research/`, and architecture evidence for `610AA001.020`.
+- No exact current-SKU complete RFA or assembled current-SKU dimension drawing is present locally. The retained `3195A101.020` and `211AA104.020` files remain predecessor bowl/seat components and are not combinable by inference.
+- Recorded the reproducible audit in `Research/M338_M06_Local_Exact_Asset_Audit_2026-11-02.md`.
+- This narrows the blocker: an exact current-SKU asset/drawing or explicit proxy authorization is required before native M-06 fixture placement. B remains unassigned.
+
 ## M334 — Landing runtime close guard repaired — 2026-11-02
 
 - Revit exposed an API failure in the first M328/M333 landing invocation: `CompactLandingStudyCommand` attempted to close the active derivative document, yielding `Autodesk.Revit.Exceptions.InvalidOperationException` (the active document may not be closed from the API).
