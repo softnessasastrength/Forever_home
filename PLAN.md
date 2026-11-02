@@ -3471,3 +3471,11 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Next:** resume only after the Revit window is available; verify the exact v2 path/hash in any trust prompt, run the ribbon command once, close the disposable output, and validate the resulting files. Keep the finish cue display-only and retain all coordination gates as documented.
 
+## M366 — Retained coordination regression replay
+
+**Acceptance:** replay the retained 12-stage BIM sequence and the consolidated milestone gate after the coordination bundle, with every stage/check passing and no protected input modified.
+
+**Status:** complete. The sequence passes **12/12** and the consolidated gate passes **15/15**. Reports are retained under ignored `.local/revalidation/` paths; this is a regression confirmation, not a fresh Revit generation.
+
+**Next:** complete the pending disposable F-01 runtime study, then advance only to placeholder replacement categories backed by documented inputs. Keep M-06/B unassigned and Selected-D unchanged.
+

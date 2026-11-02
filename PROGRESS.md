@@ -3385,3 +3385,9 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Rebuilt `finish-cue-v2` after the runtime retry; the exact project-local DLL remains hash-stable at `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`. The offline RevitPilot suite remains **53/53**.
 - Revit reached the disposable F-01 study launch path and created the timestamped output directory `.local/revit-pilot/finish-cue-study/20261102T195238491Z/`, but no RVT, IFC or manifest was written before the supported Computer Use session was interrupted by the physical Escape key. This is an incomplete attempt, not runtime evidence.
 - The F-01 validator was therefore not run against an output and no finish assembly is promoted. Selected-D, the Evolution RFA, M-06/B and remote state remain unchanged.
+
+## M366 — Retained coordination regression replay — 2026-11-02
+
+- Replayed `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-20261103.json`; all **12/12** retained stages pass.
+- Replayed `Tools/validate_verified_bim_milestone.ps1 -Output .local/revalidation/verified-bim-milestone-20261103.json`; all **15/15** consolidated checks pass.
+- These reports validate retained disposable evidence and source contracts only; they do not close the pending F-01 runtime gate or promote any wall, floor, door, roof, stair or M-06 placeholder into Selected-D.
