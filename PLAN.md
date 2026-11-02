@@ -1,6 +1,82 @@
 # Architectural BIM pipeline plan
 
-Updated: 2026-11-02 (M354 stair/landing coordination handoff)
+## M364 — F-01 finish-cue Revit name correction
+
+**Result:** the first disposable runtime attempt exposed a Revit API restriction on pipe characters in material names. `NativeFinishCueStudyCommand.cs` now uses Revit-safe hyphen punctuation and rebuilds as `finish-cue-v2` with **0 errors** and the existing 2 MSB3277 warning groups. DLL SHA256: `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup: `.local/revit-pilot/registration-backups/20261102-145311337/`.
+
+**Runtime status:** Revit was restarted with the corrected manifest, but the trial WebView still intercepts the visible close button and the supported UI bridge cannot target it. No F-01 RVT/IFC output is claimed until the overlay is dismissed and the exact hash-checked v2 DLL runs.
+
+## M363 — Owner coordination gate bundle
+
+**Result:** `Decisions/2026-11-02_Coordination_Gate_Bundle.md` records the owner’s answers: 43½-in split rise; 5½-in non-structural wall placeholder; 1½-in generic floor build-up beneath engineered oak; 36-in nominal openings; 10:12 working roof with 8:12 comparison; living-only skylight zone; M-06 proxy/SKU expansion; lower-MEP service route; and hall-edge approach.
+
+**Next:** build the next disposable coordination derivative from these labelled inputs, validate its RVT/IFC lineage, and keep every choice explicitly provisional except the engineered-oak finish direction.
+
+## M362 — Owner-authorized exact-DLL trust mode
+
+**Acceptance:** update repository instructions to reflect the owner’s explicit override permitting **Always Load** for the exact project-local Forever Home DLL, while retaining AddInId, path, SHA256, manifest-backup and no-trust-wide-change safeguards.
+
+**Result:** `AGENTS.md` and `docs/CODEX_HANDOFF.md` now record the narrow override. It does not permit unrelated add-ins, unknown hashes, different AddInIds, Windows/Revit-wide security changes, anti-malware bypasses, or remote changes.
+
+## M361 — Disposable F-01 engineered-oak finish-cue command
+
+**Acceptance:** add a project-local RevitPilot command that creates one native floor surface using the owner-approved F-01 engineered-oak display material, records an explicit display-only/unselected manifest, and exports IFC2x3. Build must pass before any Revit runtime attempt; Selected-D must remain untouched.
+
+**Result:** `Tools/RevitPilot/NativeFinishCueStudyCommand.cs` and `Tools/RevitPilot/validate_f01_finish_cue.ps1` are present. The exact project-local build `finish-cue-v1` compiles with **0 errors** and the two existing MSB3277 warning groups; DLL SHA256 is `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`. The ribbon registration uses the authorized AddInId and repository-local path; the prior manifest is preserved under `.local/revit-pilot/registration-backups/20261102-144408313/`.
+
+**Runtime status:** Revit 2027.3 launched, but its visible trial WebView again failed to report a foreground process to the supported UI bridge. The command has **not** been run; no RVT/IFC output is claimed. Resume with **Load Once** only after the prompt identifies this exact hash-checked DLL.
+
+**Limits:** the command is a visual finish cue, not a selected floor type or structural/installation specification. Product, plank, wear layer, substrate, thickness, acoustics, moisture and code performance remain open.
+
+## M360 — Owner-approved F-01 finish basis
+
+**Acceptance:** record the owner’s engineered-oak direction as the F-01 main social-floor finish, preserve the existing material-code and render-to-model references, and keep product, thickness, substrate, installation and structural floor assembly unresolved.
+
+**Result:** `Decisions/2026-11-02_F-01_Engineered_Oak_Selection.md` records the approval and scope and supersedes the older F-01 either/or wording without rewriting the source schedule that is fingerprinted by retained evidence. The next disposable native study may use the labelled display material `FH-F-01-EngHardwood-OakWarm` on comparison surfaces.
+
+**Limits/next:** this is a finish-direction decision only. It does not select a Revit floor type or establish structure, floor-to-floor datum, code, moisture, acoustic or construction performance. Continue with a disposable material-cue study; preserve Selected-D.
+
+## M359 — Offline RevitPilot contract replay
+
+**Acceptance:** rerun the repository-local RevitPilot contract tests after the native opening milestone; require all test cases to pass without opening Revit or changing model state.
+
+**Result:** `.venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q` reports **53 tests, OK**. This confirms the roof, selected-D, IFC, compact-study and review-packet contracts remain executable.
+
+**Limits/next:** offline contracts do not replace host-side Revit inspection or justify promoting unsupported assemblies. The remaining substantive gate is documented wall/floor/door product and assembly input, followed by M-06 exact-fit evidence.
+
+## M358 — Documented native opening replay
+
+**Acceptance:** independently validate the retained native opening derivative against the source-fingerprinted input; require both documented 30-in and 36-in pantry cases, nominal front/porch reservations, RVT/IFC2x3 lineage, and explicit unselected status.
+
+**Result:** `.local/revit-pilot/main-floor-openings/20261102T125705634Z/` passes `Tools/RevitPilot/validate_native_main_floor_openings.ps1` **13/13**. The two cases preserve 11 native host walls and the documented 36-in front route, 5-ft rear French-door reservation, and 30-in versus 36-in pantry opening comparison. Saved RVT/IFC2x3 hashes and IFC opening entities validate against the source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`.
+
+**Limits/next:** no door family, frame, threshold, clear leaf, accessibility or code result is selected. This is the final defensible opening comparison until a specific family and finished-face datum are documented.
+
+## M357 — Full retained-evidence replay after coordination gates
+
+**Acceptance:** rerun the repository's consolidated BIM sequence after M354–M356, requiring all retained Revit/IFC/M-06 boundaries and offline regressions to remain green without opening Selected-D.
+
+**Result:** `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-m356.json` passes all **12/12** stages. This confirms the new documentation and coordination evidence did not disturb the retained baseline.
+
+**Limits/next:** the runner validates retained evidence; it does not regenerate a new RVT or promote generic wall, floor, door, roof or fixture placeholders. The next substantive change requires documented assembly/product inputs or owner authorization for a labelled proxy study.
+
+## M356 — Roof and M-06 evidence replay
+
+**Acceptance:** replay the retained native roof-shell validator and M-06 proxy/coordination validators without changing Selected-D or assigning B; require the documented roof options, IFC roof entity, proxy provenance, and explicit fit-blocked status.
+
+**Result:** the retained native roof shell at `.local/revit-pilot/native-roof-shell/20261102T041843122Z/` passes **13/13** (`8:12`, `10:12`, `12:12`; IFC2X3 roof entity). The retained M-06 proxy study at `.local/revit-pilot/m06-proxy-study/20261102T122827829Z/` passes its full provenance/IFC checks, while `validate_m06_proxy_clearance_approach.ps1` and `validate_m06_coordination_gate.ps1` both pass with the fit gates false.
+
+**Limits/next:** no roof pitch is selected. M-06/B remains unassigned because exact current-SKU solids, finished-face clearance, door/approach and service routing are not jointly supported. Owner-supplied product evidence or explicit proxy authorization is required before a native fit study.
+
+## M355 — Integrated main-floor assembly revalidation
+
+**Acceptance:** independently validate the retained disposable integrated main-floor derivative, including source fingerprint, 8/9/10-ft comparison cases, native wall/door inventory, saved RVT/IFC hashes and IFC2x3 entities. Preserve explicit unselected status; do not infer final wall, floor, door, threshold, accessibility or code assemblies.
+
+**Result:** `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/` passes `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` **7/7**. The manifest records 57 native walls and 12 nominal door openings across three unselected cases, source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, RVT SHA256 `605E5C73E1B70CF946EE02793B71DDC66120E9B642DD9CBA5DAFB6D2D8AB406E`, and IFC2X3 SHA256 `E02FD400B8D322A5C7DA82186E7FFE6D6E0FDC74AC1E815B8EB4C9EF9E5C2E14`.
+
+**Limits/next:** native categories remain comparison geometry. Wall type, layered floor assembly, final door family/swing/threshold, routes, stair datum, M-06/B and services remain unresolved. No code, structural, professional, permit or construction-readiness conclusion follows.
+
+Updated: 2026-11-02 (M354 stair/landing coordination runtime verification)
 Current status: Owner directed that Selected-D is acceptable as the dimensional basis and chose 8–10 ft clear-ceiling alternatives while leaving floor-to-floor and stair unresolved. The source-linked register is now recorded. Revit geometry must preserve the plan envelopes without misusing clear height as storey spacing. M311, M270, M313, M314, and M315 are runtime-verified in Revit 2027.3. M316 consolidates the existing section/stair constraints without selecting geometry; M317 independently replays the public M-06 candidate provenance and unassigned status. No selected-D design geometry has been promoted.
 M318 independently verifies the M313→M314 wall/plate source chain, 42-wall preservation, three 40 × 42 ft provisional plates, and explicit unselected status. No selected-D design geometry has been promoted.
 M319 freshly rechecks the protected selected-D baseline: two 43/43 source replays, seven byte-identical artifacts per replay, three parseable SVGs per replay, retained IFC2X3 26/26 with zero errors, and unchanged source/RVT/IFC fingerprints.

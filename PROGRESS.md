@@ -3324,3 +3324,58 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The command creates a native landing bridge from the measured stair/upper-floor gap, retains the native stair/floor lineage, and adds a clearly labelled circulation proxy. It exports RVT and IFC2x3 and records all limitations in a machine-readable manifest.
 - Runtime validation remains pending because the handoff was paused before the exact v1 DLL could be loaded and invoked. Do not claim M354 completion until the RVT/IFC output and validator pass exist.
 
+## M354 — Native upper stair-to-floor landing coordination — 2026-11-02
+
+- Revit 2027.3 generated `.local/revit-pilot/stair-landing-coordination/20261102T192620005Z/` in a disposable `FH_Compact_Core_Study`; the derivative was closed before hashing. `Tools/RevitPilot/validate_stair_landing_coordination.ps1` passes **13/13**.
+- Evidence: saved RVT SHA256 `691D0BAB211066179521F2A2E7CEC7C57463FFF838F56CC4DCD40F7A9453663A`; two native stair elements (`id=3987`); positive `18.75 sf` landing bridging the `5.625 ft` plan gap; four circulation curves at `3.333 ft` width and `4 ft` depth; four native floors with landing `id=4092`; and an IFC2X3 STEP export containing stair plus slab/floor entities.
+- This is a disposable, unselected coordination study. Selected-D, M-06/B, the Evolution RFA and remotes remain protected. The circulation proxy is explicitly `code=false`; no code/accessibility, structural, professional, permit or construction-readiness conclusion follows.
+
+## M355 — Integrated main-floor assembly revalidation — 2026-11-02
+
+- Replayed `Tools/RevitPilot/validate_integrated_main_floor_assembly.ps1` against `.local/revit-pilot/integrated-main-floor-assembly/20261102T141223011Z/`; the independent validator passes **7/7**.
+- The retained manifest records three unselected 8/9/10-ft comparison cases, 57 native walls, 12 nominal door openings, source input SHA256 `1EF485C03BB74B4B858B2BBE5A775D946B26FC1E6C530CA4BC9F67056F408C3D`, RVT SHA256 `605E5C73E1B70CF946EE02793B71DDC66120E9B642DD9CBA5DAFB6D2D8AB406E`, and IFC2X3 SHA256 `E02FD400B8D322A5C7DA82186E7FFE6D6E0FDC74AC1E815B8EB4C9EF9E5C2E14`.
+- This confirms reproducible comparison geometry only. No generic wall/floor/door type is promoted; Selected-D, M-06/B, the Evolution RFA and remotes remain unchanged.
+
+## M356 — Roof and M-06 evidence replay — 2026-11-02
+
+- `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **13/13** against `.local/revit-pilot/native-roof-shell/20261102T041843122Z`; it records three native roofs at the documented 8:12, 10:12 and 12:12 options, RVT SHA256 `C1C2273F0CC7FEAFC6869617B5060DE2D247BC0899B1A1AFA456C18A636591B0`, and IFC2X3 roof entity/hash evidence. No pitch is selected.
+- `Tools/validate_m06_proxy_study.ps1`, `Tools/validate_m06_proxy_clearance_approach.ps1` and `Tools/validate_m06_coordination_gate.ps1` pass against the retained proxy/evidence chain. The result is deliberately `screen-valid-but-fit-blocked`; B remains unassigned.
+- No Selected-D, Evolution RFA, remote or history state changed. The next M-06 step requires exact current-SKU geometry or explicit owner proxy authorization, plus a supported clearance, door/approach and service route.
+## M357 — Full retained-evidence replay after coordination gates — 2026-11-02
+
+- Repository safety audit: branch `codex/house-design-sandbox`, worktree clean before edits, no history rewrite or remote mutation; `design/vr-tech-bom-roadmap` and `main` remain untouched.
+- `Tools/run_verified_bim_sequence.ps1 -OutputPath .local/revalidation/verified-bim-sequence-m356.json` passes **12/12** stages after the M354–M356 evidence updates.
+- This is a regression confirmation, not a new model generation. Selected-D, the Evolution RFA, M-06/B and all remote state remain protected.
+## M358 — Documented native opening replay — 2026-11-02
+
+- `Tools/RevitPilot/validate_documented_door_study.ps1` passes **10/10** for the retained nominal door-family comparison, including both baseline and wider pantry cases.
+- `Tools/RevitPilot/validate_native_main_floor_openings.ps1` passes **13/13** against `.local/revit-pilot/main-floor-openings/20261102T125705634Z/`. It records two unselected native cases with 11 host walls each, a 36-in front-entry route proxy, 5-ft rear French-door reservation, and 30-in/36-in pantry alternatives; RVT/IFC2x3 hashes and source fingerprint match.
+- No door family, threshold, clear leaf, accessibility, code, Selected-D, M-06/B, Evolution RFA or remote state changed.
+## M359 — Offline RevitPilot contract replay — 2026-11-02
+
+- Ran `.venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q`; **53 tests passed**, 0 failures/errors.
+- This replay covers the repository's offline command contracts and validators after M358. No Revit document, Selected-D, Evolution RFA, remote ref or source model was modified.
+## M360 — Owner-approved F-01 finish basis — 2026-11-02
+
+- Owner approved **engineered oak** for F-01 in the main kitchen, dining, living and hall areas.
+- Added `Decisions/2026-11-02_F-01_Engineered_Oak_Selection.md` as the superseding owner direction while preserving the fingerprinted `Architecture/Material_Schedule.md` source used by retained validators.
+- No Revit, Selected-D, IFC, Evolution RFA or remote state changed. The next authorized implementation is a disposable labelled material-cue study, not promotion of a structural floor assembly.
+## M361 — Disposable F-01 engineered-oak finish-cue command — 2026-11-02
+
+- Added `Tools/RevitPilot/NativeFinishCueStudyCommand.cs`, a separate native study command that will create one F-01 display floor with material name `FH-F-01-EngHardwood-OakWarm | DISPLAY ONLY | owner-selected finish direction`; it explicitly records `assembly_selected=false` and leaves Selected-D untouched.
+- Added `Tools/RevitPilot/validate_f01_finish_cue.ps1` and ribbon registration. Build `finish-cue-v1` completed with **0 errors** and the existing 2 MSB3277 warning groups; DLL SHA256 `8671F907B58FE22BA0179E8C4794B11ADB97FCE98018F31BF99F030AFE5867CD`.
+- Per-user manifest AddInId/path were verified and the prior manifest was backed up at `.local/revit-pilot/registration-backups/20261102-144408313/`.
+- Runtime remains pending: Revit's trial WebView did not expose a foreground process to the supported UI bridge. No finish-cue RVT/IFC was generated or claimed. Selected-D, the Evolution RFA and remote state remain unchanged.
+## M362 — Owner-authorized exact-DLL trust mode — 2026-11-02
+
+- Updated `AGENTS.md` and `docs/CODEX_HANDOFF.md` to record the owner's explicit override: **Always Load** may be used for the exact hash-verified project-local Forever Home DLL only.
+- Safeguards remain mandatory: authorized AddInId, repository-local assembly path, recorded SHA256, preserved prior manifest, and no unrelated add-ins or trust-wide/security changes.
+## M363 — Owner coordination gate bundle — 2026-11-02
+
+- Recorded the owner’s nine coordination answers in `Decisions/2026-11-02_Coordination_Gate_Bundle.md`.
+- The bundle is sufficient to start the next disposable native coordination study. It does not select Selected-D geometry, a structural assembly, a roof pitch for construction, a door family, or M-06/B.
+## M364 — F-01 finish-cue Revit name correction — 2026-11-02
+
+- Corrected the material name after Revit rejected pipe characters; v2 uses `FH-F-01-EngHardwood-OakWarm - DISPLAY ONLY - owner-selected finish direction`.
+- `Tools/RevitPilot\build.ps1 -BuildDirectory finish-cue-v2` passes with **0 errors** and 2 existing MSB3277 warning groups. DLL SHA256 `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`; manifest backup `.local/revit-pilot/registration-backups/20261102-145311337/`.
+- Revit restarted with the exact v2 manifest, but the trial WebView close control remains inaccessible to the supported UI bridge. No runtime output was generated or claimed.

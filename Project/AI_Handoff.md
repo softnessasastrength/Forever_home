@@ -2,9 +2,9 @@
 
 ## Fresh-session entry point — 2026-11-02
 
-Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; latest pushed commit is `274e0e7`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
+Read `AGENTS.md`, `docs/BUTLERGPT_PERSONALITY.md`, and `docs/CODEX_HANDOFF.md` before continuing. The active sandbox branch is `codex/house-design-sandbox`; verify the current commit with `git log`. ButlerGPT is a repository instruction, not a chat-only preference: address the owner as “sir”, use concise Victorian-butler diction with restrained dry wit, and keep that style separate from technical correctness and safety rules.
 
-M353 is the latest runtime-verified milestone. M354 source and validator are now present and build-verified, but its Revit runtime study is still pending. Selected-D, M-06/B, the Evolution RFA, and all remote state remain protected. See `docs/CODEX_HANDOFF.md` for the exact next action.
+M364 is the latest implementation checkpoint: the F-01 finish-cue command was corrected for Revit-safe material naming and rebuilt as v2 (DLL SHA256 `5E93AA964ED9B650CC8E44E6098D6C7C519019D145CAF293B6F9FE03D97C9F6A`). The coordination bundle remains authorized, but Revit runtime is still pending because the trial WebView close control is inaccessible to the supported bridge; M-06/B and Selected-D remain protected.
 Updated: 2026-11-02 (M351 M-06 proxy clearance/approach screen and 15-gate replay verified; placeholder replacement matrix retained)
 Repository: `softnessasastrength/Forever_home`
 Working branch: `codex/house-design-sandbox` (local isolated worktree); source branch of record: `design/vr-tech-bom-roadmap`
