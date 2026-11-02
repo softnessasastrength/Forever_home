@@ -40,6 +40,7 @@ Address the owner as “sir”. Write as a competent, impeccably mannered Victor
 - M357 replayed `Tools/run_verified_bim_sequence.ps1` after the coordination updates; all 12 retained stages pass. This remains a regression replay, not a fresh Selected-D generation or placeholder promotion.
 - M358 independently revalidated the documented native opening comparison: `validate_documented_door_study.ps1` passes 10/10 and `validate_native_main_floor_openings.ps1` passes 13/13 for the 30-in/36-in pantry cases and nominal front/porch reservations. Door families, clear leaves and thresholds remain unselected.
 - M359 reran the offline RevitPilot contract suite: 53 tests pass. This is a source/validator regression check, not host-side Revit generation.
+- M360 records the owner-approved F-01 direction: engineered oak for kitchen, dining, living and halls. Product, thickness, substrate and structural floor build-up remain open; use only a labelled display material in the next disposable study.
 - Keep M-06/B unassigned until exact product geometry, finished-face clearance, door/approach, and plausible service routing are all supported by evidence.
 
 ## Portability note

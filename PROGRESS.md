@@ -3355,3 +3355,8 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 
 - Ran `.venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q`; **53 tests passed**, 0 failures/errors.
 - This replay covers the repository's offline command contracts and validators after M358. No Revit document, Selected-D, Evolution RFA, remote ref or source model was modified.
+## M360 — Owner-approved F-01 finish basis — 2026-11-02
+
+- Owner approved **engineered oak** for F-01 in the main kitchen, dining, living and hall areas.
+- Added `Decisions/2026-11-02_F-01_Engineered_Oak_Selection.md` as the superseding owner direction while preserving the fingerprinted `Architecture/Material_Schedule.md` source used by retained validators.
+- No Revit, Selected-D, IFC, Evolution RFA or remote state changed. The next authorized implementation is a disposable labelled material-cue study, not promotion of a structural floor assembly.

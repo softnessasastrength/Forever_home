@@ -1,5 +1,13 @@
 # Architectural BIM pipeline plan
 
+## M360 — Owner-approved F-01 finish basis
+
+**Acceptance:** record the owner’s engineered-oak direction as the F-01 main social-floor finish, preserve the existing material-code and render-to-model references, and keep product, thickness, substrate, installation and structural floor assembly unresolved.
+
+**Result:** `Decisions/2026-11-02_F-01_Engineered_Oak_Selection.md` records the approval and scope and supersedes the older F-01 either/or wording without rewriting the source schedule that is fingerprinted by retained evidence. The next disposable native study may use the labelled display material `FH-F-01-EngHardwood-OakWarm` on comparison surfaces.
+
+**Limits/next:** this is a finish-direction decision only. It does not select a Revit floor type or establish structure, floor-to-floor datum, code, moisture, acoustic or construction performance. Continue with a disposable material-cue study; preserve Selected-D.
+
 ## M359 — Offline RevitPilot contract replay
 
 **Acceptance:** rerun the repository-local RevitPilot contract tests after the native opening milestone; require all test cases to pass without opening Revit or changing model state.
