@@ -10,6 +10,16 @@
 
 **Limits/next:** the derivative remains comparison geometry, not Selected-D; door solids are not selected products, stair solids are not native stairs in this run, M-06/B remains unassigned, and all assembly, code, accessibility, structural, MEP, professional, permit and construction-readiness questions remain open.
 
+## M401 — Unified evidence-chain reroute
+
+**Status:** complete locally on the sandbox branch.
+
+**Acceptance:** make the consolidated sequence and architect-review handoff consume the current v10 composition, then prove all retained validators and offline tests remain green.
+
+**Result:** updated `Tools/run_verified_bim_sequence.ps1` and `Tools/validate_m396_review_handoff.ps1` to use `.local/revit-pilot/multi-level-composition/20261103T150109911Z/` and the v10 schema. The refreshed sequence passes **13/13**; the review handoff passes **11/11** and writes `.local/revalidation/m400-review-handoff.json`.
+
+**Limits/next:** this is evidence routing, not a design selection. Native assemblies, final stair/section geometry, M-06/B fit and service route, MEP, accessibility and Connecticut code interpretation remain manual review gates.
+
 ## M396 — Architect-review handoff gate
 
 **Status:** complete locally on the sandbox branch.

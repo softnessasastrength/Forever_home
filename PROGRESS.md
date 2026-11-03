@@ -3641,3 +3641,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - IFC contains 97 `IFCWALL`, 30 `IFCSLAB`, 3 `IFCROOF`, 3 `IFCOPENINGELEMENT` and 19 `IFCSPACE` entities. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **18/18**; offline RevitPilot tests pass **70/70**; `git diff --check` is clean.
 - This remains a disposable source-derived comparison. Selected-D, M-06/B, the Evolution RFA and remote state were not changed. Door solids are not selected products, stair solids are not native stairs in this run, and no code/accessibility/structural/professional/permit/construction claim follows.
 
+## M401 — Unified evidence-chain reroute — 2026-11-03
+
+- Updated the consolidated runner to validate the current v10 unified composition at `.local/revit-pilot/multi-level-composition/20261103T150109911Z/` rather than the superseded v8 output.
+- Updated the architect-review handoff validator to require v10 schema, current RVT/IFC hashes, native opening inventory, explicit interior/roof/skylight evidence, protected Selected-D lineage and M-06/B non-assignment.
+- Evidence: `Tools/run_verified_bim_sequence.ps1` passes **13/13** and `Tools/validate_m396_review_handoff.ps1` passes **11/11**, writing `.local/revalidation/m400-review-handoff.json`.
+- This does not select the disposable derivative or resolve final stairs, assemblies, M-06/B fit/service route, MEP, accessibility or Connecticut code interpretation. No professional, permit or construction-readiness claim follows.
+

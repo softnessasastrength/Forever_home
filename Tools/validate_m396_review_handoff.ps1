@@ -1,5 +1,5 @@
 param(
-    [string]$CompositionDirectory = '.local/revit-pilot/multi-level-composition/20261103T140103091Z',
+    [string]$CompositionDirectory = '.local/revit-pilot/multi-level-composition/20261103T150109911Z',
     [string]$SequenceReport = '.local/revalidation/verified-bim-sequence-m396.json',
     [string]$Output = '.local/revalidation/m396-review-handoff.json'
 )
@@ -19,7 +19,7 @@ $sequence = Read-Json $SequenceReport
 $rvt = Full (Join-Path $CompositionDirectory $manifest.saved_rvt)
 $ifc = Full (Join-Path $CompositionDirectory $manifest.ifc)
 $checks = @()
-Check 'composition_schema' ($manifest.schema -eq 'forever-home-multi-level-composition-v8') $manifest.schema
+Check 'composition_schema' ($manifest.schema -eq 'forever-home-multi-level-composition-v10') $manifest.schema
 Check 'selected_d_protected' ($manifest.selected_d_sha256 -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb') $manifest.selected_d_sha256
 Check 'native_opening_inventory' ($manifest.native_opening_count -eq 3 -and $manifest.opening_status -like 'three native wall openings*') $manifest.opening_status
 Check 'interior_inventory' ($manifest.kitchen_island_count -eq 1 -and $manifest.primary_bath_fixture_proxy_count -eq 2) "island=$($manifest.kitchen_island_count); bath=$($manifest.primary_bath_fixture_proxy_count)"
@@ -35,7 +35,7 @@ $failed = @($checks | Where-Object { -not $_.pass })
 $out = Full $Output
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
 [ordered]@{
-    schema = 'forever-home-m396-review-handoff-v1'
+    schema = 'forever-home-m396-review-handoff-v2'
     status = if ($failed.Count -eq 0) { 'pass' } else { 'fail' }
     composition_directory = $CompositionDirectory
     sequence_report = $SequenceReport
