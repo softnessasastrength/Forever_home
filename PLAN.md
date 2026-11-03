@@ -10,6 +10,16 @@
 
 **Limits/next:** the interior cases remain disposable coordination comparisons. They do not select room locations, resolve M-06/B, establish assemblies, stairs, MEP, accessibility or code compliance, or make the model construction-ready. Next work should convert only owner-approved study results into a separately reviewable integrated candidate.
 
+## M403 — Architect-review bundle index
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** provide one machine-readable, reproducible index joining the current native composition, interior comparison, roof/skylight study, native stair evidence and M-06 boundary report; require consistent Selected-D lineage and explicit unassigned/fit-blocked status.
+
+**Result:** added `Tools/validate_architect_review_bundle.ps1`. It passes **9/9** checks and is now the final evidence step in `Tools/run_verified_bim_sequence.ps1`; the bundle records the exact evidence paths and limitations without promoting any derivative to Selected-D.
+
+**Limits/next:** this is an architect-review handoff index, not a construction or code package. Native assemblies, final floor-to-floor/stair section, product openings, MEP, accessibility, site fit and Connecticut interpretation remain manual review gates.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.

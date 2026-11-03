@@ -5,6 +5,12 @@
 - The consolidated sequence now passes **14/14** steps; offline RevitPilot regression remains **70 tests passed**.
 - This is evidence routing only. The study is disposable, Selected-D and M-06/B remain protected/unassigned, and no code-compliance, structural, professional, permit or construction-readiness conclusion follows.
 
+## M403 — Architect-review bundle index — 2026-11-03
+
+- Added `Tools/validate_architect_review_bundle.ps1`, which joins the current composition, interior, roof/skylight, native-stair and M-06 boundary evidence by the pinned Selected-D SHA256.
+- Bundle validator passes **9/9** and records explicit limitations; the consolidated sequence now includes it as step 15.
+- No RVT, RFA, Selected-D source, remote branch or Revit registration was changed by this documentation/validation milestone.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.
