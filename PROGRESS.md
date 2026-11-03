@@ -23,6 +23,12 @@
 - Current architect-review bundle passes **17/17**; the consolidated sequence remains the reproducible entry point.
 - This verifies schema/export integrity only and does not imply semantic IFC completeness, code compliance or construction readiness.
 
+## M406 — Section/stair boundary in architect bundle — 2026-11-03
+
+- Added `validate_section_stair_gate.ps1` to the consolidated sequence before the architect-review bundle.
+- The section/stair gate passes **8/8**; the full sequence passes **16/16**.
+- The gate preserves the 60-in comparison versus the 43½-in DD-013 preference as analysis only; no floor-to-floor, landing, headroom, opening, route or code result was invented.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

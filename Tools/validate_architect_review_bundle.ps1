@@ -4,7 +4,8 @@ param(
     [string]$InteriorManifest = '.local/revit-pilot/interior-design-study/20261103T134122674Z/interior-design-study-manifest.json',
     [string]$RoofManifest = '.local/revit-pilot/native-roof-shell/20261103T122806425Z/native-roof-shell-manifest.json',
     [string]$StairValidation = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/native-stair-validation.json',
-    [string]$M06Report = '.local/revalidation/m06-coordination-gate-sequence.json'
+    [string]$M06Report = '.local/revalidation/m06-coordination-gate-sequence.json',
+    [string]$SectionStairReport = '.local/revalidation/section-stair-gate-current.json'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -36,6 +37,7 @@ $interior = ReadJson $InteriorManifest
 $roof = ReadJson $RoofManifest
 $stair = ReadJson $StairValidation
 $m06 = ReadJson $M06Report
+$sectionStair = ReadJson $SectionStairReport
 $selectedHash = '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
 
 Check 'composition_schema' ($composition.schema -eq 'forever-home-multi-level-composition-v10') $composition.schema
@@ -47,6 +49,7 @@ Check 'interior_selected_d_lineage' ($interior.selected_d_sha256 -eq $selectedHa
 Check 'roof_study_present' ($roof.native_roof_count -eq 3 -and $roof.skylight_reservation_count -eq 9) ("roofs={0}; skylights={1}" -f $roof.native_roof_count,$roof.skylight_reservation_count)
 Check 'native_stair_evidence_present' ($stair.pass -eq $true) $stair.schema
 Check 'm06_boundary_preserved' ($m06.status -eq 'screen-valid-but-fit-blocked') $m06.status
+Check 'section_stair_gate_preserved' ($sectionStair.schema -eq 'forever-home-section-stair-gate-v1' -and $sectionStair.status -eq 'pass' -and $sectionStair.total -eq 8) '8/8 source-bound checks; floor-to-floor and stair remain unresolved'
 
 $compositionDir = Split-Path -Parent (Join-Path $repo $CompositionManifest)
 $interiorDir = Split-Path -Parent (Join-Path $repo $InteriorManifest)
@@ -78,7 +81,7 @@ New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
     status = if ($failed.Count -eq 0) { 'pass' } else { 'fail' }
     selected_d_sha256 = $selectedHash
     checks = $checks
-    evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report }
+    evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report; section_stair=$SectionStairReport }
     limitations = @(
         'This bundle indexes disposable comparison studies; it does not promote any derivative to Selected-D.',
         'M-06/B remains fit-blocked or unassigned until product, approach, service-route and clearance evidence agree.',

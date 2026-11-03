@@ -36,7 +36,8 @@ Run-Step 'm400_unified_native_composition' { & .\Tools\RevitPilot\validate_multi
 Run-Step 'm402_native_interior_design_study' { & .\Tools\RevitPilot\validate_interior_design_study.ps1 -StudyDirectory .local/revit-pilot/interior-design-study/20261103T134122674Z }
 Run-Step 'main_floor_coordination_chain' { & .\Tools\RevitPilot\validate_main_floor_coordination_chain.ps1 -CandidateManifestPath .local/revit-pilot/main-floor-candidate/20261101T215346325Z/manifest.json -FloorPlateManifestPath .local/revit-pilot/main-floor-floor-plate/20261101T220743680Z/floor-plate-manifest.json -Output .local/revalidation/main-floor-chain-sequence.json }
 Run-Step 'consolidated_bim_gate' { & .\Tools\validate_verified_bim_milestone.ps1 -Output .local/revalidation/verified-bim-milestone-sequence.json -MainFloorCoordinationReport .local/revalidation/main-floor-chain-sequence.json }
-Run-Step 'architect_review_bundle' { & .\Tools\validate_architect_review_bundle.ps1 -Output .local/revalidation/architect-review-bundle-sequence.json }
+Run-Step 'section_stair_gate' { & .\Tools\validate_section_stair_gate.ps1 -Output .local/revalidation/section-stair-gate-sequence.json }
+Run-Step 'architect_review_bundle' { & .\Tools\validate_architect_review_bundle.ps1 -Output .local/revalidation/architect-review-bundle-sequence.json -SectionStairReport .local/revalidation/section-stair-gate-sequence.json }
 Run-Step 'offline_revitpilot_tests' { & .venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q }
 
 $out = if ([IO.Path]::IsPathRooted($OutputPath)) { $OutputPath } else { Join-Path $repo $OutputPath }

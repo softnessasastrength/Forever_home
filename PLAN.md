@@ -40,6 +40,16 @@
 
 **Limits/next:** schema presence is export integrity evidence only. Entity semantics, material assemblies, spatial coordination and professional review remain open.
 
+## M406 — Section/stair boundary in architect bundle
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** retain the documented 60-in Selected-D comparison, DD-013 43½-in preference and analysis-only status as a machine-checked gate; do not promote either to floor-to-floor or final stair geometry.
+
+**Result:** added the source-bound section/stair gate to the consolidated sequence before the architect bundle. The sequence now passes **16/16**; the gate passes **8/8** and explicitly preserves the unresolved floor-to-floor, landing, headroom, opening, route and code questions.
+
+**Limits/next:** this is a boundary check, not a stair selection. A future native stair/section candidate still requires an owner-supported floor-to-floor basis and disposable Revit validation.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
