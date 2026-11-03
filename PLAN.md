@@ -20,6 +20,16 @@
 
 **Limits/next:** this is an architect-review handoff index, not a construction or code package. Native assemblies, final floor-to-floor/stair section, product openings, MEP, accessibility, site fit and Connecticut interpretation remain manual review gates.
 
+## M404 — Architect-review artifact integrity gate
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** the review bundle must verify that each referenced RVT/IFC artifact exists, is non-empty, and matches the SHA256 recorded by its source manifest, in addition to checking lineage and unresolved boundaries.
+
+**Result:** extended `Tools/validate_architect_review_bundle.ps1`; the current bundle passes **13/13**, including composition, interior, roof and native-stair RVT/IFC artifact hashes.
+
+**Limits/next:** artifact integrity does not make comparison geometry a selected design and does not resolve the remaining manual architectural, engineering or code gates.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.

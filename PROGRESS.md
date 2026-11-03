@@ -11,6 +11,12 @@
 - Bundle validator passes **9/9** and records explicit limitations; the consolidated sequence now includes it as step 15.
 - No RVT, RFA, Selected-D source, remote branch or Revit registration was changed by this documentation/validation milestone.
 
+## M404 — Architect-review artifact integrity gate — 2026-11-03
+
+- Extended the bundle validator to resolve every referenced RVT/IFC artifact and compare its SHA256 with the originating manifest.
+- Current bundle passes **13/13**, covering composition, interior, roof and native split-rise stair artifacts plus lineage and M-06 boundary checks.
+- No source model or remote state changed; the artifacts remain disposable review evidence.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

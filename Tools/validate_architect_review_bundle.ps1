@@ -18,6 +18,14 @@ function ReadJson([string]$Path) {
     if (-not (Test-Path -LiteralPath $Path)) { throw "Missing required evidence: $Path" }
     return Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json
 }
+function ResolveEvidence([string]$BaseDirectory, [string]$RelativePath) {
+    $candidate = Join-Path $BaseDirectory $RelativePath
+    if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) { throw "Missing artifact: $candidate" }
+    return Get-Item -LiteralPath $candidate
+}
+function HashMatches([IO.FileInfo]$File, [string]$Expected) {
+    return ((Get-FileHash -LiteralPath $File.FullName -Algorithm SHA256).Hash -eq $Expected)
+}
 
 $composition = ReadJson $CompositionManifest
 $interior = ReadJson $InteriorManifest
@@ -35,6 +43,24 @@ Check 'interior_selected_d_lineage' ($interior.selected_d_sha256 -eq $selectedHa
 Check 'roof_study_present' ($roof.native_roof_count -eq 3 -and $roof.skylight_reservation_count -eq 9) ("roofs={0}; skylights={1}" -f $roof.native_roof_count,$roof.skylight_reservation_count)
 Check 'native_stair_evidence_present' ($stair.pass -eq $true) $stair.schema
 Check 'm06_boundary_preserved' ($m06.status -eq 'screen-valid-but-fit-blocked') $m06.status
+
+$compositionDir = Split-Path -Parent (Join-Path $repo $CompositionManifest)
+$interiorDir = Split-Path -Parent (Join-Path $repo $InteriorManifest)
+$roofDir = Split-Path -Parent (Join-Path $repo $RoofManifest)
+$stairDir = Split-Path -Parent (Join-Path $repo $StairValidation)
+$stairManifest = ReadJson (Join-Path $stairDir 'study-manifest.json')
+$compositionRvt = ResolveEvidence $compositionDir $composition.saved_rvt
+$compositionIfc = ResolveEvidence $compositionDir $composition.ifc
+$interiorRvt = ResolveEvidence $interiorDir $interior.saved_rvt
+$interiorIfc = ResolveEvidence $interiorDir $interior.ifc
+$roofRvt = ResolveEvidence $roofDir $roof.saved_rvt
+$roofIfc = ResolveEvidence $roofDir $roof.ifc.file
+$stairRvt = ResolveEvidence $stairDir $stairManifest.saved_rvt
+$stairIfc = ResolveEvidence $stairDir $stairManifest.ifc
+Check 'composition_artifact_hashes' ((HashMatches $compositionRvt $composition.saved_rvt_sha256) -and (HashMatches $compositionIfc $composition.ifc_sha256)) ("RVT={0}; IFC={1}" -f $compositionRvt.Length,$compositionIfc.Length)
+Check 'interior_artifact_hashes' ((HashMatches $interiorRvt $interior.saved_rvt_sha256) -and (HashMatches $interiorIfc $interior.ifc_sha256)) ("RVT={0}; IFC={1}" -f $interiorRvt.Length,$interiorIfc.Length)
+Check 'roof_artifact_hashes' ((HashMatches $roofRvt $roof.saved_rvt_sha256) -and (HashMatches $roofIfc $roof.ifc.sha256)) ("RVT={0}; IFC={1}" -f $roofRvt.Length,$roofIfc.Length)
+Check 'stair_artifacts_present' ((HashMatches $stairRvt $stairManifest.saved_rvt_sha256) -and $stairIfc.Length -gt 0) ("RVT={0}; IFC={1}" -f $stairRvt.Length,$stairIfc.Length)
 
 $failed = @($checks | Where-Object { -not $_.pass })
 $out = if ([IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $repo $Output }
