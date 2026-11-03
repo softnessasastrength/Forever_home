@@ -3545,6 +3545,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** roof candidates share the comparison shell and are intentionally unselected; pitch, eaves, framing, openings, drainage, assemblies, structure, MEP, code, accessibility, professional and construction conclusions remain unresolved. Revit reported 56 warnings and 0 errors in this disposable run.
 
+## M387 — Native circulation integrated into the three-level composition
+
+**Acceptance:** carry the documented stair comparison input into the unified source-derived composition as native Revit stair elements between the -5/0/+5 ft comparison levels; record the two flights and their 8-riser / 7.5-in riser / 11-in tread study values; export RVT and IFC2x3; pass independent inventory, lineage and export validation without editing Selected-D or assigning M-06/B.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T131407557Z/`; `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **10/10**. The manifest records two native stair elements and two runs, with the stair input explicitly labelled as a comparison only. RVT SHA256 is `EC4946D7CE5FA395F7C164F18AAE099F98DD2BD982A1EFB56CBBDFB4E7475ABC`; IFC2x3 SHA256 is `C09D22B2B564F8652AB51665F8DC643817084B6552DF1BEE2267A5EAB7DE96E4`.
+
+**Limitations:** the 5-ft level spacing and native stair runs are study geometry, not an approved floor-to-floor or stair design. Landing integration, floor openings, actual width, headroom, guards, structure, MEP, accessibility, code, professional, permit and construction conclusions remain open. Revit reported 56 warnings and 0 errors in the disposable run.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

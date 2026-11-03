@@ -3507,6 +3507,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit reported 56 expected wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - The unified derivative now carries source-derived levels, spaces, walls, floors, porch/patio reservation, roof candidates and labelled site reservations; openings, stair geometry, MEP, fixture placement, clearances and all professional/code/construction gates remain open.
 
+## M387 — Native circulation integrated into the three-level composition — 2026-11-03
+
+- Extended `NativeMultiLevelCompositionCommand` with two native Revit stair elements and two native stair runs between the documented -5/0/+5 ft comparison levels. The study carries the recorded 8-riser / 7.5-in riser / 11-in tread input and tags it as an unselected comparison; no final stair, headroom, guard, opening, width or code decision was invented.
+- Built `multi-level-v7` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `6C5A7559805E470BD1C3A7EAD6FFFF35DE32C7D930DA7E52AC743EF4377E79FF`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-081141/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T131407557Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **10/10**, including two native stairs, two runs, RVT/IFC hashes and IFC2x3 wall/slab/roof entities. RVT SHA256: `EC4946D7CE5FA395F7C164F18AAE099F98DD2BD982A1EFB56CBBDFB4E7475ABC`; IFC2x3 SHA256: `C09D22B2B564F8652AB51665F8DC643817084B6552DF1BEE2267A5EAB7DE96E4`.
+- Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitation: stair elements are native API evidence in a disposable comparison, not a coordinated house stair. Landing integration, floor openings, width/headroom/guards, structure, MEP, accessibility, code, professional review and construction readiness remain unresolved.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.
