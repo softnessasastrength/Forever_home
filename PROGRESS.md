@@ -40,6 +40,12 @@
 - Added six explicit unresolved gates to the architect-review bundle, each with required closing evidence.
 - The consolidated sequence remains **16/16**; no design choice or code interpretation was invented.
 
+## M409 — Architect-review artifact inventory — 2026-11-03
+
+- Added ten portable RVT/IFC artifact records with relative paths, byte sizes and computed SHA256 values to the architect-review bundle.
+- Bundle validation remains **20/20** and the consolidated sequence remains **16/16**.
+- The inventory improves handoff reproducibility only; no unresolved design gate was promoted.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

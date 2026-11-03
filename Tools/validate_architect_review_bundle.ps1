@@ -32,6 +32,9 @@ function IsIfc2x3([IO.FileInfo]$File) {
     $head = Get-Content -LiteralPath $File.FullName -Raw
     return ($head -match 'IFC2X3')
 }
+function ArtifactPath([string]$ManifestPath, [string]$FileName) {
+    return (Join-Path (Split-Path -Parent $ManifestPath) $FileName)
+}
 
 $composition = ReadJson $CompositionManifest
 $interior = ReadJson $InteriorManifest
@@ -89,6 +92,18 @@ $openGates = @(
     [pscustomobject]@{ name='accessibility_and_connecticut_review'; status='open'; required_evidence='project applicability, adopted code path and qualified professional review' },
     [pscustomobject]@{ name='site_and_exterior_fit'; status='open'; required_evidence='site orientation, patio/driveway/pool geometry and drainage/grade coordination' }
 )
+$artifactInventory = @(
+    [pscustomobject]@{ name='composition_rvt'; path=(ArtifactPath $CompositionManifest $composition.saved_rvt); bytes=$compositionRvt.Length; sha256=(Get-FileHash $compositionRvt.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='composition_ifc2x3'; path=(ArtifactPath $CompositionManifest $composition.ifc); bytes=$compositionIfc.Length; sha256=(Get-FileHash $compositionIfc.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='interior_rvt'; path=(ArtifactPath $InteriorManifest $interior.saved_rvt); bytes=$interiorRvt.Length; sha256=(Get-FileHash $interiorRvt.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='interior_ifc2x3'; path=(ArtifactPath $InteriorManifest $interior.ifc); bytes=$interiorIfc.Length; sha256=(Get-FileHash $interiorIfc.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='roof_rvt'; path=(ArtifactPath $RoofManifest $roof.saved_rvt); bytes=$roofRvt.Length; sha256=(Get-FileHash $roofRvt.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='roof_ifc2x3'; path=(ArtifactPath $RoofManifest $roof.ifc.file); bytes=$roofIfc.Length; sha256=(Get-FileHash $roofIfc.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='native_stair_rvt'; path=(ArtifactPath $StairValidation $stairManifest.saved_rvt); bytes=$stairRvt.Length; sha256=(Get-FileHash $stairRvt.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='native_stair_ifc2x3'; path=(ArtifactPath $StairValidation $stairManifest.ifc); bytes=$stairIfc.Length; sha256=(Get-FileHash $stairIfc.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='f01_finish_rvt'; path=(ArtifactPath $FinishManifest $finish.saved_rvt); bytes=$finishRvt.Length; sha256=(Get-FileHash $finishRvt.FullName -Algorithm SHA256).Hash.ToLower() },
+    [pscustomobject]@{ name='f01_finish_ifc2x3'; path=(ArtifactPath $FinishManifest $finish.ifc); bytes=$finishIfc.Length; sha256=(Get-FileHash $finishIfc.FullName -Algorithm SHA256).Hash.ToLower() }
+)
 $out = if ([IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $repo $Output }
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
 [ordered]@{
@@ -96,6 +111,7 @@ New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
     status = if ($failed.Count -eq 0) { 'pass' } else { 'fail' }
     selected_d_sha256 = $selectedHash
     checks = $checks
+    artifacts = $artifactInventory
     open_gates = $openGates
     evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report; section_stair=$SectionStairReport; finish=$FinishManifest }
     limitations = @(

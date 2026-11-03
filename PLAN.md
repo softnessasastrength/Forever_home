@@ -70,6 +70,16 @@
 
 **Limits/next:** the matrix is a coordination aid, not professional advice or a substitute for owner decisions and qualified review.
 
+## M409 — Architect-review artifact inventory
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** emit a portable inventory of every referenced RVT/IFC deliverable with relative path, byte size and computed SHA256, while retaining the open-gates matrix.
+
+**Result:** the bundle now records ten artifact fingerprints covering composition, interior, roof, native stair and F-01 finish outputs. The bundle validator passes **20/20** and the consolidated sequence remains **16/16**.
+
+**Limits/next:** the inventory proves reproducibility and handoff integrity, not design selection, semantic IFC completeness or professional approval.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
