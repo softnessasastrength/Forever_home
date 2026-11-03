@@ -5,7 +5,8 @@ param(
     [string]$RoofManifest = '.local/revit-pilot/native-roof-shell/20261103T122806425Z/native-roof-shell-manifest.json',
     [string]$StairValidation = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z/native-stair-validation.json',
     [string]$M06Report = '.local/revalidation/m06-coordination-gate-sequence.json',
-    [string]$SectionStairReport = '.local/revalidation/section-stair-gate-current.json'
+    [string]$SectionStairReport = '.local/revalidation/section-stair-gate-current.json',
+    [string]$FinishManifest = '.local/revit-pilot/finish-cue-study/20261103T124901471Z/f01-finish-cue-manifest.json'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -38,6 +39,7 @@ $roof = ReadJson $RoofManifest
 $stair = ReadJson $StairValidation
 $m06 = ReadJson $M06Report
 $sectionStair = ReadJson $SectionStairReport
+$finish = ReadJson $FinishManifest
 $selectedHash = '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb'
 
 Check 'composition_schema' ($composition.schema -eq 'forever-home-multi-level-composition-v10') $composition.schema
@@ -50,6 +52,7 @@ Check 'roof_study_present' ($roof.native_roof_count -eq 3 -and $roof.skylight_re
 Check 'native_stair_evidence_present' ($stair.pass -eq $true) $stair.schema
 Check 'm06_boundary_preserved' ($m06.status -eq 'screen-valid-but-fit-blocked') $m06.status
 Check 'section_stair_gate_preserved' ($sectionStair.schema -eq 'forever-home-section-stair-gate-v1' -and $sectionStair.status -eq 'pass' -and $sectionStair.total -eq 8) '8/8 source-bound checks; floor-to-floor and stair remain unresolved'
+Check 'finish_direction_labelled' ($finish.schema -eq 'forever-home-f01-finish-cue-v1' -and $finish.material_selected -and -not $finish.assembly_selected) 'F-01 engineered oak is display-only; assembly unselected'
 
 $compositionDir = Split-Path -Parent (Join-Path $repo $CompositionManifest)
 $interiorDir = Split-Path -Parent (Join-Path $repo $InteriorManifest)
@@ -64,6 +67,9 @@ $roofRvt = ResolveEvidence $roofDir $roof.saved_rvt
 $roofIfc = ResolveEvidence $roofDir $roof.ifc.file
 $stairRvt = ResolveEvidence $stairDir $stairManifest.saved_rvt
 $stairIfc = ResolveEvidence $stairDir $stairManifest.ifc
+$finishDir = Split-Path -Parent (Join-Path $repo $FinishManifest)
+$finishRvt = ResolveEvidence $finishDir $finish.saved_rvt
+$finishIfc = ResolveEvidence $finishDir $finish.ifc
 Check 'composition_artifact_hashes' ((HashMatches $compositionRvt $composition.saved_rvt_sha256) -and (HashMatches $compositionIfc $composition.ifc_sha256)) ("RVT={0}; IFC={1}" -f $compositionRvt.Length,$compositionIfc.Length)
 Check 'interior_artifact_hashes' ((HashMatches $interiorRvt $interior.saved_rvt_sha256) -and (HashMatches $interiorIfc $interior.ifc_sha256)) ("RVT={0}; IFC={1}" -f $interiorRvt.Length,$interiorIfc.Length)
 Check 'roof_artifact_hashes' ((HashMatches $roofRvt $roof.saved_rvt_sha256) -and (HashMatches $roofIfc $roof.ifc.sha256)) ("RVT={0}; IFC={1}" -f $roofRvt.Length,$roofIfc.Length)
@@ -72,6 +78,7 @@ Check 'composition_ifc2x3' (IsIfc2x3 $compositionIfc) 'IFC2X3 header present'
 Check 'interior_ifc2x3' (IsIfc2x3 $interiorIfc) 'IFC2X3 header present'
 Check 'roof_ifc2x3' (IsIfc2x3 $roofIfc) 'IFC2X3 header present'
 Check 'stair_ifc2x3' (IsIfc2x3 $stairIfc) 'IFC2X3 header present'
+Check 'finish_artifact_hashes' ((HashMatches $finishRvt $finish.saved_rvt_sha256) -and (HashMatches $finishIfc $finish.ifc_sha256) -and (IsIfc2x3 $finishIfc)) ("RVT={0}; IFC={1}; IFC2X3" -f $finishRvt.Length,$finishIfc.Length)
 
 $failed = @($checks | Where-Object { -not $_.pass })
 $out = if ([IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $repo $Output }
@@ -81,7 +88,7 @@ New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
     status = if ($failed.Count -eq 0) { 'pass' } else { 'fail' }
     selected_d_sha256 = $selectedHash
     checks = $checks
-    evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report; section_stair=$SectionStairReport }
+    evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report; section_stair=$SectionStairReport; finish=$FinishManifest }
     limitations = @(
         'This bundle indexes disposable comparison studies; it does not promote any derivative to Selected-D.',
         'M-06/B remains fit-blocked or unassigned until product, approach, service-route and clearance evidence agree.',

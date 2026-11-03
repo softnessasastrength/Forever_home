@@ -29,6 +29,12 @@
 - The section/stair gate passes **8/8**; the full sequence passes **16/16**.
 - The gate preserves the 60-in comparison versus the 43½-in DD-013 preference as analysis only; no floor-to-floor, landing, headroom, opening, route or code result was invented.
 
+## M407 — F-01 finish direction in architect bundle — 2026-11-03
+
+- Added the runtime F-01 engineered-oak finish cue to `validate_architect_review_bundle.ps1`.
+- The bundle now passes **20/20**, including RVT/IFC2x3 hashes and the explicit display-only/unselected-assembly boundary.
+- No floor assembly or construction performance was inferred; Selected-D and protected inputs remain unchanged.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

@@ -50,6 +50,16 @@
 
 **Limits/next:** this is a boundary check, not a stair selection. A future native stair/section candidate still requires an owner-supported floor-to-floor basis and disposable Revit validation.
 
+## M407 — F-01 finish direction in architect bundle
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** include the runtime-verified F-01 engineered-oak cue in the review bundle while requiring `material_selected=true` and `assembly_selected=false`, with RVT/IFC2x3 hash integrity.
+
+**Result:** the bundle now includes the F-01 finish cue and passes **20/20** checks; the consolidated sequence remains **16/16**. The finish is explicitly display-only and does not select a floor assembly.
+
+**Limits/next:** product, plank, wear layer, substrate, thickness, installation, structure, acoustics, moisture and code performance remain unresolved.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
