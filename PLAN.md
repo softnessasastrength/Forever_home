@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M394 — Repair consolidated evidence-chain roof pointer
+
+**Status:** complete locally on the sandbox branch.
+
+**Acceptance:** the consolidated runner must reference the current skylight-aware native roof derivative, require all 15 roof checks, and complete every retained evidence step plus the offline RevitPilot suite without opening or modifying Selected-D.
+
+**Result:** updated `Tools/run_verified_bim_sequence.ps1` and `Tools/validate_verified_bim_milestone.ps1` from the superseded 2026-11-02 roof derivative to `.local/revit-pilot/native-roof-shell/20261103T122806425Z/`. The current roof manifest records three unselected 8:12/10:12/12:12 options and nine labelled skylight reservations over stair, kitchen and primary-bath zones. The full sequence now passes **12/12** steps and the roof validator passes **15/15**; the offline suite remains green at **70 tests**.
+
+**Limits/next:** this repairs evidence routing only. Skylights remain labelled reservation solids rather than roof cuts or selected assemblies; no pitch, wall height, floor-to-floor datum, structure, MEP, code, professional, permit or construction-readiness conclusion follows. Continue with the next documented native coordination study while preserving Selected-D, M-06/B and the Evolution RFA.
+
 ## M377 — Native interior design study command
 
 **Status:** command and validator prepared; Revit runtime pending a planned restart.

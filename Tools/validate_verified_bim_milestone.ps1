@@ -1,7 +1,7 @@
 param(
     [string]$Output = '.local/revalidation/verified-bim-milestone.json',
     [string]$NativeStairStudyDirectory = '.local/revit-pilot/split-rise-native-stair/20261101T225749874Z',
-    [string]$NativeRoofStudyDirectory = '.local/revit-pilot/native-roof-shell/20261102T041843122Z',
+    [string]$NativeRoofStudyDirectory = '.local/revit-pilot/native-roof-shell/20261103T122806425Z',
     [string]$M218StudyDirectory = '.local/revit-pilot/m218-pantry-door-study/20261101T212718036Z',
     [string]$M06CoordinationReport = '.local/revalidation/m06-coordination-gate-m336.json',
     [string]$M06ProxyStudyDirectory = '.local/revit-pilot/m06-proxy-study/20261102T122827829Z',
@@ -45,7 +45,7 @@ Add-Check 'main_floor_wall_plate_chain' ($chain.passed -eq 9 -and $chain.total -
 Add-Check 'm06_public_candidate' ([bool]$m06.pass -and @($m06.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'isolated public-family evidence with no placement'
 Add-Check 'm06_gross_envelope' ($m120.status -match '^passed' -and $m120.pair_count -eq 16 -and $m120.gross_containment_count -eq 16 -and -not [bool]$m120.fit_window.assigned) '16/16 gross pairs; B remains unassigned'
 Add-Check 'm02_kitchen_ifc' ($m321.status -eq 'pass' -and @($m321.checks.PSObject.Properties | Where-Object { $_.Value -ne $true }).Count -eq 0) 'isolated kitchen furnishing IFC gate'
-Add-Check 'm333_native_roof' ($m333.passed -eq $m333.total -and $m333.total -eq 13 -and @($m333.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'three native 8:12/10:12/12:12 roof RVT/IFC gate'
+Add-Check 'm333_native_roof' ($m333.passed -eq $m333.total -and $m333.total -eq 15 -and @($m333.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'three native 8:12/10:12/12:12 roof RVT/IFC gate with labelled skylight reservations'
 Add-Check 'm325_native_stair' ($m325.pass -eq $true -and $m325.checks.Count -ge 14 -and @($m325.checks | Where-Object { $_.pass -ne $true }).Count -eq 0) 'disposable native split-rise stair RVT/IFC gate'
 Add-Check 'm218_native_pantry_doors' ($m218.status -match '^pass' -and @($m218.files).Count -eq 2 -and @($m218.files | Where-Object { $_.sha256 -and $_.bytes -gt 0 -and $_.wall_count -eq 13 -and $_.model_curve_count -eq 48 }).Count -eq 2 -and $m218.project_scope.selected_d_opened -eq $false -and $m218.project_scope.selected_d_modified -eq $false) 'two native pantry swing derivatives; Selected-D untouched'
 Add-Check 'm336_m06_coordination_contract' ($m06Coordination.status -eq 'screen-valid-but-fit-blocked' -and $m06Coordination.selected_d_sha256 -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb' -and $m06Coordination.coordination_gates.product_geometry -eq $false -and $m06Coordination.coordination_gates.door_and_approach -eq $false -and $m06Coordination.coordination_gates.service_route -eq $false -and $m06Coordination.coordination_gates.room_assignment -eq $false) 'M336 M-06 evidence contract valid while fit remains blocked'

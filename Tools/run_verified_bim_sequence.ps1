@@ -24,7 +24,7 @@ function Run-Step([string]$Name, [scriptblock]$Action) {
 }
 
 Run-Step 'm218_native_pantry_doors' { & .\Tools\RevitPilot\validate_m218_revit_study.ps1 -StudyDirectory .local/revit-pilot/m218-pantry-door-study/20261101T212718036Z }
-Run-Step 'm333_native_roof' { & .\Tools\RevitPilot\validate_native_roof_shell.ps1 -StudyDirectory .local/revit-pilot/native-roof-shell/20261102T041843122Z }
+Run-Step 'm333_native_roof' { & .\Tools\RevitPilot\validate_native_roof_shell.ps1 -StudyDirectory .local/revit-pilot/native-roof-shell/20261103T122806425Z }
 Run-Step 'm328_native_landing' { & .\Tools\RevitPilot\validate_compact_landing_ifc.ps1 -StudyDirectory .local/revit-pilot/compact-core-landing/20261102T033153576Z }
 Run-Step 'm06_coordination_contract' { & .\Tools\validate_m06_coordination_gate.ps1 -OutputPath .local/revalidation/m06-coordination-gate-sequence.json }
 Run-Step 'm344_native_m06_proxy' { & .\Tools\validate_m06_proxy_study.ps1 -StudyDirectory .local/revit-pilot/m06-proxy-study/20261102T122827829Z }
