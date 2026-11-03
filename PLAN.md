@@ -3533,9 +3533,9 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
 
-**Status:** pending. The v2 DLL builds and remains hash-stable, and Revit created an empty timestamped study directory before the supported Computer Use session was interrupted by the physical Escape key. No RVT, IFC or manifest exists yet, so no runtime or finish-assembly claim is made.
+**Status:** complete. Revit generated `.local/revit-pilot/finish-cue-study/20261103T124901471Z/`; `Tools/RevitPilot/validate_f01_finish_cue.ps1` passes **6/6**. The derivative contains one display-only engineered-oak floor cue with `assembly_selected=false`. RVT SHA256 is `C87EA9E3EB54498A012E8037BE3C0ACC44A38CB74FEB34784C9C31452051815B`; IFC2x3 SHA256 is `D0F2FF64187507405E2615AFC12F3E3CEDAFD7B4426CF86EA0BACBC51B09C3D7`.
 
-**Next:** resume only after the Revit window is available; verify the exact v2 path/hash in any trust prompt, run the ribbon command once, close the disposable output, and validate the resulting files. Keep the finish cue display-only and retain all coordination gates as documented.
+**Limitations:** engineered oak remains a finish direction only; product, plank, substrate, thickness, structure, acoustics, moisture, code and installation requirements remain unresolved. The derivative is not a selected floor assembly, code-compliance determination, professional review or construction-ready model.
 
 ## M366 — Retained coordination regression replay
 

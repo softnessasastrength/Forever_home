@@ -3489,6 +3489,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit reported 6 expected wall-overlap warnings and 0 errors; the warnings remain confined to disposable comparison geometry. Offline RevitPilot regression remains **70 tests passed**. No remote state, Selected-D, M-06/B or Evolution RFA changed.
 - Limitations: the island has no appliance/fitting geometry, and the bath vignette is not a room assignment or fixture-family placement. Floor-to-floor datum, assemblies, stair, openings, MEP, clearance, code, accessibility, structural, professional and construction gates remain unresolved.
 
+## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
+
+- Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.
+- Revit 2027.3 ran the exact hash-checked command in a disposable imperial project and generated `.local/revit-pilot/finish-cue-study/20261103T124901471Z/`. `Tools/RevitPilot/validate_f01_finish_cue.ps1` passes **6/6**; the output contains one display-only engineered-oak floor cue, `material_selected=true`, and `assembly_selected=false`.
+- RVT SHA256: `C87EA9E3EB54498A012E8037BE3C0ACC44A38CB74FEB34784C9C31452051815B`; IFC2x3 SHA256: `D0F2FF64187507405E2615AFC12F3E3CEDAFD7B4426CF86EA0BACBC51B09C3D7`.
+- Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitations: this is a finish direction cue, not a floor assembly or construction model. Product, plank, wear layer, substrate, thickness, installation, structure, acoustics, moisture, code, accessibility and professional review remain unresolved.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.
