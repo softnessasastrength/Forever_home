@@ -3553,6 +3553,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** the 5-ft level spacing and native stair runs are study geometry, not an approved floor-to-floor or stair design. Landing integration, floor openings, actual width, headroom, guards, structure, MEP, accessibility, code, professional, permit and construction conclusions remain open. Revit reported 56 warnings and 0 errors in the disposable run.
 
+## M388 — Approved kitchen and primary-bath proxies integrated
+
+**Acceptance:** carry the approved 8 × 4 ft M-02 island direction and separate-tub/tiled-rain-shower U-05 direction into the unified source-derived composition as labelled native display proxies; export RVT and IFC2x3; independently validate proxy inventory, lineage and exports without assigning M-06/B or altering Selected-D.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T131839387Z/`; the validator passes **11/11**. The manifest records one kitchen-island proxy and two primary-bath fixture-direction proxies, explicitly unselected. RVT SHA256 is `DCCEAEEE20905845502016B2806F46C7603F8124F0D32AC25F8E74495AE1EADB`; IFC2x3 SHA256 is `627D5C50DCF389DFA1433676C6DD5359BB13441EAF38A56BB4A615EE5FA90130`.
+
+**Limitations:** these are display proxies, not assemblies, product families, room assignments, finished-face checks or code-clearance evidence. M-06/B remains unassigned and all fixture/approach/service-route gates remain open. Revit reported 56 warnings and 0 errors in the disposable run.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

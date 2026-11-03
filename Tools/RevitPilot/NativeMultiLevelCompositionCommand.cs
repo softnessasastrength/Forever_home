@@ -18,6 +18,16 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
     private static string Hash(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
     private static double N(JsonElement e, string key) => e.GetProperty(key).GetDouble();
     private static void Tag(Element e, string text) => e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.Set(text);
+    private static DirectShape AddBox(Document doc, double x, double y, double z, double width, double depth, double height, string tag)
+    {
+        var shape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+        var loop = new CurveLoop();
+        var points = new[] { new XYZ(x, y, z), new XYZ(x + width, y, z), new XYZ(x + width, y + depth, z), new XYZ(x, y + depth, z) };
+        for (int i = 0; i < points.Length; i++) loop.Append(Line.CreateBound(points[i], points[(i + 1) % points.Length]));
+        shape.SetShape(new GeometryObject[] { GeometryCreationUtilities.CreateExtrusionGeometry(new[] { loop }, XYZ.BasisZ, height) });
+        Tag(shape, tag);
+        return shape;
+    }
 
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
@@ -33,7 +43,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
             string output = Path.Combine(root, ".local", "revit-pilot", "multi-level-composition", DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmssfff'Z'", CultureInfo.InvariantCulture));
             Directory.CreateDirectory(output);
             doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
-            int walls = 0, floors = 0, roomBlocks = 0, rooms = 0, roofs = 0, stairs = 0, stairRuns = 0;
+            int walls = 0, floors = 0, roomBlocks = 0, rooms = 0, roofs = 0, stairs = 0, stairRuns = 0, kitchenIslands = 0, bathFixtureProxies = 0;
             Level? lowerLevel = null, mainLevel = null, upperLevel = null;
             using (var tx = new Transaction(doc, "Build disposable multi-level composition"))
             {
@@ -98,6 +108,15 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
                     }
                     Tag(roof, $"M386; roof candidate {roofCase.label}; one-main-gable comparison; unselected"); roofs++;
                 }
+                var kitchen = selected.GetProperty("plans").GetProperty("main").EnumerateArray().Single(r => r.GetProperty("id").GetString() == "M-02");
+                double kx = N(kitchen, "x"), ky = N(kitchen, "y"), kw = N(kitchen, "w"), kd = N(kitchen, "d");
+                AddBox(doc, kx + kw - 9.5, ky + (kd - 4.0) / 2.0, 0, 8.0, 4.0, 3.0, "M388; M-02 kitchen island; 8 x 4 ft; dining/living bias; appliance-free; unselected");
+                kitchenIslands++;
+                var primaryBath = selected.GetProperty("plans").GetProperty("upper").EnumerateArray().Single(r => r.GetProperty("id").GetString() == "U-05");
+                double bx = N(primaryBath, "x"), by = N(primaryBath, "y");
+                AddBox(doc, bx + 1.0, by + 1.0, 5.0, 5.0, 3.0, 1.5, "M388; U-05 primary bath separate tub proxy; owner-approved direction; unselected");
+                AddBox(doc, bx + 5.5, by + 5.0, 5.0, 3.0, 4.0, 1.5, "M388; U-05 tiled rain-shower proxy; visual focal direction; unselected");
+                bathFixtureProxies += 2;
                 var vt = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(x => x.ViewFamily == ViewFamily.ThreeDimensional);
                 var view = View3D.CreateIsometric(doc, vt.Id); view.Name = "M385 multi-level composition — unselected comparison";
                 tx.Commit();
@@ -135,7 +154,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
             }
             walls = new FilteredElementCollector(doc).OfClass(typeof(Wall)).GetElementCount();
             floors = new FilteredElementCollector(doc).OfClass(typeof(Floor)).GetElementCount();
-            if (walls <= 0 || floors != 22 || rooms != 21 || roomBlocks != 21 || roofs != 3 || stairs != 2 || stairRuns != 2) throw new InvalidDataException($"Inventory mismatch walls={walls} floors={floors} rooms={rooms} roomBlocks={roomBlocks} roofs={roofs} stairs={stairs} stairRuns={stairRuns}");
+            if (walls <= 0 || floors != 22 || rooms != 21 || roomBlocks != 21 || roofs != 3 || stairs != 2 || stairRuns != 2 || kitchenIslands != 1 || bathFixtureProxies != 2) throw new InvalidDataException($"Inventory mismatch walls={walls} floors={floors} rooms={rooms} roomBlocks={roomBlocks} roofs={roofs} stairs={stairs} stairRuns={stairRuns} kitchenIslands={kitchenIslands} bathFixtureProxies={bathFixtureProxies}");
             string rvt = Path.Combine(output, "FH_Multi_Level_Composition.rvt"); string ifc = Path.Combine(output, "FH_Multi_Level_Composition.ifc");
             doc.SaveAs(rvt, new SaveAsOptions()); bool ifcOk;
             using (var tx = new Transaction(doc, "Export multi-level composition IFC2x3"))
@@ -143,7 +162,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
                 tx.Start(); try { using var opts = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true }; ifcOk = doc.Export(output, "FH_Multi_Level_Composition", opts); } finally { if (tx.GetStatus() == TransactionStatus.Started) tx.RollBack(); }
             }
             doc.Close(false); doc = null;
-            var manifest = new { schema = "forever-home-multi-level-composition-v2", status = "disposable source-derived three-level comparison with native circulation; not selected-D", selected_d_sha256 = selectedHash, levels = new[] { new { id = "Lower FF", elevation_ft = -5.0 }, new { id = "Main FF", elevation_ft = 0.0 }, new { id = "Upper FF", elevation_ft = 5.0 } }, room_block_count = roomBlocks, room_space_count = rooms, wall_count = walls, floor_count = floors, roof_count = roofs, stair_count = stairs, stair_run_count = stairRuns, stair_study = new { risers_per_flight = 8, riser_in = 7.5, tread_in = 11.0, flight_width_ft = 4.0, status = "documented native comparison input; width/headroom/guards/openings unresolved" }, roof_options = new[] { "8:12", "10:12", "12:12" }, porch_patio_reservation_count = 1, driveway_reservation = "documented brick checkerboard direction; site dimensions intentionally unassigned", future_pool_route = "documented brick route reservation; width and alignment intentionally unassigned", saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = File.Exists(ifc) ? Hash(ifc) : null, ifc2x3 = ifcOk, limitations = new[] { "Source levels are a 5 ft comparison datum, not an approved floor-to-floor design.", "Room blocks, spaces, roofs and stairs are source-derived comparison geometry; openings, stair landing integration, assemblies, MEP, fixture placement and clearances remain unresolved.", "Porch/patio is a 12 x 10 ft reservation from source data; driveway and future pool route remain site proposals without invented dimensions.", "No code, accessibility, structural, professional, permit or construction claim is made." } };
+            var manifest = new { schema = "forever-home-multi-level-composition-v3", status = "disposable source-derived three-level comparison with native circulation and interior proxies; not selected-D", selected_d_sha256 = selectedHash, levels = new[] { new { id = "Lower FF", elevation_ft = -5.0 }, new { id = "Main FF", elevation_ft = 0.0 }, new { id = "Upper FF", elevation_ft = 5.0 } }, room_block_count = roomBlocks, room_space_count = rooms, wall_count = walls, floor_count = floors, roof_count = roofs, stair_count = stairs, stair_run_count = stairRuns, kitchen_island_count = kitchenIslands, primary_bath_fixture_proxy_count = bathFixtureProxies, stair_study = new { risers_per_flight = 8, riser_in = 7.5, tread_in = 11.0, flight_width_ft = 4.0, status = "documented native comparison input; width/headroom/guards/openings unresolved" }, interior_proxy_status = "owner-approved 8 x 4 ft island and separate tub/tiled rain-shower direction; placement and fixture/clearance gates unresolved", roof_options = new[] { "8:12", "10:12", "12:12" }, porch_patio_reservation_count = 1, driveway_reservation = "documented brick checkerboard direction; site dimensions intentionally unassigned", future_pool_route = "documented brick route reservation; width and alignment intentionally unassigned", saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = File.Exists(ifc) ? Hash(ifc) : null, ifc2x3 = ifcOk, limitations = new[] { "Source levels are a 5 ft comparison datum, not an approved floor-to-floor design.", "Room blocks, spaces, roofs, stairs and interior proxies are source-derived comparison geometry; openings, stair landing integration, assemblies, MEP, fixture placement and clearances remain unresolved.", "The kitchen island and bath proxies are unselected display geometry, not construction assemblies, product families or room assignments; M-06/B remains unassigned.", "Porch/patio is a 12 x 10 ft reservation from source data; driveway and future pool route remain site proposals without invented dimensions.", "No code, accessibility, structural, professional, permit or construction claim is made." } };
             File.WriteAllText(Path.Combine(output, "multi-level-composition-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
             TaskDialog.Show("Forever Home M385", $"Disposable multi-level composition saved:\n{output}"); return Result.Succeeded;
         }

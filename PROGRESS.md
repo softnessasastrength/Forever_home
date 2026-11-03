@@ -3515,6 +3515,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Limitation: stair elements are native API evidence in a disposable comparison, not a coordinated house stair. Landing integration, floor openings, width/headroom/guards, structure, MEP, accessibility, code, professional review and construction readiness remain unresolved.
 
+## M388 — Approved kitchen and primary-bath proxies integrated — 2026-11-03
+
+- Extended the unified composition with one owner-approved 8 × 4 ft appliance-free M-02 island proxy biased toward dining/living and two U-05 primary-bath proxies representing the separate tub plus tiled rain-shower direction. Both remain unselected display geometry; no room assignment, product family or clearance claim was made.
+- Built `multi-level-v8` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `1B0F38C0DBC0C907A4CAB53006ED7128ECDBE4FFB935991988B64B61455E3FDD`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-081657/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T131839387Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **11/11**, including the interior-proxy inventory, RVT/IFC hashes and IFC2x3 entities. RVT SHA256: `DCCEAEEE20905845502016B2806F46C7603F8124F0D32AC25F8E74495AE1EADB`; IFC2x3 SHA256: `627D5C50DCF389DFA1433676C6DD5359BB13441EAF38A56BB4A615EE5FA90130`.
+- Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitations: interior proxies are not assemblies, product-family placements, room assignments or code-clearance evidence. M-06/B remains unassigned; openings, stair landing integration, MEP, structure, accessibility, code, professional review and construction readiness remain unresolved.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.
