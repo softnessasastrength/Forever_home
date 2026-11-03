@@ -52,6 +52,12 @@
 - Requirement matrix passes **11/11** with status `pass-with-open-gates`; consolidated sequence passes **17/17**.
 - The matrix preserves the difference between documented comparison geometry and an approved selected design.
 
+## M411 — Requirement-matrix regression contract — 2026-11-03
+
+- Added `test_architect_review_contract.py` to protect requirement-matrix labels, bundle fields and sequence wiring.
+- Offline regression now passes **71 tests**; consolidated sequence passes **17/17**.
+- No Revit, RVT, RFA, Selected-D or remote state changed.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

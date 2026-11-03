@@ -90,6 +90,16 @@
 
 **Limits/next:** the matrix is an audit aid. It does not close M-06/B, floor-to-floor/stair, assemblies, MEP, accessibility, site or professional-review gates.
 
+## M411 — Requirement-matrix regression contract
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** protect the architect-review requirement matrix, bundle open-gates/artifact inventory and consolidated-sequence wiring with an offline contract test.
+
+**Result:** added `Tools/RevitPilot/tests/test_architect_review_contract.py`; the offline suite passes **71 tests**, and the consolidated sequence passes **17/17**.
+
+**Limits/next:** this protects audit wiring, not live Revit regeneration or final design decisions.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
