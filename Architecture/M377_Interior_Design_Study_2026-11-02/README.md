@@ -14,4 +14,4 @@ This package prepares the first interior-design derivative beyond the shell wire
 
 This is a disposable comparison, not Selected-D. The room-block partitions, island, floor and bath vignette are design coordination geometry. Wall/floor assemblies, openings, stair, roof, structure, MEP, code, accessibility and construction conclusions remain unresolved. M-06/B remains unassigned.
 
-The command is `NativeInteriorDesignStudyCommand` and is registered as **Build interior design study**. Runtime requires the exact project-local DLL to be loaded after a planned Revit restart; no runtime claim is made until the saved RVT/IFC pair passes an independent validator.
+The command is `NativeInteriorDesignStudyCommand` and is registered as **Build interior design study**. Runtime is complete: Revit 2027.3 generated `.local/revit-pilot/interior-design-study/20261102T230602576Z/`; the saved RVT/IFC2x3 pair passes `Tools/RevitPilot/validate_interior_design_study.ps1` **11/11**. Revit reported 12 expected overlap warnings and 0 errors. The derivative remains disposable comparison geometry and is not selected-D, code-compliant, structurally engineered or construction-ready.
