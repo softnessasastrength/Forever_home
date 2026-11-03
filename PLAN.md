@@ -3501,7 +3501,13 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Acceptance:** run the project-local RevitPilot command `NativeStairLandingCoordinationCommand` against the saved disposable `FH_Compact_Core_Study`, create a native landing bridge plus labelled upper-circulation proxy without opening Selected-D, export RVT and IFC2x3, and pass `Tools/RevitPilot/validate_stair_landing_coordination.ps1`.
 
-**Status:** source and validator are committed and build-verified with 0 errors and the two known MSB3277 reference warnings. The runtime study is pending after the handoff pause. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
+**Status:** the source and validator remain committed and build-verified with 0 errors and the two known MSB3277 reference warnings. A separate M324 native split-rise runtime now passes independently; the source-dependent M354 landing-bridge command remains pending until its verified compact-core source is reopened. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
+
+## M380 — Native split-rise stair runtime evidence
+
+**Acceptance:** run the existing project-local native split-rise stair command in a disposable Revit 2027.3 project, create two native stair flights across the documented 60 in comparison rise, export IFC2x3, and pass the independent validator without touching Selected-D.
+
+**Status:** complete. Output `.local/revit-pilot/split-rise-native-stair/20261103T021235129Z/`; `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1` passes **14/14**. The manifest records three study-only levels at 0, 2.5 and 5 ft, two native stair elements, four risers per flight, and a 60 in total rise. This is API/runtime evidence only; landing slab, opening, headroom, guards, route, structure, code and accessibility remain unresolved.
 
 ## M365 — F-01 finish-cue runtime retry checkpoint
 

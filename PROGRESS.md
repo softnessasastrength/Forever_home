@@ -3445,6 +3445,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit reported 4 wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - The derivative remains coordination geometry only; stair rise/run/headroom, openings, roof, skylights, assemblies, MEP, accessibility, code, structural and construction conclusions remain unresolved.
 
+## M380 — Native split-rise stair runtime evidence — 2026-11-03
+
+- Revit 2027.3 ran the existing project-local `SplitRiseNativeStairCommand` in a disposable imperial project after the M379 restart. Output: `.local/revit-pilot/split-rise-native-stair/20261103T021235129Z/`.
+- `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1` passes **14/14**. Evidence includes two native stair elements, two four-riser flights, study-only levels at 0/2.5/5 ft, and a 60 in total-rise comparison.
+- RVT SHA256: `EEF94268D624DC3EADB96802EE05401B44A7CBB7AE981CFBB76AEDB0C2ED9AC0`. The IFC2x3 export is present under `ifc2x3/` and contains native stair entities.
+- Revit was closed after export to release the disposable RVT lock. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- This is not a selected stair or code result: landing slab, opening, headroom, guard/rail, route, structure, MEP, accessibility and construction conclusions remain unresolved. The source-dependent M354 landing-bridge command is still pending.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.
