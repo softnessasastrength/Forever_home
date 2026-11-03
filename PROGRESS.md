@@ -3531,6 +3531,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Limitations: skylights are labelled display reservations only; they do not cut roofs or establish framing, shaft, waterproofing, daylight, structural, MEP, code, accessibility, professional or construction decisions.
 
+## M390 — Dimension-neutral site direction markers integrated — 2026-11-03
+
+- Added two native model-curve markers to the unified derivative: one for the owner-selected brick checkerboard driveway direction and one for the future brick pool-route direction. These deliberately carry no width, length, module, grade, drainage or site-fit assertion.
+- Built `multi-level-v10` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `64CB6B72B3204D401BC514B2CB5F9CB09D325B60E74D7B6B2DD06EB4DA1AC032`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-082503/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T132739045Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **13/13**. RVT SHA256: `588BF6D3B31B521282250D84D92346D30EA0C8D200EFD5C79C3B5D1C8BFD1889`; IFC2x3 SHA256: `D59349A168863C53C328846150695DCFB85978BBA8965B499F0BD23D22DD4C6D`.
+- Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitations: markers are directional coordination annotations, not a driveway, pool route or site design. Site survey, grade, drainage, turning, parking, product/build-up, accessibility, code, professional review and construction readiness remain unresolved.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.

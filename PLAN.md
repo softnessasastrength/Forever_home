@@ -3569,6 +3569,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** reservations are display geometry and do not cut roofs or prove framing, shafts, waterproofing, daylight, structure, MEP, code, accessibility, professional or construction readiness. Revit reported 56 warnings and 0 errors.
 
+## M390 — Dimension-neutral site direction markers integrated
+
+**Acceptance:** carry the approved brick checkerboard driveway and future brick pool-route directions into the unified derivative as clearly labelled, dimension-neutral native markers; export RVT and IFC2x3; independently validate both markers, lineage and hashes without inventing site dimensions or editing Selected-D.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T132739045Z/`; the validator passes **13/13**, including two site-direction markers. RVT SHA256 is `588BF6D3B31B521282250D84D92346D30EA0C8D200EFD5C79C3B5D1C8BFD1889`; IFC2x3 SHA256 is `D59349A168863C53C328846150695DCFB85978BBA8965B499F0BD23D22DD4C6D`.
+
+**Limitations:** markers are coordination annotations only, not a driveway, pool route or site design. Survey, grade, drainage, turning, parking, product/build-up, accessibility, code, professional and construction conclusions remain open. Revit reported 56 warnings and 0 errors.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
