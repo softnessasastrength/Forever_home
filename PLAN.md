@@ -3515,6 +3515,12 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Status:** complete. Revit generated `.local/revit-pilot/native-roof-shell/20261103T122806425Z/`; after releasing the disposable RVT lock and running `Tools/RevitPilot/finalize_native_roof_hash.ps1`, `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **15/15**. The derivative contains three native `FootPrintRoof` options and nine skylight reservation solids. No pitch, roof assembly, framing or opening is selected.
 
+## M383 — Composed walkthrough with roof and skylight reservations
+
+**Acceptance:** extend the source-fingerprinted walkthrough composition with the three documented roof cases and three labelled skylight reservations per case; generate native walls, nominal doors, floor proxies, landing markers and roofs in one disposable RVT; export IFC2x3; pass the independent composition validator without modifying Selected-D.
+
+**Status:** complete. Revit generated `.local/revit-pilot/walkthrough-composition/20261103T124030702Z/`; `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **8/8**. The derivative contains 57 native walls, 12 nominal doors, 9 floor proxies, 3 native roofs, 3 landing markers and 9 skylight reservations across the 8:12/10:12/12:12 cases. Six Revit wall-overlap warnings and zero errors were reported; the warnings are confined to disposable comparison geometry. No roof pitch, floor-to-floor datum, assembly, opening product or M-06 assignment is selected.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

@@ -3471,6 +3471,15 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Limitations: roof pitch, eave/floor datum, framing, overhangs, drainage, waterproofing, skylight openings, structure, code, accessibility and construction readiness remain unresolved.
 
+## M383 — Composed walkthrough with roof and skylight reservations — 2026-11-03
+
+- Extended `NativeWalkthroughCompositionCommand` with three labelled, non-cutting skylight reservations per roof case and added the independent validator check for nine reservations across the stair, kitchen and primary-bath study zones.
+- Built `walkthrough-skylights-v1` successfully with **0 errors** and the two known MSB3277 reference-conflict warning groups. Final project-local DLL SHA256: `74075D356603BFEE3BCA26EAD3B5CB126DB42FFAA729F050E1D35E442143FFC2`.
+- Preserved the prior registration at `.local/revit-pilot/registration-backups/20261103-073442492/` before installing the exact AddInId-matched manifest. Revit 2027.3 ran the command in a new disposable imperial project and saved `.local/revit-pilot/walkthrough-composition/20261103T124030702Z/`.
+- `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **8/8**. RVT SHA256: `4EF6A200403BBC957BD3CBD163BB3F7242EA69D293817F6201F7F2FE510070D5`; IFC2x3 SHA256: `BD3B9A3E404C4EDC626962999EDB99AAB6434D7168C6F41EA4C3186C5787391E`.
+- Runtime reported six wall-overlap warnings and zero errors. The warnings are confined to the comparison derivative; Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged. Offline RevitPilot regression remains **70 tests passed**.
+- Limitations: this is still a side-by-side comparison, not the selected house model. Roof pitch, floor-to-floor datum, wall/floor/roof assemblies, framing, openings, MEP, clearance, code, accessibility, professional review and construction readiness remain unresolved.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.

@@ -19,6 +19,16 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
     private static double N(JsonElement e, string key) => e.GetProperty(key).GetDouble();
     private static void Tag(Element e, string text) => e.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS)?.Set(text);
 
+    private static void AddSkylightReservation(Document doc, double x, double y, double z, double offset, string pitch, string zone)
+    {
+        var shape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+        var loop = new CurveLoop();
+        var points = new[] { new XYZ(offset + x, y, z), new XYZ(offset + x + 2.5, y, z), new XYZ(offset + x + 2.5, y + 1.5, z), new XYZ(offset + x, y + 1.5, z) };
+        for (int i = 0; i < points.Length; i++) loop.Append(Line.CreateBound(points[i], points[(i + 1) % points.Length]));
+        shape.SetShape(new GeometryObject[] { GeometryCreationUtilities.CreateExtrusionGeometry(new[] { loop }, XYZ.BasisZ, 0.1) });
+        Tag(shape, $"M383 skylight reservation; zone={zone}; pitch={pitch}; opening not cut; unselected");
+    }
+
     private static Floor AddFloor(Document doc, ElementId typeId, ElementId levelId, double ox, double oy, double width, double depth, double z, string tag)
     {
         var loop = new CurveLoop();
@@ -53,7 +63,7 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
             var d02 = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_WALK_D02_Exterior_3ft", 3.0, .15, 6.6667);
             var d03 = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_WALK_D03_Pantry_30in", 2.5, .15, 6.6667);
             var records = new List<object>();
-            int walls = 0, doors = 0, floors = 0, roofs = 0, landings = 0;
+            int walls = 0, doors = 0, floors = 0, roofs = 0, landings = 0, skylights = 0;
             using (var tx = new Transaction(doc, "Build disposable walkthrough composition"))
             {
                 tx.Start();
@@ -91,11 +101,17 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
                     AddFloor(doc, floorTypeId, main.Id, offset + px, py, pw, pd, 0, $"PROPOSAL; F-02 porch finish proxy; {roofCases[ci].label}; substrate/type unselected"); floors++;
                     AddFloor(doc, floorTypeId, upper.Id, offset + 3, 18, 5.625, 3.3333333, 5, $"PROPOSAL; M328 landing bridge marker; {roofCases[ci].label}; stair/floor-to-floor unresolved"); floors++; landings++;
                     var fp = doc.Application.Create.NewCurveArray(); XYZ[] rp={new(offset,0,0),new(offset+40,0,0),new(offset+40,42,0),new(offset,42,0)}; for(int i=0;i<4;i++) fp.Append(Line.CreateBound(rp[i],rp[(i+1)%4])); ModelCurveArray curves = new(); var roof=doc.Create.NewFootPrintRoof(fp,main,roofType,out curves); int idx=0; foreach(ModelCurve c in curves){bool slope=idx is 0 or 2; roof.set_DefinesSlope(c,slope); if(slope) roof.set_SlopeAngle(c,Math.Atan(roofCases[ci].rise/roofCases[ci].run)); idx++;} Tag(roof,$"PROPOSAL; roof option {roofCases[ci].label}; no pitch selected"); roofs++;
-                    records.Add(new { option=roofCases[ci].label, clear_height_ft=height, offset_ft=offset, wall_count=19, door_count=4, floor_count=3, landing_count=1, roof_count=1, selected=false });
+                    foreach (var zone in new[] { "stair", "kitchen", "primary-bath" })
+                    {
+                        double zoneX = zone == "stair" ? 8.0 : zone == "kitchen" ? 18.0 : 28.0;
+                        AddSkylightReservation(doc, zoneX, 18.0, 8.0, offset, roofCases[ci].label, zone);
+                        skylights++;
+                    }
+                    records.Add(new { option=roofCases[ci].label, clear_height_ft=height, offset_ft=offset, wall_count=19, door_count=4, floor_count=3, landing_count=1, roof_count=1, skylight_reservations=3, selected=false });
                 }
                 var vt = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(x=>x.ViewFamily==ViewFamily.ThreeDimensional); var view=View3D.CreateIsometric(doc,vt.Id); view.Name="Walkthrough composition — unselected comparison"; tx.Commit();
             }
-            if (walls!=57||doors!=12||floors!=9||roofs!=3||landings!=3) throw new InvalidDataException($"Inventory mismatch walls={walls} doors={doors} floors={floors} roofs={roofs} landings={landings}");
+            if (walls!=57||doors!=12||floors!=9||roofs!=3||landings!=3||skylights!=9) throw new InvalidDataException($"Inventory mismatch walls={walls} doors={doors} floors={floors} roofs={roofs} landings={landings} skylights={skylights}");
             string rvt=Path.Combine(output,"FH_Walkthrough_Composition.rvt"), ifc=Path.Combine(output,"FH_Walkthrough_Composition.ifc"); doc.SaveAs(rvt,new SaveAsOptions()); bool ifcOk; using(var et=new Transaction(doc,"Export walkthrough composition IFC2x3")){et.Start(); try{using var o=new IFCExportOptions{FileVersion=IFCVersion.IFC2x3CV2,ExportBaseQuantities=true}; ifcOk=doc.Export(output,"FH_Walkthrough_Composition",o);}finally{if(et.GetStatus()==TransactionStatus.Started)et.RollBack();}} doc.Close(false); doc=null;
             var manifest=new {schema="forever-home-walkthrough-composition-v1",status="disposable composed walkthrough comparison; not selected-D",selected_d_sha256=selectedHash,input_sha256=Hash(inputPath),cases=records,wall_count=walls,door_count=doors,floor_count=floors,roof_count=roofs,landing_count=landings,saved_rvt=Path.GetFileName(rvt),saved_rvt_sha256=Hash(rvt),ifc=Path.GetFileName(ifc),ifc_sha256=File.Exists(ifc)?Hash(ifc):null,ifc2x3=ifcOk,limitations=new[]{"All geometry is disposable comparison geometry; no roof pitch, floor-to-floor datum, wall/floor assembly, structure, MEP, code, accessibility or M-06 assignment is selected."}}; File.WriteAllText(Path.Combine(output,"walkthrough-composition-manifest.json"),JsonSerializer.Serialize(manifest,new JsonSerializerOptions{WriteIndented=true})); TaskDialog.Show("Forever Home walkthrough",$"Disposable walkthrough composition saved:\n{output}"); return Result.Succeeded;
         }
