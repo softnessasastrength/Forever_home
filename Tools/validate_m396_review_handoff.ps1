@@ -1,6 +1,6 @@
 param(
     [string]$CompositionDirectory = '.local/revit-pilot/multi-level-composition/20261103T140103091Z',
-    [string]$SequenceReport = '.local/revalidation/verified-bim-sequence-m395.json',
+    [string]$SequenceReport = '.local/revalidation/verified-bim-sequence-m396.json',
     [string]$Output = '.local/revalidation/m396-review-handoff.json'
 )
 
@@ -28,6 +28,7 @@ Check 'unassigned_m06_boundary' ($manifest.limitations -join ' ' -match 'M-06/B 
 Check 'rvt_lineage' ((Test-Path -LiteralPath $rvt -PathType Leaf) -and ($manifest.saved_rvt_sha256 -eq (Get-FileHash -LiteralPath $rvt -Algorithm SHA256).Hash.ToLowerInvariant())) $manifest.saved_rvt_sha256
 Check 'ifc_lineage' ((Test-Path -LiteralPath $ifc -PathType Leaf) -and ($manifest.ifc_sha256 -eq (Get-FileHash -LiteralPath $ifc -Algorithm SHA256).Hash.ToLowerInvariant())) $manifest.ifc_sha256
 Check 'ifc2x3_entities' ($manifest.ifc2x3 -and (Select-String -LiteralPath $ifc -Pattern 'FILE_SCHEMA\(\(\x27IFC2X3\x27\)\)' -Quiet) -and (Select-String -LiteralPath $ifc -Pattern 'IFCWALL' -Quiet) -and (Select-String -LiteralPath $ifc -Pattern 'IFCROOF' -Quiet)) 'IFC2X3 wall/roof entities present'
+Check 'ifc_openings' (@((Select-String -LiteralPath $ifc -Pattern 'IFCOPENINGELEMENT' -AllMatches).Matches).Count -eq 3) "IFCOPENINGELEMENT count=$(@((Select-String -LiteralPath $ifc -Pattern 'IFCOPENINGELEMENT' -AllMatches).Matches).Count)"
 Check 'consolidated_sequence' ($sequence.status -eq 'pass' -and $sequence.steps.Count -eq 13 -and @($sequence.steps | Where-Object { $_.pass -ne $true }).Count -eq 0) "steps=$($sequence.steps.Count); status=$($sequence.status)"
 
 $failed = @($checks | Where-Object { -not $_.pass })
