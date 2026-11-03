@@ -2,11 +2,12 @@ param([Parameter(Mandatory=$true)][string]$StudyDirectory)
 $ErrorActionPreference='Stop'
 $m=Get-Content (Join-Path $StudyDirectory 'multi-level-composition-manifest.json') -Raw|ConvertFrom-Json
 $checks=@(
- [pscustomobject]@{name='schema';pass=$m.schema -eq 'forever-home-multi-level-composition-v6';detail=$m.schema},
+ [pscustomobject]@{name='schema';pass=$m.schema -eq 'forever-home-multi-level-composition-v7';detail=$m.schema},
  [pscustomobject]@{name='status';pass=$m.status -like 'disposable*not selected-D';detail=$m.status},
  [pscustomobject]@{name='selected_d';pass=$m.selected_d_sha256 -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb';detail=$m.selected_d_sha256},
  [pscustomobject]@{name='levels';pass=@($m.levels).Count -eq 3 -and @($m.levels|Where-Object{$_.elevation_ft -in @(-5,0,5)}).Count -eq 3;detail="count=$(@($m.levels).Count)"},
- [pscustomobject]@{name='inventory';pass=$m.room_block_count -eq 21 -and $m.room_space_count -eq 21 -and $m.wall_count -eq 84 -and $m.floor_count -eq 22 -and $m.roof_count -eq 3 -and $m.stair_count -eq 2 -and $m.stair_run_count -eq 2;detail="blocks=$($m.room_block_count) spaces=$($m.room_space_count) walls=$($m.wall_count) floors=$($m.floor_count) roofs=$($m.roof_count) stairs=$($m.stair_count) runs=$($m.stair_run_count)"},
+ [pscustomobject]@{name='inventory';pass=$m.room_block_count -eq 21 -and $m.room_space_count -eq 21 -and $m.wall_count -eq 96 -and $m.shell_wall_count -eq 12 -and $m.floor_count -eq 22 -and $m.roof_count -eq 3 -and $m.stair_count -eq 2 -and $m.stair_run_count -eq 2;detail="blocks=$($m.room_block_count) spaces=$($m.room_space_count) walls=$($m.wall_count) shell_walls=$($m.shell_wall_count) floors=$($m.floor_count) roofs=$($m.roof_count) stairs=$($m.stair_count) runs=$($m.stair_run_count)"},
+ [pscustomobject]@{name='shell';pass=$m.shell_wall_count -eq 12 -and $m.shell_status -like 'three source-derived perimeter*';detail=$m.shell_status},
  [pscustomobject]@{name='stair_study';pass=$m.stair_study.risers_per_flight -eq 8 -and $m.stair_study.riser_in -eq 7.5 -and $m.stair_study.tread_in -eq 11 -and $m.stair_study.status -like 'documented*';detail='two native 5 ft comparison flights; unresolved final stair criteria'},
  [pscustomobject]@{name='interior_proxies';pass=$m.kitchen_island_count -eq 1 -and $m.primary_bath_fixture_proxy_count -eq 2 -and $m.interior_proxy_status -like 'owner-approved*';detail="islands=$($m.kitchen_island_count) bath_proxies=$($m.primary_bath_fixture_proxy_count)"},
  [pscustomobject]@{name='skylights';pass=$m.skylight_reservation_count -eq 9 -and $m.skylight_status -like 'nine non-cutting*';detail=$m.skylight_status},

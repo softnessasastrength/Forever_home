@@ -3596,3 +3596,11 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - The planned disposable derivative uses source-fingerprinted M-01 through M-05 room blocks, native walls/floors, the documented 8 × 4 ft M-02 island, and a labelled 9 × 10 ft U-05 bath vignette carrying the separate-tub/tiled-rain-shower direction. It does not assign M-06/B or claim U-05 placement.
 - Contract suite passes **70 tests**. The exact project-local RevitPilot build succeeds with **0 errors** and the two pre-existing MSB3277 warning groups.
 - Runtime is intentionally pending a controlled Revit restart; no manifest replacement, Revit session change, Selected-D edit or remote-state change occurred.
+
+## M392 — Source-derived perimeter shell study — 2026-11-03
+
+- Added source-derived native perimeter wall loops to the disposable three-level composition: main 40 × 42 ft and lower/upper 36 × 32 ft. Twelve shell walls are explicitly tagged as envelope comparison geometry; Selected-D and M-06/B remain unchanged.
+- Build `multi-level-v12` completed with 0 errors and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `77DE845557A222082D435760FFDE745D716F9FB47979D702575BA05ED6920896`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-083530/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T134346131Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **15/15**, including shell count/status, RVT/IFC hashes and IFC2x3 wall/slab/roof entities. RVT SHA256: `9FE95DAE73F1600348B2075ACDE6F0BD0132DF0391073DA1FA695C724774AD`; IFC2x3 SHA256: `E65035F6E2F4D3D2E87ABD12D4342F616C27A899FBC4F4C26BD75C0A5492E9C0`.
+- Runtime reported 60 expected comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. No remote state, Selected-D, M-06/B or Evolution RFA changed.
+- Limitation: the shell is an envelope study only. Openings, datum, wall/floor/roof assemblies, framing, stair landing integration, MEP, clearances, code, accessibility, professional review, permit and construction readiness remain unresolved.

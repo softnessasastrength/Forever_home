@@ -3669,3 +3669,13 @@ The runtime pass required two source repairs: the synthetic host was rotated so 
 
 **Status:** complete. The owner’s extended design pass is recorded in `Architecture/M373_Draft_Coordination_Choices_2026-11-02/README.md`. Revit generated `.local/revit-pilot/interior-coordination-pass/20261103T020510333Z/`; `Tools/RevitPilot/validate_m379_interior_coordination.ps1` passes **13/13**. No final datum, stair, opening, assembly, code, accessibility, structural or construction claim follows from these preferences.
 
+## M392 — Source-derived perimeter shell study
+
+**Acceptance:** add native perimeter wall loops for the documented 40 × 42 ft main shell and 36 × 32 ft lower/upper shell dimensions in a disposable three-level composition; export RVT and IFC2x3; independently validate counts, lineage, hashes and limitations without editing Selected-D or assigning M-06/B.
+
+**Status:** complete. Build `multi-level-v12` succeeded with 0 errors and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `77DE845557A222082D435760FFDE745D716F9FB47979D702575BA05ED6920896`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-083530/`. Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T134346131Z/`; `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **15/15**. The artifact contains 21 room blocks/spaces, 96 native walls including 12 explicitly tagged shell walls, 22 floors, 3 roof candidates, 2 native stairs/runs, interior/skylight/site/door proxies, RVT SHA256 `9FE95DAE73F1600348B2075ACDE6F0BD0132DF0391073DA1FA695C724774AD`, and IFC2x3 SHA256 `E65035F6E2F4D3D2E87ABD12D4342F616C27A899FBC4F4C26BD75C0A5492E9C0`.
+
+**Limitations:** shell loops are source-derived envelope comparison geometry, not a selected house shell, datum, opening, wall assembly, framing or code/structural result. Revit reported 60 comparison warnings and 0 errors. M-06/B, openings, stair integration, MEP, clearances, professional review, permit and construction gates remain unresolved. Offline RevitPilot regression remains **70 tests passed**.
+
+**Next:** use the validated shell as the disposable coordination envelope for a documented opening/approach study; do not promote shell dimensions or edit Selected-D without explicit design authorization.
+
