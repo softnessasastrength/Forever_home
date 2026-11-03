@@ -3583,5 +3583,5 @@ The runtime pass required two source repairs: the synthetic host was rotated so 
 
 **Acceptance:** carry the owner-approved 9 ft working case, dining/living-biased island, separate-tub/tiled-rain-shower bath direction, and tucked-stair preference into a new disposable coordination study; retain the 8 ft and 10 ft comparisons; preserve Selected-D, M-06/B, and the Evolution RFA.
 
-**Status:** inputs recorded in `Architecture/M373_Draft_Coordination_Choices_2026-11-02/README.md`. Implementation is the next authorized work item. No final datum, stair, opening, assembly, code, accessibility, structural or construction claim follows from these preferences.
+**Status:** complete. The owner’s extended design pass is recorded in `Architecture/M373_Draft_Coordination_Choices_2026-11-02/README.md`. Revit generated `.local/revit-pilot/interior-coordination-pass/20261103T020510333Z/`; `Tools/RevitPilot/validate_m379_interior_coordination.ps1` passes **13/13**. No final datum, stair, opening, assembly, code, accessibility, structural or construction claim follows from these preferences.
 

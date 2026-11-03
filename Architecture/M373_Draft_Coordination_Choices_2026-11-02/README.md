@@ -27,6 +27,21 @@ The primary-bath arrangement is a visual/layout direction only. Product selectio
 
 These are reversible disposable-study inputs only. They do not select a final floor-to-floor datum, stair geometry, opening family, structural assembly or Selected-D edit.
 
+## Extended owner design pass — 2026-11-03
+
+- Keep the kitchen-to-living connection fully open where the geometry permits; island seating faces the dining/living side.
+- Keep the front entrance on the schematic south edge where practical, but allow the porch door to shift for circulation.
+- Make the living-room fireplace the primary visual focus.
+- Reserve the outdoor fireplace until the interior is resolved; split the patio evenly between dining and fire/lounge.
+- Reserve a brick future-pool route and retain the checkerboard brick driveway.
+- Study skylights over stair, kitchen and bath where they do not conflict with roof or room geometry.
+- Retain the one-main-gable roof with simpler porch roof and compare 8:12, 10:12 and 12:12 steep-roof studies.
+- Keep the primary shower as the bath focal point and engineered oak as a temporary display-only finish direction.
+- Prefer warmer traditional public-space finishes.
+- Keep M-06 at the entry/hall edge, retain Tresham as the lavatory candidate, and keep M-06/B unassigned until product, approach and service-route gates pass together.
+
+These remain owner-directed study preferences, not code, accessibility, structural, professional or construction determinations.
+
 ## Next reproducible action
 
 Use `draft-coordination.json` as the input contract for the next native disposable study. The study may place labelled proxies and route markers in a derivative RVT, export IFC2x3, and report the gates separately. It must not open or modify Selected-D.

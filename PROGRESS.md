@@ -3435,6 +3435,16 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit 2027.3 runtime succeeded in disposable output `.local/revit-pilot/m06-tresham-b-study/20261102T221915147Z/`. `validate_m372_m06_tresham_b_study.ps1` passes **12/12**; RVT SHA256 `14DBF87B02F5BB70F41AD46D21C140C2B1797B205FF333C9E98345AE5EFE465D`; IFC2x3 SHA256 `4887AD17B0F1934117B5B934BE2B616D26DF982DE9F5237DDF349F81640B481D`.
 - Runtime repairs were limited to the disposable harness: rotate the synthetic host so the Tresham insertion direction is valid, and capture `symbol.Name` before closing the disposable document. The output has one Tresham family instance, one labelled toilet proxy, and explicit door/approach and lower-MEP reservations; both support gates remain false. Selected-D, the Evolution RFA, remotes and history remain unchanged.
 
+## M379 — Native interior coordination pass — 2026-11-03
+
+- Recorded the owner’s extended design inputs: open kitchen/living connection where possible, dining/living-facing island seating, south-edge front entry preference, fireplace focus, brick pool route and checkerboard driveway, conflict-free skylight study, one-main-gable roof with 8:12/10:12/12:12 comparisons, tucked stair, primary shower focus, engineered-oak display cue, warmer traditional public finishes, and M-06/Tresham direction with B unassigned.
+- Added `Tools/RevitPilot/NativeInteriorCoordinationPassCommand.cs` and ribbon button **Build M379 interior coordination**. The command is source-fingerprinted, validates the Selected-D hash, and produces a disposable 9-ft baseline with an island bias toward dining/living, primary-bath vignette, and tucked stair reservation.
+- Build `m379-interior-coordination` succeeds with **0 errors** and the two known MSB3277 warning groups. Project-local DLL SHA256: `250E79CB848E1AEB5407434F8E868ED01B81496D4D03CC48F8170FEBA8230EC6`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261102-205631442/`.
+- Revit 2027.3 generated `.local/revit-pilot/interior-coordination-pass/20261103T020510333Z/`. `Tools/RevitPilot/validate_m379_interior_coordination.ps1` passes **13/13**. The derivative contains 24 native wall segments, one floor, one biased 8 × 4 ft island proxy, one U-05 bath vignette, and one tucked-stair reservation.
+- RVT SHA256: `8899433dc804ac97abfec6dc94447b4f4b6a0131da76348226e26c9a0b3f216d`; IFC2x3 SHA256: `208af6a348127fb18f961e9f45367f2e5ceedbcd8343d17eba25a7f99b4119f1`.
+- Revit reported 4 wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- The derivative remains coordination geometry only; stair rise/run/headroom, openings, roof, skylights, assemblies, MEP, accessibility, code, structural and construction conclusions remain unresolved.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.
