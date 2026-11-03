@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M402 — Consolidated interior-design evidence gate
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** the consolidated runner must validate the disposable 8/9/10-ft interior comparison alongside the current multi-level composition, while preserving Selected-D, M-06/B and the source Evolution RFA.
+
+**Result:** routed `Tools/RevitPilot/validate_interior_design_study.ps1` into `Tools/run_verified_bim_sequence.ps1` against `.local/revit-pilot/interior-design-study/20261103T134122674Z/`. The interior validator passes **11/11** and the full sequence now passes **14/14** steps; offline RevitPilot tests remain green at **70 tests**.
+
+**Limits/next:** the interior cases remain disposable coordination comparisons. They do not select room locations, resolve M-06/B, establish assemblies, stairs, MEP, accessibility or code compliance, or make the model construction-ready. Next work should convert only owner-approved study results into a separately reviewable integrated candidate.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.

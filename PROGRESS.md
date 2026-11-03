@@ -1,3 +1,10 @@
+## M402 — Consolidated interior-design evidence gate — 2026-11-03
+
+- Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.
+- `Tools/RevitPilot/validate_interior_design_study.ps1` passes **11/11**: three 8/9/10-ft cases, 72 walls, three floors, three island proxies, three labelled primary-bath vignettes, RVT/IFC hashes, IFC2x3 and limitations.
+- The consolidated sequence now passes **14/14** steps; offline RevitPilot regression remains **70 tests passed**.
+- This is evidence routing only. The study is disposable, Selected-D and M-06/B remain protected/unassigned, and no code-compliance, structural, professional, permit or construction-readiness conclusion follows.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.
