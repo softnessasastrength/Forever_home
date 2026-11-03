@@ -46,6 +46,12 @@
 - Bundle validation remains **20/20** and the consolidated sequence remains **16/16**.
 - The inventory improves handoff reproducibility only; no unresolved design gate was promoted.
 
+## M410 — Architect-review requirement matrix — 2026-11-03
+
+- Added `Tools/validate_architect_review_requirements.ps1` to map native walls, floor/roof candidates, circulation, kitchen, baths, patio, driveway/pool route, skylights, fixture proxies and exports to explicit evidence classifications.
+- Requirement matrix passes **11/11** with status `pass-with-open-gates`; consolidated sequence passes **17/17**.
+- The matrix preserves the difference between documented comparison geometry and an approved selected design.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

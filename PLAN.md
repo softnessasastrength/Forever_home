@@ -80,6 +80,16 @@
 
 **Limits/next:** the inventory proves reproducibility and handoff integrity, not design selection, semantic IFC completeness or professional approval.
 
+## M410 — Architect-review requirement matrix
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** map each requested architectural category to current evidence and classify it as native comparison, proxy, reservation, direction marker or intentionally open; retain the distinction between evidence presence and final design selection.
+
+**Result:** added `Tools/validate_architect_review_requirements.ps1`. It passes **11/11** evidence checks and reports `pass-with-open-gates`; the consolidated sequence now passes **17/17**.
+
+**Limits/next:** the matrix is an audit aid. It does not close M-06/B, floor-to-floor/stair, assemblies, MEP, accessibility, site or professional-review gates.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
