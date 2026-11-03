@@ -17,6 +17,12 @@
 - Current bundle passes **13/13**, covering composition, interior, roof and native split-rise stair artifacts plus lineage and M-06 boundary checks.
 - No source model or remote state changed; the artifacts remain disposable review evidence.
 
+## M405 — Bundle IFC2x3 schema gate — 2026-11-03
+
+- Added direct IFC2X3 header checks for all four referenced exports in `Tools/validate_architect_review_bundle.ps1`.
+- Current architect-review bundle passes **17/17**; the consolidated sequence remains the reproducible entry point.
+- This verifies schema/export integrity only and does not imply semantic IFC completeness, code compliance or construction readiness.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

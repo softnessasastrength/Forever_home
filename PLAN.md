@@ -30,6 +30,16 @@
 
 **Limits/next:** artifact integrity does not make comparison geometry a selected design and does not resolve the remaining manual architectural, engineering or code gates.
 
+## M405 — Bundle IFC2x3 schema gate
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** every referenced exported IFC artifact must contain an IFC2X3 schema header in addition to being present, non-empty and hash-matched.
+
+**Result:** extended the architect-review bundle validator; the current bundle passes **17/17**, including IFC2X3 header checks for composition, interior, roof and native-stair exports.
+
+**Limits/next:** schema presence is export integrity evidence only. Entity semantics, material assemblies, spatial coordination and professional review remain open.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.

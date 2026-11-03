@@ -26,6 +26,10 @@ function ResolveEvidence([string]$BaseDirectory, [string]$RelativePath) {
 function HashMatches([IO.FileInfo]$File, [string]$Expected) {
     return ((Get-FileHash -LiteralPath $File.FullName -Algorithm SHA256).Hash -eq $Expected)
 }
+function IsIfc2x3([IO.FileInfo]$File) {
+    $head = Get-Content -LiteralPath $File.FullName -Raw
+    return ($head -match 'IFC2X3')
+}
 
 $composition = ReadJson $CompositionManifest
 $interior = ReadJson $InteriorManifest
@@ -61,6 +65,10 @@ Check 'composition_artifact_hashes' ((HashMatches $compositionRvt $composition.s
 Check 'interior_artifact_hashes' ((HashMatches $interiorRvt $interior.saved_rvt_sha256) -and (HashMatches $interiorIfc $interior.ifc_sha256)) ("RVT={0}; IFC={1}" -f $interiorRvt.Length,$interiorIfc.Length)
 Check 'roof_artifact_hashes' ((HashMatches $roofRvt $roof.saved_rvt_sha256) -and (HashMatches $roofIfc $roof.ifc.sha256)) ("RVT={0}; IFC={1}" -f $roofRvt.Length,$roofIfc.Length)
 Check 'stair_artifacts_present' ((HashMatches $stairRvt $stairManifest.saved_rvt_sha256) -and $stairIfc.Length -gt 0) ("RVT={0}; IFC={1}" -f $stairRvt.Length,$stairIfc.Length)
+Check 'composition_ifc2x3' (IsIfc2x3 $compositionIfc) 'IFC2X3 header present'
+Check 'interior_ifc2x3' (IsIfc2x3 $interiorIfc) 'IFC2X3 header present'
+Check 'roof_ifc2x3' (IsIfc2x3 $roofIfc) 'IFC2X3 header present'
+Check 'stair_ifc2x3' (IsIfc2x3 $stairIfc) 'IFC2X3 header present'
 
 $failed = @($checks | Where-Object { -not $_.pass })
 $out = if ([IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $repo $Output }
