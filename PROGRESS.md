@@ -3626,3 +3626,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported 61 expected comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remote state and history remain unchanged.
 - Limitations: these are nominal source-backed cuts, not selected doors or code/clearance results. Door family, frame, threshold, swing, clear leaf, approach, finished face, datum, assemblies, MEP, accessibility, structural and professional gates remain open.
 - Added M395 to `Tools/run_verified_bim_sequence.ps1`; the consolidated replay now passes **13/13** stages and writes `.local/revalidation/verified-bim-sequence-m395.json`.
+## M396 — Architect-review handoff gate — 2026-11-03
+
+- Added `Tools/validate_m396_review_handoff.ps1` and generated `.local/revalidation/m396-review-handoff.json`.
+- The gate passes **10/10**, checking the M395 unified composition schema and Selected-D fingerprint, three native nominal openings, kitchen/bath proxies, three roof candidates and nine skylight reservations, M-06/B non-assignment, RVT/IFC SHA256 lineage, IFC2x3 wall/roof entities, and the consolidated 13-stage evidence sequence.
+- Offline RevitPilot regression remains **70 tests passed**. No Revit model, Selected-D source, M-06/B assignment, Evolution RFA, remote state or history was changed by this packaging step.
+- Remaining manual review is explicit: wall/floor assemblies, door families and clear leaves, swing/threshold/approach, stair landing/headroom, roof cuts/drainage, MEP, accessibility, site fit, fixture selection and Connecticut applicability. No professional, permit or construction-readiness claim is made.
+

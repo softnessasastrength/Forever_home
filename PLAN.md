@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M396 — Architect-review handoff gate
+
+**Status:** complete locally on the sandbox branch.
+
+**Acceptance:** provide one reproducible validator for the current unified composition and retained evidence chain; require RVT/IFC fingerprint integrity, native opening/interior/roof inventory, protected Selected-D lineage, explicit M-06/B non-assignment, IFC2x3 entities and a green consolidated sequence.
+
+**Result:** added `Tools/validate_m396_review_handoff.ps1`. It passes **10/10** and writes `.local/revalidation/m396-review-handoff.json` against the M395 unified composition and 13-stage sequence. The gate is deliberately evidence-oriented: it packages a reviewable derivative without promoting the derivative to Selected-D.
+
+**Limits/next:** the handoff still requires manual Revit/drawing review of wall and floor assemblies, door families and clear leaves, swing/threshold/approach, stair landing/headroom, roof cuts and drainage, MEP, accessibility, site fit, fixture selection and applicable Connecticut code. No professional, permit or construction-readiness conclusion follows.
+
 ## M395 — Native openings in unified composition
 
 **Status:** complete locally on the sandbox branch.
