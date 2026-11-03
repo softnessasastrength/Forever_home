@@ -3561,6 +3561,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** these are display proxies, not assemblies, product families, room assignments, finished-face checks or code-clearance evidence. M-06/B remains unassigned and all fixture/approach/service-route gates remain open. Revit reported 56 warnings and 0 errors in the disposable run.
 
+## M389 — Skylight reservations integrated into the unified composition
+
+**Acceptance:** carry the documented stair, kitchen and primary-bath skylight study zones into the unified three-roof comparison as labelled non-cutting reservations; export RVT and IFC2x3; independently validate all nine reservations, lineage and hashes without selecting a roof opening or altering Selected-D.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T132255601Z/`; the validator passes **12/12**, including nine reservations across the three roof pitches. RVT SHA256 is `99371ADB4718A2CC854F389BB1DF54756C61FD120241C86DAC3852844C091716`; IFC2x3 SHA256 is `48F9C2238B88480A73A2F5634504D8E5464B64ACE0CAB0BC2B5CC921EED0FA5D`.
+
+**Limitations:** reservations are display geometry and do not cut roofs or prove framing, shafts, waterproofing, daylight, structure, MEP, code, accessibility, professional or construction readiness. Revit reported 56 warnings and 0 errors.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

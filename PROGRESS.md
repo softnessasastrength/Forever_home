@@ -3523,6 +3523,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Limitations: interior proxies are not assemblies, product-family placements, room assignments or code-clearance evidence. M-06/B remains unassigned; openings, stair landing integration, MEP, structure, accessibility, code, professional review and construction readiness remain unresolved.
 
+## M389 — Skylight reservations integrated into the unified composition — 2026-11-03
+
+- Extended the unified composition with nine labelled non-cutting skylight reservations: stair, kitchen and primary-bath zones across the 8:12, 10:12 and 12:12 roof candidates. No roof opening or pitch was selected.
+- Built `multi-level-v9` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `0B5FAD6750BD2B553F1870BCB83A463AB2320E4BE07FDF50C8D78AE12944885E`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-082048/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T132255601Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **12/12**. RVT SHA256: `99371ADB4718A2CC854F389BB1DF54756C61FD120241C86DAC3852844C091716`; IFC2x3 SHA256: `48F9C2238B88480A73A2F5634504D8E5464B64ACE0CAB0BC2B5CC921EED0FA5D`.
+- Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitations: skylights are labelled display reservations only; they do not cut roofs or establish framing, shaft, waterproofing, daylight, structural, MEP, code, accessibility, professional or construction decisions.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.
