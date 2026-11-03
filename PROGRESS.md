@@ -3633,3 +3633,11 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Offline RevitPilot regression remains **70 tests passed**. No Revit model, Selected-D source, M-06/B assignment, Evolution RFA, remote state or history was changed by this packaging step.
 - Remaining manual review is explicit: wall/floor assemblies, door families and clear leaves, swing/threshold/approach, stair landing/headroom, roof cuts/drainage, MEP, accessibility, site fit, fixture selection and Connecticut applicability. No professional, permit or construction-readiness claim is made.
 
+## M400 — Direct IFC export with explicit door solids — 2026-11-03
+
+- Repaired the unified composition runtime by removing the Revit 2027 generic Door-family host operation that produced a non-ignorable host-cut failure. The derivative retains three explicit door solids, three native wall openings, the source-derived shell, rooms, roofs, stair comparison solids, kitchen/bath/skylight proxies, porch reservation and site-direction markers.
+- Exact project-local DLL: `.local/revit-pilot/build-m400-direct-ifc/Release/net10.0-windows/RevitPilot.dll`; SHA256 `ADAC9D4F453D5DE520A4E841981779AAF7F3362AE8F51A2BBB73A0B365A1ECC4`. The authorized AddInId remained unchanged and a timestamped registration backup was preserved before reload.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T150109911Z/`. RVT SHA256 `09C873FF1267CC875B228EFB7B5271FADD6CFBB7E9E6D4C267217A097C021BD8`; IFC2x3 SHA256 `128C4EE2F87212BE7139BB94ECAE292F67E2458E51EAA18793C1F4ACA5E5A9BE`.
+- IFC contains 97 `IFCWALL`, 30 `IFCSLAB`, 3 `IFCROOF`, 3 `IFCOPENINGELEMENT` and 19 `IFCSPACE` entities. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **18/18**; offline RevitPilot tests pass **70/70**; `git diff --check` is clean.
+- This remains a disposable source-derived comparison. Selected-D, M-06/B, the Evolution RFA and remote state were not changed. Door solids are not selected products, stair solids are not native stairs in this run, and no code/accessibility/structural/professional/permit/construction claim follows.
+

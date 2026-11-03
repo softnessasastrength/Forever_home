@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M400 — Direct IFC export with explicit door solids
+
+**Status:** complete locally on the sandbox branch.
+
+**Acceptance:** regenerate the disposable three-level composition from Selected-D lineage, preserve native shell/opening/interior/site comparison geometry, export a non-empty IFC2x3 containing wall/slab/roof/opening entities, and validate the artifact hashes without modifying Selected-D or assigning M-06/B.
+
+**Result:** the RevitPilot command now omits the unstable generic Door-family host operation after Revit 2027 reported a non-ignorable host-cut failure; three explicit door solids and three native wall openings remain. Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T150109911Z/`. The persisted RVT is 737,280 bytes (SHA256 `09c873ff1267cc875b228efb7b5271fadd6cfbb7e9e6d4c267217a097c021bd8`); IFC2x3 is 196,146 bytes (SHA256 `128c4ee2f87212be7139bb94ecae292f67e2458e51eaa18793c1f4aca5e5a9be`) with 97 IFCWALL, 30 IFCSLAB, 3 IFCROOF, 3 IFCOPENINGELEMENT and 19 IFCSPACE entities. `validate_multi_level_composition.ps1` passes **18/18**; the offline RevitPilot suite passes **70/70**. Exact DLL SHA256: `ADAC9D4F453D5DE520A4E841981779AAF7F3362AE8F51A2BBB73A0B365A1ECC4`.
+
+**Limits/next:** the derivative remains comparison geometry, not Selected-D; door solids are not selected products, stair solids are not native stairs in this run, M-06/B remains unassigned, and all assembly, code, accessibility, structural, MEP, professional, permit and construction-readiness questions remain open.
+
 ## M396 — Architect-review handoff gate
 
 **Status:** complete locally on the sandbox branch.
