@@ -2,7 +2,7 @@ param([Parameter(Mandatory=$true)][string]$StudyDirectory)
 $ErrorActionPreference='Stop'
 $m=Get-Content (Join-Path $StudyDirectory 'multi-level-composition-manifest.json') -Raw|ConvertFrom-Json
 $checks=@(
- [pscustomobject]@{name='schema';pass=$m.schema -eq 'forever-home-multi-level-composition-v7';detail=$m.schema},
+ [pscustomobject]@{name='schema';pass=$m.schema -eq 'forever-home-multi-level-composition-v8';detail=$m.schema},
  [pscustomobject]@{name='status';pass=$m.status -like 'disposable*not selected-D';detail=$m.status},
  [pscustomobject]@{name='selected_d';pass=$m.selected_d_sha256 -eq '516d6d17e5b6ed6c8ec8cbf7a925cc67c5cc1c0ada194c22ea3fa124e2bb72bb';detail=$m.selected_d_sha256},
  [pscustomobject]@{name='levels';pass=@($m.levels).Count -eq 3 -and @($m.levels|Where-Object{$_.elevation_ft -in @(-5,0,5)}).Count -eq 3;detail="count=$(@($m.levels).Count)"},
@@ -13,6 +13,7 @@ $checks=@(
  [pscustomobject]@{name='skylights';pass=$m.skylight_reservation_count -eq 9 -and $m.skylight_status -like 'nine non-cutting*';detail=$m.skylight_status},
  [pscustomobject]@{name='site_markers';pass=$m.site_direction_marker_count -eq 2 -and $m.site_direction_status -like 'two dimension-neutral*';detail=$m.site_direction_status},
  [pscustomobject]@{name='door_proxies';pass=$m.door_proxy_count -eq 3 -and $m.door_proxy_status -like 'three nominal display*';detail=$m.door_proxy_status},
+ [pscustomobject]@{name='native_openings';pass=$m.native_opening_count -eq 3 -and $m.opening_status -like 'three native wall openings*';detail=$m.opening_status},
  [pscustomobject]@{name='exterior';pass=$m.porch_patio_reservation_count -eq 1 -and $m.driveway_reservation -like 'documented*' -and $m.future_pool_route -like 'documented*';detail='porch/patio plus labelled site reservations'},
  [pscustomobject]@{name='files';pass=(Test-Path (Join-Path $StudyDirectory $m.saved_rvt)) -and (Test-Path (Join-Path $StudyDirectory $m.ifc)) -and (Get-Item (Join-Path $StudyDirectory $m.ifc)).Length -gt 0;detail='RVT and IFC present'},
  [pscustomobject]@{name='hashes';pass=$m.saved_rvt_sha256 -eq ((Get-FileHash (Join-Path $StudyDirectory $m.saved_rvt) -Algorithm SHA256).Hash.ToLower()) -and $m.ifc_sha256 -eq ((Get-FileHash (Join-Path $StudyDirectory $m.ifc) -Algorithm SHA256).Hash.ToLower());detail='manifest hashes'},
