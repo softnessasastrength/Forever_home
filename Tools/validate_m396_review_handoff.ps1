@@ -1,7 +1,7 @@
 param(
     [string]$CompositionDirectory = '.local/revit-pilot/multi-level-composition/20261103T150109911Z',
-    [string]$SequenceReport = '.local/revalidation/verified-bim-sequence-m396.json',
-    [string]$Output = '.local/revalidation/m396-review-handoff.json'
+    [string]$SequenceReport = '.local/revalidation/verified-bim-sequence-m400.json',
+    [string]$Output = '.local/revalidation/m400-review-handoff.json'
 )
 
 $ErrorActionPreference = 'Stop'
