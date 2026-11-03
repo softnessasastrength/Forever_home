@@ -3577,6 +3577,16 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** markers are coordination annotations only, not a driveway, pool route or site design. Survey, grade, drainage, turning, parking, product/build-up, accessibility, code, professional and construction conclusions remain open. Revit reported 56 warnings and 0 errors.
 
+## M391 — Nominal door proxies integrated into the unified composition
+
+**Acceptance:** add clearly labelled, dimension-led display proxies for the owner-directed front entry, porch French door and pantry-door comparison; keep them unhosted and unselected; export RVT and IFC2x3; independently validate inventory, lineage and hashes without editing Selected-D or assigning M-06/B.
+
+**Status:** complete. The `multi-level-v11` project-local build succeeded with 0 errors and the two known MSB3277 reference-conflict warning groups. DLL SHA256 is `D82DE340A8E25A82CCE6F927AD3F16E73E2B3E72DB0B9D4AE0E750231068EAE3`; the prior registration was preserved under `.local/revit-pilot/registration-backups/20261103-083015/`. Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T133219498Z/`; `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **14/14**. RVT SHA256 is `9E069BA9FCA1494CD10540940C0616BF0E82F1F21D0351489A42FE8C96D2C7A1`; IFC2x3 SHA256 is `70FBFA8C1C4FF863CD4BB40A99BDFFB257AEFC1D1DE255597A58C137171F79C8`. Offline RevitPilot regression remains **70 tests passed**.
+
+**Evidence:** the derivative carries three nominal display solids: a 36-in front-entry proxy, a 5-ft porch French-door proxy, and a 30-in pantry baseline proxy. Runtime reported 56 warnings and 0 errors; warnings remain confined to the disposable comparison.
+
+**Limitations:** these are not hosted Revit door families and do not cut wall openings or establish swing, threshold, clear leaf, approach, accessibility, code, MEP or construction evidence. Selected-D, M-06/B, the Evolution RFA, remotes and history remain unchanged.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

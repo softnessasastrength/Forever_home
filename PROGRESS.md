@@ -3539,6 +3539,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported 56 comparison warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Limitations: markers are directional coordination annotations, not a driveway, pool route or site design. Site survey, grade, drainage, turning, parking, product/build-up, accessibility, code, professional review and construction readiness remain unresolved.
 
+## M391 — Nominal door proxies integrated — 2026-11-03
+
+- Added three labelled, unselected display proxies to the unified native composition: 36-in front entry, 5-ft porch French door, and 30-in pantry baseline. They are generic solids only; no wall opening, hosted family, swing, threshold or clear-width claim was promoted.
+- Built `multi-level-v11` with 0 errors and the two known MSB3277 reference-conflict warning groups. DLL SHA256: `D82DE340A8E25A82CCE6F927AD3F16E73E2B3E72DB0B9D4AE0E750231068EAE3`; prior registration preserved at `.local/revit-pilot/registration-backups/20261103-083015/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T133219498Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **14/14**. RVT SHA256: `9E069BA9FCA1494CD10540940C0616BF0E82F1F21D0351489A42FE8C96D2C7A1`; IFC2x3 SHA256: `70FBFA8C1C4FF863CD4BB40A99BDFFB257AEFC1D1DE255597A58C137171F79C8`.
+- Offline RevitPilot regression remains **70 tests passed**. Runtime reported 56 warnings and 0 errors; warnings are confined to the disposable comparison. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitation: the proxies do not resolve door approach, swing, threshold, clear opening, accessibility, code, MEP, structural or construction requirements. M-06/B remains unassigned.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.
