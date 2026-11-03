@@ -1,5 +1,6 @@
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using System.Globalization;
 using System.IO;
@@ -32,7 +33,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
             string output = Path.Combine(root, ".local", "revit-pilot", "multi-level-composition", DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmssfff'Z'", CultureInfo.InvariantCulture));
             Directory.CreateDirectory(output);
             doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
-            int walls = 0, floors = 0, roomBlocks = 0;
+            int walls = 0, floors = 0, roomBlocks = 0, rooms = 0;
             using (var tx = new Transaction(doc, "Build disposable multi-level composition"))
             {
                 tx.Start();
@@ -65,6 +66,8 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
                         for (int i = 0; i < 4; i++) loop.Append(Line.CreateBound(new XYZ(p[i].X, p[i].Y, 0), new XYZ(p[(i + 1) % 4].X, p[(i + 1) % 4].Y, 0)));
                         var floor = Floor.Create(doc, new List<CurveLoop> { loop }, floorType, pair.Value.level.Id);
                         Tag(floor, $"M385; {pair.Key} room-block floor proxy; source-derived; assembly unselected"); floors++;
+                        var roomElement = doc.Create.NewRoom(pair.Value.level, new UV(x + w / 2.0, y + d / 2.0));
+                        roomElement.Name = id; roomElement.Number = $"M385-{pair.Key}-{id}"; Tag(roomElement, $"M385; {pair.Key} source room space; unselected"); rooms++;
                         roomBlocks++;
                     }
                 }
@@ -81,7 +84,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
             }
             walls = new FilteredElementCollector(doc).OfClass(typeof(Wall)).GetElementCount();
             floors = new FilteredElementCollector(doc).OfClass(typeof(Floor)).GetElementCount();
-            if (walls <= 0 || floors != 22 || roomBlocks != 21) throw new InvalidDataException($"Inventory mismatch walls={walls} floors={floors} roomBlocks={roomBlocks}");
+            if (walls <= 0 || floors != 22 || rooms != 21 || roomBlocks != 21) throw new InvalidDataException($"Inventory mismatch walls={walls} floors={floors} rooms={rooms} roomBlocks={roomBlocks}");
             string rvt = Path.Combine(output, "FH_Multi_Level_Composition.rvt"); string ifc = Path.Combine(output, "FH_Multi_Level_Composition.ifc");
             doc.SaveAs(rvt, new SaveAsOptions()); bool ifcOk;
             using (var tx = new Transaction(doc, "Export multi-level composition IFC2x3"))
@@ -89,7 +92,7 @@ public sealed class NativeMultiLevelCompositionCommand : IExternalCommand
                 tx.Start(); try { using var opts = new IFCExportOptions { FileVersion = IFCVersion.IFC2x3CV2, ExportBaseQuantities = true }; ifcOk = doc.Export(output, "FH_Multi_Level_Composition", opts); } finally { if (tx.GetStatus() == TransactionStatus.Started) tx.RollBack(); }
             }
             doc.Close(false); doc = null;
-            var manifest = new { schema = "forever-home-multi-level-composition-v1", status = "disposable source-derived three-level comparison; not selected-D", selected_d_sha256 = selectedHash, levels = new[] { new { id = "Lower FF", elevation_ft = -5.0 }, new { id = "Main FF", elevation_ft = 0.0 }, new { id = "Upper FF", elevation_ft = 5.0 } }, room_block_count = roomBlocks, wall_count = walls, floor_count = floors, porch_patio_reservation_count = 1, driveway_reservation = "documented brick checkerboard direction; site dimensions intentionally unassigned", future_pool_route = "documented brick route reservation; width and alignment intentionally unassigned", saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = File.Exists(ifc) ? Hash(ifc) : null, ifc2x3 = ifcOk, limitations = new[] { "Source levels are a 5 ft comparison datum, not an approved floor-to-floor design.", "Room blocks are source-derived comparison walls and floors; openings, stairs, roof, assemblies, MEP, fixture placement and clearances remain unresolved.", "Porch/patio is a 12 x 10 ft reservation from source data; driveway and future pool route remain site proposals without invented dimensions.", "No code, accessibility, structural, professional, permit or construction claim is made." } };
+            var manifest = new { schema = "forever-home-multi-level-composition-v1", status = "disposable source-derived three-level comparison; not selected-D", selected_d_sha256 = selectedHash, levels = new[] { new { id = "Lower FF", elevation_ft = -5.0 }, new { id = "Main FF", elevation_ft = 0.0 }, new { id = "Upper FF", elevation_ft = 5.0 } }, room_block_count = roomBlocks, room_space_count = rooms, wall_count = walls, floor_count = floors, porch_patio_reservation_count = 1, driveway_reservation = "documented brick checkerboard direction; site dimensions intentionally unassigned", future_pool_route = "documented brick route reservation; width and alignment intentionally unassigned", saved_rvt = Path.GetFileName(rvt), saved_rvt_sha256 = Hash(rvt), ifc = Path.GetFileName(ifc), ifc_sha256 = File.Exists(ifc) ? Hash(ifc) : null, ifc2x3 = ifcOk, limitations = new[] { "Source levels are a 5 ft comparison datum, not an approved floor-to-floor design.", "Room blocks and spaces are source-derived comparison geometry; openings, stairs, roof, assemblies, MEP, fixture placement and clearances remain unresolved.", "Porch/patio is a 12 x 10 ft reservation from source data; driveway and future pool route remain site proposals without invented dimensions.", "No code, accessibility, structural, professional, permit or construction claim is made." } };
             File.WriteAllText(Path.Combine(output, "multi-level-composition-manifest.json"), JsonSerializer.Serialize(manifest, new JsonSerializerOptions { WriteIndented = true }));
             TaskDialog.Show("Forever Home M385", $"Disposable multi-level composition saved:\n{output}"); return Result.Succeeded;
         }

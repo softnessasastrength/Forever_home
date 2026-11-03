@@ -3492,10 +3492,10 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 ## M385 — Native three-level Selected-D composition comparison — 2026-11-03
 
 - Added `Tools/RevitPilot/NativeMultiLevelCompositionCommand.cs`, ribbon action **Build multi-level composition**, and `Tools/RevitPilot/validate_multi_level_composition.ps1`. The command fingerprints Selected-D, derives its main/upper/lower room-block arrays, creates native comparison levels at -5/0/+5 ft, and records explicit unresolved datum status.
-- Build `multi-level-v3` completed with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `7A828AC70F6EBF87E9C0935325BEF2A8570CDFD423E3CF995475503DFB6702CE`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-m385-v3-075649245/`.
-- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T125819892Z/`. The independent validator passes **9/9**: Selected-D lineage, three levels, 21 source room blocks, 84 native walls, 22 native floors, porch/patio reservation, labelled site reservations, RVT/IFC hashes and IFC2x3 wall/slab entities.
-- RVT SHA256: `09C4F2D0972B20093AC5A221ACAB80C1BAD5A8A356718759D7B5B991238D00E4`; IFC2x3 SHA256: `0D17A54D1F637531CC9DA9162BB5EFF6FE1DAC39DFA46A0C79FAAA7D530A9CB1`.
-- Revit reported 53 expected wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Build `multi-level-v4` completed with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `0BC21CBCF5BE4D5D8B12E15FAD739C142CD4CEC979860A196ACCC24AA0301153`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-m385-v4-080027240/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T130223031Z/`. The independent validator passes **9/9**: Selected-D lineage, three levels, 21 source room blocks, 21 native room spaces, 84 native walls, 22 native floors, porch/patio reservation, labelled site reservations, RVT/IFC hashes and IFC2x3 wall/slab entities.
+- RVT SHA256: `26639B8253110F50EA13A9A1682CD072737B679F2004CAB8DDA9FD1DA044BA04`; IFC2x3 SHA256: `ADB14E9D261B6DCEDB1AAAE16159BDC45E0B10598414E6330E4EEECC70808F0C`.
+- Revit reported 54 expected wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Trade-off: this is the first single three-level native composition, but its source 5-ft datums, overlapping room-block walls, unresolved openings/stair/roof integration and site reservations remain study geometry. No code, accessibility, structural, professional, permit or construction claim follows.
 
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
