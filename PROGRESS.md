@@ -3453,6 +3453,14 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit was closed after export to release the disposable RVT lock. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - This is not a selected stair or code result: landing slab, opening, headroom, guard/rail, route, structure, MEP, accessibility and construction conclusions remain unresolved. The source-dependent M354 landing-bridge command is still pending.
 
+## M381 — Native stair/landing coordination runtime — 2026-11-03
+
+- Verified the compact-core source `.local/revit-pilot/compact-core/20261101T230538811Z/FH_Compact_Core_Study.rvt` before opening it; source SHA256 `b451ec48c7ff054e059fdad75ba69ba4362c48f0fa25483171553bf3e426a420`.
+- Revit 2027.3 ran `NativeStairLandingCoordinationCommand` against that exact source and produced `.local/revit-pilot/stair-landing-coordination/20261103T021743571Z/` without editing Selected-D.
+- `Tools/RevitPilot/validate_stair_landing_coordination.ps1` passes **13/13**. Evidence: two native stair elements, a positive 18.75 sq ft landing bridge, a four-curve upper-circulation proxy, four native floors, IFC2x3 STEP schema, and IFC stair/slab entities.
+- RVT SHA256: `306ef175d87ddd2631f477b74ef7e7c31bc89daa8e318de835ca418400d337e3`. The source-dependent derivative was closed after export to release file locks.
+- The route remains explicitly `code_clearance_verified=false`; headroom, guards/rails, openings, structure, MEP, accessibility, professional review and construction readiness remain unresolved. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.

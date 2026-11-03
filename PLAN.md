@@ -3501,7 +3501,7 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Acceptance:** run the project-local RevitPilot command `NativeStairLandingCoordinationCommand` against the saved disposable `FH_Compact_Core_Study`, create a native landing bridge plus labelled upper-circulation proxy without opening Selected-D, export RVT and IFC2x3, and pass `Tools/RevitPilot/validate_stair_landing_coordination.ps1`.
 
-**Status:** the source and validator remain committed and build-verified with 0 errors and the two known MSB3277 reference warnings. A separate M324 native split-rise runtime now passes independently; the source-dependent M354 landing-bridge command remains pending until its verified compact-core source is reopened. This milestone must remain disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
+**Status:** complete. The verified compact-core source was reopened read-only for the disposable derivative. Output `.local/revit-pilot/stair-landing-coordination/20261103T021743571Z/`; `Tools/RevitPilot/validate_stair_landing_coordination.ps1` passes **13/13**. The derivative records a native landing bridge, upper-circulation proxy, two source stair elements and IFC2x3 stair/floor entities. This remains disposable comparison geometry; it must not be read as a stair, headroom, accessibility, code, structural, professional or construction approval.
 
 ## M380 — Native split-rise stair runtime evidence
 
