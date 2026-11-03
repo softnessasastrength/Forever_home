@@ -81,6 +81,14 @@ Check 'stair_ifc2x3' (IsIfc2x3 $stairIfc) 'IFC2X3 header present'
 Check 'finish_artifact_hashes' ((HashMatches $finishRvt $finish.saved_rvt_sha256) -and (HashMatches $finishIfc $finish.ifc_sha256) -and (IsIfc2x3 $finishIfc)) ("RVT={0}; IFC={1}; IFC2X3" -f $finishRvt.Length,$finishIfc.Length)
 
 $failed = @($checks | Where-Object { -not $_.pass })
+$openGates = @(
+    [pscustomobject]@{ name='floor_to_floor_and_stair_section'; status='open'; required_evidence='owner-supported floor-to-floor basis, section, landing, headroom, openings and route study' },
+    [pscustomobject]@{ name='wall_floor_and_roof_assemblies'; status='open'; required_evidence='selected layered assemblies and product/source evidence' },
+    [pscustomobject]@{ name='door_and_opening_behavior'; status='open'; required_evidence='selected families or approved proxies with swing, clear leaf, threshold and approach checks' },
+    [pscustomobject]@{ name='mep_and_fixture_routes'; status='open'; required_evidence='coordinated supply, drain, vent and equipment paths; M-06 product fit' },
+    [pscustomobject]@{ name='accessibility_and_connecticut_review'; status='open'; required_evidence='project applicability, adopted code path and qualified professional review' },
+    [pscustomobject]@{ name='site_and_exterior_fit'; status='open'; required_evidence='site orientation, patio/driveway/pool geometry and drainage/grade coordination' }
+)
 $out = if ([IO.Path]::IsPathRooted($Output)) { $Output } else { Join-Path $repo $Output }
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
 [ordered]@{
@@ -88,6 +96,7 @@ New-Item -ItemType Directory -Force -Path (Split-Path -Parent $out) | Out-Null
     status = if ($failed.Count -eq 0) { 'pass' } else { 'fail' }
     selected_d_sha256 = $selectedHash
     checks = $checks
+    open_gates = $openGates
     evidence = [ordered]@{ composition=$CompositionManifest; interior=$InteriorManifest; roof=$RoofManifest; stair=$StairValidation; m06=$M06Report; section_stair=$SectionStairReport; finish=$FinishManifest }
     limitations = @(
         'This bundle indexes disposable comparison studies; it does not promote any derivative to Selected-D.',

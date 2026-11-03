@@ -35,6 +35,11 @@
 - The bundle now passes **20/20**, including RVT/IFC2x3 hashes and the explicit display-only/unselected-assembly boundary.
 - No floor assembly or construction performance was inferred; Selected-D and protected inputs remain unchanged.
 
+## M408 — Machine-readable open-gates matrix — 2026-11-03
+
+- Added six explicit unresolved gates to the architect-review bundle, each with required closing evidence.
+- The consolidated sequence remains **16/16**; no design choice or code interpretation was invented.
+
 ## M317 — M-06 public candidate evidence replay — 2026-11-01
 
 - Added `Tools/RevitPilot/validate_m06_public_candidate_evidence.ps1` and ran it against the public KOHLER Cimarron provenance plus the exact M270 Revit report.

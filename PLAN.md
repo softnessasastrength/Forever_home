@@ -60,6 +60,16 @@
 
 **Limits/next:** product, plank, wear layer, substrate, thickness, installation, structure, acoustics, moisture and code performance remain unresolved.
 
+## M408 — Machine-readable open-gates matrix
+
+**Status:** implemented and verified locally.
+
+**Acceptance:** the architect bundle must enumerate unresolved architectural and engineering gates with the evidence required to close each one, without implying that a passing evidence chain closes them.
+
+**Result:** added six explicit open gates to the bundle: floor-to-floor/stair section, assemblies, door/opening behavior, MEP/fixture routes, accessibility/Connecticut review, and site/exterior fit. The consolidated sequence remains **16/16**.
+
+**Limits/next:** the matrix is a coordination aid, not professional advice or a substitute for owner decisions and qualified review.
+
 ## M400 — Direct IFC export with explicit door solids
 
 **Status:** complete locally on the sandbox branch.
