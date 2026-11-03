@@ -18,6 +18,15 @@ The M-06 door swing, fixture wall and route are preferences for a disposable fit
 
 The primary-bath arrangement is a visual/layout direction only. Product selections, compartment dimensions, finished assemblies, waterproofing, ventilation, structure and code review remain open.
 
+## M379 owner direction — interior coordination pass
+
+- Use the 9 ft clear-height case as the working baseline; retain 8 ft and 10 ft as comparison evidence.
+- Bias the 8 × 4 ft kitchen island toward the dining/living connection rather than centring it mechanically in the kitchen block.
+- Retain the separate tub plus tiled, black-grid-glass rain-shower direction for the primary-bath vignette.
+- Keep the stair tucked into circulation rather than visually prominent from the arrival hall.
+
+These are reversible disposable-study inputs only. They do not select a final floor-to-floor datum, stair geometry, opening family, structural assembly or Selected-D edit.
+
 ## Next reproducible action
 
 Use `draft-coordination.json` as the input contract for the next native disposable study. The study may place labelled proxies and route markers in a derivative RVT, export IFC2x3, and report the gates separately. It must not open or modify Selected-D.

@@ -3579,3 +3579,9 @@ The runtime pass required two source repairs: the synthetic host was rotated so 
 
 **Limitations:** Revit reported 12 expected wall-overlap warnings and 0 errors. This remains a disposable interior comparison, not a selected-D edit, code-compliance determination, structural design, professional review, or construction-ready model. Ceiling/floor datum, stair, M-06/B, assemblies, MEP and accessibility remain open gates.
 
+## M379 — Interior coordination pass inputs
+
+**Acceptance:** carry the owner-approved 9 ft working case, dining/living-biased island, separate-tub/tiled-rain-shower bath direction, and tucked-stair preference into a new disposable coordination study; retain the 8 ft and 10 ft comparisons; preserve Selected-D, M-06/B, and the Evolution RFA.
+
+**Status:** inputs recorded in `Architecture/M373_Draft_Coordination_Choices_2026-11-02/README.md`. Implementation is the next authorized work item. No final datum, stair, opening, assembly, code, accessibility, structural or construction claim follows from these preferences.
+
