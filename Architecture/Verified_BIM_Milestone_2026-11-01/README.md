@@ -37,3 +37,17 @@ pwsh -NoProfile -File Tools/validate_architect_review_requirements.ps1 `
 ```
 
 The matrix reports `pass-with-open-gates` when the requested categories have evidence but unresolved design decisions remain. Its classifications distinguish native comparison geometry, proxies, reservations, direction markers and intentionally open requirements.
+
+## Current status at a glance
+
+| Category | Evidence state | Boundary |
+|---|---|---|
+| Walls, floors and roofs | Native comparison geometry | Types and assemblies remain unselected |
+| Circulation | Stair proxies plus separate native stair study | Floor-to-floor, landing, headroom and route remain open |
+| Kitchen and baths | Island and primary-bath proxies | Placement, product fit and clearances remain open |
+| Patio, driveway and pool route | Porch reservation and dimension-neutral site markers | Site orientation, grade and drainage remain open |
+| Skylights | Nine labelled non-cutting reservations | Roof cuts, products and drainage remain open |
+| F-01 engineered oak | Runtime display-only finish cue | Assembly and performance remain unselected |
+| M-06/B | Boundary evidence only | Product, approach, service route and clearance gates remain open |
+
+This table describes the current evidence, not a construction package or a code-compliance finding.
