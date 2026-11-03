@@ -3498,6 +3498,15 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Revit reported 54 expected wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 - Trade-off: this is the first single three-level native composition, but its source 5-ft datums, overlapping room-block walls, unresolved openings/stair/roof integration and site reservations remain study geometry. No code, accessibility, structural, professional, permit or construction claim follows.
 
+## M386 — Roof candidates integrated into the three-level composition — 2026-11-03
+
+- Extended the M385 native composition command with three native `FootPrintRoof` candidates carrying the approved 8:12, 10:12 and 12:12 comparison pitches. All are tagged unselected; no pitch is promoted.
+- Build `multi-level-v6` completed with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `E05AEB3A5D956796B5953FA8AA184DBD6720861DD87362DA9A9C1B5C524C2A02`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-m386-v2-080642856/`.
+- Revit 2027.3 generated `.local/revit-pilot/multi-level-composition/20261103T130825469Z/`. `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **9/9**, including three roof candidates and IFC2x3 `IFCROOF` entities.
+- RVT SHA256: `4FCB044DE00B6AC383A22803256E3B6BEBDB5DBFB4141C932F24FF4C887627E6`; IFC2x3 SHA256: `B2710AF00B0B7BA0AD64F03D245B784EC40E84138F9B034F49F927039BA77ED1`.
+- Revit reported 56 expected wall-overlap warnings and 0 errors. Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- The unified derivative now carries source-derived levels, spaces, walls, floors, porch/patio reservation, roof candidates and labelled site reservations; openings, stair geometry, MEP, fixture placement, clearances and all professional/code/construction gates remain open.
+
 ## M365 — F-01 engineered-oak finish cue runtime — 2026-11-03
 
 - Built `f01-runtime-v2` with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `92804246EF28AE85EC269BB7C06C6F0F85E0803C385D8B2AC29B6217E5700306`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103074726247/`.

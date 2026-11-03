@@ -3537,6 +3537,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** the -5/0/+5 ft levels are source comparison datums, not approved floor-to-floor dimensions. Room-block walls/floors/spaces are intentionally overlapping study geometry; Revit reported 54 warnings and 0 errors in the disposable run. Openings, stair geometry, roof integration, assemblies, MEP, fixture placement, clearances, site dimensions, code, accessibility, structural, professional and construction conclusions remain unresolved.
 
+## M386 — Roof candidates integrated into the three-level composition
+
+**Acceptance:** carry the documented one-main-gable roof comparison into the source-derived three-level derivative at 8:12, 10:12 and 12:12; export RVT and IFC2x3; independently validate roof inventory and IFC roof entities while retaining all pitches as unselected study options.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T130825469Z/`; the validator passes **9/9**, including three native roof candidates and IFC2x3 roof entities. RVT SHA256 is `4FCB044DE00B6AC383A22803256E3B6BEBDB5DBFB4141C932F24FF4C887627E6`; IFC2x3 SHA256 is `B2710AF00B0B7BA0AD64F03D245B784EC40E84138F9B034F49F927039BA77ED1`.
+
+**Limitations:** roof candidates share the comparison shell and are intentionally unselected; pitch, eaves, framing, openings, drainage, assemblies, structure, MEP, code, accessibility, professional and construction conclusions remain unresolved. Revit reported 56 warnings and 0 errors in this disposable run.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
