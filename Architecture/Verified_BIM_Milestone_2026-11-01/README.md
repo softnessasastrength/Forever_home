@@ -27,3 +27,13 @@ pwsh -NoProfile -File Tools/validate_architect_review_bundle.ps1 `
 ```
 
 The current bundle is a disposable review index, not a selected design. It deliberately preserves the pinned Selected-D lineage, keeps M-06/B unassigned or fit-blocked, and leaves assemblies, floor-to-floor/stair section, product openings, MEP, accessibility, site fit and applicable Connecticut interpretation for manual review. No result is a code-compliance, structural-safety, professional, permit or construction-readiness claim.
+
+For a category-by-category audit of what the current evidence does and does not establish, run:
+
+```powershell
+pwsh -NoProfile -File Tools/validate_architect_review_requirements.ps1 `
+  -BundleReport .local/revalidation/architect-review-bundle-sequence.json `
+  -Output .local/revalidation/architect-review-requirements.json
+```
+
+The matrix reports `pass-with-open-gates` when the requested categories have evidence but unresolved design decisions remain. Its classifications distinguish native comparison geometry, proxies, reservations, direction markers and intentionally open requirements.
