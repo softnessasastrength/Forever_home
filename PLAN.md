@@ -3529,6 +3529,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Limitations:** the island is an appliance-free coordination proxy, and the bath is a labelled vignette rather than a selected room placement or product-family installation. No floor-to-floor datum, wall/floor/roof assembly, stair resolution, MEP, code, accessibility, structural, professional or construction conclusion follows. M-06/B remains unassigned and all fit/approach/service gates remain open.
 
+## M385 — Native three-level Selected-D composition comparison
+
+**Acceptance:** derive the documented main, upper and lower room-block plans from Selected-D into one disposable Revit 2027 comparison; create native levels, room-block walls/floors, the source 12 × 10 ft porch/patio reservation, and labelled brick driveway/future-pool-route site reservations without inventing site dimensions; export RVT and IFC2x3; pass independent lineage, inventory and export validation while preserving Selected-D and M-06/B.
+
+**Status:** complete. Revit generated `.local/revit-pilot/multi-level-composition/20261103T125819892Z/`; `Tools/RevitPilot/validate_multi_level_composition.ps1` passes **9/9**. The manifest records three source comparison levels at -5/0/+5 ft, 21 room blocks, 84 native walls, 22 native floors, one 12 × 10 ft porch/patio reservation, and explicit unassigned driveway/pool-route reservations. RVT SHA256 is `09C4F2D0972B20093AC5A221ACAB80C1BAD5A8A356718759D7B5B991238D00E4`; IFC2x3 SHA256 is `0D17A54D1F637531CC9DA9162BB5EFF6FE1DAC39DFA46A0C79FAAA7D530A9CB1`.
+
+**Limitations:** the -5/0/+5 ft levels are source comparison datums, not approved floor-to-floor dimensions. Room-block walls/floors are intentionally overlapping study geometry; Revit reported 53 warnings and 0 errors in the disposable run. Openings, stair geometry, roof integration, assemblies, MEP, fixture placement, clearances, site dimensions, code, accessibility, structural, professional and construction conclusions remain unresolved.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
