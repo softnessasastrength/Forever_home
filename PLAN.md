@@ -3679,3 +3679,13 @@ The runtime pass required two source repairs: the synthetic host was rotated so 
 
 **Next:** use the validated shell as the disposable coordination envelope for a documented opening/approach study; do not promote shell dimensions or edit Selected-D without explicit design authorization.
 
+## M393 — Native documented opening assembly runtime
+
+**Acceptance:** run the source-backed documented opening assembly command in Revit 2027.3 after the shell milestone; preserve the two pantry-door cases (30 in baseline and wider 36 in comparison), model nominal wall gaps and hosted door proxies in a disposable derivative, export RVT and IFC2x3, and pass the independent validator without editing Selected-D or assigning M-06/B.
+
+**Status:** complete. The visible ribbon alias was added beside the active composition commands and built in `build-m393-opening-visible` with 0 errors and the two known MSB3277 reference-conflict warning groups. DLL SHA256: `C570F8AA27B53E4E3CF3A51CB8843CE015926C671B0F5A8A5677CE247A162F46`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-085004/`. Revit 2027.3 generated `.local/revit-pilot/documented-opening-assembly/20261103T135143951Z/`; `Tools/RevitPilot/validate_documented_opening_assembly.ps1` passes **8/8**. Both cases contain 16 native wall segments and four nominal hosted door/opening records; RVT SHA256 `EEF65A0902DC47A573B6A75C356779500438105332730C06EEE5B86C59BDDF1E` and IFC2x3 SHA256 `473E33E7A893B7E31EE7974E68B665CD4890C563CD1F4040CD30252E046A8113`.
+
+**Limitations:** door families, wall type and gaps are source-backed comparison geometry only. Swing, threshold, clear leaf, finished-face approach, floor datum, structure, MEP, accessibility, code, professional, permit and construction gates remain unresolved. Offline RevitPilot regression remains **70 tests passed**.
+
+**Next:** use these nominal openings as labelled coordination references for approach/clearance analysis; do not promote a door, wall assembly or pantry width until the documented fit gates pass.
+

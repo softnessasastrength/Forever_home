@@ -76,6 +76,10 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
         panel.AddItem(new PushButtonData("FHMultiLevelComposition", "Build multi-level\ncomposition",
             Assembly.GetExecutingAssembly().Location, typeof(NativeMultiLevelCompositionCommand).FullName!));
+        // Keep the source-backed opening assembly study near the active composition
+        // commands so it remains reachable on narrower Revit ribbon widths.
+        panel.AddItem(new PushButtonData("FHOpeningAssemblyVisible", "Build opening\nassembly study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeDocumentedOpeningAssemblyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHInteriorDesignStudy", "Build interior\ndesign study",
             Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorDesignStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM379InteriorCoordination", "Build M379 interior\ncoordination",
