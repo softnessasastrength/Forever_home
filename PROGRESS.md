@@ -3461,6 +3461,16 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - RVT SHA256: `306ef175d87ddd2631f477b74ef7e7c31bc89daa8e318de835ca418400d337e3`. The source-dependent derivative was closed after export to release file locks.
 - The route remains explicitly `code_clearance_verified=false`; headroom, guards/rails, openings, structure, MEP, accessibility, professional review and construction readiness remain unresolved. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
 
+## M382 — Native roof and skylight reservation runtime — 2026-11-03
+
+- Extended `NativeRoofShellStudyCommand` with nine labelled skylight reservation solids: stair, kitchen and primary-bath zones across the three documented roof pitches. Reservations are display geometry only; they do not cut the roof.
+- Added the visible ribbon action **Build roof + skylight study** and extended the independent validator to check the three pitch options and all nine reservations.
+- Build `native-roof-skylight-v1` succeeds with **0 errors** and the two known MSB3277 warning groups. Final DLL SHA256: `DBE834B1E69CBECCA6C9F3436A76D8C881E3F78248343A961F0F55178CE7D690`; prior manifests preserved at `.local/revit-pilot/registration-backups/20261103-072015538/` and `.local/revit-pilot/registration-backups/20261103-072411783/`.
+- Revit 2027.3 generated `.local/revit-pilot/native-roof-shell/20261103T122806425Z/`. After closing Revit and running the documented hash-finalisation step, `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **15/15**.
+- RVT SHA256: `8223C4900A0588907B7B0F85545F19E108B58FC00F0FEA2A58A16D52CBD84D79`; IFC2x3 SHA256: `7BC9FBDD1CA84A56B70D51B538BB9C2600413C9157D59B688B2C17569D175B06`.
+- Offline RevitPilot regression remains **70 tests passed**. Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged.
+- Limitations: roof pitch, eave/floor datum, framing, overhangs, drainage, waterproofing, skylight openings, structure, code, accessibility and construction readiness remain unresolved.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.

@@ -13,6 +13,8 @@ Check 'schema' ($m.schema -eq 'forever-home.native-roof-shell-v1') $m.schema
 Check 'disposable_status' ($m.status -match 'disposable native roof') $m.status
 Check 'selected_d_source_hash' ($m.source_sha256 -eq '516D6D17E5B6ED6C8EC8CBF7A925CC67C5CC1C0ADA194C22EA3FA124E2BB72BB') $m.source_sha256
 Check 'native_roof_count' ([int]$m.native_roof_count -eq 3) ([string]$m.native_roof_count)
+Check 'skylight_reservation_count' ([int]$m.skylight_reservation_count -eq 9) ([string]$m.skylight_reservation_count)
+Check 'skylight_zones' (@($m.skylight_zones).Count -eq 3 -and @($m.skylight_zones) -contains 'stair' -and @($m.skylight_zones) -contains 'kitchen' -and @($m.skylight_zones) -contains 'primary-bath') (@($m.skylight_zones) -join ',')
 $labels = @($m.roofs | ForEach-Object { $_.option })
 Check 'documented_options' (@(Compare-Object @('8:12','10:12','12:12') $labels -PassThru).Count -eq 0) ($labels -join ',')
 Check 'rvt_present' (Test-Path -LiteralPath $rvt) $rvt

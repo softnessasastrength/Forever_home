@@ -3509,6 +3509,12 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Status:** complete. Output `.local/revit-pilot/split-rise-native-stair/20261103T021235129Z/`; `Tools/RevitPilot/validate_m324_native_stair_ifc.ps1` passes **14/14**. The manifest records three study-only levels at 0, 2.5 and 5 ft, two native stair elements, four risers per flight, and a 60 in total rise. This is API/runtime evidence only; landing slab, opening, headroom, guards, route, structure, code and accessibility remain unresolved.
 
+## M382 — Native roof and skylight reservation study
+
+**Acceptance:** run the documented one-main-gable native roof comparison at 8:12, 10:12 and 12:12; add labelled, non-cutting skylight reservations over stair, kitchen and primary-bath study zones; export RVT and IFC2x3; pass the independent validator without selecting a pitch or modifying Selected-D.
+
+**Status:** complete. Revit generated `.local/revit-pilot/native-roof-shell/20261103T122806425Z/`; after releasing the disposable RVT lock and running `Tools/RevitPilot/finalize_native_roof_hash.ps1`, `Tools/RevitPilot/validate_native_roof_shell.ps1` passes **15/15**. The derivative contains three native `FootPrintRoof` options and nine skylight reservation solids. No pitch, roof assembly, framing or opening is selected.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.

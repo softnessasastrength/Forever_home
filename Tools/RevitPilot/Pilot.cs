@@ -78,6 +78,8 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorDesignStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHM379InteriorCoordination", "Build M379 interior\ncoordination",
             Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorCoordinationPassCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build roof +\nskylight study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
             Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHStairLandingCoordination", "Build stair/landing\ncoordination",
@@ -121,8 +123,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build native roof\nshell comparison",
-            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHMainFloorCandidateIfc", "Export main-floor\ncandidate IFC",
             Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
         panel.AddItem(new PushButtonData("FHAuditMainFloorCandidate", "Audit reopened\ncandidate",
