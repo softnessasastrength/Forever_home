@@ -3480,6 +3480,15 @@ This is a comparison derivative only. No door family, frame, threshold, swing, c
 - Runtime reported six wall-overlap warnings and zero errors. The warnings are confined to the comparison derivative; Selected-D, M-06/B, Evolution RFA, remotes and history remain unchanged. Offline RevitPilot regression remains **70 tests passed**.
 - Limitations: this is still a side-by-side comparison, not the selected house model. Roof pitch, floor-to-floor datum, wall/floor/roof assemblies, framing, openings, MEP, clearance, code, accessibility, professional review and construction readiness remain unresolved.
 
+## M384 — Composed interior proxies for kitchen and primary bath — 2026-11-03
+
+- Extended `NativeWalkthroughCompositionCommand` with one owner-directed, appliance-free 8 × 4 ft kitchen island proxy biased toward dining/living and one labelled primary-bath vignette carrying the approved separate-tub/tiled-rain-shower direction in every roof case. These are comparison geometry only; no Selected-D edit or M-06 assignment was made.
+- Build `walkthrough-interior-v1` completed with **0 errors** and the two known MSB3277 reference-conflict warning groups. Project-local DLL SHA256: `2599D0FC41105A2EF1AC9604AF43BBC03E4D2AD1B7F2DDD255C36FFC15400B3C`; prior manifest preserved at `.local/revit-pilot/registration-backups/20261103-074305959/`.
+- Revit 2027.3 generated `.local/revit-pilot/walkthrough-composition/20261103T124515410Z/`. `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **9/9**, including the new interior-proxy inventory check. The manifest records 3 kitchen islands and 3 primary-bath vignettes across the 8:12/10:12/12:12 cases, plus 57 walls, 12 doors, 9 floors, 3 roofs, 3 landing markers and 9 skylight reservations.
+- RVT SHA256: `6ADE1F34EE31B4BDAF0EFF490CF06BA1745F7F04E2DEE0C58516CA4E44482857`; IFC2x3 SHA256: `BB08D731048B6D65C843F290C7C5CAA1C78111D50EE95F15DAEB715853854301`.
+- Revit reported 6 expected wall-overlap warnings and 0 errors; the warnings remain confined to disposable comparison geometry. Offline RevitPilot regression remains **70 tests passed**. No remote state, Selected-D, M-06/B or Evolution RFA changed.
+- Limitations: the island has no appliance/fitting geometry, and the bath vignette is not a room assignment or fixture-family placement. Floor-to-floor datum, assemblies, stair, openings, MEP, clearance, code, accessibility, structural, professional and construction gates remain unresolved.
+
 ## M378 — Native interior design study runtime validation — 2026-11-02
 
 - Restarted Revit 2027.3 and loaded only the exact project-local RevitPilot DLL after preserving the existing manifest at `.local/revit-pilot/registration-backups/20261102-175559648/`. DLL SHA256: `1D9A9ABA742B01BF4D854F16819D95A7EE4E8C86876BDCFB309E140BB188C8C1`.

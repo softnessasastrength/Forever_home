@@ -29,6 +29,16 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
         Tag(shape, $"M383 skylight reservation; zone={zone}; pitch={pitch}; opening not cut; unselected");
     }
 
+    private static void AddBox(Document doc, double x, double y, double z, double width, double depth, double height, string tag)
+    {
+        var shape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+        var loop = new CurveLoop();
+        var points = new[] { new XYZ(x, y, z), new XYZ(x + width, y, z), new XYZ(x + width, y + depth, z), new XYZ(x, y + depth, z) };
+        for (int i = 0; i < points.Length; i++) loop.Append(Line.CreateBound(points[i], points[(i + 1) % points.Length]));
+        shape.SetShape(new GeometryObject[] { GeometryCreationUtilities.CreateExtrusionGeometry(new[] { loop }, XYZ.BasisZ, height) });
+        Tag(shape, tag);
+    }
+
     private static Floor AddFloor(Document doc, ElementId typeId, ElementId levelId, double ox, double oy, double width, double depth, double z, string tag)
     {
         var loop = new CurveLoop();
@@ -63,7 +73,7 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
             var d02 = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_WALK_D02_Exterior_3ft", 3.0, .15, 6.6667);
             var d03 = Command.MakeFamily(data.Application.Application, doc, output, "Door.rft", "FH_WALK_D03_Pantry_30in", 2.5, .15, 6.6667);
             var records = new List<object>();
-            int walls = 0, doors = 0, floors = 0, roofs = 0, landings = 0, skylights = 0;
+            int walls = 0, doors = 0, floors = 0, roofs = 0, landings = 0, skylights = 0, islands = 0, bathVignettes = 0;
             using (var tx = new Transaction(doc, "Build disposable walkthrough composition"))
             {
                 tx.Start();
@@ -107,11 +117,15 @@ public sealed class NativeWalkthroughCompositionCommand : IExternalCommand
                         AddSkylightReservation(doc, zoneX, 18.0, 8.0, offset, roofCases[ci].label, zone);
                         skylights++;
                     }
-                    records.Add(new { option=roofCases[ci].label, clear_height_ft=height, offset_ft=offset, wall_count=19, door_count=4, floor_count=3, landing_count=1, roof_count=1, skylight_reservations=3, selected=false });
+                    var kitchen = rooms.Single(r => r.GetProperty("id").GetString() == "M-02");
+                    double kitchenX = N(kitchen, "x"), kitchenY = N(kitchen, "y"), kitchenW = N(kitchen, "w"), kitchenD = N(kitchen, "d");
+                    AddBox(doc, offset + kitchenX + kitchenW - 8.0 - 1.5, kitchenY + (kitchenD - 4.0) / 2.0, 0, 8.0, 4.0, 3.0, $"M384 kitchen island; 8 x 4 ft; dining/living bias; appliance-free; unselected"); islands++;
+                    AddBox(doc, offset + 46.0, 0, 0, 9.0, 10.0, 1.0, $"M384 primary bath vignette; separate tub + tiled rain shower direction; not house placement; unselected"); bathVignettes++;
+                    records.Add(new { option=roofCases[ci].label, clear_height_ft=height, offset_ft=offset, wall_count=19, door_count=4, floor_count=3, landing_count=1, roof_count=1, skylight_reservations=3, kitchen_island_count=1, primary_bath_vignette_count=1, selected=false });
                 }
                 var vt = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().First(x=>x.ViewFamily==ViewFamily.ThreeDimensional); var view=View3D.CreateIsometric(doc,vt.Id); view.Name="Walkthrough composition — unselected comparison"; tx.Commit();
             }
-            if (walls!=57||doors!=12||floors!=9||roofs!=3||landings!=3||skylights!=9) throw new InvalidDataException($"Inventory mismatch walls={walls} doors={doors} floors={floors} roofs={roofs} landings={landings} skylights={skylights}");
+            if (walls!=57||doors!=12||floors!=9||roofs!=3||landings!=3||skylights!=9||islands!=3||bathVignettes!=3) throw new InvalidDataException($"Inventory mismatch walls={walls} doors={doors} floors={floors} roofs={roofs} landings={landings} skylights={skylights} islands={islands} baths={bathVignettes}");
             string rvt=Path.Combine(output,"FH_Walkthrough_Composition.rvt"), ifc=Path.Combine(output,"FH_Walkthrough_Composition.ifc"); doc.SaveAs(rvt,new SaveAsOptions()); bool ifcOk; using(var et=new Transaction(doc,"Export walkthrough composition IFC2x3")){et.Start(); try{using var o=new IFCExportOptions{FileVersion=IFCVersion.IFC2x3CV2,ExportBaseQuantities=true}; ifcOk=doc.Export(output,"FH_Walkthrough_Composition",o);}finally{if(et.GetStatus()==TransactionStatus.Started)et.RollBack();}} doc.Close(false); doc=null;
             var manifest=new {schema="forever-home-walkthrough-composition-v1",status="disposable composed walkthrough comparison; not selected-D",selected_d_sha256=selectedHash,input_sha256=Hash(inputPath),cases=records,wall_count=walls,door_count=doors,floor_count=floors,roof_count=roofs,landing_count=landings,saved_rvt=Path.GetFileName(rvt),saved_rvt_sha256=Hash(rvt),ifc=Path.GetFileName(ifc),ifc_sha256=File.Exists(ifc)?Hash(ifc):null,ifc2x3=ifcOk,limitations=new[]{"All geometry is disposable comparison geometry; no roof pitch, floor-to-floor datum, wall/floor assembly, structure, MEP, code, accessibility or M-06 assignment is selected."}}; File.WriteAllText(Path.Combine(output,"walkthrough-composition-manifest.json"),JsonSerializer.Serialize(manifest,new JsonSerializerOptions{WriteIndented=true})); TaskDialog.Show("Forever Home walkthrough",$"Disposable walkthrough composition saved:\n{output}"); return Result.Succeeded;
         }

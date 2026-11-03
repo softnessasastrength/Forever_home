@@ -3521,6 +3521,14 @@ Native runtime blocker revalidated: fresh Revit screenshot still shows old clear
 
 **Status:** complete. Revit generated `.local/revit-pilot/walkthrough-composition/20261103T124030702Z/`; `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **8/8**. The derivative contains 57 native walls, 12 nominal doors, 9 floor proxies, 3 native roofs, 3 landing markers and 9 skylight reservations across the 8:12/10:12/12:12 cases. Six Revit wall-overlap warnings and zero errors were reported; the warnings are confined to disposable comparison geometry. No roof pitch, floor-to-floor datum, assembly, opening product or M-06 assignment is selected.
 
+## M384 — Composed interior proxies for kitchen and primary bath
+
+**Acceptance:** extend the disposable roof walkthrough with the owner-directed 8 × 4 ft kitchen island biased toward dining/living and a separate-tub/tiled-rain-shower primary-bath vignette in each 8:12, 10:12 and 12:12 case; export RVT and IFC2x3; pass the independent composition validator without changing Selected-D or assigning M-06/B.
+
+**Status:** complete. Revit generated `.local/revit-pilot/walkthrough-composition/20261103T124515410Z/`; `Tools/RevitPilot/validate_walkthrough_composition.ps1` passes **9/9**. The manifest records one island and one primary-bath vignette per case, alongside 57 walls, 12 nominal doors, 9 floor proxies, 3 roofs, 3 landing markers and 9 skylight reservations. RVT SHA256 is `6ADE1F34EE31B4BDAF0EFF490CF06BA1745F7F04E2DEE0C58516CA4E44482857`; IFC2x3 SHA256 is `BB08D731048B6D65C843F290C7C5CAA1C78111D50EE95F15DAEB715853854301`.
+
+**Limitations:** the island is an appliance-free coordination proxy, and the bath is a labelled vignette rather than a selected room placement or product-family installation. No floor-to-floor datum, wall/floor/roof assembly, stair resolution, MEP, code, accessibility, structural, professional or construction conclusion follows. M-06/B remains unassigned and all fit/approach/service gates remain open.
+
 ## M365 — F-01 finish-cue runtime retry checkpoint
 
 **Acceptance:** run the exact hash-checked `NativeFinishCueStudyCommand` in a disposable Revit 2027 project, save RVT and IFC2x3, then pass `Tools/RevitPilot/validate_f01_finish_cue.ps1` without touching Selected-D.
