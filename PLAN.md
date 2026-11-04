@@ -56,6 +56,14 @@
 
 **Limits/next:** the open Revit process still has the previous assembly loaded. Do not claim runtime evidence until a controlled restart loads this exact hash-checked DLL and the integrated command generates/validates its disposable RVT/IFC2x3 output.
 
+## M423 — Integrated stair/section runtime validator prepared
+
+**Status:** validator and contract test prepared; runtime output pending Revit reload.
+
+**Result:** added `Tools/validate_integrated_stair_section_study.ps1` and an offline contract test for the new command. The validator will require basis B/60 in, three levels, 12 shell walls, three floors, two native stairs, one section view, RVT/IFC presence, hashes and IFC2x3.
+
+**Verification:** offline suite passes **73 tests**. No runtime evidence is claimed until Revit loads the exact registered DLL.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.

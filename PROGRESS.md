@@ -37,6 +37,12 @@
 - AddInId remains unchanged; DLL SHA256 `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
 - Revit remains on the prior loaded assembly; runtime reload and disposable output validation are still pending.
 
+## M423 — Integrated stair/section runtime validator prepared — 2026-11-03
+
+- Added `Tools/validate_integrated_stair_section_study.ps1` and `test_integrated_stair_section_contract.py`.
+- The validator contract requires basis B/60 in, three levels, 12 walls, three floors, two native stairs, one section, RVT/IFC hashes and IFC2x3.
+- Offline suite now passes **73 tests**; Revit runtime remains pending reload.
+
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
 - Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.
