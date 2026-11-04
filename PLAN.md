@@ -32,6 +32,14 @@
 
 **Limits/next:** this authorizes only a disposable 60-in comparison. Landing, headroom, openings, route, assemblies, structure, MEP, accessibility and code remain unresolved.
 
+## M420 — 60-in basis regression contract
+
+**Status:** implemented and verified locally.
+
+**Result:** added `test_integrated_stair_basis_contract.py` to protect the owner-selected B decision and disposable-only boundary. Offline regression now passes **72 tests**; the consolidated sequence remains **18/18**.
+
+**Next:** execute the disposable integrated native stair/section runtime study using the hash-verified project-local RevitPilot DLL.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.

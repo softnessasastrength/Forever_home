@@ -19,6 +19,12 @@
 - Added `Tools/validate_integrated_stair_basis.ps1`; it binds the owner decision, composition proxy and native stair study to the 60-in comparison basis.
 - Consolidated sequence now passes **18/18**. This is disposable study authorization only; no final stair or floor datum was promoted.
 
+## M420 — 60-in basis regression contract — 2026-11-03
+
+- Added `test_integrated_stair_basis_contract.py` to protect the explicit B/60-in authorization and disposable-only boundary.
+- Offline suite now passes **72 tests**; consolidated sequence remains **18/18**.
+- Runtime native integrated stair/section study remains the next execution step.
+
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
 - Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.
