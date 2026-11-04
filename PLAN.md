@@ -22,6 +22,8 @@
 
 **Additional gate:** `Architecture/M417_Fixture_Fit_Register_2026-11-03/README.md` separates current fixture evidence from the product, clearance, approach and service-route proof required before M-06/B promotion.
 
+**Readiness hub:** `Architecture/M418_Integrated_Candidate_Readiness_Checklist_2026-11-03/README.md` consolidates the promotion gates for the first integrated candidate.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
