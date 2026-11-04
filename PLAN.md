@@ -1,5 +1,15 @@
 # Architectural BIM pipeline plan
 
+## M412 — Integrated candidate promotion gate
+
+**Status:** active next goal; no design selection made.
+
+**Objective:** promote the verified disposable studies toward a reviewable integrated Revit candidate while preserving Selected-D and protected source inputs.
+
+**Acceptance:** before promoting native stairs/sections, establish an owner-approved floor-to-floor basis; then validate the disposable integrated candidate's native stairs, openings, wall/floor assemblies, MEP/service routes, accessibility/site interfaces and supported M-06/B fit with RVT/IFC2x3 evidence. Every proposal must remain labelled until its source, fit and review gates pass.
+
+**First gate:** compare the documented 43½-in DD-013 study rise against the 60-in Selected-D comparison transition and identify the required owner decision without silently choosing one. Keep M-06/B unassigned and do not modify Selected-D.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.

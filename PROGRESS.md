@@ -1,3 +1,10 @@
+## M412 — Integrated candidate promotion gate — 2026-11-03
+
+- Started the next goal: promote verified disposable studies toward an integrated Revit candidate.
+- Recorded acceptance gates for floor-to-floor/stair, assemblies, openings, MEP/service routes, accessibility/site interfaces and supported M-06/B fit.
+- First gate is explicitly the 43½-in DD-013 study rise versus the 60-in Selected-D comparison transition; no datum or stair was selected.
+- Selected-D, protected RFAs, remotes and history remain unchanged.
+
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
 - Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.
