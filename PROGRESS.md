@@ -4,6 +4,7 @@
 - Recorded acceptance gates for floor-to-floor/stair, assemblies, openings, MEP/service routes, accessibility/site interfaces and supported M-06/B fit.
 - First gate is explicitly the 43½-in DD-013 study rise versus the 60-in Selected-D comparison transition; no datum or stair was selected.
 - Selected-D, protected RFAs, remotes and history remain unchanged.
+- Added `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` with three labelled alternatives: 43½-in, 60-in, or a hybrid comparison. No option was selected.
 
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 

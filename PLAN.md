@@ -10,6 +10,8 @@
 
 **First gate:** compare the documented 43½-in DD-013 study rise against the 60-in Selected-D comparison transition and identify the required owner decision without silently choosing one. Keep M-06/B unassigned and do not modify Selected-D.
 
+**Decision sheet:** `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` presents labelled A/B/C alternatives and records that no stair or floor datum is selected.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
