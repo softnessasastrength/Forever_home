@@ -27,6 +27,17 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
         ("12:12", 12, 12)
     ];
 
+    private static void AddSkylightReservation(Document doc, double x, double y, string pitch, string zone)
+    {
+        var shape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
+        var loop = new CurveLoop();
+        var points = new[] { new XYZ(x, y, 8.0), new XYZ(x + 2.5, y, 8.0), new XYZ(x + 2.5, y + 1.5, 8.0), new XYZ(x, y + 1.5, 8.0) };
+        for (int i = 0; i < points.Length; i++) loop.Append(Line.CreateBound(points[i], points[(i + 1) % points.Length]));
+        shape.SetShape(new GeometryObject[] { GeometryCreationUtilities.CreateExtrusionGeometry(new[] { loop }, XYZ.BasisZ, 0.1) });
+        var comments = shape.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
+        if (comments is not null && !comments.IsReadOnly) comments.Set($"M381 skylight reservation; zone={zone}; pitch={pitch}; opening not cut; unselected");
+    }
+
     public Result Execute(ExternalCommandData data, ref string message, ElementSet elements)
     {
         string stage = "initializing";
@@ -51,6 +62,7 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
 
             var records = new List<object>();
             var createdRoofIds = new List<ElementId>();
+            int skylightReservationCount = 0;
             stage = "creating disposable imperial document";
             using Document doc = data.Application.Application.NewProjectDocument(UnitSystem.Imperial);
             Level level = new FilteredElementCollector(doc).OfClass(typeof(Level)).Cast<Level>()
@@ -112,6 +124,15 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     Parameter? comments = roof.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
                     if (comments is not null && !comments.IsReadOnly)
                         comments.Set($"M333 native roof shell comparison; option={label}; rise={rise}; run={run}; no selection");
+                    // These are deliberately labelled reservation solids, not roof cuts.
+                    // They preserve the owner's stair/kitchen/bath skylight study zones
+                    // without inventing a framing, waterproofing or opening assembly.
+                    foreach (var zone in new[] { "stair", "kitchen", "primary-bath" })
+                    {
+                        double zoneX = offset + (zone == "stair" ? 8.0 : zone == "kitchen" ? 18.0 : 28.0);
+                        AddSkylightReservation(doc, zoneX, 18.0, label, zone);
+                        skylightReservationCount++;
+                    }
                     records.Add(new
                     {
                         option = label,
@@ -121,6 +142,7 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                         display_offset_ft = offset,
                         element_id = roof.Id.Value,
                         native_category = "Roofs",
+                        skylight_reservations = 3,
                         selected = false
                     });
                 }
@@ -174,6 +196,8 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     shell_ft = new[] { 40.0, 42.0 },
                     level = levelName,
                     native_roof_count = roofCount,
+                    skylight_reservation_count = skylightReservationCount,
+                    skylight_zones = new[] { "stair", "kitchen", "primary-bath" },
                     roofs = records,
                     saved_rvt = Path.GetFileName(activePath),
                     saved_rvt_sha256 = (string?)null,
@@ -181,6 +205,7 @@ public sealed class NativeRoofShellStudyCommand : IExternalCommand
                     limitations = new[]
                     {
                         "The three roofs are side-by-side comparison options on a relative eave datum.",
+                        "Skylights are labelled reservation solids over stair, kitchen and primary-bath study zones; they are not roof cuts or assemblies.",
                         "No option is selected; no wall height, floor-to-floor, assembly, framing, loading, overhang, opening, drainage or site datum is assigned.",
                         "This disposable study does not establish code compliance, structural safety, accessibility, professional approval, permit approval or construction readiness."
                     }

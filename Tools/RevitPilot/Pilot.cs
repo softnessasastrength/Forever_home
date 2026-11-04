@@ -62,12 +62,30 @@ public class App : IExternalApplication
     public Result OnStartup(UIControlledApplication app)
     {
         var panel = app.CreateRibbonPanel("Forever Home Pilot");
+        panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
+            Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHCoordinatedPlaceholders", "Build coordinated\nplaceholders",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeCoordinatedPlaceholderStudyCommand).FullName!));
+         panel.AddItem(new PushButtonData("FHM372M06TreshamB", "Build M-06 Tresham/B\nstudy",
+             Assembly.GetExecutingAssembly().Location, typeof(NativeM06TreshamBStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHIntegratedMainFloorAssembly", "Build integrated\nmain-floor assembly",
             Assembly.GetExecutingAssembly().Location, typeof(NativeIntegratedMainFloorAssemblyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeFinishCueStudy", "Build F-01\nfinish cue",
             Assembly.GetExecutingAssembly().Location, typeof(NativeFinishCueStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHWalkthroughComposition", "Build walkthrough\ncomposition",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWalkthroughCompositionCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHMultiLevelComposition", "Build multi-level\ncomposition",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeMultiLevelCompositionCommand).FullName!));
+        // Keep the source-backed opening assembly study near the active composition
+        // commands so it remains reachable on narrower Revit ribbon widths.
+        panel.AddItem(new PushButtonData("FHOpeningAssemblyVisible", "Build opening\nassembly study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeDocumentedOpeningAssemblyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHInteriorDesignStudy", "Build interior\ndesign study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorDesignStudyCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHM379InteriorCoordination", "Build M379 interior\ncoordination",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeInteriorCoordinationPassCommand).FullName!));
+        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build roof +\nskylight study",
+            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHCompactLandingVisible", "Build native\nlanding study",
             Assembly.GetExecutingAssembly().Location, typeof(CompactLandingStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHStairLandingCoordination", "Build stair/landing\ncoordination",
@@ -111,8 +129,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(WalkthroughShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHNativeWallShellStudy", "Build clear-height\nwall comparison",
             Assembly.GetExecutingAssembly().Location, typeof(NativeWallShellStudyCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHNativeRoofShellStudy", "Build native roof\nshell comparison",
-            Assembly.GetExecutingAssembly().Location, typeof(NativeRoofShellStudyCommand).FullName!));
         panel.AddItem(new PushButtonData("FHMainFloorCandidateIfc", "Export main-floor\ncandidate IFC",
             Assembly.GetExecutingAssembly().Location, typeof(MainFloorCandidateIfcCommand).FullName!));
         panel.AddItem(new PushButtonData("FHAuditMainFloorCandidate", "Audit reopened\ncandidate",
@@ -125,8 +141,6 @@ public class App : IExternalApplication
             Assembly.GetExecutingAssembly().Location, typeof(GableMassingCommand).FullName!));
         panel.AddItem(new PushButtonData("FHFamilyIntake", "Run family intake\ntest",
             Assembly.GetExecutingAssembly().Location, typeof(FamilyIntakeCommand).FullName!));
-        panel.AddItem(new PushButtonData("FHInspectCandidateFamily", "Inspect quarantined\nfamily geometry",
-            Assembly.GetExecutingAssembly().Location, typeof(CandidateFamilyGeometryCommand).FullName!));
         panel.AddItem(new PushButtonData("FHApiAudit", "Audit active\ndocument",
             Assembly.GetExecutingAssembly().Location, typeof(ApiAuditCommand).FullName!));
         panel.AddItem(new PushButtonData("FHGeometryQa", "Run geometry\nQA",

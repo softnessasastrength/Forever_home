@@ -9,7 +9,8 @@
     <BaseOutputPath>../../.local/revit-pilot/build/</BaseOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="obj/**/*.cs" />
+    <Compile Remove="**/obj/**/*.cs" />
+    <Compile Remove="**/bin/**/*.cs" />
     <Compile Remove="../../.local/**/*.cs" />
   </ItemGroup>
   <ItemGroup>

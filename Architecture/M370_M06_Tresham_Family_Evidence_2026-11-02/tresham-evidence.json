@@ -1,0 +1,39 @@
+{
+  "schema": "forever-home.m370-tresham-family-evidence.v1",
+  "status": "runtime-verified disposable family inspection; not placed in Selected-D",
+  "source": {
+    "path": ".local/revit-pilot/family-intake/candidates/kohler-tresham-k-2844-4-0.rfa",
+    "sha256": "3b1cbdaa844d35bd462f6e59a828b82f7870fde4ee7397bac09f4ca0c2f9b949"
+  },
+  "runtime": {
+    "revit_version": "2027.3.0.28",
+    "report_sha256": "1d7545175739e37be3621ce59a8f6d712ef2ca0261521140087ae1d40eade96e",
+    "derivative_rvt_sha256": "0dd0ff380331b74b2b03d2bd9f64533060ce3d47879fcc9010abf1a02dcde55b"
+  },
+  "family": {
+    "name": "kohler-tresham-k-2844-4-0",
+    "manufacturer": "Kohler",
+    "model": "K-2844-4",
+    "category": "Plumbing Fixtures",
+    "placement_type": "WorkPlaneBased",
+    "type_count": 10,
+    "positive_volume_solid_count": 3,
+    "bounds_in": {
+      "width_x": 24.1319,
+      "depth_y": 19.5626,
+      "height_z": 34.6878
+    },
+    "primary_connector": {
+      "domain": "Piping",
+      "system": "Sanitary",
+      "shape": "Round",
+      "radius_in": 0.625,
+      "connected": false
+    }
+  },
+  "limitations": [
+    "Bounds are axis-aligned family-symbol positive-solid extents, not hosted/project-oriented installation geometry.",
+    "Connector inventory does not establish installed rough-in, slope, venting, or a service route.",
+    "The source RFA was inspected read-only in an isolated derivative; no instance was placed in the house model."
+  ]
+}
