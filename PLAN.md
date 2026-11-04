@@ -20,6 +20,8 @@
 
 **Additional gate:** `Architecture/M416_Openings_Door_Interface_Register_2026-11-03/README.md` records nominal openings, door proxies and the M-06 door boundary without promoting a family or clear route.
 
+**Additional gate:** `Architecture/M417_Fixture_Fit_Register_2026-11-03/README.md` separates current fixture evidence from the product, clearance, approach and service-route proof required before M-06/B promotion.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.

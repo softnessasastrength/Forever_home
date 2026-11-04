@@ -9,6 +9,7 @@
 - Added `Architecture/M414_MEP_Service_Route_Register_2026-11-03/README.md` to register M-06, U-05, kitchen, lower-MEP and site service-route gates without assigning a route or fixture.
 - Added `Architecture/M415_Accessibility_Site_Interface_Register_2026-11-03/README.md` to register preliminary stair, entry, lower-level, driveway and future-pool interface gates without claiming compliance.
 - Added `Architecture/M416_Openings_Door_Interface_Register_2026-11-03/README.md` to register nominal openings, door proxies, pantry alternatives and the protected M-06 door boundary.
+- Added `Architecture/M417_Fixture_Fit_Register_2026-11-03/README.md` to register Tresham/M-06, toilet proxy, A/B, U-05 and island evidence without promoting a fixture.
 
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
