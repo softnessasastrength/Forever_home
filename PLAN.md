@@ -12,6 +12,8 @@
 
 **Decision sheet:** `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` presents labelled A/B/C alternatives and records that no stair or floor datum is selected.
 
+**Next non-blocking gate:** `Architecture/M413_Assembly_Input_Register_2026-11-03/README.md` separates current wall, floor, finish, roof and site study inputs from the evidence required before assembly promotion.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
