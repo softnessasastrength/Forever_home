@@ -8,7 +8,7 @@
 
 **Acceptance:** before promoting native stairs/sections, establish an owner-approved floor-to-floor basis; then validate the disposable integrated candidate's native stairs, openings, wall/floor assemblies, MEP/service routes, accessibility/site interfaces and supported M-06/B fit with RVT/IFC2x3 evidence. Every proposal must remain labelled until its source, fit and review gates pass.
 
-**First gate:** compare the documented 43½-in DD-013 study rise against the 60-in Selected-D comparison transition and identify the required owner decision without silently choosing one. Keep M-06/B unassigned and do not modify Selected-D.
+**First gate:** **owner selected B**: carry the 60-in Selected-D comparison transition into the next disposable integrated stair/section study. Keep the 43½-in DD-013 rise as a comparison only, keep M-06/B unassigned and do not modify Selected-D.
 
 **Decision sheet:** `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` presents labelled A/B/C alternatives and records that no stair or floor datum is selected.
 
@@ -23,6 +23,14 @@
 **Additional gate:** `Architecture/M417_Fixture_Fit_Register_2026-11-03/README.md` separates current fixture evidence from the product, clearance, approach and service-route proof required before M-06/B promotion.
 
 **Readiness hub:** `Architecture/M418_Integrated_Candidate_Readiness_Checklist_2026-11-03/README.md` consolidates the promotion gates for the first integrated candidate.
+
+## M419 — Authorized 60-in integrated stair basis
+
+**Status:** basis authorized for the next disposable study; final stair/level design remains open.
+
+**Result:** owner selected B. Added `Tools/validate_integrated_stair_basis.ps1`, which binds the decision file, composition's eight 7½-in comparison risers and the existing native-stair study's 60-in total rise. The consolidated sequence now passes **18/18**.
+
+**Limits/next:** this authorizes only a disposable 60-in comparison. Landing, headroom, openings, route, assemblies, structure, MEP, accessibility and code remain unresolved.
 
 ## M402 — Consolidated interior-design evidence gate
 

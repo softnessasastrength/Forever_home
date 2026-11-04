@@ -3,6 +3,7 @@
 - Started the next goal: promote verified disposable studies toward an integrated Revit candidate.
 - Recorded acceptance gates for floor-to-floor/stair, assemblies, openings, MEP/service routes, accessibility/site interfaces and supported M-06/B fit.
 - First gate is explicitly the 43½-in DD-013 study rise versus the 60-in Selected-D comparison transition; no datum or stair was selected.
+- Owner selected **B** for the next disposable study: use the 60-in Selected-D comparison transition; retain 43½ in as a comparison only. This does not select a final stair or floor-to-floor construction datum.
 - Selected-D, protected RFAs, remotes and history remain unchanged.
 - Added `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` with three labelled alternatives: 43½-in, 60-in, or a hybrid comparison. No option was selected.
 - Added `Architecture/M413_Assembly_Input_Register_2026-11-03/README.md` to register documented wall, floor, F-01, roof and site inputs without promoting an assembly.
@@ -11,6 +12,12 @@
 - Added `Architecture/M416_Openings_Door_Interface_Register_2026-11-03/README.md` to register nominal openings, door proxies, pantry alternatives and the protected M-06 door boundary.
 - Added `Architecture/M417_Fixture_Fit_Register_2026-11-03/README.md` to register Tresham/M-06, toilet proxy, A/B, U-05 and island evidence without promoting a fixture.
 - Added `Architecture/M418_Integrated_Candidate_Readiness_Checklist_2026-11-03/README.md` as the consolidated promotion checklist for the next integrated candidate.
+
+## M419 — Authorized 60-in integrated stair basis — 2026-11-03
+
+- Owner selected **B** in `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md`.
+- Added `Tools/validate_integrated_stair_basis.ps1`; it binds the owner decision, composition proxy and native stair study to the 60-in comparison basis.
+- Consolidated sequence now passes **18/18**. This is disposable study authorization only; no final stair or floor datum was promoted.
 
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 

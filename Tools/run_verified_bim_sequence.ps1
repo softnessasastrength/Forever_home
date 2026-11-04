@@ -39,6 +39,7 @@ Run-Step 'consolidated_bim_gate' { & .\Tools\validate_verified_bim_milestone.ps1
 Run-Step 'section_stair_gate' { & .\Tools\validate_section_stair_gate.ps1 -Output .local/revalidation/section-stair-gate-sequence.json }
 Run-Step 'architect_review_bundle' { & .\Tools\validate_architect_review_bundle.ps1 -Output .local/revalidation/architect-review-bundle-sequence.json -SectionStairReport .local/revalidation/section-stair-gate-sequence.json }
 Run-Step 'architect_review_requirements' { & .\Tools\validate_architect_review_requirements.ps1 -BundleReport .local/revalidation/architect-review-bundle-sequence.json -Output .local/revalidation/architect-review-requirements-sequence.json }
+Run-Step 'integrated_stair_basis' { & .\Tools\validate_integrated_stair_basis.ps1 -Output .local/revalidation/integrated-stair-basis-sequence.json }
 Run-Step 'offline_revitpilot_tests' { & .venv\Scripts\python.exe -m unittest discover -s Tools/RevitPilot/tests -q }
 
 $out = if ([IO.Path]::IsPathRooted($OutputPath)) { $OutputPath } else { Join-Path $repo $OutputPath }
