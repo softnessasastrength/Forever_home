@@ -7,6 +7,7 @@
 - Added `Decisions/2026-11-03_Integrated_Candidate_Stair_Decision_Gate.md` with three labelled alternatives: 43½-in, 60-in, or a hybrid comparison. No option was selected.
 - Added `Architecture/M413_Assembly_Input_Register_2026-11-03/README.md` to register documented wall, floor, F-01, roof and site inputs without promoting an assembly.
 - Added `Architecture/M414_MEP_Service_Route_Register_2026-11-03/README.md` to register M-06, U-05, kitchen, lower-MEP and site service-route gates without assigning a route or fixture.
+- Added `Architecture/M415_Accessibility_Site_Interface_Register_2026-11-03/README.md` to register preliminary stair, entry, lower-level, driveway and future-pool interface gates without claiming compliance.
 
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 

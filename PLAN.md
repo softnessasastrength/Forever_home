@@ -16,6 +16,8 @@
 
 **Parallel gate:** `Architecture/M414_MEP_Service_Route_Register_2026-11-03/README.md` records current M-06, primary-bath, kitchen, lower-MEP and site service-route inputs without assigning routes or fixtures.
 
+**Additional gate:** `Architecture/M415_Accessibility_Site_Interface_Register_2026-11-03/README.md` records stair, entry, lower-level, driveway and future-pool interfaces without making a code or accessibility determination.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
