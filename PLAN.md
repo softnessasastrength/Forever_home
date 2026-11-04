@@ -18,6 +18,8 @@
 
 **Additional gate:** `Architecture/M415_Accessibility_Site_Interface_Register_2026-11-03/README.md` records stair, entry, lower-level, driveway and future-pool interfaces without making a code or accessibility determination.
 
+**Additional gate:** `Architecture/M416_Openings_Door_Interface_Register_2026-11-03/README.md` records nominal openings, door proxies and the M-06 door boundary without promoting a family or clear route.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
