@@ -25,6 +25,12 @@
 - Offline suite now passes **72 tests**; consolidated sequence remains **18/18**.
 - Runtime native integrated stair/section study remains the next execution step.
 
+## M421 — Integrated native stair/section command build — 2026-11-03
+
+- Added `IntegratedStairSectionStudyCommand` and registered **Build integrated 60 in stair section**.
+- Build `integrated-stair-section-check` completed with **0 errors** and the two known MSB3277 warning groups; DLL SHA256 `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
+- The command is build-verified only. No Revit manifest replacement, reload, runtime output or Selected-D edit occurred.
+
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
 - Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.

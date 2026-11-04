@@ -40,6 +40,14 @@
 
 **Next:** execute the disposable integrated native stair/section runtime study using the hash-verified project-local RevitPilot DLL.
 
+## M421 — Integrated native stair/section command build
+
+**Status:** build-verified; Revit runtime pending controlled reload.
+
+**Result:** added `IntegratedStairSectionStudyCommand` and the ribbon entry **Build integrated 60 in stair section**. The disposable command creates three study levels, a 40 × 42 ft shell/floor context, two native stair flights across the authorized 60-in basis and a section view, then exports RVT/IFC2x3. Build completed with **0 errors** and the two known MSB3277 warning groups. DLL SHA256: `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
+
+**Limits/next:** the command has not been loaded into Revit yet; it is not installed or trusted automatically. Runtime must use the exact hash-checked project-local DLL, produce a disposable output and pass an independent validator before evidence is claimed.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
