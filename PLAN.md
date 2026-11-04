@@ -14,6 +14,8 @@
 
 **Next non-blocking gate:** `Architecture/M413_Assembly_Input_Register_2026-11-03/README.md` separates current wall, floor, finish, roof and site study inputs from the evidence required before assembly promotion.
 
+**Parallel gate:** `Architecture/M414_MEP_Service_Route_Register_2026-11-03/README.md` records current M-06, primary-bath, kitchen, lower-MEP and site service-route inputs without assigning routes or fixtures.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.
