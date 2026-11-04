@@ -48,6 +48,14 @@
 
 **Limits/next:** the command has not been loaded into Revit yet; it is not installed or trusted automatically. Runtime must use the exact hash-checked project-local DLL, produce a disposable output and pass an independent validator before evidence is claimed.
 
+## M422 — Integrated command registration checkpoint
+
+**Status:** registered locally; runtime reload pending.
+
+**Result:** the per-user Revit 2027 manifest was backed up under `.local/revit-pilot/registration-backups/20261103194709736/` and updated to the current-worktree DLL. AddInId remains `096B0D51-8883-4B3D-BD31-E9622201E785`; DLL SHA256 is `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
+
+**Limits/next:** the open Revit process still has the previous assembly loaded. Do not claim runtime evidence until a controlled restart loads this exact hash-checked DLL and the integrated command generates/validates its disposable RVT/IFC2x3 output.
+
 ## M402 — Consolidated interior-design evidence gate
 
 **Status:** implemented and verified locally.

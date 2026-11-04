@@ -31,6 +31,12 @@
 - Build `integrated-stair-section-check` completed with **0 errors** and the two known MSB3277 warning groups; DLL SHA256 `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
 - The command is build-verified only. No Revit manifest replacement, reload, runtime output or Selected-D edit occurred.
 
+## M422 — Integrated command registration checkpoint — 2026-11-03
+
+- Backed up the prior per-user manifest under `.local/revit-pilot/registration-backups/20261103194709736/` and registered the current-worktree DLL.
+- AddInId remains unchanged; DLL SHA256 `C35174047D5257689D427FDBFDA6BE90371153037346A2C78E88F3E5BD8EE3F4`.
+- Revit remains on the prior loaded assembly; runtime reload and disposable output validation are still pending.
+
 ## M402 — Consolidated interior-design evidence gate — 2026-11-03
 
 - Added the runtime-verified interior design study to `Tools/run_verified_bim_sequence.ps1` using `.local/revit-pilot/interior-design-study/20261103T134122674Z/`.
